@@ -26,7 +26,7 @@ namespace ModAssistant
             BeatSaberInstallDirectory = Utils.GetInstallDir();
             BeatSaberInstallType = ModAssistant.Properties.Settings.Default.StoreType;
             SaveModSelection = ModAssistant.Properties.Settings.Default.SaveSelected;
-            //CheckInstalledMods = ModAssistant.Properties.Settings.Default.CheckInstalled;
+            CheckInstalledMods = ModAssistant.Properties.Settings.Default.CheckInstalled;
 
             if (e.Args.Length == 0)
             {
