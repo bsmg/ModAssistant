@@ -454,6 +454,7 @@ namespace ModAssistant.Pages
                 }
                 mod.ListItem.IsInstalled = false;
                 mod.ListItem.InstalledVersion = null;
+                view.Refresh();
             }
         }
     }
