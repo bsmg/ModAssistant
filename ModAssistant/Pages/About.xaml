@@ -1,0 +1,102 @@
+﻿<Page x:Class="ModAssistant.Pages.About"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ModAssistant"
+      mc:Ignorable="d" 
+      d:DesignHeight="629" d:DesignWidth="1182"
+      Title="About">
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+
+			<RowDefinition Height="auto"/>
+
+		</Grid.RowDefinitions>
+
+		<TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="24" Margin="0">About Mod Assistant</TextBlock>
+		<TextBlock Grid.Row="1" TextWrapping="Wrap" Margin="0,5" FontSize="16" >
+			I'm Assistant, and I made Mod Assistant as an alternative to the
+			<Hyperlink NavigateUri="https://github.com/beat-saber-modding-group/BeatSaberModInstaller" RequestNavigate="Hyperlink_RequestNavigate">
+				Mod Manager
+			</Hyperlink>
+			and 
+			<Hyperlink NavigateUri="https://github.com/StarGazer1258/BeatDrop" RequestNavigate="Hyperlink_RequestNavigate">
+				BeatDrop
+			</Hyperlink>
+			with a few principles in mind:
+		</TextBlock>
+		<TextBlock Grid.Row="2" Margin="15,5" FontSize="16" Text="• Simplicty" />
+		<TextBlock Grid.Row="3" Margin="15,5" FontSize="16" Text="• Portability" />
+		<TextBlock Grid.Row="4" Margin="15,5" FontSize="16" Text="• Single Executable" />
+		<TextBlock Grid.Row="5" Margin="15,5" FontSize="16" Text="• Responsible use" />
+
+		<TextBlock TextWrapping="Wrap" Grid.Row="6" Margin="30,5,5,5" FontSize="16">
+			If you enjoy this program and would like to support me, please visit my
+			<Hyperlink NavigateUri="https://bs.assistant.moe/Donate/" RequestNavigate="Hyperlink_RequestNavigate">
+				donation page
+			</Hyperlink>
+			or my
+			<Hyperlink NavigateUri="https://www.patreon.com/AssistantMoe" RequestNavigate="Hyperlink_RequestNavigate">
+				Patreon
+			</Hyperlink>
+		</TextBlock>
+		
+		<TextBlock Grid.Row="7" Margin="0,10,5,5" FontSize="20" Text="Special Thanks ♥" />
+
+		<StackPanel Grid.Row="8" Orientation="Horizontal"  HorizontalAlignment="Center">
+			
+			<StackPanel Margin="5"  Orientation="Vertical">
+				<TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
+					<Hyperlink NavigateUri="https://www.vanzeben.ca/" RequestNavigate="Hyperlink_RequestNavigate">
+						vanZeben
+					</Hyperlink>
+				</TextBlock>
+				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating BeatMods</TextBlock>
+				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">The current Mod repository</TextBlock>
+				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Used by this Installer</TextBlock>
+
+			</StackPanel>
+
+			<StackPanel Margin="5"  Orientation="Vertical">
+				<TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
+					<Hyperlink NavigateUri="https://linkkle.com/umbranoxus" RequestNavigate="Hyperlink_RequestNavigate">
+						Umbranox
+					</Hyperlink>
+				</TextBlock>
+				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Inspiration</TextBlock>
+				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating the Mod Manager</TextBlock>
+			</StackPanel>
+			
+			<StackPanel Margin="5"  Orientation="Vertical">
+				<TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
+					<Hyperlink NavigateUri="https://www.jackbaron.com/" RequestNavigate="Hyperlink_RequestNavigate">
+						lolPants
+					</Hyperlink>
+				</TextBlock>
+				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Inspiration</TextBlock>
+				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating ModSaber</TextBlock>
+				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">The first Mod repository</TextBlock>
+				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">
+					<Hyperlink NavigateUri="https://www.paypal.me/jackmbaron" RequestNavigate="Hyperlink_RequestNavigate">
+						Donate
+					</Hyperlink>
+				</TextBlock>
+
+			</StackPanel>
+			
+		</StackPanel>
+
+	</Grid>
+</Page>
