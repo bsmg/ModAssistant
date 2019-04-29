@@ -54,6 +54,12 @@
 			</Button>
 
 		</Grid>
+		
+		<StackPanel Grid.Row="1" VerticalAlignment="Center">
+			<TextBlock Text="Version" HorizontalAlignment="Center"/>
+			<TextBlock Name="VersionText" HorizontalAlignment="Center"/>
+		</StackPanel>
+		
 		<Frame Grid.Column="1" Name="Main" NavigationUIVisibility="Hidden" />
 		
 		<Grid Grid.Row="1" Grid.Column="1" >

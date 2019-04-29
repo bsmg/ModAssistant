@@ -28,6 +28,8 @@ namespace ModAssistant
             SaveModSelection = ModAssistant.Properties.Settings.Default.SaveSelected;
             CheckInstalledMods = ModAssistant.Properties.Settings.Default.CheckInstalled;
 
+            Update.Run();
+
             if (e.Args.Length == 0)
             {
                 MainWindow window = new MainWindow();
@@ -41,7 +43,25 @@ namespace ModAssistant
 
         private void ArgumentHandler(string[] Args)
         {
-            Utils.SendNotify(Args[0]);
+            Utils.SendNotify(Args.Count().ToString());
+            switch (Args[0])
+            {
+                case "--install":
+                    if (!String.IsNullOrEmpty(Args[1]))
+                        OneClickInstaller.InstallAsset(Args[1]);
+                    else
+                        Utils.SendNotify("Invalid argument! '--install' requires an option.");
+                    break;
+
+                case "--update":
+                    // Update
+                    break;
+
+                default:
+                    Utils.SendNotify("Unrecognized argument. Closing Mod Assistant.");
+                    break;
+            }
+            Current.Shutdown();
         }
 
         private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)

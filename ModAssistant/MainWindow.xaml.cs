@@ -17,6 +17,7 @@ using System.IO;
 using System.Web.Script.Serialization;
 using System.Runtime.Serialization;
 using ModAssistant.Pages;
+using System.Reflection;
 
 namespace ModAssistant
 {
@@ -26,8 +27,6 @@ namespace ModAssistant
     public partial class MainWindow : Window
     {
         public static MainWindow Instance;
-        //private delegate void SetStatusCallback(string message);
-        //public static Mods ModWindow = new Mods();
 
         public string MainText
         {
@@ -46,12 +45,13 @@ namespace ModAssistant
             InitializeComponent();
             Instance = this;
 
+            VersionText.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
             if (Properties.Settings.Default.Agreed)
             {
                 MainWindow.Instance.ModsButton.IsEnabled = true;
             }
 
-            //Main.Content = Mods.Instance;
             Main.Content = Intro.Instance;
         }
 
