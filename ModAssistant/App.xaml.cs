@@ -64,6 +64,10 @@ namespace ModAssistant
                     window.Show();
                     break;
 
+                case "--register":
+                    OneClickInstaller.Register();
+                    break;
+
                 default:
                     Utils.SendNotify("Unrecognized argument. Closing Mod Assistant.");
                     break;

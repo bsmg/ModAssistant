@@ -59,7 +59,8 @@
 		<CheckBox Grid.Row="7" Grid.Column="1" Name="ProtocolHandler" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding ProtocolHandlerEnabled, Mode=TwoWay}" Checked="ProtocolHandler_Checked"  Unchecked="ProtocolHandler_Unchecked"/>
 		<StackPanel Grid.Row="8" Margin="20,0,0,0" Background="LightYellow" HorizontalAlignment="Left">
 			<TextBlock Margin="5,5,5,0" Text="Allows use of OneClick Install links" HorizontalAlignment="Left" />
-			<TextBlock Margin="5,0,5,5" Text="Requires Admin" HorizontalAlignment="Left" />
+			<TextBlock Margin="5,0,5,5" Text="Coming soon!" HorizontalAlignment="Left" />
+			<!-- <TextBlock Margin="5,0,5,5" Text="Requires Admin" HorizontalAlignment="Left" /> -->
 		</StackPanel>
 		
 		<StackPanel Grid.Row="9" Margin="5" Orientation="Horizontal" HorizontalAlignment="Left">

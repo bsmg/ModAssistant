@@ -72,5 +72,17 @@ namespace ModAssistant
             }
         }
 
+        public static void Register()
+        {
+            foreach (string protocol in Protocols)
+            {
+
+            }
+        }
+
+        public static bool IsRegistered()
+        {
+            return false;
+        }
     }
 }

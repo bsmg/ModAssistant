@@ -42,6 +42,17 @@ namespace ModAssistant.Pages
             if (!CheckInstalledMods)
                 SelectInstalled.IsEnabled = false;
 
+            if (OneClickInstaller.IsRegistered())
+            {
+                ProtocolHandler.IsChecked = true;
+            }
+            else
+            {
+                ProtocolHandler.IsChecked = false;
+            }
+
+            ProtocolHandler.IsEnabled = false;
+
             this.DataContext = this;
         }
 
