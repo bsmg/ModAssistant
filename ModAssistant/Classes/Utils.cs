@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Management;
 using ModAssistant.Properties;
+using System.Net;
 
 namespace ModAssistant
 {
@@ -187,11 +188,15 @@ namespace ModAssistant
                     using (RegistryKey libraryKey = librariesKey.OpenSubKey(libraryKeyName))
                     {
                         string libraryPath = (string)libraryKey.GetValue("Path");
-                        string finalPath = Path.Combine(guidLetterVolumes.First(x => libraryPath.Contains(x.Key)).Value, libraryPath.Substring(49), @"Software\hyperbolic-magnetism-beat-saber");
-
-                        if (File.Exists(Path.Combine(finalPath, "Beat Saber.exe")))
+                        // Yoinked this code from Megalon's fix. <3
+                        string GUIDLetter = guidLetterVolumes.FirstOrDefault(x => libraryPath.Contains(x.Key)).Value;
+                        if (!String.IsNullOrEmpty(GUIDLetter))
                         {
-                            return SetDir(finalPath, "Oculus");
+                            string finalPath = Path.Combine(GUIDLetter, libraryPath.Substring(49), @"Software\hyperbolic-magnetism-beat-saber");
+                            if (File.Exists(Path.Combine(finalPath, "Beat Saber.exe")))
+                            {
+                                return SetDir(finalPath, "Oculus");
+                            }
                         }
                     }
                 }
@@ -252,5 +257,14 @@ namespace ModAssistant
             return null;
         }
 
+
+        public static void Download(string link, string output)
+        {
+            WebClient webClient = new WebClient();
+            webClient.Headers.Add("user-agent", "ModAssistant/" + App.Version);
+
+            byte[] file = webClient.DownloadData(link);
+            File.WriteAllBytes(output, file);
+        }
     }
 }

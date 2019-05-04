@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Windows;
 
 namespace ModAssistant
@@ -10,19 +15,117 @@ namespace ModAssistant
     class Updater
     {
         private static string APILatestURL = "https://api.github.com/repos/Assistant/ModAssistant/releases/latest";
+
         private static string ExePath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
+        private static Update LatestUpdate;
+        private static Version CurrentVersion;
+        private static Version LatestVersion;
+        private static bool NeedsUpdate = false;
+        private static bool IsAdmin = new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
 
         public static bool CheckForUpdate()
         {
-            return false;
+            string json = string.Empty;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(APILatestURL);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+            request.UserAgent = "ModAssistant/" + App.Version;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                var serializer = new JavaScriptSerializer();
+                LatestUpdate = serializer.Deserialize<Update>(reader.ReadToEnd());
+            }
+            
+            LatestVersion = new Version(LatestUpdate.tag_name.Substring(1));
+            CurrentVersion = new Version(App.Version);
+
+
+            return (LatestVersion > CurrentVersion);
         }
 
         public static void Run()
         {
+            try
+            {
+                NeedsUpdate = CheckForUpdate();
+            }
+            catch
+            {
+                Utils.SendNotify("Couldn't check for updates.");
+            }
+
+            if (NeedsUpdate) RunUpdate();
         }
+
+        public static void RunUpdate()
+        { 
+            if (IsAdmin)
+            {
+                StartUpdate();
+            }
+            else
+            {
+                RestartAsAdmin();
+            }
+        }
+
+        private static void RestartAsAdmin()
+        {
+            Process process = new Process();
+            process.StartInfo.FileName = ExePath;
+            process.StartInfo.Arguments = "--update";
+            process.StartInfo.UseShellExecute = true;
+            process.StartInfo.Verb = "runas";
+            try
+            {
+                process.Start();
+            }
+            catch
+            {
+                MessageBox.Show("Mod Assistant Updater needs to run as Admin. Please try again.");
+            }
+            App.Current.Shutdown();
+        }
+
+        public static void StartUpdate()
+        {
+            string Directory = Path.GetDirectoryName(ExePath);
+            string OldExe = Path.Combine(Directory, "ModAssistant.old.exe");
+
+            string DownloadLink = null;
+
+            foreach (Update.Asset asset in LatestUpdate.assets)
+            {
+                if (asset.name == "ModAssistant.exe")
+                {
+                    DownloadLink = asset.browser_download_url;
+                }
+            }
+
+            if (String.IsNullOrEmpty(DownloadLink))
+            {
+                Utils.SendNotify("Couldn't download update.");
+            }
+            else
+            {
+                if (File.Exists(OldExe))
+                    File.Delete(OldExe);
+
+                File.Move(ExePath, OldExe);
+
+                Utils.Download(DownloadLink, ExePath);
+                Process.Start(ExePath);
+                App.Current.Shutdown();
+
+            }
+
+        }
+
     }
 
-    class Update
+    public class Update
     {
         public string url;
         public string assets_url;
@@ -38,48 +141,48 @@ namespace ModAssistant
         public bool prerelease;
         public string created_at;
         public string published_at;
-        public Assets[] assets;
+        public Asset[] assets;
         public string tarball_url;
         public string zipball_url;
         public string body;
-    }
 
-    class Assets
-    {
-        public string url;
-        public int id;
-        public string node_id;
-        public string name;
-        public string label;
-        public User uploader;
-        public string content_type;
-        public string state;
-        public int size;
-        public string created_at;
-        public string updated_at;
-        public string browser_download_url;
-    }
+        public class Asset
+        {
+            public string url;
+            public int id;
+            public string node_id;
+            public string name;
+            public string label;
+            public User uploader;
+            public string content_type;
+            public string state;
+            public int size;
+            public string created_at;
+            public string updated_at;
+            public string browser_download_url;
+        }
 
-    class User
-    {
-        public string login;
-        public int id;
-        public string node_id;
-        public string avatar_url;
-        public string gravatar_id;
-        public string url;
-        public string html_url;
-        public string followers_url;
-        public string following_url;
-        public string gists_url;
-        public string starred_url;
-        public string subscriptions_url;
-        public string organizations_url;
-        public string repos_url;
-        public string events_url;
-        public string received_events_url;
-        public string type;
-        public bool site_admin;
+        public class User
+        {
+            public string login;
+            public int id;
+            public string node_id;
+            public string avatar_url;
+            public string gravatar_id;
+            public string url;
+            public string html_url;
+            public string followers_url;
+            public string following_url;
+            public string gists_url;
+            public string starred_url;
+            public string subscriptions_url;
+            public string organizations_url;
+            public string repos_url;
+            public string events_url;
+            public string received_events_url;
+            public string type;
+            public bool site_admin;
 
+        }
     }
 }

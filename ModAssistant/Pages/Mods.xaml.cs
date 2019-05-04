@@ -115,6 +115,7 @@ namespace ModAssistant.Pages
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsAPIUrl + "mod?hash=" + hash);
             request.AutomaticDecompression = DecompressionMethods.GZip;
+            request.UserAgent = "ModAssistant/" + App.Version;
 
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             using (Stream stream = response.GetResponseStream())
@@ -135,6 +136,7 @@ namespace ModAssistant.Pages
             string json = string.Empty;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions);
             request.AutomaticDecompression = DecompressionMethods.GZip;
+            request.UserAgent = "ModAssistant/" + App.Version;
 
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             using (Stream stream = response.GetResponseStream())

@@ -62,8 +62,7 @@ namespace ModAssistant
             try
             {
                 string fileName = WebUtility.UrlDecode(Path.Combine(BeatSaberPath, folder, new Uri(link).Segments.Last()));
-                byte[] file = new WebClient().DownloadData(link);
-                File.WriteAllBytes(fileName, file);
+                Utils.Download(link, fileName);
                 Utils.SendNotify("Installed: " + Path.GetFileNameWithoutExtension(fileName));
 
             }

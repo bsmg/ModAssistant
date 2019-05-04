@@ -26,16 +26,17 @@ namespace ModAssistant
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            Version = Version.Substring(0, Version.Length - 2);
             BeatSaberInstallDirectory = Utils.GetInstallDir();
             BeatSaberInstallType = ModAssistant.Properties.Settings.Default.StoreType;
             SaveModSelection = ModAssistant.Properties.Settings.Default.SaveSelected;
             CheckInstalledMods = ModAssistant.Properties.Settings.Default.CheckInstalled;
             SelectInstalledMods = ModAssistant.Properties.Settings.Default.SelectInstalled;
 
-            Updater.Run();
-
             if (e.Args.Length == 0)
             {
+                Updater.Run();
+
                 MainWindow window = new MainWindow();
                 window.Show();
             }
@@ -47,7 +48,6 @@ namespace ModAssistant
 
         private void ArgumentHandler(string[] Args)
         {
-            Utils.SendNotify(Args.Count().ToString());
             switch (Args[0])
             {
                 case "--install":
@@ -58,7 +58,10 @@ namespace ModAssistant
                     break;
 
                 case "--update":
-                    // Update
+                    Updater.Run();
+
+                    MainWindow window = new MainWindow();
+                    window.Show();
                     break;
 
                 default:
