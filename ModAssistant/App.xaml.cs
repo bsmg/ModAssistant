@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using ModAssistant;
@@ -18,6 +19,8 @@ namespace ModAssistant
         public static string BeatSaberInstallType;
         public static bool SaveModSelection;
         public static bool CheckInstalledMods;
+        public static bool SelectInstalledMods;
+        public static string Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public static List<string> SavedMods = ModAssistant.Properties.Settings.Default.SavedMods.Split(',').ToList();
 
 
@@ -27,8 +30,9 @@ namespace ModAssistant
             BeatSaberInstallType = ModAssistant.Properties.Settings.Default.StoreType;
             SaveModSelection = ModAssistant.Properties.Settings.Default.SaveSelected;
             CheckInstalledMods = ModAssistant.Properties.Settings.Default.CheckInstalled;
+            SelectInstalledMods = ModAssistant.Properties.Settings.Default.SelectInstalled;
 
-            Update.Run();
+            Updater.Run();
 
             if (e.Args.Length == 0)
             {

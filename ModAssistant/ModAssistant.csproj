@@ -64,7 +64,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Diagnostics.cs" />
-    <Compile Include="Classes\Update.cs" />
+    <Compile Include="Classes\Updater.cs" />
     <Compile Include="Pages\Intro.xaml.cs">
       <DependentUpon>Intro.xaml</DependentUpon>
     </Compile>

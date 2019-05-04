@@ -94,5 +94,17 @@ namespace ModAssistant.Properties {
                 this["Agreed"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SelectInstalled {
+            get {
+                return ((bool)(this["SelectInstalled"]));
+            }
+            set {
+                this["SelectInstalled"] = value;
+            }
+        }
     }
 }

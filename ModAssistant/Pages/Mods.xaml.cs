@@ -28,7 +28,7 @@ namespace ModAssistant.Pages
     {
         public static Mods Instance = new Mods();
 
-        public string[] DefaultMods = { "SongLoader", "ScoreSaber", "BeatSaverDownloader" };
+        public List<string> DefaultMods = new List<string>(){ "SongLoader", "ScoreSaber", "BeatSaverDownloader" };
         public Mod[] ModsList;
         public static List<Mod> InstalledMods = new List<Mod>();
         public List<string> CategoryNames = new List<string>();
@@ -98,6 +98,10 @@ namespace ModAssistant.Pages
                         if (!InstalledMods.Contains(mod))
                         {
                             InstalledMods.Add(mod);
+                            if (App.SelectInstalledMods && !DefaultMods.Contains(mod.name))
+                            {
+                                DefaultMods.Add(mod.name);
+                            }
                         }
                     }
                 }
@@ -437,7 +441,7 @@ namespace ModAssistant.Pages
         private void Uninstall_Click(object sender, RoutedEventArgs e)
         {
             Mod mod = ((sender as System.Windows.Controls.Button).Tag as Mod);
-            if (System.Windows.Forms.MessageBox.Show($"Uninstall {mod.name}?", $"Are you sure you want to remove {mod.name}?\nThis can break other of your mods.", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (System.Windows.Forms.MessageBox.Show($"Are you sure you want to remove {mod.name}?\nThis could break your other mods.", $"Uninstall {mod.name}?", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Mod.DownloadLink links = null;
                 foreach (Mod.DownloadLink link in mod.downloads)
@@ -454,6 +458,15 @@ namespace ModAssistant.Pages
                 }
                 mod.ListItem.IsInstalled = false;
                 mod.ListItem.InstalledVersion = null;
+                if (App.SelectInstalledMods)
+                {
+                    mod.ListItem.IsSelected = false;
+                    UnresolveDependencies(mod);
+                    App.SavedMods.Remove(mod.name);
+                    Properties.Settings.Default.SavedMods = String.Join(",", App.SavedMods.ToArray());
+                    Properties.Settings.Default.Save();
+                    RefreshModsList();
+                }
                 view.Refresh();
             }
         }

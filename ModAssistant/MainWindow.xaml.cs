@@ -45,7 +45,7 @@ namespace ModAssistant
             InitializeComponent();
             Instance = this;
 
-            VersionText.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            VersionText.Text = App.Version;
 
             if (Properties.Settings.Default.Agreed)
             {

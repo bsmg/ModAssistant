@@ -28,6 +28,8 @@ namespace ModAssistant.Pages
         public string InstallType { get; set; }
         public bool SaveSelection { get; set; }
         public bool CheckInstalledMods { get; set; }
+        public bool SelectInstalledMods { get; set; }
+
 
         public Options()
         {
@@ -36,6 +38,9 @@ namespace ModAssistant.Pages
             InstallType = App.BeatSaberInstallType;
             SaveSelection = App.SaveModSelection;
             CheckInstalledMods = App.CheckInstalledMods;
+            SelectInstalledMods = App.SelectInstalledMods;
+            if (!CheckInstalledMods)
+                SelectInstalled.IsEnabled = false;
 
             this.DataContext = this;
         }
@@ -70,6 +75,7 @@ namespace ModAssistant.Pages
             App.CheckInstalledMods = true;
             CheckInstalledMods = true;
             Properties.Settings.Default.Save();
+            SelectInstalled.IsEnabled = true;
         }
 
         private void CheckInstalled_Unchecked(object sender, RoutedEventArgs e)
@@ -78,6 +84,7 @@ namespace ModAssistant.Pages
             App.CheckInstalledMods = false;
             CheckInstalledMods = false;
             Properties.Settings.Default.Save();
+            SelectInstalled.IsEnabled = false;
         }
 
         private void ProtocolHandler_Checked(object sender, RoutedEventArgs e)
@@ -88,6 +95,22 @@ namespace ModAssistant.Pages
         private void ProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void SelectInstalled_Checked(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.SelectInstalled = true;
+            App.SelectInstalledMods = true;
+            SelectInstalledMods = true;
+            Properties.Settings.Default.Save();
+        }
+
+        private void SelectInstalled_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.SelectInstalled = false;
+            App.SelectInstalledMods = false;
+            SelectInstalledMods = false;
+            Properties.Settings.Default.Save();
         }
     }
 }
