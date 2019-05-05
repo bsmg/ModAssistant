@@ -36,6 +36,9 @@ namespace ModAssistant.Pages
 
         private void Disagree_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow.Instance.ModsButton.IsEnabled = false;
+            Properties.Settings.Default.Agreed = false;
+            Properties.Settings.Default.Save();
             MessageBox.Show("Closing Application: You did not agree to terms and conditions.");
             System.Windows.Application.Current.Shutdown();
         }
@@ -45,6 +48,7 @@ namespace ModAssistant.Pages
             MainWindow.Instance.ModsButton.IsEnabled = true;
             Properties.Settings.Default.Agreed = true;
             Properties.Settings.Default.Save();
+            Utils.SendNotify("You can now use the Mods tab!");
         }
     }
 }
