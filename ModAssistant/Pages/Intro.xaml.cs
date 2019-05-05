@@ -49,6 +49,7 @@ namespace ModAssistant.Pages
             Properties.Settings.Default.Agreed = true;
             Properties.Settings.Default.Save();
             Utils.SendNotify("You can now use the Mods tab!");
+            MainWindow.Instance.MainText = "You can now use the Mods tab!";
         }
     }
 }
