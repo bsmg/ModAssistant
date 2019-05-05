@@ -57,9 +57,7 @@ namespace ModAssistant
                         Utils.SendNotify("Invalid argument! '--install' requires an option.");
                     break;
 
-                case "--update":
-                    Updater.Run();
-
+                case "--no-update":
                     MainWindow window = new MainWindow();
                     window.Show();
                     break;

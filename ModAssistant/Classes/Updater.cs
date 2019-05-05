@@ -21,7 +21,6 @@ namespace ModAssistant
         private static Version CurrentVersion;
         private static Version LatestVersion;
         private static bool NeedsUpdate = false;
-        private static bool IsAdmin = new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
 
         public static bool CheckForUpdate()
         {
@@ -56,37 +55,7 @@ namespace ModAssistant
                 Utils.SendNotify("Couldn't check for updates.");
             }
 
-            if (NeedsUpdate) RunUpdate();
-        }
-
-        public static void RunUpdate()
-        { 
-            if (IsAdmin)
-            {
-                StartUpdate();
-            }
-            else
-            {
-                RestartAsAdmin();
-            }
-        }
-
-        private static void RestartAsAdmin()
-        {
-            Process process = new Process();
-            process.StartInfo.FileName = ExePath;
-            process.StartInfo.Arguments = "--update";
-            process.StartInfo.UseShellExecute = true;
-            process.StartInfo.Verb = "runas";
-            try
-            {
-                process.Start();
-            }
-            catch
-            {
-                MessageBox.Show("Mod Assistant Updater needs to run as Admin. Please try again.");
-            }
-            App.Current.Shutdown();
+            if (NeedsUpdate) StartUpdate();
         }
 
         public static void StartUpdate()

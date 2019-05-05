@@ -11,6 +11,8 @@ using System.Windows;
 using System.Management;
 using ModAssistant.Properties;
 using System.Net;
+using System.Diagnostics;
+using System.Security.Principal;
 
 namespace ModAssistant
 {
@@ -23,6 +25,7 @@ namespace ModAssistant
             public const string BeatModsURL = "https://beatmods.com";
             public const string BeatModsModsOptions = "mod?status=approved";
             public const string MD5Spacer = "                                 ";
+            public static bool IsAdmin = new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
         }
 
         public static void SendNotify(string message, string title = "Mod Assistant")
@@ -38,6 +41,24 @@ namespace ModAssistant
             notification.ShowBalloonTip(5000);
 
             notification.Dispose();
+        }
+
+        private static void RestartAsAdmin(string Arguments)
+        {
+            Process process = new Process();
+            process.StartInfo.FileName = Process.GetCurrentProcess().MainModule.FileName;
+            process.StartInfo.Arguments = Arguments;
+            process.StartInfo.UseShellExecute = true;
+            process.StartInfo.Verb = "runas";
+            try
+            {
+                process.Start();
+            }
+            catch
+            {
+                MessageBox.Show("Mod Assistant Updater needs to run as Admin. Please try again.");
+            }
+            App.Current.Shutdown();
         }
 
         public static string CalculateMD5(string filename)
