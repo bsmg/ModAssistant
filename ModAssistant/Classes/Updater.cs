@@ -16,7 +16,6 @@ namespace ModAssistant
     {
         private static string APILatestURL = "https://api.github.com/repos/Assistant/ModAssistant/releases/latest";
 
-        private static string ExePath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
         private static Update LatestUpdate;
         private static Version CurrentVersion;
         private static Version LatestVersion;
@@ -60,7 +59,7 @@ namespace ModAssistant
 
         public static void StartUpdate()
         {
-            string Directory = Path.GetDirectoryName(ExePath);
+            string Directory = Path.GetDirectoryName(Utils.ExePath);
             string OldExe = Path.Combine(Directory, "ModAssistant.old.exe");
 
             string DownloadLink = null;
@@ -82,10 +81,10 @@ namespace ModAssistant
                 if (File.Exists(OldExe))
                     File.Delete(OldExe);
 
-                File.Move(ExePath, OldExe);
+                File.Move(Utils.ExePath, OldExe);
 
-                Utils.Download(DownloadLink, ExePath);
-                Process.Start(ExePath);
+                Utils.Download(DownloadLink, Utils.ExePath);
+                Process.Start(Utils.ExePath);
                 App.Current.Shutdown();
 
             }

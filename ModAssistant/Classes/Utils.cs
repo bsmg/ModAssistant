@@ -18,6 +18,9 @@ namespace ModAssistant
 {
     public class Utils
     {
+        public static bool IsAdmin = new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
+        public static string ExePath = Process.GetCurrentProcess().MainModule.FileName;
+
         public class Constants
         {
             public const string BeatSaberAPPID = "620980";
@@ -25,7 +28,6 @@ namespace ModAssistant
             public const string BeatModsURL = "https://beatmods.com";
             public const string BeatModsModsOptions = "mod?status=approved";
             public const string MD5Spacer = "                                 ";
-            public static bool IsAdmin = new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
         }
 
         public static void SendNotify(string message, string title = "Mod Assistant")
@@ -43,22 +45,26 @@ namespace ModAssistant
             notification.Dispose();
         }
 
-        private static void RestartAsAdmin(string Arguments)
+        public static void StartAsAdmin(string Arguments, bool Close = false)
         {
             Process process = new Process();
             process.StartInfo.FileName = Process.GetCurrentProcess().MainModule.FileName;
             process.StartInfo.Arguments = Arguments;
             process.StartInfo.UseShellExecute = true;
             process.StartInfo.Verb = "runas";
+
             try
             {
                 process.Start();
+                if (!Close)
+                    process.WaitForExit();
             }
             catch
             {
-                MessageBox.Show("Mod Assistant Updater needs to run as Admin. Please try again.");
+                MessageBox.Show("Mod Assistant needs to run this task as Admin. Please try again.");
             }
-            App.Current.Shutdown();
+            if (Close)
+                App.Current.Shutdown();
         }
 
         public static string CalculateMD5(string filename)

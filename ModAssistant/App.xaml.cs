@@ -63,7 +63,17 @@ namespace ModAssistant
                     break;
 
                 case "--register":
-                    OneClickInstaller.Register();
+                    if (!String.IsNullOrEmpty(Args[1]))
+                        OneClickInstaller.Register(Args[1], true);
+                    else
+                        Utils.SendNotify("Invalid argument! '--register' requires an option.");
+                    break;
+
+                case "--unregister":
+                    if (!String.IsNullOrEmpty(Args[1]))
+                        OneClickInstaller.Unregister(Args[1], true);
+                    else
+                        Utils.SendNotify("Invalid argument! '--unregister' requires an option.");
                     break;
 
                 default:
@@ -75,13 +85,9 @@ namespace ModAssistant
 
         private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            MessageBox.Show("An unhandled exception just occurred: " + e.Exception.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show("An unhandled exception just occurred: " + e.Exception, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
             e.Handled = true;
-        }
-
-        public void RegisterOneClickInstalls ()
-        {
-
+            Application.Current.Shutdown();
         }
     }
 }

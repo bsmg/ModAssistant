@@ -29,6 +29,10 @@ namespace ModAssistant.Pages
         public bool SaveSelection { get; set; }
         public bool CheckInstalledMods { get; set; }
         public bool SelectInstalledMods { get; set; }
+        public bool ModelSaberProtocolHandlerEnabled { get; set; }
+        public bool BeatSaverProtocolHandlerEnabled { get; set; }
+        public bool ModSaberProtocolHandlerEnabled { get; set; }
+
 
 
         public Options()
@@ -42,21 +46,19 @@ namespace ModAssistant.Pages
             if (!CheckInstalledMods)
                 SelectInstalled.IsEnabled = false;
 
-            if (OneClickInstaller.IsRegistered())
-            {
-                ProtocolHandler.IsChecked = true;
-            }
-            else
-            {
-                ProtocolHandler.IsChecked = false;
-            }
-
-            ProtocolHandler.IsEnabled = false;
+            UpdateHandlerStatus();
 
             this.DataContext = this;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void UpdateHandlerStatus()
+        {
+            ModelSaberProtocolHandlerEnabled = OneClickInstaller.IsRegistered("modelsaber");
+            BeatSaverProtocolHandlerEnabled = OneClickInstaller.IsRegistered("beatsaver");
+            ModSaberProtocolHandlerEnabled = OneClickInstaller.IsRegistered("modsaber");
+        }
+
+        private void SelectDirButton_Click(object sender, RoutedEventArgs e)
         {
             Utils.GetManualDir();
         }
@@ -98,14 +100,34 @@ namespace ModAssistant.Pages
             SelectInstalled.IsEnabled = false;
         }
 
-        private void ProtocolHandler_Checked(object sender, RoutedEventArgs e)
+        public void ModelSaberProtocolHandler_Checked(object sender, RoutedEventArgs e)
         {
-
+            OneClickInstaller.Register("modelsaber");
         }
 
-        private void ProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
+        public void ModelSaberProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
         {
+            OneClickInstaller.Unregister("modelsaber");
+        }
 
+        public void BeatSaverProtocolHandler_Checked(object sender, RoutedEventArgs e)
+        {
+            OneClickInstaller.Register("beatsaver");
+        }
+
+        public void BeatSaverProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
+        {
+            OneClickInstaller.Unregister("beatsaver");
+        }
+
+        public void ModSaberProtocolHandler_Checked(object sender, RoutedEventArgs e)
+        {
+            OneClickInstaller.Register("modsaber");
+        }
+
+        public void ModSaberProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
+        {
+            OneClickInstaller.Unregister("modsaber");
         }
 
         private void SelectInstalled_Checked(object sender, RoutedEventArgs e)
