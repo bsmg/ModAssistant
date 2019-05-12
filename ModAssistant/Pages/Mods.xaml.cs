@@ -231,6 +231,7 @@ namespace ModAssistant.Pages
             }
             MainWindow.Instance.MainText = "Finished installing mods.";
             MainWindow.Instance.InstallButton.IsEnabled = true;
+            RefreshModsList();
         }
 
         private void InstallMod (Mod mod, string directory)
@@ -270,6 +271,12 @@ namespace ModAssistant.Pages
                             file.ExtractToFile(System.IO.Path.Combine(directory, file.FullName), true);
                     }
                 }
+            }
+
+            if (App.CheckInstalledMods)
+            {
+                mod.ListItem.IsInstalled = true;
+                mod.ListItem.InstalledVersion = mod.version;
             }
         }
 
