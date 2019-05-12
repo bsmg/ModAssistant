@@ -30,6 +30,7 @@ namespace ModAssistant.Pages
 
         public List<string> DefaultMods = new List<string>(){ "SongLoader", "ScoreSaber", "BeatSaverDownloader" };
         public Mod[] ModsList;
+        public Mod[] AllModsList;
         public static List<Mod> InstalledMods = new List<Mod>();
         public List<string> CategoryNames = new List<string>();
         public CollectionView view;
@@ -81,6 +82,19 @@ namespace ModAssistant.Pages
 
         private void CheckInstalledMods()
         {
+            string json = string.Empty;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsAPIUrl + "mod");
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+            request.UserAgent = "ModAssistant/" + App.Version;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                var serializer = new JavaScriptSerializer();
+                AllModsList = serializer.Deserialize<Mod[]>(reader.ReadToEnd());
+            }
+
             List<string> empty = new List<string>();
             CheckInstallDir("Plugins", empty);
             CheckInstallDir(@"IPA\Libs", empty);
@@ -110,25 +124,20 @@ namespace ModAssistant.Pages
 
         private Mod GetModFromHash(string hash)
         {
-            string json = string.Empty;
-            Mod[] modMatches;
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsAPIUrl + "mod?hash=" + hash);
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-            request.UserAgent = "ModAssistant/" + App.Version;
-
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
+            foreach (Mod mod in AllModsList)
             {
-                var serializer = new JavaScriptSerializer();
-                modMatches = serializer.Deserialize<Mod[]>(reader.ReadToEnd());
+                foreach (Mod.DownloadLink download in mod.downloads)
+                {
+                    foreach (Mod.FileHashes fileHash in download.hashMd5)
+                    {
+                        if (fileHash.hash == hash)
+                            return mod;
+                    }
+                }
             }
 
-            if (modMatches.Length == 0)
-                return null;
-
-            return modMatches[0];
+            return null;
         }
 
         public void PopulateModsList()
