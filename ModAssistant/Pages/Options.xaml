@@ -66,7 +66,7 @@
 		<CheckBox Grid.Row="7" Grid.Column="1" Name="ModelSaberProtocolHandler" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding ModelSaberProtocolHandlerEnabled}" Checked="ModelSaberProtocolHandler_Checked"  Unchecked="ModelSaberProtocolHandler_Unchecked"/>
 
 		<TextBlock Grid.Row="8" Margin="20,5,5,5" Text="BeatSaver" FontWeight="Bold" HorizontalAlignment="Left" FontSize="16" />
-		<CheckBox Grid.Row="8" Grid.Column="1" Name="BeatSaverProtocolHandler" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding BeatSaberProtocolHandlerEnabled}" Checked="BeatSaverProtocolHandler_Checked"  Unchecked="BeatSaverProtocolHandler_Unchecked"/>
+		<CheckBox Grid.Row="8" Grid.Column="1" Name="BeatSaverProtocolHandler" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding BeatSaverProtocolHandlerEnabled}" Checked="BeatSaverProtocolHandler_Checked"  Unchecked="BeatSaverProtocolHandler_Unchecked"/>
 
 		<TextBlock Grid.Row="9" Margin="20,5,5,5" Text="ModSaber" FontWeight="Bold" HorizontalAlignment="Left" FontSize="16" />
 		<CheckBox Grid.Row="9" Grid.Column="1" Name="ModSaberProtocolHandler" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding ModSaberProtocolHandlerEnabled}" Checked="ModSaberProtocolHandler_Checked"  Unchecked="ModSaberProtocolHandler_Unchecked"/>
