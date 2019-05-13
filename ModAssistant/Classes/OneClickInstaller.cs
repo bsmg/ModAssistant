@@ -49,8 +49,7 @@ namespace ModAssistant
         private static void BeatSaver(Uri uri)
         {
             string ID = uri.Segments.Last<string>();
-            DownloadAsset(BeatSaverURLPrefix + ID, CustomSongsFolder);
-            File.Move(Path.Combine(BeatSaberPath, CustomSongsFolder, ID), Path.Combine(BeatSaberPath, CustomSongsFolder, ID + ".zip"));
+            DownloadAsset(BeatSaverURLPrefix + ID, CustomSongsFolder, ID + ".zip");
             string directory = Path.Combine(BeatSaberPath, CustomSongsFolder, ID);
 
             using (FileStream stream = new FileStream(directory + ".zip", FileMode.Open))
@@ -78,8 +77,7 @@ namespace ModAssistant
             {
                 case "song":
                     string ID = uri.Segments.Last<string>();
-                    DownloadAsset(BeatSaverURLPrefix + ID, CustomSongsFolder);
-                    File.Move(Path.Combine(BeatSaberPath, CustomSongsFolder, ID), Path.Combine(BeatSaberPath, CustomSongsFolder, ID + ".zip"));
+                    DownloadAsset(BeatSaverURLPrefix + ID, CustomSongsFolder, ID + ".zip");
                     string directory = Path.Combine(BeatSaberPath, CustomSongsFolder, ID);
 
                     using (FileStream stream = new FileStream(directory + ".zip", FileMode.Open))
@@ -119,7 +117,7 @@ namespace ModAssistant
             }
         }
 
-        private static void DownloadAsset(string link, string folder)
+        private static void DownloadAsset(string link, string folder, string fileName = null)
         {
             if (string.IsNullOrEmpty(BeatSaberPath))
             {
@@ -127,7 +125,11 @@ namespace ModAssistant
             }
             try
             {
-                string fileName = WebUtility.UrlDecode(Path.Combine(BeatSaberPath, folder, new Uri(link).Segments.Last()));
+                if (String.IsNullOrEmpty(fileName))
+                    fileName = WebUtility.UrlDecode(Path.Combine(BeatSaberPath, folder, new Uri(link).Segments.Last()));
+                else
+                    fileName = WebUtility.UrlDecode(Path.Combine(BeatSaberPath, folder, fileName));
+
                 Utils.Download(link, fileName);
                 Utils.SendNotify("Installed: " + Path.GetFileNameWithoutExtension(fileName));
 
