@@ -175,7 +175,7 @@ namespace ModAssistant.Pages
                     IsEnabled = !mod.required,
                     ModName = mod.name,
                     ModVersion = mod.version,
-                    ModDescription = mod.description.Replace('\n', ' '),
+                    ModDescription = mod.description.Replace("\r\n", " ").Replace("\n", " "),
                     ModInfo = mod,
                     Category = mod.category
                 };
