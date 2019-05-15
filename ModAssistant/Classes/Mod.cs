@@ -11,6 +11,7 @@ namespace ModAssistant
     {
         public string name;
         public string version;
+        public string gameVersion;
         public string _id;
         public string authorId;
         public string uploadedDate;

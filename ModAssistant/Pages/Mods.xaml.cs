@@ -393,40 +393,24 @@ namespace ModAssistant.Pages
 
             public bool IsInstalled { get; set; }
             private string _installedVersion { get; set; }
-            public string InstalledVersion {
+            public string InstalledVersion
+            {
                 get
                 {
-                    if (String.IsNullOrEmpty(_installedVersion) || !IsInstalled)
-                    {
-                        return "-";
-                    }
-                    else
-                    {
-                        return _installedVersion;
-                    }
+                    return (String.IsNullOrEmpty(_installedVersion) || !IsInstalled) ? "-" : _installedVersion;
                 }
                 set
                 {
                     _installedVersion = value;
                 }
             }
-            public string IsOutdated {
+
+            public string GetVersionColor
+            {
                 get
                 {
-                    if (IsInstalled)
-                    {
-                        if (InstalledVersion == ModVersion)
-                        {
-                            return "Green"; //green
-                        } else
-                        {
-                            return "Red"; //red
-                        }
-                    }
-                    else
-                    {
-                        return "Black"; //grey
-                    }
+                    if (!IsInstalled) return "Black";
+                    return InstalledVersion == ModVersion ? "Green" : "Red";
                 }
             }
 
