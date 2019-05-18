@@ -23,6 +23,8 @@
 				<RowDefinition Height="70" />
 				<RowDefinition Height="70" />
 				<RowDefinition Height="70" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
 			
 			<Button Name="IntroButton" Grid.Row="0" Height="60" Margin="0,0,10,5" Background="white" Click="IntroButton_Click">
@@ -52,6 +54,12 @@
 					<TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom">Options</TextBlock>
 				</StackPanel>
 			</Button>
+
+			<StackPanel Name="GameVersions" Grid.Row="5" VerticalAlignment="Bottom">
+				<TextBlock Text="Game Version:" FontSize="10"/>
+				<ComboBox Name="GameVersionsBox" Margin="0,5,5,0" SelectionChanged="GameVersionsBox_SelectionChanged">
+				</ComboBox>
+			</StackPanel>
 
 		</Grid>
 		

@@ -45,11 +45,18 @@ namespace ModAssistant.Pages
 
         private void Agree_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.Instance.ModsButton.IsEnabled = true;
+            if (String.IsNullOrEmpty(MainWindow.GameVersion))
+            {
+                MessageBox.Show("Could not download versions list.\nMods tab disabled. Please restart to try again.");
+            }
+            else
+            {
+                MainWindow.Instance.ModsButton.IsEnabled = true;
+                Utils.SendNotify("You can now use the Mods tab!");
+                MainWindow.Instance.MainText = "You can now use the Mods tab!";
+            }
             Properties.Settings.Default.Agreed = true;
             Properties.Settings.Default.Save();
-            Utils.SendNotify("You can now use the Mods tab!");
-            MainWindow.Instance.MainText = "You can now use the Mods tab!";
         }
     }
 }

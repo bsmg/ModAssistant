@@ -34,29 +34,44 @@ namespace ModAssistant.Pages
         public static List<Mod> InstalledMods = new List<Mod>();
         public List<string> CategoryNames = new List<string>();
         public CollectionView view;
+        public bool PendingChanges;
 
         public List<ModListItem> ModList { get; set; }
 
         public Mods()
         {
             InitializeComponent();
-
-            ModList = new List<ModListItem>();
-
-            LoadMods();
         }
 
         private void RefreshModsList()
         {
-            view.Refresh();
+            if (view != null)
+                view.Refresh();
         }
 
-        private async void LoadMods()
+        public async void LoadMods()
         {
+            MainWindow.Instance.InstallButton.IsEnabled = false;
+            MainWindow.Instance.GameVersionsBox.IsEnabled = false;
+
+            if (ModsList != null)
+                Array.Clear(ModsList, 0, ModsList.Length);
+            if (AllModsList != null)
+                Array.Clear(AllModsList, 0, AllModsList.Length);
+
+            InstalledMods = new List<Mod>();
+            CategoryNames = new List<string>();
+            ModList = new List<ModListItem>();
+
+            ModsListView.Visibility = Visibility.Hidden;
+
             if (App.CheckInstalledMods)
             {
                 MainWindow.Instance.MainText = "Checking Installed Mods...";
                 await Task.Run(() => CheckInstalledMods());
+                InstalledColumn.Width = Double.NaN;
+                UninstallColumn.Width = 70;
+                DescriptionColumn.Width = 750;
             } else
             {
                 InstalledColumn.Width = 0;
@@ -76,8 +91,11 @@ namespace ModAssistant.Pages
             this.DataContext = this;
 
             RefreshModsList();
+            ModsListView.Visibility = Visibility.Visible;
             MainWindow.Instance.MainText = "Finished Loading Mods.";
+
             MainWindow.Instance.InstallButton.IsEnabled = true;
+            MainWindow.Instance.GameVersionsBox.IsEnabled = true;
         }
 
         private void CheckInstalledMods()
@@ -143,7 +161,7 @@ namespace ModAssistant.Pages
         public void PopulateModsList()
         {
             string json = string.Empty;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions + "&gameVersion=" + MainWindow.GameVersion);
             request.AutomaticDecompression = DecompressionMethods.GZip;
             request.UserAgent = "ModAssistant/" + App.Version;
 
