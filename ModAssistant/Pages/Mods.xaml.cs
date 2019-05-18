@@ -165,12 +165,20 @@ namespace ModAssistant.Pages
             request.AutomaticDecompression = DecompressionMethods.GZip;
             request.UserAgent = "ModAssistant/" + App.Version;
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
+            try
             {
-                var serializer = new JavaScriptSerializer();
-                ModsList = serializer.Deserialize<Mod[]>(reader.ReadToEnd());
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    var serializer = new JavaScriptSerializer();
+                    ModsList = serializer.Deserialize<Mod[]>(reader.ReadToEnd());
+                }
+            }
+            catch (Exception e)
+            {
+                System.Windows.MessageBox.Show("Could not load mods list.\n\n" + e);
+                return;
             }
 
             foreach (Mod mod in ModsList)

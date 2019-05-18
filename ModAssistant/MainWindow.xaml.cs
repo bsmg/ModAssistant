@@ -78,6 +78,7 @@ namespace ModAssistant
             }
             catch (Exception e)
             {
+                GameVersionsBox.IsEnabled = false;
                 MessageBox.Show("Could not load game versions, Mods tab will be unavailable.\n" + e);
             }
 
