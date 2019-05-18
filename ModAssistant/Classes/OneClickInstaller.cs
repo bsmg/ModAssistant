@@ -25,7 +25,7 @@ namespace ModAssistant
         private const string CustomPlatformsFolder = "CustomPlatforms";
         private const string CustomSongsFolder = "CustomSongs";
 
-        private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver", "modsaber" };
+        private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver" };
 
         public static void InstallAsset(string link)
         {
@@ -39,9 +39,6 @@ namespace ModAssistant
                     break;
                 case "beatsaver":
                     BeatSaver(uri);
-                    break;
-                case "modsaber":
-                    ModSaber(uri);
                     break;
             }
         }
@@ -69,36 +66,6 @@ namespace ModAssistant
             }
 
             File.Delete(Path.Combine(BeatSaberPath, CustomSongsFolder, ID + ".zip"));
-        }
-
-        private static void ModSaber(Uri uri)
-        {
-            switch (uri.Host)
-            {
-                case "song":
-                    string ID = uri.Segments.Last<string>();
-                    DownloadAsset(BeatSaverURLPrefix + ID, CustomSongsFolder, ID + ".zip");
-                    string directory = Path.Combine(BeatSaberPath, CustomSongsFolder, ID);
-
-                    using (FileStream stream = new FileStream(directory + ".zip", FileMode.Open))
-                    {
-                        using (ZipArchive archive = new ZipArchive(stream))
-                        {
-                            foreach (ZipArchiveEntry file in archive.Entries)
-                            {
-                                string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
-                                if (!Directory.Exists(fileDirectory))
-                                    Directory.CreateDirectory(fileDirectory);
-
-                                if (!String.IsNullOrEmpty(file.Name))
-                                    file.ExtractToFile(Path.Combine(directory, file.FullName), true);
-                            }
-                        }
-                    }
-
-                    File.Delete(Path.Combine(BeatSaberPath, CustomSongsFolder, ID + ".zip"));
-                    break;
-            }
         }
 
         private static void ModelSaber(Uri uri)

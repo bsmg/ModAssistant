@@ -124,16 +124,6 @@ namespace ModAssistant.Pages
             OneClickInstaller.Unregister("beatsaver");
         }
 
-        public void ModSaberProtocolHandler_Checked(object sender, RoutedEventArgs e)
-        {
-            OneClickInstaller.Register("modsaber");
-        }
-
-        public void ModSaberProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
-        {
-            OneClickInstaller.Unregister("modsaber");
-        }
-
         private void SelectInstalled_Checked(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.SelectInstalled = true;

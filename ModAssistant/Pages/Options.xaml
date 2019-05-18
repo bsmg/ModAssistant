@@ -65,12 +65,6 @@
 		<TextBlock Grid.Row="8" Margin="20,5,5,5" Text="BeatSaver" FontWeight="Bold" HorizontalAlignment="Left" FontSize="16" />
 		<CheckBox Grid.Row="8" Grid.Column="1" Name="BeatSaverProtocolHandler" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding BeatSaverProtocolHandlerEnabled}" Checked="BeatSaverProtocolHandler_Checked"  Unchecked="BeatSaverProtocolHandler_Unchecked"/>
 
-		<TextBlock Grid.Row="9" Margin="20,5,5,5" Text="ModSaber" FontWeight="Bold" HorizontalAlignment="Left" FontSize="16" />
-		<CheckBox Grid.Row="9" Grid.Column="1" Name="ModSaberProtocolHandler" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding ModSaberProtocolHandlerEnabled}" Checked="ModSaberProtocolHandler_Checked"  Unchecked="ModSaberProtocolHandler_Unchecked"/>
-
-
-
-		
 		<StackPanel Grid.Row="12" Margin="5" Orientation="Horizontal" HorizontalAlignment="Left">
 			<TextBlock Text="Game Type: " FontWeight="Bold" FontSize="16" />
 			<TextBlock Text="{Binding InstallType}" FontSize="16"/>
