@@ -69,6 +69,9 @@
       <DependentUpon>Intro.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Mod.cs" />
+    <Compile Include="Pages\Invalid.xaml.cs">
+      <DependentUpon>Invalid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Mods.xaml.cs">
       <DependentUpon>Mods.xaml</DependentUpon>
     </Compile>
@@ -93,6 +96,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Invalid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Mods.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

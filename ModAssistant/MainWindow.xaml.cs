@@ -49,6 +49,17 @@ namespace ModAssistant
 
             VersionText.Text = App.Version;
 
+            if (Utils.isVoid())
+            {
+                Main.Content = Invalid.Instance;
+                MainWindow.Instance.ModsButton.IsEnabled = false;
+                MainWindow.Instance.OptionsButton.IsEnabled = false;
+                MainWindow.Instance.IntroButton.IsEnabled = false;
+                MainWindow.Instance.AboutButton.IsEnabled = false;
+                MainWindow.Instance.GameVersionsBox.IsEnabled = false;
+                return;
+            }
+
             Main.Content = Intro.Instance;
 
             List<string> versions;
@@ -64,14 +75,11 @@ namespace ModAssistant
                 using (Stream stream = response.GetResponseStream())
                 using (StreamReader reader = new StreamReader(stream))
                 {
-                    var serializer = new JavaScriptSerializer();
+                    JavaScriptSerializer serializer = new JavaScriptSerializer();
                     versions = serializer.Deserialize<string[]>(reader.ReadToEnd()).ToList();
                 }
 
-                if (!String.IsNullOrEmpty(Properties.Settings.Default.GameVersion) && versions.Contains(Properties.Settings.Default.GameVersion))
-                    GameVersion = Properties.Settings.Default.GameVersion;
-                else
-                    GameVersion = versions[versions.Count - 1];
+                GameVersion = GetGameVersion(versions);
 
                 GameVersionsBox.ItemsSource = versions;
                 GameVersionsBox.SelectedValue = GameVersion;
@@ -86,6 +94,29 @@ namespace ModAssistant
             {
                 MainWindow.Instance.ModsButton.IsEnabled = true;
             }
+        }
+
+        private string GetGameVersion(List<string> versions)
+        {
+            if (App.BeatSaberInstallType == "Steam")
+            {
+                string steamVersion = Utils.GetSteamVersion();
+                if (!String.IsNullOrEmpty(steamVersion) && versions.Contains(steamVersion))
+                    return steamVersion;
+            }
+            
+            string versionsString = String.Join(",", versions.ToArray());
+            if (Properties.Settings.Default.AllGameVersions != versionsString)
+            {
+                Properties.Settings.Default.AllGameVersions = versionsString;
+                Properties.Settings.Default.Save();
+                Utils.ShowMessageBoxAsync("It looks like there's been a game update.\n\nPlease double check that the correct version is selected at the bottom left corner!", "New Game Version Detected!");
+                return versions[0];
+            }
+
+            if (!String.IsNullOrEmpty(Properties.Settings.Default.GameVersion) && versions.Contains(Properties.Settings.Default.GameVersion))
+                return Properties.Settings.Default.GameVersion;
+            return versions[0];
         }
 
         private void ModsButton_Click(object sender, RoutedEventArgs e)

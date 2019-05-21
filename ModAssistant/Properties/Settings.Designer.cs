@@ -118,5 +118,17 @@ namespace ModAssistant.Properties {
                 this["GameVersion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AllGameVersions {
+            get {
+                return ((string)(this["AllGameVersions"]));
+            }
+            set {
+                this["AllGameVersions"] = value;
+            }
+        }
     }
 }
