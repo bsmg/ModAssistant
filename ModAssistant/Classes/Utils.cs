@@ -97,13 +97,21 @@ namespace ModAssistant
                 return InstallDir;
             }
 
-            InstallDir = GetSteamDir();
+            try
+            {
+                InstallDir = GetSteamDir();
+            }
+            catch { }
             if (!String.IsNullOrEmpty(InstallDir))
             {
                 return InstallDir;
             }
 
-            InstallDir = GetOculusDir();
+            try
+            {
+                InstallDir = GetOculusDir();
+            }
+            catch { }
             if (!String.IsNullOrEmpty(InstallDir))
             {
                 return InstallDir;
