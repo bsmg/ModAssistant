@@ -34,7 +34,8 @@ namespace ModAssistant
         {
             public static Dictionary<string, string> SteamVersions = new Dictionary<string, string>
             {
-                {"3708884", "0.13.2"}
+                {"3708884", "0.13.2"},
+                {"3844832", "1.0.0" }
             };
         }
 
