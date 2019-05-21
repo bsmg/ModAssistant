@@ -120,6 +120,8 @@ namespace ModAssistant.Pages
 
         private void CheckInstallDir(string directory, List<string> blacklist)
         {
+            if (!Directory.Exists(System.IO.Path.Combine(App.BeatSaberInstallDirectory, directory)))
+                return;
             foreach (string file in Directory.GetFileSystemEntries(System.IO.Path.Combine(App.BeatSaberInstallDirectory, directory)))
             {
                 if (File.Exists(file) && System.IO.Path.GetExtension(file) == ".dll")
