@@ -254,9 +254,9 @@ namespace ModAssistant
 
             if (!String.IsNullOrEmpty(OculusInstall))
             {
-                if (File.Exists(Path.Combine(OculusInstall, @"Software\hyperbolic-magnetism-beat-saber", "Beat Saber.exe")))
+                if (File.Exists(Path.Combine(OculusInstall, "Software", "hyperbolic-magnetism-beat-saber", "Beat Saber.exe")))
                 {
-                    return SetDir(Path.Combine(OculusInstall + @"Software\hyperbolic-magnetism-beat-saber"), "Oculus");
+                    return SetDir(Path.Combine(OculusInstall, "Software", "hyperbolic-magnetism-beat-saber"), "Oculus");
                 }
             }
 
