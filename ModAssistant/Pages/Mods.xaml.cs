@@ -212,6 +212,7 @@ namespace ModAssistant.Pages
                 {
                     if (mod.name == installedMod.name)
                     {
+                        ListItem.InstalledModInfo = installedMod;
                         ListItem.IsInstalled = true;
                         ListItem.InstalledVersion = installedMod.version;
                         break;
@@ -422,6 +423,7 @@ namespace ModAssistant.Pages
             public Mod ModInfo { get; set; }
             public string Category { get; set; }
 
+            public Mod InstalledModInfo { get; set; }
             public bool IsInstalled { get; set; }
             private string _installedVersion { get; set; }
             public string InstalledVersion
@@ -487,7 +489,8 @@ namespace ModAssistant.Pages
                 }
                 foreach (Mod.FileHashes files in links.hashMd5)
                 {
-                    File.Delete(System.IO.Path.Combine(App.BeatSaberInstallDirectory, files.file));
+                    if (File.Exists(System.IO.Path.Combine(App.BeatSaberInstallDirectory, files.file)))
+                        File.Delete(System.IO.Path.Combine(App.BeatSaberInstallDirectory, files.file));
                 }
                 mod.ListItem.IsInstalled = false;
                 mod.ListItem.InstalledVersion = null;
