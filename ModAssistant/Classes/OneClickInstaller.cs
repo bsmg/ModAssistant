@@ -45,7 +45,7 @@ namespace ModAssistant
 
         private static void BeatSaver(Uri uri)
         {
-            string ID = uri.Segments.Last<string>();
+            string ID = uri.Host;
             DownloadAsset(BeatSaverURLPrefix + ID, CustomSongsFolder, ID + ".zip");
             string directory = Path.Combine(BeatSaberPath, CustomSongsFolder, ID);
 
