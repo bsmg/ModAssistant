@@ -241,14 +241,17 @@ namespace ModAssistant.Pages
                     MainWindow.Instance.MainText = $"Installing {mod.name}...";
                     await Task.Run(() => InstallMod(mod, installDirectory));
                     MainWindow.Instance.MainText = $"Installed {mod.name}.";
-                    await Task.Run(() =>
-                        Process.Start(new ProcessStartInfo
-                        {
-                            FileName = System.IO.Path.Combine(installDirectory, "IPA.exe"),
-                            WorkingDirectory = installDirectory,
-                            Arguments = "-n"
-                        }).WaitForExit()
-                    );
+                    if (!File.Exists(System.IO.Path.Combine(installDirectory, "winhttp.dll")))
+                    {
+                        await Task.Run(() =>
+                            Process.Start(new ProcessStartInfo
+                            {
+                                FileName = System.IO.Path.Combine(installDirectory, "IPA.exe"),
+                                WorkingDirectory = installDirectory,
+                                Arguments = "-n"
+                            }).WaitForExit()
+                        );
+                    }
                 }
                 else if(mod.ListItem.IsSelected)
                 {
