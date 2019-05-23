@@ -289,7 +289,7 @@ namespace ModAssistant.Pages
                 return;
             }
 
-            using (MemoryStream stream = new MemoryStream(DownloadMod(Utils.Constants.BeatModsURL + mod.downloads[0].url)))
+            using (MemoryStream stream = new MemoryStream(DownloadMod(Utils.Constants.BeatModsURL + downloadLink)))
             {
                 using (ZipArchive archive = new ZipArchive(stream))
                 {
