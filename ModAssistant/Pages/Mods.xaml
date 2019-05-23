@@ -35,7 +35,7 @@
 						<GridViewColumn x:Name="UninstallColumn"  Header="Uninstall" Width="70">
 							<GridViewColumn.CellTemplate>
 								<DataTemplate>
-									<Button Name="Uninstall" Content="Uninstall" Visibility="{Binding CanSeeDelete}" IsEnabled="{Binding CanDelete}" Foreground="Red" Tag="{Binding InstalledModInfo}" Click="Uninstall_Click"/>
+									<Button Name="Uninstall" Content="Uninstall" Visibility="{Binding CanSeeDelete}" IsEnabled="{Binding CanDelete}" Foreground="Red" Tag="{Binding ModInfo}" Click="Uninstall_Click"/>
 								</DataTemplate>
 							</GridViewColumn.CellTemplate>
 						</GridViewColumn>

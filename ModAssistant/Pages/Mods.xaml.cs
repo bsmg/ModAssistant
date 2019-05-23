@@ -476,10 +476,11 @@ namespace ModAssistant.Pages
         private void Uninstall_Click(object sender, RoutedEventArgs e)
         {
             Mod mod = ((sender as System.Windows.Controls.Button).Tag as Mod);
+            Mod installedMod = mod.ListItem.InstalledModInfo;
             if (System.Windows.Forms.MessageBox.Show($"Are you sure you want to remove {mod.name}?\nThis could break your other mods.", $"Uninstall {mod.name}?", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Mod.DownloadLink links = null;
-                foreach (Mod.DownloadLink link in mod.downloads)
+                foreach (Mod.DownloadLink link in installedMod.downloads)
                 {
                     if (link.type.ToLower() == "universal" || link.type.ToLower() == App.BeatSaberInstallType.ToLower())
                     {
