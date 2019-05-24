@@ -61,6 +61,8 @@ namespace ModAssistant.Pages
         private void SelectDirButton_Click(object sender, RoutedEventArgs e)
         {
             Utils.GetManualDir();
+            DirectoryTextBlock.Text = InstallDirectory;
+            GameTypeTextBlock.Text = InstallType;
         }
 
         private void Test_Click(object sender, RoutedEventArgs e)

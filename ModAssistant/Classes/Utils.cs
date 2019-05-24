@@ -133,6 +133,8 @@ namespace ModAssistant
         {
             App.BeatSaberInstallDirectory = directory;
             App.BeatSaberInstallType = store;
+            Pages.Options.Instance.InstallDirectory = directory;
+            Pages.Options.Instance.InstallType = store;
             Properties.Settings.Default.InstallFolder = directory;
             Properties.Settings.Default.StoreType = store;
             Properties.Settings.Default.Save();
