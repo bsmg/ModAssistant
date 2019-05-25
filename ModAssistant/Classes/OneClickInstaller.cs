@@ -92,6 +92,7 @@ namespace ModAssistant
             }
             try
             {
+                Directory.CreateDirectory(Path.Combine(BeatSaberPath, folder));
                 if (String.IsNullOrEmpty(fileName))
                     fileName = WebUtility.UrlDecode(Path.Combine(BeatSaberPath, folder, new Uri(link).Segments.Last()));
                 else
