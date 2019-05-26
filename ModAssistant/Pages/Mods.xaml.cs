@@ -14,7 +14,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.IO.Compression;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -115,26 +114,46 @@ namespace ModAssistant.Pages
 
             List<string> empty = new List<string>();
             CheckInstallDir("Plugins", empty);
-            CheckInstallDir(@"IPA\Libs", empty);
+            CheckInstallDir("Libs", empty);
+            GetBSIPAVersion();
+            CheckInstallDir("IPA/Pending/Plugins", empty);
+            CheckInstallDir("IPA/Pending/Libs", empty);
         }
 
         private void CheckInstallDir(string directory, List<string> blacklist)
         {
-            if (!Directory.Exists(System.IO.Path.Combine(App.BeatSaberInstallDirectory, directory)))
+            if (!Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, directory)))
                 return;
-            foreach (string file in Directory.GetFileSystemEntries(System.IO.Path.Combine(App.BeatSaberInstallDirectory, directory)))
+            foreach (string file in Directory.GetFileSystemEntries(Path.Combine(App.BeatSaberInstallDirectory, directory)))
             {
-                if (File.Exists(file) && System.IO.Path.GetExtension(file) == ".dll")
+                if (File.Exists(file) && Path.GetExtension(file) == ".dll" || Path.GetExtension(file) == ".manifest")
                 {
                     Mod mod = GetModFromHash(Utils.CalculateMD5(file));
                     if (mod != null)
                     {
-                        if (!InstalledMods.Contains(mod))
+                        AddDetectedMod(mod);
+                    }
+                }
+            }
+        }
+
+        private void GetBSIPAVersion()
+        {
+            string InjectorPath = Path.Combine(App.BeatSaberInstallDirectory, "Beat Saber_Data", "Managed", "IPA.Injector.dll");
+            if (!File.Exists(InjectorPath)) return;
+
+            string InjectorHash = Utils.CalculateMD5(InjectorPath);
+            foreach (Mod mod in AllModsList)
+            {
+                if (mod.name.ToLower() == "bsipa")
+                {
+                    foreach (Mod.DownloadLink download in mod.downloads)
+                    {
+                        foreach (Mod.FileHashes fileHash in download.hashMd5)
                         {
-                            InstalledMods.Add(mod);
-                            if (App.SelectInstalledMods && !DefaultMods.Contains(mod.name))
+                            if (fileHash.hash == InjectorHash)
                             {
-                                DefaultMods.Add(mod.name);
+                                AddDetectedMod(mod);
                             }
                         }
                     }
@@ -142,17 +161,31 @@ namespace ModAssistant.Pages
             }
         }
 
+        private void AddDetectedMod(Mod mod)
+        {
+            if (!InstalledMods.Contains(mod))
+            {
+                InstalledMods.Add(mod);
+                if (App.SelectInstalledMods && !DefaultMods.Contains(mod.name))
+                {
+                    DefaultMods.Add(mod.name);
+                }
+            }
+        }
+
         private Mod GetModFromHash(string hash)
         {
-
             foreach (Mod mod in AllModsList)
             {
-                foreach (Mod.DownloadLink download in mod.downloads)
+                if (mod.name.ToLower() != "bsipa")
                 {
-                    foreach (Mod.FileHashes fileHash in download.hashMd5)
+                    foreach (Mod.DownloadLink download in mod.downloads)
                     {
-                        if (fileHash.hash == hash)
-                            return mod;
+                        foreach (Mod.FileHashes fileHash in download.hashMd5)
+                        {
+                            if (fileHash.hash == hash)
+                                return mod;
+                        }
                     }
                 }
             }
@@ -242,12 +275,12 @@ namespace ModAssistant.Pages
                     MainWindow.Instance.MainText = $"Installing {mod.name}...";
                     await Task.Run(() => InstallMod(mod, installDirectory));
                     MainWindow.Instance.MainText = $"Installed {mod.name}.";
-                    if (!File.Exists(System.IO.Path.Combine(installDirectory, "winhttp.dll")))
+                    if (!File.Exists(Path.Combine(installDirectory, "winhttp.dll")))
                     {
                         await Task.Run(() =>
                             Process.Start(new ProcessStartInfo
                             {
-                                FileName = System.IO.Path.Combine(installDirectory, "IPA.exe"),
+                                FileName = Path.Combine(installDirectory, "IPA.exe"),
                                 WorkingDirectory = installDirectory,
                                 Arguments = "-n"
                             }).WaitForExit()
@@ -257,7 +290,7 @@ namespace ModAssistant.Pages
                 else if(mod.ListItem.IsSelected)
                 {
                     MainWindow.Instance.MainText = $"Installing {mod.name}...";
-                    await Task.Run(() => InstallMod(mod, System.IO.Path.Combine(installDirectory, @"IPA\Pending")));
+                    await Task.Run(() => InstallMod(mod, Path.Combine(installDirectory, @"IPA\Pending")));
                     MainWindow.Instance.MainText = $"Installed {mod.name}.";
                 }
             }
@@ -295,12 +328,12 @@ namespace ModAssistant.Pages
                 {
                     foreach (ZipArchiveEntry file in archive.Entries)
                     {
-                        string fileDirectory = System.IO.Path.GetDirectoryName(System.IO.Path.Combine(directory, file.FullName));
+                        string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
                         if (!Directory.Exists(fileDirectory))
                             Directory.CreateDirectory(fileDirectory);
 
                         if(!String.IsNullOrEmpty(file.Name))
-                            file.ExtractToFile(System.IO.Path.Combine(directory, file.FullName), true);
+                            file.ExtractToFile(Path.Combine(directory, file.FullName), true);
                     }
                 }
             }
@@ -309,6 +342,7 @@ namespace ModAssistant.Pages
             {
                 mod.ListItem.IsInstalled = true;
                 mod.ListItem.InstalledVersion = mod.version;
+                mod.ListItem.InstalledModInfo = mod;
             }
         }
 
@@ -473,6 +507,23 @@ namespace ModAssistant.Pages
             MainWindow.Instance.InfoButton.IsEnabled = true;
         }
 
+        private void UninstallBSIPA(Mod.DownloadLink links)
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = Path.Combine(App.BeatSaberInstallDirectory, "IPA.exe"),
+                WorkingDirectory = App.BeatSaberInstallDirectory,
+                Arguments = "--revert"
+            }).WaitForExit();
+
+            foreach (Mod.FileHashes files in links.hashMd5)
+            {
+                string file = files.file.Replace("IPA/", "").Replace("Data", "Beat Saber_Data");
+                if (File.Exists(Path.Combine(App.BeatSaberInstallDirectory, file)))
+                    File.Delete(Path.Combine(App.BeatSaberInstallDirectory, file));
+            }
+        }
+
         private void Uninstall_Click(object sender, RoutedEventArgs e)
         {
             Mod mod = ((sender as System.Windows.Controls.Button).Tag as Mod);
@@ -488,11 +539,16 @@ namespace ModAssistant.Pages
                         break;
                     }
                 }
+                if (installedMod.name.ToLower() == "bsipa")
+                    UninstallBSIPA(links);
                 foreach (Mod.FileHashes files in links.hashMd5)
                 {
-                    if (File.Exists(System.IO.Path.Combine(App.BeatSaberInstallDirectory, files.file)))
-                        File.Delete(System.IO.Path.Combine(App.BeatSaberInstallDirectory, files.file));
+                    if (File.Exists(Path.Combine(App.BeatSaberInstallDirectory, files.file)))
+                        File.Delete(Path.Combine(App.BeatSaberInstallDirectory, files.file));
+                    if (File.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA", "Pending", files.file)))
+                        File.Delete(Path.Combine(App.BeatSaberInstallDirectory, "IPA", "Pending", files.file));
                 }
+
                 mod.ListItem.IsInstalled = false;
                 mod.ListItem.InstalledVersion = null;
                 if (App.SelectInstalledMods)
