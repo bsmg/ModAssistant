@@ -113,11 +113,11 @@ namespace ModAssistant.Pages
             }
 
             List<string> empty = new List<string>();
-            CheckInstallDir("Plugins", empty);
-            CheckInstallDir("Libs", empty);
             GetBSIPAVersion();
             CheckInstallDir("IPA/Pending/Plugins", empty);
             CheckInstallDir("IPA/Pending/Libs", empty);
+            CheckInstallDir("Plugins", empty);
+            CheckInstallDir("Libs", empty);
         }
 
         private void CheckInstallDir(string directory, List<string> blacklist)
