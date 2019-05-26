@@ -26,6 +26,13 @@ namespace ModAssistant
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            if (ModAssistant.Properties.Settings.Default.UpgradeRequired)
+            {
+                ModAssistant.Properties.Settings.Default.Upgrade();
+                ModAssistant.Properties.Settings.Default.UpgradeRequired = false;
+                ModAssistant.Properties.Settings.Default.Save();
+            }
+
             Version = Version.Substring(0, Version.Length - 2);
             BeatSaberInstallDirectory = Utils.GetInstallDir();
             BeatSaberInstallType = ModAssistant.Properties.Settings.Default.StoreType;
