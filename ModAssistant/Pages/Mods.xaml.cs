@@ -513,7 +513,7 @@ namespace ModAssistant.Pages
             {
                 FileName = Path.Combine(App.BeatSaberInstallDirectory, "IPA.exe"),
                 WorkingDirectory = App.BeatSaberInstallDirectory,
-                Arguments = "--revert"
+                Arguments = "--revert -n"
             }).WaitForExit();
 
             foreach (Mod.FileHashes files in links.hashMd5)
