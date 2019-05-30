@@ -335,10 +335,7 @@ namespace ModAssistant
                 string path = dialog.FileName;
                 path = path.Replace("\\select.this.directory", "");
                 path = path.Replace(".this.directory", "");
-                if (!System.IO.Directory.Exists(path))
-                {
-                    System.IO.Directory.CreateDirectory(path);
-                }
+                path = path.Replace("\\select.directory", "");
                 if (File.Exists(Path.Combine(path, "Beat Saber.exe")))
                 {
                     string store;
