@@ -49,9 +49,6 @@ namespace ModAssistant
 
             VersionText.Text = App.Version;
 
-            if (String.IsNullOrEmpty(App.BeatSaberInstallDirectory))
-                App.BeatSaberInstallDirectory = Utils.GetInstallDir();
-
             if (Utils.isVoid())
             {
                 Main.Content = Invalid.Instance;

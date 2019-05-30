@@ -35,6 +35,19 @@ namespace ModAssistant
 
             Version = Version.Substring(0, Version.Length - 2);
             BeatSaberInstallDirectory = Utils.GetInstallDir();
+
+            while (String.IsNullOrEmpty(App.BeatSaberInstallDirectory))
+            {
+                if (System.Windows.Forms.MessageBox.Show($"Press OK to try again, or Cancel to close application.", $"Couldn't find your Beat Saber install folder!", System.Windows.Forms.MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                {
+                    App.BeatSaberInstallDirectory = Utils.GetManualDir();
+                }
+                else
+                {
+                    Environment.Exit(0);
+                }
+            }
+
             BeatSaberInstallType = ModAssistant.Properties.Settings.Default.StoreType;
             SaveModSelection = ModAssistant.Properties.Settings.Default.SaveSelected;
             CheckInstalledMods = ModAssistant.Properties.Settings.Default.CheckInstalled;
