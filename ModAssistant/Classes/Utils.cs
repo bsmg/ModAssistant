@@ -93,7 +93,7 @@ namespace ModAssistant
             string InstallDir = null;
             
             InstallDir = Properties.Settings.Default.InstallFolder;
-            if (!String.IsNullOrEmpty(InstallDir))
+            if (!String.IsNullOrEmpty(InstallDir) && Directory.Exists(InstallDir))
             {
                 return InstallDir;
             }
