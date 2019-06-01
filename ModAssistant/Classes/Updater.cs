@@ -84,63 +84,63 @@ namespace ModAssistant.Classes
         }
     }
 
-    public class Update
+    public abstract class Update
     {
-        public string Url;
-        public string AssetsUrl;
-        public string UploadUrl;
-        public string HtmlUrl;
-        public int Id;
-        public string NodeId;
-        public string TagName;
-        public string TargetCommitish;
-        public string Name;
-        public bool Draft;
-        public User Author;
-        public bool Prerelease;
-        public string CreatedAt;
-        public string PublishedAt;
-        public Asset[] Assets;
-        public string TarballUrl;
-        public string ZipballUrl;
-        public string Body;
+        public string Url { get; set; }
+        public string AssetsUrl{ get; set; }
+        public string UploadUrl{ get; set; }
+        public string HtmlUrl{ get; set; }
+        public int Id{ get; set; }
+        public string NodeId{ get; set; }
+        public string TagName{ get; set; }
+        public string TargetCommitish{ get; set; }
+        public string Name{ get; set; }
+        public bool Draft{ get; set; }
+        public User Author{ get; set; }
+        public bool Prerelease{ get; set; }
+        public string CreatedAt{ get; set; }
+        public string PublishedAt{ get; set; }
+        public Asset[] Assets{ get; set; }
+        public string TarballUrl{ get; set; }
+        public string ZipballUrl{ get; set; }
+        public string Body{ get; set; }
 
-        public class Asset
+        public abstract class Asset
         {
-            public string Url;
-            public int Id;
-            public string NodeId;
-            public string Name;
-            public string Label;
-            public User Uploader;
-            public string ContentType;
-            public string State;
-            public int Size;
-            public string CreatedAt;
-            public string UpdatedAt;
-            public string BrowserDownloadUrl;
+            public string Url{ get; set; }
+            public int Id{ get; set; }
+            public string NodeId{ get; set; }
+            public string Name{ get; set; }
+            public string Label{ get; set; }
+            public User Uploader{ get; set; }
+            public string ContentType{ get; set; }
+            public string State{ get; set; }
+            public int Size{ get; set; }
+            public string CreatedAt{ get; set; }
+            public string UpdatedAt{ get; set; }
+            public string BrowserDownloadUrl{ get; set; }
         }
 
-        public class User
+        public abstract class User
         {
-            public string Login;
-            public int Id;
-            public string NodeId;
-            public string AvatarUrl;
-            public string GravatarId;
-            public string Url;
-            public string HtmlUrl;
-            public string FollowersUrl;
-            public string FollowingUrl;
-            public string GistsUrl;
-            public string StarredUrl;
-            public string SubscriptionsUrl;
-            public string OrganizationsUrl;
-            public string ReposUrl;
-            public string EventsUrl;
-            public string ReceivedEventsUrl;
-            public string Type;
-            public bool SiteAdmin;
+            public string Login{ get; set; }
+            public int Id{ get; set; }
+            public string NodeId{ get; set; }
+            public string AvatarUrl{ get; set; }
+            public string GravatarId{ get; set; }
+            public string Url{ get; set; }
+            public string HtmlUrl{ get; set; }
+            public string FollowersUrl{ get; set; }
+            public string FollowingUrl{ get; set; }
+            public string GistsUrl{ get; set; }
+            public string StarredUrl{ get; set; }
+            public string SubscriptionsUrl{ get; set; }
+            public string OrganizationsUrl{ get; set; }
+            public string ReposUrl{ get; set; }
+            public string EventsUrl{ get; set; }
+            public string ReceivedEventsUrl{ get; set; }
+            public string Type{ get; set; }
+            public bool SiteAdmin{ get; set; }
         }
     }
 }
