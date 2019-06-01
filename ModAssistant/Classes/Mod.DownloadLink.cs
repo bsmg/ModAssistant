@@ -1,12 +1,12 @@
-namespace ModAssistant
+namespace ModAssistant.Classes
 {
     public partial class Mod
     {
         public class DownloadLink
         {
-            public string Type;
-            public string Url;
-            public FileHashes[] HashMd5;
+            public string Type { get; set; }
+            public string Url { get; set; }
+            public FileHashes[] HashMd5 { get; set; }
         }
     }
 }

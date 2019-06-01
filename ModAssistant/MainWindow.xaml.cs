@@ -32,14 +32,8 @@ namespace ModAssistant
 
         public string MainText
         {
-            get
-            {
-                return MainTextBlock.Text;
-            }
-            set
-            {
-                Dispatcher.Invoke(new Action(() => { MainWindow.Instance.MainTextBlock.Text = value; }));
-            }
+            get { return MainTextBlock.Text; }
+            set { Dispatcher.Invoke(new Action(() => { MainWindow.Instance.MainTextBlock.Text = value; })); }
         }
 
         public MainWindow()
@@ -49,7 +43,7 @@ namespace ModAssistant
 
             VersionText.Text = App.Version;
 
-            if (Utils.IsVoid())
+            if (Classes.Utils.IsVoid())
             {
                 Main.Content = Invalid.Instance;
                 MainWindow.Instance.ModsButton.IsEnabled = false;
@@ -64,14 +58,15 @@ namespace ModAssistant
 
             List<string> versions;
             string json = string.Empty;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsApiUrl + "version");
+            HttpWebRequest request =
+                (HttpWebRequest) WebRequest.Create(Classes.Utils.Constants.BeatModsApiUrl + "version");
             request.AutomaticDecompression = DecompressionMethods.GZip;
             request.UserAgent = "ModAssistant/" + App.Version;
 
             versions = null;
             try
             {
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (HttpWebResponse response = (HttpWebResponse) request.GetResponse())
                 using (Stream stream = response.GetResponseStream())
                 using (StreamReader reader = new StreamReader(stream))
                 {
@@ -100,21 +95,24 @@ namespace ModAssistant
         {
             if (App.BeatSaberInstallType == "Steam")
             {
-                string steamVersion = Utils.GetSteamVersion();
+                string steamVersion = Classes.Utils.GetSteamVersion();
                 if (!String.IsNullOrEmpty(steamVersion) && versions.Contains(steamVersion))
                     return steamVersion;
             }
-            
+
             string versionsString = String.Join(",", versions.ToArray());
             if (Properties.Settings.Default.AllGameVersions != versionsString)
             {
                 Properties.Settings.Default.AllGameVersions = versionsString;
                 Properties.Settings.Default.Save();
-                Utils.ShowMessageBoxAsync("It looks like there's been a game update.\n\nPlease double check that the correct version is selected at the bottom left corner!", "New Game Version Detected!");
+                Classes.Utils.ShowMessageBoxAsync(
+                    "It looks like there's been a game update.\n\nPlease double check that the correct version is selected at the bottom left corner!",
+                    "New Game Version Detected!");
                 return versions[0];
             }
 
-            if (!String.IsNullOrEmpty(Properties.Settings.Default.GameVersion) && versions.Contains(Properties.Settings.Default.GameVersion))
+            if (!String.IsNullOrEmpty(Properties.Settings.Default.GameVersion) &&
+                versions.Contains(Properties.Settings.Default.GameVersion))
                 return Properties.Settings.Default.GameVersion;
             return versions[0];
         }
@@ -159,7 +157,7 @@ namespace ModAssistant
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)
         {
-            Mods.ModListItem mod = ((Mods.ModListItem)Mods.Instance.ModsListView.SelectedItem);
+            Mods.ModListItem mod = ((Mods.ModListItem) Mods.Instance.ModsListView.SelectedItem);
             string infoUrl = mod.ModInfo.Link;
             if (String.IsNullOrEmpty(infoUrl))
             {
@@ -174,9 +172,9 @@ namespace ModAssistant
         private void GameVersionsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string oldGameVersion = GameVersion;
-            
+
             GameVersion = (sender as ComboBox).SelectedItem.ToString();
-            
+
             if (String.IsNullOrEmpty(oldGameVersion)) return;
 
             Properties.Settings.Default.GameVersion = GameVersion;

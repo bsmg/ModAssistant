@@ -69,6 +69,7 @@
     <Compile Include="Classes\Mod.DownloadLink.cs" />
     <Compile Include="Classes\Mod.FileHashes.cs" />
     <Compile Include="Classes\Updater.cs" />
+    <Compile Include="Classes\Utils.Constants.cs" />
     <Compile Include="Pages\Intro.xaml.cs">
       <DependentUpon>Intro.xaml</DependentUpon>
     </Compile>

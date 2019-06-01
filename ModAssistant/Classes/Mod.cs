@@ -1,29 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ModAssistant.Pages;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ModAssistant
+namespace ModAssistant.Classes
 {
     public partial class Mod
     {
-        public string Name;
-        public string Version;
-        public string GameVersion;
-        public string Id;
-        public string AuthorId;
-        public string UploadedDate;
-        public string UpdatedDate;
-        public Author Author_; //ToDo find a better name
-        public string Description;
-        public string Link;
-        public string Category;
-        public DownloadLink[] Downloads;
-        public bool Required;
-        public Dependency[] Dependencies;
-        public List<Mod> Dependents = new List<Mod>();
-        public Mods.ModListItem ListItem;
+        public string Name { get; set; }
+        public string Version { get; set; }
+        public string GameVersion { get; set; }
+        public string Id { get; set; }
+        public string AuthorId { get; set; }
+        public string UploadedDate { get; set; }
+        public string UpdatedDate { get; set; }
+        public Author Author_ { get; set; } //ToDo find a better name
+        public string Description { get; set; }
+        public string Link { get; set; }
+        public string Category { get; set; }
+        public DownloadLink[] Downloads { get; set; }
+        public bool Required { get; set; }
+        public Dependency[] Dependencies { get; set; }
+
+        private List<Classes.Mod> _dependents = new List<Classes.Mod>();
+
+        public List<Classes.Mod> Dependents
+        {
+            get { return _dependents; }
+            set { _dependents = value; }
+        }
+
+        public Mods.ModListItem ListItem { get; set; }
     }
 }

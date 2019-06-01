@@ -52,9 +52,10 @@ namespace ModAssistant.Pages
             else
             {
                 MainWindow.Instance.ModsButton.IsEnabled = true;
-                Utils.SendNotify("You can now use the Mods tab!");
+                Classes.Utils.SendNotify("You can now use the Mods tab!");
                 MainWindow.Instance.MainText = "You can now use the Mods tab!";
             }
+
             Properties.Settings.Default.Agreed = true;
             Properties.Settings.Default.Save();
         }

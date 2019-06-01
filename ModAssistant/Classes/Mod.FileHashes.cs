@@ -1,11 +1,11 @@
-namespace ModAssistant
+namespace ModAssistant.Classes
 {
     public partial class Mod
     {
         public class FileHashes
         {
-            public string Hash;
-            public string File;
+            public string Hash { get; set; }
+            public string File { get; set; }
         }
     }
 }

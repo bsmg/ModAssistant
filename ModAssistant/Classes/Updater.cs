@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Script.Serialization;
-using System.Windows;
 
-namespace ModAssistant
+namespace ModAssistant.Classes
 {
     class Updater
     {
@@ -23,19 +17,19 @@ namespace ModAssistant
 
         public static bool CheckForUpdate()
         {
-            string json = string.Empty;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(_apiLatestUrl);
+            var json = string.Empty;
+            var request = (HttpWebRequest) WebRequest.Create(_apiLatestUrl);
             request.AutomaticDecompression = DecompressionMethods.GZip;
             request.UserAgent = "ModAssistant/" + App.Version;
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
+            using (var response = (HttpWebResponse) request.GetResponse())
+            using (var stream = response.GetResponseStream())
+            using (var reader = new StreamReader(stream))
             {
                 var serializer = new JavaScriptSerializer();
                 _latestUpdate = serializer.Deserialize<Update>(reader.ReadToEnd());
             }
-            
+
             _latestVersion = new Version(_latestUpdate.TagName.Substring(1));
             _currentVersion = new Version(App.Version);
 
@@ -51,7 +45,7 @@ namespace ModAssistant
             }
             catch
             {
-                Utils.SendNotify("Couldn't check for updates.");
+                Classes.Utils.SendNotify("Couldn't check for updates.");
             }
 
             if (_needsUpdate) StartUpdate();
@@ -59,12 +53,12 @@ namespace ModAssistant
 
         public static void StartUpdate()
         {
-            string directory = Path.GetDirectoryName(Utils.ExePath);
-            string oldExe = Path.Combine(directory, "ModAssistant.old.exe");
+            var directory = Path.GetDirectoryName(Classes.Utils.ExePath);
+            var oldExe = Path.Combine(directory, "ModAssistant.old.exe");
 
             string downloadLink = null;
 
-            foreach (Update.Asset asset in _latestUpdate.Assets)
+            foreach (var asset in _latestUpdate.Assets)
             {
                 if (asset.Name == "ModAssistant.exe")
                 {
@@ -74,23 +68,20 @@ namespace ModAssistant
 
             if (String.IsNullOrEmpty(downloadLink))
             {
-                Utils.SendNotify("Couldn't download update.");
+                Classes.Utils.SendNotify("Couldn't download update.");
             }
             else
             {
                 if (File.Exists(oldExe))
                     File.Delete(oldExe);
 
-                File.Move(Utils.ExePath, oldExe);
+                File.Move(Classes.Utils.ExePath, oldExe);
 
-                Utils.Download(downloadLink, Utils.ExePath);
-                Process.Start(Utils.ExePath);
+                Classes.Utils.Download(downloadLink, Classes.Utils.ExePath);
+                Process.Start(Classes.Utils.ExePath);
                 App.Current.Shutdown();
-
             }
-
         }
-
     }
 
     public class Update
@@ -150,7 +141,6 @@ namespace ModAssistant
             public string ReceivedEventsUrl;
             public string Type;
             public bool SiteAdmin;
-
         }
     }
 }

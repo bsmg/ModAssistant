@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Globalization;
+using ModAssistant.Classes;
 
 namespace ModAssistant.Pages
 {
@@ -32,7 +33,6 @@ namespace ModAssistant.Pages
         public bool ModelSaberProtocolHandlerEnabled { get; set; }
         public bool BeatSaverProtocolHandlerEnabled { get; set; }
         public bool ModSaberProtocolHandlerEnabled { get; set; }
-
 
 
         public Options()
@@ -60,14 +60,14 @@ namespace ModAssistant.Pages
 
         private void SelectDirButton_Click(object sender, RoutedEventArgs e)
         {
-            Utils.GetManualDir();
+            Classes.Utils.GetManualDir();
             DirectoryTextBlock.Text = InstallDirectory;
             GameTypeTextBlock.Text = InstallType;
         }
 
         private void Test_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(Utils.GetSteamDir());
+            MessageBox.Show(Classes.Utils.GetSteamDir());
         }
 
         private void SaveSelected_Checked(object sender, RoutedEventArgs e)

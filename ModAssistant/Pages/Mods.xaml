@@ -1,56 +1,63 @@
 ﻿<Page x:Class="ModAssistant.Pages.Mods"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ModAssistant"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="629" d:DesignWidth="1182"
       Title="Mods">
 
     <Grid>
-		<ListView Name="ModsListView" Grid.Column="1" SelectionMode="Single" SelectionChanged="ModsListView_SelectionChanged">
-			<ListView.View>
-				<GridView>
-					<GridView.Columns>
-						<GridViewColumn Width="30">
-							<GridViewColumn.CellTemplate>
-								<DataTemplate>
-									<CheckBox Name="ModCheckBox" IsEnabled="{Binding IsEnabled}" Tag="{Binding ModInfo}" IsChecked="{Binding Path=IsSelected, Mode=TwoWay}" Checked="ModCheckBox_Checked" Unchecked="ModCheckBox_Unchecked"/>
-								</DataTemplate>
-							</GridViewColumn.CellTemplate>
-						</GridViewColumn>
-						<GridViewColumn Header="Name" DisplayMemberBinding="{Binding ModName}" />
+        <ListView Name="ModsListView" Grid.Column="1" SelectionMode="Single"
+                  SelectionChanged="ModsListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Width="30">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox Name="ModCheckBox" IsEnabled="{Binding IsEnabled}"
+                                              Tag="{Binding ModInfo}"
+                                              IsChecked="{Binding Path=IsSelected, Mode=TwoWay}"
+                                              Checked="ModCheckBox_Checked" Unchecked="ModCheckBox_Unchecked" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding ModName}" />
 
-						<GridViewColumn x:Name="InstalledColumn" Header="Installed">
-							<GridViewColumn.CellTemplate>
-								<DataTemplate>
-									<TextBlock Text="{Binding InstalledVersion}" Foreground="{Binding GetVersionColor}" />
-								</DataTemplate>
-							</GridViewColumn.CellTemplate>
-						</GridViewColumn>
+                        <GridViewColumn x:Name="InstalledColumn" Header="Installed">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding InstalledVersion}" Foreground="{Binding GetVersionColor}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
 
-						<GridViewColumn Header="Latest" DisplayMemberBinding="{Binding ModVersion}" />
-						<GridViewColumn x:Name="DescriptionColumn" Header="Description" Width="750" DisplayMemberBinding="{Binding ModDescription}"/>
-						<GridViewColumn x:Name="UninstallColumn"  Header="Uninstall" Width="70">
-							<GridViewColumn.CellTemplate>
-								<DataTemplate>
-									<Button Name="Uninstall" Content="Uninstall" Visibility="{Binding CanSeeDelete}" IsEnabled="{Binding CanDelete}" Foreground="Red" Tag="{Binding ModInfo}" Click="Uninstall_Click"/>
-								</DataTemplate>
-							</GridViewColumn.CellTemplate>
-						</GridViewColumn>
-					</GridView.Columns>
-				</GridView>
-			</ListView.View>
-			<ListView.GroupStyle>
-				<GroupStyle>
-					<GroupStyle.HeaderTemplate>
-						<DataTemplate>
-							<TextBlock FontWeight="Bold" FontSize="14" Text="{Binding Name}"/>
-						</DataTemplate>
-					</GroupStyle.HeaderTemplate>
-				</GroupStyle>
-			</ListView.GroupStyle>
-		</ListView>
-	</Grid>
+                        <GridViewColumn Header="Latest" DisplayMemberBinding="{Binding ModVersion}" />
+                        <GridViewColumn x:Name="DescriptionColumn" Header="Description" Width="750"
+                                        DisplayMemberBinding="{Binding ModDescription}" />
+                        <GridViewColumn x:Name="UninstallColumn" Header="Uninstall" Width="70">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Name="Uninstall" Content="Uninstall" Visibility="{Binding CanSeeDelete}"
+                                            IsEnabled="{Binding CanDelete}" Foreground="Red" Tag="{Binding ModInfo}"
+                                            Click="Uninstall_Click" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding Name}" />
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListView.GroupStyle>
+        </ListView>
+    </Grid>
 </Page>
