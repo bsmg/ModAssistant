@@ -1,19 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.IO.Compression;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -44,8 +37,7 @@ namespace ModAssistant.Pages
 
         private void RefreshModsList()
         {
-            if (View != null)
-                View.Refresh();
+            View?.Refresh();
         }
 
         public async void LoadMods()
@@ -88,7 +80,7 @@ namespace ModAssistant.Pages
             PropertyGroupDescription groupDescription = new PropertyGroupDescription("Category");
             View.GroupDescriptions.Add(groupDescription);
 
-            this.DataContext = this;
+            DataContext = this;
 
             RefreshModsList();
             ModsListView.Visibility = Visibility.Visible;
@@ -100,7 +92,6 @@ namespace ModAssistant.Pages
 
         private void CheckInstalledMods()
         {
-            string json = string.Empty;
             HttpWebRequest request = (HttpWebRequest) WebRequest.Create(Classes.Utils.Constants.BeatModsApiUrl + "mod");
             request.AutomaticDecompression = DecompressionMethods.GZip;
             request.UserAgent = "ModAssistant/" + App.Version;
@@ -148,7 +139,7 @@ namespace ModAssistant.Pages
             string injectorHash = Classes.Utils.CalculateMd5(injectorPath);
             foreach (Classes.Mod mod in AllModsList)
             {
-                if (mod.Name.ToLower() == "bsipa")
+                if (mod.Name.ToLower().Equals("bsipa"))
                 {
                     foreach (Classes.Mod.DownloadLink download in mod.Downloads)
                     {
@@ -180,13 +171,13 @@ namespace ModAssistant.Pages
         {
             foreach (Classes.Mod mod in AllModsList)
             {
-                if (mod.Name.ToLower() != "bsipa")
+                if (!mod.Name.ToLower().Equals("bsipa"))
                 {
                     foreach (Classes.Mod.DownloadLink download in mod.Downloads)
                     {
                         foreach (Classes.Mod.FileHashes fileHash in download.HashMd5)
                         {
-                            if (fileHash.Hash == hash)
+                            if (fileHash.Hash.Equals(hash))
                                 return mod;
                         }
                     }
@@ -198,7 +189,6 @@ namespace ModAssistant.Pages
 
         public void PopulateModsList()
         {
-            string json = string.Empty;
             HttpWebRequest request = (HttpWebRequest) WebRequest.Create(
                 Classes.Utils.Constants.BeatModsApiUrl +
                 Classes.Utils.Constants.BeatModsModsOptions +
@@ -250,7 +240,7 @@ namespace ModAssistant.Pages
 
                 foreach (Classes.Mod installedMod in InstalledMods)
                 {
-                    if (mod.Name == installedMod.Name)
+                    if (mod.Name.Equals(installedMod.Name))
                     {
                         listItem.InstalledModInfo = installedMod;
                         listItem.IsInstalled = true;
@@ -260,7 +250,6 @@ namespace ModAssistant.Pages
                 }
 
                 mod.ListItem = listItem;
-
                 ModList.Add(listItem);
             }
 
@@ -309,23 +298,19 @@ namespace ModAssistant.Pages
 
         private void InstallMod(Classes.Mod mod, string directory)
         {
-            string downloadLink = null;
+            string downloadLink = string.Empty;
 
             foreach (Classes.Mod.DownloadLink link in mod.Downloads)
             {
-                if (link.Type == "universal")
-                {
-                    downloadLink = link.Url;
-                    break;
-                }
-                else if (link.Type.ToLower() == App.BeatSaberInstallType.ToLower())
+                if (link.Type.ToLower() == "universal" ||
+                    link.Type.ToLower() == App.BeatSaberInstallType.ToLower())
                 {
                     downloadLink = link.Url;
                     break;
                 }
             }
 
-            if (String.IsNullOrEmpty(downloadLink))
+            if (string.IsNullOrEmpty(downloadLink))
             {
                 System.Windows.MessageBox.Show($"Could not find download link for {mod.Name}");
                 return;
@@ -373,7 +358,7 @@ namespace ModAssistant.Pages
             {
                 foreach (Classes.Mod.Dependency dep in dependent.Dependencies)
                 {
-                    if (dep.Name == mod.Name)
+                    if (dep.Name.Equals(mod.Name))
                     {
                         dep.Mod = mod;
                         mod.Dependents.Add(dependent);
@@ -392,7 +377,7 @@ namespace ModAssistant.Pages
                     {
                         dependency.Mod.ListItem.PreviousState = dependency.Mod.ListItem.IsSelected;
                         dependency.Mod.ListItem.IsSelected = true;
-                        dependency.Mod.ListItem.IsEnabled = false;
+                        dependency.Mod.ListItem.IsEnabled = !dependency.Mod.ListItem.IsEnabled;
                         ResolveDependencies(dependency.Mod);
                     }
                 }
@@ -430,23 +415,29 @@ namespace ModAssistant.Pages
 
         private void ModCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            Classes.Mod mod = ((sender as System.Windows.Controls.CheckBox).Tag as Classes.Mod);
-            mod.ListItem.IsSelected = true;
-            ResolveDependencies(mod);
-            App.SavedMods.Add(mod.Name);
-            Properties.Settings.Default.SavedMods = String.Join(",", App.SavedMods.ToArray());
-            Properties.Settings.Default.Save();
-            RefreshModsList();
+            CheckBoxCheckOrUnCheck(Converter(sender), true);
         }
 
         private void ModCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            Classes.Mod mod = ((sender as System.Windows.Controls.CheckBox).Tag as Classes.Mod);
-            mod.ListItem.IsSelected = false;
+            CheckBoxCheckOrUnCheck(Converter(sender), false);
+        }
+
+        private Classes.Mod Converter(object sender)
+        {
+            return (sender as System.Windows.Controls.CheckBox).Tag as Classes.Mod;
+        }
+
+        private void CheckBoxCheckOrUnCheck(Classes.Mod mod, bool isSelected)
+        {
+            mod.ListItem.IsSelected = isSelected;
+
             UnresolveDependencies(mod);
             App.SavedMods.Remove(mod.Name);
+
             Properties.Settings.Default.SavedMods = String.Join(",", App.SavedMods.ToArray());
             Properties.Settings.Default.Save();
+
             RefreshModsList();
         }
 
@@ -498,8 +489,7 @@ namespace ModAssistant.Pages
                 {
                     if (!ModInfo.Required && IsInstalled)
                         return "Visible";
-                    else
-                        return "Hidden";
+                    return "Hidden";
                 }
             }
         }
@@ -545,7 +535,7 @@ namespace ModAssistant.Pages
                     }
                 }
 
-                if (installedMod.Name.ToLower() == "bsipa")
+                if (installedMod.Name.ToLower().Equals("bsipa"))
                     UninstallBsipa(links);
                 foreach (Classes.Mod.FileHashes files in links.HashMd5)
                 {

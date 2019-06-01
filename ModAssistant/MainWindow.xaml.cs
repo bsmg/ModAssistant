@@ -1,23 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Net;
 using System.IO;
 using System.Web.Script.Serialization;
-using System.Runtime.Serialization;
 using ModAssistant.Pages;
-using System.Reflection;
 
 namespace ModAssistant
 {
@@ -33,7 +22,7 @@ namespace ModAssistant
         public string MainText
         {
             get { return MainTextBlock.Text; }
-            set { Dispatcher.Invoke(new Action(() => { MainWindow.Instance.MainTextBlock.Text = value; })); }
+            set { Dispatcher.Invoke(new Action(() => { Instance.MainTextBlock.Text = value; })); }
         }
 
         public MainWindow()
@@ -46,11 +35,11 @@ namespace ModAssistant
             if (Classes.Utils.IsVoid())
             {
                 Main.Content = Invalid.Instance;
-                MainWindow.Instance.ModsButton.IsEnabled = false;
-                MainWindow.Instance.OptionsButton.IsEnabled = false;
-                MainWindow.Instance.IntroButton.IsEnabled = false;
-                MainWindow.Instance.AboutButton.IsEnabled = false;
-                MainWindow.Instance.GameVersionsBox.IsEnabled = false;
+                Instance.ModsButton.IsEnabled = false;
+                Instance.OptionsButton.IsEnabled = false;
+                Instance.IntroButton.IsEnabled = false;
+                Instance.AboutButton.IsEnabled = false;
+                Instance.GameVersionsBox.IsEnabled = false;
                 return;
             }
 
@@ -87,7 +76,7 @@ namespace ModAssistant
 
             if (!String.IsNullOrEmpty(GameVersion) && Properties.Settings.Default.Agreed)
             {
-                MainWindow.Instance.ModsButton.IsEnabled = true;
+                Instance.ModsButton.IsEnabled = true;
             }
         }
 

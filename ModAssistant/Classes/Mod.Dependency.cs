@@ -6,7 +6,7 @@ namespace ModAssistant.Classes
         {
             public string Name { get; set; }
             public string Id { get; set; }
-            public Classes.Mod Mod { get; set; }
+            public Mod Mod { get; set; }
         }
     }
 }

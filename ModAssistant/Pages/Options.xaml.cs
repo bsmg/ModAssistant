@@ -1,18 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Globalization;
 using ModAssistant.Classes;
 
 namespace ModAssistant.Pages
@@ -48,7 +35,7 @@ namespace ModAssistant.Pages
 
             UpdateHandlerStatus();
 
-            this.DataContext = this;
+            DataContext = this;
         }
 
         public void UpdateHandlerStatus()
@@ -60,14 +47,14 @@ namespace ModAssistant.Pages
 
         private void SelectDirButton_Click(object sender, RoutedEventArgs e)
         {
-            Classes.Utils.GetManualDir();
+            Utils.GetManualDir();
             DirectoryTextBlock.Text = InstallDirectory;
             GameTypeTextBlock.Text = InstallType;
         }
 
         private void Test_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(Classes.Utils.GetSteamDir());
+            MessageBox.Show(Utils.GetSteamDir());
         }
 
         private void SaveSelected_Checked(object sender, RoutedEventArgs e)

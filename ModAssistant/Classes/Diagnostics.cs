@@ -16,12 +16,12 @@ namespace ModAssistant.Classes
                 if (File.Exists(file))
                 {
                     entries.Add(
-                        $"{Classes.Utils.CalculateMd5(file)} {LevelSeparator(level)}├─ {Path.GetFileName(file)}");
+                        $"{Utils.CalculateMd5(file)} {LevelSeparator(level)}├─ {Path.GetFileName(file)}");
                 }
                 else if (Directory.Exists(file))
                 {
                     entries.Add(
-                        $"{Classes.Utils.Constants.Md5Spacer}{LevelSeparator(level)}├─ {Path.GetFileName(file)}");
+                        $"{Utils.Constants.Md5Spacer}{LevelSeparator(level)}├─ {Path.GetFileName(file)}");
 
                     foreach (string entry in ReadFolder(file.Replace(@"\", @"\\"), level + 1))
                     {

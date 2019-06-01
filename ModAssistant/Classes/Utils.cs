@@ -179,11 +179,11 @@ namespace ModAssistant.Classes
             regex = new Regex("\\s\"installdir\"\\s+\"(.+)\"");
             foreach (var path in steamPaths)
             {
-                if (File.Exists(Path.Combine(@path, @"appmanifest_" + Utils.Constants.BeatSaberAppid + ".acf")))
+                if (File.Exists(Path.Combine(@path, $@"appmanifest_{Constants.BeatSaberAppid}.acf")))
                 {
                     using (var reader =
                         new StreamReader(Path.Combine(@path,
-                            @"appmanifest_" + Utils.Constants.BeatSaberAppid + ".acf")))
+                            $@"appmanifest_{Constants.BeatSaberAppid}.acf")))
                     {
                         string line;
                         while ((line = reader.ReadLine()) != null)
@@ -223,8 +223,7 @@ namespace ModAssistant.Classes
             if (!File.Exists(@vdf)) return null;
 
             var regex = new Regex("\\s\"\\d\"\\s+\"(.+)\"");
-            var steamPaths = new List<string>();
-            steamPaths.Add(Path.Combine(steamInstall, @"steamapps"));
+            var steamPaths = new List<string> {Path.Combine(steamInstall, @"steamapps")};
 
             using (var reader = new StreamReader(@vdf))
             {
@@ -242,11 +241,11 @@ namespace ModAssistant.Classes
             regex = new Regex("\\s\"buildid\"\\s+\"(.+)\"");
             foreach (var path in steamPaths)
             {
-                if (File.Exists(Path.Combine(@path, @"appmanifest_" + Utils.Constants.BeatSaberAppid + ".acf")))
+                if (File.Exists(Path.Combine(@path, $@"appmanifest_{Constants.BeatSaberAppid}.acf")))
                 {
                     using (var reader =
                         new StreamReader(Path.Combine(@path,
-                            @"appmanifest_" + Utils.Constants.BeatSaberAppid + ".acf")))
+                            $@"appmanifest_{Constants.BeatSaberAppid}.acf")))
                     {
                         string line;
                         while ((line = reader.ReadLine()) != null)
@@ -292,12 +291,12 @@ namespace ModAssistant.Classes
 
                 foreach (var disk in searcher.Get())
                 {
-                    var diskId = ((string) disk.GetPropertyValue("DeviceID")).Substring(11, 36);
-                    var diskLetter = ((string) disk.GetPropertyValue("DriveLetter")) + @"\";
+                    var diskId = (disk.GetPropertyValue("DeviceID") as string)?.Substring(11, 36);
+                    var diskLetter = $@"{disk.GetPropertyValue("DriveLetter") as string}\";
 
                     if (!string.IsNullOrWhiteSpace(diskLetter))
                     {
-                        guidLetterVolumes.Add(diskId, diskLetter);
+                        guidLetterVolumes.Add(diskId ?? string.Empty, diskLetter);
                     }
                 }
 
@@ -306,16 +305,23 @@ namespace ModAssistant.Classes
                 {
                     using (var libraryKey = librariesKey.OpenSubKey(libraryKeyName))
                     {
-                        var libraryPath = (string) libraryKey.GetValue("Path");
-                        // Yoinked this code from Megalon's fix. <3
-                        var guidLetter = guidLetterVolumes.FirstOrDefault(x => libraryPath.Contains(x.Key)).Value;
-                        if (!string.IsNullOrEmpty(guidLetter))
+                        if (string.IsNullOrWhiteSpace(libraryKeyName))
                         {
-                            var finalPath = Path.Combine(guidLetter, libraryPath.Substring(49),
-                                @"Software\hyperbolic-magnetism-beat-saber");
-                            if (File.Exists(Path.Combine(finalPath, "Beat Saber.exe")))
+                            if (!(libraryKey is null))
                             {
-                                return SetDir(finalPath, "Oculus");
+                                var libraryPath = (string) libraryKey.GetValue("Path");
+                                // Yoinked this code from Megalon's fix. <3
+                                var guidLetter = guidLetterVolumes.FirstOrDefault(x => libraryPath.Contains(x.Key))
+                                    .Value;
+                                if (!string.IsNullOrEmpty(guidLetter))
+                                {
+                                    var finalPath = Path.Combine(guidLetter, libraryPath.Substring(49),
+                                        @"Software\hyperbolic-magnetism-beat-saber");
+                                    if (File.Exists(Path.Combine(finalPath, "Beat Saber.exe")))
+                                    {
+                                        return SetDir(finalPath, "Oculus");
+                                    }
+                                }
                             }
                         }
                     }
@@ -345,7 +351,7 @@ namespace ModAssistant.Classes
 
         public static string GetManualDir()
         {
-            var dialog = new Microsoft.Win32.SaveFileDialog()
+            var dialog = new SaveFileDialog()
             {
                 Title = "Select your Beat Saber install folder",
                 Filter = "Directory|*.this.directory",

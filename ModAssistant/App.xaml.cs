@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows;
-using ModAssistant;
 using ModAssistant.Classes;
 
 namespace ModAssistant
@@ -35,16 +31,16 @@ namespace ModAssistant
             }
 
             Version = Version.Substring(0, Version.Length - 2);
-            BeatSaberInstallDirectory = Classes.Utils.GetInstallDir();
+            BeatSaberInstallDirectory = Utils.GetInstallDir();
 
-            while (String.IsNullOrEmpty(App.BeatSaberInstallDirectory))
+            while (String.IsNullOrEmpty(BeatSaberInstallDirectory))
             {
                 if (System.Windows.Forms.MessageBox.Show($"Press OK to try again, or Cancel to close application.",
                         $"Couldn't find your Beat Saber install folder!",
                         System.Windows.Forms.MessageBoxButtons.OKCancel) ==
                     System.Windows.Forms.DialogResult.OK)
                 {
-                    App.BeatSaberInstallDirectory = Classes.Utils.GetManualDir();
+                    BeatSaberInstallDirectory = Utils.GetManualDir();
                 }
                 else
                 {
@@ -78,7 +74,7 @@ namespace ModAssistant
                     if (!String.IsNullOrEmpty(args[1]))
                         OneClickInstaller.InstallAsset(args[1]);
                     else
-                        Classes.Utils.SendNotify("Invalid argument! '--install' requires an option.");
+                        Utils.SendNotify("Invalid argument! '--install' requires an option.");
                     break;
 
                 case "--no-update":
@@ -90,18 +86,18 @@ namespace ModAssistant
                     if (!String.IsNullOrEmpty(args[1]))
                         OneClickInstaller.Register(args[1], true);
                     else
-                        Classes.Utils.SendNotify("Invalid argument! '--register' requires an option.");
+                        Utils.SendNotify("Invalid argument! '--register' requires an option.");
                     break;
 
                 case "--unregister":
                     if (!String.IsNullOrEmpty(args[1]))
                         OneClickInstaller.Unregister(args[1], true);
                     else
-                        Classes.Utils.SendNotify("Invalid argument! '--unregister' requires an option.");
+                        Utils.SendNotify("Invalid argument! '--unregister' requires an option.");
                     break;
 
                 default:
-                    Classes.Utils.SendNotify("Unrecognized argument. Closing Mod Assistant.");
+                    Utils.SendNotify("Unrecognized argument. Closing Mod Assistant.");
                     break;
             }
 
@@ -114,7 +110,7 @@ namespace ModAssistant
             MessageBox.Show("An unhandled exception just occurred: " + e.Exception, "Exception", MessageBoxButton.OK,
                 MessageBoxImage.Warning);
             e.Handled = true;
-            Application.Current.Shutdown();
+            Current.Shutdown();
         }
     }
 }

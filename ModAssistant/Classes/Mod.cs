@@ -20,9 +20,9 @@ namespace ModAssistant.Classes
         public bool Required { get; set; }
         public Dependency[] Dependencies { get; set; }
 
-        private List<Classes.Mod> _dependents = new List<Classes.Mod>();
+        private List<Mod> _dependents = new List<Mod>();
 
-        public List<Classes.Mod> Dependents
+        public List<Mod> Dependents
         {
             get { return _dependents; }
             set { _dependents = value; }

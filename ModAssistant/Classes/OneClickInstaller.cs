@@ -44,9 +44,9 @@ namespace ModAssistant.Classes
             var id = uri.Host;
             var directory = Path.Combine(BeatSaberPath, CustomSongsFolder, id);
 
-            DownloadAsset(BeatSaverUrlPrefix + id, CustomSongsFolder, id + ".zip");
+            DownloadAsset(BeatSaverUrlPrefix + id, CustomSongsFolder, $"{id}.zip");
 
-            using (var stream = new FileStream(directory + ".zip", FileMode.Open))
+            using (var stream = new FileStream($"{directory}.zip", FileMode.Open))
             using (var archive = new ZipArchive(stream))
             {
                 foreach (var file in archive.Entries)
@@ -61,7 +61,7 @@ namespace ModAssistant.Classes
                 }
             }
 
-            File.Delete(Path.Combine(BeatSaberPath, CustomSongsFolder, id + ".zip"));
+            File.Delete(Path.Combine(BeatSaberPath, CustomSongsFolder, $"{id}.zip"));
         }
 
         private static void ModelSaber(Uri uri)
@@ -86,7 +86,7 @@ namespace ModAssistant.Classes
         {
             if (string.IsNullOrEmpty(BeatSaberPath))
             {
-                Classes.Utils.SendNotify("Beat Saber installation path not found.");
+                Utils.SendNotify("Beat Saber installation path not found.");
             }
 
             try
@@ -98,12 +98,12 @@ namespace ModAssistant.Classes
                 else
                     fileName = WebUtility.UrlDecode(Path.Combine(BeatSaberPath, folder, fileName));
 
-                Classes.Utils.Download(link, fileName);
-                Classes.Utils.SendNotify("Installed: " + Path.GetFileNameWithoutExtension(fileName));
+                Utils.Download(link, fileName);
+                Utils.SendNotify($"Installed: {Path.GetFileNameWithoutExtension(fileName)}");
             }
             catch
             {
-                Classes.Utils.SendNotify("Failed to install.");
+                Utils.SendNotify("Failed to install.");
             }
         }
 
@@ -113,31 +113,27 @@ namespace ModAssistant.Classes
                 return;
             try
             {
-                if (Classes.Utils.IsAdmin)
+                if (Utils.IsAdmin)
                 {
-                    var protocolKey = Registry.ClassesRoot.OpenSubKey(protocol, true);
+                    var protocolKey = Registry.ClassesRoot.OpenSubKey(protocol, true) ??
+                                      Registry.ClassesRoot.CreateSubKey(protocol, true);
 
-                    if (protocolKey is null)
-                        protocolKey = Registry.ClassesRoot.CreateSubKey(protocol, true);
+                    var commandKey = protocolKey.CreateSubKey(@"shell\open\command", true) ??
+                                     Registry.ClassesRoot.CreateSubKey(@"shell\open\command", true);
 
-                    var commandKey = protocolKey.CreateSubKey(@"shell\open\command", true);
-
-                    if (commandKey is null)
-                        commandKey = Registry.ClassesRoot.CreateSubKey(@"shell\open\command", true);
-
-                    if (protocolKey.GetValue("OneClick-Provider", "").ToString() != "ModAssistant")
+                    if (protocolKey.GetValue("OneClick-Provider", string.Empty).ToString() != "ModAssistant")
                     {
-                        protocolKey.SetValue("URL Protocol", "", RegistryValueKind.String);
+                        protocolKey.SetValue("URL Protocol", string.Empty, RegistryValueKind.String);
                         protocolKey.SetValue("OneClick-Provider", "ModAssistant", RegistryValueKind.String);
 
-                        commandKey.SetValue("", $"\"{Classes.Utils.ExePath}\" \"--install\" \"%1\"");
+                        commandKey.SetValue(string.Empty, $"\"{Utils.ExePath}\" \"--install\" \"%1\"");
                     }
 
-                    Classes.Utils.SendNotify($"{protocol} One Click Install handlers registered!");
+                    Utils.SendNotify($"{protocol} One Click Install handlers registered!");
                 }
                 else
                 {
-                    Classes.Utils.StartAsAdmin($"\"--register\" \"{protocol}\"");
+                    Utils.StartAsAdmin($"\"--register\" \"{protocol}\"");
                 }
             }
             catch (Exception e)
@@ -157,22 +153,22 @@ namespace ModAssistant.Classes
                 return;
             try
             {
-                if (Classes.Utils.IsAdmin)
+                if (Utils.IsAdmin)
                 {
                     using (var protocolKey = Registry.ClassesRoot.OpenSubKey(protocol, true))
                     {
                         if (protocolKey != null &&
-                            protocolKey.GetValue("OneClick-Provider", string.Empty).ToString() == "ModAssistant")
+                            protocolKey.GetValue("OneClick-Provider", string.Empty).ToString().Equals("ModAssistant"))
                         {
                             Registry.ClassesRoot.DeleteSubKeyTree(protocol);
                         }
                     }
 
-                    Classes.Utils.SendNotify($"{protocol} One Click Install handlers unregistered!");
+                    Utils.SendNotify($"{protocol} One Click Install handlers unregistered!");
                 }
                 else
                 {
-                    Classes.Utils.StartAsAdmin($"\"--unregister\" \"{protocol}\"");
+                    Utils.StartAsAdmin($"\"--unregister\" \"{protocol}\"");
                 }
             }
             catch (Exception e)
@@ -189,10 +185,8 @@ namespace ModAssistant.Classes
         public static bool IsRegistered(string protocol)
         {
             var protocolKey = Registry.ClassesRoot.OpenSubKey(protocol);
-            if (!(protocolKey is null) &&
-                protocolKey.GetValue("OneClick-Provider", string.Empty).ToString() == "ModAssistant")
-                return true;
-            return false;
+            return !(protocolKey is null) &&
+                   protocolKey.GetValue("OneClick-Provider", string.Empty).ToString().Equals("ModAssistant");
         }
     }
 }
