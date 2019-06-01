@@ -52,6 +52,7 @@ namespace ModAssistant.Classes
                 var processModule = Process.GetCurrentProcess().MainModule;
                 if (processModule != null)
                     process.StartInfo.FileName = processModule.FileName;
+
                 process.StartInfo.Arguments = arguments;
                 process.StartInfo.UseShellExecute = true;
                 process.StartInfo.Verb = "runas";
@@ -123,10 +124,10 @@ namespace ModAssistant.Classes
                 return installDir;
             }
 
-            return null;
+            return string.Empty;
         }
 
-        public static string SetDir(string directory, string store)
+        private static string SetDir(string directory, string store)
         {
             App.BeatSaberInstallDirectory = directory;
             App.BeatSaberInstallType = store;
@@ -160,13 +161,12 @@ namespace ModAssistant.Classes
 
             var regex = new Regex("\\s\"\\d\"\\s+\"(.+)\"");
 
-            var steamPaths = new List<string>();
-            steamPaths.Add(Path.Combine(steamInstall, @"steamapps"));
+            var steamPaths = new List<string> {Path.Combine(steamInstall, @"steamapps")};
 
             using (var reader = new StreamReader(@vdf))
             {
                 string line;
-                while ((line = reader.ReadLine()) != null)
+                while (!((line = reader.ReadLine()) is null))
                 {
                     var match = regex.Match(line);
                     if (match.Success)
@@ -186,7 +186,7 @@ namespace ModAssistant.Classes
                             $@"appmanifest_{Constants.BeatSaberAppid}.acf")))
                     {
                         string line;
-                        while ((line = reader.ReadLine()) != null)
+                        while (!((line = reader.ReadLine()) is null))
                         {
                             var match = regex.Match(line);
                             if (match.Success)
@@ -228,7 +228,7 @@ namespace ModAssistant.Classes
             using (var reader = new StreamReader(@vdf))
             {
                 string line;
-                while (!string.IsNullOrWhiteSpace((line = reader.ReadLine())))
+                while (!string.IsNullOrWhiteSpace(line = reader.ReadLine()))
                 {
                     var match = regex.Match(line);
                     if (match.Success)
@@ -248,7 +248,7 @@ namespace ModAssistant.Classes
                             $@"appmanifest_{Constants.BeatSaberAppid}.acf")))
                     {
                         string line;
-                        while ((line = reader.ReadLine()) != null)
+                        while (!((line = reader.ReadLine()) is null))
                         {
                             var match = regex.Match(line);
                             if (match.Success)
@@ -271,13 +271,10 @@ namespace ModAssistant.Classes
                 ?.OpenSubKey("Config")?.GetValue("InitialAppLibrary").ToString();
             if (string.IsNullOrEmpty(oculusInstall)) return null;
 
-            if (!string.IsNullOrEmpty(oculusInstall))
+            if (File.Exists(Path.Combine(oculusInstall, "Software", "hyperbolic-magnetism-beat-saber",
+                "Beat Saber.exe")))
             {
-                if (File.Exists(Path.Combine(oculusInstall, "Software", "hyperbolic-magnetism-beat-saber",
-                    "Beat Saber.exe")))
-                {
-                    return SetDir(Path.Combine(oculusInstall, "Software", "hyperbolic-magnetism-beat-saber"), "Oculus");
-                }
+                return SetDir(Path.Combine(oculusInstall, "Software", "hyperbolic-magnetism-beat-saber"), "Oculus");
             }
 
             // Yoinked this code from Umbranox's Mod Manager. Lot's of thanks and love for Umbra <3
@@ -328,26 +325,8 @@ namespace ModAssistant.Classes
                 }
             }
 
-            return null;
+            return string.Empty;
         }
-        /*
-        public static string GetManualDir()
-        {
-
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog()
-            {
-                IsFolderPicker = true,
-                Multiselect = false,
-                Title = "Select your Beat Saber installation folder"
-            };
-
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
-            {
-                return dialog.FileName;
-            }
-
-            return null;
-        }*/
 
         public static string GetManualDir()
         {
@@ -382,7 +361,7 @@ namespace ModAssistant.Classes
                 }
             }
 
-            return null;
+            return string.Empty;
         }
 
         public static bool IsVoid()
@@ -403,11 +382,11 @@ namespace ModAssistant.Classes
 
         public static void Download(string link, string output)
         {
-            var webClient = new WebClient();
-            webClient.Headers.Add("user-agent", "ModAssistant/" + App.Version);
-
-            var file = webClient.DownloadData(link);
-            File.WriteAllBytes(output, file);
+            using (var client = new WebClient())
+            {
+                client.Headers.Add("user-agent", $"ModAssistant/{App.Version}");
+                File.WriteAllBytes(output, client.DownloadData(link));
+            }
         }
 
         private delegate void ShowMessageBoxDelegate(string message, string caption);
@@ -425,8 +404,7 @@ namespace ModAssistant.Classes
 
         public static void ShowMessageBoxAsync(string message)
         {
-            var caller = new ShowMessageBoxDelegate(ShowMessageBox);
-            caller.BeginInvoke(message, null, null, null);
+            ShowMessageBoxAsync(message, string.Empty);
         }
     }
 }

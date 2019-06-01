@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 
@@ -23,11 +22,7 @@ namespace ModAssistant.Classes
                     entries.Add(
                         $"{Utils.Constants.Md5Spacer}{LevelSeparator(level)}├─ {Path.GetFileName(file)}");
 
-                    foreach (string entry in ReadFolder(file.Replace(@"\", @"\\"), level + 1))
-                    {
-                        //MessageBox.Show(entry);
-                        entries.Add(entry);
-                    }
+                    entries.AddRange(ReadFolder(file.Replace(@"\", @"\\"), level + 1));
                 }
                 else
                 {
@@ -43,7 +38,7 @@ namespace ModAssistant.Classes
 
         private static string LevelSeparator(int level)
         {
-            string separator = String.Empty;
+            string separator = string.Empty;
             for (int i = 0; i < level; i++)
             {
                 separator += "│  ";

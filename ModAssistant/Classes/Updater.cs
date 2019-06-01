@@ -7,25 +7,25 @@ using System.Windows;
 
 namespace ModAssistant.Classes
 {
-    class Updater
+    static class Updater
     {
         private static string _apiLatestUrl = "https://api.github.com/repos/Assistant/ModAssistant/releases/latest";
 
         private static Update _latestUpdate;
         private static Version _currentVersion;
         private static Version _latestVersion;
-        private static bool _needsUpdate = false;
+        private static bool _needsUpdate;
 
         private static bool CheckForUpdate()
         {
             var request = (HttpWebRequest) WebRequest.Create(_apiLatestUrl);
 
             request.AutomaticDecompression = DecompressionMethods.GZip;
-            request.UserAgent = "ModAssistant/" + App.Version;
+            request.UserAgent = $"ModAssistant/{App.Version}";
 
             using (var response = (HttpWebResponse) request.GetResponse())
             using (var stream = response.GetResponseStream())
-            using (var reader = new StreamReader(stream))
+            using (var reader = new StreamReader(stream ?? throw new Exception()))
             {
                 var serializer = new JavaScriptSerializer();
                 _latestUpdate = serializer.Deserialize<Update>(reader.ReadToEnd());
@@ -55,9 +55,9 @@ namespace ModAssistant.Classes
         private static void StartUpdate()
         {
             var directory = Path.GetDirectoryName(Utils.ExePath);
-            var oldExe = Path.Combine(directory, "ModAssistant.old.exe");
+            var oldExe = Path.Combine(directory ?? throw new Exception(), "ModAssistant.old.exe");
 
-            string downloadLink = null;
+            var downloadLink = string.Empty;
 
             foreach (var asset in _latestUpdate.Assets)
             {
