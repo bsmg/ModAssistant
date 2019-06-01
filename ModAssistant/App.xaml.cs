@@ -66,13 +66,13 @@ namespace ModAssistant
             }
         }
 
-        private void ArgumentHandler(string[] Args)
+        private void ArgumentHandler(string[] args)
         {
-            switch (Args[0])
+            switch (args[0])
             {
                 case "--install":
-                    if (!String.IsNullOrEmpty(Args[1]))
-                        OneClickInstaller.InstallAsset(Args[1]);
+                    if (!String.IsNullOrEmpty(args[1]))
+                        OneClickInstaller.InstallAsset(args[1]);
                     else
                         Utils.SendNotify("Invalid argument! '--install' requires an option.");
                     break;
@@ -83,15 +83,15 @@ namespace ModAssistant
                     break;
 
                 case "--register":
-                    if (!String.IsNullOrEmpty(Args[1]))
-                        OneClickInstaller.Register(Args[1], true);
+                    if (!String.IsNullOrEmpty(args[1]))
+                        OneClickInstaller.Register(args[1], true);
                     else
                         Utils.SendNotify("Invalid argument! '--register' requires an option.");
                     break;
 
                 case "--unregister":
-                    if (!String.IsNullOrEmpty(Args[1]))
-                        OneClickInstaller.Unregister(Args[1], true);
+                    if (!String.IsNullOrEmpty(args[1]))
+                        OneClickInstaller.Unregister(args[1], true);
                     else
                         Utils.SendNotify("Invalid argument! '--unregister' requires an option.");
                     break;

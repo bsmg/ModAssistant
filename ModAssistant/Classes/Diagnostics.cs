@@ -20,13 +20,13 @@ namespace ModAssistant
 
                 if (File.Exists(file))
                 {
-                    line = Utils.CalculateMD5(file) + " " +LevelSeparator(level) + "├─ " + Path.GetFileName(file);
+                    line = Utils.CalculateMd5(file) + " " +LevelSeparator(level) + "├─ " + Path.GetFileName(file);
                     entries.Add(line);
 
                 }
                 else if (Directory.Exists(file))
                 {
-                    line = Utils.Constants.MD5Spacer + LevelSeparator(level) + "├─ " + Path.GetFileName(file);
+                    line = Utils.Constants.Md5Spacer + LevelSeparator(level) + "├─ " + Path.GetFileName(file);
                     entries.Add(line);
 
                     foreach (string entry in ReadFolder(file.Replace(@"\", @"\\"), level + 1))

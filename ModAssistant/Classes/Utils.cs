@@ -23,11 +23,11 @@ namespace ModAssistant
 
         public class Constants
         {
-            public const string BeatSaberAPPID = "620980";
-            public const string BeatModsAPIUrl = "https://beatmods.com/api/v1/";
-            public const string BeatModsURL = "https://beatmods.com";
+            public const string BeatSaberAppid = "620980";
+            public const string BeatModsApiUrl = "https://beatmods.com/api/v1/";
+            public const string BeatModsUrl = "https://beatmods.com";
             public const string BeatModsModsOptions = "mod?status=approved";
-            public const string MD5Spacer = "                                 ";
+            public const string Md5Spacer = "                                 ";
         }
 
         public static class GameVersions
@@ -55,29 +55,29 @@ namespace ModAssistant
             notification.Dispose();
         }
 
-        public static void StartAsAdmin(string Arguments, bool Close = false)
+        public static void StartAsAdmin(string arguments, bool close = false)
         {
             Process process = new Process();
             process.StartInfo.FileName = Process.GetCurrentProcess().MainModule.FileName;
-            process.StartInfo.Arguments = Arguments;
+            process.StartInfo.Arguments = arguments;
             process.StartInfo.UseShellExecute = true;
             process.StartInfo.Verb = "runas";
 
             try
             {
                 process.Start();
-                if (!Close)
+                if (!close)
                     process.WaitForExit();
             }
             catch
             {
                 MessageBox.Show("Mod Assistant needs to run this task as Admin. Please try again.");
             }
-            if (Close)
+            if (close)
                 App.Current.Shutdown();
         }
 
-        public static string CalculateMD5(string filename)
+        public static string CalculateMd5(string filename)
         {
             using (var md5 = MD5.Create())
             {
@@ -91,40 +91,40 @@ namespace ModAssistant
 
         public static string GetInstallDir()
         {
-            string InstallDir = null;
+            string installDir = null;
             
-            InstallDir = Properties.Settings.Default.InstallFolder;
-            if (!String.IsNullOrEmpty(InstallDir) && Directory.Exists(InstallDir))
+            installDir = Properties.Settings.Default.InstallFolder;
+            if (!String.IsNullOrEmpty(installDir) && Directory.Exists(installDir))
             {
-                return InstallDir;
+                return installDir;
             }
 
             try
             {
-                InstallDir = GetSteamDir();
+                installDir = GetSteamDir();
             }
             catch { }
-            if (!String.IsNullOrEmpty(InstallDir))
+            if (!String.IsNullOrEmpty(installDir))
             {
-                return InstallDir;
+                return installDir;
             }
 
             try
             {
-                InstallDir = GetOculusDir();
+                installDir = GetOculusDir();
             }
             catch { }
-            if (!String.IsNullOrEmpty(InstallDir))
+            if (!String.IsNullOrEmpty(installDir))
             {
-                return InstallDir;
+                return installDir;
             }
 
             MessageBox.Show("Could not detect your Beat Saber install folder. Please select it manually.");
 
-            InstallDir = GetManualDir();
-            if (!String.IsNullOrEmpty(InstallDir))
+            installDir = GetManualDir();
+            if (!String.IsNullOrEmpty(installDir))
             {
-                return InstallDir;
+                return installDir;
             }
 
             return null;
@@ -145,19 +145,19 @@ namespace ModAssistant
         public static string GetSteamDir()
         {
 
-            string SteamInstall = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)?.OpenSubKey("SOFTWARE")?.OpenSubKey("WOW6432Node")?.OpenSubKey("Valve")?.OpenSubKey("Steam")?.GetValue("InstallPath").ToString();
-            if (String.IsNullOrEmpty(SteamInstall))
+            string steamInstall = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)?.OpenSubKey("SOFTWARE")?.OpenSubKey("WOW6432Node")?.OpenSubKey("Valve")?.OpenSubKey("Steam")?.GetValue("InstallPath").ToString();
+            if (String.IsNullOrEmpty(steamInstall))
             {
-                SteamInstall = Registry.LocalMachine.OpenSubKey("SOFTWARE")?.OpenSubKey("WOW6432Node")?.OpenSubKey("Valve")?.OpenSubKey("Steam")?.GetValue("InstallPath").ToString();
+                steamInstall = Registry.LocalMachine.OpenSubKey("SOFTWARE")?.OpenSubKey("WOW6432Node")?.OpenSubKey("Valve")?.OpenSubKey("Steam")?.GetValue("InstallPath").ToString();
             }
-            if (String.IsNullOrEmpty(SteamInstall)) return null;
+            if (String.IsNullOrEmpty(steamInstall)) return null;
 
-            string vdf = Path.Combine(SteamInstall, @"steamapps\libraryfolders.vdf");
+            string vdf = Path.Combine(steamInstall, @"steamapps\libraryfolders.vdf");
             if (!File.Exists(@vdf)) return null;
 
             Regex regex = new Regex("\\s\"\\d\"\\s+\"(.+)\"");
-            List<string> SteamPaths = new List<string>();
-            SteamPaths.Add(Path.Combine(SteamInstall, @"steamapps"));
+            List<string> steamPaths = new List<string>();
+            steamPaths.Add(Path.Combine(steamInstall, @"steamapps"));
 
             using (StreamReader reader = new StreamReader(@vdf))
             {
@@ -167,17 +167,17 @@ namespace ModAssistant
                     Match match = regex.Match(line);
                     if (match.Success)
                     {
-                        SteamPaths.Add(Path.Combine(match.Groups[1].Value.Replace(@"\\", @"\"), @"steamapps"));
+                        steamPaths.Add(Path.Combine(match.Groups[1].Value.Replace(@"\\", @"\"), @"steamapps"));
                     }
                 }
             }
 
             regex = new Regex("\\s\"installdir\"\\s+\"(.+)\"");
-            foreach (string path in SteamPaths)
+            foreach (string path in steamPaths)
             {
-                if (File.Exists(Path.Combine(@path, @"appmanifest_" + Constants.BeatSaberAPPID + ".acf")))
+                if (File.Exists(Path.Combine(@path, @"appmanifest_" + Constants.BeatSaberAppid + ".acf")))
                 {
-                    using (StreamReader reader = new StreamReader(Path.Combine(@path,  @"appmanifest_" + Constants.BeatSaberAPPID + ".acf")))
+                    using (StreamReader reader = new StreamReader(Path.Combine(@path,  @"appmanifest_" + Constants.BeatSaberAppid + ".acf")))
                     {
                         string line;
                         while ((line = reader.ReadLine()) != null)
@@ -199,19 +199,19 @@ namespace ModAssistant
 
         public static string GetSteamVersion()
         {
-            string SteamInstall = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)?.OpenSubKey("SOFTWARE")?.OpenSubKey("WOW6432Node")?.OpenSubKey("Valve")?.OpenSubKey("Steam")?.GetValue("InstallPath").ToString();
-            if (String.IsNullOrEmpty(SteamInstall))
+            string steamInstall = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)?.OpenSubKey("SOFTWARE")?.OpenSubKey("WOW6432Node")?.OpenSubKey("Valve")?.OpenSubKey("Steam")?.GetValue("InstallPath").ToString();
+            if (String.IsNullOrEmpty(steamInstall))
             {
-                SteamInstall = Registry.LocalMachine.OpenSubKey("SOFTWARE")?.OpenSubKey("WOW6432Node")?.OpenSubKey("Valve")?.OpenSubKey("Steam")?.GetValue("InstallPath").ToString();
+                steamInstall = Registry.LocalMachine.OpenSubKey("SOFTWARE")?.OpenSubKey("WOW6432Node")?.OpenSubKey("Valve")?.OpenSubKey("Steam")?.GetValue("InstallPath").ToString();
             }
-            if (String.IsNullOrEmpty(SteamInstall)) return null;
+            if (String.IsNullOrEmpty(steamInstall)) return null;
 
-            string vdf = Path.Combine(SteamInstall, @"steamapps\libraryfolders.vdf");
+            string vdf = Path.Combine(steamInstall, @"steamapps\libraryfolders.vdf");
             if (!File.Exists(@vdf)) return null;
 
             Regex regex = new Regex("\\s\"\\d\"\\s+\"(.+)\"");
-            List<string> SteamPaths = new List<string>();
-            SteamPaths.Add(Path.Combine(SteamInstall, @"steamapps"));
+            List<string> steamPaths = new List<string>();
+            steamPaths.Add(Path.Combine(steamInstall, @"steamapps"));
 
             using (StreamReader reader = new StreamReader(@vdf))
             {
@@ -221,17 +221,17 @@ namespace ModAssistant
                     Match match = regex.Match(line);
                     if (match.Success)
                     {
-                        SteamPaths.Add(Path.Combine(match.Groups[1].Value.Replace(@"\\", @"\"), @"steamapps"));
+                        steamPaths.Add(Path.Combine(match.Groups[1].Value.Replace(@"\\", @"\"), @"steamapps"));
                     }
                 }
             }
 
             regex = new Regex("\\s\"buildid\"\\s+\"(.+)\"");
-            foreach (string path in SteamPaths)
+            foreach (string path in steamPaths)
             {
-                if (File.Exists(Path.Combine(@path, @"appmanifest_" + Constants.BeatSaberAPPID + ".acf")))
+                if (File.Exists(Path.Combine(@path, @"appmanifest_" + Constants.BeatSaberAppid + ".acf")))
                 {
-                    using (StreamReader reader = new StreamReader(Path.Combine(@path, @"appmanifest_" + Constants.BeatSaberAPPID + ".acf")))
+                    using (StreamReader reader = new StreamReader(Path.Combine(@path, @"appmanifest_" + Constants.BeatSaberAppid + ".acf")))
                     {
                         string line;
                         while ((line = reader.ReadLine()) != null)
@@ -239,9 +239,9 @@ namespace ModAssistant
                             Match match = regex.Match(line);
                             if (match.Success)
                             {
-                                string _version;
-                                GameVersions.SteamVersions.TryGetValue(match.Groups[1].Value, out _version);
-                                return _version ?? "";
+                                string version;
+                                GameVersions.SteamVersions.TryGetValue(match.Groups[1].Value, out version);
+                                return version ?? "";
                             }
                         }
                     }
@@ -252,14 +252,14 @@ namespace ModAssistant
 
         public static string GetOculusDir()
         {
-            string OculusInstall = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)?.OpenSubKey("SOFTWARE")?.OpenSubKey("Wow6432Node")?.OpenSubKey("Oculus VR, LLC")?.OpenSubKey("Oculus")?.OpenSubKey("Config")?.GetValue("InitialAppLibrary").ToString();
-            if (String.IsNullOrEmpty(OculusInstall)) return null;
+            string oculusInstall = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)?.OpenSubKey("SOFTWARE")?.OpenSubKey("Wow6432Node")?.OpenSubKey("Oculus VR, LLC")?.OpenSubKey("Oculus")?.OpenSubKey("Config")?.GetValue("InitialAppLibrary").ToString();
+            if (String.IsNullOrEmpty(oculusInstall)) return null;
 
-            if (!String.IsNullOrEmpty(OculusInstall))
+            if (!String.IsNullOrEmpty(oculusInstall))
             {
-                if (File.Exists(Path.Combine(OculusInstall, "Software", "hyperbolic-magnetism-beat-saber", "Beat Saber.exe")))
+                if (File.Exists(Path.Combine(oculusInstall, "Software", "hyperbolic-magnetism-beat-saber", "Beat Saber.exe")))
                 {
-                    return SetDir(Path.Combine(OculusInstall, "Software", "hyperbolic-magnetism-beat-saber"), "Oculus");
+                    return SetDir(Path.Combine(oculusInstall, "Software", "hyperbolic-magnetism-beat-saber"), "Oculus");
                 }
             }
 
@@ -289,10 +289,10 @@ namespace ModAssistant
                     {
                         string libraryPath = (string)libraryKey.GetValue("Path");
                         // Yoinked this code from Megalon's fix. <3
-                        string GUIDLetter = guidLetterVolumes.FirstOrDefault(x => libraryPath.Contains(x.Key)).Value;
-                        if (!String.IsNullOrEmpty(GUIDLetter))
+                        string guidLetter = guidLetterVolumes.FirstOrDefault(x => libraryPath.Contains(x.Key)).Value;
+                        if (!String.IsNullOrEmpty(guidLetter))
                         {
-                            string finalPath = Path.Combine(GUIDLetter, libraryPath.Substring(49), @"Software\hyperbolic-magnetism-beat-saber");
+                            string finalPath = Path.Combine(guidLetter, libraryPath.Substring(49), @"Software\hyperbolic-magnetism-beat-saber");
                             if (File.Exists(Path.Combine(finalPath, "Beat Saber.exe")))
                             {
                                 return SetDir(finalPath, "Oculus");
@@ -354,7 +354,7 @@ namespace ModAssistant
             return null;
         }
 
-        public static bool isVoid()
+        public static bool IsVoid()
         {
             string directory = App.BeatSaberInstallDirectory;
 
@@ -377,23 +377,23 @@ namespace ModAssistant
             File.WriteAllBytes(output, file);
         }
 
-        private delegate void ShowMessageBoxDelegate(string Message, string Caption);
+        private delegate void ShowMessageBoxDelegate(string message, string caption);
 
-        private static void ShowMessageBox(string Message, string Caption)
+        private static void ShowMessageBox(string message, string caption)
         {
-            MessageBox.Show(Message, Caption);
+            MessageBox.Show(message, caption);
         }
 
-        public static void ShowMessageBoxAsync(string Message, string Caption)
+        public static void ShowMessageBoxAsync(string message, string caption)
         {
             ShowMessageBoxDelegate caller = new ShowMessageBoxDelegate(ShowMessageBox);
-            caller.BeginInvoke(Message, Caption, null, null);
+            caller.BeginInvoke(message, caption, null, null);
         }
 
-        public static void ShowMessageBoxAsync(string Message)
+        public static void ShowMessageBoxAsync(string message)
         {
             ShowMessageBoxDelegate caller = new ShowMessageBoxDelegate(ShowMessageBox);
-            caller.BeginInvoke(Message, null, null, null);
+            caller.BeginInvoke(message, null, null, null);
         }
     }
 }

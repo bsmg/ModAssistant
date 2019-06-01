@@ -14,17 +14,17 @@ namespace ModAssistant
 {
     class Updater
     {
-        private static string APILatestURL = "https://api.github.com/repos/Assistant/ModAssistant/releases/latest";
+        private static string _apiLatestUrl = "https://api.github.com/repos/Assistant/ModAssistant/releases/latest";
 
-        private static Update LatestUpdate;
-        private static Version CurrentVersion;
-        private static Version LatestVersion;
-        private static bool NeedsUpdate = false;
+        private static Update _latestUpdate;
+        private static Version _currentVersion;
+        private static Version _latestVersion;
+        private static bool _needsUpdate = false;
 
         public static bool CheckForUpdate()
         {
             string json = string.Empty;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(APILatestURL);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(_apiLatestUrl);
             request.AutomaticDecompression = DecompressionMethods.GZip;
             request.UserAgent = "ModAssistant/" + App.Version;
 
@@ -33,57 +33,57 @@ namespace ModAssistant
             using (StreamReader reader = new StreamReader(stream))
             {
                 var serializer = new JavaScriptSerializer();
-                LatestUpdate = serializer.Deserialize<Update>(reader.ReadToEnd());
+                _latestUpdate = serializer.Deserialize<Update>(reader.ReadToEnd());
             }
             
-            LatestVersion = new Version(LatestUpdate.tag_name.Substring(1));
-            CurrentVersion = new Version(App.Version);
+            _latestVersion = new Version(_latestUpdate.TagName.Substring(1));
+            _currentVersion = new Version(App.Version);
 
 
-            return (LatestVersion > CurrentVersion);
+            return (_latestVersion > _currentVersion);
         }
 
         public static void Run()
         {
             try
             {
-                NeedsUpdate = CheckForUpdate();
+                _needsUpdate = CheckForUpdate();
             }
             catch
             {
                 Utils.SendNotify("Couldn't check for updates.");
             }
 
-            if (NeedsUpdate) StartUpdate();
+            if (_needsUpdate) StartUpdate();
         }
 
         public static void StartUpdate()
         {
-            string Directory = Path.GetDirectoryName(Utils.ExePath);
-            string OldExe = Path.Combine(Directory, "ModAssistant.old.exe");
+            string directory = Path.GetDirectoryName(Utils.ExePath);
+            string oldExe = Path.Combine(directory, "ModAssistant.old.exe");
 
-            string DownloadLink = null;
+            string downloadLink = null;
 
-            foreach (Update.Asset asset in LatestUpdate.assets)
+            foreach (Update.Asset asset in _latestUpdate.Assets)
             {
-                if (asset.name == "ModAssistant.exe")
+                if (asset.Name == "ModAssistant.exe")
                 {
-                    DownloadLink = asset.browser_download_url;
+                    downloadLink = asset.BrowserDownloadUrl;
                 }
             }
 
-            if (String.IsNullOrEmpty(DownloadLink))
+            if (String.IsNullOrEmpty(downloadLink))
             {
                 Utils.SendNotify("Couldn't download update.");
             }
             else
             {
-                if (File.Exists(OldExe))
-                    File.Delete(OldExe);
+                if (File.Exists(oldExe))
+                    File.Delete(oldExe);
 
-                File.Move(Utils.ExePath, OldExe);
+                File.Move(Utils.ExePath, oldExe);
 
-                Utils.Download(DownloadLink, Utils.ExePath);
+                Utils.Download(downloadLink, Utils.ExePath);
                 Process.Start(Utils.ExePath);
                 App.Current.Shutdown();
 
@@ -95,61 +95,61 @@ namespace ModAssistant
 
     public class Update
     {
-        public string url;
-        public string assets_url;
-        public string upload_url;
-        public string html_url;
-        public int id;
-        public string node_id;
-        public string tag_name;
-        public string target_commitish;
-        public string name;
-        public bool draft;
-        public User author;
-        public bool prerelease;
-        public string created_at;
-        public string published_at;
-        public Asset[] assets;
-        public string tarball_url;
-        public string zipball_url;
-        public string body;
+        public string Url;
+        public string AssetsUrl;
+        public string UploadUrl;
+        public string HtmlUrl;
+        public int Id;
+        public string NodeId;
+        public string TagName;
+        public string TargetCommitish;
+        public string Name;
+        public bool Draft;
+        public User Author;
+        public bool Prerelease;
+        public string CreatedAt;
+        public string PublishedAt;
+        public Asset[] Assets;
+        public string TarballUrl;
+        public string ZipballUrl;
+        public string Body;
 
         public class Asset
         {
-            public string url;
-            public int id;
-            public string node_id;
-            public string name;
-            public string label;
-            public User uploader;
-            public string content_type;
-            public string state;
-            public int size;
-            public string created_at;
-            public string updated_at;
-            public string browser_download_url;
+            public string Url;
+            public int Id;
+            public string NodeId;
+            public string Name;
+            public string Label;
+            public User Uploader;
+            public string ContentType;
+            public string State;
+            public int Size;
+            public string CreatedAt;
+            public string UpdatedAt;
+            public string BrowserDownloadUrl;
         }
 
         public class User
         {
-            public string login;
-            public int id;
-            public string node_id;
-            public string avatar_url;
-            public string gravatar_id;
-            public string url;
-            public string html_url;
-            public string followers_url;
-            public string following_url;
-            public string gists_url;
-            public string starred_url;
-            public string subscriptions_url;
-            public string organizations_url;
-            public string repos_url;
-            public string events_url;
-            public string received_events_url;
-            public string type;
-            public bool site_admin;
+            public string Login;
+            public int Id;
+            public string NodeId;
+            public string AvatarUrl;
+            public string GravatarId;
+            public string Url;
+            public string HtmlUrl;
+            public string FollowersUrl;
+            public string FollowingUrl;
+            public string GistsUrl;
+            public string StarredUrl;
+            public string SubscriptionsUrl;
+            public string OrganizationsUrl;
+            public string ReposUrl;
+            public string EventsUrl;
+            public string ReceivedEventsUrl;
+            public string Type;
+            public bool SiteAdmin;
 
         }
     }

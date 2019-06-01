@@ -49,7 +49,7 @@ namespace ModAssistant
 
             VersionText.Text = App.Version;
 
-            if (Utils.isVoid())
+            if (Utils.IsVoid())
             {
                 Main.Content = Invalid.Instance;
                 MainWindow.Instance.ModsButton.IsEnabled = false;
@@ -64,7 +64,7 @@ namespace ModAssistant
 
             List<string> versions;
             string json = string.Empty;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsAPIUrl + "version");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsApiUrl + "version");
             request.AutomaticDecompression = DecompressionMethods.GZip;
             request.UserAgent = "ModAssistant/" + App.Version;
 
@@ -160,7 +160,7 @@ namespace ModAssistant
         private void InfoButton_Click(object sender, RoutedEventArgs e)
         {
             Mods.ModListItem mod = ((Mods.ModListItem)Mods.Instance.ModsListView.SelectedItem);
-            string infoUrl = mod.ModInfo.link;
+            string infoUrl = mod.ModInfo.Link;
             if (String.IsNullOrEmpty(infoUrl))
             {
                 MessageBox.Show(mod.ModName + " does not have an info page");
