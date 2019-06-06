@@ -94,7 +94,10 @@ namespace ModAssistant
             string InstallDir = null;
             
             InstallDir = Properties.Settings.Default.InstallFolder;
-            if (!String.IsNullOrEmpty(InstallDir) && Directory.Exists(InstallDir))
+            if (!String.IsNullOrEmpty(InstallDir)
+                && Directory.Exists(InstallDir)
+                && Directory.Exists(Path.Combine(InstallDir, "Beat Saber_Data", "Plugins"))
+                && File.Exists(Path.Combine(InstallDir, "Beat Saber.exe")))
             {
                 return InstallDir;
             }
