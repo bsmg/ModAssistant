@@ -31,7 +31,22 @@
 						</GridViewColumn>
 
 						<GridViewColumn Header="Latest" DisplayMemberBinding="{Binding ModVersion}" />
-						<GridViewColumn x:Name="DescriptionColumn" Header="Description" Width="750" DisplayMemberBinding="{Binding ModDescription}"/>
+						<GridViewColumn x:Name="DescriptionColumn" Header="Description" Width="750" >
+							<GridViewColumn.CellTemplate>
+								<DataTemplate>
+									<StackPanel Orientation="Horizontal">
+										<TextBlock Margin="{Binding PromotionMargin}">
+											<Hyperlink NavigateUri="{Binding PromotionLink}" RequestNavigate="Hyperlink_RequestNavigate">
+												<TextBlock Text="{Binding PromotionText}" />
+											</Hyperlink>
+										</TextBlock>
+										<TextBlock Text="{Binding ModDescription}" />
+									</StackPanel>
+								</DataTemplate>
+
+							</GridViewColumn.CellTemplate>
+						</GridViewColumn>
+
 						<GridViewColumn x:Name="UninstallColumn"  Header="Uninstall" Width="70">
 							<GridViewColumn.CellTemplate>
 								<DataTemplate>

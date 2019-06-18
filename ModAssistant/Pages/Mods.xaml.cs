@@ -241,6 +241,15 @@ namespace ModAssistant.Pages
                     Category = mod.category
                 };
 
+                foreach (Promotion promo in Promotions.ActivePromotions)
+                {
+                    if (mod.name == promo.ModName)
+                    {
+                        ListItem.PromotionText = promo.Text;
+                        ListItem.PromotionLink = promo.Link;
+                    }
+                }
+
                 foreach (Mod installedMod in InstalledMods)
                 {
                     if (mod.name == installedMod.name)
@@ -500,6 +509,16 @@ namespace ModAssistant.Pages
                 }
             }
 
+            public string PromotionText { get; set; }
+            public string PromotionLink { get; set; }
+            public string PromotionMargin
+            {
+                get
+                {
+                    if (String.IsNullOrEmpty(PromotionText)) return "0";
+                    return "0,0,5,0";
+                }
+            }
         }
 
         private void ModsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -562,6 +581,12 @@ namespace ModAssistant.Pages
                 }
                 view.Refresh();
             }
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
         }
     }
 }
