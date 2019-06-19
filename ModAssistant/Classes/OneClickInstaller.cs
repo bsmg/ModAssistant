@@ -10,20 +10,21 @@ using System.Windows;
 using System.Security.Principal;
 using Microsoft.Win32;
 using System.IO.Compression;
+using System.Web.Script.Serialization;
 
 namespace ModAssistant
 {
     class OneClickInstaller
     {
         private const string ModelSaberURLPrefix = "https://modelsaber.com/files/";
-        private const string BeatSaverURLPrefix = "https://beatsaver.com/download/";
+        private const string BeatSaverURLPrefix = "https://beatsaver.com";
 
         private static string BeatSaberPath = App.BeatSaberInstallDirectory;
 
         private const string CustomAvatarsFolder = "CustomAvatars";
         private const string CustomSabersFolder = "CustomSabers";
         private const string CustomPlatformsFolder = "CustomPlatforms";
-        private const string CustomSongsFolder = "CustomSongs";
+        private static readonly string CustomSongsFolder = Path.Combine("Beat Saber_Data", "CustomLevels");
 
         private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver" };
 
@@ -45,11 +46,37 @@ namespace ModAssistant
 
         private static void BeatSaver(Uri uri)
         {
-            string ID = uri.Host;
-            DownloadAsset(BeatSaverURLPrefix + ID, CustomSongsFolder, ID + ".zip");
-            string directory = Path.Combine(BeatSaberPath, CustomSongsFolder, ID);
+            string Key = uri.Host;
 
-            using (FileStream stream = new FileStream(directory + ".zip", FileMode.Open))
+            string json = string.Empty;
+            BeatSaverApiResponse Response;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BeatSaverURLPrefix + "/api/maps/detail/" + Key);
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+            request.UserAgent = "ModAssistant/" + App.Version;
+
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    var serializer = new JavaScriptSerializer();
+                    Response = serializer.Deserialize<BeatSaverApiResponse>(reader.ReadToEnd());
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Could not get map details.\n\n" + e);
+                return;
+            }
+
+            string directory = Path.Combine(BeatSaberPath, CustomSongsFolder, Response.key + " (" + Response.metadata.songName + " - " + Response.metadata.levelAuthorName + ")").Trim(Path.GetInvalidPathChars());
+            string zip = Path.Combine(BeatSaberPath, CustomSongsFolder, Response.hash) + ".zip";
+
+            DownloadAsset(BeatSaverURLPrefix + Response.downloadURL, CustomSongsFolder, Response.hash + ".zip");
+            
+            using (FileStream stream = new FileStream(zip, FileMode.Open))
             {
                 using (ZipArchive archive = new ZipArchive(stream))
                 {
@@ -65,7 +92,7 @@ namespace ModAssistant
                 }
             }
 
-            File.Delete(Path.Combine(BeatSaberPath, CustomSongsFolder, ID + ".zip"));
+            File.Delete(zip);
         }
 
         private static void ModelSaber(Uri uri)
@@ -190,6 +217,58 @@ namespace ModAssistant
                 return true;
             else
                 return false;
+        }
+    }
+
+    class BeatSaverApiResponse
+    {
+        public Metadata metadata { get; set; }
+        public Stats stats { get; set; }
+        public string description { get; set; }
+        public DateTime? deletedAt { get; set; }
+        public string _id { get; set; }
+        public string key { get; set; }
+        public string name { get; set; }
+        public Uploader uploader { get; set; }
+        public DateTime uploaded { get; set; }
+        public string hash { get; set; }
+        public string downloadURL { get; set; }
+        public string coverURL { get; set; }
+
+        public class Difficulties
+        {
+            public bool easy { get; set; }
+            public bool normal { get; set; }
+            public bool hard { get; set; }
+            public bool expert { get; set; }
+            public bool expertPlus { get; set; }
+        }
+
+        public class Metadata
+        {
+            public Difficulties difficulties { get; set; }
+            public string[] characteristics { get; set; }
+            public string songName { get; set; }
+            public string songSubName { get; set; }
+            public string songAuthorName { get; set; }
+            public string levelAuthorName { get; set; }
+            public int bpm { get; set; }
+        }
+
+        public class Stats
+        {
+            public int downloads { get; set; }
+            public int plays { get; set; }
+            public int downVotes { get; set; }
+            public int upVotes { get; set; }
+            public double heat { get; set; }
+            public double rating { get; set; }
+        }
+
+        public class Uploader
+        {
+            public string _id { get; set; }
+            public string username { get; set; }
         }
     }
 }
