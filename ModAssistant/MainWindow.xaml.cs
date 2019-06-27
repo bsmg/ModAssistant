@@ -60,8 +60,6 @@ namespace ModAssistant
                 return;
             }
 
-            Main.Content = Intro.Instance;
-
             List<string> versions;
             string json = string.Empty;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsAPIUrl + "version");
@@ -94,6 +92,34 @@ namespace ModAssistant
             {
                 MainWindow.Instance.ModsButton.IsEnabled = true;
             }
+
+            if (!Properties.Settings.Default.Agreed || String.IsNullOrEmpty(Properties.Settings.Default.LastTab))
+            {
+                Main.Content = Intro.Instance;
+            }
+            else
+            {
+                switch (Properties.Settings.Default.LastTab)
+                {
+                    case "Intro":
+                        Main.Content = Intro.Instance;
+                        break;
+                    case "Mods":
+                        Mods.Instance.LoadMods();
+                        ModsOpened = true;
+                        Main.Content = Mods.Instance;
+                        break;
+                    case "About":
+                        Main.Content = About.Instance;
+                        break;
+                    case "Options":
+                        Main.Content = Options.Instance;
+                        break;
+                    default:
+                        Main.Content = Intro.Instance;
+                        break;
+                }
+            }
         }
 
         private string GetGameVersion(List<string> versions)
@@ -122,6 +148,8 @@ namespace ModAssistant
         private void ModsButton_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = Mods.Instance;
+            Properties.Settings.Default.LastTab = "Mods";
+            Properties.Settings.Default.Save();
 
             if (!ModsOpened)
             {
@@ -140,16 +168,22 @@ namespace ModAssistant
         private void IntroButton_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = Intro.Instance;
+            Properties.Settings.Default.LastTab = "Intro";
+            Properties.Settings.Default.Save();
         }
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = About.Instance;
+            Properties.Settings.Default.LastTab = "About";
+            Properties.Settings.Default.Save();
         }
 
         private void OptionsButton_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = Options.Instance;
+            Properties.Settings.Default.LastTab = "Options";
+            Properties.Settings.Default.Save();
         }
 
         private void InstallButton_Click(object sender, RoutedEventArgs e)
