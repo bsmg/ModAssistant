@@ -28,6 +28,14 @@ namespace ModAssistant
             public const string BeatModsURL = "https://beatmods.com";
             public const string BeatModsModsOptions = "mod?status=approved";
             public const string MD5Spacer = "                                 ";
+            public static readonly char[] IllegalCharacters = new char[]
+            {
+                '<', '>', ':', '/', '\\', '|', '?', '*', '"',
+                '\u0000', '\u0001', '\u0002', '\u0003', '\u0004', '\u0005', '\u0006', '\u0007',
+                '\u0008', '\u0009', '\u000a', '\u000b', '\u000c', '\u000d', '\u000e', '\u000d',
+                '\u000f', '\u0010', '\u0011', '\u0012', '\u0013', '\u0014', '\u0015', '\u0016',
+                '\u0017', '\u0018', '\u0019', '\u001a', '\u001b', '\u001c', '\u001d', '\u001f',
+            };
         }
 
         public static class GameVersions
@@ -37,7 +45,7 @@ namespace ModAssistant
                 {"3708884", "0.13.2"},
                 {"3844832", "1.0.0" },
                 {"3861357", "1.0.1" },
-                {"3901511", "1.1.0" }
+                {"3901511", "1.1.0" },
             };
         }
 
@@ -307,24 +315,6 @@ namespace ModAssistant
             }
             return null;
         }
-        /*
-        public static string GetManualDir()
-        {
-
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog()
-            {
-                IsFolderPicker = true,
-                Multiselect = false,
-                Title = "Select your Beat Saber installation folder"
-            };
-
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
-            {
-                return dialog.FileName;
-            }
-
-            return null;
-        }*/
 
         public static string GetManualDir()
         {

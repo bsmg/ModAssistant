@@ -71,8 +71,15 @@ namespace ModAssistant
                 return;
             }
 
-            string directory = Path.Combine(BeatSaberPath, CustomSongsFolder, Response.key + " (" + Response.metadata.songName + " - " + Response.metadata.levelAuthorName + ")").Trim(Path.GetInvalidPathChars());
             string zip = Path.Combine(BeatSaberPath, CustomSongsFolder, Response.hash) + ".zip";
+            string directory = Path.Combine(
+                BeatSaberPath,
+                CustomSongsFolder,
+                String.Concat(
+                    (Response.key + " (" + Response.metadata.songName + " - " + Response.metadata.levelAuthorName + ")")
+                    .Split(Utils.Constants.IllegalCharacters)
+                )
+            );
 
             DownloadAsset(BeatSaverURLPrefix + Response.downloadURL, CustomSongsFolder, Response.hash + ".zip");
             
