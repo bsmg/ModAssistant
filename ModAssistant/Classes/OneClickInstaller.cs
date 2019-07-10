@@ -247,12 +247,37 @@ namespace ModAssistant
         public class Metadata
         {
             public Difficulties difficulties { get; set; }
-            public string[] characteristics { get; set; }
+            public Characteristic[] characteristics { get; set; }
             public string songName { get; set; }
             public string songSubName { get; set; }
             public string songAuthorName { get; set; }
             public string levelAuthorName { get; set; }
             public double bpm { get; set; }
+        }
+
+        public class Characteristic 
+        {
+            public string name { get; set; }
+            public CharacteristicDifficulties difficulties { get; set; }
+        }
+
+        public class CharacteristicDifficulties 
+        {
+            public Difficulty easy { get; set; }
+            public Difficulty normal { get; set; }
+            public Difficulty hard { get; set; }
+            public Difficulty expert { get; set; }
+            public Difficulty expertPlus { get; set; }
+        }
+
+        public class Difficulty 
+        {
+            public double duration { get; set; }
+            public double length { get; set; }
+            public double bombs { get; set; }
+            public double notes { get; set; }
+            public double obstacles { get; set; }
+            public double njs { get; set; }
         }
 
         public class Stats
