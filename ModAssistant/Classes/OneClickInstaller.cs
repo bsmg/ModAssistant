@@ -279,8 +279,8 @@ namespace ModAssistant
 
         public class Difficulty 
         {
-            public double duration { get; set; }
-            public double length { get; set; }
+            public double? duration { get; set; }
+            public double? length { get; set; }
             public double bombs { get; set; }
             public double notes { get; set; }
             public double obstacles { get; set; }
