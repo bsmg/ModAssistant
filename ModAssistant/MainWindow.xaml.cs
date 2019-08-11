@@ -86,6 +86,11 @@ namespace ModAssistant
                             Intro.Instance.StopLoading(true);
                             MainText = "Finished Loading Versions.";
                             LoadingVersionCompletionSource.SetResult(true);
+
+                            if (!String.IsNullOrEmpty(GameVersion) && Properties.Settings.Default.Agreed)
+                            {
+                                MainWindow.Instance.ModsButton.IsEnabled = true;
+                            }
                         });
                     }
                     catch (Exception e)
@@ -100,11 +105,6 @@ namespace ModAssistant
                     }
                 }
             });
-
-            if (!String.IsNullOrEmpty(GameVersion) && Properties.Settings.Default.Agreed)
-            {
-                MainWindow.Instance.ModsButton.IsEnabled = true;
-            }
 
             if (!Properties.Settings.Default.Agreed || String.IsNullOrEmpty(Properties.Settings.Default.LastTab))
             {
