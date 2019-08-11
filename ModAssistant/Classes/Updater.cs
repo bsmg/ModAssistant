@@ -23,19 +23,9 @@ namespace ModAssistant
 
         public static bool CheckForUpdate()
         {
-            string json = string.Empty;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(APILatestURL);
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-            request.UserAgent = "ModAssistant/" + App.Version;
+            var serializer = new JavaScriptSerializer();
+            LatestUpdate = serializer.Deserialize<Update>(MainWindow.HttpClient.GetStringAsync(APILatestURL).Result);
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                var serializer = new JavaScriptSerializer();
-                LatestUpdate = serializer.Deserialize<Update>(reader.ReadToEnd());
-            }
-            
             LatestVersion = new Version(LatestUpdate.tag_name.Substring(1));
             CurrentVersion = new Version(App.Version);
 

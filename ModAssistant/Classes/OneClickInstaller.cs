@@ -46,24 +46,11 @@ namespace ModAssistant
 
         private static void BeatSaver(Uri uri)
         {
-            string Key = uri.Host;
-
-            string json = string.Empty;
-            BeatSaverApiResponse Response;
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BeatSaverURLPrefix + "/api/maps/detail/" + Key);
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-            request.UserAgent = "ModAssistant/" + App.Version;
-
+            BeatSaverApiResponse response;
             try
             {
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    var serializer = new JavaScriptSerializer();
-                    Response = serializer.Deserialize<BeatSaverApiResponse>(reader.ReadToEnd());
-                }
+                var serializer = new JavaScriptSerializer();
+                response = serializer.Deserialize<BeatSaverApiResponse>(MainWindow.HttpClient.GetStringAsync(BeatSaverURLPrefix + "/api/maps/detail/" + uri.Host).Result);
             }
             catch (Exception e)
             {
@@ -71,18 +58,18 @@ namespace ModAssistant
                 return;
             }
 
-            string zip = Path.Combine(BeatSaberPath, CustomSongsFolder, Response.hash) + ".zip";
+            string zip = Path.Combine(BeatSaberPath, CustomSongsFolder, response.hash) + ".zip";
             string directory = Path.Combine(
                 BeatSaberPath,
                 CustomSongsFolder,
                 String.Concat(
-                    (Response.key + " (" + Response.metadata.songName + " - " + Response.metadata.levelAuthorName + ")")
+                    (response.key + " (" + response.metadata.songName + " - " + response.metadata.levelAuthorName + ")")
                     .Split(Utils.Constants.IllegalCharacters)
                 )
             );
 
-            DownloadAsset(BeatSaverURLPrefix + Response.downloadURL, CustomSongsFolder, Response.hash + ".zip");
-            
+            DownloadAsset(BeatSaverURLPrefix + response.downloadURL, CustomSongsFolder, response.hash + ".zip");
+
             using (FileStream stream = new FileStream(zip, FileMode.Open))
             {
                 using (ZipArchive archive = new ZipArchive(stream))
@@ -170,7 +157,8 @@ namespace ModAssistant
                 {
                     Utils.StartAsAdmin($"\"--register\" \"{Protocol}\"");
                 }
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
             }
@@ -262,13 +250,13 @@ namespace ModAssistant
             public double bpm { get; set; }
         }
 
-        public class Characteristic 
+        public class Characteristic
         {
             public string name { get; set; }
             public CharacteristicDifficulties difficulties { get; set; }
         }
 
-        public class CharacteristicDifficulties 
+        public class CharacteristicDifficulties
         {
             public Difficulty easy { get; set; }
             public Difficulty normal { get; set; }
@@ -277,7 +265,7 @@ namespace ModAssistant
             public Difficulty expertPlus { get; set; }
         }
 
-        public class Difficulty 
+        public class Difficulty
         {
             public double? duration { get; set; }
             public double? length { get; set; }
