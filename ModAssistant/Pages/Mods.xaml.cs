@@ -50,6 +50,11 @@ namespace ModAssistant.Pages
 
         public async void LoadMods()
         {
+            var hasVersionsLoadedSuccessfully = await MainWindow.Instance.LoadingVersionCompletionSource.Task;
+            if (!hasVersionsLoadedSuccessfully)
+            {
+                return;
+            }
             MainWindow.Instance.InstallButton.IsEnabled = false;
             MainWindow.Instance.GameVersionsBox.IsEnabled = false;
 

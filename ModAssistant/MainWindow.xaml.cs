@@ -30,6 +30,7 @@ namespace ModAssistant
         public static MainWindow Instance;
         public static bool ModsOpened = false;
         public static string GameVersion;
+        public TaskCompletionSource<bool> LoadingVersionCompletionSource = new TaskCompletionSource<bool>();
 
         public string MainText
         {
@@ -84,6 +85,7 @@ namespace ModAssistant
                             GameVersionsBox.IsEnabled = true;
                             Intro.Instance.StopLoading(true);
                             MainText = "Finished Loading Versions.";
+                            LoadingVersionCompletionSource.SetResult(true);
                         });
                     }
                     catch (Exception e)
@@ -93,6 +95,7 @@ namespace ModAssistant
                             MainText = "Loading Versions failed.";
                             Intro.Instance.StopLoading(false);
                             MessageBox.Show("Could not load game versions, Mods tab will be unavailable.\n" + e);
+                            LoadingVersionCompletionSource.SetResult(false);
                         });
                     }
                 }
