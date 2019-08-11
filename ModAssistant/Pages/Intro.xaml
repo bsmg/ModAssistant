@@ -7,6 +7,17 @@
       mc:Ignorable="d" 
       d:DesignHeight="629" d:DesignWidth="1182"
       Title="Intro">
+    <Page.Resources>
+        <Storyboard x:Key="WaitStoryboard">
+            <DoubleAnimation
+                Storyboard.TargetName="Wait"
+                Storyboard.TargetProperty="(TextBlock.LayoutTransform).(RotateTransform.Angle)"
+                From="0"
+                To="360"
+                Duration="0:0:2"
+                RepeatBehavior="Forever" />
+        </Storyboard>
+    </Page.Resources>
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 		<Grid.RowDefinitions>
@@ -60,12 +71,19 @@
 		</TextBlock>
 
 		<StackPanel Margin="10" Grid.Row="10" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-			<Button Margin="0,0,10,0" Name="Agree" Height="35" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Agree_Click">
-				<TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center">
-					I Agree
-				</TextBlock>
-			</Button>
-			<Button Margin="10,0,0,0" Name="Disagree" Height="35" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Disagree_Click">
+			<Button Margin="0,0,10,0" Name="Agree" VerticalAlignment="Center" Padding="10 5" HorizontalAlignment="Center" Click="Agree_Click">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Name="Wait"  Text="Loading" RenderTransformOrigin="0.5, 0.5" Margin="0 0 10 0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock.LayoutTransform>
+                            <RotateTransform Angle="0" />
+                        </TextBlock.LayoutTransform>
+                    </TextBlock>
+                    <TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center">
+					    I Agree
+				    </TextBlock>
+                </StackPanel>
+            </Button>
+			<Button Margin="10,0,0,0" Name="Disagree" Padding="10 5" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Disagree_Click">
 				<TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center">
 					Disagree
 				</TextBlock>

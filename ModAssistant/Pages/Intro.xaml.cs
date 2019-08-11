@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -57,6 +58,22 @@ namespace ModAssistant.Pages
             }
             Properties.Settings.Default.Agreed = true;
             Properties.Settings.Default.Save();
+        }
+
+        public void StartLoading()
+        {
+            ((Storyboard)FindResource("WaitStoryboard")).Begin();
+            Agree.IsEnabled = false;
+        }
+
+        public void StopLoading(bool isSuccess)
+        {
+            ((Storyboard)FindResource("WaitStoryboard")).Stop();
+            Wait.Visibility = Visibility.Collapsed;
+            if (isSuccess)
+            {
+                Agree.IsEnabled = true;
+            }
         }
     }
 }

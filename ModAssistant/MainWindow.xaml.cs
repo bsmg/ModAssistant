@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Net;
 using System.IO;
+using System.Net.Http;
 using System.Web.Script.Serialization;
 using System.Runtime.Serialization;
 using ModAssistant.Pages;
@@ -60,33 +61,42 @@ namespace ModAssistant
                 return;
             }
 
-            List<string> versions;
-            string json = string.Empty;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsAPIUrl + "version");
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-            request.UserAgent = "ModAssistant/" + App.Version;
+            Intro.Instance.StartLoading();
+            MainText = "Loading Versions.";
+            GameVersionsBox.IsEnabled = false;
 
-            versions = null;
-            try
+            Task.Run(async () =>
             {
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
+                using (var httpClient = new HttpClient())
                 {
-                    JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    versions = serializer.Deserialize<string[]>(reader.ReadToEnd()).ToList();
+                    httpClient.DefaultRequestHeaders.Add("User-Agent", "ModAssistant/" + App.Version);
+
+                    try
+                    {
+                        var serializer = new JavaScriptSerializer();
+                        var versions = serializer.Deserialize<string[]>(await httpClient.GetStringAsync(Utils.Constants.BeatModsAPIUrl + "version")).ToList();
+
+                        Dispatcher.Invoke(() =>
+                        {
+                            GameVersion = GetGameVersion(versions);
+                            GameVersionsBox.ItemsSource = versions;
+                            GameVersionsBox.SelectedValue = GameVersion;
+                            GameVersionsBox.IsEnabled = true;
+                            Intro.Instance.StopLoading(true);
+                            MainText = "Finished Loading Versions.";
+                        });
+                    }
+                    catch (Exception e)
+                    {
+                        Dispatcher.Invoke(() =>
+                        {
+                            MainText = "Loading Versions failed.";
+                            Intro.Instance.StopLoading(false);
+                            MessageBox.Show("Could not load game versions, Mods tab will be unavailable.\n" + e);
+                        });
+                    }
                 }
-
-                GameVersion = GetGameVersion(versions);
-
-                GameVersionsBox.ItemsSource = versions;
-                GameVersionsBox.SelectedValue = GameVersion;
-            }
-            catch (Exception e)
-            {
-                GameVersionsBox.IsEnabled = false;
-                MessageBox.Show("Could not load game versions, Mods tab will be unavailable.\n" + e);
-            }
+            });
 
             if (!String.IsNullOrEmpty(GameVersion) && Properties.Settings.Default.Agreed)
             {
@@ -130,7 +140,7 @@ namespace ModAssistant
                 if (!String.IsNullOrEmpty(steamVersion) && versions.Contains(steamVersion))
                     return steamVersion;
             }
-            
+
             string versionsString = String.Join(",", versions.ToArray());
             if (Properties.Settings.Default.AllGameVersions != versionsString)
             {
@@ -208,9 +218,9 @@ namespace ModAssistant
         private void GameVersionsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string oldGameVersion = GameVersion;
-            
+
             GameVersion = (sender as ComboBox).SelectedItem.ToString();
-            
+
             if (String.IsNullOrEmpty(oldGameVersion)) return;
 
             Properties.Settings.Default.GameVersion = GameVersion;
