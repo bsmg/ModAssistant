@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.IO.Compression;
 using System.Diagnostics;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace ModAssistant.Pages
@@ -27,13 +28,14 @@ namespace ModAssistant.Pages
     {
         public static Mods Instance = new Mods();
 
-        public List<string> DefaultMods = new List<string>(){ "SongLoader", "ScoreSaber", "BeatSaverDownloader" };
+        public List<string> DefaultMods = new List<string>() { "SongLoader", "ScoreSaber", "BeatSaverDownloader" };
         public Mod[] ModsList;
         public Mod[] AllModsList;
         public static List<Mod> InstalledMods = new List<Mod>();
         public List<string> CategoryNames = new List<string>();
         public CollectionView view;
         public bool PendingChanges;
+        private SemaphoreSlim _modLoadSemaphore = new SemaphoreSlim(1, 1);
 
         public List<ModListItem> ModList { get; set; }
 
@@ -50,51 +52,60 @@ namespace ModAssistant.Pages
 
         public async void LoadMods()
         {
-            MainWindow.Instance.InstallButton.IsEnabled = false;
-            MainWindow.Instance.GameVersionsBox.IsEnabled = false;
-
-            if (ModsList != null)
-                Array.Clear(ModsList, 0, ModsList.Length);
-            if (AllModsList != null)
-                Array.Clear(AllModsList, 0, AllModsList.Length);
-
-            InstalledMods = new List<Mod>();
-            CategoryNames = new List<string>();
-            ModList = new List<ModListItem>();
-
-            ModsListView.Visibility = Visibility.Hidden;
-
-            if (App.CheckInstalledMods)
+            await _modLoadSemaphore.WaitAsync();
+            try
             {
-                MainWindow.Instance.MainText = "Checking Installed Mods...";
-                await Task.Run(() => CheckInstalledMods());
-                InstalledColumn.Width = Double.NaN;
-                UninstallColumn.Width = 70;
-                DescriptionColumn.Width = 750;
-            } else
-            {
-                InstalledColumn.Width = 0;
-                UninstallColumn.Width = 0;
-                DescriptionColumn.Width = 800;
+                MainWindow.Instance.InstallButton.IsEnabled = false;
+                MainWindow.Instance.GameVersionsBox.IsEnabled = false;
+
+                if (ModsList != null)
+                    Array.Clear(ModsList, 0, ModsList.Length);
+                if (AllModsList != null)
+                    Array.Clear(AllModsList, 0, AllModsList.Length);
+
+                InstalledMods = new List<Mod>();
+                CategoryNames = new List<string>();
+                ModList = new List<ModListItem>();
+
+                ModsListView.Visibility = Visibility.Hidden;
+
+                if (App.CheckInstalledMods)
+                {
+                    MainWindow.Instance.MainText = "Checking Installed Mods...";
+                    await Task.Run(() => CheckInstalledMods());
+                    InstalledColumn.Width = Double.NaN;
+                    UninstallColumn.Width = 70;
+                    DescriptionColumn.Width = 750;
+                }
+                else
+                {
+                    InstalledColumn.Width = 0;
+                    UninstallColumn.Width = 0;
+                    DescriptionColumn.Width = 800;
+                }
+
+                MainWindow.Instance.MainText = "Loading Mods...";
+                await Task.Run(() => PopulateModsList());
+
+                ModsListView.ItemsSource = ModList;
+
+                view = (CollectionView) CollectionViewSource.GetDefaultView(ModsListView.ItemsSource);
+                PropertyGroupDescription groupDescription = new PropertyGroupDescription("Category");
+                view.GroupDescriptions.Add(groupDescription);
+
+                this.DataContext = this;
+
+                RefreshModsList();
+                ModsListView.Visibility = Visibility.Visible;
+                MainWindow.Instance.MainText = "Finished Loading Mods.";
+
+                MainWindow.Instance.InstallButton.IsEnabled = true;
+                MainWindow.Instance.GameVersionsBox.IsEnabled = true;
             }
-
-            MainWindow.Instance.MainText = "Loading Mods...";
-            await Task.Run(() => PopulateModsList());
-
-            ModsListView.ItemsSource = ModList;
-
-            view = (CollectionView)CollectionViewSource.GetDefaultView(ModsListView.ItemsSource);
-            PropertyGroupDescription groupDescription = new PropertyGroupDescription("Category");
-            view.GroupDescriptions.Add(groupDescription);
-
-            this.DataContext = this;
-
-            RefreshModsList();
-            ModsListView.Visibility = Visibility.Visible;
-            MainWindow.Instance.MainText = "Finished Loading Mods.";
-
-            MainWindow.Instance.InstallButton.IsEnabled = true;
-            MainWindow.Instance.GameVersionsBox.IsEnabled = true;
+            finally
+            {
+                _modLoadSemaphore.Release();
+            }
         }
 
         private void CheckInstalledMods()
@@ -222,7 +233,7 @@ namespace ModAssistant.Pages
                 if (DefaultMods.Contains(mod.name) || (App.SaveModSelection && App.SavedMods.Contains(mod.name)))
                 {
                     preSelected = true;
-                    if(!App.SavedMods.Contains(mod.name))
+                    if (!App.SavedMods.Contains(mod.name))
                     {
                         App.SavedMods.Add(mod.name);
                     }
@@ -272,7 +283,7 @@ namespace ModAssistant.Pages
             }
         }
 
-        public async void InstallMods ()
+        public async void InstallMods()
         {
             MainWindow.Instance.InstallButton.IsEnabled = false;
             string installDirectory = App.BeatSaberInstallDirectory;
@@ -296,7 +307,7 @@ namespace ModAssistant.Pages
                         );
                     }
                 }
-                else if(mod.ListItem.IsSelected)
+                else if (mod.ListItem.IsSelected)
                 {
                     MainWindow.Instance.MainText = $"Installing {mod.name}...";
                     await Task.Run(() => InstallMod(mod, Path.Combine(installDirectory, @"IPA\Pending")));
@@ -308,7 +319,7 @@ namespace ModAssistant.Pages
             RefreshModsList();
         }
 
-        private void InstallMod (Mod mod, string directory)
+        private void InstallMod(Mod mod, string directory)
         {
             string downloadLink = null;
 
@@ -318,7 +329,8 @@ namespace ModAssistant.Pages
                 {
                     downloadLink = link.url;
                     break;
-                } else if (link.type.ToLower() == App.BeatSaberInstallType.ToLower())
+                }
+                else if (link.type.ToLower() == App.BeatSaberInstallType.ToLower())
                 {
                     downloadLink = link.url;
                     break;
@@ -341,7 +353,7 @@ namespace ModAssistant.Pages
                         if (!Directory.Exists(fileDirectory))
                             Directory.CreateDirectory(fileDirectory);
 
-                        if(!String.IsNullOrEmpty(file.Name))
+                        if (!String.IsNullOrEmpty(file.Name))
                             file.ExtractToFile(Path.Combine(directory, file.FullName), true);
                     }
                 }
@@ -355,7 +367,7 @@ namespace ModAssistant.Pages
             }
         }
 
-        private byte[] DownloadMod (string link)
+        private byte[] DownloadMod(string link)
         {
             byte[] zip = new WebClient().DownloadData(link);
             return zip;
@@ -370,12 +382,12 @@ namespace ModAssistant.Pages
             {
                 foreach (Mod.Dependency dep in dependent.dependencies)
                 {
-                    
+
                     if (dep.name == mod.name)
                     {
                         dep.Mod = mod;
                         mod.Dependents.Add(dependent);
-                        
+
                     }
                 }
             }
