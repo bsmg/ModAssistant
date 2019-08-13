@@ -118,7 +118,6 @@ namespace ModAssistant
                         Main.Content = Intro.Instance;
                         break;
                     case "Mods":
-                        Mods.Instance.LoadMods();
                         ModsOpened = true;
                         Main.Content = Mods.Instance;
                         break;
