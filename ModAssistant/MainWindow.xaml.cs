@@ -193,6 +193,11 @@ namespace ModAssistant
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)
         {
+            if ((Mods.ModListItem)Mods.Instance.ModsListView.SelectedItem == null)
+            {
+                MessageBox.Show("No mod selected");
+                return;
+            }
             Mods.ModListItem mod = ((Mods.ModListItem)Mods.Instance.ModsListView.SelectedItem);
             string infoUrl = mod.ModInfo.link;
             if (String.IsNullOrEmpty(infoUrl))
