@@ -57,6 +57,7 @@ namespace ModAssistant.Pages
             {
                 MainWindow.Instance.InstallButton.IsEnabled = false;
                 MainWindow.Instance.GameVersionsBox.IsEnabled = false;
+                MainWindow.Instance.InfoButton.IsEnabled = false;
 
                 if (ModsList != null)
                     Array.Clear(ModsList, 0, ModsList.Length);
@@ -535,7 +536,14 @@ namespace ModAssistant.Pages
 
         private void ModsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MainWindow.Instance.InfoButton.IsEnabled = true;
+            if ((Mods.ModListItem)Mods.Instance.ModsListView.SelectedItem == null)
+            {
+                MainWindow.Instance.InfoButton.IsEnabled = false;
+            }
+            else
+            {
+                MainWindow.Instance.InfoButton.IsEnabled = true;
+            }
         }
 
         private void UninstallBSIPA(Mod.DownloadLink links)
