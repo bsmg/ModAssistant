@@ -79,8 +79,10 @@ namespace ModAssistant
 
                 GameVersion = GetGameVersion(versions);
 
+                versions[versions.FindIndex(e => e.Equals("1.3.0"))] = "1.4.2";
+
                 GameVersionsBox.ItemsSource = versions;
-                GameVersionsBox.SelectedValue = GameVersion;
+                GameVersionsBox.SelectedValue = GameVersion == "1.3.0" ? "1.4.2" : GameVersion;
             }
             catch (Exception e)
             {
@@ -215,6 +217,9 @@ namespace ModAssistant
             string oldGameVersion = GameVersion;
             
             GameVersion = (sender as ComboBox).SelectedItem.ToString();
+
+            if (GameVersion == "1.4.2")
+                GameVersion = "1.3.0";
             
             if (String.IsNullOrEmpty(oldGameVersion)) return;
 
