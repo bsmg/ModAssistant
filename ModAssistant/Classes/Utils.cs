@@ -38,17 +38,6 @@ namespace ModAssistant
             };
         }
 
-        public static class GameVersions
-        {
-            public static Dictionary<string, string> SteamVersions = new Dictionary<string, string>
-            {
-                {"3708884", "0.13.2"},
-                {"3844832", "1.0.0" },
-                {"3861357", "1.0.1" },
-                {"3901511", "1.1.0" },
-            };
-        }
-
         public static void SendNotify(string message, string title = "Mod Assistant")
         {
             var notification = new System.Windows.Forms.NotifyIcon()
@@ -209,57 +198,23 @@ namespace ModAssistant
             return null;
         }
 
-        public static string GetSteamVersion()
+        public static string GetVersion()
         {
-            string SteamInstall = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)?.OpenSubKey("SOFTWARE")?.OpenSubKey("WOW6432Node")?.OpenSubKey("Valve")?.OpenSubKey("Steam")?.GetValue("InstallPath").ToString();
-            if (String.IsNullOrEmpty(SteamInstall))
+            string filename = Path.Combine(App.BeatSaberInstallDirectory, "Beat Saber_Data", "globalgamemanagers");
+            using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
             {
-                SteamInstall = Registry.LocalMachine.OpenSubKey("SOFTWARE")?.OpenSubKey("WOW6432Node")?.OpenSubKey("Valve")?.OpenSubKey("Steam")?.GetValue("InstallPath").ToString();
+                byte[] file = File.ReadAllBytes(filename);
+                byte[] bytes = new byte[16];
+
+                fs.Read(file, 0, Convert.ToInt32(fs.Length));
+                fs.Close();
+                int index = Encoding.Default.GetString(file).IndexOf("public.app-category.games") + 136;
+
+                Array.Copy(file, index, bytes, 0, 16);
+                string version = Encoding.Default.GetString(bytes).Trim(Utils.Constants.IllegalCharacters);
+
+                return version;
             }
-            if (String.IsNullOrEmpty(SteamInstall)) return null;
-
-            string vdf = Path.Combine(SteamInstall, @"steamapps\libraryfolders.vdf");
-            if (!File.Exists(@vdf)) return null;
-
-            Regex regex = new Regex("\\s\"\\d\"\\s+\"(.+)\"");
-            List<string> SteamPaths = new List<string>();
-            SteamPaths.Add(Path.Combine(SteamInstall, @"steamapps"));
-
-            using (StreamReader reader = new StreamReader(@vdf))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    Match match = regex.Match(line);
-                    if (match.Success)
-                    {
-                        SteamPaths.Add(Path.Combine(match.Groups[1].Value.Replace(@"\\", @"\"), @"steamapps"));
-                    }
-                }
-            }
-
-            regex = new Regex("\\s\"buildid\"\\s+\"(.+)\"");
-            foreach (string path in SteamPaths)
-            {
-                if (File.Exists(Path.Combine(@path, @"appmanifest_" + Constants.BeatSaberAPPID + ".acf")))
-                {
-                    using (StreamReader reader = new StreamReader(Path.Combine(@path, @"appmanifest_" + Constants.BeatSaberAPPID + ".acf")))
-                    {
-                        string line;
-                        while ((line = reader.ReadLine()) != null)
-                        {
-                            Match match = regex.Match(line);
-                            if (match.Success)
-                            {
-                                string _version;
-                                GameVersions.SteamVersions.TryGetValue(match.Groups[1].Value, out _version);
-                                return _version ?? "";
-                            }
-                        }
-                    }
-                }
-            }
-            return null;
         }
 
         public static string GetOculusDir()

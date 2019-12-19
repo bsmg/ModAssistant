@@ -124,13 +124,12 @@ namespace ModAssistant
 
         private string GetGameVersion(List<string> versions)
         {
-            if (App.BeatSaberInstallType == "Steam")
+            string version = Utils.GetVersion();
+            if (!String.IsNullOrEmpty(version) && versions.Contains(version))
             {
-                string steamVersion = Utils.GetSteamVersion();
-                if (!String.IsNullOrEmpty(steamVersion) && versions.Contains(steamVersion))
-                    return steamVersion;
+                return version;
             }
-            
+
             string versionsString = String.Join(",", versions.ToArray());
             if (Properties.Settings.Default.AllGameVersions != versionsString)
             {
