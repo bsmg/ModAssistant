@@ -98,7 +98,7 @@ namespace ModAssistant.Pages
             MainWindow.Instance.GameVersionsBox.IsEnabled = true;
         }
 
-        private void CheckInstalledMods()
+        public void CheckInstalledMods()
         {
             GetAllMods();
             List<string> empty = new List<string>();
@@ -578,12 +578,24 @@ namespace ModAssistant.Pages
         private void UninstallModFromList(Mod mod)
         {
             UninstallMod(mod.ListItem.InstalledModInfo);
+            mod.ListItem.IsInstalled = false;
+            mod.ListItem.InstalledVersion = null;
+            if (App.SelectInstalledMods)
+            {
+                mod.ListItem.IsSelected = false;
+                UnresolveDependencies(mod);
+                App.SavedMods.Remove(mod.name);
+                Properties.Settings.Default.SavedMods = String.Join(",", App.SavedMods.ToArray());
+                Properties.Settings.Default.Save();
+                RefreshModsList();
+            }
+            view.Refresh();
         }
 
         public void UninstallMod(Mod mod)
         {
             Mod.DownloadLink links = null;
-            foreach (Mod.DownloadLink link in installedMod.downloads)
+            foreach (Mod.DownloadLink link in mod.downloads)
             {
                 if (link.type.ToLower() == "universal" || link.type.ToLower() == App.BeatSaberInstallType.ToLower())
                 {
@@ -600,19 +612,6 @@ namespace ModAssistant.Pages
                 if (File.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA", "Pending", files.file)))
                     File.Delete(Path.Combine(App.BeatSaberInstallDirectory, "IPA", "Pending", files.file));
             }
-
-            mod.ListItem.IsInstalled = false;
-            mod.ListItem.InstalledVersion = null;
-            if (App.SelectInstalledMods)
-            {
-                mod.ListItem.IsSelected = false;
-                UnresolveDependencies(mod);
-                App.SavedMods.Remove(mod.name);
-                Properties.Settings.Default.SavedMods = String.Join(",", App.SavedMods.ToArray());
-                Properties.Settings.Default.Save();
-                RefreshModsList();
-            }
-            view.Refresh();
         }
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)

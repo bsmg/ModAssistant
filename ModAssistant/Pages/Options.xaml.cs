@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Globalization;
+using System.IO;
+using Path = System.IO.Path;
 
 namespace ModAssistant.Pages
 {
@@ -171,9 +173,28 @@ namespace ModAssistant.Pages
             }
             MainWindow.Instance.MainText = "BSIPA Uninstalled...";
         }
-        private void YeetModsButton_Click(object sender, RoutedEventArgs e)
+        private async void YeetModsButton_Click(object sender, RoutedEventArgs e)
         {
-            //
+            if (System.Windows.Forms.MessageBox.Show($"Are you sure you want to remove ALL mods?\nThis cannot be undone.", $"Uninstall All Mods?", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+
+                if (Mods.Instance.AllModsList == null)
+                {
+                    MainWindow.Instance.MainText = "Getting Mod List...";
+                    await Task.Run(() => Mods.Instance.CheckInstalledMods());
+                }
+                foreach (Mod mod in Mods.InstalledMods)
+                {
+                    Mods.Instance.UninstallMod(mod);
+                }
+                if (Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, "Plugins")))
+                    Directory.Delete(Path.Combine(App.BeatSaberInstallDirectory, "Plugins"), true);
+                if (Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, "Libs")))
+                    Directory.Delete(Path.Combine(App.BeatSaberInstallDirectory, "Libs"), true);
+                if (Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA")))
+                    Directory.Delete(Path.Combine(App.BeatSaberInstallDirectory, "IPA"), true);
+                MainWindow.Instance.MainText = "All Mods Uninstalled...";
+            }
         }
     }
 }
