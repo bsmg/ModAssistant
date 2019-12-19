@@ -65,6 +65,11 @@ namespace ModAssistant.Pages
             GameTypeTextBlock.Text = InstallType;
         }
 
+        private void OpenDirButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(InstallDirectory);
+        }
+
         private void Test_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(Utils.GetSteamDir());

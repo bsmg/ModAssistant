@@ -31,7 +31,8 @@
 			<ColumnDefinition Width="auto"/>
 			<ColumnDefinition Width="auto"/>
 			<ColumnDefinition Width="auto"/>
-		</Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
 
 		<TextBlock Grid.Row="0" Margin="15,5,5,5" Text="Settings" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left"/>
 
@@ -40,8 +41,9 @@
 			<TextBlock Name="DirectoryTextBlock" Margin="5" Text="{Binding InstallDirectory}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16"/>
 		</Border>
 		<Button Grid.Row="2" Grid.Column="2"  Margin="3" Height="30" Width="80" Content="Select Folder" Click="SelectDirButton_Click"/>
+        <Button Grid.Row="2" Grid.Column="3"  Margin="3" Height="30" Width="80" Content="Open Folder" Click="OpenDirButton_Click"/>
 
-		<TextBlock Grid.Row="3" Margin="5" Text="Save Selected Mods" FontWeight="Bold" HorizontalAlignment="Left" FontSize="16" />
+        <TextBlock Grid.Row="3" Margin="5" Text="Save Selected Mods" FontWeight="Bold" HorizontalAlignment="Left" FontSize="16" />
 		<CheckBox Grid.Row="3" Grid.Column="1" Name="SaveSelected" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding SaveSelection, Mode=TwoWay}" Checked="SaveSelected_Checked" Unchecked="SaveSelected_Unchecked"/>
 
 		<TextBlock Grid.Row="4" Margin="5" Text="Check Installed Mods" FontWeight="Bold" HorizontalAlignment="Left" FontSize="16" />
