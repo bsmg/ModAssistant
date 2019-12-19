@@ -491,6 +491,15 @@ namespace ModAssistant.Pages
                 }
             }
 
+            public string GetVersionDecoration
+            {
+                get
+                {
+                    if (!IsInstalled) return "None";
+                    return InstalledVersion == ModVersion ? "None" : "Strikethrough";
+                }
+            }
+
             public bool CanDelete
             {
                 get

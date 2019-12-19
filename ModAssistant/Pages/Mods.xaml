@@ -25,7 +25,7 @@
 						<GridViewColumn x:Name="InstalledColumn" Header="Installed">
 							<GridViewColumn.CellTemplate>
 								<DataTemplate>
-									<TextBlock Text="{Binding InstalledVersion}" Foreground="{Binding GetVersionColor}" />
+									<TextBlock Text="{Binding InstalledVersion}" Foreground="{Binding GetVersionColor}" TextDecorations="{Binding GetVersionDecoration}" />
 								</DataTemplate>
 							</GridViewColumn.CellTemplate>
 						</GridViewColumn>
