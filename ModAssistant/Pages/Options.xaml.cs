@@ -146,5 +146,34 @@ namespace ModAssistant.Pages
             SelectInstalledMods = false;
             Properties.Settings.Default.Save();
         }
+
+        private void OpenLogsDirButton_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
+
+        private async void YeetBSIPAButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Mods.Instance.AllModsList == null)
+            {
+                MainWindow.Instance.MainText = "Getting Mod List...";
+                await Task.Run(() => Mods.Instance.GetAllMods());
+                MainWindow.Instance.MainText = "Finding BSIPA Version...";
+                await Task.Run(() => Mods.Instance.GetBSIPAVersion());
+            }
+            foreach(Mod mod in Mods.InstalledMods)
+            {
+                if (mod.name.ToLower() == "bsipa")
+                {
+                    Mods.Instance.UninstallMod(mod);
+                    break;
+                }
+            }
+            MainWindow.Instance.MainText = "BSIPA Uninstalled...";
+        }
+        private void YeetModsButton_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
     }
 }

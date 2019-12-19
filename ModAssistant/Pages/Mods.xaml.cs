@@ -100,6 +100,17 @@ namespace ModAssistant.Pages
 
         private void CheckInstalledMods()
         {
+            GetAllMods();
+            List<string> empty = new List<string>();
+            GetBSIPAVersion();
+            CheckInstallDir("IPA/Pending/Plugins", empty);
+            CheckInstallDir("IPA/Pending/Libs", empty);
+            CheckInstallDir("Plugins", empty);
+            CheckInstallDir("Libs", empty);
+        }
+
+        public void GetAllMods()
+        {
             string json = string.Empty;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsAPIUrl + "mod");
             request.AutomaticDecompression = DecompressionMethods.GZip;
@@ -112,13 +123,6 @@ namespace ModAssistant.Pages
                 var serializer = new JavaScriptSerializer();
                 AllModsList = serializer.Deserialize<Mod[]>(reader.ReadToEnd());
             }
-
-            List<string> empty = new List<string>();
-            GetBSIPAVersion();
-            CheckInstallDir("IPA/Pending/Plugins", empty);
-            CheckInstallDir("IPA/Pending/Libs", empty);
-            CheckInstallDir("Plugins", empty);
-            CheckInstallDir("Libs", empty);
         }
 
         private void CheckInstallDir(string directory, List<string> blacklist)
@@ -138,7 +142,7 @@ namespace ModAssistant.Pages
             }
         }
 
-        private void GetBSIPAVersion()
+        public void GetBSIPAVersion()
         {
             string InjectorPath = Path.Combine(App.BeatSaberInstallDirectory, "Beat Saber_Data", "Managed", "IPA.Injector.dll");
             if (!File.Exists(InjectorPath)) return;
@@ -296,6 +300,7 @@ namespace ModAssistant.Pages
                             }).WaitForExit()
                         );
                     }
+                    Pages.Options.Instance.YeetBSIPA.IsEnabled = true;
                 }
                 else if(mod.ListItem.IsSelected)
                 {
@@ -543,7 +548,7 @@ namespace ModAssistant.Pages
             }
         }
 
-        private void UninstallBSIPA(Mod.DownloadLink links)
+        public void UninstallBSIPA(Mod.DownloadLink links)
         {
             Process.Start(new ProcessStartInfo
             {
@@ -558,46 +563,56 @@ namespace ModAssistant.Pages
                 if (File.Exists(Path.Combine(App.BeatSaberInstallDirectory, file)))
                     File.Delete(Path.Combine(App.BeatSaberInstallDirectory, file));
             }
+            Pages.Options.Instance.YeetBSIPA.IsEnabled = false;
         }
 
         private void Uninstall_Click(object sender, RoutedEventArgs e)
         {
             Mod mod = ((sender as System.Windows.Controls.Button).Tag as Mod);
-            Mod installedMod = mod.ListItem.InstalledModInfo;
             if (System.Windows.Forms.MessageBox.Show($"Are you sure you want to remove {mod.name}?\nThis could break your other mods.", $"Uninstall {mod.name}?", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                Mod.DownloadLink links = null;
-                foreach (Mod.DownloadLink link in installedMod.downloads)
-                {
-                    if (link.type.ToLower() == "universal" || link.type.ToLower() == App.BeatSaberInstallType.ToLower())
-                    {
-                        links = link;
-                        break;
-                    }
-                }
-                if (installedMod.name.ToLower() == "bsipa")
-                    UninstallBSIPA(links);
-                foreach (Mod.FileHashes files in links.hashMd5)
-                {
-                    if (File.Exists(Path.Combine(App.BeatSaberInstallDirectory, files.file)))
-                        File.Delete(Path.Combine(App.BeatSaberInstallDirectory, files.file));
-                    if (File.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA", "Pending", files.file)))
-                        File.Delete(Path.Combine(App.BeatSaberInstallDirectory, "IPA", "Pending", files.file));
-                }
-
-                mod.ListItem.IsInstalled = false;
-                mod.ListItem.InstalledVersion = null;
-                if (App.SelectInstalledMods)
-                {
-                    mod.ListItem.IsSelected = false;
-                    UnresolveDependencies(mod);
-                    App.SavedMods.Remove(mod.name);
-                    Properties.Settings.Default.SavedMods = String.Join(",", App.SavedMods.ToArray());
-                    Properties.Settings.Default.Save();
-                    RefreshModsList();
-                }
-                view.Refresh();
+                UninstallModFromList(mod);
             }
+        }
+
+        private void UninstallModFromList(Mod mod)
+        {
+            UninstallMod(mod.ListItem.InstalledModInfo);
+        }
+
+        public void UninstallMod(Mod mod)
+        {
+            Mod.DownloadLink links = null;
+            foreach (Mod.DownloadLink link in installedMod.downloads)
+            {
+                if (link.type.ToLower() == "universal" || link.type.ToLower() == App.BeatSaberInstallType.ToLower())
+                {
+                    links = link;
+                    break;
+                }
+            }
+            if (mod.name.ToLower() == "bsipa")
+                UninstallBSIPA(links);
+            foreach (Mod.FileHashes files in links.hashMd5)
+            {
+                if (File.Exists(Path.Combine(App.BeatSaberInstallDirectory, files.file)))
+                    File.Delete(Path.Combine(App.BeatSaberInstallDirectory, files.file));
+                if (File.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA", "Pending", files.file)))
+                    File.Delete(Path.Combine(App.BeatSaberInstallDirectory, "IPA", "Pending", files.file));
+            }
+
+            mod.ListItem.IsInstalled = false;
+            mod.ListItem.InstalledVersion = null;
+            if (App.SelectInstalledMods)
+            {
+                mod.ListItem.IsSelected = false;
+                UnresolveDependencies(mod);
+                App.SavedMods.Remove(mod.name);
+                Properties.Settings.Default.SavedMods = String.Join(",", App.SavedMods.ToArray());
+                Properties.Settings.Default.Save();
+                RefreshModsList();
+            }
+            view.Refresh();
         }
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
