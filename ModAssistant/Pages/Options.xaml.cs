@@ -151,7 +151,7 @@ namespace ModAssistant.Pages
 
         private void OpenLogsDirButton_Click(object sender, RoutedEventArgs e)
         {
-            //
+            System.Diagnostics.Process.Start(Path.Combine(InstallDirectory, "Logs"));
         }
 
         private async void YeetBSIPAButton_Click(object sender, RoutedEventArgs e)
