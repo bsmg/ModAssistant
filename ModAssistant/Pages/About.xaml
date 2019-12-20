@@ -79,7 +79,12 @@
 				</TextBlock>
 				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Inspiration</TextBlock>
 				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating the Mod Manager</TextBlock>
-			</StackPanel>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">
+					<Hyperlink NavigateUri="https://www.patreon.com/scoresaber" RequestNavigate="Hyperlink_RequestNavigate">
+						Donate
+					</Hyperlink>
+                </TextBlock>
+            </StackPanel>
 			
 			<StackPanel Margin="5"  Orientation="Vertical">
 				<TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
