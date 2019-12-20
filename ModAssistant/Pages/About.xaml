@@ -29,15 +29,7 @@
 
 		<TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="24" Margin="0">About Mod Assistant</TextBlock>
 		<TextBlock Grid.Row="1" TextWrapping="Wrap" Margin="0,5" FontSize="16" >
-			I'm Assistant, and I made Mod Assistant as an alternative to the
-			<Hyperlink NavigateUri="https://github.com/beat-saber-modding-group/BeatSaberModInstaller" RequestNavigate="Hyperlink_RequestNavigate">
-				Mod Manager
-			</Hyperlink>
-			and 
-			<Hyperlink NavigateUri="https://github.com/StarGazer1258/BeatDrop" RequestNavigate="Hyperlink_RequestNavigate">
-				BeatDrop
-			</Hyperlink>
-			with a few principles in mind:
+			I'm Assistant, and I made Mod Assistant for mod assistance, with a few principles in mind:
 		</TextBlock>
 		<TextBlock Grid.Row="2" Margin="15,5" FontSize="16" Text="• Simplicty" />
 		<TextBlock Grid.Row="3" Margin="15,5" FontSize="16" Text="• Portability" />
