@@ -15,6 +15,9 @@ using System.Windows.Shapes;
 using System.Globalization;
 using System.IO;
 using Path = System.IO.Path;
+using System.Net;
+using System.Web.Script.Serialization;
+using System.Web;
 
 namespace ModAssistant.Pages
 {
@@ -34,8 +37,7 @@ namespace ModAssistant.Pages
         public bool ModelSaberProtocolHandlerEnabled { get; set; }
         public bool BeatSaverProtocolHandlerEnabled { get; set; }
         public bool ModSaberProtocolHandlerEnabled { get; set; }
-
-
+        public string LogURL { get; private set; }
 
         public Options()
         {
@@ -149,9 +151,56 @@ namespace ModAssistant.Pages
             Properties.Settings.Default.Save();
         }
 
-        private void OpenLogsDirButton_Click(object sender, RoutedEventArgs e)
+        private async void OpenLogsDirButton_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start(Path.Combine(InstallDirectory, "Logs"));
+            try
+            {
+                MainWindow.Instance.MainText = "Uploading Log...";
+                await Task.Run(() => UploadLog());
+                
+                System.Diagnostics.Process.Start(LogURL);
+                Clipboard.SetText(LogURL);
+                MainWindow.Instance.MainText = "Log URL Copied To Clipboard!";
+            }
+            catch (Exception exception)
+            {
+                MainWindow.Instance.MainText = "Uploading Log Failed.";
+                MessageBox.Show("Could not upload log file to Teknik, please try again or send the file manually.\n ================= \n" + exception, "Uploading log failed!");
+                System.Diagnostics.Process.Start(Path.Combine(InstallDirectory, "Logs"));
+            }
+        }
+
+        private void UploadLog()
+        {
+            const string DateFormat = "yyyy-mm-dd HH:mm:ss";
+            DateTime now = DateTime.Now;
+            Utils.TeknikPasteResponse TeknikResponse;
+
+            string postData =
+                "title=" + "_latest.log (" + now.ToString(DateFormat) + ")" +
+                "&expireUnit=hour&expireLength=5" +
+                "&code=" + HttpUtility.UrlEncode(File.ReadAllText(Path.Combine(InstallDirectory, "Logs", "_latest.log")));
+            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.TeknikAPIUrl + "Paste");
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+            request.UserAgent = "ModAssistant/" + App.Version;
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = byteArray.Length;
+
+            Stream dataStream = request.GetRequestStream();
+            dataStream.Write(byteArray, 0, byteArray.Length);
+            dataStream.Close();
+
+            using (WebResponse response = (WebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                var serializer = new JavaScriptSerializer();
+                TeknikResponse = serializer.Deserialize<Utils.TeknikPasteResponse>(reader.ReadToEnd());
+            }
+            LogURL = TeknikResponse.result.url;
         }
 
         private async void YeetBSIPAButton_Click(object sender, RoutedEventArgs e)
