@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:ModAssistant"
         mc:Ignorable="d"
 		Icon="Resources/icon.ico"
-        Title="Mod Assistant" Width="1280" Height="720">
+        Title="Mod Assistant" Width="1280" Height="720"
+        UIElement.PreviewMouseDown="Window_PreviewMouseDown">
 	<Grid Margin="10">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"/>
