@@ -1,6 +1,8 @@
 ﻿<Page x:Class="ModAssistant.Pages.About"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+      xmlns:winForms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ModAssistant"
@@ -20,7 +22,7 @@
 			<RowDefinition Height="auto"/>
 			<RowDefinition Height="auto"/>
 			<RowDefinition Height="auto"/>
-
+			<RowDefinition Height="auto"/>
 			<RowDefinition Height="auto"/>
 
 		</Grid.RowDefinitions>
@@ -97,6 +99,13 @@
 			</StackPanel>
 			
 		</StackPanel>
-
-	</Grid>
+        <Button x:Name="PatButton" x:FieldModifier="public"  Grid.Row="9" Margin="5" Height="30" Width="80" Content="Headpats" Click="HeadpatsButton_Click"/>
+        <Popup Placement="Center" x:Name="PatUp" Width="auto" Height="auto">
+            <Border BorderBrush="Gray" BorderThickness="3">
+                <wfi:WindowsFormsHost>
+                    <winForms:PictureBox x:Name="PatImage"></winForms:PictureBox>
+                </wfi:WindowsFormsHost>
+            </Border>
+        </Popup>
+    </Grid>
 </Page>

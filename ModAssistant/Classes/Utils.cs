@@ -27,6 +27,7 @@ namespace ModAssistant
             public const string BeatModsAPIUrl = "https://beatmods.com/api/v1/";
             public const string TeknikAPIUrl = "https://api.teknik.io/v1/";
             public const string BeatModsURL = "https://beatmods.com";
+            public const string WeebCDNAPIURL = "https://pat.assistant.moe/api/v1.0/";
             public const string BeatModsModsOptions = "mod?status=approved";
             public const string MD5Spacer = "                                 ";
             public static readonly char[] IllegalCharacters = new char[]
@@ -51,6 +52,13 @@ namespace ModAssistant
                 public DateTime? expiration;
                 public string password;
             }
+        }
+
+        public class WeebCDNRandomResponse
+        {
+            public int index;
+            public string url;
+            public string ext;
         }
 
         public static void SendNotify(string message, string title = "Mod Assistant")
