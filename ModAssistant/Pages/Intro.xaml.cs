@@ -52,8 +52,8 @@ namespace ModAssistant.Pages
             else
             {
                 MainWindow.Instance.ModsButton.IsEnabled = true;
-                Utils.SendNotify("You can now use the Mods tab!");
-                MainWindow.Instance.MainText = "You can now use the Mods tab!";
+                Utils.SendNotify("现在你可以使用MOD选项了！");
+                MainWindow.Instance.MainText = "现在你可以使用MOD选项了！";
             }
             Properties.Settings.Default.Agreed = true;
             Properties.Settings.Default.Save();

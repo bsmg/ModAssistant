@@ -20,9 +20,9 @@
 								</DataTemplate>
 							</GridViewColumn.CellTemplate>
 						</GridViewColumn>
-						<GridViewColumn Header="Name" DisplayMemberBinding="{Binding ModName}" />
+						<GridViewColumn Header="名称" DisplayMemberBinding="{Binding ModName}" />
 
-						<GridViewColumn x:Name="InstalledColumn" Header="Installed">
+						<GridViewColumn x:Name="InstalledColumn" Header="已安装">
 							<GridViewColumn.CellTemplate>
 								<DataTemplate>
 									<TextBlock Text="{Binding InstalledVersion}" Foreground="{Binding GetVersionColor}" TextDecorations="{Binding GetVersionDecoration}" />
@@ -30,8 +30,8 @@
 							</GridViewColumn.CellTemplate>
 						</GridViewColumn>
 
-						<GridViewColumn Header="Latest" DisplayMemberBinding="{Binding ModVersion}" />
-						<GridViewColumn x:Name="DescriptionColumn" Header="Description" Width="750" >
+						<GridViewColumn Header="最新" DisplayMemberBinding="{Binding ModVersion}" />
+						<GridViewColumn x:Name="DescriptionColumn" Header="说明" Width="750" >
 							<GridViewColumn.CellTemplate>
 								<DataTemplate>
 									<StackPanel Orientation="Horizontal">
@@ -47,10 +47,10 @@
 							</GridViewColumn.CellTemplate>
 						</GridViewColumn>
 
-						<GridViewColumn x:Name="UninstallColumn"  Header="Uninstall" Width="70">
+						<GridViewColumn x:Name="UninstallColumn"  Header="卸载" Width="70">
 							<GridViewColumn.CellTemplate>
 								<DataTemplate>
-									<Button Name="Uninstall" Content="Uninstall" Visibility="{Binding CanSeeDelete}" IsEnabled="{Binding CanDelete}" Foreground="Red" Tag="{Binding ModInfo}" Click="Uninstall_Click"/>
+									<Button Name="Uninstall" Content="卸载" Visibility="{Binding CanSeeDelete}" IsEnabled="{Binding CanDelete}" Foreground="Red" Tag="{Binding ModInfo}" Click="Uninstall_Click"/>
 								</DataTemplate>
 							</GridViewColumn.CellTemplate>
 						</GridViewColumn>

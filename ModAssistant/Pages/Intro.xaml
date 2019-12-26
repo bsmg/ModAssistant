@@ -24,50 +24,50 @@
 
 		</Grid.RowDefinitions>
 		
-		<TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="48" Margin="0">Welcome to Mod Assistant</TextBlock>
-		<TextBlock Grid.Row="1" FontWeight="Bold" Text="Please read this page entirely and carefully" Margin="0" FontSize="28" />
-		<TextBlock Grid.Row="2" Margin="0,5" FontSize="16" TextWrapping="Wrap" Text="By using this program attest to have read and agree to the following terms:" />
+		<TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="48" Margin="0">欢迎使用Mod Assistant</TextBlock>
+        <TextBlock Grid.Row="1" FontWeight="Bold" Text="请仔细阅读本页面" Margin="0" FontSize="28" />
+        <TextBlock Grid.Row="2" Margin="0,5" FontSize="16" TextWrapping="Wrap" Text="通过使用此程序，证明您已阅读并同意以下条款：" />
 
 		<TextBlock Grid.Row="3" Margin="0,5" FontSize="16" TextWrapping="Wrap">
-			Beat Saber <Bold>does not</Bold> natively support mods. This means:
+			Beat Saber<Bold>并不能</Bold>原生支持MOD。 这意味着：
 		</TextBlock>
 
 		<TextBlock Grid.Row="4" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			Mods <Bold>will break</Bold> every update. This is normal, and <Bold>not</Bold> Beat Games' fault.
+			MOD将会在每次更新后<Bold>无法使用</Bold>。这很正常，<Bold>并不是</Bold>Beat Games的错。
 		</TextBlock>
 
 		<TextBlock Grid.Row="5" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			Mods <Bold>will</Bold> cause bugs and performance issues. This is <Bold>not</Bold> Beat Games' fault.
+			MOD<Bold>会</Bold>导致出现BUG或者性能问题。这<Bold>也不是</Bold>Beat Games的错。
 		</TextBlock>
 
 		<TextBlock Grid.Row="6" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			Mods are made for <Bold>free</Bold> by people in their <Bold>free time.</Bold> Please be patient and understanding.
+			爱好者在空闲时间<Bold>用爱发电</Bold>制作了这些MOD。请保持耐心。
 		</TextBlock>
 
 		<TextBlock Grid.Row="7" Margin="0,5" FontSize="16" TextWrapping="Wrap">
-			<Bold>DO NOT</Bold> leave negative reviews because mods broke. This is <Bold>not</Bold> Beat Games' fault. <LineBreak/> They are not trying to kill mods.
+			<Bold>请勿</Bold>由于MOD不可用而发表差评。这<Bold>并不是</Bold>Beat Games的错。<LineBreak/> 他们不会去封杀MOD。
 		</TextBlock>
 
 		<TextBlock Grid.Row="8" Margin="0,5" FontSize="16" TextWrapping="Wrap">
-			If I keep seeing people leave negative reviews <Italic>because</Italic> mods broke, <LineBreak/><Bold>I will personally kill mods with a rusty spoon</Bold>
+			如果我继续看到<Italic>因为</Italic>MOD不可用而留下的差评，<LineBreak/><Bold>我会用生锈的勺子亲自干掉MOD。</Bold>
 		</TextBlock>
 
 		<TextBlock Grid.Row="9" Margin="0,5" FontSize="16" TextWrapping="Wrap">
-			Please read the Beginners Guide on the 
+			请阅读新手指南：
 			<Hyperlink NavigateUri="https://bsmg.wiki/beginners-guide" RequestNavigate="Hyperlink_RequestNavigate">
 				Wiki
-			</Hyperlink>.
-		</TextBlock>
+			</Hyperlink>
+        </TextBlock>
 
 		<StackPanel Margin="10" Grid.Row="10" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 			<Button Margin="0,0,10,0" Name="Agree" Height="35" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Agree_Click">
 				<TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center">
-					I Agree
+					同意
 				</TextBlock>
 			</Button>
 			<Button Margin="10,0,0,0" Name="Disagree" Height="35" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Disagree_Click">
 				<TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center">
-					Disagree
+					拒绝
 				</TextBlock>
 			</Button>
 		</StackPanel>

@@ -27,40 +27,41 @@
 			<ColumnDefinition Width="auto"/>
 		</Grid.ColumnDefinitions>
 
-		<TextBlock VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="48" Margin="0">Invalid Installation Detected</TextBlock>
-		<TextBlock Grid.Row="1" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="28">Your game installation is corrupted or otherwise invalid</TextBlock>
-		<TextBlock Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5" FontSize="16" TextWrapping="Wrap">This can happen if your copy of the game is pirated, or if you copied a pirated copy over your legit install</TextBlock>
+        <TextBlock VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="48" Margin="0">检测到无效安装</TextBlock>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="28">你的游戏安装已损坏或无效</TextBlock>
+		<TextBlock Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5" FontSize="16" TextWrapping="Wrap">如果您的游戏是盗版的，或者您给正版游戏复制了盗版的副本，则可能会发生这种情况。</TextBlock>
 
 		<TextBlock Grid.Row="3" Grid.ColumnSpan="2" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			If your copy of the game is pirated,
-			<Bold>please purchase the game
-				<Hyperlink NavigateUri="https://beatgames.com/" RequestNavigate="Hyperlink_RequestNavigate">
-					HERE
-				</Hyperlink>.
+			如果您的游戏是盗版的，
+			<Bold>
+				请在<Hyperlink NavigateUri="https://beatgames.com/" RequestNavigate="Hyperlink_RequestNavigate">
+					这里
+				</Hyperlink>购买游戏。
 			</Bold>
 		</TextBlock>
 
 		<TextBlock Grid.Row="4" Grid.ColumnSpan="2" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			If your copy of the game is <Bold>not</Bold> pirated, please
-			<Hyperlink NavigateUri="https://bsmg.wiki/support#clean-installation" RequestNavigate="Hyperlink_RequestNavigate">
-				do a clean install
-			</Hyperlink>.
+			如果您的游戏<Bold>不是</Bold>盗版的，
+			请<Hyperlink NavigateUri="https://bsmg.wiki/support#clean-installation" RequestNavigate="Hyperlink_RequestNavigate">
+				执行清洁安装
+			</Hyperlink>。
 		</TextBlock>
 
 		<TextBlock Grid.Row="5" Grid.ColumnSpan="2" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			If those don't help, ask for support in the <Span Foreground="Blue">#support</Span> channel in
+			如果这些方法无效，请在
 			<Hyperlink NavigateUri="https://discord.gg/beatsabermods" RequestNavigate="Hyperlink_RequestNavigate">
 				BSMG
-			</Hyperlink>.
+			</Hyperlink>
+            中的 <Span Foreground="Blue">#support</Span> 频道寻求帮助。
 		</TextBlock>
 
 		<TextBlock Grid.Row="6" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="28"></TextBlock>
-		<TextBlock Grid.Row="7" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="20">If you used to have a pirated version but have since bought the game:</TextBlock>
+		<TextBlock Grid.Row="7" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="20">如果您曾经使用盗版，但后来又购买了游戏：</TextBlock>
 		<Border Grid.Row="8" Background="LightGray" Height="30" MinWidth="650" >
 			<TextBlock Name="DirectoryTextBlock" Margin="5" Text="{Binding InstallDirectory}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16"/>
 		</Border>
 		<Button Grid.Row="8" Grid.Column="2"  Margin="3" Height="30" Width="80" Content="Select Folder" Click="SelectDirButton_Click"/>
-		<TextBlock Grid.Row="9" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="20">You will need to restart Mod Assistant after changing to the legit install.</TextBlock>
+        <TextBlock Grid.Row="9" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="20">你需要在运行正版游戏后重启Mod Assistant。</TextBlock>
 
 	</Grid>
 </Page>

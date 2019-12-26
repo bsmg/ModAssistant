@@ -27,27 +27,27 @@
 
 		</Grid.RowDefinitions>
 
-		<TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="24" Margin="0">About Mod Assistant</TextBlock>
+        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="24" Margin="0">关于Mod Assistant</TextBlock>
 		<TextBlock Grid.Row="1" TextWrapping="Wrap" Margin="0,5" FontSize="16" >
-			I'm Assistant, and I made Mod Assistant for mod assistance, with a few principles in mind:
+			我是Assistant，为了方便安装MOD，我制作了Mod Assistant。有以下特性：
 		</TextBlock>
-		<TextBlock Grid.Row="2" Margin="15,5" FontSize="16" Text="• Simplicty" />
-		<TextBlock Grid.Row="3" Margin="15,5" FontSize="16" Text="• Portability" />
-		<TextBlock Grid.Row="4" Margin="15,5" FontSize="16" Text="• Single Executable" />
+        <TextBlock Grid.Row="2" Margin="15,5" FontSize="16" Text="• 简单" />
+        <TextBlock Grid.Row="3" Margin="15,5" FontSize="16" Text="• 可移植性" />
+        <TextBlock Grid.Row="4" Margin="15,5" FontSize="16" Text="• 单一可执行文件" />
 		<TextBlock Grid.Row="5" Margin="15,5" FontSize="16" Text="• Responsible use" />
 
 		<TextBlock TextWrapping="Wrap" Grid.Row="6" Margin="30,5,5,5" FontSize="16">
-			If you enjoy this program and would like to support me, please visit my
+			如果你喜欢这个项目并且想支持我，请访问我的
 			<Hyperlink NavigateUri="https://bs.assistant.moe/Donate/" RequestNavigate="Hyperlink_RequestNavigate">
-				donation page
+				捐助页面
 			</Hyperlink>
-			or my
+			或我的
 			<Hyperlink NavigateUri="https://www.patreon.com/AssistantMoe" RequestNavigate="Hyperlink_RequestNavigate">
 				Patreon
 			</Hyperlink>
 		</TextBlock>
 		
-		<TextBlock Grid.Row="7" Margin="0,10,5,5" FontSize="20" Text="Special Thanks ♥" />
+		<TextBlock Grid.Row="7" Margin="0,10,5,5" FontSize="20" Text="特别感谢 ♥" />
 
 		<StackPanel Grid.Row="8" Orientation="Horizontal"  HorizontalAlignment="Center">
 			
@@ -57,9 +57,9 @@
 						vanZeben
 					</Hyperlink>
 				</TextBlock>
-				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating BeatMods</TextBlock>
-				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">The current Mod repository</TextBlock>
-				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Used by this Installer</TextBlock>
+				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">创建了BeatMods</TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">目前的MOD平台</TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">本软件正在使用</TextBlock>
 
 			</StackPanel>
 
@@ -69,11 +69,11 @@
 						Umbranox
 					</Hyperlink>
 				</TextBlock>
-				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Inspiration</TextBlock>
-				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating the Mod Manager</TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">支持者</TextBlock>
+				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">创建了Mod Manager</TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">
 					<Hyperlink NavigateUri="https://www.patreon.com/scoresaber" RequestNavigate="Hyperlink_RequestNavigate">
-						Donate
+						捐助
 					</Hyperlink>
                 </TextBlock>
             </StackPanel>
@@ -84,19 +84,19 @@
 						lolPants
 					</Hyperlink>
 				</TextBlock>
-				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Inspiration</TextBlock>
-				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating ModSaber</TextBlock>
-				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">The first Mod repository</TextBlock>
+				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">支持者</TextBlock>
+				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">创建了ModSaber</TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">首个MOD平台</TextBlock>
 				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">
 					<Hyperlink NavigateUri="https://www.paypal.me/jackmbaron" RequestNavigate="Hyperlink_RequestNavigate">
-						Donate
+						捐助
 					</Hyperlink>
 				</TextBlock>
 
 			</StackPanel>
 			
 		</StackPanel>
-        <Button x:Name="PatButton" x:FieldModifier="public"  Grid.Row="9" Margin="5" Height="30" Width="80" Content="Headpats" Click="HeadpatsButton_Click"/>
+        <Button x:Name="PatButton" x:FieldModifier="public"  Grid.Row="9" Margin="5" Height="30" Width="80" Content="摸摸头" Click="HeadpatsButton_Click"/>
         <Popup Placement="Center" x:Name="PatUp" Width="auto" Height="auto">
             <Border BorderBrush="Gray" BorderThickness="3">
                 <wfi:WindowsFormsHost>

@@ -67,7 +67,7 @@ namespace ModAssistant.Pages
 
             if (App.CheckInstalledMods)
             {
-                MainWindow.Instance.MainText = "Checking Installed Mods...";
+                MainWindow.Instance.MainText = "正在检查已安装的MOD...";
                 await Task.Run(() => CheckInstalledMods());
                 InstalledColumn.Width = Double.NaN;
                 UninstallColumn.Width = 70;
@@ -79,7 +79,7 @@ namespace ModAssistant.Pages
                 DescriptionColumn.Width = 800;
             }
 
-            MainWindow.Instance.MainText = "Loading Mods...";
+            MainWindow.Instance.MainText = "加载MOD...";
             await Task.Run(() => PopulateModsList());
 
             ModsListView.ItemsSource = ModList;
@@ -92,7 +92,7 @@ namespace ModAssistant.Pages
 
             RefreshModsList();
             ModsListView.Visibility = Visibility.Visible;
-            MainWindow.Instance.MainText = "Finished Loading Mods.";
+            MainWindow.Instance.MainText = "加载MOD完成。";
 
             MainWindow.Instance.InstallButton.IsEnabled = true;
             MainWindow.Instance.GameVersionsBox.IsEnabled = true;
@@ -217,7 +217,7 @@ namespace ModAssistant.Pages
             }
             catch (Exception e)
             {
-                System.Windows.MessageBox.Show("Could not load mods list.\n\n" + e);
+                System.Windows.MessageBox.Show("无法加载MOD列表。\n\n" + e);
                 return;
             }
 
@@ -286,9 +286,9 @@ namespace ModAssistant.Pages
             {
                 if (mod.name.ToLower() == "bsipa")
                 {
-                    MainWindow.Instance.MainText = $"Installing {mod.name}...";
+                    MainWindow.Instance.MainText = $"正在安装 {mod.name}...";
                     await Task.Run(() => InstallMod(mod, installDirectory));
-                    MainWindow.Instance.MainText = $"Installed {mod.name}.";
+                    MainWindow.Instance.MainText = $"已安装 {mod.name}.";
                     if (!File.Exists(Path.Combine(installDirectory, "winhttp.dll")))
                     {
                         await Task.Run(() =>
@@ -304,12 +304,12 @@ namespace ModAssistant.Pages
                 }
                 else if(mod.ListItem.IsSelected)
                 {
-                    MainWindow.Instance.MainText = $"Installing {mod.name}...";
+                    MainWindow.Instance.MainText = $"正在安装 {mod.name}...";
                     await Task.Run(() => InstallMod(mod, Path.Combine(installDirectory, @"IPA\Pending")));
-                    MainWindow.Instance.MainText = $"Installed {mod.name}.";
+                    MainWindow.Instance.MainText = $"已安装 {mod.name}.";
                 }
             }
-            MainWindow.Instance.MainText = "Finished installing mods.";
+            MainWindow.Instance.MainText = "安装MOD完成。";
             MainWindow.Instance.InstallButton.IsEnabled = true;
             RefreshModsList();
         }
@@ -333,7 +333,7 @@ namespace ModAssistant.Pages
 
             if (String.IsNullOrEmpty(downloadLink))
             {
-                System.Windows.MessageBox.Show($"Could not find download link for {mod.name}");
+                System.Windows.MessageBox.Show($"找不到此MOD的下载链接：{mod.name}");
                 return;
             }
 
@@ -569,7 +569,7 @@ namespace ModAssistant.Pages
         private void Uninstall_Click(object sender, RoutedEventArgs e)
         {
             Mod mod = ((sender as System.Windows.Controls.Button).Tag as Mod);
-            if (System.Windows.Forms.MessageBox.Show($"Are you sure you want to remove {mod.name}?\nThis could break your other mods.", $"Uninstall {mod.name}?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (System.Windows.Forms.MessageBox.Show($"你确定你想要移除 {mod.name}?\n这可能会破坏其他MOD。", $"Uninstall {mod.name}?", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 UninstallModFromList(mod);
             }
