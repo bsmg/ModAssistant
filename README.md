@@ -1,12 +1,12 @@
-# ModAssistant
-Simple Beat Saber Mod Installer similar to the [Beat Saber Mod Manager](https://github.com/beat-saber-modding-group/BeatSaberModInstaller)
+# ModAssistant Chinese Version
+简单的Beat Saber MOD安装器，类似于 [Beat Saber Mod Manager](https://github.com/beat-saber-modding-group/BeatSaberModInstaller)
 
-[Download here!](https://github.com/Assistant/ModAssistant/releases/latest)
+# [下载地址](https://github.com/Assistant/ModAssistant/releases/latest)
 
-Has features such as:
-* Dependency resolution
-* Installed Mod detection
-* Mod removal
-* One Click Installs support
+具有以下功能：
+* 依赖解析
+* 检测已安装的MOD
+* 移除MOD
+* 一键安装支持
 
-![Preview](https://assistant.moe/files/ModAssistant.png)
+![Preview](https://wgzeyu.gtxcn.com/img/ma.png)
