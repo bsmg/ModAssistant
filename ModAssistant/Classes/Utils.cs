@@ -92,7 +92,7 @@ namespace ModAssistant
             }
             catch
             {
-                MessageBox.Show("Mod Assistant needs to run this task as Admin. Please try again.");
+                MessageBox.Show("Mod Assistant需要以管理员身份来运行此任务。请重试。");
             }
             if (Close)
                 App.Current.Shutdown();
@@ -143,7 +143,7 @@ namespace ModAssistant
                 return InstallDir;
             }
 
-            MessageBox.Show("Could not detect your Beat Saber install folder. Please select it manually.");
+            MessageBox.Show("找不到您的Beat Saber安装文件夹。请手动选择。");
 
             InstallDir = GetManualDir();
             if (!String.IsNullOrEmpty(InstallDir))
@@ -298,7 +298,7 @@ namespace ModAssistant
         {
             var dialog = new Microsoft.Win32.SaveFileDialog()
             {
-                Title = "Select your Beat Saber install folder",
+                Title = "选择Beat Saber安装路径",
                 Filter = "Directory|*.this.directory",
                 FileName = "select"
             };

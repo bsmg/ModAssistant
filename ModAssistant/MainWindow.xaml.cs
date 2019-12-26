@@ -85,7 +85,7 @@ namespace ModAssistant
             catch (Exception e)
             {
                 GameVersionsBox.IsEnabled = false;
-                MessageBox.Show("Could not load game versions, Mods tab will be unavailable.\n" + e);
+                MessageBox.Show("无法加载游戏版本，MOD选项卡将不可用。\n" + e);
             }
 
             if (!String.IsNullOrEmpty(GameVersion) && Properties.Settings.Default.Agreed)
@@ -135,7 +135,7 @@ namespace ModAssistant
             {
                 Properties.Settings.Default.AllGameVersions = versionsString;
                 Properties.Settings.Default.Save();
-                Utils.ShowMessageBoxAsync("It looks like there's been a game update.\n\nPlease double check that the correct version is selected at the bottom left corner!", "New Game Version Detected!");
+                Utils.ShowMessageBoxAsync("似乎游戏有更新。\n\n请仔细检查左下角是否选择了正确的游戏版本！", "检测到新的游戏版本");
                 return versions[0];
             }
 
@@ -194,14 +194,14 @@ namespace ModAssistant
         {
             if ((Mods.ModListItem)Mods.Instance.ModsListView.SelectedItem == null)
             {
-                MessageBox.Show("No mod selected");
+                MessageBox.Show("没有选择要安装的MOD");
                 return;
             }
             Mods.ModListItem mod = ((Mods.ModListItem)Mods.Instance.ModsListView.SelectedItem);
             string infoUrl = mod.ModInfo.link;
             if (String.IsNullOrEmpty(infoUrl))
             {
-                MessageBox.Show(mod.ModName + " does not have an info page");
+                MessageBox.Show(mod.ModName + " 没有说明页面。");
             }
             else
             {

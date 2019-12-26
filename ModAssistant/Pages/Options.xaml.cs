@@ -155,17 +155,17 @@ namespace ModAssistant.Pages
         {
             try
             {
-                MainWindow.Instance.MainText = "Uploading Log...";
+                MainWindow.Instance.MainText = "正在上传日志...";
                 await Task.Run(() => UploadLog());
                 
                 System.Diagnostics.Process.Start(LogURL);
                 Clipboard.SetText(LogURL);
-                MainWindow.Instance.MainText = "Log URL Copied To Clipboard!";
+                MainWindow.Instance.MainText = "将日志URL复制到剪贴板";
             }
             catch (Exception exception)
             {
-                MainWindow.Instance.MainText = "Uploading Log Failed.";
-                MessageBox.Show("Could not upload log file to Teknik, please try again or send the file manually.\n ================= \n" + exception, "Uploading log failed!");
+                MainWindow.Instance.MainText = "上传日志失败.";
+                MessageBox.Show("无法将日志文件上传到Teknik，请重试或手动发送文件。\n ================= \n" + exception, "上传日志失败！");
                 System.Diagnostics.Process.Start(Path.Combine(InstallDirectory, "Logs"));
             }
         }
@@ -207,9 +207,9 @@ namespace ModAssistant.Pages
         {
             if (Mods.Instance.AllModsList == null)
             {
-                MainWindow.Instance.MainText = "Getting Mod List...";
+                MainWindow.Instance.MainText = "获取MOD列表...";
                 await Task.Run(() => Mods.Instance.GetAllMods());
-                MainWindow.Instance.MainText = "Finding BSIPA Version...";
+                MainWindow.Instance.MainText = "寻找BSIPA版本...";
                 await Task.Run(() => Mods.Instance.GetBSIPAVersion());
             }
             foreach(Mod mod in Mods.InstalledMods)
@@ -220,16 +220,16 @@ namespace ModAssistant.Pages
                     break;
                 }
             }
-            MainWindow.Instance.MainText = "BSIPA Uninstalled...";
+            MainWindow.Instance.MainText = "正在卸载BSIPA...";
         }
         private async void YeetModsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (System.Windows.Forms.MessageBox.Show($"Are you sure you want to remove ALL mods?\nThis cannot be undone.", $"Uninstall All Mods?", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            if (System.Windows.Forms.MessageBox.Show($"你确定你要卸载所有MOD吗？\n这将无法撤销", $"卸载所有MOD？", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
 
                 if (Mods.Instance.AllModsList == null)
                 {
-                    MainWindow.Instance.MainText = "Getting Mod List...";
+                    MainWindow.Instance.MainText = "获取MOD列表...";
                     await Task.Run(() => Mods.Instance.CheckInstalledMods());
                 }
                 foreach (Mod mod in Mods.InstalledMods)
@@ -242,7 +242,7 @@ namespace ModAssistant.Pages
                     Directory.Delete(Path.Combine(App.BeatSaberInstallDirectory, "Libs"), true);
                 if (Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA")))
                     Directory.Delete(Path.Combine(App.BeatSaberInstallDirectory, "IPA"), true);
-                MainWindow.Instance.MainText = "All Mods Uninstalled...";
+                MainWindow.Instance.MainText = "所有MOD已卸载...";
             }
         }
     }

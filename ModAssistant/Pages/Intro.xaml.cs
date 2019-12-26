@@ -39,7 +39,7 @@ namespace ModAssistant.Pages
             MainWindow.Instance.ModsButton.IsEnabled = false;
             Properties.Settings.Default.Agreed = false;
             Properties.Settings.Default.Save();
-            MessageBox.Show("Closing Application: You did not agree to terms and conditions.");
+            MessageBox.Show("关闭软件：您不同意条款和条件。");
             System.Windows.Application.Current.Shutdown();
         }
 
@@ -47,7 +47,7 @@ namespace ModAssistant.Pages
         {
             if (String.IsNullOrEmpty(MainWindow.GameVersion))
             {
-                MessageBox.Show("Could not download versions list.\nMods tab disabled. Please restart to try again.");
+                MessageBox.Show("无法下载版本列表。\n请重启软件再试。");
             }
             else
             {

@@ -67,7 +67,7 @@ namespace ModAssistant
             }
             catch (Exception e)
             {
-                MessageBox.Show("Could not get map details.\n\n" + e);
+                MessageBox.Show("无法获取地图细节。\n\n" + e);
                 return;
             }
 
@@ -122,7 +122,7 @@ namespace ModAssistant
         {
             if (string.IsNullOrEmpty(BeatSaberPath))
             {
-                Utils.SendNotify("Beat Saber installation path not found.");
+                Utils.SendNotify("找不到Beat Saber安装路径。");
             }
             try
             {
@@ -133,12 +133,12 @@ namespace ModAssistant
                     fileName = WebUtility.UrlDecode(Path.Combine(BeatSaberPath, folder, fileName));
 
                 Utils.Download(link, fileName);
-                Utils.SendNotify("Installed: " + Path.GetFileNameWithoutExtension(fileName));
+                Utils.SendNotify("已安装: " + Path.GetFileNameWithoutExtension(fileName));
 
             }
             catch
             {
-                Utils.SendNotify("Failed to install.");
+                Utils.SendNotify("安装完成.");
             }
         }
 
@@ -164,7 +164,7 @@ namespace ModAssistant
                         CommandKey.SetValue("", $"\"{Utils.ExePath}\" \"--install\" \"%1\"");
                     }
 
-                    Utils.SendNotify($"{Protocol} One Click Install handlers registered!");
+                    Utils.SendNotify($"{Protocol} 一键安装处理程序已注册！");
                 }
                 else
                 {
@@ -197,7 +197,7 @@ namespace ModAssistant
                             Registry.ClassesRoot.DeleteSubKeyTree(Protocol);
                         }
                     }
-                    Utils.SendNotify($"{Protocol} One Click Install handlers unregistered!");
+                    Utils.SendNotify($"{Protocol} 一键安装处理程序未注册！");
                 }
                 else
                 {
