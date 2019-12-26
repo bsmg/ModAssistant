@@ -33,18 +33,18 @@
 		</TextBlock>
 
 		<TextBlock Grid.Row="4" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			MOD将会在每次更新后<Bold>无法使用</Bold>。这很正常，<Bold>并不是</Bold>Beat Games的错。
+			MOD将会在每次游戏更新后<Bold>无法使用</Bold>。这很正常，<Bold>并不是</Bold>Beat Games的错。
 		</TextBlock>
 
-		<TextBlock Grid.Row="5" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			MOD<Bold>会</Bold>导致出现BUG或者性能问题。这<Bold>也不是</Bold>Beat Games的错。
-		</TextBlock>
+        <TextBlock Grid.Row="5" Margin="15,5" FontSize="16" TextWrapping="Wrap">
+			爱好者在空闲时间<Bold>用爱发电</Bold>制作了这些MOD，请保持耐心，等待MOD更新。
+        </TextBlock>
 
-		<TextBlock Grid.Row="6" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			爱好者在空闲时间<Bold>用爱发电</Bold>制作了这些MOD。请保持耐心。
-		</TextBlock>
+        <TextBlock Grid.Row="6" Margin="15,5" FontSize="16" TextWrapping="Wrap">
+			MOD<Bold>会</Bold>导致出现BUG或者性能问题。这<Bold>并不是</Bold>Beat Games的错。
+        </TextBlock>
 
-		<TextBlock Grid.Row="7" Margin="0,5" FontSize="16" TextWrapping="Wrap">
+        <TextBlock Grid.Row="7" Margin="0,5" FontSize="16" TextWrapping="Wrap">
 			<Bold>请勿</Bold>由于MOD不可用而发表差评。这<Bold>并不是</Bold>Beat Games的错。<LineBreak/> 他们不会去封杀MOD。
 		</TextBlock>
 
