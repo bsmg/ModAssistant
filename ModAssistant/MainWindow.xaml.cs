@@ -85,7 +85,7 @@ namespace ModAssistant
             catch (Exception e)
             {
                 GameVersionsBox.IsEnabled = false;
-                MessageBox.Show("无法加载游戏版本，MOD选项卡将不可用。\n" + e);
+                MessageBox.Show("无法加载游戏版本，MOD选项卡将不可用。\n\n这通常是网络不好导致的，可尝试进行以下操作：\n　1.使用不同运营商的网络，可尝试手机热点；\n　2.使用代理(科学上网)。\n\n" + e);
             }
 
             if (!String.IsNullOrEmpty(GameVersion) && Properties.Settings.Default.Agreed)

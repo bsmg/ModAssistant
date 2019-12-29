@@ -33,7 +33,7 @@
 		</TextBlock>
 
 		<TextBlock Grid.Row="4" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			MOD将会在每次游戏更新后<Bold>无法使用</Bold>。这很正常，<Bold>并不是</Bold>Beat Games的错。
+			<Bold>MOD将会在每次游戏更新后无法使用</Bold>。这很正常，<Bold>并不是Beat Games的错。</Bold>
 		</TextBlock>
 
         <TextBlock Grid.Row="5" Margin="15,5" FontSize="16" TextWrapping="Wrap">
@@ -45,15 +45,20 @@
         </TextBlock>
 
         <TextBlock Grid.Row="7" Margin="0,5" FontSize="16" TextWrapping="Wrap">
-			<Bold>请勿</Bold>由于MOD不可用而发表差评。这<Bold>并不是</Bold>Beat Games的错。<LineBreak/> 他们不会去封杀MOD。
+			<Bold>请勿由于MOD不可用而发表差评，Beat Games不会封杀MOD。</Bold><LineBreak/> 如果我继续看到因为MOD不可用而留下的差评，<Bold>我会亲自干掉MOD。</Bold>
 		</TextBlock>
 
 		<TextBlock Grid.Row="8" Margin="0,5" FontSize="16" TextWrapping="Wrap">
-			如果我继续看到<Italic>因为</Italic>MOD不可用而留下的差评，<LineBreak/><Bold>我会用生锈的勺子亲自干掉MOD。</Bold>
+			<Bold>不建议安装全部MOD</Bold>，已默认勾选自制谱相关、相机增强、自定义光剑/角色/场景、计数器。<LineBreak/>如果以上MOD已更新，直接点安装就能装上。用不到的请取消勾选，<Bold>MOD越少性能越好</Bold>。
 		</TextBlock>
 
 		<TextBlock Grid.Row="9" Margin="0,5" FontSize="16" TextWrapping="Wrap">
-			请阅读新手指南：
+            <Bold>只有正式发布并过审的MOD才会出现在列表中</Bold>。如需安装测试版或未正式发布的MOD，<LineBreak/>
+            可自备梯子到
+			<Hyperlink NavigateUri="https://discord.gg/beatsabermods" RequestNavigate="Hyperlink_RequestNavigate">
+				Discord
+			</Hyperlink>
+            #pc-mods 中下载。<Bold>注意，这些MOD可能有风险。</Bold>　新手指南:
 			<Hyperlink NavigateUri="https://bsmg.wiki/beginners-guide" RequestNavigate="Hyperlink_RequestNavigate">
 				Wiki
 			</Hyperlink>

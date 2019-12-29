@@ -47,7 +47,7 @@ namespace ModAssistant.Pages
         {
             if (String.IsNullOrEmpty(MainWindow.GameVersion))
             {
-                MessageBox.Show("无法下载版本列表。\n请重启软件再试。");
+                MessageBox.Show("无法下载版本列表。\n请重启软件后再试。");
             }
             else
             {
