@@ -121,6 +121,7 @@ namespace ModAssistant.Pages
             using (StreamReader reader = new StreamReader(stream))
             {
                 var serializer = new JavaScriptSerializer();
+                serializer.MaxJsonLength = Int32.MaxValue;
                 AllModsList = serializer.Deserialize<Mod[]>(reader.ReadToEnd());
             }
         }
