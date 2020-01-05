@@ -1,7 +1,7 @@
 # ModAssistant Chinese Version
 简单的Beat Saber MOD安装器，类似于 [Beat Saber Mod Manager](https://github.com/beat-saber-modding-group/BeatSaberModInstaller)
 
-# [下载地址](https://github.com/Assistant/ModAssistant/releases/latest)
+# [下载地址](https://github.com/wgzeyu/ModAssistant-CN/releases/latest)
 
 具有以下功能：
 * 依赖解析
