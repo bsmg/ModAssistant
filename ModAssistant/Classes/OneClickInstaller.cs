@@ -28,6 +28,7 @@ namespace ModAssistant
 
         private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver" };
 
+        private const bool BypassDownloadCounter = true;
         public static void InstallAsset(string link)
         {
             Uri uri = new Uri(link);
@@ -81,25 +82,39 @@ namespace ModAssistant
                 )
             );
 
-            DownloadAsset(BeatSaverURLPrefix + Response.downloadURL, CustomSongsFolder, Response.hash + ".zip");
-            
-            using (FileStream stream = new FileStream(zip, FileMode.Open))
+            if (BypassDownloadCounter)
             {
-                using (ZipArchive archive = new ZipArchive(stream))
-                {
-                    foreach (ZipArchiveEntry file in archive.Entries)
-                    {
-                        string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
-                        if (!Directory.Exists(fileDirectory))
-                            Directory.CreateDirectory(fileDirectory);
-
-                        if (!String.IsNullOrEmpty(file.Name))
-                            file.ExtractToFile(Path.Combine(directory, file.FullName), true);
-                    }
-                }
+                DownloadAsset(BeatSaverURLPrefix + Response.directDownload, CustomSongsFolder, Response.hash + ".zip");
+            }
+            else
+            {
+                DownloadAsset(BeatSaverURLPrefix + Response.downloadURL, CustomSongsFolder, Response.hash + ".zip");
             }
 
-            File.Delete(zip);
+            if (File.Exists(zip))
+            {
+                using (FileStream stream = new FileStream(zip, FileMode.Open))
+                {
+                    using (ZipArchive archive = new ZipArchive(stream))
+                    {
+                        foreach (ZipArchiveEntry file in archive.Entries)
+                        {
+                            string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
+                            if (!Directory.Exists(fileDirectory))
+                                Directory.CreateDirectory(fileDirectory);
+
+                            if (!String.IsNullOrEmpty(file.Name))
+                                file.ExtractToFile(Path.Combine(directory, file.FullName), true);
+                        }
+                    }
+                }
+
+                File.Delete(zip);
+            } 
+            else
+            {
+                MessageBox.Show("Could not download the song.\nThere might be issues with BeatSaver or your internet connection.", "Failed to download song ZIP");
+            }
         }
 
         private static void ModelSaber(Uri uri)
@@ -239,6 +254,7 @@ namespace ModAssistant
         public Uploader uploader { get; set; }
         public DateTime uploaded { get; set; }
         public string hash { get; set; }
+        public string directDownload { get; set; }
         public string downloadURL { get; set; }
         public string coverURL { get; set; }
 
