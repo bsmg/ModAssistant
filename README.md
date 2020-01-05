@@ -9,4 +9,4 @@
 * 移除MOD
 * 一键安装支持
 
-![Preview](https://wgzeyu.gtxcn.com/img/ma.png)
+![Preview](https://wgzeyu.gtxcn.com/img/TIM%E5%9B%BE%E7%89%8720200105090500.png)
