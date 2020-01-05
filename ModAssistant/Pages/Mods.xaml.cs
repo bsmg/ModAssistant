@@ -29,6 +29,7 @@ namespace ModAssistant.Pages
 
         public List<string> DefaultMods = new List<string>(){ "SongLoader", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "MappingExtensions", "SongBrowser", "Counters+", "CameraPlus", "Custom Avatars", "Custom Sabers", "Custom Platforms" };
         public Mod[] ModsList;
+        public Mod[] TransList;
         public Mod[] AllModsList;
         public static List<Mod> InstalledMods = new List<Mod>();
         public List<string> CategoryNames = new List<string>();
@@ -56,6 +57,8 @@ namespace ModAssistant.Pages
 
             if (ModsList != null)
                 Array.Clear(ModsList, 0, ModsList.Length);
+            if (TransList != null)
+                Array.Clear(TransList, 0, TransList.Length);
             if (AllModsList != null)
                 Array.Clear(AllModsList, 0, AllModsList.Length);
 
@@ -79,7 +82,7 @@ namespace ModAssistant.Pages
                 DescriptionColumn.Width = 800;
             }
 
-            MainWindow.Instance.MainText = "正在加载MOD...";
+            MainWindow.Instance.MainText = "正在加载MOD列表...";
             await Task.Run(() => PopulateModsList());
 
             ModsListView.ItemsSource = ModList;
@@ -222,6 +225,28 @@ namespace ModAssistant.Pages
                 return;
             }
 
+            MainWindow.Instance.MainText = "正在加载MOD翻译...";
+
+            HttpWebRequest transrequest = (HttpWebRequest)WebRequest.Create(Utils.Constants.ModTranslationURL);
+            transrequest.AutomaticDecompression = DecompressionMethods.GZip;
+            transrequest.UserAgent = "ModAssistant/" + App.Version;
+
+            try
+            {
+                using (HttpWebResponse transresponse = (HttpWebResponse)transrequest.GetResponse())
+                using (Stream stream = transresponse.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    var serializer = new JavaScriptSerializer();
+                    TransList = serializer.Deserialize<Mod[]>(reader.ReadToEnd());
+                }
+            }
+            catch (Exception e)
+            {
+                System.Windows.MessageBox.Show("无法加载MOD翻译！\n\n这可能是网络不好导致的，可尝试进行以下操作：\n　1.使用不同运营商的网络，可尝试手机热点；\n　2.使用代理(科学上网)。\n\n" + e);
+                return;
+            }
+
             foreach (Mod mod in ModsList)
             {
                 bool preSelected = mod.required;
@@ -235,6 +260,15 @@ namespace ModAssistant.Pages
                 }
 
                 RegisterDependencies(mod);
+
+                foreach (Mod tran in TransList)
+                {
+                    if (tran.name == mod.name)
+                    {
+                        mod.name = tran.newname;
+                        mod.description = tran.newdescription;
+                    }
+                }
 
                 ModListItem ListItem = new ModListItem()
                 {
@@ -277,7 +311,6 @@ namespace ModAssistant.Pages
                 ResolveDependencies(mod);
             }
         }
-
         public async void InstallMods ()
         {
             MainWindow.Instance.InstallButton.IsEnabled = false;

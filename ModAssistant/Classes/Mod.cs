@@ -10,6 +10,7 @@ namespace ModAssistant
     public class Mod
     {
         public string name;
+        public string newname;
         public string version;
         public string gameVersion;
         public string _id;
@@ -18,6 +19,7 @@ namespace ModAssistant
         public string updatedDate;
         public Author author;
         public string description;
+        public string newdescription;
         public string link;
         public string category;
         public DownloadLink[] downloads;
