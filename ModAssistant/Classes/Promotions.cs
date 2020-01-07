@@ -13,7 +13,7 @@ namespace ModAssistant
             new Promotion
             {
                 ModName = "YUR Fit Calorie Tracker",
-                Text = "Join our Discord!",
+                Text = "加入我们的Discord!",
                 Link = "https://yur.chat"
             }
         };

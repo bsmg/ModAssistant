@@ -221,7 +221,7 @@ namespace ModAssistant.Pages
             }
             catch (Exception e)
             {
-                System.Windows.MessageBox.Show("无法加载MOD列表！\n\n这可能是网络不好导致的，可尝试进行以下操作：\n　1.使用不同运营商的网络，可尝试手机热点；\n　2.使用代理(科学上网)。\n\n" + e);
+                System.Windows.MessageBox.Show("无法加载MOD列表！\n\n这可能是网络不好导致的，可尝试进行以下操作：\n　1.使用不同运营商的网络，可尝试手机热点；\n　2.使用代理(科学上网)；\n　3.稍等一段时间再尝试重新运行。\n\n" + e);
                 return;
             }
 
@@ -243,7 +243,7 @@ namespace ModAssistant.Pages
             }
             catch (Exception e)
             {
-                System.Windows.MessageBox.Show("无法加载MOD翻译！\n\n这可能是网络不好导致的，可尝试进行以下操作：\n　1.使用不同运营商的网络，可尝试手机热点；\n　2.使用代理(科学上网)。\n\n" + e);
+                System.Windows.MessageBox.Show("无法加载MOD翻译！\n\n这可能是网络不好导致的，可尝试进行以下操作：\n　1.使用不同运营商的网络，可尝试手机热点；\n　2.使用代理(科学上网)；\n　3.稍等一段时间再尝试重新运行。\n\n" + e);
                 return;
             }
 
@@ -261,12 +261,15 @@ namespace ModAssistant.Pages
 
                 RegisterDependencies(mod);
 
+                mod.newname = mod.name;
+                mod.newdescription = mod.description;
+
                 foreach (Mod tran in TransList)
                 {
                     if (tran.name == mod.name)
                     {
-                        mod.name = tran.newname;
-                        mod.description = tran.newdescription;
+                        mod.newname = tran.newname;
+                        mod.newdescription = tran.newdescription;
                     }
                 }
 
@@ -274,9 +277,9 @@ namespace ModAssistant.Pages
                 {
                     IsSelected = preSelected,
                     IsEnabled = !mod.required,
-                    ModName = mod.name,
+                    ModName = mod.newname,
                     ModVersion = mod.version,
-                    ModDescription = mod.description.Replace("\r\n", " ").Replace("\n", " "),
+                    ModDescription = mod.newdescription.Replace("\r\n", " ").Replace("\n", " "),
                     ModInfo = mod,
                     Category = mod.category
                 };
