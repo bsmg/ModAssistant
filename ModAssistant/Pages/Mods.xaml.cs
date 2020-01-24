@@ -400,7 +400,9 @@ namespace ModAssistant.Pages
 
         private byte[] DownloadMod (string link)
         {
-            byte[] zip = new WebClient().DownloadData(link);
+            WebClient webClient = new WebClient();
+            webClient.Headers.Add("user-agent", "ModAssistant/" + App.Version);
+            byte[] zip = webClient.DownloadData(link);
             return zip;
         }
 
