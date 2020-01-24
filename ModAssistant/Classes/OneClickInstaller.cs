@@ -28,7 +28,7 @@ namespace ModAssistant
 
         private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver" };
 
-        private const bool BypassDownloadCounter = true;
+        private const bool BypassDownloadCounter = false;
         public static void InstallAsset(string link)
         {
             Uri uri = new Uri(link);
