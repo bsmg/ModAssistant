@@ -230,6 +230,8 @@ namespace ModAssistant
         {
             About.Instance.PatUp.IsOpen = false;
             About.Instance.PatButton.IsEnabled = true;
+            About.Instance.HugUp.IsOpen = false;
+            About.Instance.HugButton.IsEnabled = true;
         }
     }
 }

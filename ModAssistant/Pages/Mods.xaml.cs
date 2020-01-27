@@ -27,7 +27,7 @@ namespace ModAssistant.Pages
     {
         public static Mods Instance = new Mods();
 
-        public List<string> DefaultMods = new List<string>(){ "SongLoader", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "MappingExtensions", "SongBrowser", "Counters+", "CameraPlus", "Custom Avatars", "Custom Sabers", "Custom Platforms" };
+        public List<string> DefaultMods = new List<string>(){ "SongCore", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "MappingExtensions", "SongBrowser", "Counters+", "CameraPlus", "Custom Avatars", "Custom Sabers", "Custom Platforms", "PlaylistCore", "Survey" };
         public Mod[] ModsList;
         public Mod[] TransList;
         public Mod[] AllModsList;
