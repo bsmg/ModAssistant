@@ -44,10 +44,17 @@ namespace ModAssistant.Pages
             PatUp.IsOpen = true;
         }
 
-        private void HeadPat()
+        private async void HugsButton_Click(object sender, RoutedEventArgs e)
         {
-            Utils.WeebCDNRandomResponse Pat;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.WeebCDNAPIURL + "pats/random");
+            HugButton.IsEnabled = false;
+            await Task.Run(() => Hug());
+            HugUp.IsOpen = true;
+        }
+
+        private string WeebCDN(string type)
+        {
+            Utils.WeebCDNRandomResponse Response;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.WeebCDNAPIURL + type + "/random");
             request.AutomaticDecompression = DecompressionMethods.GZip;
             request.UserAgent = "ModAssistant/" + App.Version;
 
@@ -56,9 +63,19 @@ namespace ModAssistant.Pages
             using (StreamReader reader = new StreamReader(stream))
             {
                 var serializer = new JavaScriptSerializer();
-                Pat = serializer.Deserialize<Utils.WeebCDNRandomResponse>(reader.ReadToEnd());
+                Response = serializer.Deserialize<Utils.WeebCDNRandomResponse>(reader.ReadToEnd());
             }
-            PatImage.Load(Pat.url);
+            return Response.url;
+        }
+
+        private void HeadPat()
+        {
+            PatImage.Load(WeebCDN("pats"));
+        }
+
+        private void Hug()
+        {
+            HugImage.Load(WeebCDN("hugs"));
         }
     }
 }
