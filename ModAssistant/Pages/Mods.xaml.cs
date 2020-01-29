@@ -71,7 +71,7 @@ namespace ModAssistant.Pages
                 await Task.Run(() => CheckInstalledMods());
                 InstalledColumn.Width = Double.NaN;
                 UninstallColumn.Width = 70;
-                DescriptionColumn.Width = 750;
+                DescriptionColumn.Width = 730;
             } else
             {
                 InstalledColumn.Width = 0;

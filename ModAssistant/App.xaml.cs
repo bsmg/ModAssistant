@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,9 +24,11 @@ namespace ModAssistant
         public static string Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public static List<string> SavedMods = ModAssistant.Properties.Settings.Default.SavedMods.Split(',').ToList();
 
-
+        
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             if (ModAssistant.Properties.Settings.Default.UpgradeRequired)
             {
                 ModAssistant.Properties.Settings.Default.Upgrade();
