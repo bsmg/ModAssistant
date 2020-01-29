@@ -25,7 +25,7 @@ namespace ModAssistant
         {
             public const string BeatSaberAPPID = "620980";
             public const string BeatModsAPIUrl = "https://beatmods.com/api/v1/";
-            public const string ModTranslationURL = "https://wgzeyu.gtxcn.com/BeatSaber/ModList.json";
+            public const string ModTranslationURL = "https://raw.githubusercontent.com/wgzeyu/BeatSaberModListTranslationRepo/master/zh-Hans.json";
             public const string TeknikAPIUrl = "https://api.teknik.io/v1/";
             public const string BeatModsURL = "https://beatmods.com";
             public const string WeebCDNAPIURL = "https://pat.assistant.moe/api/v1.0/";
