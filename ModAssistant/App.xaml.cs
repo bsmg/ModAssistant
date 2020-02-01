@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -26,6 +28,8 @@ namespace ModAssistant
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            LoadLanguage(CultureInfo.CurrentCulture.Name);
+
             if (ModAssistant.Properties.Settings.Default.UpgradeRequired)
             {
                 ModAssistant.Properties.Settings.Default.Upgrade();
@@ -108,6 +112,26 @@ namespace ModAssistant
             MessageBox.Show("An unhandled exception just occurred: " + e.Exception, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
             e.Handled = true;
             Application.Current.Shutdown();
+        }
+
+        private ResourceDictionary LanguagesDict
+        {
+            get
+            {
+                return Resources.MergedDictionaries[1];
+            }
+        }
+
+        private void LoadLanguage(string culture)
+        {
+            try
+            {
+                LanguagesDict.Source = new Uri($"Localisation/{culture}.xaml", UriKind.Relative);
+            }
+            catch (IOException)
+            {
+                // Can't load language file
+            }
         }
     }
 }
