@@ -23,8 +23,6 @@
                         Value="Center" />
                 <Setter Property="VerticalContentAlignment"
                         Value="Center" />
-                <Setter Property="Padding"
-                        Value="10,2,10,2" />
                 <Setter Property="MinHeight"
                         Value="25" />
                 <Setter Property="Template">
@@ -89,6 +87,8 @@
 
             <Style TargetType="TextBlock">
                 <Setter Property="TextBlock.Foreground" Value="{DynamicResource TextColor}"/>
+                <Setter Property="TextWrapping" Value="NoWrap"/>
+                <Setter Property="TextTrimming" Value="None"/>
             </Style>
 
             <Style TargetType="GridViewColumnHeader">
@@ -264,6 +264,91 @@
 
             <Style TargetType="Rectangle">
                 <Setter Property="Fill" Value="{DynamicResource ModAssistantBackground}"/>
+            </Style>
+
+            <Style TargetType="ComboBoxItem" x:Key="{x:Type ComboBoxItem}">
+                <Setter Property="UIElement.SnapsToDevicePixels" Value="True" />
+                <Setter Property="Padding" Value="4,1" />
+                <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+                <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+                <Setter Property="Background" Value="{DynamicResource ComboBoxBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxOutline}" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                            <Border
+						        Name="Bd"
+						        BorderBrush="{DynamicResource ComboBoxOutline}"
+						        BorderThickness="{TemplateBinding BorderThickness}"
+						        Background="{DynamicResource ComboBoxBackground}"
+						        Padding="{TemplateBinding Padding}"
+						        SnapsToDevicePixels="True">
+                                <ContentPresenter
+							        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+							        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+							        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SystemColors.GrayTextBrushKey}"/>
+                                </Trigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="ListBoxItem.IsSelected" Value="False" />
+                                        <Condition Property="UIElement.IsMouseOver" Value="True" />
+                                        <Condition Property="UIElement.IsKeyboardFocused" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ComboBoxHighlighted}" />
+                                </MultiTrigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="ListBoxItem.IsSelected" Value="True" />
+                                        <Condition Property="UIElement.IsMouseOver" Value="False" />
+                                        <Condition Property="UIElement.IsKeyboardFocused" Value="True" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ComboBoxSelected}" />
+                                </MultiTrigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="ListBoxItem.IsSelected" Value="True" />
+                                        <Condition Property="UIElement.IsMouseOver" Value="True" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ComboBoxSelected}" />
+                                </MultiTrigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="ListBoxItem.IsSelected" Value="True" />
+                                        <Condition Property="UIElement.IsMouseOver" Value="False" />
+                                        <Condition Property="UIElement.IsKeyboardFocused" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ComboBoxSelected}" />
+                                </MultiTrigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="ListBoxItem.IsSelected" Value="False" />
+                                        <Condition Property="UIElement.IsMouseOver" Value="False" />
+                                        <Condition Property="UIElement.IsKeyboardFocused" Value="True" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ComboBoxHighlighted}" />
+                                </MultiTrigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="ListBoxItem.IsSelected" Value="False" />
+                                        <Condition Property="UIElement.IsMouseOver" Value="True" />
+                                        <Condition Property="UIElement.IsKeyboardFocused" Value="True" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ComboBoxHighlighted}" />
+                                </MultiTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="ComboBox">
+                <Setter Property="Foreground" Value="{DynamicResource ComboBoxTextColor}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxOutline}"/>
             </Style>
 
         </ResourceDictionary>

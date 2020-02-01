@@ -20,6 +20,12 @@
     <SolidColorBrush x:Key="ModListItemHighlighted" Color="#454545"/>
     <SolidColorBrush x:Key="ModListItemSelected" Color="#696969"/>
 
+    <SolidColorBrush x:Key="ComboBoxBackground" Color="#2E2E2E"/>
+    <SolidColorBrush x:Key="ComboBoxTextColor" Color="Black"/>
+    <SolidColorBrush x:Key="ComboBoxOutline" Color="#696969"/>
+    <SolidColorBrush x:Key="ComboBoxHighlighted" Color="#454545"/>
+    <SolidColorBrush x:Key="ComboBoxSelected" Color="#696969"/>
+
     <SolidColorBrush x:Key="CheckboxDefaultBackground" Color="#454545"/>
     <SolidColorBrush x:Key="CheckboxDefaultOutlineColor" Color="LightGray"/>
     <SolidColorBrush x:Key="CheckboxDisabledBackground" Color="#1a1a1a"/>
@@ -29,8 +35,9 @@
     <SolidColorBrush x:Key="CheckboxHoveredTickColor" Color="White"/>
     <SolidColorBrush x:Key="CheckboxTickColor" Color="White"/>
     <SolidColorBrush x:Key="CheckboxPressedBackground" Color="#FFBFBFBF"/>
-    
+
     <SolidColorBrush x:Key="ModAssistantBackground" Color="#0f0f0f"/>
+    <SolidColorBrush x:Key="BottomStatusBarBackground" Color="#2E2E2E"/>
     <SolidColorBrush x:Key="InfoIconColor" Color="#0DCAC8"/>
     <SolidColorBrush x:Key="ModsIconColor" Color="#833BCE"/>
     <SolidColorBrush x:Key="AboutIconColor" Color="#FF0000"/>
