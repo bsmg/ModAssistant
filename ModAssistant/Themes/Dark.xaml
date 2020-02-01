@@ -1,36 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
-    <FontFamily x:Key="DefaultFontFamily">Tahoma</FontFamily>
-    <Color x:Key="WindowBorderColor">#FF1E90FF</Color>
-    <Color x:Key="LightAccentColor">#454545</Color>
-    <Color x:Key="2ndBackgroundColor">#2E2E2E</Color>
-    <SolidColorBrush x:Key="WindowBorderBrush"
-                     Color="DodgerBlue" />
-    <SolidColorBrush x:Key="LightAccent"
-                     Color="#454545" />
-    <SolidColorBrush x:Key="DarkAccent"
-                     Color="#383838" />
-    <SolidColorBrush x:Key="ItemText"
-                     Color="#d1d1d1" />
-
-    <LinearGradientBrush x:Key="WindowBackgroundBrush"
-                         EndPoint="0.5,1"
-                         StartPoint="0.5,0"
-                         SpreadMethod="Reflect">
-        <GradientStop Color="#242424"
-                      Offset="1" />
-        <GradientStop Color="#FF2C2C2C"
-                      Offset="1" />
-    </LinearGradientBrush>
-    <SolidColorBrush x:Key="2ndBackgroundBrush" Color="#2E2E2E" />
-
-    <SolidColorBrush x:Key="WindowForegroundBrush" Color="Gray" />
-    <SolidColorBrush x:Key="LabelBrush" Color="LightGray" />
-    <SolidColorBrush x:Key="HighlightBrush" Color="White" />
-    <SolidColorBrush x:Key="BackgroundBrush" Color="#FF1B1B1B" />
-    
     <!--ModAssistant unique colors.-->
+
+    <SolidColorBrush x:Key="TextColor" Color="LightGray" />
+    <SolidColorBrush x:Key="TextHighlighted" Color="White" />
+
+    <SolidColorBrush x:Key="ButtonBackground" Color="#2E2E2E" />
+    <SolidColorBrush x:Key="ButtonOutline" Color="#696969" />
+    <SolidColorBrush x:Key="ButtonHighlightedBackground" Color="#454545" />
+    <SolidColorBrush x:Key="ButtonDisabledBackground" Color="#1a1a1a" />
     
     <SolidColorBrush x:Key="ModColumnBorderBrush" Color="LightGray"/>
     <SolidColorBrush x:Key="ModColumnHeaderHighlighted" Color="#454545"/>

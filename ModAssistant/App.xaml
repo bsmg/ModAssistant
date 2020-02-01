@@ -11,13 +11,13 @@
 
             <Style TargetType="Button">
                 <Setter Property="Background"
-                        Value="{DynamicResource 2ndBackgroundBrush}" />
+                        Value="{DynamicResource ButtonBackground}" />
                 <Setter Property="BorderBrush"
-                        Value="{DynamicResource 2ndBackgroundBrush}" />
+                        Value="{DynamicResource ButtonBackground}" />
                 <Setter Property="BorderThickness"
                         Value="1" />
                 <Setter Property="Foreground"
-                        Value="{DynamicResource LabelBrush}" />
+                        Value="{DynamicResource TextColor}" />
                 <Setter Property="HorizontalContentAlignment"
                         Value="Center" />
                 <Setter Property="VerticalContentAlignment"
@@ -31,26 +31,25 @@
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Border Name="Chrome"
                                     Background="{TemplateBinding Background}"
-                                    BorderBrush="{DynamicResource WindowBorderBrush}"
+                                    BorderBrush="{DynamicResource ButtonOutline}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     SnapsToDevicePixels="true"
-                                    TextBlock.Foreground="{DynamicResource LabelBrush}">
+                                    TextBlock.Foreground="{DynamicResource TextColor}">
                                 <ContentPresenter Name="Presenter"
                                                   Margin="{TemplateBinding Padding}"
                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                   RecognizesAccessKey="True"
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                  TextBlock.Foreground="{DynamicResource LabelBrush}" />
+                                                  TextBlock.Foreground="{DynamicResource TextColor}" />
                             </Border>
                             <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver"
-                                         Value="True">
-                                    <Setter Property="Background"
-                                            Value="{DynamicResource LightAccent}" />
-
-                                    <Setter Property="Foreground"
-                                            Value="{DynamicResource HighlightBrush}" />
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{DynamicResource ButtonHighlighted}"/>
+                                    <Setter Property="Foreground" Value="{DynamicResource TextHighlighted}" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Background" Value="{DynamicResource ButtonDisabledBackground}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -65,7 +64,7 @@
                 <Setter Property="Label.FontSize"
                         Value="13" />
                 <Setter Property="Label.Foreground"
-                        Value="White" />
+                        Value="{DynamicResource TextColor}" />
                 <Setter Property="Label.Height"
                         Value="Auto" />
                 <Setter Property="Label.Width"
@@ -85,11 +84,11 @@
             </Style>
 
             <Style TargetType="TextBlock">
-                <Setter Property="TextBlock.Foreground" Value="{DynamicResource LabelBrush}"/>
+                <Setter Property="TextBlock.Foreground" Value="{DynamicResource TextColor}"/>
             </Style>
 
             <Style TargetType="GridViewColumnHeader">
-                <Setter Property="GridViewColumnHeader.Foreground" Value="{DynamicResource LabelBrush}"/>
+                <Setter Property="GridViewColumnHeader.Foreground" Value="{DynamicResource TextColor}"/>
                 <Setter Property="GridViewColumnHeader.Background" Value="{DynamicResource 2ndBackgroundBrush}"/>
                 <Setter Property="GridViewColumnHeader.BorderBrush" Value="{DynamicResource ModColumnBorderBrush}"/>
                 <Setter Property="Template">
