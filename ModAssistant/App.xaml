@@ -4,6 +4,290 @@
 			 DispatcherUnhandledException="Application_DispatcherUnhandledException"
              Startup="Application_Startup">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Blue.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="WindowBase"
+                   TargetType="Window">
+                <Setter Property="Background"
+                        Value="{DynamicResource WindowBackgroundBrush}" />
+                <Setter Property="BorderBrush"
+                        Value="{DynamicResource WindowBorderBrush}" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="WindowStyle"
+                        Value="None" />
+                <Setter Property="FontFamily"
+                        Value="{DynamicResource DefaultFontFamily}" />
+                <Setter Property="Foreground"
+                        Value="{DynamicResource WindowForegroundBrush}" />
+                <Setter Property="AllowsTransparency"
+                        Value="True" />
+            </Style>
+
+            <Style BasedOn="{StaticResource WindowBase}"
+                   TargetType="Window"
+                   x:Key="WindowStyle">
+                <Setter Property="RenderOptions.BitmapScalingMode"
+                        Value="LowQuality" />
+                <Setter Property="RenderOptions.EdgeMode"
+                        Value="Unspecified" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="Background"
+                        Value="{DynamicResource 2ndBackgroundBrush}" />
+                <Setter Property="BorderBrush"
+                        Value="{DynamicResource 2ndBackgroundBrush}" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="Foreground"
+                        Value="{DynamicResource LabelBrush}" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+                <Setter Property="Padding"
+                        Value="10,2,10,2" />
+                <Setter Property="MinHeight"
+                        Value="25" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Name="Chrome"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{DynamicResource WindowBorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    SnapsToDevicePixels="true"
+                                    TextBlock.Foreground="{DynamicResource LabelBrush}">
+                                <ContentPresenter Name="Presenter"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  RecognizesAccessKey="True"
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                  TextBlock.Foreground="{DynamicResource LabelBrush}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Background"
+                                            Value="{DynamicResource LightAccent}" />
+
+                                    <Setter Property="Foreground"
+                                            Value="{DynamicResource HighlightBrush}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="Label"
+                   >
+                <Setter Property="Label.FontFamily"
+                        Value="{DynamicResource DefaultFontFamily}" />
+                <Setter Property="Label.FontSize"
+                        Value="13" />
+                <Setter Property="Label.Foreground"
+                        Value="White" />
+                <Setter Property="Label.Height"
+                        Value="Auto" />
+                <Setter Property="Label.Width"
+                        Value="Auto" />
+                <Setter Property="Label.HorizontalAlignment"
+                        Value="Center" />
+                <Setter Property="Label.VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="Label.HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="Label.VerticalContentAlignment"
+                        Value="Center" />
+                <Setter Property="Label.FocusVisualStyle"
+                        Value="{x:Null}" />
+                <Setter Property="TextOptions.TextFormattingMode"
+                        Value="Display" />
+            </Style>
+
+            <Style TargetType="TextBlock">
+                <Setter Property="TextBlock.Foreground" Value="{DynamicResource LabelBrush}"/>
+            </Style>
+
+            <Style TargetType="GridViewColumnHeader">
+                <Setter Property="GridViewColumnHeader.Foreground" Value="{DynamicResource LabelBrush}"/>
+                <Setter Property="GridViewColumnHeader.Background" Value="{DynamicResource 2ndBackgroundBrush}"/>
+                <Setter Property="GridViewColumnHeader.BorderBrush" Value="{DynamicResource ModColumnBorderBrush}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                            <Grid SnapsToDevicePixels="True">
+                                <Border Name="HeaderBorder" BorderThickness="0,1,0,1"
+                                        BorderBrush="{DynamicResource ModColumnBorderBrush}"
+                                        Background="{DynamicResource 2ndBackgroundBrush}">
+                                    <Grid>
+                                        <Rectangle
+                                            Name="UpperHighlight"
+                                            Visibility="Collapsed"
+                                            Fill="#FFE3F7FF" />
+                                        <Border
+                                            Grid.RowSpan="2"
+                                            Padding="{TemplateBinding Padding}">
+                                            <ContentPresenter
+                                                Name="HeaderContent"
+                                                Margin="0,0,0,1"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                RecognizesAccessKey="True"
+                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                        </Border>
+                                        <Border
+							                Name="HeaderHoverBorder"
+							                BorderThickness="1,0,1,1"
+							                Margin="1,1,0,0" />    
+                                        <Border
+							                Name="HeaderPressBorder"
+							                BorderThickness="1,1,1,0"
+							                Margin="1,0,0,1" />
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter TargetName="UpperHighlight" Property="Visibility" Value="Visible"/>
+                                    <Setter TargetName="UpperHighlight" Property="Fill" Value="{DynamicResource ModColumnHeaderHighlighted}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+            <Style TargetType="ListView">
+                <Setter Property="ListView.Background" Value="{DynamicResource BackgroundBrush}"/>
+            </Style>
+
+            <Style TargetType="ListViewItem">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListViewItem">
+                            <Border
+						        BorderThickness="{TemplateBinding BorderThickness}"
+						        BorderBrush="{TemplateBinding BorderBrush}"
+						        Background="{TemplateBinding Background}"
+						        CornerRadius="2"
+						        SnapsToDevicePixels="True">
+                                <Border
+							        Name="InnerBorder"
+							        CornerRadius="1"
+							        BorderThickness="1">
+                                    <Grid>
+                                        <Rectangle
+									        Name="UpperHighlight"
+									        Visibility="Collapsed"
+									        Fill="#75FFFFFF" />
+                                        <GridViewRowPresenter
+									        Grid.RowSpan="2"
+									        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+									        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    </Grid>
+                                </Border>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{DynamicResource ModListItemHighlighted}"/>
+                                    <Setter TargetName="UpperHighlight" Property="Visibility" Value="Visible"/>
+                                </Trigger>
+                                <Trigger Property="ListBoxItem.IsSelected" Value="True">
+                                    <Setter Property="Background" Value="{DynamicResource ModListItemSelected}"/>
+                                    <Setter TargetName="UpperHighlight" Property="Visibility" Value="Hidden"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="CheckBox">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <Grid
+						        Name="templateRoot"
+						        SnapsToDevicePixels="True"
+						        Background="{DynamicResource CheckboxDefaultOutlineColor}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition
+								        Width="Auto" />
+                                    <ColumnDefinition
+								        Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Border
+							            Name="checkBoxBorder"
+							            Margin="1"
+							            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+							            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+							            BorderThickness="{TemplateBinding BorderThickness}"
+							            Background="{DynamicResource CheckboxDefaultBackground}"
+							            BorderBrush="{TemplateBinding BorderBrush}">
+                                    <Grid
+								        Name="markGrid">
+                                        <Path
+									            Name="optionMark"
+									            Opacity="0"
+									            Stretch="None"
+									            Margin="1"
+									            Data="F1 M9.97498,1.22334 L4.6983,9.09834 L4.52164,9.09834 L0,5.19331 L1.27664,3.52165 L4.255,6.08833 L8.33331,1.52588E-05 L9.97498,1.22334"
+									            Fill="{DynamicResource CheckboxTickColor}" />
+                                        <Rectangle
+									                Name="indeterminateMark"
+									                Margin="2"
+									                Opacity="0"
+									                Fill="{DynamicResource CheckboxTickColor}" />
+                                    </Grid>
+                                </Border>
+                                <ContentPresenter
+							        Name="contentPresenter"
+							        RecognizesAccessKey="True"
+							        Grid.Column="1"
+							        Margin="{TemplateBinding Padding}"
+							        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+							        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+							        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+							        Focusable="False" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter TargetName="checkBoxBorder" Property="Background" Value="{DynamicResource CheckboxHoveredBackground}" />
+                                    <Setter TargetName="optionMark" Property="Fill" Value="{DynamicResource CheckboxHoveredTickColor}" />
+                                    <Setter TargetName="indeterminateMark" Property="Fill" Value="{DynamicResource CheckboxHoveredTickColor}" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="checkBoxBorder" Property="Background" Value="{DynamicResource CheckboxDisabledBackground}" />
+                                    <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="{DynamicResource CheckboxDisabledOutlineColor}" />
+                                    <Setter TargetName="optionMark" Property="Fill" Value="{DynamicResource CheckboxDisabledTickColor}" />
+                                    <Setter TargetName="indeterminateMark" Property="Fill" Value="{DynamicResource CheckboxDisabledTickColor}" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="checkBoxBorder" Property="Background" Value="{DynamicResource CheckboxPressedBackground}"/>
+                                </Trigger>
+                                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                                    <Setter TargetName="optionMark" Property="UIElement.Opacity" Value="1" />
+                                    <Setter TargetName="indeterminateMark" Property="UIElement.Opacity" Value="0" />
+                                </Trigger>
+                                <Trigger Property="ToggleButton.IsChecked" Value="{x:Null}">
+                                    <Setter TargetName="optionMark" Property="UIElement.Opacity" Value="0" />
+                                    <Setter TargetName="indeterminateMark" Property="UIElement.Opacity" Value="1" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
