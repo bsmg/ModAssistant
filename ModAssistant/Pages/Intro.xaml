@@ -61,15 +61,11 @@
 
 		<StackPanel Margin="10" Grid.Row="10" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 			<Button Margin="0,0,10,0" Name="Agree" Height="35" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Agree_Click">
-				<TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center">
-					I Agree
-				</TextBlock>
-			</Button>
+                <TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{DynamicResource AgreeButton}" />
+            </Button>
 			<Button Margin="10,0,0,0" Name="Disagree" Height="35" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Disagree_Click">
-				<TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center">
-					Disagree
-				</TextBlock>
-			</Button>
+                <TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{DynamicResource DisagreeButton}" />
+            </Button>
 		</StackPanel>
 	</Grid>
 </Page>
