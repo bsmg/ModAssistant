@@ -45,9 +45,13 @@
     <SolidColorBrush x:Key="DirectoryBackground" Color="#696969"/>
 
     <!--Colors for the corresponding icons.-->
-    <SolidColorBrush x:Key="InfoIconColor" Color="#0DCAC8"/>
-    <SolidColorBrush x:Key="ModsIconColor" Color="#833BCE"/>
-    <SolidColorBrush x:Key="AboutIconColor" Color="#FF0000"/>
-    <SolidColorBrush x:Key="OptionsIconColor" Color="#4E3BCE"/>
+    <!--Info Default: #0DCAC8-->
+    <SolidColorBrush x:Key="InfoIconColor" Color="#999999"/>
+    <!--Mods Default: #833BCE-->
+    <SolidColorBrush x:Key="ModsIconColor" Color="#AEAEAE"/>
+    <!--About Default: #FF0000-->
+    <SolidColorBrush x:Key="AboutIconColor" Color="#FFFFFF"/>
+    <!--Options Default: #4E3BCE-->
+    <SolidColorBrush x:Key="OptionsIconColor" Color="#696969"/>
 
 </ResourceDictionary>
