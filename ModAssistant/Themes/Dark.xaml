@@ -1,6 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
     <!--ModAssistant unique colors.-->
+
 
     <SolidColorBrush x:Key="TextColor" Color="LightGray" />
     <SolidColorBrush x:Key="TextHighlighted" Color="White" />
@@ -12,7 +14,8 @@
     
     <SolidColorBrush x:Key="ModColumnBorderBrush" Color="LightGray"/>
     <SolidColorBrush x:Key="ModColumnHeaderHighlighted" Color="#454545"/>
-    
+
+    <SolidColorBrush x:Key="ModListBackground" Color="#FF1B1B1B" />
     <SolidColorBrush x:Key="ModListItemHighlighted" Color="#454545"/>
     <SolidColorBrush x:Key="ModListItemSelected" Color="#696969"/>
 

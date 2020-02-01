@@ -137,7 +137,7 @@
             </Style>
             
             <Style TargetType="ListView">
-                <Setter Property="ListView.Background" Value="{DynamicResource BackgroundBrush}"/>
+                <Setter Property="ListView.Background" Value="{DynamicResource ModListBackground}"/>
             </Style>
 
             <Style TargetType="ListViewItem">
