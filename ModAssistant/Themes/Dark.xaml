@@ -23,10 +23,11 @@
 
     <!--Combo Box (Version select)-->
     <SolidColorBrush x:Key="ComboBoxBackground" Color="#2E2E2E"/>
-    <SolidColorBrush x:Key="ComboBoxTextColor" Color="Black"/>
     <SolidColorBrush x:Key="ComboBoxOutline" Color="#696969"/>
     <SolidColorBrush x:Key="ComboBoxHighlighted" Color="#454545"/>
     <SolidColorBrush x:Key="ComboBoxSelected" Color="#696969"/>
+    <SolidColorBrush x:Key="ComboBoxClicked" Color="#A2A2A2"/>
+    <SolidColorBrush x:Key="ComboBoxArrow" Color="White"/>
 
     <!--Checkboxes (Mod List and Options)-->
     <SolidColorBrush x:Key="CheckboxDefaultBackground" Color="#454545"/>

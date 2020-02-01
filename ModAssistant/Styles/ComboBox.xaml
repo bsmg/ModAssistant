@@ -1,6 +1,104 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style TargetType="ComboBox">
-        <Setter Property="Foreground" Value="{DynamicResource ComboBoxTextColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxOutline}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBox}">
+                    <Grid Name="templateRoot" SnapsToDevicePixels="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition MinWidth="{DynamicResource SystemParameters.VerticalScrollBarWidthKey}" Width="0" />
+                        </Grid.ColumnDefinitions>
+                        <Popup
+				            Name="PART_Popup"
+				            AllowsTransparency="True"
+				            Placement="Bottom"
+				            Grid.ColumnSpan="2"
+				            PopupAnimation="{DynamicResource SystemParameters.ComboBoxPopupAnimationKey}"
+				            IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}">
+                            <Border
+						        Name="DropDownBorder"
+						        BorderBrush="{DynamicResource ComboBoxOutline}"
+						        Background="{DynamicResource ComboBoxBackground}"
+						        BorderThickness="1">        
+                                <ScrollViewer Name="DropDownScrollViewer">
+                                    <Grid Name="grid" RenderOptions.ClearTypeHint="Enabled">
+                                        <Canvas
+									        Name="canvas"
+									        HorizontalAlignment="Left"
+									        VerticalAlignment="Top"
+									        Height="0"
+									        Width="0">
+                                            <Rectangle
+										        Name="OpaqueRect"
+										        Fill="{Binding Background, ElementName=DropDownBorder}"
+										        Height="{Binding ActualHeight, ElementName=DropDownBorder}"
+										        Width="{Binding ActualWidth, ElementName=DropDownBorder}" />
+                                        </Canvas>
+                                        <ItemsPresenter
+									        Name="ItemsPresenter"
+									        KeyboardNavigation.DirectionalNavigation="Contained"
+									        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    </Grid>
+                                </ScrollViewer>
+                            </Border>
+                        </Popup>
+                        <Border
+				            Name="Border"
+                            Background="Transparent"
+				            Margin="{TemplateBinding BorderThickness}">
+                            <TextBox
+					            Name="PART_EditableTextBox"
+					            Margin="{TemplateBinding Padding}"
+                                BorderBrush="Transparent"
+                                BorderThickness="0"
+                                Foreground="{DynamicResource TextColor}"
+					            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+					            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+					            IsReadOnly="True"
+                                Background="Transparent"
+                                Text="{TemplateBinding Text}"/>
+                        </Border>
+                        <ToggleButton
+				            Name="toggleButton"
+					        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+					        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+				            IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="UIElement.Opacity" Value="0.56" />
+                        </Trigger>
+                        <Trigger Property="UIElement.IsKeyboardFocusWithin" Value="True">
+                            <Setter Property="Foreground" Value="#FF000000" />
+                        </Trigger>
+                        <Trigger SourceName="PART_Popup" Property="Popup.HasDropShadow" Value="True">
+                        </Trigger>
+                        <Trigger Property="ItemsControl.HasItems" Value="False">
+                            <Setter TargetName="DropDownBorder" Property="Height" Value="95" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ItemsControl.IsGrouping" Value="True" />
+                                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+                        </MultiTrigger>
+                        <Trigger SourceName="DropDownScrollViewer" Property="CanContentScroll" Value="False">
+                            <Setter TargetName="OpaqueRect" Property="Canvas.Top" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
+                            <Setter TargetName="OpaqueRect" Property="Canvas.Left" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="ComboBox.IsEditable" Value="True">
+                <Setter Property="IsTabStop" Value="False" />
+                <Setter Property="Padding" Value="2" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

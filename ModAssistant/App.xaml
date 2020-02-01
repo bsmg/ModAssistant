@@ -23,6 +23,7 @@
                 <ResourceDictionary x:Name="Rectangle_Style" Source="Styles/Rectangle.xaml"/>
                 <ResourceDictionary x:Name="ComboBoxItem_Style" Source="Styles/ComboBoxItem.xaml"/>
                 <ResourceDictionary x:Name="ComboBox_Style" Source="Styles/ComboBox.xaml"/>
+                <ResourceDictionary x:Name="ToggleButton_Style" Source="Styles/ToggleButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
