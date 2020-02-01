@@ -1,31 +1,34 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!--ModAssistant unique colors.-->
+    <!--ModAssistant Black Theme by Caeden117-->
 
-
+    <!--Default text-->
     <SolidColorBrush x:Key="TextColor" Color="LightGray" />
     <SolidColorBrush x:Key="TextHighlighted" Color="White" />
-    <SolidColorBrush x:Key="DirectoryBackground" Color="#696969"/>
 
+    <!--Buttons (Info/Mods/About/Options as well as More Info and Install/Update)-->
     <SolidColorBrush x:Key="ButtonBackground" Color="#2E2E2E" />
     <SolidColorBrush x:Key="ButtonOutline" Color="#696969" />
     <SolidColorBrush x:Key="ButtonHighlightedBackground" Color="#454545" />
     <SolidColorBrush x:Key="ButtonClickedBackground" Color="#696969" />
     <SolidColorBrush x:Key="ButtonDisabledBackground" Color="#1a1a1a" />
 
+    <!--Mod List-->
     <SolidColorBrush x:Key="ModColumnBorderBrush" Color="LightGray"/>
     <SolidColorBrush x:Key="ModColumnHeaderHighlighted" Color="#454545"/>
     <SolidColorBrush x:Key="ModListBackground" Color="#FF1B1B1B" />
     <SolidColorBrush x:Key="ModListItemHighlighted" Color="#454545"/>
     <SolidColorBrush x:Key="ModListItemSelected" Color="#696969"/>
 
+    <!--Combo Box (Version select)-->
     <SolidColorBrush x:Key="ComboBoxBackground" Color="#2E2E2E"/>
     <SolidColorBrush x:Key="ComboBoxTextColor" Color="Black"/>
     <SolidColorBrush x:Key="ComboBoxOutline" Color="#696969"/>
     <SolidColorBrush x:Key="ComboBoxHighlighted" Color="#454545"/>
     <SolidColorBrush x:Key="ComboBoxSelected" Color="#696969"/>
 
+    <!--Checkboxes (Mod List and Options)-->
     <SolidColorBrush x:Key="CheckboxDefaultBackground" Color="#454545"/>
     <SolidColorBrush x:Key="CheckboxDefaultOutlineColor" Color="LightGray"/>
     <SolidColorBrush x:Key="CheckboxDisabledBackground" Color="#1a1a1a"/>
@@ -36,8 +39,12 @@
     <SolidColorBrush x:Key="CheckboxTickColor" Color="White"/>
     <SolidColorBrush x:Key="CheckboxPressedBackground" Color="#FFBFBFBF"/>
 
+    <!--Various important elements that need to be controlled independently-->
     <SolidColorBrush x:Key="ModAssistantBackground" Color="#0f0f0f"/>
     <SolidColorBrush x:Key="BottomStatusBarBackground" Color="#2E2E2E"/>
+    <SolidColorBrush x:Key="DirectoryBackground" Color="#696969"/>
+
+    <!--Colors for the corresponding icons.-->
     <SolidColorBrush x:Key="InfoIconColor" Color="#0DCAC8"/>
     <SolidColorBrush x:Key="ModsIconColor" Color="#833BCE"/>
     <SolidColorBrush x:Key="AboutIconColor" Color="#FF0000"/>
