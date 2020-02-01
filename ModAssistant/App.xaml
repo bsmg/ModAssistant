@@ -9,35 +9,6 @@
                 <ResourceDictionary Source="Themes/Dark.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <Style x:Key="WindowBase"
-                   TargetType="Window">
-                <Setter Property="Background"
-                        Value="{DynamicResource WindowBackgroundBrush}" />
-                <Setter Property="BorderBrush"
-                        Value="{DynamicResource WindowBorderBrush}" />
-                <Setter Property="BorderThickness"
-                        Value="1" />
-                <Setter Property="WindowStyle"
-                        Value="None" />
-                <Setter Property="FontFamily"
-                        Value="{DynamicResource DefaultFontFamily}" />
-                <Setter Property="Foreground"
-                        Value="{DynamicResource WindowForegroundBrush}" />
-                <Setter Property="AllowsTransparency"
-                        Value="True" />
-            </Style>
-
-            <Style BasedOn="{StaticResource WindowBase}"
-                   TargetType="Window"
-                   x:Key="WindowStyle">
-                <Setter Property="RenderOptions.BitmapScalingMode"
-                        Value="LowQuality" />
-                <Setter Property="RenderOptions.EdgeMode"
-                        Value="Unspecified" />
-                <Setter Property="BorderThickness"
-                        Value="1" />
-            </Style>
-
             <Style TargetType="Button">
                 <Setter Property="Background"
                         Value="{DynamicResource 2ndBackgroundBrush}" />
