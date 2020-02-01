@@ -6,15 +6,16 @@
 
     <SolidColorBrush x:Key="TextColor" Color="LightGray" />
     <SolidColorBrush x:Key="TextHighlighted" Color="White" />
+    <SolidColorBrush x:Key="DirectoryBackground" Color="#696969"/>
 
     <SolidColorBrush x:Key="ButtonBackground" Color="#2E2E2E" />
     <SolidColorBrush x:Key="ButtonOutline" Color="#696969" />
     <SolidColorBrush x:Key="ButtonHighlightedBackground" Color="#454545" />
+    <SolidColorBrush x:Key="ButtonClickedBackground" Color="#696969" />
     <SolidColorBrush x:Key="ButtonDisabledBackground" Color="#1a1a1a" />
-    
+
     <SolidColorBrush x:Key="ModColumnBorderBrush" Color="LightGray"/>
     <SolidColorBrush x:Key="ModColumnHeaderHighlighted" Color="#454545"/>
-
     <SolidColorBrush x:Key="ModListBackground" Color="#FF1B1B1B" />
     <SolidColorBrush x:Key="ModListItemHighlighted" Color="#454545"/>
     <SolidColorBrush x:Key="ModListItemSelected" Color="#696969"/>

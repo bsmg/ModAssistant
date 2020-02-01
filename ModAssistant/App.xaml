@@ -45,9 +45,12 @@
                                                   TextBlock.Foreground="{DynamicResource TextColor}" />
                             </Border>
                             <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="{DynamicResource ButtonHighlighted}"/>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{DynamicResource ButtonHighlightedBackground}"/>
                                     <Setter Property="Foreground" Value="{DynamicResource TextHighlighted}" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" Value="{DynamicResource ButtonClickedBackground}"/>
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="False">
                                     <Setter Property="Background" Value="{DynamicResource ButtonDisabledBackground}"/>
