@@ -48,6 +48,6 @@
     <SolidColorBrush x:Key="CheckboxTickColor" Color="White"/>
     <SolidColorBrush x:Key="CheckboxPressedBackground" Color="#FFBFBFBF"/>
     
-    <SolidColorBrush x:Key="ModAssistantBackground" Color="#1a1a1a"/>
+    <SolidColorBrush x:Key="ModAssistantBackground" Color="#0f0f0f"/>
 
 </ResourceDictionary>

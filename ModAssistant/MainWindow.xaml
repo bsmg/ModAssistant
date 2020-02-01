@@ -8,95 +8,98 @@
 		Icon="Resources/icon.ico"
         Title="Mod Assistant" Width="1280" Height="720"
         UIElement.PreviewMouseDown="Window_PreviewMouseDown">
-	<Grid Margin="10">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="*"/>
-			<RowDefinition Height="50"/>
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="70"/>
-			<ColumnDefinition Width="*"/>
-		</Grid.ColumnDefinitions>
+    <Grid>
+        <Rectangle/>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-		<Grid Grid.Column="0">
-			<Grid.RowDefinitions>
-				<RowDefinition Height="65" />
-				<RowDefinition Height="70" />
-				<RowDefinition Height="70" />
-				<RowDefinition Height="70" />
-				<RowDefinition Height="*" />
-				<RowDefinition Height="Auto" />
-			</Grid.RowDefinitions>
-			
-			<Button Name="IntroButton" Grid.Row="0" Height="60" Margin="0,0,10,5" Background="white" Click="IntroButton_Click">
-				<StackPanel Margin="0,8,0,0">
-					<Image Height="30" Source="Resources/Intro.png" VerticalAlignment="Bottom"></Image>
-					<TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom">Intro</TextBlock>
-				</StackPanel>
-			</Button>
-			
-			<Button IsEnabled="false" Name="ModsButton" Grid.Row="1" Height="60" Margin="0,5,10,5" Background="white" Click="ModsButton_Click">
-				<StackPanel Margin="0,6,0,0">
-					<Image Height="30" Source="Resources/Mods.png" VerticalAlignment="Bottom"></Image>
-					<TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom">Mods</TextBlock>
-				</StackPanel>
-			</Button>
-			
-			<Button Name="AboutButton" Grid.Row="2" Height="60" Margin="0,5,10,5" Background="white" Click="AboutButton_Click">
-				<StackPanel Margin="0,6,0,0">
-					<Image Height="30" Source="Resources/About.png" VerticalAlignment="Bottom"></Image>
-					<TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom">About</TextBlock>
-				</StackPanel>
-			</Button>
-			
-			<Button Name="OptionsButton" Grid.Row="3" Height="60" Margin="0,5,10,5" Background="white" Click="OptionsButton_Click">
-				<StackPanel Margin="0,5,0,0">
-					<Image Height="30" Source="Resources/Options.png" VerticalAlignment="Bottom"></Image>
-					<TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom">Options</TextBlock>
-				</StackPanel>
-			</Button>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="65" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-			<StackPanel Name="GameVersions" Grid.Row="5" VerticalAlignment="Bottom">
-				<TextBlock Text="Game Version:" FontSize="10"/>
-				<ComboBox Name="GameVersionsBox" Margin="0,5,5,0" SelectionChanged="GameVersionsBox_SelectionChanged">
-				</ComboBox>
-			</StackPanel>
+                <Button Name="IntroButton" Grid.Row="0" Height="60" Margin="0,0,10,5" Background="white" Click="IntroButton_Click">
+                    <StackPanel Margin="0,8,0,0">
+                        <Image Height="30" Source="Resources/Intro.png" VerticalAlignment="Bottom"></Image>
+                        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom">Intro</TextBlock>
+                    </StackPanel>
+                </Button>
 
-		</Grid>
-		
-		<StackPanel Grid.Row="1" VerticalAlignment="Center">
-			<TextBlock Text="Version" HorizontalAlignment="Center"/>
-			<TextBlock Name="VersionText" HorizontalAlignment="Center"/>
-		</StackPanel>
-		
-		<Frame Grid.Column="1" Name="Main" NavigationUIVisibility="Hidden" />
-		
-		<Grid Grid.Row="1" Grid.Column="1" >
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="115" />
-				<ColumnDefinition Width="115" />
-			</Grid.ColumnDefinitions>
+                <Button IsEnabled="false" Name="ModsButton" Grid.Row="1" Height="60" Margin="0,5,10,5" Background="white" Click="ModsButton_Click">
+                    <StackPanel Margin="0,6,0,0">
+                        <Image Height="30" Source="Resources/Mods.png" VerticalAlignment="Bottom"></Image>
+                        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom">Mods</TextBlock>
+                    </StackPanel>
+                </Button>
 
-			<TextBlock Name="MainTextBlock" Padding="5" Height="40" VerticalAlignment="Bottom" Background="LightGray" FontSize="20" />
-			<Button Grid.Column="1" Name="InfoButton" IsEnabled="False" Height="40" Width="100" HorizontalAlignment="Right" Margin="0,10,0,0" Click="InfoButton_Click">
-				<StackPanel>
-					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Button Name="AboutButton" Grid.Row="2" Height="60" Margin="0,5,10,5" Background="white" Click="AboutButton_Click">
+                    <StackPanel Margin="0,6,0,0">
+                        <Image Height="30" Source="Resources/About.png" VerticalAlignment="Bottom"></Image>
+                        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom">About</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Name="OptionsButton" Grid.Row="3" Height="60" Margin="0,5,10,5" Background="white" Click="OptionsButton_Click">
+                    <StackPanel Margin="0,5,0,0">
+                        <Image Height="30" Source="Resources/Options.png" VerticalAlignment="Bottom"></Image>
+                        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom">Options</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <StackPanel Name="GameVersions" Grid.Row="5" VerticalAlignment="Bottom">
+                    <TextBlock Text="Game Version:" FontSize="10"/>
+                    <ComboBox Name="GameVersionsBox" Margin="0,5,5,0" SelectionChanged="GameVersionsBox_SelectionChanged">
+                    </ComboBox>
+                </StackPanel>
+
+            </Grid>
+
+            <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                <TextBlock Text="Version" HorizontalAlignment="Center"/>
+                <TextBlock Name="VersionText" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <Frame Grid.Column="1" Name="Main" NavigationUIVisibility="Hidden" />
+
+            <Grid Grid.Row="1" Grid.Column="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="115" />
+                    <ColumnDefinition Width="115" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Name="MainTextBlock" Padding="5" Height="40" VerticalAlignment="Bottom" Background="LightGray" FontSize="20" />
+                <Button Grid.Column="1" Name="InfoButton" IsEnabled="False" Height="40" Width="100" HorizontalAlignment="Right" Margin="0,10,0,0" Click="InfoButton_Click">
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom">
 						Mod Info
-					</TextBlock>
-				</StackPanel>
-			</Button>
-			
-			<Button Grid.Column="2" Name="InstallButton" IsEnabled="False" Height="40" Width="100" HorizontalAlignment="Right" Margin="0,10,0,0" Click="InstallButton_Click">
-				<StackPanel>
-					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                        </TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Column="2" Name="InstallButton" IsEnabled="False" Height="40" Width="100" HorizontalAlignment="Right" Margin="0,10,0,0" Click="InstallButton_Click">
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom">
 						Install
-					</TextBlock>
-					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                        </TextBlock>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom">
 						or Update
-					</TextBlock>
-				</StackPanel>
-			</Button>
-		</Grid>
-	</Grid>
+                        </TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
 </Window>
