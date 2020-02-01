@@ -288,6 +288,10 @@
                 </Setter>
             </Style>
 
+            <Style TargetType="Grid" x:Key="GridBase">
+                <Setter Property="Background" Value="{DynamicResource ModAssistantBackground}"/>
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

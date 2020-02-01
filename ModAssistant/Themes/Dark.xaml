@@ -47,5 +47,7 @@
     <SolidColorBrush x:Key="CheckboxHoveredTickColor" Color="White"/>
     <SolidColorBrush x:Key="CheckboxTickColor" Color="White"/>
     <SolidColorBrush x:Key="CheckboxPressedBackground" Color="#FFBFBFBF"/>
+    
+    <SolidColorBrush x:Key="ModAssistantBackground" Color="#1a1a1a"/>
 
 </ResourceDictionary>
