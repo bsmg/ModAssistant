@@ -80,7 +80,7 @@
                     <ColumnDefinition Width="115" />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Name="MainTextBlock" Padding="5" Height="40" VerticalAlignment="Bottom" Background="LightGray" FontSize="20" />
+                <TextBlock Name="MainTextBlock" Padding="5" Height="40" VerticalAlignment="Bottom" Background="{DynamicResource BottomStatusBarBackground}" FontSize="20" />
                 <Button Grid.Column="1" Name="InfoButton" IsEnabled="False" Height="40" Width="100" HorizontalAlignment="Right" Margin="0,10,0,0" Click="InfoButton_Click">
                     <StackPanel>
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom">

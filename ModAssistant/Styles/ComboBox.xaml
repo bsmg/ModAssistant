@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <Style TargetType="ComboBox">
+        <Setter Property="Foreground" Value="{DynamicResource ComboBoxTextColor}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxOutline}"/>
+    </Style>
+</ResourceDictionary>

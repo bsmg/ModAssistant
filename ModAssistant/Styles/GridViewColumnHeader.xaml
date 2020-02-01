@@ -1,0 +1,51 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="GridViewColumnHeader">
+        <Setter Property="GridViewColumnHeader.Foreground" Value="{DynamicResource TextColor}"/>
+        <Setter Property="GridViewColumnHeader.Background" Value="{DynamicResource 2ndBackgroundBrush}"/>
+        <Setter Property="GridViewColumnHeader.BorderBrush" Value="{DynamicResource ModColumnBorderBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                    <Grid SnapsToDevicePixels="True">
+                        <Border Name="HeaderBorder" BorderThickness="0,1,0,1"
+                                BorderBrush="{DynamicResource ModColumnBorderBrush}"
+                                Background="{DynamicResource 2ndBackgroundBrush}">
+                            <Grid>
+                                <Rectangle
+                                    Name="UpperHighlight"
+                                    Visibility="Collapsed"
+                                    Fill="#FFE3F7FF" />
+                                <Border
+                                    Grid.RowSpan="2"
+                                    Padding="{TemplateBinding Padding}">
+                                    <ContentPresenter
+                                        Name="HeaderContent"
+                                        Margin="0,0,0,1"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        RecognizesAccessKey="True"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                </Border>
+                                <Border
+							        Name="HeaderHoverBorder"
+							        BorderThickness="1,0,1,1"
+							        Margin="1,1,0,0" />
+                                <Border
+							        Name="HeaderPressBorder"
+							        BorderThickness="1,1,1,0"
+							        Margin="1,0,0,1" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="UIElement.IsMouseOver" Value="True">
+                            <Setter TargetName="UpperHighlight" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="UpperHighlight" Property="Fill" Value="{DynamicResource ModColumnHeaderHighlighted}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
