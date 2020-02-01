@@ -30,5 +30,9 @@
     <SolidColorBrush x:Key="CheckboxPressedBackground" Color="#FFBFBFBF"/>
     
     <SolidColorBrush x:Key="ModAssistantBackground" Color="#0f0f0f"/>
+    <SolidColorBrush x:Key="InfoIconColor" Color="#0DCAC8"/>
+    <SolidColorBrush x:Key="ModsIconColor" Color="#833BCE"/>
+    <SolidColorBrush x:Key="AboutIconColor" Color="#FF0000"/>
+    <SolidColorBrush x:Key="OptionsIconColor" Color="#4E3BCE"/>
 
 </ResourceDictionary>
