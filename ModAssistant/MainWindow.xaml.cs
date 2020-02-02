@@ -51,7 +51,6 @@ namespace ModAssistant
             }
 
             List<string> versions;
-            string json = string.Empty;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsAPIUrl + "version");
             request.AutomaticDecompression = DecompressionMethods.GZip;
             request.UserAgent = "ModAssistant/" + App.Version;

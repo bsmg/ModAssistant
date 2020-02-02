@@ -43,8 +43,6 @@ namespace ModAssistant
         private static void BeatSaver(Uri uri)
         {
             string Key = uri.Host;
-
-            string json = string.Empty;
             BeatSaverApiResponse Response;
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BeatSaverURLPrefix + "/api/maps/detail/" + Key);

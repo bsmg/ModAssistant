@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
@@ -17,7 +17,6 @@ namespace ModAssistant
 
         public static bool CheckForUpdate()
         {
-            string json = string.Empty;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(APILatestURL);
             request.AutomaticDecompression = DecompressionMethods.GZip;
             request.UserAgent = "ModAssistant/" + App.Version;

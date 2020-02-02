@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -195,7 +195,6 @@ namespace ModAssistant.Pages
 
         public void PopulateModsList()
         {
-            string json = string.Empty;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions + "&gameVersion=" + MainWindow.GameVersion);
             request.AutomaticDecompression = DecompressionMethods.GZip;
             request.UserAgent = "ModAssistant/" + App.Version;
