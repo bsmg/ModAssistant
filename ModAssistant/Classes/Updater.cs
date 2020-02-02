@@ -51,7 +51,7 @@ namespace ModAssistant
             }
             catch
             {
-                Utils.SendNotify("Couldn't check for updates.");
+                Utils.SendNotify((string)Application.Current.FindResource("Updater:CheckFailed"));
             }
 
             if (NeedsUpdate) StartUpdate();
@@ -74,7 +74,7 @@ namespace ModAssistant
 
             if (String.IsNullOrEmpty(DownloadLink))
             {
-                Utils.SendNotify("Couldn't download update.");
+                Utils.SendNotify((string)Application.Current.FindResource("Updater:DownloadFailed"));
             }
             else
             {
