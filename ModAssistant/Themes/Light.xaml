@@ -11,12 +11,12 @@
     <SolidColorBrush x:Key="ButtonBackground" Color="LightGray" />
     <SolidColorBrush x:Key="ButtonOutline" Color="Black" />
     <SolidColorBrush x:Key="ButtonHighlightedBackground" Color="White" />
-    <SolidColorBrush x:Key="ButtonClickedBackground" Color="#A0A0A0" />
-    <SolidColorBrush x:Key="ButtonDisabledBackground" Color="Gray" />
+    <SolidColorBrush x:Key="ButtonClickedBackground" Color="#C0C0C0" />
+    <SolidColorBrush x:Key="ButtonDisabledBackground" Color="#B0B0B0" />
 
     <!--Mod List-->
     <SolidColorBrush x:Key="ModColumnBackground" Color="#EEEEEE"/>
-    <SolidColorBrush x:Key="ModColumnBorderBrush" Color="Black"/>
+    <SolidColorBrush x:Key="ModColumnBorderBrush" Color="Gray"/>
     <SolidColorBrush x:Key="ModColumnHeaderHighlighted" Color="LightGray"/>
     <SolidColorBrush x:Key="ModListBackground" Color="#DDDDDD" />
     <SolidColorBrush x:Key="ModListItemHighlighted" Color="#BBBBBB"/>
@@ -31,12 +31,12 @@
     <SolidColorBrush x:Key="ComboBoxArrow" Color="Black"/>
 
     <!--Checkboxes (Mod List and Options)-->
-    <SolidColorBrush x:Key="CheckboxDefaultBackground" Color="#454545"/>
+    <SolidColorBrush x:Key="CheckboxDefaultBackground" Color="#707070"/>
     <SolidColorBrush x:Key="CheckboxDefaultOutlineColor" Color="LightGray"/>
     <SolidColorBrush x:Key="CheckboxDisabledBackground" Color="#1a1a1a"/>
     <SolidColorBrush x:Key="CheckboxDisabledOutlineColor" Color="#2a2a2a"/>
     <SolidColorBrush x:Key="CheckboxDisabledTickColor" Color="#FFB0B0B0"/>
-    <SolidColorBrush x:Key="CheckboxHoveredBackground" Color="#696969"/>
+    <SolidColorBrush x:Key="CheckboxHoveredBackground" Color="#909090"/>
     <SolidColorBrush x:Key="CheckboxHoveredTickColor" Color="White"/>
     <SolidColorBrush x:Key="CheckboxTickColor" Color="White"/>
     <SolidColorBrush x:Key="CheckboxPressedBackground" Color="#FFBFBFBF"/>

@@ -61,7 +61,7 @@
 				<GroupStyle>
 					<GroupStyle.HeaderTemplate>
 						<DataTemplate>
-							<TextBlock FontWeight="Bold" FontSize="14" Text="{Binding Name}"/>
+							<TextBlock FontWeight="Bold" FontSize="14" Padding="6,0,0,0" Text="{Binding Name}"/>
 						</DataTemplate>
 					</GroupStyle.HeaderTemplate>
 				</GroupStyle>
