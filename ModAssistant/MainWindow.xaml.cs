@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -39,7 +39,7 @@ namespace ModAssistant
 
             VersionText.Text = App.Version;
 
-            if (Utils.isVoid())
+            if (Utils.IsVoid())
             {
                 Main.Content = Invalid.Instance;
                 MainWindow.Instance.ModsButton.IsEnabled = false;

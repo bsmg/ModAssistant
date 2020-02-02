@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -324,7 +324,7 @@ namespace ModAssistant
             return null;
         }
 
-        public static bool isVoid()
+        public static bool IsVoid()
         {
             string directory = App.BeatSaberInstallDirectory;
 

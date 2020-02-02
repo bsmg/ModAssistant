@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -237,6 +237,7 @@ namespace ModAssistant
         }
     }
 
+#pragma warning disable IDE1006 // Naming Styles
     class BeatSaverApiResponse
     {
         public Metadata metadata { get; set; }
@@ -315,3 +316,4 @@ namespace ModAssistant
         }
     }
 }
+#pragma warning restore IDE1006 // Naming Styles
