@@ -21,7 +21,7 @@ namespace ModAssistant.Pages
     {
         public static Mods Instance = new Mods();
 
-        public List<string> DefaultMods = new List<string>(){ "SongCore", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "PlaylistCore", "Survey" };
+        public List<string> DefaultMods = new List<string>() { "SongCore", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "PlaylistCore", "Survey" };
         public Mod[] ModsList;
         public Mod[] AllModsList;
         public static List<Mod> InstalledMods = new List<Mod>();
@@ -226,7 +226,7 @@ namespace ModAssistant.Pages
                 if (DefaultMods.Contains(mod.name) || (App.SaveModSelection && App.SavedMods.Contains(mod.name)))
                 {
                     preSelected = true;
-                    if(!App.SavedMods.Contains(mod.name))
+                    if (!App.SavedMods.Contains(mod.name))
                     {
                         App.SavedMods.Add(mod.name);
                     }
@@ -302,7 +302,7 @@ namespace ModAssistant.Pages
 
                     Pages.Options.Instance.YeetBSIPA.IsEnabled = true;
                 }
-                else if(mod.ListItem.IsSelected)
+                else if (mod.ListItem.IsSelected)
                 {
                     MainWindow.Instance.MainText = $"Installing {mod.name}...";
                     await Task.Run(async () => await InstallMod(mod, Path.Combine(installDirectory, @"IPA\Pending")));

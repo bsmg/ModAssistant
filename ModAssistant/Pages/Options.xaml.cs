@@ -191,7 +191,7 @@ namespace ModAssistant.Pages
                 MainWindow.Instance.MainText = "Finding BSIPA Version...";
                 await Task.Run(() => Mods.Instance.GetBSIPAVersion());
             }
-            foreach(Mod mod in Mods.InstalledMods)
+            foreach (Mod mod in Mods.InstalledMods)
             {
                 if (mod.name.ToLower() == "bsipa")
                 {

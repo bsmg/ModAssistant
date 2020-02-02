@@ -17,7 +17,7 @@ namespace ModAssistant
 
                 if (File.Exists(file))
                 {
-                    line = Utils.CalculateMD5(file) + " " +LevelSeparator(level) + "├─ " + Path.GetFileName(file);
+                    line = Utils.CalculateMD5(file) + " " + LevelSeparator(level) + "├─ " + Path.GetFileName(file);
                     entries.Add(line);
 
                 }
@@ -49,7 +49,7 @@ namespace ModAssistant
         private static string LevelSeparator(int level)
         {
             string separator = string.Empty;
-            for(int i = 0; i < level; i++)
+            for (int i = 0; i < level; i++)
             {
                 separator += "│  ";
             }

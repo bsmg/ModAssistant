@@ -207,9 +207,9 @@ namespace ModAssistant
         private void GameVersionsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string oldGameVersion = GameVersion;
-            
+
             GameVersion = (sender as ComboBox).SelectedItem.ToString();
-            
+
             if (string.IsNullOrEmpty(oldGameVersion)) return;
 
             Properties.Settings.Default.GameVersion = GameVersion;

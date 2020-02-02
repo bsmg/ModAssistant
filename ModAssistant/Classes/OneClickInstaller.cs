@@ -90,7 +90,7 @@ namespace ModAssistant
                         {
                             Directory.CreateDirectory(fileDirectory);
                         }
-                        
+
                         if (!string.IsNullOrEmpty(file.Name))
                         {
                             file.ExtractToFile(Path.Combine(directory, file.FullName), true);
@@ -177,7 +177,8 @@ namespace ModAssistant
                 {
                     Utils.StartAsAdmin($"\"--register\" \"{Protocol}\"");
                 }
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
             }
@@ -271,13 +272,13 @@ namespace ModAssistant
             public double bpm { get; set; }
         }
 
-        public class Characteristic 
+        public class Characteristic
         {
             public string name { get; set; }
             public CharacteristicDifficulties difficulties { get; set; }
         }
 
-        public class CharacteristicDifficulties 
+        public class CharacteristicDifficulties
         {
             public Difficulty easy { get; set; }
             public Difficulty normal { get; set; }
@@ -286,7 +287,7 @@ namespace ModAssistant
             public Difficulty expertPlus { get; set; }
         }
 
-        public class Difficulty 
+        public class Difficulty
         {
             public double? duration { get; set; }
             public double? length { get; set; }
