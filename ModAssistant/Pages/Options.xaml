@@ -1,4 +1,4 @@
-﻿<Page x:Class="ModAssistant.Pages.Options"
+<Page x:Class="ModAssistant.Pages.Options"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -85,7 +85,7 @@
         <StackPanel Grid.Row="15" Margin="0" Orientation="Horizontal" HorizontalAlignment="Left">
             <Button Margin="5" Height="30" Width="80" Content="Open Logs" Click="OpenLogsDirButton_Click"/>
             <Button Margin="5" Height="30" x:Name="YeetBSIPA" Width="100" Content="Uninstall BSIPA" Click="YeetBSIPAButton_Click"/>
-            <Button Margin="5" Height="30" Width="110" Background="Red" Content="Remove All Mods" Click="YeetModsButton_Click"/>
+            <Button Margin="5" Height="30" Width="110" Background="{DynamicResource ButtonDangerBackground}" Content="Remove All Mods" Click="YeetModsButton_Click"/>
         </StackPanel>
 
     </Grid>

@@ -13,6 +13,7 @@
     <SolidColorBrush x:Key="ButtonHighlightedBackground" Color="#454545" />
     <SolidColorBrush x:Key="ButtonClickedBackground" Color="#696969" />
     <SolidColorBrush x:Key="ButtonDisabledBackground" Color="#1a1a1a" />
+    <SolidColorBrush x:Key="ButtonDangerBackground" Color="#ed172f" />
 
     <!--Mod List-->
     <SolidColorBrush x:Key="ModColumnBackground" Color="#1B1B1B"/>
