@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using ModAssistant.Pages;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ModAssistant
 {
