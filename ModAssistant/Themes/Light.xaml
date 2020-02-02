@@ -1,4 +1,4 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!--ModAssistant Light Theme by Caeden117-->
@@ -19,6 +19,7 @@
     <SolidColorBrush x:Key="ModColumnBorderBrush" Color="Gray"/>
     <SolidColorBrush x:Key="ModColumnHeaderHighlighted" Color="LightGray"/>
     <SolidColorBrush x:Key="ModListBackground" Color="#DDDDDD" />
+    <SolidColorBrush x:Key="ModListBorderBrush" Color="#AAA" />
     <SolidColorBrush x:Key="ModListItemHighlighted" Color="#BBBBBB"/>
     <SolidColorBrush x:Key="ModListItemSelected" Color="White"/>
 

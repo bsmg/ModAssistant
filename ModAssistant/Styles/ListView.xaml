@@ -1,5 +1,7 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
     <Style TargetType="ListView">
         <Setter Property="ListView.Background" Value="{DynamicResource ModListBackground}"/>
+        <Setter Property="ListView.BorderBrush" Value="{DynamicResource ModListBorderBrush}" />
+        <Setter Property="ListView.BorderThickness" Value="1,1.1,1,1" />
     </Style>
 </ResourceDictionary>
