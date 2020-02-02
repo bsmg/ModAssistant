@@ -69,6 +69,7 @@
     <sys:String x:Key="Mods:Header:Latest">Latest</sys:String>
     <sys:String x:Key="Mods:Header:Description">Description</sys:String>
     <sys:String x:Key="Mods:Header:Uninstall">Uninstall</sys:String>
+    <sys:String x:Key="Mods:UninstallButton">Uninstall</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">About</sys:String>
