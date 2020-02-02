@@ -4,6 +4,18 @@
                     xmlns:local="clr-namespace:ModAssistant">
     <sys:String x:Key="ResourceDictionaryName">i18n:en-DEBUG</sys:String>
 
+    <!-- OneClick Class -->
+    <sys:String x:Key="OneClick:MapDownloadFailed">DEBUG</sys:String>
+    <sys:String x:Key="OneClick:SongDownloadFailed">DEBUG</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:Failed">DEBUG</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:NetworkIssues">DEBUG</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:FailedTitle">DEBUG</sys:String>
+    <sys:String x:Key="OneClick:InstallDirNotFound">DEBUG</sys:String>
+    <sys:String x:Key="OneClick:InstalledAsset">DEBUG {0}</sys:String>
+    <sys:String x:Key="OneClick:AssetInstallFailed">DEBUG</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} DEBUG</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} DEBUG</sys:String>
+
     <!-- Utils Class -->
     <sys:String x:Key="Utils:NotificationTitle">DEBUG</sys:String>
     <sys:String x:Key="Utils:NoInstallFolder">DEBUG</sys:String>

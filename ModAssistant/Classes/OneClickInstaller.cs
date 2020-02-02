@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -68,7 +68,7 @@ namespace ModAssistant
             }
             catch (Exception e)
             {
-                MessageBox.Show("Could not get map details.\n\n" + e);
+                MessageBox.Show($"{Application.Current.FindResource("OneClick:MapDownloadFailed")}\n\n" + e);
                 return;
             }
 
@@ -113,7 +113,10 @@ namespace ModAssistant
             } 
             else
             {
-                MessageBox.Show("Could not download the song.\nThere might be issues with BeatSaver or your internet connection.", "Failed to download song ZIP");
+                string line1 = (string)Application.Current.FindResource("OneClick:SongDownload:Failed");
+                string line2 = (string)Application.Current.FindResource("OneClick:SongDownload:NetworkIssues");
+                string title = (string)Application.Current.FindResource("OneClick:SongDownload:FailedTitle");
+                MessageBox.Show($"{line1}\n{line2}", title);
             }
         }
 
@@ -137,7 +140,7 @@ namespace ModAssistant
         {
             if (string.IsNullOrEmpty(BeatSaberPath))
             {
-                Utils.SendNotify("Beat Saber installation path not found.");
+                Utils.SendNotify((string)Application.Current.FindResource("OneClick:InstallDirNotFound"));
             }
             try
             {
@@ -148,12 +151,12 @@ namespace ModAssistant
                     fileName = WebUtility.UrlDecode(Path.Combine(BeatSaberPath, folder, fileName));
 
                 Utils.Download(link, fileName);
-                Utils.SendNotify("Installed: " + Path.GetFileNameWithoutExtension(fileName));
+                Utils.SendNotify(string.Format((string)Application.Current.FindResource("OneClick:InstalledAsset"), Path.GetFileNameWithoutExtension(fileName)));
 
             }
             catch
             {
-                Utils.SendNotify("Failed to install.");
+                Utils.SendNotify((string)Application.Current.FindResource("OneClick:AssetInstallFailed"));
             }
         }
 
@@ -179,7 +182,7 @@ namespace ModAssistant
                         CommandKey.SetValue("", $"\"{Utils.ExePath}\" \"--install\" \"%1\"");
                     }
 
-                    Utils.SendNotify($"{Protocol} One Click Install handlers registered!");
+                    Utils.SendNotify(string.Format((string)Application.Current.FindResource("OneClick:ProtocolHandler:Registered"), Protocol));
                 }
                 else
                 {
@@ -212,7 +215,8 @@ namespace ModAssistant
                             Registry.ClassesRoot.DeleteSubKeyTree(Protocol);
                         }
                     }
-                    Utils.SendNotify($"{Protocol} One Click Install handlers unregistered!");
+
+                    Utils.SendNotify(string.Format((string)Application.Current.FindResource("OneClick:ProtocolHandler:Unregistered"), Protocol));
                 }
                 else
                 {
