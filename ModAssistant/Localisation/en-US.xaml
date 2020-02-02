@@ -83,6 +83,10 @@
     </Span>
     <sys:String x:Key="Intro:AgreeButton">I Agree</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">Disagree</sys:String>
+    <sys:String x:Key="Intro:ClosingApp">Closing Application: You did not agree to terms and conditions.</sys:String>
+    <sys:String x:Key="Intro:VersionDownloadFailed">Could not download versions list</sys:String>
+    <sys:String x:Key="Intro:ModsTabDisabled">Mods tab disabled. Please restart to try again.</sys:String>
+    <sys:String x:Key="Intro:ModsTabEnabled">You can now use the Mods tab!</sys:String>
 
     <!-- Mods Page -->
     <sys:String x:Key="Mods:Title">Mods</sys:String>

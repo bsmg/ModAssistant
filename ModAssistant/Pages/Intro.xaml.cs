@@ -39,7 +39,7 @@ namespace ModAssistant.Pages
             MainWindow.Instance.ModsButton.IsEnabled = false;
             Properties.Settings.Default.Agreed = false;
             Properties.Settings.Default.Save();
-            MessageBox.Show("Closing Application: You did not agree to terms and conditions.");
+            MessageBox.Show((string)FindResource("Intro:ClosingApp"));
             System.Windows.Application.Current.Shutdown();
         }
 
@@ -47,13 +47,18 @@ namespace ModAssistant.Pages
         {
             if (String.IsNullOrEmpty(MainWindow.GameVersion))
             {
-                MessageBox.Show("Could not download versions list.\nMods tab disabled. Please restart to try again.");
+                string line1 = (string)FindResource("Intro:VersionDownloadFailed");
+                string line2 = (string)FindResource("Intro:ModsTabDisabled");
+
+                MessageBox.Show($"{line1}.\n{line2}");
             }
             else
             {
                 MainWindow.Instance.ModsButton.IsEnabled = true;
-                Utils.SendNotify("You can now use the Mods tab!");
-                MainWindow.Instance.MainText = "You can now use the Mods tab!";
+
+                string text = (string)FindResource("Intro:ModsTabEnabled");
+                Utils.SendNotify(text);
+                MainWindow.Instance.MainText = text;
             }
             Properties.Settings.Default.Agreed = true;
             Properties.Settings.Default.Save();

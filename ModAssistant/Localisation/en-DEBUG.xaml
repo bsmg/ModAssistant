@@ -68,6 +68,10 @@
     </Span>
     <sys:String x:Key="Intro:AgreeButton">DEBUG</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">DEBUG</sys:String>
+    <sys:String x:Key="Intro:ClosingApp">DEBUG</sys:String>
+    <sys:String x:Key="Intro:VersionDownloadFailed">DEBUG</sys:String>
+    <sys:String x:Key="Intro:ModsTabDisabled">DEBUG</sys:String>
+    <sys:String x:Key="Intro:ModsTabEnabled">DEBUG</sys:String>
 
     <!-- Mods Page -->
     <sys:String x:Key="Mods:Title">DEBUG</sys:String>
