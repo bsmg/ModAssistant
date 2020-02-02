@@ -50,12 +50,12 @@
 
     <!--Colors for the corresponding icons.-->
     <!--Info Default: #0DCAC8-->
-    <SolidColorBrush x:Key="InfoIconColor" Color="#999999"/>
+    <SolidColorBrush x:Key="InfoIconColor" Color="#AEAEAE"/>
     <!--Mods Default: #833BCE-->
     <SolidColorBrush x:Key="ModsIconColor" Color="#AEAEAE"/>
     <!--About Default: #FF0000-->
-    <SolidColorBrush x:Key="AboutIconColor" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="AboutIconColor" Color="#AEAEAE"/>
     <!--Options Default: #4E3BCE-->
-    <SolidColorBrush x:Key="OptionsIconColor" Color="#696969"/>
+    <SolidColorBrush x:Key="OptionsIconColor" Color="#AEAEAE"/>
 
 </ResourceDictionary>
