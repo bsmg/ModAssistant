@@ -5,145 +5,133 @@
     <sys:String x:Key="ResourceDictionaryName">i18n:en-DEBUG</sys:String>
 
     <!-- OneClick Class -->
-    <sys:String x:Key="OneClick:MapDownloadFailed">DEBUG</sys:String>
-    <sys:String x:Key="OneClick:SongDownloadFailed">DEBUG</sys:String>
-    <sys:String x:Key="OneClick:SongDownload:Failed">DEBUG</sys:String>
-    <sys:String x:Key="OneClick:SongDownload:NetworkIssues">DEBUG</sys:String>
-    <sys:String x:Key="OneClick:SongDownload:FailedTitle">DEBUG</sys:String>
-    <sys:String x:Key="OneClick:InstallDirNotFound">DEBUG</sys:String>
-    <sys:String x:Key="OneClick:InstalledAsset">DEBUG {0}</sys:String>
-    <sys:String x:Key="OneClick:AssetInstallFailed">DEBUG</sys:String>
-    <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} DEBUG</sys:String>
-    <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} DEBUG</sys:String>
+    <sys:String x:Key="OneClick:MapDownloadFailed">OneClick:MapDownloadFailed</sys:String>
+    <sys:String x:Key="OneClick:SongDownloadFailed">OneClick:SongDownloadFailed</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:Failed">OneClick:SongDownload:Failed</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:NetworkIssues">OneClick:SongDownload:NetworkIssues</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:FailedTitle">OneClick:SongDownload:FailedTitle</sys:String>
+    <sys:String x:Key="OneClick:InstallDirNotFound">OneClick:InstallDirNotFound</sys:String>
+    <sys:String x:Key="OneClick:InstalledAsset">OneClick:InstalledAsset</sys:String>
+    <sys:String x:Key="OneClick:AssetInstallFailed">OneClick:AssetInstallFailed</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Registered">OneClick:ProtocolHandler:Registered</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">OneClick:ProtocolHandler:Unregistered</sys:String>
 
     <!-- Updater Class -->
-    <sys:String x:Key="Updater:CheckFailed">Couldn't check for updates.</sys:String>
-    <sys:String x:Key="Updater:DownloadFailed">Couldn't download update.</sys:String>
+    <sys:String x:Key="Updater:CheckFailed">Updater:CheckFailed</sys:String>
+    <sys:String x:Key="Updater:DownloadFailed">Updater:DownloadFailed</sys:String>
 
     <!-- Utils Class -->
-    <sys:String x:Key="Utils:NotificationTitle">DEBUG</sys:String>
-    <sys:String x:Key="Utils:NoInstallFolder">DEBUG</sys:String>
-    <sys:String x:Key="Utils:RunAsAdmin">DEBUG</sys:String>
-    <sys:String x:Key="Utils:InstallDir:DialogTitle">DEBUG</sys:String>
+    <sys:String x:Key="Utils:NotificationTitle">Utils:NotificationTitle</sys:String>
+    <sys:String x:Key="Utils:NoInstallFolder">Utils:NoInstallFolder</sys:String>
+    <sys:String x:Key="Utils:RunAsAdmin">Utils:RunAsAdmin</sys:String>
+    <sys:String x:Key="Utils:InstallDir:DialogTitle">Utils:InstallDir:DialogTitle</sys:String>
 
     <!-- Main Window -->
-    <sys:String x:Key="MainWindow:WindowTitle">DEBUG</sys:String>
-    <sys:String x:Key="MainWindow:IntroButton">DEBUG</sys:String>
-    <sys:String x:Key="MainWindow:ModsButton">DEBUG</sys:String>
-    <sys:String x:Key="MainWindow:AboutButton">DEBUG</sys:String>
-    <sys:String x:Key="MainWindow:OptionsButton">DEBUG</sys:String>
-    <sys:String x:Key="MainWindow:GameVersionLabel">DEBUG</sys:String>
-    <sys:String x:Key="MainWindow:VersionLabel">DEBUG</sys:String>
-    <sys:String x:Key="MainWindow:ModInfoButton">DEBUG</sys:String>
-    <sys:String x:Key="MainWindow:InstallButtonTop">DEBUG</sys:String>
-    <sys:String x:Key="MainWindow:InstallButtonBottom">DEBUG</sys:String>
+    <sys:String x:Key="MainWindow:WindowTitle">MainWindow:WindowTitle</sys:String>
+    <sys:String x:Key="MainWindow:IntroButton">MainWindow:IntroButton</sys:String>
+    <sys:String x:Key="MainWindow:ModsButton">MainWindow:ModsButton</sys:String>
+    <sys:String x:Key="MainWindow:AboutButton">MainWindow:AboutButton</sys:String>
+    <sys:String x:Key="MainWindow:OptionsButton">MainWindow:OptionsButton</sys:String>
+    <sys:String x:Key="MainWindow:GameVersionLabel">MainWindow:GameVersionLabel</sys:String>
+    <sys:String x:Key="MainWindow:VersionLabel">MainWindow:VersionLabel</sys:String>
+    <sys:String x:Key="MainWindow:ModInfoButton">MainWindow:ModInfoButton</sys:String>
+    <sys:String x:Key="MainWindow:InstallButtonTop">MainWindow:InstallButtonTop</sys:String>
+    <sys:String x:Key="MainWindow:InstallButtonBottom">MainWindow:InstallButtonBottom</sys:String>
 
     <!-- Intro Page -->
-    <sys:String x:Key="Intro:Title">DEBUG</sys:String>
-    <sys:String x:Key="Intro:PageTitle">DEBUG</sys:String>
-    <sys:String x:Key="Intro:Terms:Header">DEBUG</sys:String>
-    <Span x:Key="Intro:Terms:Line1">
-        DEBUG
-    </Span>
-    <Span x:Key="Intro:Terms:Line2">
-        DEBUG
-    </Span>
-    <Span x:Key="Intro:Terms:Term1">
-        DEBUG
-    </Span>
-    <Span x:Key="Intro:Terms:Term2">
-        DEBUG
-    </Span>
-    <Span x:Key="Intro:Terms:Term3">
-        DEBUG
-    </Span>
-    <Span x:Key="Intro:ReviewsBeatGamesFault">
-        DEBUG
-    </Span>
-    <Span x:Key="Intro:ReviewsRustySpoon">
-        DEBUG
-    </Span>
-    <Span x:Key="Intro:WikiGuide">
-        DEBUG
-    </Span>
-    <sys:String x:Key="Intro:AgreeButton">DEBUG</sys:String>
-    <sys:String x:Key="Intro:DisagreeButton">DEBUG</sys:String>
-    <sys:String x:Key="Intro:ClosingApp">DEBUG</sys:String>
-    <sys:String x:Key="Intro:VersionDownloadFailed">DEBUG</sys:String>
-    <sys:String x:Key="Intro:ModsTabDisabled">DEBUG</sys:String>
-    <sys:String x:Key="Intro:ModsTabEnabled">DEBUG</sys:String>
+    <sys:String x:Key="Intro:Title">Intro:Title</sys:String>
+    <sys:String x:Key="Intro:PageTitle">Intro:PageTitle</sys:String>
+    <sys:String x:Key="Intro:Terms:Header">Intro:Terms:Header</sys:String>
+    <Span x:Key="Intro:Terms:Line1">Intro:Terms:Line1</Span>
+    <Span x:Key="Intro:Terms:Line2">Intro:Terms:Line2</Span>
+    <Span x:Key="Intro:Terms:Term1">Intro:Terms:Term1</Span>
+    <Span x:Key="Intro:Terms:Term2">Intro:Terms:Term2</Span>
+    <Span x:Key="Intro:Terms:Term3">Intro:Terms:Term3</Span>
+    <Span x:Key="Intro:ReviewsBeatGamesFault">Intro:ReviewsBeatGamesFault</Span>
+    <Span x:Key="Intro:ReviewsRustySpoon">Intro:ReviewsRustySpoon</Span>
+    <Span x:Key="Intro:WikiGuide">Intro:WikiGuide</Span>
+    <sys:String x:Key="Intro:AgreeButton">Intro:AgreeButton</sys:String>
+    <sys:String x:Key="Intro:DisagreeButton">Intro:DisagreeButton</sys:String>
+    <sys:String x:Key="Intro:ClosingApp">Intro:ClosingApp</sys:String>
+    <sys:String x:Key="Intro:VersionDownloadFailed">Intro:VersionDownloadFailed</sys:String>
+    <sys:String x:Key="Intro:ModsTabDisabled">Intro:ModsTabDisabled</sys:String>
+    <sys:String x:Key="Intro:ModsTabEnabled">Intro:ModsTabEnabled</sys:String>
 
     <!-- Mods Page -->
-    <sys:String x:Key="Mods:Title">DEBUG</sys:String>
-    <sys:String x:Key="Mods:Header:Name">DEBUG</sys:String>
-    <sys:String x:Key="Mods:Header:Installed">DEBUG</sys:String>
-    <sys:String x:Key="Mods:Header:Latest">DEBUG</sys:String>
-    <sys:String x:Key="Mods:Header:Description">DEBUG</sys:String>
-    <sys:String x:Key="Mods:Header:Uninstall">DEBUG</sys:String>
-    <sys:String x:Key="Mods:UninstallButton">DEBUG</sys:String>
-    <sys:String x:Key="Mods:LoadFailed">DEBUG</sys:String>
-    <sys:String x:Key="Mods:CheckingInstalledMods">DEBUG</sys:String>
-    <sys:String x:Key="Mods:LoadingMods">DEBUG</sys:String>
-    <sys:String x:Key="Mods:FinishedLoadingMods">DEBUG</sys:String>
-    <sys:String x:Key="Mods:InstallingMod">DEBUG {0}</sys:String>
-    <sys:String x:Key="Mods:InstalledMod">DEBUG {0}</sys:String>
-    <sys:String x:Key="Mods:FinishedInstallingMods">DEBUG</sys:String>
-    <sys:String x:Key="Mods:ModDownloadLinkMissing">DEBUG {0}</sys:String>
-    <sys:String x:Key="Mods:UninstallBox:Title">DEBUG {0}?</sys:String>
-    <sys:String x:Key="Mods:UninstallBox:Body1">DEBUG {0}?</sys:String>
-    <sys:String x:Key="Mods:UninstallBox:Body2">DEBUG</sys:String>
+    <sys:String x:Key="Mods:Title">Mods:Title</sys:String>
+    <sys:String x:Key="Mods:Header:Name">Mods:Header:Name</sys:String>
+    <sys:String x:Key="Mods:Header:Installed">Mods:Header:Installed</sys:String>
+    <sys:String x:Key="Mods:Header:Latest">Mods:Header:Latest</sys:String>
+    <sys:String x:Key="Mods:Header:Description">Mods:Header:Description</sys:String>
+    <sys:String x:Key="Mods:Header:Uninstall">Mods:Header:Uninstall</sys:String>
+    <sys:String x:Key="Mods:UninstallButton">Mods:UninstallButton</sys:String>
+    <sys:String x:Key="Mods:LoadFailed">Mods:LoadFailed</sys:String>
+    <sys:String x:Key="Mods:CheckingInstalledMods">Mods:CheckingInstalledMods</sys:String>
+    <sys:String x:Key="Mods:LoadingMods">Mods:LoadingMods</sys:String>
+    <sys:String x:Key="Mods:FinishedLoadingMods">Mods:FinishedLoadingMods</sys:String>
+    <sys:String x:Key="Mods:InstallingMod">Mods:InstallingMod</sys:String>
+    <sys:String x:Key="Mods:InstalledMod">Mods:InstalledMod</sys:String>
+    <sys:String x:Key="Mods:FinishedInstallingMods">Mods:FinishedInstallingMods</sys:String>
+    <sys:String x:Key="Mods:ModDownloadLinkMissing">Mods:ModDownloadLinkMissing</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Title">Mods:UninstallBox:Title</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Body1">Mods:UninstallBox:Body1</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Body2">Mods:UninstallBox:Body2</sys:String>
 
     <!-- About Page -->
-    <sys:String x:Key="About:Title">DEBUG</sys:String>
-    <sys:String x:Key="About:PageTitle">DEBUG</sys:String>
-    <sys:String x:Key="About:List:Header">DEBUG</sys:String>
-    <sys:String x:Key="About:List:Item1">DEBUG</sys:String>
-    <sys:String x:Key="About:List:Item2">DEBUG</sys:String>
-    <sys:String x:Key="About:List:Item3">DEBUG</sys:String>
-    <sys:String x:Key="About:List:Item4">DEBUG</sys:String>
-    <Span x:Key="About:SupportAssistant">
-        DEBUG
-    </Span>
-    <sys:String x:Key="About:SpecialThanks">DEBUG</sys:String>
-    <sys:String x:Key="About:Donate">DEBUG</sys:String>
-    <sys:String x:Key="About:HeadpatsButton">DEBUG</sys:String>
-    <sys:String x:Key="About:HugsButton">DEBUG</sys:String>
+    <sys:String x:Key="About:Title">About:Title</sys:String>
+    <sys:String x:Key="About:PageTitle">About:PageTitle</sys:String>
+    <sys:String x:Key="About:List:Header">About:List:Header</sys:String>
+    <sys:String x:Key="About:List:Item1">About:List:Item1</sys:String>
+    <sys:String x:Key="About:List:Item2">About:List:Item2</sys:String>
+    <sys:String x:Key="About:List:Item3">About:List:Item3</sys:String>
+    <sys:String x:Key="About:List:Item4">About:List:Item4</sys:String>
+    <Span x:Key="About:SupportAssistant">About:SupportAssistant</Span>
+    <sys:String x:Key="About:SpecialThanks">About:SpecialThanks</sys:String>
+    <sys:String x:Key="About:Donate">About:Donate</sys:String>
+    <sys:String x:Key="About:HeadpatsButton">About:HeadpatsButton</sys:String>
+    <sys:String x:Key="About:HugsButton">About:HugsButton</sys:String>
 
     <!-- Options Page -->
-    <sys:String x:Key="Options:Title">DEBUG</sys:String>
-    <sys:String x:Key="Options:PageTitle">DEBUG</sys:String>
-    <sys:String x:Key="Options:InstalFolder">DEBUG</sys:String>
-    <sys:String x:Key="Options:SelectFolderButton">DEBUG</sys:String>
-    <sys:String x:Key="Options:OpenFolderButton">DEBUG</sys:String>
-    <sys:String x:Key="Options:SaveSelectedMods">DEBUG</sys:String>
-    <sys:String x:Key="Options:CheckInstalledMods">DEBUG</sys:String>
-    <sys:String x:Key="Options:SelectInstalledMods">DEBUG</sys:String>
-    <sys:String x:Key="Options:EnableOneClickInstalls">DEBUG</sys:String>
-    <sys:String x:Key="Options:BeatSaver">DEBUG</sys:String>
-    <sys:String x:Key="Options:ModelSaber">DEBUG</sys:String>
-    <sys:String x:Key="Options:GameType">DEBUG</sys:String>
-    <sys:String x:Key="Options:GameType:Steam">DEBUG</sys:String>
-    <sys:String x:Key="Options:GameType:Oculus">DEBUG</sys:String>
-    <sys:String x:Key="Options:Diagnostics">DEBUG</sys:String>
-    <sys:String x:Key="Options:OpenLogsButton">DEBUG</sys:String>
-    <sys:String x:Key="Options:UninstallBSIPAButton">DEBUG</sys:String>
-    <sys:String x:Key="Options:RemoveAllModsButton">DEBUG</sys:String>
+    <sys:String x:Key="Options:Title">Options:Title</sys:String>
+    <sys:String x:Key="Options:PageTitle">Options:PageTitle</sys:String>
+    <sys:String x:Key="Options:InstalFolder">Options:InstalFolder</sys:String>
+    <sys:String x:Key="Options:SelectFolderButton">Options:SelectFolderButton</sys:String>
+    <sys:String x:Key="Options:OpenFolderButton">Options:OpenFolderButton</sys:String>
+    <sys:String x:Key="Options:SaveSelectedMods">Options:SaveSelectedMods</sys:String>
+    <sys:String x:Key="Options:CheckInstalledMods">Options:CheckInstalledMods</sys:String>
+    <sys:String x:Key="Options:SelectInstalledMods">Options:SelectInstalledMods</sys:String>
+    <sys:String x:Key="Options:EnableOneClickInstalls">Options:EnableOneClickInstalls</sys:String>
+    <sys:String x:Key="Options:BeatSaver">Options:BeatSaver</sys:String>
+    <sys:String x:Key="Options:ModelSaber">Options:ModelSaber</sys:String>
+    <sys:String x:Key="Options:GameType">Options:GameType</sys:String>
+    <sys:String x:Key="Options:GameType:Steam">Options:GameType:Steam</sys:String>
+    <sys:String x:Key="Options:GameType:Oculus">Options:GameType:Oculus</sys:String>
+    <sys:String x:Key="Options:Diagnostics">Options:Diagnostics</sys:String>
+    <sys:String x:Key="Options:OpenLogsButton">Options:OpenLogsButton</sys:String>
+    <sys:String x:Key="Options:UninstallBSIPAButton">Options:UninstallBSIPAButton</sys:String>
+    <sys:String x:Key="Options:RemoveAllModsButton">Options:RemoveAllModsButton</sys:String>
+    <sys:String x:Key="Options:UploadingLog">Options:UploadingLog</sys:String>
+    <sys:String x:Key="Options:LogUrlCopied">Options:LogUrlCopied</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed">Options:LogUploadFailed</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed:Title">Options:LogUploadFailed:Title</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed:Body">Options:LogUploadFailed:Body</sys:String>
+    <sys:String x:Key="Options:GettingModList">Options:GettingModList</sys:String>
+    <sys:String x:Key="Options:FindingBSIPAVersion">Options:FindingBSIPAVersion</sys:String>
+    <sys:String x:Key="Options:BSIPAUninstalled">Options:BSIPAUninstalled</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:Title">Options:YeetModsBox:Title</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:RemoveAllMods">Options:YeetModsBox:RemoveAllMods</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:CannotBeUndone">Options:YeetModsBox:CannotBeUndone</sys:String>
+    <sys:String x:Key="Options:AllModsUninstalled">Options:AllModsUninstalled</sys:String>
 
     <!-- Invalid Page -->
-    <sys:String x:Key="Invalid:Title">DEBUG</sys:String>
-    <sys:String x:Key="Invalid:PageTitle">DEBUG</sys:String>
-    <sys:String x:Key="Invalid:PageSubtitle">DEBUG</sys:String>
-    <sys:String x:Key="Invalid:List:Header">DEBUG</sys:String>
-    <Span x:Key="Invalid:List:Line1">
-        DEBUG
-    </Span>
-    <Span x:Key="Invalid:List:Line2">
-        DEBUG
-    </Span>
-    <Span x:Key="Invalid:List:Line3">
-        DEBUG
-    </Span>
-    <sys:String x:Key="Invalid:BoughtGame1">DEBUG</sys:String>
-    <sys:String x:Key="Invalid:SelectFolderButton">DEBUG</sys:String>
-    <sys:String x:Key="Invalid:BoughtGame2">DEBUG</sys:String>
+    <sys:String x:Key="Invalid:Title">Invalid:Title</sys:String>
+    <sys:String x:Key="Invalid:PageTitle">Invalid:PageTitle</sys:String>
+    <sys:String x:Key="Invalid:PageSubtitle">Invalid:PageSubtitle</sys:String>
+    <sys:String x:Key="Invalid:List:Header">Invalid:List:Header</sys:String>
+    <Span x:Key="Invalid:List:Line1">Invalid:List:Line1</Span>
+    <Span x:Key="Invalid:List:Line2">Invalid:List:Line2</Span>
+    <Span x:Key="Invalid:List:Line3">Invalid:List:Line3</Span>
+    <sys:String x:Key="Invalid:BoughtGame1">Invalid:BoughtGame1</sys:String>
+    <sys:String x:Key="Invalid:SelectFolderButton">Invalid:SelectFolderButton</sys:String>
+    <sys:String x:Key="Invalid:BoughtGame2">Invalid:BoughtGame2</sys:String>
 </ResourceDictionary>
