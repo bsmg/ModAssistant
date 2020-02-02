@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -61,13 +61,15 @@ namespace ModAssistant
             public string ext;
         }
 
-        public static void SendNotify(string message, string title = "Mod Assistant")
+        public static void SendNotify(string message, string title = null)
         {
+            string defaultTitle = (string)Application.Current.FindResource("Utils:NotificationTitle");
+
             var notification = new System.Windows.Forms.NotifyIcon()
             {
                 Visible = true,
                 Icon = System.Drawing.SystemIcons.Information,
-                BalloonTipTitle = title,
+                BalloonTipTitle = title ?? defaultTitle,
                 BalloonTipText = message
             };
 
@@ -92,7 +94,7 @@ namespace ModAssistant
             }
             catch
             {
-                MessageBox.Show("Mod Assistant needs to run this task as Admin. Please try again.");
+                MessageBox.Show((string)Application.Current.FindResource("Utils:RunAsAdmin"));
             }
             if (Close)
                 App.Current.Shutdown();
@@ -143,7 +145,7 @@ namespace ModAssistant
                 return InstallDir;
             }
 
-            MessageBox.Show("Could not detect your Beat Saber install folder. Please select it manually.");
+            MessageBox.Show((string)Application.Current.FindResource("Utils:NoInstallFolder"));
 
             InstallDir = GetManualDir();
             if (!String.IsNullOrEmpty(InstallDir))
@@ -298,7 +300,7 @@ namespace ModAssistant
         {
             var dialog = new Microsoft.Win32.SaveFileDialog()
             {
-                Title = "Select your Beat Saber install folder",
+                Title = (string)Application.Current.FindResource("Utils:InstallDir:DialogTitle"),
                 Filter = "Directory|*.this.directory",
                 FileName = "select"
             };
