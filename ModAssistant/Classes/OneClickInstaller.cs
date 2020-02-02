@@ -14,7 +14,7 @@ namespace ModAssistant
         private const string ModelSaberURLPrefix = "https://modelsaber.com/files/";
         private const string BeatSaverURLPrefix = "https://beatsaver.com";
 
-        private static string BeatSaberPath = App.BeatSaberInstallDirectory;
+        private static readonly string BeatSaberPath = App.BeatSaberInstallDirectory;
 
         private const string CustomAvatarsFolder = "CustomAvatars";
         private const string CustomSabersFolder = "CustomSabers";
