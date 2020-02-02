@@ -15,6 +15,7 @@
     <SolidColorBrush x:Key="ButtonDisabledBackground" Color="#1a1a1a" />
 
     <!--Mod List-->
+    <SolidColorBrush x:Key="ModColumnBackground" Color="#1B1B1B"/>
     <SolidColorBrush x:Key="ModColumnBorderBrush" Color="LightGray"/>
     <SolidColorBrush x:Key="ModColumnHeaderHighlighted" Color="#454545"/>
     <SolidColorBrush x:Key="ModListBackground" Color="#FF1B1B1B" />

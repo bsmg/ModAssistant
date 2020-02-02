@@ -10,7 +10,7 @@
                     <Grid SnapsToDevicePixels="True">
                         <Border Name="HeaderBorder" BorderThickness="0,1,0,1"
                                 BorderBrush="{DynamicResource ModColumnBorderBrush}"
-                                Background="{DynamicResource 2ndBackgroundBrush}">
+                                Background="{DynamicResource ModColumnBackground}">
                             <Grid>
                                 <Rectangle
                                     Name="UpperHighlight"
