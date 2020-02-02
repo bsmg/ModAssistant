@@ -1,4 +1,4 @@
-﻿<Page x:Class="ModAssistant.Pages.Mods"
+<Page x:Class="ModAssistant.Pages.Mods"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ModAssistant"
       mc:Ignorable="d" 
       d:DesignHeight="629" d:DesignWidth="1182"
-      Title="Mods">
+      Title="{DynamicResource Mods:Title}">
 
     <Grid>
 		<ListView Name="ModsListView" Grid.Column="1" SelectionMode="Single" SelectionChanged="ModsListView_SelectionChanged">
@@ -20,9 +20,9 @@
 								</DataTemplate>
 							</GridViewColumn.CellTemplate>
 						</GridViewColumn>
-						<GridViewColumn Header="Name" DisplayMemberBinding="{Binding ModName}" />
+						<GridViewColumn Header="{DynamicResource Mods:Header:Name}" DisplayMemberBinding="{Binding ModName}" />
 
-						<GridViewColumn x:Name="InstalledColumn" Header="Installed">
+						<GridViewColumn x:Name="InstalledColumn" Header="{DynamicResource Mods:Header:Installed}">
 							<GridViewColumn.CellTemplate>
 								<DataTemplate>
 									<TextBlock Text="{Binding InstalledVersion}" Foreground="{Binding GetVersionColor}" TextDecorations="{Binding GetVersionDecoration}" />
@@ -30,8 +30,8 @@
 							</GridViewColumn.CellTemplate>
 						</GridViewColumn>
 
-						<GridViewColumn Header="Latest" DisplayMemberBinding="{Binding ModVersion}" />
-						<GridViewColumn x:Name="DescriptionColumn" Header="Description" Width="750" >
+						<GridViewColumn Header="{DynamicResource Mods:Header:Latest}" DisplayMemberBinding="{Binding ModVersion}" />
+						<GridViewColumn x:Name="DescriptionColumn" Header="{DynamicResource Mods:Header:Description}" Width="750" >
 							<GridViewColumn.CellTemplate>
 								<DataTemplate>
 									<StackPanel Orientation="Horizontal">
@@ -47,7 +47,7 @@
 							</GridViewColumn.CellTemplate>
 						</GridViewColumn>
 
-						<GridViewColumn x:Name="UninstallColumn"  Header="Uninstall" Width="70">
+						<GridViewColumn x:Name="UninstallColumn" Header="{DynamicResource Mods:Header:Uninstall}" Width="70">
 							<GridViewColumn.CellTemplate>
 								<DataTemplate>
 									<Button Name="Uninstall" Content="Uninstall" Visibility="{Binding CanSeeDelete}" IsEnabled="{Binding CanDelete}" Foreground="Red" Tag="{Binding ModInfo}" Click="Uninstall_Click"/>

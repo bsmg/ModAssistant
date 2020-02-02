@@ -1,4 +1,4 @@
-﻿<Page x:Class="ModAssistant.Pages.Intro"
+<Page x:Class="ModAssistant.Pages.Intro"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ModAssistant"
       mc:Ignorable="d" 
       d:DesignHeight="629" d:DesignWidth="1182"
-      Title="Intro">
+      Title="DynamicResource Intro:Title">
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 		<Grid.RowDefinitions>
@@ -23,48 +23,47 @@
 			<RowDefinition Height="auto"/>
 
 		</Grid.RowDefinitions>
-		
-		<TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="48" Margin="0">Welcome to Mod Assistant</TextBlock>
-		<TextBlock Grid.Row="1" FontWeight="Bold" Text="Please read this page entirely and carefully" Margin="0" FontSize="28" />
-		<TextBlock Grid.Row="2" Margin="0,5" FontSize="16" TextWrapping="Wrap" Text="By using this program attest to have read and agree to the following terms:" />
+
+		<TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="48" Margin="0" Text="{DynamicResource Intro:PageTitle}" />
+		<TextBlock Grid.Row="1" FontWeight="Bold" Text="{DynamicResource Intro:Terms:Header}" Margin="0" FontSize="28" />
+		<TextBlock Grid.Row="2" Margin="0,5" FontSize="16" TextWrapping="Wrap">
+			<StaticResource ResourceKey="Intro:Terms:Line1" />
+		</TextBlock>
 
 		<TextBlock Grid.Row="3" Margin="0,5" FontSize="16" TextWrapping="Wrap">
-			Beat Saber <Bold>does not</Bold> natively support mods. This means:
+			<StaticResource ResourceKey="Intro:Terms:Line2" />
 		</TextBlock>
 
 		<TextBlock Grid.Row="4" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			Mods <Bold>will break</Bold> every update. This is normal, and <Bold>not</Bold> Beat Games' fault.
+			<StaticResource ResourceKey="Intro:Terms:Term1" />
 		</TextBlock>
 
 		<TextBlock Grid.Row="5" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			Mods <Bold>will</Bold> cause bugs and performance issues. This is <Bold>not</Bold> Beat Games' fault.
+			<StaticResource ResourceKey="Intro:Terms:Term2" />
 		</TextBlock>
 
 		<TextBlock Grid.Row="6" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			Mods are made for <Bold>free</Bold> by people in their <Bold>free time.</Bold> Please be patient and understanding.
+			<StaticResource ResourceKey="Intro:Terms:Term3" />
 		</TextBlock>
 
 		<TextBlock Grid.Row="7" Margin="0,5" FontSize="16" TextWrapping="Wrap">
-			<Bold>DO NOT</Bold> leave negative reviews because mods broke. This is <Bold>not</Bold> Beat Games' fault. <LineBreak/> They are not trying to kill mods.
+			<StaticResource ResourceKey="Intro:ReviewsBeatGamesFault" />
 		</TextBlock>
 
 		<TextBlock Grid.Row="8" Margin="0,5" FontSize="16" TextWrapping="Wrap">
-			If I keep seeing people leave negative reviews <Italic>because</Italic> mods broke, <LineBreak/><Bold>I will personally kill mods with a rusty spoon</Bold>
+			<StaticResource ResourceKey="Intro:ReviewsRustySpoon" />
 		</TextBlock>
 
 		<TextBlock Grid.Row="9" Margin="0,5" FontSize="16" TextWrapping="Wrap">
-			Please read the Beginners Guide on the 
-			<Hyperlink NavigateUri="https://bsmg.wiki/beginners-guide" RequestNavigate="Hyperlink_RequestNavigate">
-				Wiki
-			</Hyperlink>.
+			<StaticResource ResourceKey="Intro:WikiGuide" />
 		</TextBlock>
 
 		<StackPanel Margin="10" Grid.Row="10" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 			<Button Margin="0,0,10,0" Name="Agree" Height="35" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Agree_Click">
-                <TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{DynamicResource AgreeButton}" />
+                <TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{DynamicResource Intro:AgreeButton}" />
             </Button>
 			<Button Margin="10,0,0,0" Name="Disagree" Height="35" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Disagree_Click">
-                <TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{DynamicResource DisagreeButton}" />
+                <TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{DynamicResource Intro:DisagreeButton}" />
             </Button>
 		</StackPanel>
 	</Grid>

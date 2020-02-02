@@ -1,4 +1,4 @@
-﻿<Page x:Class="ModAssistant.Pages.Invalid"
+<Page x:Class="ModAssistant.Pages.Invalid"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ModAssistant.Pages"
       mc:Ignorable="d"
       d:DesignHeight="629" d:DesignWidth="1182"
-      Title="Invalid">
+      Title="{DynamicResource Invalid:Title}">
 
 	<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 		<Grid.RowDefinitions>
@@ -27,40 +27,32 @@
 			<ColumnDefinition Width="auto"/>
 		</Grid.ColumnDefinitions>
 
-		<TextBlock VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="48" Margin="0">Invalid Installation Detected</TextBlock>
-		<TextBlock Grid.Row="1" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="28">Your game installation is corrupted or otherwise invalid</TextBlock>
-		<TextBlock Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5" FontSize="16" TextWrapping="Wrap">This can happen if your copy of the game is pirated, or if you copied a pirated copy over your legit install</TextBlock>
+		<TextBlock VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="48" Margin="0" Text="{DynamicResource Invalid:PageTitle}" />
+		<TextBlock Grid.Row="1" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="28" Text="{DynamicResource Invalid:PageSubtitle}" />
+		<TextBlock Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5" FontSize="16" TextWrapping="Wrap" Text="{DynamicResource Invalid:List:Header}" />
 
 		<TextBlock Grid.Row="3" Grid.ColumnSpan="2" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			If your copy of the game is pirated,
-			<Bold>please purchase the game
-				<Hyperlink NavigateUri="https://beatgames.com/" RequestNavigate="Hyperlink_RequestNavigate">
-					HERE
-				</Hyperlink>.
-			</Bold>
+			<StaticResource ResourceKey="Invalid:List:Line1" />
 		</TextBlock>
 
 		<TextBlock Grid.Row="4" Grid.ColumnSpan="2" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			If your copy of the game is <Bold>not</Bold> pirated, please
-			<Hyperlink NavigateUri="https://bsmg.wiki/support#clean-installation" RequestNavigate="Hyperlink_RequestNavigate">
-				do a clean install
-			</Hyperlink>.
+			<StaticResource ResourceKey="Invalid:List:Line2" />
 		</TextBlock>
 
 		<TextBlock Grid.Row="5" Grid.ColumnSpan="2" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			If those don't help, ask for support in the <Span Foreground="Blue">#support</Span> channel in
-			<Hyperlink NavigateUri="https://discord.gg/beatsabermods" RequestNavigate="Hyperlink_RequestNavigate">
-				BSMG
-			</Hyperlink>.
+			<StaticResource ResourceKey="Invalid:List:Line3" />
 		</TextBlock>
 
-		<TextBlock Grid.Row="6" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="28"></TextBlock>
-		<TextBlock Grid.Row="7" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="20">If you used to have a pirated version but have since bought the game:</TextBlock>
+		<TextBlock Grid.Row="6" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="28" />
+		<TextBlock Grid.Row="7" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="20">
+			<TextBlock Text="{DynamicResource Invalid:BoughtGame1}" />:
+		</TextBlock>
 		<Border Grid.Row="8" Background="LightGray" Height="30" MinWidth="650" >
 			<TextBlock Name="DirectoryTextBlock" Margin="5" Text="{Binding InstallDirectory}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16"/>
 		</Border>
-		<Button Grid.Row="8" Grid.Column="2"  Margin="3" Height="30" Width="80" Content="Select Folder" Click="SelectDirButton_Click"/>
-		<TextBlock Grid.Row="9" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="20">You will need to restart Mod Assistant after changing to the legit install.</TextBlock>
-
-	</Grid>
+		<Button Grid.Row="8" Grid.Column="2"  Margin="3" Height="30" Width="80" Content="{DynamicResource Invalid:SelectFolderButton}" Click="SelectDirButton_Click"/>
+			<TextBlock Grid.Row="9" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="20">
+				<TextBlock Text="{DynamicResource Invalid:BoughtGame2}" />.
+			</TextBlock>
+    </Grid>
 </Page>
