@@ -55,6 +55,17 @@
     <sys:String x:Key="Mods:Header:Description">DEBUG</sys:String>
     <sys:String x:Key="Mods:Header:Uninstall">DEBUG</sys:String>
     <sys:String x:Key="Mods:UninstallButton">DEBUG</sys:String>
+    <sys:String x:Key="Mods:LoadFailed">DEBUG</sys:String>
+    <sys:String x:Key="Mods:CheckingInstalledMods">DEBUG</sys:String>
+    <sys:String x:Key="Mods:LoadingMods">DEBUG</sys:String>
+    <sys:String x:Key="Mods:FinishedLoadingMods">DEBUG</sys:String>
+    <sys:String x:Key="Mods:InstallingMod">DEBUG {0}</sys:String>
+    <sys:String x:Key="Mods:InstalledMod">DEBUG {0}</sys:String>
+    <sys:String x:Key="Mods:FinishedInstallingMods">DEBUG</sys:String>
+    <sys:String x:Key="Mods:ModDownloadLinkMissing">DEBUG {0}</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Title">DEBUG {0}?</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Body1">DEBUG {0}?</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Body2">DEBUG</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">DEBUG</sys:String>
