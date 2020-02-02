@@ -35,7 +35,7 @@ namespace ModAssistant.Pages
 
         private void Agree_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrEmpty(MainWindow.GameVersion))
+            if (string.IsNullOrEmpty(MainWindow.GameVersion))
             {
                 MessageBox.Show("Could not download versions list.\nMods tab disabled. Please restart to try again.");
             }

@@ -117,7 +117,7 @@ namespace ModAssistant
         {
             string InstallDir = Properties.Settings.Default.InstallFolder;
 
-            if (!String.IsNullOrEmpty(InstallDir)
+            if (!string.IsNullOrEmpty(InstallDir)
                 && Directory.Exists(InstallDir)
                 && Directory.Exists(Path.Combine(InstallDir, "Beat Saber_Data", "Plugins"))
                 && File.Exists(Path.Combine(InstallDir, "Beat Saber.exe")))
@@ -130,7 +130,7 @@ namespace ModAssistant
                 InstallDir = GetSteamDir();
             }
             catch { }
-            if (!String.IsNullOrEmpty(InstallDir))
+            if (!string.IsNullOrEmpty(InstallDir))
             {
                 return InstallDir;
             }
@@ -140,7 +140,7 @@ namespace ModAssistant
                 InstallDir = GetOculusDir();
             }
             catch { }
-            if (!String.IsNullOrEmpty(InstallDir))
+            if (!string.IsNullOrEmpty(InstallDir))
             {
                 return InstallDir;
             }
@@ -148,7 +148,7 @@ namespace ModAssistant
             MessageBox.Show("Could not detect your Beat Saber install folder. Please select it manually.");
 
             InstallDir = GetManualDir();
-            if (!String.IsNullOrEmpty(InstallDir))
+            if (!string.IsNullOrEmpty(InstallDir))
             {
                 return InstallDir;
             }
@@ -179,7 +179,7 @@ namespace ModAssistant
                 SteamInstall = steamKey?.GetValue("InstallPath").ToString();
             }
 
-            if (String.IsNullOrEmpty(SteamInstall)) return null;
+            if (string.IsNullOrEmpty(SteamInstall)) return null;
 
             string vdf = Path.Combine(SteamInstall, @"steamapps\libraryfolders.vdf");
             if (!File.Exists(@vdf)) return null;
@@ -259,9 +259,9 @@ namespace ModAssistant
                 OculusInstall = configKey?.GetValue("InitialAppLibrary").ToString();
             }
 
-            if (String.IsNullOrEmpty(OculusInstall)) return null;
+            if (string.IsNullOrEmpty(OculusInstall)) return null;
 
-            if (!String.IsNullOrEmpty(OculusInstall))
+            if (!string.IsNullOrEmpty(OculusInstall))
             {
                 if (File.Exists(Path.Combine(OculusInstall, "Software", "hyperbolic-magnetism-beat-saber", "Beat Saber.exe")))
                 {
@@ -297,7 +297,7 @@ namespace ModAssistant
                             string libraryPath = (string)libraryKey.GetValue("Path");
                             // Yoinked this code from Megalon's fix. <3
                             string GUIDLetter = guidLetterVolumes.FirstOrDefault(x => libraryPath.Contains(x.Key)).Value;
-                            if (!String.IsNullOrEmpty(GUIDLetter))
+                            if (!string.IsNullOrEmpty(GUIDLetter))
                             {
                                 string finalPath = Path.Combine(GUIDLetter, libraryPath.Substring(49), @"Software\hyperbolic-magnetism-beat-saber");
                                 if (File.Exists(Path.Combine(finalPath, "Beat Saber.exe")))

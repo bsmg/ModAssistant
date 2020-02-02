@@ -65,7 +65,7 @@ namespace ModAssistant
                 }
             }
 
-            if (String.IsNullOrEmpty(DownloadLink))
+            if (string.IsNullOrEmpty(DownloadLink))
             {
                 Utils.SendNotify("Couldn't download update.");
             }

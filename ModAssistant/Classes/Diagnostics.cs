@@ -13,7 +13,7 @@ namespace ModAssistant
 
             foreach (string file in Directory.GetFileSystemEntries(path))
             {
-                string line = String.Empty;
+                string line = string.Empty;
 
                 if (File.Exists(file))
                 {
@@ -48,7 +48,7 @@ namespace ModAssistant
 
         private static string LevelSeparator(int level)
         {
-            string separator = String.Empty;
+            string separator = string.Empty;
             for(int i = 0; i < level; i++)
             {
                 separator += "│  ";

@@ -330,7 +330,7 @@ namespace ModAssistant.Pages
                 }
             }
 
-            if (String.IsNullOrEmpty(downloadLink))
+            if (string.IsNullOrEmpty(downloadLink))
             {
                 System.Windows.MessageBox.Show($"Could not find download link for {mod.name}");
                 return;
@@ -346,7 +346,7 @@ namespace ModAssistant.Pages
                         if (!Directory.Exists(fileDirectory))
                             Directory.CreateDirectory(fileDirectory);
 
-                        if(!String.IsNullOrEmpty(file.Name))
+                        if(!string.IsNullOrEmpty(file.Name))
                             file.ExtractToFile(Path.Combine(directory, file.FullName), true);
                     }
                 }
@@ -439,7 +439,7 @@ namespace ModAssistant.Pages
             mod.ListItem.IsSelected = true;
             ResolveDependencies(mod);
             App.SavedMods.Add(mod.name);
-            Properties.Settings.Default.SavedMods = String.Join(",", App.SavedMods.ToArray());
+            Properties.Settings.Default.SavedMods = string.Join(",", App.SavedMods.ToArray());
             Properties.Settings.Default.Save();
             RefreshModsList();
         }
@@ -450,7 +450,7 @@ namespace ModAssistant.Pages
             mod.ListItem.IsSelected = false;
             UnresolveDependencies(mod);
             App.SavedMods.Remove(mod.name);
-            Properties.Settings.Default.SavedMods = String.Join(",", App.SavedMods.ToArray());
+            Properties.Settings.Default.SavedMods = string.Join(",", App.SavedMods.ToArray());
             Properties.Settings.Default.Save();
             RefreshModsList();
         }
@@ -480,7 +480,7 @@ namespace ModAssistant.Pages
             {
                 get
                 {
-                    return (String.IsNullOrEmpty(_installedVersion) || !IsInstalled) ? "-" : _installedVersion;
+                    return (string.IsNullOrEmpty(_installedVersion) || !IsInstalled) ? "-" : _installedVersion;
                 }
                 set
                 {
@@ -531,7 +531,7 @@ namespace ModAssistant.Pages
             {
                 get
                 {
-                    if (String.IsNullOrEmpty(PromotionText)) return "0";
+                    if (string.IsNullOrEmpty(PromotionText)) return "0";
                     return "0,0,5,0";
                 }
             }
@@ -586,7 +586,7 @@ namespace ModAssistant.Pages
                 mod.ListItem.IsSelected = false;
                 UnresolveDependencies(mod);
                 App.SavedMods.Remove(mod.name);
-                Properties.Settings.Default.SavedMods = String.Join(",", App.SavedMods.ToArray());
+                Properties.Settings.Default.SavedMods = string.Join(",", App.SavedMods.ToArray());
                 Properties.Settings.Default.Save();
                 RefreshModsList();
             }

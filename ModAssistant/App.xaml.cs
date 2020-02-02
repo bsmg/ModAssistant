@@ -32,7 +32,7 @@ namespace ModAssistant
             Version = Version.Substring(0, Version.Length - 2);
             BeatSaberInstallDirectory = Utils.GetInstallDir();
 
-            while (String.IsNullOrEmpty(App.BeatSaberInstallDirectory))
+            while (string.IsNullOrEmpty(App.BeatSaberInstallDirectory))
             {
                 if (System.Windows.Forms.MessageBox.Show($"Press OK to try again, or Cancel to close application.", $"Couldn't find your Beat Saber install folder!", System.Windows.Forms.MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
@@ -67,7 +67,7 @@ namespace ModAssistant
             switch (Args[0])
             {
                 case "--install":
-                    if (!String.IsNullOrEmpty(Args[1]))
+                    if (!string.IsNullOrEmpty(Args[1]))
                         OneClickInstaller.InstallAsset(Args[1]);
                     else
                         Utils.SendNotify("Invalid argument! '--install' requires an option.");
@@ -79,14 +79,14 @@ namespace ModAssistant
                     break;
 
                 case "--register":
-                    if (!String.IsNullOrEmpty(Args[1]))
+                    if (!string.IsNullOrEmpty(Args[1]))
                         OneClickInstaller.Register(Args[1], true);
                     else
                         Utils.SendNotify("Invalid argument! '--register' requires an option.");
                     break;
 
                 case "--unregister":
-                    if (!String.IsNullOrEmpty(Args[1]))
+                    if (!string.IsNullOrEmpty(Args[1]))
                         OneClickInstaller.Unregister(Args[1], true);
                     else
                         Utils.SendNotify("Invalid argument! '--unregister' requires an option.");

@@ -77,12 +77,12 @@ namespace ModAssistant
                 MessageBox.Show("Could not load game versions, Mods tab will be unavailable.\n" + e);
             }
 
-            if (!String.IsNullOrEmpty(GameVersion) && Properties.Settings.Default.Agreed)
+            if (!string.IsNullOrEmpty(GameVersion) && Properties.Settings.Default.Agreed)
             {
                 MainWindow.Instance.ModsButton.IsEnabled = true;
             }
 
-            if (!Properties.Settings.Default.Agreed || String.IsNullOrEmpty(Properties.Settings.Default.LastTab))
+            if (!Properties.Settings.Default.Agreed || string.IsNullOrEmpty(Properties.Settings.Default.LastTab))
             {
                 Main.Content = Intro.Instance;
             }
@@ -114,7 +114,7 @@ namespace ModAssistant
         private string GetGameVersion(List<string> versions)
         {
             string version = Utils.GetVersion();
-            if (!String.IsNullOrEmpty(version) && versions.Contains(version))
+            if (!string.IsNullOrEmpty(version) && versions.Contains(version))
             {
                 return version;
             }
@@ -128,7 +128,7 @@ namespace ModAssistant
                 return versions[0];
             }
 
-            if (!String.IsNullOrEmpty(Properties.Settings.Default.GameVersion) && versions.Contains(Properties.Settings.Default.GameVersion))
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.GameVersion) && versions.Contains(Properties.Settings.Default.GameVersion))
                 return Properties.Settings.Default.GameVersion;
             return versions[0];
         }
@@ -188,7 +188,7 @@ namespace ModAssistant
             }
             Mods.ModListItem mod = ((Mods.ModListItem)Mods.Instance.ModsListView.SelectedItem);
             string infoUrl = mod.ModInfo.link;
-            if (String.IsNullOrEmpty(infoUrl))
+            if (string.IsNullOrEmpty(infoUrl))
             {
                 MessageBox.Show(mod.ModName + " does not have an info page");
             }
@@ -204,7 +204,7 @@ namespace ModAssistant
             
             GameVersion = (sender as ComboBox).SelectedItem.ToString();
             
-            if (String.IsNullOrEmpty(oldGameVersion)) return;
+            if (string.IsNullOrEmpty(oldGameVersion)) return;
 
             Properties.Settings.Default.GameVersion = GameVersion;
             Properties.Settings.Default.Save();

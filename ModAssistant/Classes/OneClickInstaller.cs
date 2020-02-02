@@ -69,7 +69,7 @@ namespace ModAssistant
             string directory = Path.Combine(
                 BeatSaberPath,
                 CustomSongsFolder,
-                String.Concat(
+                string.Concat(
                     (Response.key + " (" + Response.metadata.songName + " - " + Response.metadata.levelAuthorName + ")")
                     .Split(Utils.Constants.IllegalCharacters)
                 )
@@ -96,7 +96,7 @@ namespace ModAssistant
                             if (!Directory.Exists(fileDirectory))
                                 Directory.CreateDirectory(fileDirectory);
 
-                            if (!String.IsNullOrEmpty(file.Name))
+                            if (!string.IsNullOrEmpty(file.Name))
                                 file.ExtractToFile(Path.Combine(directory, file.FullName), true);
                         }
                     }
@@ -135,7 +135,7 @@ namespace ModAssistant
             try
             {
                 Directory.CreateDirectory(Path.Combine(BeatSaberPath, folder));
-                if (String.IsNullOrEmpty(fileName))
+                if (string.IsNullOrEmpty(fileName))
                     fileName = WebUtility.UrlDecode(Path.Combine(BeatSaberPath, folder, new Uri(link).Segments.Last()));
                 else
                     fileName = WebUtility.UrlDecode(Path.Combine(BeatSaberPath, folder, fileName));
