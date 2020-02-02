@@ -76,24 +76,29 @@ namespace ModAssistant
 
         public static void StartAsAdmin(string Arguments, bool Close = false)
         {
-            Process process = new Process();
-            process.StartInfo.FileName = Process.GetCurrentProcess().MainModule.FileName;
-            process.StartInfo.Arguments = Arguments;
-            process.StartInfo.UseShellExecute = true;
-            process.StartInfo.Verb = "runas";
+            using (Process process = new Process())
+            {
+                process.StartInfo.FileName = Process.GetCurrentProcess().MainModule.FileName;
+                process.StartInfo.Arguments = Arguments;
+                process.StartInfo.UseShellExecute = true;
+                process.StartInfo.Verb = "runas";
 
-            try
-            {
-                process.Start();
-                if (!Close)
-                    process.WaitForExit();
+                try
+                {
+                    process.Start();
+
+                    if (!Close)
+                    {
+                        process.WaitForExit();
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Mod Assistant needs to run this task as Admin. Please try again.");
+                }
+
+                if (Close) Application.Current.Shutdown();
             }
-            catch
-            {
-                MessageBox.Show("Mod Assistant needs to run this task as Admin. Please try again.");
-            }
-            if (Close)
-                App.Current.Shutdown();
         }
 
         public static string CalculateMD5(string filename)
@@ -165,12 +170,15 @@ namespace ModAssistant
 
         public static string GetSteamDir()
         {
-
-            string SteamInstall = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)?.OpenSubKey("SOFTWARE")?.OpenSubKey("WOW6432Node")?.OpenSubKey("Valve")?.OpenSubKey("Steam")?.GetValue("InstallPath").ToString();
-            if (String.IsNullOrEmpty(SteamInstall))
+            string SteamInstall;
+            using (var softwareKey = Registry.LocalMachine.OpenSubKey("SOFTWARE"))
+            using (var wowNodeKey = softwareKey?.OpenSubKey("Wow6432Node"))
+            using (var valveKey = wowNodeKey?.OpenSubKey("Valve"))
+            using (var steamKey = valveKey?.OpenSubKey("Steam"))
             {
-                SteamInstall = Registry.LocalMachine.OpenSubKey("SOFTWARE")?.OpenSubKey("WOW6432Node")?.OpenSubKey("Valve")?.OpenSubKey("Steam")?.GetValue("InstallPath").ToString();
+                SteamInstall = steamKey?.GetValue("InstallPath").ToString();
             }
+
             if (String.IsNullOrEmpty(SteamInstall)) return null;
 
             string vdf = Path.Combine(SteamInstall, @"steamapps\libraryfolders.vdf");
@@ -239,7 +247,16 @@ namespace ModAssistant
 
         public static string GetOculusDir()
         {
-            string OculusInstall = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)?.OpenSubKey("SOFTWARE")?.OpenSubKey("Wow6432Node")?.OpenSubKey("Oculus VR, LLC")?.OpenSubKey("Oculus")?.OpenSubKey("Config")?.GetValue("InitialAppLibrary").ToString();
+            string OculusInstall;
+            using (var softwareKey = Registry.LocalMachine.OpenSubKey("SOFTWARE"))
+            using (var wowNodeKey = softwareKey?.OpenSubKey("Wow6432Node"))
+            using (var ovrKey = wowNodeKey?.OpenSubKey("Oculus VR, LLC"))
+            using (var oculusKey = ovrKey?.OpenSubKey("Oculus"))
+            using (var configKey = oculusKey?.OpenSubKey("Config"))
+            {
+                OculusInstall = configKey?.GetValue("InitialAppLibrary").ToString();
+            }
+
             if (String.IsNullOrEmpty(OculusInstall)) return null;
 
             if (!String.IsNullOrEmpty(OculusInstall))
@@ -255,39 +272,42 @@ namespace ModAssistant
             {
                 // Oculus libraries uses GUID volume paths like this "\\?\Volume{0fea75bf-8ad6-457c-9c24-cbe2396f1096}\Games\Oculus Apps", we need to transform these to "D:\Game"\Oculus Apps"
                 WqlObjectQuery wqlQuery = new WqlObjectQuery("SELECT * FROM Win32_Volume");
-                ManagementObjectSearcher searcher = new ManagementObjectSearcher(wqlQuery);
-                Dictionary<string, string> guidLetterVolumes = new Dictionary<string, string>();
-
-                foreach (ManagementBaseObject disk in searcher.Get())
+                using (ManagementObjectSearcher searcher = new ManagementObjectSearcher(wqlQuery))
                 {
-                    var diskId = ((string)disk.GetPropertyValue("DeviceID")).Substring(11, 36);
-                    var diskLetter = ((string)disk.GetPropertyValue("DriveLetter")) + @"\";
+                    Dictionary<string, string> guidLetterVolumes = new Dictionary<string, string>();
 
-                    if (!string.IsNullOrWhiteSpace(diskLetter))
+                    foreach (ManagementBaseObject disk in searcher.Get())
                     {
-                        guidLetterVolumes.Add(diskId, diskLetter);
-                    }
-                }
+                        var diskId = ((string)disk.GetPropertyValue("DeviceID")).Substring(11, 36);
+                        var diskLetter = ((string)disk.GetPropertyValue("DriveLetter")) + @"\";
 
-                // Search among the library folders
-                foreach (string libraryKeyName in librariesKey.GetSubKeyNames())
-                {
-                    using (RegistryKey libraryKey = librariesKey.OpenSubKey(libraryKeyName))
-                    {
-                        string libraryPath = (string)libraryKey.GetValue("Path");
-                        // Yoinked this code from Megalon's fix. <3
-                        string GUIDLetter = guidLetterVolumes.FirstOrDefault(x => libraryPath.Contains(x.Key)).Value;
-                        if (!String.IsNullOrEmpty(GUIDLetter))
+                        if (!string.IsNullOrWhiteSpace(diskLetter))
                         {
-                            string finalPath = Path.Combine(GUIDLetter, libraryPath.Substring(49), @"Software\hyperbolic-magnetism-beat-saber");
-                            if (File.Exists(Path.Combine(finalPath, "Beat Saber.exe")))
+                            guidLetterVolumes.Add(diskId, diskLetter);
+                        }
+                    }
+
+                    // Search among the library folders
+                    foreach (string libraryKeyName in librariesKey.GetSubKeyNames())
+                    {
+                        using (RegistryKey libraryKey = librariesKey.OpenSubKey(libraryKeyName))
+                        {
+                            string libraryPath = (string)libraryKey.GetValue("Path");
+                            // Yoinked this code from Megalon's fix. <3
+                            string GUIDLetter = guidLetterVolumes.FirstOrDefault(x => libraryPath.Contains(x.Key)).Value;
+                            if (!String.IsNullOrEmpty(GUIDLetter))
                             {
-                                return SetDir(finalPath, "Oculus");
+                                string finalPath = Path.Combine(GUIDLetter, libraryPath.Substring(49), @"Software\hyperbolic-magnetism-beat-saber");
+                                if (File.Exists(Path.Combine(finalPath, "Beat Saber.exe")))
+                                {
+                                    return SetDir(finalPath, "Oculus");
+                                }
                             }
                         }
                     }
                 }
             }
+
             return null;
         }
 
