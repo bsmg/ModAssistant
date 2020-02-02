@@ -51,7 +51,7 @@ namespace ModAssistant
             string separator = String.Empty;
             for(int i = 0; i < level; i++)
             {
-                separator = separator + "│  ";
+                separator += "│  ";
             }
             return separator;
         }

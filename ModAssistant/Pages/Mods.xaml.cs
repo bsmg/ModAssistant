@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -105,7 +105,6 @@ namespace ModAssistant.Pages
 
         public void GetAllMods()
         {
-            string json = string.Empty;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsAPIUrl + "mod");
             request.AutomaticDecompression = DecompressionMethods.GZip;
             request.UserAgent = "ModAssistant/" + App.Version;
@@ -114,8 +113,11 @@ namespace ModAssistant.Pages
             using (Stream stream = response.GetResponseStream())
             using (StreamReader reader = new StreamReader(stream))
             {
-                var serializer = new JavaScriptSerializer();
-                serializer.MaxJsonLength = Int32.MaxValue;
+                var serializer = new JavaScriptSerializer
+                {
+                    MaxJsonLength = Int32.MaxValue
+                };
+
                 AllModsList = serializer.Deserialize<Mod[]>(reader.ReadToEnd());
             }
         }
@@ -123,7 +125,10 @@ namespace ModAssistant.Pages
         private void CheckInstallDir(string directory, List<string> blacklist)
         {
             if (!Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, directory)))
+            {
                 return;
+            }
+
             foreach (string file in Directory.GetFileSystemEntries(Path.Combine(App.BeatSaberInstallDirectory, directory)))
             {
                 if (File.Exists(file) && Path.GetExtension(file) == ".dll" || Path.GetExtension(file) == ".manifest")
@@ -372,12 +377,12 @@ namespace ModAssistant.Pages
             {
                 foreach (Mod.Dependency dep in dependent.dependencies)
                 {
-                    
+
                     if (dep.name == mod.name)
                     {
                         dep.Mod = mod;
                         mod.Dependents.Add(dependent);
-                        
+
                     }
                 }
             }

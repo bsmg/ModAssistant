@@ -1,4 +1,4 @@
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -185,8 +185,10 @@ namespace ModAssistant
             if (!File.Exists(@vdf)) return null;
 
             Regex regex = new Regex("\\s\"\\d\"\\s+\"(.+)\"");
-            List<string> SteamPaths = new List<string>();
-            SteamPaths.Add(Path.Combine(SteamInstall, @"steamapps"));
+            List<string> SteamPaths = new List<string>
+            {
+                Path.Combine(SteamInstall, @"steamapps")
+            };
 
             using (StreamReader reader = new StreamReader(@vdf))
             {
