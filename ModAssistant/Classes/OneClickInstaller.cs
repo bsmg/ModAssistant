@@ -5,7 +5,8 @@ using System.Net;
 using System.Windows;
 using Microsoft.Win32;
 using System.IO.Compression;
-using System.Web.Script.Serialization;
+using System.Threading.Tasks;
+using static ModAssistant.Http;
 
 namespace ModAssistant
 {
@@ -24,7 +25,7 @@ namespace ModAssistant
         private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver" };
 
         private const bool BypassDownloadCounter = false;
-        public static void InstallAsset(string link)
+        public static async void InstallAsset(string link)
         {
             Uri uri = new Uri(link);
             if (!Protocols.Contains(uri.Scheme)) return;
@@ -32,32 +33,25 @@ namespace ModAssistant
             switch (uri.Scheme)
             {
                 case "modelsaber":
-                    ModelSaber(uri);
+                    await ModelSaber(uri);
                     break;
                 case "beatsaver":
-                    BeatSaver(uri);
+                    await BeatSaver(uri);
                     break;
             }
         }
 
-        private static void BeatSaver(Uri uri)
+        private static async Task BeatSaver(Uri uri)
         {
             string Key = uri.Host;
             BeatSaverApiResponse Response;
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BeatSaverURLPrefix + "/api/maps/detail/" + Key);
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-            request.UserAgent = "ModAssistant/" + App.Version;
-
             try
             {
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    var serializer = new JavaScriptSerializer();
-                    Response = serializer.Deserialize<BeatSaverApiResponse>(reader.ReadToEnd());
-                }
+                var resp = await HttpClient.GetAsync(BeatSaverURLPrefix + "/api/maps/detail/" + Key);
+                var body = await resp.Content.ReadAsStringAsync();
+
+                Response = JsonSerializer.Deserialize<BeatSaverApiResponse>(body);
             }
             catch (Exception e)
             {
@@ -77,56 +71,58 @@ namespace ModAssistant
 
             if (BypassDownloadCounter)
             {
-                DownloadAsset(BeatSaverURLPrefix + Response.directDownload, CustomSongsFolder, Response.hash + ".zip");
+                await DownloadAsset(BeatSaverURLPrefix + Response.directDownload, CustomSongsFolder, Response.hash + ".zip");
             }
             else
             {
-                DownloadAsset(BeatSaverURLPrefix + Response.downloadURL, CustomSongsFolder, Response.hash + ".zip");
+                await DownloadAsset(BeatSaverURLPrefix + Response.downloadURL, CustomSongsFolder, Response.hash + ".zip");
             }
 
             if (File.Exists(zip))
             {
                 using (FileStream stream = new FileStream(zip, FileMode.Open))
+                using (ZipArchive archive = new ZipArchive(stream))
                 {
-                    using (ZipArchive archive = new ZipArchive(stream))
+                    foreach (ZipArchiveEntry file in archive.Entries)
                     {
-                        foreach (ZipArchiveEntry file in archive.Entries)
+                        string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
+                        if (!Directory.Exists(fileDirectory))
                         {
-                            string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
-                            if (!Directory.Exists(fileDirectory))
-                                Directory.CreateDirectory(fileDirectory);
-
-                            if (!string.IsNullOrEmpty(file.Name))
-                                file.ExtractToFile(Path.Combine(directory, file.FullName), true);
+                            Directory.CreateDirectory(fileDirectory);
+                        }
+                        
+                        if (!string.IsNullOrEmpty(file.Name))
+                        {
+                            file.ExtractToFile(Path.Combine(directory, file.FullName), true);
                         }
                     }
                 }
 
                 File.Delete(zip);
-            } 
+            }
             else
             {
                 MessageBox.Show("Could not download the song.\nThere might be issues with BeatSaver or your internet connection.", "Failed to download song ZIP");
             }
         }
 
-        private static void ModelSaber(Uri uri)
+        private static async Task ModelSaber(Uri uri)
         {
             switch (uri.Host)
             {
                 case "avatar":
-                    DownloadAsset(ModelSaberURLPrefix + uri.Host + uri.AbsolutePath, CustomAvatarsFolder);
+                    await DownloadAsset(ModelSaberURLPrefix + uri.Host + uri.AbsolutePath, CustomAvatarsFolder);
                     break;
                 case "saber":
-                    DownloadAsset(ModelSaberURLPrefix + uri.Host + uri.AbsolutePath, CustomSabersFolder);
+                    await DownloadAsset(ModelSaberURLPrefix + uri.Host + uri.AbsolutePath, CustomSabersFolder);
                     break;
                 case "platform":
-                    DownloadAsset(ModelSaberURLPrefix + uri.Host + uri.AbsolutePath, CustomPlatformsFolder);
+                    await DownloadAsset(ModelSaberURLPrefix + uri.Host + uri.AbsolutePath, CustomPlatformsFolder);
                     break;
             }
         }
 
-        private static void DownloadAsset(string link, string folder, string fileName = null)
+        private static async Task DownloadAsset(string link, string folder, string fileName = null)
         {
             if (string.IsNullOrEmpty(BeatSaberPath))
             {
@@ -136,13 +132,16 @@ namespace ModAssistant
             {
                 Directory.CreateDirectory(Path.Combine(BeatSaberPath, folder));
                 if (string.IsNullOrEmpty(fileName))
+                {
                     fileName = WebUtility.UrlDecode(Path.Combine(BeatSaberPath, folder, new Uri(link).Segments.Last()));
+                }
                 else
+                {
                     fileName = WebUtility.UrlDecode(Path.Combine(BeatSaberPath, folder, fileName));
+                }
 
-                Utils.Download(link, fileName);
+                await Utils.Download(link, fileName);
                 Utils.SendNotify("Installed: " + Path.GetFileNameWithoutExtension(fileName));
-
             }
             catch
             {

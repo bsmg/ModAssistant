@@ -1,9 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,6 +10,7 @@ using System.Windows.Navigation;
 using System.IO.Compression;
 using System.Diagnostics;
 using System.Windows.Forms;
+using static ModAssistant.Http;
 
 namespace ModAssistant.Pages
 {
@@ -29,6 +29,8 @@ namespace ModAssistant.Pages
         public CollectionView view;
         public bool PendingChanges;
 
+        private SemaphoreSlim _modsLoadSem = new SemaphoreSlim(1, 1);
+
         public List<ModListItem> ModList { get; set; }
 
         public Mods()
@@ -44,57 +46,75 @@ namespace ModAssistant.Pages
 
         public async void LoadMods()
         {
-            MainWindow.Instance.InstallButton.IsEnabled = false;
-            MainWindow.Instance.GameVersionsBox.IsEnabled = false;
-            MainWindow.Instance.InfoButton.IsEnabled = false;
+            var versionLoadSuccess = await MainWindow.Instance.VersionLoadStatus.Task;
+            if (versionLoadSuccess == false) return;
 
-            if (ModsList != null)
-                Array.Clear(ModsList, 0, ModsList.Length);
-            if (AllModsList != null)
-                Array.Clear(AllModsList, 0, AllModsList.Length);
+            await _modsLoadSem.WaitAsync();
 
-            InstalledMods = new List<Mod>();
-            CategoryNames = new List<string>();
-            ModList = new List<ModListItem>();
-
-            ModsListView.Visibility = Visibility.Hidden;
-
-            if (App.CheckInstalledMods)
+            try
             {
-                MainWindow.Instance.MainText = "Checking Installed Mods...";
-                await Task.Run(() => CheckInstalledMods());
-                InstalledColumn.Width = Double.NaN;
-                UninstallColumn.Width = 70;
-                DescriptionColumn.Width = 750;
-            } else
-            {
-                InstalledColumn.Width = 0;
-                UninstallColumn.Width = 0;
-                DescriptionColumn.Width = 800;
+                MainWindow.Instance.InstallButton.IsEnabled = false;
+                MainWindow.Instance.GameVersionsBox.IsEnabled = false;
+                MainWindow.Instance.InfoButton.IsEnabled = false;
+
+                if (ModsList != null)
+                {
+                    Array.Clear(ModsList, 0, ModsList.Length);
+                }
+
+                if (AllModsList != null)
+                {
+                    Array.Clear(AllModsList, 0, AllModsList.Length);
+                }
+
+                InstalledMods = new List<Mod>();
+                CategoryNames = new List<string>();
+                ModList = new List<ModListItem>();
+
+                ModsListView.Visibility = Visibility.Hidden;
+
+                if (App.CheckInstalledMods)
+                {
+                    MainWindow.Instance.MainText = "Checking Installed Mods...";
+                    await Task.Run(async () => await CheckInstalledMods());
+                    InstalledColumn.Width = double.NaN;
+                    UninstallColumn.Width = 70;
+                    DescriptionColumn.Width = 750;
+                }
+                else
+                {
+                    InstalledColumn.Width = 0;
+                    UninstallColumn.Width = 0;
+                    DescriptionColumn.Width = 800;
+                }
+
+                MainWindow.Instance.MainText = "Loading Mods...";
+                await Task.Run(async () => await PopulateModsList());
+
+                ModsListView.ItemsSource = ModList;
+
+                view = (CollectionView)CollectionViewSource.GetDefaultView(ModsListView.ItemsSource);
+                PropertyGroupDescription groupDescription = new PropertyGroupDescription("Category");
+                view.GroupDescriptions.Add(groupDescription);
+
+                this.DataContext = this;
+
+                RefreshModsList();
+                ModsListView.Visibility = Visibility.Visible;
+                MainWindow.Instance.MainText = "Finished Loading Mods.";
+
+                MainWindow.Instance.InstallButton.IsEnabled = true;
+                MainWindow.Instance.GameVersionsBox.IsEnabled = true;
             }
-
-            MainWindow.Instance.MainText = "Loading Mods...";
-            await Task.Run(() => PopulateModsList());
-
-            ModsListView.ItemsSource = ModList;
-
-            view = (CollectionView)CollectionViewSource.GetDefaultView(ModsListView.ItemsSource);
-            PropertyGroupDescription groupDescription = new PropertyGroupDescription("Category");
-            view.GroupDescriptions.Add(groupDescription);
-
-            this.DataContext = this;
-
-            RefreshModsList();
-            ModsListView.Visibility = Visibility.Visible;
-            MainWindow.Instance.MainText = "Finished Loading Mods.";
-
-            MainWindow.Instance.InstallButton.IsEnabled = true;
-            MainWindow.Instance.GameVersionsBox.IsEnabled = true;
+            finally
+            {
+                _modsLoadSem.Release();
+            }
         }
 
-        public void CheckInstalledMods()
+        public async Task CheckInstalledMods()
         {
-            GetAllMods();
+            await GetAllMods();
             List<string> empty = new List<string>();
             GetBSIPAVersion();
             CheckInstallDir("IPA/Pending/Plugins", empty);
@@ -103,23 +123,11 @@ namespace ModAssistant.Pages
             CheckInstallDir("Libs", empty);
         }
 
-        public void GetAllMods()
+        public async Task GetAllMods()
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsAPIUrl + "mod");
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-            request.UserAgent = "ModAssistant/" + App.Version;
-
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                var serializer = new JavaScriptSerializer
-                {
-                    MaxJsonLength = Int32.MaxValue
-                };
-
-                AllModsList = serializer.Deserialize<Mod[]>(reader.ReadToEnd());
-            }
+            var resp = await HttpClient.GetAsync(Utils.Constants.BeatModsAPIUrl + "mod");
+            var body = await resp.Content.ReadAsStringAsync();
+            AllModsList = JsonSerializer.Deserialize<Mod[]>(body);
         }
 
         private void CheckInstallDir(string directory, List<string> blacklist)
@@ -198,21 +206,13 @@ namespace ModAssistant.Pages
             return null;
         }
 
-        public void PopulateModsList()
+        public async Task PopulateModsList()
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions + "&gameVersion=" + MainWindow.GameVersion);
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-            request.UserAgent = "ModAssistant/" + App.Version;
-
             try
             {
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    var serializer = new JavaScriptSerializer();
-                    ModsList = serializer.Deserialize<Mod[]>(reader.ReadToEnd());
-                }
+                var resp = await HttpClient.GetAsync(Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions + "&gameVersion=" + MainWindow.GameVersion);
+                var body = await resp.Content.ReadAsStringAsync();
+                ModsList = JsonSerializer.Deserialize<Mod[]>(body);
             }
             catch (Exception e)
             {
@@ -276,7 +276,7 @@ namespace ModAssistant.Pages
             }
         }
 
-        public async void InstallMods ()
+        public async void InstallMods()
         {
             MainWindow.Instance.InstallButton.IsEnabled = false;
             string installDirectory = App.BeatSaberInstallDirectory;
@@ -286,7 +286,7 @@ namespace ModAssistant.Pages
                 if (mod.name.ToLower() == "bsipa")
                 {
                     MainWindow.Instance.MainText = $"Installing {mod.name}...";
-                    await Task.Run(() => InstallMod(mod, installDirectory));
+                    await Task.Run(async () => await InstallMod(mod, installDirectory));
                     MainWindow.Instance.MainText = $"Installed {mod.name}.";
                     if (!File.Exists(Path.Combine(installDirectory, "winhttp.dll")))
                     {
@@ -299,21 +299,23 @@ namespace ModAssistant.Pages
                             }).WaitForExit()
                         );
                     }
+
                     Pages.Options.Instance.YeetBSIPA.IsEnabled = true;
                 }
                 else if(mod.ListItem.IsSelected)
                 {
                     MainWindow.Instance.MainText = $"Installing {mod.name}...";
-                    await Task.Run(() => InstallMod(mod, Path.Combine(installDirectory, @"IPA\Pending")));
+                    await Task.Run(async () => await InstallMod(mod, Path.Combine(installDirectory, @"IPA\Pending")));
                     MainWindow.Instance.MainText = $"Installed {mod.name}.";
                 }
             }
+
             MainWindow.Instance.MainText = "Finished installing mods.";
             MainWindow.Instance.InstallButton.IsEnabled = true;
             RefreshModsList();
         }
 
-        private void InstallMod (Mod mod, string directory)
+        private async Task InstallMod(Mod mod, string directory)
         {
             string downloadLink = null;
 
@@ -323,7 +325,8 @@ namespace ModAssistant.Pages
                 {
                     downloadLink = link.url;
                     break;
-                } else if (link.type.ToLower() == App.BeatSaberInstallType.ToLower())
+                }
+                else if (link.type.ToLower() == App.BeatSaberInstallType.ToLower())
                 {
                     downloadLink = link.url;
                     break;
@@ -336,18 +339,20 @@ namespace ModAssistant.Pages
                 return;
             }
 
-            using (MemoryStream stream = new MemoryStream(DownloadMod(Utils.Constants.BeatModsURL + downloadLink)))
+            using (Stream stream = await DownloadMod(Utils.Constants.BeatModsURL + downloadLink))
+            using (ZipArchive archive = new ZipArchive(stream))
             {
-                using (ZipArchive archive = new ZipArchive(stream))
+                foreach (ZipArchiveEntry file in archive.Entries)
                 {
-                    foreach (ZipArchiveEntry file in archive.Entries)
+                    string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
+                    if (!Directory.Exists(fileDirectory))
                     {
-                        string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
-                        if (!Directory.Exists(fileDirectory))
-                            Directory.CreateDirectory(fileDirectory);
+                        Directory.CreateDirectory(fileDirectory);
+                    }
 
-                        if(!string.IsNullOrEmpty(file.Name))
-                            file.ExtractToFile(Path.Combine(directory, file.FullName), true);
+                    if (!string.IsNullOrEmpty(file.Name))
+                    {
+                        file.ExtractToFile(Path.Combine(directory, file.FullName), true);
                     }
                 }
             }
@@ -360,12 +365,10 @@ namespace ModAssistant.Pages
             }
         }
 
-        private byte[] DownloadMod (string link)
+        private async Task<Stream> DownloadMod(string link)
         {
-            WebClient webClient = new WebClient();
-            webClient.Headers.Add("user-agent", "ModAssistant/" + App.Version);
-            byte[] zip = webClient.DownloadData(link);
-            return zip;
+            var resp = await HttpClient.GetAsync(link);
+            return await resp.Content.ReadAsStreamAsync();
         }
 
         private void RegisterDependencies(Mod dependent)

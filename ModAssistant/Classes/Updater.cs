@@ -1,8 +1,8 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Net;
-using System.Web.Script.Serialization;
+using System.Threading.Tasks;
+using static ModAssistant.Http;
 
 namespace ModAssistant
 {
@@ -15,42 +15,33 @@ namespace ModAssistant
         private static Version LatestVersion;
         private static bool NeedsUpdate = false;
 
-        public static bool CheckForUpdate()
+        public static async Task<bool> CheckForUpdate()
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(APILatestURL);
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-            request.UserAgent = "ModAssistant/" + App.Version;
+            var resp = await HttpClient.GetAsync(APILatestURL);
+            var body = await resp.Content.ReadAsStringAsync();
+            LatestUpdate = JsonSerializer.Deserialize<Update>(body);
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                var serializer = new JavaScriptSerializer();
-                LatestUpdate = serializer.Deserialize<Update>(reader.ReadToEnd());
-            }
-            
             LatestVersion = new Version(LatestUpdate.tag_name.Substring(1));
             CurrentVersion = new Version(App.Version);
-
 
             return (LatestVersion > CurrentVersion);
         }
 
-        public static void Run()
+        public static async Task Run()
         {
             try
             {
-                NeedsUpdate = CheckForUpdate();
+                NeedsUpdate = await CheckForUpdate();
             }
             catch
             {
                 Utils.SendNotify("Couldn't check for updates.");
             }
 
-            if (NeedsUpdate) StartUpdate();
+            if (NeedsUpdate) await StartUpdate();
         }
 
-        public static void StartUpdate()
+        public static async Task StartUpdate()
         {
             string Directory = Path.GetDirectoryName(Utils.ExePath);
             string OldExe = Path.Combine(Directory, "ModAssistant.old.exe");
@@ -72,11 +63,13 @@ namespace ModAssistant
             else
             {
                 if (File.Exists(OldExe))
+                {
                     File.Delete(OldExe);
+                }
 
                 File.Move(Utils.ExePath, OldExe);
 
-                Utils.Download(DownloadLink, Utils.ExePath);
+                await Utils.Download(DownloadLink, Utils.ExePath);
                 Process.Start(Utils.ExePath);
                 App.Current.Shutdown();
 

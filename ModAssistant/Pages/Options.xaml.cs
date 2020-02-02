@@ -1,20 +1,17 @@
-﻿using System;
-using System.Text;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.IO;
 using Path = System.IO.Path;
-using System.Net;
-using System.Web.Script.Serialization;
-using System.Web;
+using System.Net.Http;
 
 namespace ModAssistant.Pages
 {
     /// <summary>
     /// Interaction logic for Options.xaml
     /// </summary>
-    /// 
     public partial class Options : Page
     {
         public static Options Instance = new Options();
@@ -146,8 +143,8 @@ namespace ModAssistant.Pages
             try
             {
                 MainWindow.Instance.MainText = "Uploading Log...";
-                await Task.Run(() => UploadLog());
-                
+                await Task.Run(async () => await UploadLog());
+
                 System.Diagnostics.Process.Start(LogURL);
                 Clipboard.SetText(LogURL);
                 MainWindow.Instance.MainText = "Log URL Copied To Clipboard!";
@@ -160,36 +157,28 @@ namespace ModAssistant.Pages
             }
         }
 
-        private void UploadLog()
+        private async Task UploadLog()
         {
             const string DateFormat = "yyyy-mm-dd HH:mm:ss";
             DateTime now = DateTime.Now;
-            Utils.TeknikPasteResponse TeknikResponse;
 
-            string postData =
-                "title=" + "_latest.log (" + now.ToString(DateFormat) + ")" +
-                "&expireUnit=hour&expireLength=5" +
-                "&code=" + HttpUtility.UrlEncode(File.ReadAllText(Path.Combine(InstallDirectory, "Logs", "_latest.log")));
-            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.TeknikAPIUrl + "Paste");
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-            request.UserAgent = "ModAssistant/" + App.Version;
-            request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.ContentLength = byteArray.Length;
-
-            Stream dataStream = request.GetRequestStream();
-            dataStream.Write(byteArray, 0, byteArray.Length);
-            dataStream.Close();
-
-            using (WebResponse response = (WebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
+            var nvc = new List<KeyValuePair<string, string>>()
             {
-                var serializer = new JavaScriptSerializer();
-                TeknikResponse = serializer.Deserialize<Utils.TeknikPasteResponse>(reader.ReadToEnd());
-            }
+                new KeyValuePair<string, string>("title", $"_latest.log ({now.ToString(DateFormat)})"),
+                new KeyValuePair<string, string>("expireUnit", "hour"),
+                new KeyValuePair<string, string>("expireLength", "5"),
+                new KeyValuePair<string, string>("code", File.ReadAllText(Path.Combine(InstallDirectory, "Logs", "_latest.log"))),
+            };
+
+            var req = new HttpRequestMessage(HttpMethod.Post, Utils.Constants.TeknikAPIUrl + "Paste")
+            {
+                Content = new FormUrlEncodedContent(nvc),
+            };
+
+            var resp = await Http.HttpClient.SendAsync(req);
+            var body = await resp.Content.ReadAsStringAsync();
+
+            var TeknikResponse = Http.JsonSerializer.Deserialize<Utils.TeknikPasteResponse>(body);
             LogURL = TeknikResponse.result.url;
         }
 
@@ -198,7 +187,7 @@ namespace ModAssistant.Pages
             if (Mods.Instance.AllModsList == null)
             {
                 MainWindow.Instance.MainText = "Getting Mod List...";
-                await Task.Run(() => Mods.Instance.GetAllMods());
+                await Mods.Instance.GetAllMods();
                 MainWindow.Instance.MainText = "Finding BSIPA Version...";
                 await Task.Run(() => Mods.Instance.GetBSIPAVersion());
             }
@@ -220,7 +209,7 @@ namespace ModAssistant.Pages
                 if (Mods.Instance.AllModsList == null)
                 {
                     MainWindow.Instance.MainText = "Getting Mod List...";
-                    await Task.Run(() => Mods.Instance.CheckInstalledMods());
+                    await Mods.Instance.CheckInstalledMods();
                 }
                 foreach (Mod mod in Mods.InstalledMods)
                 {

@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 using System.Diagnostics;
-using System.IO;
-using System.Net;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using static ModAssistant.Http;
 
 namespace ModAssistant.Pages
 {
@@ -31,42 +29,34 @@ namespace ModAssistant.Pages
         private async void HeadpatsButton_Click(object sender, RoutedEventArgs e)
         {
             PatButton.IsEnabled = false;
-            await Task.Run(() => HeadPat());
+            await Task.Run(async () => await HeadPat());
             PatUp.IsOpen = true;
         }
 
         private async void HugsButton_Click(object sender, RoutedEventArgs e)
         {
             HugButton.IsEnabled = false;
-            await Task.Run(() => Hug());
+            await Task.Run(async () => await Hug());
             HugUp.IsOpen = true;
         }
 
-        private string WeebCDN(string type)
+        private async Task<string> WeebCDN(string type)
         {
-            Utils.WeebCDNRandomResponse Response;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.WeebCDNAPIURL + type + "/random");
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-            request.UserAgent = "ModAssistant/" + App.Version;
+            var resp = await HttpClient.GetAsync(Utils.Constants.WeebCDNAPIURL + type + "/random");
+            var body = await resp.Content.ReadAsStringAsync();
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                var serializer = new JavaScriptSerializer();
-                Response = serializer.Deserialize<Utils.WeebCDNRandomResponse>(reader.ReadToEnd());
-            }
-            return Response.url;
+            var response = JsonSerializer.Deserialize<Utils.WeebCDNRandomResponse>(body);
+            return response.url;
         }
 
-        private void HeadPat()
+        private async Task HeadPat()
         {
-            PatImage.Load(WeebCDN("pats"));
+            PatImage.Load(await WeebCDN("pats"));
         }
 
-        private void Hug()
+        private async Task Hug()
         {
-            HugImage.Load(WeebCDN("hugs"));
+            HugImage.Load(await WeebCDN("hugs"));
         }
     }
 }

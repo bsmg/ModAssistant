@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Net;
 using System.IO;
-using System.Web.Script.Serialization;
 using ModAssistant.Pages;
+using static ModAssistant.Http;
 
 namespace ModAssistant
 {
@@ -19,6 +19,7 @@ namespace ModAssistant
         public static MainWindow Instance;
         public static bool ModsOpened = false;
         public static string GameVersion;
+        public TaskCompletionSource<bool> VersionLoadStatus = new TaskCompletionSource<bool>();
 
         public string MainText
         {
@@ -50,37 +51,7 @@ namespace ModAssistant
                 return;
             }
 
-            List<string> versions;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsAPIUrl + "version");
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-            request.UserAgent = "ModAssistant/" + App.Version;
-
-            versions = null;
-            try
-            {
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    versions = serializer.Deserialize<string[]>(reader.ReadToEnd()).ToList();
-                }
-
-                GameVersion = GetGameVersion(versions);
-
-                GameVersionsBox.ItemsSource = versions;
-                GameVersionsBox.SelectedValue = GameVersion;
-            }
-            catch (Exception e)
-            {
-                GameVersionsBox.IsEnabled = false;
-                MessageBox.Show("Could not load game versions, Mods tab will be unavailable.\n" + e);
-            }
-
-            if (!string.IsNullOrEmpty(GameVersion) && Properties.Settings.Default.Agreed)
-            {
-                MainWindow.Instance.ModsButton.IsEnabled = true;
-            }
+            Task.Run(() => LoadVersionsAsync());
 
             if (!Properties.Settings.Default.Agreed || string.IsNullOrEmpty(Properties.Settings.Default.LastTab))
             {
@@ -108,6 +79,41 @@ namespace ModAssistant
                         Main.Content = Intro.Instance;
                         break;
                 }
+            }
+        }
+
+        private async void LoadVersionsAsync()
+        {
+            try
+            {
+                var resp = await HttpClient.GetAsync(Utils.Constants.BeatModsAPIUrl + "version");
+                var body = await resp.Content.ReadAsStringAsync();
+
+                List<string> versions = JsonSerializer.Deserialize<string[]>(body).ToList();
+                Dispatcher.Invoke(() =>
+                {
+                    GameVersion = GetGameVersion(versions);
+
+                    GameVersionsBox.ItemsSource = versions;
+                    GameVersionsBox.SelectedValue = GameVersion;
+
+                    if (!string.IsNullOrEmpty(GameVersion) && Properties.Settings.Default.Agreed)
+                    {
+                        MainWindow.Instance.ModsButton.IsEnabled = true;
+                    }
+                });
+
+                VersionLoadStatus.SetResult(true);
+            }
+            catch (Exception e)
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    GameVersionsBox.IsEnabled = false;
+                    MessageBox.Show("Could not load game versions, Mods tab will be unavailable.\n" + e);
+                });
+
+                VersionLoadStatus.SetResult(false);
             }
         }
 

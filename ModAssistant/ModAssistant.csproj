@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Http.cs" />
     <Compile Include="Classes\Promotions.cs" />
     <Compile Include="Classes\Diagnostics.cs" />
     <Compile Include="Classes\Updater.cs" />

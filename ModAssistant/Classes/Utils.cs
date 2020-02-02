@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,9 +8,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Management;
-using System.Net;
 using System.Diagnostics;
 using System.Security.Principal;
+using System.Threading.Tasks;
+using static ModAssistant.Http;
 
 namespace ModAssistant
 {
@@ -359,13 +360,14 @@ namespace ModAssistant
             return false;
         }
 
-        public static void Download(string link, string output)
+        public static async Task Download(string link, string output)
         {
-            WebClient webClient = new WebClient();
-            webClient.Headers.Add("user-agent", "ModAssistant/" + App.Version);
-
-            byte[] file = webClient.DownloadData(link);
-            File.WriteAllBytes(output, file);
+            var resp = await HttpClient.GetAsync(link);
+            using (var stream = await resp.Content.ReadAsStreamAsync())
+            using (var fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write))
+            {
+                await stream.CopyToAsync(fs);
+            }
         }
 
         private delegate void ShowMessageBoxDelegate(string Message, string Caption);
