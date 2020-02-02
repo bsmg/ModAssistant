@@ -87,6 +87,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Localisation\en-DEBUG.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Localisation\en-GB.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

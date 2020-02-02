@@ -28,7 +28,11 @@ namespace ModAssistant
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            // Load localisation languages
             LoadLanguage(CultureInfo.CurrentCulture.Name);
+
+            // Uncomment the next line to debug localisation
+            LoadLanguage("en-DEBUG");
 
             if (ModAssistant.Properties.Settings.Default.UpgradeRequired)
             {

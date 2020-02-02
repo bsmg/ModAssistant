@@ -1,0 +1,111 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:local="clr-namespace:ModAssistant">
+    <sys:String x:Key="ResourceDictionaryName">i18n:en-DEBUG</sys:String>
+
+    <!-- Main Window -->
+    <sys:String x:Key="MainWindow:WindowTitle">DEBUG</sys:String>
+    <sys:String x:Key="MainWindow:IntroButton">DEBUG</sys:String>
+    <sys:String x:Key="MainWindow:ModsButton">DEBUG</sys:String>
+    <sys:String x:Key="MainWindow:AboutButton">DEBUG</sys:String>
+    <sys:String x:Key="MainWindow:OptionsButton">DEBUG</sys:String>
+    <sys:String x:Key="MainWindow:GameVersionLabel">DEBUG</sys:String>
+    <sys:String x:Key="MainWindow:VersionLabel">DEBUG</sys:String>
+    <sys:String x:Key="MainWindow:ModInfoButton">DEBUG</sys:String>
+    <sys:String x:Key="MainWindow:InstallButtonTop">DEBUG</sys:String>
+    <sys:String x:Key="MainWindow:InstallButtonBottom">DEBUG</sys:String>
+
+    <!-- Intro Page -->
+    <sys:String x:Key="Intro:Title">DEBUG</sys:String>
+    <sys:String x:Key="Intro:PageTitle">DEBUG</sys:String>
+    <sys:String x:Key="Intro:Terms:Header">DEBUG</sys:String>
+    <Span x:Key="Intro:Terms:Line1">
+        DEBUG
+    </Span>
+    <Span x:Key="Intro:Terms:Line2">
+        DEBUG
+    </Span>
+    <Span x:Key="Intro:Terms:Term1">
+        DEBUG
+    </Span>
+    <Span x:Key="Intro:Terms:Term2">
+        DEBUG
+    </Span>
+    <Span x:Key="Intro:Terms:Term3">
+        DEBUG
+    </Span>
+    <Span x:Key="Intro:ReviewsBeatGamesFault">
+        DEBUG
+    </Span>
+    <Span x:Key="Intro:ReviewsRustySpoon">
+        DEBUG
+    </Span>
+    <Span x:Key="Intro:WikiGuide">
+        DEBUG
+    </Span>
+    <sys:String x:Key="Intro:AgreeButton">DEBUG</sys:String>
+    <sys:String x:Key="Intro:DisagreeButton">DEBUG</sys:String>
+
+    <!-- Mods Page -->
+    <sys:String x:Key="Mods:Title">DEBUG</sys:String>
+    <sys:String x:Key="Mods:Header:Name">DEBUG</sys:String>
+    <sys:String x:Key="Mods:Header:Installed">DEBUG</sys:String>
+    <sys:String x:Key="Mods:Header:Latest">DEBUG</sys:String>
+    <sys:String x:Key="Mods:Header:Description">DEBUG</sys:String>
+    <sys:String x:Key="Mods:Header:Uninstall">DEBUG</sys:String>
+
+    <!-- About Page -->
+    <sys:String x:Key="About:Title">DEBUG</sys:String>
+    <sys:String x:Key="About:PageTitle">DEBUG</sys:String>
+    <sys:String x:Key="About:List:Header">DEBUG</sys:String>
+    <sys:String x:Key="About:List:Item1">DEBUG</sys:String>
+    <sys:String x:Key="About:List:Item2">DEBUG</sys:String>
+    <sys:String x:Key="About:List:Item3">DEBUG</sys:String>
+    <sys:String x:Key="About:List:Item4">DEBUG</sys:String>
+    <Span x:Key="About:SupportAssistant">
+        DEBUG
+    </Span>
+    <sys:String x:Key="About:SpecialThanks">DEBUG</sys:String>
+    <sys:String x:Key="About:Donate">DEBUG</sys:String>
+    <sys:String x:Key="About:HeadpatsButton">DEBUG</sys:String>
+    <sys:String x:Key="About:HugsButton">DEBUG</sys:String>
+
+    <!-- Options Page -->
+    <sys:String x:Key="Options:Title">DEBUG</sys:String>
+    <sys:String x:Key="Options:PageTitle">DEBUG</sys:String>
+    <sys:String x:Key="Options:InstalFolder">DEBUG</sys:String>
+    <sys:String x:Key="Options:SelectFolderButton">DEBUG</sys:String>
+    <sys:String x:Key="Options:OpenFolderButton">DEBUG</sys:String>
+    <sys:String x:Key="Options:SaveSelectedMods">DEBUG</sys:String>
+    <sys:String x:Key="Options:CheckInstalledMods">DEBUG</sys:String>
+    <sys:String x:Key="Options:SelectInstalledMods">DEBUG</sys:String>
+    <sys:String x:Key="Options:EnableOneClickInstalls">DEBUG</sys:String>
+    <sys:String x:Key="Options:BeatSaver">DEBUG</sys:String>
+    <sys:String x:Key="Options:ModelSaber">DEBUG</sys:String>
+    <sys:String x:Key="Options:GameType">DEBUG</sys:String>
+    <sys:String x:Key="Options:GameType:Steam">DEBUG</sys:String>
+    <sys:String x:Key="Options:GameType:Oculus">DEBUG</sys:String>
+    <sys:String x:Key="Options:Diagnostics">DEBUG</sys:String>
+    <sys:String x:Key="Options:OpenLogsButton">DEBUG</sys:String>
+    <sys:String x:Key="Options:UninstallBSIPAButton">DEBUG</sys:String>
+    <sys:String x:Key="Options:RemoveAllModsButton">DEBUG</sys:String>
+
+    <!-- Invalid Page -->
+    <sys:String x:Key="Invalid:Title">DEBUG</sys:String>
+    <sys:String x:Key="Invalid:PageTitle">DEBUG</sys:String>
+    <sys:String x:Key="Invalid:PageSubtitle">DEBUG</sys:String>
+    <sys:String x:Key="Invalid:List:Header">DEBUG</sys:String>
+    <Span x:Key="Invalid:List:Line1">
+        DEBUG
+    </Span>
+    <Span x:Key="Invalid:List:Line2">
+        DEBUG
+    </Span>
+    <Span x:Key="Invalid:List:Line3">
+        DEBUG
+    </Span>
+    <sys:String x:Key="Invalid:BoughtGame1">DEBUG</sys:String>
+    <sys:String x:Key="Invalid:SelectFolderButton">DEBUG</sys:String>
+    <sys:String x:Key="Invalid:BoughtGame2">DEBUG</sys:String>
+</ResourceDictionary>
