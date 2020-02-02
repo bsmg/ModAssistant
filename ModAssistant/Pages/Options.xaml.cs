@@ -24,7 +24,7 @@ namespace ModAssistant.Pages
     /// <summary>
     /// Interaction logic for Options.xaml
     /// </summary>
-    /// 
+    ///
     public partial class Options : Page
     {
         public static Options Instance = new Options();
@@ -155,17 +155,20 @@ namespace ModAssistant.Pages
         {
             try
             {
-                MainWindow.Instance.MainText = "Uploading Log...";
+                MainWindow.Instance.MainText = $"{Application.Current.FindResource("Options:UploadingLog")}...";
                 await Task.Run(() => UploadLog());
-                
+
                 System.Diagnostics.Process.Start(LogURL);
                 Clipboard.SetText(LogURL);
-                MainWindow.Instance.MainText = "Log URL Copied To Clipboard!";
+                MainWindow.Instance.MainText = (string)Application.Current.FindResource("Options:LogUrlCopied");
             }
             catch (Exception exception)
             {
-                MainWindow.Instance.MainText = "Uploading Log Failed.";
-                MessageBox.Show("Could not upload log file to Teknik, please try again or send the file manually.\n ================= \n" + exception, "Uploading log failed!");
+                MainWindow.Instance.MainText = $"{Application.Current.FindResource("Options:LogUploadFailed")}.";
+
+                string title = (string)Application.Current.FindResource("Options:LogUploadFailed:Title");
+                string body = (string)Application.Current.FindResource("Options:LogUploadFailed:Body");
+                MessageBox.Show($"{body}\n ================= \n" + exception, title);
                 System.Diagnostics.Process.Start(Path.Combine(InstallDirectory, "Logs"));
             }
         }
@@ -207,9 +210,9 @@ namespace ModAssistant.Pages
         {
             if (Mods.Instance.AllModsList == null)
             {
-                MainWindow.Instance.MainText = "Getting Mod List...";
+                MainWindow.Instance.MainText = $"{Application.Current.FindResource("Options:GettingModList")}...";
                 await Task.Run(() => Mods.Instance.GetAllMods());
-                MainWindow.Instance.MainText = "Finding BSIPA Version...";
+                MainWindow.Instance.MainText = $"{Application.Current.FindResource("Options:FindingBSIPAVersion")}...";
                 await Task.Run(() => Mods.Instance.GetBSIPAVersion());
             }
             foreach(Mod mod in Mods.InstalledMods)
@@ -220,16 +223,22 @@ namespace ModAssistant.Pages
                     break;
                 }
             }
-            MainWindow.Instance.MainText = "BSIPA Uninstalled...";
+
+            MainWindow.Instance.MainText = $"{Application.Current.FindResource("Options:BSIPAUninstalled")}...";
         }
         private async void YeetModsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (System.Windows.Forms.MessageBox.Show($"Are you sure you want to remove ALL mods?\nThis cannot be undone.", $"Uninstall All Mods?", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            string title = (string)Application.Current.FindResource("Options:YeetModsBox:Title");
+            string line1 = (string)Application.Current.FindResource("Options:YeetModsBox:RemoveAllMods");
+            string line2 = (string)Application.Current.FindResource("Options:YeetModsBox:CannotBeUndone");
+
+            var resp = System.Windows.Forms.MessageBox.Show($"{line1}\n{line2}", title, System.Windows.Forms.MessageBoxButtons.YesNo);
+            if (resp == System.Windows.Forms.DialogResult.Yes)
             {
 
                 if (Mods.Instance.AllModsList == null)
                 {
-                    MainWindow.Instance.MainText = "Getting Mod List...";
+                    MainWindow.Instance.MainText = $"{Application.Current.FindResource("Options: GettingModList")}...";
                     await Task.Run(() => Mods.Instance.CheckInstalledMods());
                 }
                 foreach (Mod mod in Mods.InstalledMods)
@@ -242,7 +251,8 @@ namespace ModAssistant.Pages
                     Directory.Delete(Path.Combine(App.BeatSaberInstallDirectory, "Libs"), true);
                 if (Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA")))
                     Directory.Delete(Path.Combine(App.BeatSaberInstallDirectory, "IPA"), true);
-                MainWindow.Instance.MainText = "All Mods Uninstalled...";
+
+                MainWindow.Instance.MainText = $"{Application.Current.FindResource("Options:AllModsUninstalled")}...";
             }
         }
     }

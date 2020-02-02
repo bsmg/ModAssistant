@@ -150,6 +150,18 @@
     <sys:String x:Key="Options:OpenLogsButton">Open Logs</sys:String>
     <sys:String x:Key="Options:UninstallBSIPAButton">Uninstall BSIPA</sys:String>
     <sys:String x:Key="Options:RemoveAllModsButton">Remove All Mods</sys:String>
+    <sys:String x:Key="Options:UploadingLog">Uploading Log</sys:String>
+    <sys:String x:Key="Options:LogUrlCopied">Log URL Copied To Clipboard!</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed">Uploading Log Failed</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed:Title">Uploading log failed!</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed:Body">Could not upload log file to Teknik, please try again or send the file manually.</sys:String>
+    <sys:String x:Key="Options:GettingModList">Getting Mod List</sys:String>
+    <sys:String x:Key="Options:FindingBSIPAVersion">Finding BSIPA Version</sys:String>
+    <sys:String x:Key="Options:BSIPAUninstalled">BSIPA Uninstalled</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:Title">Uninstall All Mods?</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:RemoveAllMods">Are you sure you want to remove ALL mods?</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:CannotBeUndone">This cannot be undone.</sys:String>
+    <sys:String x:Key="Options:AllModsUninstalled">All Mods Uninstalled</sys:String>
 
     <!-- Invalid Page -->
     <sys:String x:Key="Invalid:Title">Invalid</sys:String>
