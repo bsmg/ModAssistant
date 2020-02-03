@@ -4,6 +4,14 @@
                     xmlns:local="clr-namespace:ModAssistant">
     <sys:String x:Key="ResourceDictionaryName">i18n:en-DEBUG</sys:String>
 
+    <!-- App -->
+    <sys:String x:Key="App:InstallDirDialog:Title">App:InstallDirDialog:Title</sys:String>
+    <sys:String x:Key="App:InstallDirDialog:OkCancel">App:InstallDirDialog:OkCancel</sys:String>
+    <sys:String x:Key="App:InvalidArgument">App:InvalidArgument {0}</sys:String>
+    <sys:String x:Key="App:UnrecognizedArgument">App:UnrecognizedArgument</sys:String>
+    <sys:String x:Key="App:UnhandledException">App:UnhandledException</sys:String>
+    <sys:String x:Key="App:Exception">App:Exception</sys:String>
+
     <!-- OneClick Class -->
     <sys:String x:Key="OneClick:MapDownloadFailed">OneClick:MapDownloadFailed</sys:String>
     <sys:String x:Key="OneClick:SongDownloadFailed">OneClick:SongDownloadFailed</sys:String>

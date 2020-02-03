@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -46,7 +46,10 @@ namespace ModAssistant
 
             while (String.IsNullOrEmpty(App.BeatSaberInstallDirectory))
             {
-                if (System.Windows.Forms.MessageBox.Show($"Press OK to try again, or Cancel to close application.", $"Couldn't find your Beat Saber install folder!", System.Windows.Forms.MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                string title = (string)Current.FindResource("App:InstallDirDialog:Title");
+                string body = (string)Current.FindResource("App:InstallDirDialog:OkCancel");
+
+                if (System.Windows.Forms.MessageBox.Show(body, title, System.Windows.Forms.MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
                     App.BeatSaberInstallDirectory = Utils.GetManualDir();
                 }
@@ -82,7 +85,7 @@ namespace ModAssistant
                     if (!String.IsNullOrEmpty(Args[1]))
                         OneClickInstaller.InstallAsset(Args[1]);
                     else
-                        Utils.SendNotify("Invalid argument! '--install' requires an option.");
+                        Utils.SendNotify(string.Format((string)Current.FindResource("App:InvalidArgument"), "--install"));
                     break;
 
                 case "--no-update":
@@ -94,26 +97,30 @@ namespace ModAssistant
                     if (!String.IsNullOrEmpty(Args[1]))
                         OneClickInstaller.Register(Args[1], true);
                     else
-                        Utils.SendNotify("Invalid argument! '--register' requires an option.");
+                        Utils.SendNotify(string.Format((string)Current.FindResource("App:InvalidArgument"), "--register"));
                     break;
 
                 case "--unregister":
                     if (!String.IsNullOrEmpty(Args[1]))
                         OneClickInstaller.Unregister(Args[1], true);
                     else
-                        Utils.SendNotify("Invalid argument! '--unregister' requires an option.");
+                        Utils.SendNotify(string.Format((string)Current.FindResource("App:InvalidArgument"), "--unregister"));
                     break;
 
                 default:
-                    Utils.SendNotify("Unrecognized argument. Closing Mod Assistant.");
+                    Utils.SendNotify((string)Current.FindResource("App:UnrecognizedArgument"));
                     break;
             }
+
             Current.Shutdown();
         }
 
         private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            MessageBox.Show("An unhandled exception just occurred: " + e.Exception, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            string title = (string)Current.FindResource("App:Exception");
+            string body = (string)Current.FindResource("App:UnhandledException");
+            MessageBox.Show($"{body}: {e.Exception}", "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+
             e.Handled = true;
             Application.Current.Shutdown();
         }

@@ -4,6 +4,14 @@
                     xmlns:local="clr-namespace:ModAssistant">
     <sys:String x:Key="ResourceDictionaryName">i18n:en-US</sys:String>
 
+    <!-- App -->
+    <sys:String x:Key="App:InstallDirDialog:Title">Couldn't find your Beat Saber install folder!</sys:String>
+    <sys:String x:Key="App:InstallDirDialog:OkCancel">Press OK to try again, or Cancel to close application.</sys:String>
+    <sys:String x:Key="App:InvalidArgument">Invalid argument! '{0}' requires an option.</sys:String>
+    <sys:String x:Key="App:UnrecognizedArgument">Unrecognized argument. Closing Mod Assistant.</sys:String>
+    <sys:String x:Key="App:UnhandledException">An unhandled exception just occurred</sys:String>
+    <sys:String x:Key="App:Exception">Exception</sys:String>
+
     <!-- OneClick Class -->
     <sys:String x:Key="OneClick:MapDownloadFailed">Could not get map details.</sys:String>
     <sys:String x:Key="OneClick:SongDownloadFailed">Could not download the song.</sys:String>
