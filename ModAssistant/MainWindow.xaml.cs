@@ -65,9 +65,7 @@ namespace ModAssistant
                         Main.Content = Intro.Instance;
                         break;
                     case "Mods":
-                        Mods.Instance.LoadMods();
-                        ModsOpened = true;
-                        Main.Content = Mods.Instance;
+                        _ = ShowModsPage();
                         break;
                     case "About":
                         Main.Content = About.Instance;
@@ -139,24 +137,33 @@ namespace ModAssistant
             return versions[0];
         }
 
-        private void ModsButton_Click(object sender, RoutedEventArgs e)
+        private async Task ShowModsPage()
         {
-            Main.Content = Mods.Instance;
-            Properties.Settings.Default.LastTab = "Mods";
-            Properties.Settings.Default.Save();
-
-            if (!ModsOpened)
+            void OpenModsPage()
             {
-                Mods.Instance.LoadMods();
-                ModsOpened = true;
+                Main.Content = Mods.Instance;
+                Properties.Settings.Default.LastTab = "Mods";
+                Properties.Settings.Default.Save();
+            }
+
+            if (ModsOpened == true && Mods.Instance.PendingChanges == false)
+            {
+                OpenModsPage();
                 return;
             }
 
-            if (Mods.Instance.PendingChanges)
-            {
-                Mods.Instance.LoadMods();
-                Mods.Instance.PendingChanges = false;
-            }
+            Main.Content = Loading.Instance;
+            await Mods.Instance.LoadMods();
+
+            if (ModsOpened == false) ModsOpened = true;
+            if (Mods.Instance.PendingChanges == true) Mods.Instance.PendingChanges = false;
+
+            OpenModsPage();
+        }
+
+        private void ModsButton_Click(object sender, RoutedEventArgs e)
+        {
+            _ = ShowModsPage();
         }
 
         private void IntroButton_Click(object sender, RoutedEventArgs e)
@@ -204,7 +211,7 @@ namespace ModAssistant
             }
         }
 
-        private void GameVersionsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void GameVersionsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string oldGameVersion = GameVersion;
 
@@ -217,7 +224,12 @@ namespace ModAssistant
 
             if (ModsOpened)
             {
-                Mods.Instance.LoadMods();
+                var prevPage = Main.Content;
+
+                Mods.Instance.PendingChanges = true;
+                await ShowModsPage();
+
+                Main.Content = prevPage;
             }
         }
 

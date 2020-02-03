@@ -46,7 +46,7 @@ namespace ModAssistant.Pages
             }
         }
 
-        public async void LoadMods()
+        public async Task LoadMods()
         {
             var versionLoadSuccess = await MainWindow.Instance.VersionLoadStatus.Task;
             if (versionLoadSuccess == false) return;
