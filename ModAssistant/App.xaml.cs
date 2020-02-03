@@ -63,15 +63,19 @@ namespace ModAssistant
             }
         }
 
-        private void ArgumentHandler(string[] Args)
+        private void ArgumentHandler(string[] args)
         {
-            switch (Args[0])
+            switch (args[0])
             {
                 case "--install":
-                    if (!string.IsNullOrEmpty(Args[1]))
-                        OneClickInstaller.InstallAsset(Args[1]);
-                    else
+                    if (args.Length < 2 || string.IsNullOrEmpty(args[1]))
+                    {
                         Utils.SendNotify("Invalid argument! '--install' requires an option.");
+                    }
+                    else
+                    {
+                        OneClickInstaller.InstallAsset(args[1]);
+                    }
                     break;
 
                 case "--no-update":
@@ -80,23 +84,33 @@ namespace ModAssistant
                     break;
 
                 case "--register":
-                    if (!string.IsNullOrEmpty(Args[1]))
-                        OneClickInstaller.Register(Args[1], true);
-                    else
+                    if (args.Length < 2 || string.IsNullOrEmpty(args[1]))
+                    {
                         Utils.SendNotify("Invalid argument! '--register' requires an option.");
+                    }
+                    else
+                    {
+                        OneClickInstaller.Register(args[1], true);
+                    }
+
                     break;
 
                 case "--unregister":
-                    if (!string.IsNullOrEmpty(Args[1]))
-                        OneClickInstaller.Unregister(Args[1], true);
-                    else
+                    if (args.Length < 2 || string.IsNullOrEmpty(args[1]))
+                    {
                         Utils.SendNotify("Invalid argument! '--unregister' requires an option.");
+                    }
+                    else
+                    {
+                        OneClickInstaller.Unregister(args[1], true);
+                    }
                     break;
 
                 default:
                     Utils.SendNotify("Unrecognized argument. Closing Mod Assistant.");
                     break;
             }
+
             Current.Shutdown();
         }
 
