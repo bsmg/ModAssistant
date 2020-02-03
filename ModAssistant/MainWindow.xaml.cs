@@ -108,7 +108,7 @@ namespace ModAssistant
                 Dispatcher.Invoke(() =>
                 {
                     GameVersionsBox.IsEnabled = false;
-                    MessageBox.Show("Could not load game versions, Mods tab will be unavailable.\n" + e);
+                    MessageBox.Show($"{Application.Current.Resources.FindName("MainWindow:GameVersionLoadFailed")}\n{e}");
                 });
 
                 VersionLoadStatus.SetResult(false);
@@ -128,7 +128,12 @@ namespace ModAssistant
             {
                 Properties.Settings.Default.AllGameVersions = versionsString;
                 Properties.Settings.Default.Save();
-                Utils.ShowMessageBoxAsync("It looks like there's been a game update.\n\nPlease double check that the correct version is selected at the bottom left corner!", "New Game Version Detected!");
+
+                string title = (string)Application.Current.Resources.FindName("MainWindow:GameUpdateDialog:Title");
+                string line1 = (string)Application.Current.Resources.FindName("MainWindow:GameUpdateDialog:Line1");
+                string line2 = (string)Application.Current.Resources.FindName("MainWindow:GameUpdateDialog:Line2");
+
+                Utils.ShowMessageBoxAsync($"{line1}\n\n{line2}", title);
                 return versions[0];
             }
 
@@ -196,14 +201,14 @@ namespace ModAssistant
         {
             if ((Mods.ModListItem)Mods.Instance.ModsListView.SelectedItem == null)
             {
-                MessageBox.Show("No mod selected");
+                MessageBox.Show((string)Application.Current.Resources.FindName("MainWindow:NoModSelected"));
                 return;
             }
             Mods.ModListItem mod = ((Mods.ModListItem)Mods.Instance.ModsListView.SelectedItem);
             string infoUrl = mod.ModInfo.link;
             if (string.IsNullOrEmpty(infoUrl))
             {
-                MessageBox.Show(mod.ModName + " does not have an info page");
+                MessageBox.Show(string.Format((string)Application.Current.Resources.FindName("MainWindow:NoModInfoPage"), mod.ModName));
             }
             else
             {

@@ -77,7 +77,7 @@ namespace ModAssistant.Pages
 
                 if (App.CheckInstalledMods)
                 {
-                    MainWindow.Instance.MainText = "Checking Installed Mods...";
+                    MainWindow.Instance.MainText = $"{FindResource("Mods:CheckingInstalledMods")}...";
                     await Task.Run(async () => await CheckInstalledMods());
                     InstalledColumn.Width = double.NaN;
                     UninstallColumn.Width = 70;
@@ -90,7 +90,7 @@ namespace ModAssistant.Pages
                     DescriptionColumn.Width = 800;
                 }
 
-                MainWindow.Instance.MainText = "Loading Mods...";
+                MainWindow.Instance.MainText = $"{FindResource("Mods:LoadingMods")}...";
                 await Task.Run(async () => await PopulateModsList());
 
                 ModsListView.ItemsSource = ModList;
@@ -103,7 +103,7 @@ namespace ModAssistant.Pages
 
                 RefreshModsList();
                 ModsListView.Visibility = Visibility.Visible;
-                MainWindow.Instance.MainText = "Finished Loading Mods.";
+                MainWindow.Instance.MainText = $"{FindResource("Mods:FinishedLoadingMods")}.";
 
                 MainWindow.Instance.InstallButton.IsEnabled = true;
                 MainWindow.Instance.GameVersionsBox.IsEnabled = true;
@@ -218,7 +218,7 @@ namespace ModAssistant.Pages
             }
             catch (Exception e)
             {
-                System.Windows.MessageBox.Show("Could not load mods list.\n\n" + e);
+                System.Windows.MessageBox.Show($"{FindResource("Mods:LoadFailed")}.\n\n" + e);
                 return;
             }
 
@@ -287,9 +287,9 @@ namespace ModAssistant.Pages
             {
                 if (mod.name.ToLower() == "bsipa")
                 {
-                    MainWindow.Instance.MainText = $"Installing {mod.name}...";
+                    MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
                     await Task.Run(async () => await InstallMod(mod, installDirectory));
-                    MainWindow.Instance.MainText = $"Installed {mod.name}.";
+                    MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstalledMod"), mod.name)}.";
                     if (!File.Exists(Path.Combine(installDirectory, "winhttp.dll")))
                     {
                         await Task.Run(() =>
@@ -306,13 +306,13 @@ namespace ModAssistant.Pages
                 }
                 else if (mod.ListItem.IsSelected)
                 {
-                    MainWindow.Instance.MainText = $"Installing {mod.name}...";
+                    MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
                     await Task.Run(async () => await InstallMod(mod, Path.Combine(installDirectory, @"IPA\Pending")));
-                    MainWindow.Instance.MainText = $"Installed {mod.name}.";
+                    MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstalledMod"), mod.name)}.";
                 }
             }
 
-            MainWindow.Instance.MainText = "Finished installing mods.";
+            MainWindow.Instance.MainText = $"{FindResource("Mods:FinishedInstallingMods")}.";
             MainWindow.Instance.InstallButton.IsEnabled = true;
             RefreshModsList();
         }
@@ -337,7 +337,7 @@ namespace ModAssistant.Pages
 
             if (string.IsNullOrEmpty(downloadLink))
             {
-                System.Windows.MessageBox.Show($"Could not find download link for {mod.name}");
+                System.Windows.MessageBox.Show(string.Format((string)FindResource("Mods:ModDownloadLinkMissing"), mod.name));
                 return;
             }
 
@@ -575,7 +575,13 @@ namespace ModAssistant.Pages
         private void Uninstall_Click(object sender, RoutedEventArgs e)
         {
             Mod mod = ((sender as System.Windows.Controls.Button).Tag as Mod);
-            if (System.Windows.Forms.MessageBox.Show($"Are you sure you want to remove {mod.name}?\nThis could break your other mods.", $"Uninstall {mod.name}?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+
+            string title = string.Format((string)FindResource("Mods:UninstallBox:Title"), mod.name);
+            string body1 = string.Format((string)FindResource("Mods:UninstallBox:Body1"), mod.name);
+            string body2 = string.Format((string)FindResource("Mods:UninstallBox:Body2"), mod.name);
+            var result = System.Windows.Forms.MessageBox.Show($"{body1}\n{body2}", title, MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
             {
                 UninstallModFromList(mod);
             }

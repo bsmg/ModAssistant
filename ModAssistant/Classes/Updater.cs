@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
+using System.Windows;
 using static ModAssistant.Http;
 
 namespace ModAssistant
@@ -35,7 +36,7 @@ namespace ModAssistant
             }
             catch
             {
-                Utils.SendNotify("Couldn't check for updates.");
+                Utils.SendNotify((string)Application.Current.FindResource("Updater:CheckFailed"));
             }
 
             if (NeedsUpdate) await StartUpdate();
@@ -58,7 +59,7 @@ namespace ModAssistant
 
             if (string.IsNullOrEmpty(DownloadLink))
             {
-                Utils.SendNotify("Couldn't download update.");
+                Utils.SendNotify((string)Application.Current.FindResource("Updater:DownloadFailed"));
             }
             else
             {

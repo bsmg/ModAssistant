@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ModAssistant"
         mc:Ignorable="d"
 		Icon="Resources/icon.ico"
-        Title="Mod Assistant" Width="1280" Height="720"
+        Title="{DynamicResource MainWindow:WindowTitle}" Width="1280" Height="720"
         UIElement.PreviewMouseDown="Window_PreviewMouseDown">
 	<Grid Margin="10">
 		<Grid.RowDefinitions>
@@ -31,41 +31,43 @@
 			<Button Name="IntroButton" Grid.Row="0" Height="60" Margin="0,0,10,5" Background="white" Click="IntroButton_Click">
 				<StackPanel Margin="0,8,0,0">
 					<Image Height="30" Source="Resources/Intro.png" VerticalAlignment="Bottom"></Image>
-					<TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom">Intro</TextBlock>
-				</StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom" Text="{DynamicResource MainWindow:AboutButton}" />
+                </StackPanel>
 			</Button>
 			
 			<Button IsEnabled="false" Name="ModsButton" Grid.Row="1" Height="60" Margin="0,5,10,5" Background="white" Click="ModsButton_Click">
 				<StackPanel Margin="0,6,0,0">
 					<Image Height="30" Source="Resources/Mods.png" VerticalAlignment="Bottom"></Image>
-					<TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom">Mods</TextBlock>
-				</StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom" Text="{DynamicResource MainWindow:ModsButton}" />
+                </StackPanel>
 			</Button>
 			
 			<Button Name="AboutButton" Grid.Row="2" Height="60" Margin="0,5,10,5" Background="white" Click="AboutButton_Click">
 				<StackPanel Margin="0,6,0,0">
 					<Image Height="30" Source="Resources/About.png" VerticalAlignment="Bottom"></Image>
-					<TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom">About</TextBlock>
-				</StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom" Text="{DynamicResource MainWindow:AboutButton}" />
+                </StackPanel>
 			</Button>
 			
 			<Button Name="OptionsButton" Grid.Row="3" Height="60" Margin="0,5,10,5" Background="white" Click="OptionsButton_Click">
 				<StackPanel Margin="0,5,0,0">
 					<Image Height="30" Source="Resources/Options.png" VerticalAlignment="Bottom"></Image>
-					<TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom">Options</TextBlock>
-				</StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom" Text="{DynamicResource MainWindow:OptionsButton}" />
+                </StackPanel>
 			</Button>
 
 			<StackPanel Name="GameVersions" Grid.Row="5" VerticalAlignment="Bottom">
-				<TextBlock Text="Game Version:" FontSize="10"/>
-				<ComboBox Name="GameVersionsBox" Margin="0,5,5,0" SelectionChanged="GameVersionsBox_SelectionChanged">
+                <TextBlock FontSize="10">
+                    <TextBlock Text="{DynamicResource MainWindow:GameVersionLabel}" />:
+                </TextBlock>
+                <ComboBox Name="GameVersionsBox" Margin="0,5,5,0" SelectionChanged="GameVersionsBox_SelectionChanged">
 				</ComboBox>
 			</StackPanel>
 
 		</Grid>
 		
 		<StackPanel Grid.Row="1" VerticalAlignment="Center">
-			<TextBlock Text="Version" HorizontalAlignment="Center"/>
+            <TextBlock Text="{DynamicResource MainWindow:VersionLabel}" HorizontalAlignment="Center"/>
 			<TextBlock Name="VersionText" HorizontalAlignment="Center"/>
 		</StackPanel>
 		
@@ -81,21 +83,15 @@
 			<TextBlock Name="MainTextBlock" Padding="5" Height="40" VerticalAlignment="Bottom" Background="LightGray" FontSize="20" />
 			<Button Grid.Column="1" Name="InfoButton" IsEnabled="False" Height="40" Width="100" HorizontalAlignment="Right" Margin="0,10,0,0" Click="InfoButton_Click">
 				<StackPanel>
-					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom">
-						Mod Info
-					</TextBlock>
-				</StackPanel>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{DynamicResource MainWindow:ModInfoButton}" />
+                </StackPanel>
 			</Button>
 			
 			<Button Grid.Column="2" Name="InstallButton" IsEnabled="False" Height="40" Width="100" HorizontalAlignment="Right" Margin="0,10,0,0" Click="InstallButton_Click">
 				<StackPanel>
-					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom">
-						Install
-					</TextBlock>
-					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom">
-						or Update
-					</TextBlock>
-				</StackPanel>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{DynamicResource MainWindow:InstallButtonTop}" />
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{DynamicResource MainWindow:InstallButtonBottom}" />
+                </StackPanel>
 			</Button>
 		</Grid>
 	</Grid>
