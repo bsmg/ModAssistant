@@ -18,6 +18,7 @@ using Path = System.IO.Path;
 using System.Net;
 using System.Web.Script.Serialization;
 using System.Web;
+using System.ComponentModel;
 
 namespace ModAssistant.Pages
 {
@@ -54,8 +55,12 @@ namespace ModAssistant.Pages
 
             this.DataContext = this;
 
-            ApplicationThemeComboBox.ItemsSource = Themes.LoadedThemes;
-            ApplicationThemeComboBox.SelectedItem = Themes.LoadedTheme;
+            if (!DesignerProperties.GetIsInDesignMode(this))
+            {
+                if (!Themes.LoadedThemes.Any()) Themes.LoadThemes();
+                ApplicationThemeComboBox.ItemsSource = Themes.LoadedThemes;
+                ApplicationThemeComboBox.SelectedValue = Themes.LoadedTheme;
+            }
         }
 
         public void UpdateHandlerStatus()
@@ -252,6 +257,11 @@ namespace ModAssistant.Pages
         private void ApplicationThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Themes.ApplyTheme((sender as ComboBox).SelectedItem.ToString());
+        }
+
+        private void ApplicationThemeExportTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("nice going laughShorts this is coming soon");
         }
     }
 }
