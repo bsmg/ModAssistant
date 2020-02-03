@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.IO;
 
-namespace ModAssistant.Classes
+namespace ModAssistant
 {
     public class Themes
     {
