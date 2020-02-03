@@ -11,6 +11,7 @@ namespace ModAssistant
     public class Themes
     {
         public static string LoadedTheme { get; private set; }
+        public static List<string> LoadedThemes { get => loadedThemes.Keys.ToList(); }
 
         private static Dictionary<string, ResourceDictionary> loadedThemes = new Dictionary<string, ResourceDictionary>();
         private static List<string> preInstalledThemes = new List<string> { "Light", "Dark" };

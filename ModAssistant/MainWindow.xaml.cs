@@ -60,8 +60,8 @@ namespace ModAssistant
                 return;
             }
 
-            Classes.Themes.LoadThemes();
-            Classes.Themes.ApplyTheme("Light");
+            Themes.LoadThemes();
+            Themes.ApplyTheme("Light");
 
             List<string> versions;
             string json = string.Empty;

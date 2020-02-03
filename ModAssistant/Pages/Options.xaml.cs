@@ -53,6 +53,9 @@ namespace ModAssistant.Pages
             UpdateHandlerStatus();
 
             this.DataContext = this;
+
+            ApplicationThemeComboBox.ItemsSource = Themes.LoadedThemes;
+            ApplicationThemeComboBox.SelectedItem = Themes.LoadedTheme;
         }
 
         public void UpdateHandlerStatus()
@@ -244,6 +247,11 @@ namespace ModAssistant.Pages
                     Directory.Delete(Path.Combine(App.BeatSaberInstallDirectory, "IPA"), true);
                 MainWindow.Instance.MainText = "All Mods Uninstalled...";
             }
+        }
+
+        private void ApplicationThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Themes.ApplyTheme((sender as ComboBox).SelectedItem.ToString());
         }
     }
 }
