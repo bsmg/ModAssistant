@@ -7,31 +7,34 @@ namespace ModAssistant
 {
     static class Http
     {
-        private static bool _initCalled = false;
+        private static HttpClient _client = null;
 
-        private static readonly HttpClientHandler _handler = new HttpClientHandler()
+        public static HttpClient HttpClient
         {
-            AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
-        };
+            get
+            {
+                if (_client != null) return _client;
 
-        public static readonly HttpClient HttpClient = new HttpClient(_handler)
-        {
-            Timeout = TimeSpan.FromSeconds(30),
-        };
+                var handler = new HttpClientHandler()
+                {
+                    AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
+                };
+
+                _client = new HttpClient(handler)
+                {
+                    Timeout = TimeSpan.FromSeconds(30),
+                };
+
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                _client.DefaultRequestHeaders.Add("User-Agent", "ModAssistant/" + App.Version);
+
+                return _client;
+            }
+        }
 
         public static JavaScriptSerializer JsonSerializer = new JavaScriptSerializer()
         {
             MaxJsonLength = int.MaxValue,
         };
-
-        public static void InitClient()
-        {
-            if (_initCalled == true) return;
-            _initCalled = true;
-
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-            HttpClient.DefaultRequestHeaders.Add("User-Agent", "ModAssistant/" + App.Version);
-        }
     }
 }

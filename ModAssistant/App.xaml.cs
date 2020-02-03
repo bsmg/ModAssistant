@@ -23,8 +23,6 @@ namespace ModAssistant
 
         private async void Application_Startup(object sender, StartupEventArgs e)
         {
-            ModAssistant.Http.InitClient();
-
             if (ModAssistant.Properties.Settings.Default.UpgradeRequired)
             {
                 ModAssistant.Properties.Settings.Default.Upgrade();
