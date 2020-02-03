@@ -87,8 +87,11 @@ namespace ModAssistant.Pages
             CheckInstalledMods = true;
             Properties.Settings.Default.Save();
             SelectInstalled.IsEnabled = true;
+
             if (MainWindow.ModsOpened)
+            {
                 Mods.Instance.PendingChanges = true;
+            }
         }
 
         private void CheckInstalled_Unchecked(object sender, RoutedEventArgs e)
@@ -98,8 +101,11 @@ namespace ModAssistant.Pages
             CheckInstalledMods = false;
             Properties.Settings.Default.Save();
             SelectInstalled.IsEnabled = false;
+
             if (MainWindow.ModsOpened)
+            {
                 Mods.Instance.PendingChanges = true;
+            }
         }
 
         public void ModelSaberProtocolHandler_Checked(object sender, RoutedEventArgs e)

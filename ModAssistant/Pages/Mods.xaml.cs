@@ -29,7 +29,7 @@ namespace ModAssistant.Pages
         public CollectionView view;
         public bool PendingChanges;
 
-        private SemaphoreSlim _modsLoadSem = new SemaphoreSlim(1, 1);
+        private readonly SemaphoreSlim _modsLoadSem = new SemaphoreSlim(1, 1);
 
         public List<ModListItem> ModList { get; set; }
 
@@ -41,7 +41,9 @@ namespace ModAssistant.Pages
         private void RefreshModsList()
         {
             if (view != null)
+            {
                 view.Refresh();
+            }
         }
 
         public async void LoadMods()
