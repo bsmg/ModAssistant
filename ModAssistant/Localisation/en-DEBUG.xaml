@@ -23,6 +23,12 @@
     <sys:String x:Key="MainWindow:ModInfoButton">MainWindow:ModInfoButton</sys:String>
     <sys:String x:Key="MainWindow:InstallButtonTop">MainWindow:InstallButtonTop</sys:String>
     <sys:String x:Key="MainWindow:InstallButtonBottom">MainWindow:InstallButtonBottom</sys:String>
+    <sys:String x:Key="MainWindow:GameVersionLoadFailed">MainWindow:GameVersionLoadFailed</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Title">MainWindow:GameUpdateDialog:Title</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Line1">MainWindow:GameUpdateDialog:Line1</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Line2">MainWindow:GameUpdateDialog:Line2</sys:String>
+    <sys:String x:Key="MainWindow:NoModSelected">MainWindow:NoModSelected</sys:String>
+    <sys:String x:Key="MainWindow:NoModInfoPage">MainWindow:NoModInfoPage</sys:String>
 
     <!-- Intro Page -->
     <sys:String x:Key="Intro:Title">Intro:Title</sys:String>

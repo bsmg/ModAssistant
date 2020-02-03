@@ -23,6 +23,12 @@
     <sys:String x:Key="MainWindow:ModInfoButton">Mod Info</sys:String>
     <sys:String x:Key="MainWindow:InstallButtonTop">Install</sys:String>
     <sys:String x:Key="MainWindow:InstallButtonBottom">or Update</sys:String>
+    <sys:String x:Key="MainWindow:GameVersionLoadFailed">Could not load game versions, Mods tab will be unavailable.</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Title">New Game Version Detected!</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Line1">It looks like there's been a game update.</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Line2">Please double check that the correct version is selected at the bottom left corner!</sys:String>
+    <sys:String x:Key="MainWindow:NoModSelected">No mod selected!</sys:String>
+    <sys:String x:Key="MainWindow:NoModInfoPage">{0} does not have an info page.</sys:String>
 
     <!-- Intro Page -->
     <sys:String x:Key="Intro:Title">Intro</sys:String>
