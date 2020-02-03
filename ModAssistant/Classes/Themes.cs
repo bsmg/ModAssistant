@@ -23,12 +23,31 @@ namespace ModAssistant.Classes
                 ResourceDictionary theme = LoadTheme(localTheme, true);
                 loadedThemes.Add(localTheme, theme);
             }
-            //MessageBox.Show($"Loaded Themes: {string.Join(", ", loadedThemes.Keys.ToArray())}")
+            if (Directory.Exists($"{Environment.CurrentDirectory}/Themes"))
+            {
+                foreach (string file in Directory.EnumerateFiles($"{Environment.CurrentDirectory}/Themes"))
+                {
+                    FileInfo info = new FileInfo(file);
+                    //Ignore Themes without the xaml extension and ignore themes with the same names as others.
+                    //If requests are made I can instead make a Theme class that splits the pre-installed themes from
+                    //user-made ones so that one more user-made Light/Dark theme can be added.
+                    if (info.Extension.ToLowerInvariant() == "xaml" && !loadedThemes.ContainsKey(info.Name))
+                    {
+                        ResourceDictionary theme = LoadTheme(info.Name);
+                        if (theme != null)
+                        {
+                            loadedThemes.Add(info.Name, theme);
+                        }
+                    }
+                }
+                //MessageBox.Show($"(DEBUG) Loaded {loadedThemes.Count - 2} themes from Themes folder.");
+            }
         }
 
         private static ResourceDictionary LoadTheme(string name, bool localUri = false)
         {
             string location = $"{Environment.CurrentDirectory}/Themes/{name}.xaml";
+            if (!File.Exists(location) && !localUri) return null;
             if (localUri) location = $"Themes/{name}.xaml";
             Uri uri = new Uri(location, localUri ? UriKind.Relative : UriKind.Absolute);
             ResourceDictionary dictionary = new ResourceDictionary();
