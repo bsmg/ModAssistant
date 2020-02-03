@@ -171,13 +171,11 @@ namespace ModAssistant
 
         public static string GetSteamDir()
         {
-            string SteamInstall;
-            using (var softwareKey = Registry.LocalMachine.OpenSubKey("SOFTWARE"))
-            using (var wowNodeKey = softwareKey?.OpenSubKey("Wow6432Node"))
-            using (var valveKey = wowNodeKey?.OpenSubKey("Valve"))
-            using (var steamKey = valveKey?.OpenSubKey("Steam"))
+
+            string SteamInstall = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)?.OpenSubKey("SOFTWARE")?.OpenSubKey("WOW6432Node")?.OpenSubKey("Valve")?.OpenSubKey("Steam")?.GetValue("InstallPath").ToString();
+            if (string.IsNullOrEmpty(SteamInstall))
             {
-                SteamInstall = steamKey?.GetValue("InstallPath").ToString();
+                SteamInstall = Registry.LocalMachine.OpenSubKey("SOFTWARE")?.OpenSubKey("WOW6432Node")?.OpenSubKey("Valve")?.OpenSubKey("Steam")?.GetValue("InstallPath").ToString();
             }
 
             if (string.IsNullOrEmpty(SteamInstall)) return null;
@@ -250,16 +248,7 @@ namespace ModAssistant
 
         public static string GetOculusDir()
         {
-            string OculusInstall;
-            using (var softwareKey = Registry.LocalMachine.OpenSubKey("SOFTWARE"))
-            using (var wowNodeKey = softwareKey?.OpenSubKey("Wow6432Node"))
-            using (var ovrKey = wowNodeKey?.OpenSubKey("Oculus VR, LLC"))
-            using (var oculusKey = ovrKey?.OpenSubKey("Oculus"))
-            using (var configKey = oculusKey?.OpenSubKey("Config"))
-            {
-                OculusInstall = configKey?.GetValue("InitialAppLibrary").ToString();
-            }
-
+            string OculusInstall = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)?.OpenSubKey("SOFTWARE")?.OpenSubKey("Wow6432Node")?.OpenSubKey("Oculus VR, LLC")?.OpenSubKey("Oculus")?.OpenSubKey("Config")?.GetValue("InitialAppLibrary").ToString();
             if (string.IsNullOrEmpty(OculusInstall)) return null;
 
             if (!string.IsNullOrEmpty(OculusInstall))
