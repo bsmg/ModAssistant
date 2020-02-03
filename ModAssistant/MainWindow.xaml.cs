@@ -60,6 +60,9 @@ namespace ModAssistant
                 return;
             }
 
+            Classes.Themes.LoadThemes();
+            Classes.Themes.ApplyTheme("Light");
+
             List<string> versions;
             string json = string.Empty;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Utils.Constants.BeatModsAPIUrl + "version");

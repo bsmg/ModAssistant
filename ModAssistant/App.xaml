@@ -7,7 +7,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <!--Load default theme. Currently it's Dark, not sure if you want to change it to Light.-->
-                <ResourceDictionary x:Name="LoadedTheme" Source="Themes/Light.xaml"/>
+                <ResourceDictionary x:Name="LoadedTheme" Source="Themes/Dark.xaml"/>
 
                 <!--Load SVG icons, courtesy of lolPants.-->
                 <ResourceDictionary x:Name="Icons" Source="Resources/Icons.xaml"/>
