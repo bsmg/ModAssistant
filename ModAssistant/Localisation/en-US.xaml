@@ -12,28 +12,6 @@
     <sys:String x:Key="App:UnhandledException">An unhandled exception just occurred</sys:String>
     <sys:String x:Key="App:Exception">Exception</sys:String>
 
-    <!-- OneClick Class -->
-    <sys:String x:Key="OneClick:MapDownloadFailed">Could not get map details.</sys:String>
-    <sys:String x:Key="OneClick:SongDownloadFailed">Could not download the song.</sys:String>
-    <sys:String x:Key="OneClick:SongDownload:Failed">Could not download the song.</sys:String>
-    <sys:String x:Key="OneClick:SongDownload:NetworkIssues">There might be issues with BeatSaver or your internet connection.</sys:String>
-    <sys:String x:Key="OneClick:SongDownload:FailedTitle">Failed to download song ZIP</sys:String>
-    <sys:String x:Key="OneClick:InstallDirNotFound">Beat Saber installation path not found.</sys:String>
-    <sys:String x:Key="OneClick:InstalledAsset">Installed: {0}</sys:String>
-    <sys:String x:Key="OneClick:AssetInstallFailed">Failed to install.</sys:String>
-    <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ Install handlers registered!</sys:String>
-    <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ Install handlers unregistered!</sys:String>
-
-    <!-- Updater Class -->
-    <sys:String x:Key="Updater:CheckFailed">Couldn't check for updates.</sys:String>
-    <sys:String x:Key="Updater:DownloadFailed">Couldn't download update.</sys:String>
-
-    <!-- Utils Class -->
-    <sys:String x:Key="Utils:NotificationTitle">Mod Assistant</sys:String>
-    <sys:String x:Key="Utils:NoInstallFolder">Could not detect your Beat Saber install folder. Please select it manually.</sys:String>
-    <sys:String x:Key="Utils:RunAsAdmin">Mod Assistant needs to run this task as Admin. Please try again.</sys:String>
-    <sys:String x:Key="Utils:InstallDir:DialogTitle">Select your Beat Saber install folder</sys:String>
-
     <!-- Main Window -->
     <sys:String x:Key="MainWindow:WindowTitle">ModAssistant</sys:String>
     <sys:String x:Key="MainWindow:IntroButton">Intro</sys:String>
@@ -201,4 +179,26 @@
     <sys:String x:Key="Invalid:BoughtGame1">If you used to have a pirated version but have since bought the game</sys:String>
     <sys:String x:Key="Invalid:SelectFolderButton">Select Folder</sys:String>
     <sys:String x:Key="Invalid:BoughtGame2">You will need to restart Mod Assistant after changing to the legit install</sys:String>
+
+    <!-- OneClick Class -->
+    <sys:String x:Key="OneClick:MapDownloadFailed">Could not get map details.</sys:String>
+    <sys:String x:Key="OneClick:SongDownloadFailed">Could not download the song.</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:Failed">Could not download the song.</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:NetworkIssues">There might be issues with BeatSaver or your internet connection.</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:FailedTitle">Failed to download song ZIP</sys:String>
+    <sys:String x:Key="OneClick:InstallDirNotFound">Beat Saber installation path not found.</sys:String>
+    <sys:String x:Key="OneClick:InstalledAsset">Installed: {0}</sys:String>
+    <sys:String x:Key="OneClick:AssetInstallFailed">Failed to install.</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ Install handlers registered!</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ Install handlers unregistered!</sys:String>
+
+    <!-- Updater Class -->
+    <sys:String x:Key="Updater:CheckFailed">Couldn't check for updates.</sys:String>
+    <sys:String x:Key="Updater:DownloadFailed">Couldn't download update.</sys:String>
+
+    <!-- Utils Class -->
+    <sys:String x:Key="Utils:NotificationTitle">Mod Assistant</sys:String>
+    <sys:String x:Key="Utils:NoInstallFolder">Could not detect your Beat Saber install folder. Please select it manually.</sys:String>
+    <sys:String x:Key="Utils:RunAsAdmin">Mod Assistant needs to run this task as Admin. Please try again.</sys:String>
+    <sys:String x:Key="Utils:InstallDir:DialogTitle">Select your Beat Saber install folder</sys:String>
 </ResourceDictionary>
