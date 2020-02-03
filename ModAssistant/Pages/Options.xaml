@@ -68,7 +68,8 @@
         </StackPanel>
         
         <TextBlock Grid.Row="13" Margin="5" HorizontalAlignment="Left" Text="Theme: " FontWeight="Bold" FontSize="16" />
-        <ComboBox Grid.Row="13" Grid.Column="1" HorizontalAlignment="Stretch"></ComboBox>        
+        <ComboBox Grid.Row="13" Grid.Column="1" HorizontalAlignment="Stretch"></ComboBox>
+        <Button Grid.Row="13" Grid.Column="2" Margin="3" Height="30" Width="90" Content="Export Template"></Button>
         
         <TextBlock Grid.Row="14" Margin="15,5,5,5" Text="Diagnostics" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left"/>
         <StackPanel Grid.Row="15" Margin="0" Orientation="Horizontal" HorizontalAlignment="Left">
