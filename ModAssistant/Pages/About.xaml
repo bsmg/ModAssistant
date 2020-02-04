@@ -3,10 +3,10 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
       xmlns:winForms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ModAssistant"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="629" d:DesignWidth="1182"
       Title="{DynamicResource About:Title}">
 
@@ -88,7 +88,7 @@
 				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating ModSaber</TextBlock>
 				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">The first Mod repository</TextBlock>
 				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">
-					<Hyperlink NavigateUri="https://www.paypal.me/jackmbaron" RequestNavigate="Hyperlink_RequestNavigate">
+					<Hyperlink NavigateUri="https://www.paypal.me/jackbarondev" RequestNavigate="Hyperlink_RequestNavigate">
 						<TextBlock Text="{DynamicResource About:Donate}" />
 					</Hyperlink>
 				</TextBlock>
