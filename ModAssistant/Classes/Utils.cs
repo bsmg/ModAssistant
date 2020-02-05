@@ -1,16 +1,16 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Management;
 using System.Security.Cryptography;
+using System.Security.Principal;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Windows;
-using System.Management;
-using System.Diagnostics;
-using System.Security.Principal;
 using System.Threading.Tasks;
+using System.Windows;
 using static ModAssistant.Http;
 
 namespace ModAssistant

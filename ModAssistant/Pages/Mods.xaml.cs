@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Navigation;
-using System.IO.Compression;
-using System.Diagnostics;
 using System.Windows.Forms;
+using System.Windows.Navigation;
 using static ModAssistant.Http;
 
 namespace ModAssistant.Pages

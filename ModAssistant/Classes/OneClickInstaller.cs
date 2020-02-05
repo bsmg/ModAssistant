@@ -1,11 +1,11 @@
+using Microsoft.Win32;
 using System;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
-using System.Windows;
-using Microsoft.Win32;
-using System.IO.Compression;
 using System.Threading.Tasks;
+using System.Windows;
 using static ModAssistant.Http;
 
 namespace ModAssistant
