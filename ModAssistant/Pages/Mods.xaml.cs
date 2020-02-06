@@ -27,7 +27,7 @@ namespace ModAssistant.Pages
     {
         public static Mods Instance = new Mods();
 
-        public List<string> DefaultMods = new List<string>(){ "SongCore", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "MappingExtensions", "SongBrowser", "Counters+", "CameraPlus", "Custom Avatars", "Custom Sabers", "Custom Platforms", "PlaylistCore", "Survey" };
+        public List<string> DefaultMods = new List<string>(){ "SongCore", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "MappingExtensions", "SongBrowser", "Counters+", "CameraPlus", "Custom Avatars", "Custom Sabers", "Custom Platforms", "PlaylistCore" };
         public Mod[] ModsList;
         public Mod[] TransList;
         public Mod[] AllModsList;
@@ -243,7 +243,7 @@ namespace ModAssistant.Pages
             }
             catch (Exception e)
             {
-                System.Windows.MessageBox.Show("无法加载MOD翻译！\n\n这可能是网络不好导致的，可尝试进行以下操作：\n　1.使用不同运营商的网络，可尝试手机热点；\n　2.使用代理(科学上网)；\n　3.稍等一段时间再尝试重新运行。\n\n" + e);
+                System.Windows.MessageBox.Show("无法加载MOD翻译！\n\n这通常是网络不好导致的，可尝试进行以下操作：\n　1.使用不同运营商的网络，可尝试手机热点；\n　2.使用代理(科学上网)；\n　3.稍等一段时间再尝试重新运行。\n\n" + e);
                 return;
             }
 
