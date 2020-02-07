@@ -263,5 +263,10 @@ namespace ModAssistant.Pages
         {
             MessageBox.Show("nice going laughShorts this is coming soon");
         }
+
+        private void ApplicationThemeOpenThemesFolder_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("nice going laughShorts this is coming soon");
+        }
     }
 }
