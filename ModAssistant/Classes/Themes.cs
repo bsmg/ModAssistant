@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.IO;
 using System.Windows.Media;
+using ModAssistant.Pages;
 
 namespace ModAssistant
 {
@@ -11,6 +12,7 @@ namespace ModAssistant
     {
         public static string LoadedTheme { get; private set; }
         public static List<string> LoadedThemes { get => loadedThemes.Keys.ToList(); }
+        public static string ThemeDirectory => $"{Environment.CurrentDirectory}/Themes";
 
         private static Dictionary<string, ResourceDictionary> loadedThemes = new Dictionary<string, ResourceDictionary>();
         private static List<string> preInstalledThemes = new List<string> { "Light", "Dark" };
@@ -23,9 +25,9 @@ namespace ModAssistant
                 ResourceDictionary theme = LoadTheme(localTheme, true);
                 loadedThemes.Add(localTheme, theme);
             }
-            if (Directory.Exists($"{Environment.CurrentDirectory}/Themes"))
+            if (Directory.Exists(ThemeDirectory))
             {
-                foreach (string file in Directory.EnumerateFiles($"{Environment.CurrentDirectory}/Themes"))
+                foreach (string file in Directory.EnumerateFiles(ThemeDirectory))
                 {
                     FileInfo info = new FileInfo(file);
                     //Ignore Themes without the xaml extension and ignore themes with the same names as others.
@@ -42,6 +44,8 @@ namespace ModAssistant
                 }
                 //MessageBox.Show($"(DEBUG) Loaded {loadedThemes.Count - 2} themes from Themes folder.");
             }
+            if (Options.Instance != null && Options.Instance.ApplicationThemeComboBox != null)
+                Options.Instance.ApplicationThemeComboBox.ItemsSource = LoadedThemes;
         }
 
         private static ResourceDictionary LoadTheme(string name, bool localUri = false)

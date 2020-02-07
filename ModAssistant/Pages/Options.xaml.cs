@@ -58,7 +58,6 @@ namespace ModAssistant.Pages
             if (!DesignerProperties.GetIsInDesignMode(this))
             {
                 if (!Themes.LoadedThemes.Any()) Themes.LoadThemes();
-                ApplicationThemeComboBox.ItemsSource = Themes.LoadedThemes;
                 ApplicationThemeComboBox.SelectedValue = Themes.LoadedTheme;
             }
         }
@@ -266,7 +265,12 @@ namespace ModAssistant.Pages
 
         private void ApplicationThemeOpenThemesFolder_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("nice going laughShorts this is coming soon");
+            if (Directory.Exists(Themes.ThemeDirectory))
+            {
+                //Code yeeted from ChroMapper
+                string winPath = Themes.ThemeDirectory.Replace("/", "\\").Replace("\\\\", "\\");
+                System.Diagnostics.Process.Start("explorer.exe", winPath);
+            }else MessageBox.Show("Themes folder not found! Try exporting the template...");
         }
     }
 }
