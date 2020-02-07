@@ -256,7 +256,7 @@ namespace ModAssistant.Pages
 
         private void ApplicationThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Themes.ApplyTheme((sender as ComboBox).SelectedItem.ToString());
+            Themes.ApplyTheme((sender as ComboBox).SelectedItem.ToString(), this);
         }
 
         private void ApplicationThemeExportTemplate_Click(object sender, RoutedEventArgs e)

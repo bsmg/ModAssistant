@@ -61,7 +61,7 @@ namespace ModAssistant
             }
 
             Themes.LoadThemes();
-            Themes.ApplyTheme("Light");
+            Themes.ApplyTheme("Light", this);
 
             List<string> versions;
             string json = string.Empty;

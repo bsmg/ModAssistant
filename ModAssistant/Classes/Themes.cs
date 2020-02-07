@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.IO;
+using System.Windows.Media;
 
 namespace ModAssistant
 {
@@ -56,7 +55,7 @@ namespace ModAssistant
             return dictionary;
         }
 
-        public static void ApplyTheme(string theme)
+        public static void ApplyTheme(string theme, FrameworkElement element)
         {
             ResourceDictionary newTheme = loadedThemes[theme];
             if (newTheme != null)
@@ -64,8 +63,25 @@ namespace ModAssistant
                 Application.Current.Resources.MergedDictionaries.RemoveAt(0);
                 LoadedTheme = theme;
                 Application.Current.Resources.MergedDictionaries.Insert(0, newTheme);
+                ReloadIcons(element);
             }
             else throw new ArgumentException($"{theme} does not exist.");
+        }
+
+        private static void ReloadIcons(FrameworkElement element)
+        {
+            ResourceDictionary icons = Application.Current.Resources.MergedDictionaries.First(x => x.Source.ToString() == "Resources/Icons.xaml");
+
+            ChangeColor(element, icons, "AboutIconColor", "heartDrawingGroup");
+            ChangeColor(element, icons, "InfoIconColor", "info_circleDrawingGroup");
+            ChangeColor(element, icons, "OptionsIconColor", "cogDrawingGroup");
+            ChangeColor(element, icons, "ModsIconColor", "microchipDrawingGroup");
+        }
+
+        private static void ChangeColor(FrameworkElement element, ResourceDictionary icons, string ResourceColorName, string DrawingGroupName)
+        {
+            element.Resources[ResourceColorName] = loadedThemes[LoadedTheme][ResourceColorName];
+            ((GeometryDrawing)((DrawingGroup)icons[DrawingGroupName]).Children[0]).Brush = (Brush)element.Resources[ResourceColorName];
         }
     }
 }
