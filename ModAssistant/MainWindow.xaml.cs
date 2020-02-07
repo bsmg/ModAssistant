@@ -61,7 +61,14 @@ namespace ModAssistant
             }
 
             Themes.LoadThemes();
-            Themes.ApplyTheme("Light", this);
+            try
+            {
+                Themes.ApplyTheme("Light", this);
+            }catch (ArgumentException)
+            {
+                Themes.ApplyTheme("Light", this);
+                MainText = "Theme not found, reverting to Light theme...";
+            }
 
             List<string> versions;
             string json = string.Empty;
