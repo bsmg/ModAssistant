@@ -251,9 +251,9 @@ namespace ModAssistant.Pages
         {
             if ((sender as ComboBox).SelectedItem == null)
             {
-                Themes.ApplyTheme("Light", this);
+                Themes.ApplyTheme("Light");
                 MainWindow.Instance.MainText = "Current theme has been removed, reverting to Light...";
-            }else Themes.ApplyTheme((sender as ComboBox).SelectedItem.ToString(), this);
+            }else Themes.ApplyTheme((sender as ComboBox).SelectedItem.ToString());
         }
 
         private void ApplicationThemeExportTemplate_Click(object sender, RoutedEventArgs e)

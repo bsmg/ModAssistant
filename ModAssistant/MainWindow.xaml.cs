@@ -63,11 +63,11 @@ namespace ModAssistant
             Themes.LoadThemes();
             try
             {
-                Themes.ApplyTheme("Light", this);
+                Themes.ApplyTheme("Light");
             }
             catch (ArgumentException)
             {
-                Themes.ApplyTheme("Light", this);
+                Themes.ApplyTheme("Light");
                 MainText = "Theme not found, reverting to Light theme...";
             }
 
