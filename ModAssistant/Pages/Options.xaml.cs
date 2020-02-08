@@ -249,13 +249,16 @@ namespace ModAssistant.Pages
 
         private void ApplicationThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Themes.ApplyTheme((sender as ComboBox).SelectedItem.ToString(), this);
+            if ((sender as ComboBox).SelectedItem == null)
+            {
+                Themes.ApplyTheme("Light", this);
+                MainWindow.Instance.MainText = "Current theme has been removed, reverting to Light...";
+            }else Themes.ApplyTheme((sender as ComboBox).SelectedItem.ToString(), this);
         }
 
         private void ApplicationThemeExportTemplate_Click(object sender, RoutedEventArgs e)
         {
             Themes.WriteThemeToDisk("Light Pink");
-            Themes.LoadThemes();
         }
 
         private void ApplicationThemeOpenThemesFolder_Click(object sender, RoutedEventArgs e)

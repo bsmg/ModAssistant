@@ -35,12 +35,15 @@ namespace ModAssistant
                     //Ignore Themes without the xaml extension and ignore themes with the same names as others.
                     //If requests are made I can instead make a Theme class that splits the pre-installed themes from
                     //user-made ones so that one more user-made Light/Dark theme can be added.
-                    if (info.Extension.ToLowerInvariant() == "xaml" && !loadedThemes.ContainsKey(info.Name))
+                    MessageBox.Show(info.Extension);
+                    if (info.Extension.ToLower().Contains("xaml"))
                     {
-                        ResourceDictionary theme = LoadTheme(info.Name);
+                        string name = info.Name.Split('.').First();
+                        MessageBox.Show(name);
+                        ResourceDictionary theme = LoadTheme(name);
                         if (theme != null)
                         {
-                            loadedThemes.Add(info.Name, theme);
+                            loadedThemes.Add(name, theme);
                         }
                     }
                 }
@@ -102,8 +105,10 @@ namespace ModAssistant
 
             if (!File.Exists($@"{ThemeDirectory}\\{themeName}.xaml"))
             {
-
+                //Store a local copy of the theme to prevent exceptions trying to access the saved copy while it's being written to.
                 ResourceDictionary dictionary = LoadTheme(themeName, true);
+                loadedThemes.Add(themeName, dictionary);
+                Options.Instance.ApplicationThemeComboBox.ItemsSource = LoadedThemes;
 
                 XmlWriterSettings settings = new XmlWriterSettings();
                 settings.Indent = true;
