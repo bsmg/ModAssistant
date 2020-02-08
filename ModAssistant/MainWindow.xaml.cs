@@ -63,7 +63,7 @@ namespace ModAssistant
             Themes.LoadThemes();
             try
             {
-                Themes.ApplyTheme("Light");
+                Themes.ApplyTheme(Properties.Settings.Default.SelectedTheme);
             }
             catch (ArgumentException)
             {

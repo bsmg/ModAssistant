@@ -71,6 +71,9 @@ namespace ModAssistant
                 Application.Current.Resources.MergedDictionaries.RemoveAt(0);
                 LoadedTheme = theme;
                 Application.Current.Resources.MergedDictionaries.Insert(0, newTheme);
+                Properties.Settings.Default.SelectedTheme = theme;
+                Properties.Settings.Default.Save();
+                MainWindow.Instance.MainText = $"Theme changed to {theme}.";
                 ReloadIcons();
             }
             else throw new ArgumentException($"{theme} does not exist.");
