@@ -54,12 +54,6 @@ namespace ModAssistant.Pages
             UpdateHandlerStatus();
 
             this.DataContext = this;
-
-            if (!DesignerProperties.GetIsInDesignMode(this))
-            {
-                if (!Themes.LoadedThemes.Any()) Themes.LoadThemes();
-                ApplicationThemeComboBox.SelectedValue = Themes.LoadedTheme;
-            }
         }
 
         public void UpdateHandlerStatus()

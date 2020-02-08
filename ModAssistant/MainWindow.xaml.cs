@@ -64,7 +64,8 @@ namespace ModAssistant
             try
             {
                 Themes.ApplyTheme("Light", this);
-            }catch (ArgumentException)
+            }
+            catch (ArgumentException)
             {
                 Themes.ApplyTheme("Light", this);
                 MainText = "Theme not found, reverting to Light theme...";
@@ -124,6 +125,7 @@ namespace ModAssistant
                         break;
                     case "Options":
                         Main.Content = Options.Instance;
+                        Themes.LoadThemes();
                         break;
                     default:
                         Main.Content = Intro.Instance;
@@ -191,6 +193,7 @@ namespace ModAssistant
         private void OptionsButton_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = Options.Instance;
+            Themes.LoadThemes();
             Properties.Settings.Default.LastTab = "Options";
             Properties.Settings.Default.Save();
         }

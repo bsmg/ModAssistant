@@ -45,7 +45,10 @@ namespace ModAssistant
                 //MessageBox.Show($"(DEBUG) Loaded {loadedThemes.Count - 2} themes from Themes folder.");
             }
             if (Options.Instance != null && Options.Instance.ApplicationThemeComboBox != null)
+            {
                 Options.Instance.ApplicationThemeComboBox.ItemsSource = LoadedThemes;
+                Options.Instance.ApplicationThemeComboBox.SelectedIndex = LoadedThemes.IndexOf(LoadedTheme);
+            }
         }
 
         private static ResourceDictionary LoadTheme(string name, bool localUri = false)
