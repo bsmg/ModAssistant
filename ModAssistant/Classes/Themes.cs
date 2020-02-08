@@ -5,6 +5,8 @@ using System.Windows;
 using System.IO;
 using System.Windows.Media;
 using ModAssistant.Pages;
+using System.Xml;
+using System.Windows.Markup;
 
 namespace ModAssistant
 {
@@ -89,6 +91,27 @@ namespace ModAssistant
         {
             element.Resources[ResourceColorName] = loadedThemes[LoadedTheme][ResourceColorName];
             ((GeometryDrawing)((DrawingGroup)icons[DrawingGroupName]).Children[0]).Brush = (Brush)element.Resources[ResourceColorName];
+        }
+
+        public static void WriteThemeToDisk(string themeName)
+        {
+            if (!Directory.Exists(ThemeDirectory))
+            {
+                Directory.CreateDirectory(ThemeDirectory);
+            }
+
+            if (!File.Exists($@"{ThemeDirectory}\\{themeName}.xaml"))
+            {
+
+                ResourceDictionary dictionary = LoadTheme(themeName, true);
+
+                XmlWriterSettings settings = new XmlWriterSettings();
+                settings.Indent = true;
+                XmlWriter writer = XmlWriter.Create($@"{ThemeDirectory}\\{themeName}.xaml", settings);
+                XamlWriter.Save(dictionary, writer);
+                MainWindow.Instance.MainText = $"Template theme \"{themeName}\" saved to Themes folder.";
+            }
+            else MessageBox.Show("Template theme already exists!");
         }
     }
 }

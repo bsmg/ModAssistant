@@ -254,7 +254,8 @@ namespace ModAssistant.Pages
 
         private void ApplicationThemeExportTemplate_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("nice going laughShorts this is coming soon");
+            Themes.WriteThemeToDisk("Light Pink");
+            Themes.LoadThemes();
         }
 
         private void ApplicationThemeOpenThemesFolder_Click(object sender, RoutedEventArgs e)
