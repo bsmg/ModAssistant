@@ -65,8 +65,7 @@ namespace ModAssistant
         /// <param name="element">Page that this is called on (Used for refreshing button icon colors).</param>
         public static void ApplyTheme(string theme)
         {
-            ResourceDictionary newTheme = loadedThemes[theme];
-            if (newTheme != null)
+            if (loadedThemes.TryGetValue(theme, out ResourceDictionary newTheme))
             {
                 Application.Current.Resources.MergedDictionaries.RemoveAt(0);
                 LoadedTheme = theme;
@@ -119,7 +118,15 @@ namespace ModAssistant
             if (localUri) location = $"Themes/{name}.xaml";
             Uri uri = new Uri(location, localUri ? UriKind.Relative : UriKind.Absolute);
             ResourceDictionary dictionary = new ResourceDictionary();
-            dictionary.Source = uri;
+            try
+            {
+                dictionary.Source = uri;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Could not load {name}.\n\n{ex.Message}\n\nIgnoring...");
+                return null;
+            }
             return dictionary;
         }
 
