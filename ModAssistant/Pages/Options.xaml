@@ -67,14 +67,14 @@
 			<TextBlock Name="GameTypeTextBlock" Text="{Binding InstallType}" FontSize="16"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="13" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
+        <StackPanel Margin="5" Grid.Row="13" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Margin="5" HorizontalAlignment="Left" Text="Application Theme: " FontWeight="Bold" FontSize="16" />
+                <TextBlock HorizontalAlignment="Left" Text="Application Theme: " FontWeight="Bold" FontSize="16" />
                 <ComboBox Name="ApplicationThemeComboBox" Grid.Column="2" HorizontalAlignment="Stretch" SelectionChanged="ApplicationThemeComboBox_SelectionChanged" VerticalContentAlignment="Center"></ComboBox>
             </Grid>
         </StackPanel>
