@@ -373,9 +373,10 @@ namespace ModAssistant.Pages
                 System.Windows.MessageBox.Show($"找不到此MOD的下载链接：{mod.name}");
                 return;
             }
-
+            MainWindow.Instance.MainText = $"正在下载 {mod.name}...";
             using (MemoryStream stream = new MemoryStream(DownloadMod(Utils.Constants.BeatModsURL + downloadLink)))
             {
+                MainWindow.Instance.MainText = $"正在安装 {mod.name}...";
                 using (ZipArchive archive = new ZipArchive(stream))
                 {
                     foreach (ZipArchiveEntry file in archive.Entries)
