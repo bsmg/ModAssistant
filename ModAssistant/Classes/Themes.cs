@@ -7,6 +7,7 @@ using System.Windows.Media;
 using ModAssistant.Pages;
 using System.Xml;
 using System.Windows.Markup;
+using System.Reflection;
 
 namespace ModAssistant
 {
@@ -91,15 +92,13 @@ namespace ModAssistant
 
             if (!File.Exists($@"{ThemeDirectory}\\{themeName}.xaml"))
             {
-                //Store a local copy of the theme to prevent exceptions trying to access the saved copy while it's being written to.
-                ResourceDictionary dictionary = LoadTheme(themeName, true);
-                loadedThemes.Add(themeName, dictionary);
-                Options.Instance.ApplicationThemeComboBox.ItemsSource = LoadedThemes;
-
-                XmlWriterSettings settings = new XmlWriterSettings();
-                settings.Indent = true;
-                XmlWriter writer = XmlWriter.Create($@"{ThemeDirectory}\\{themeName}.xaml", settings);
-                XamlWriter.Save(dictionary, writer);
+                using (Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream($"ModAssistant.Themes.{themeName}.xaml"))
+                using (FileStream writer = new FileStream($@"{ThemeDirectory}\\{themeName}.xaml", FileMode.Create))
+                {
+                    byte[] buffer = new byte[s.Length];
+                    int read = s.Read(buffer, 0, (int)s.Length);
+                    writer.Write(buffer, 0, buffer.Length);
+                }
                 MainWindow.Instance.MainText = $"Template theme \"{themeName}\" saved to Themes folder.";
             }
             else MessageBox.Show("Template theme already exists!");
