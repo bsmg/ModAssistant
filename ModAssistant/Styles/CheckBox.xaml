@@ -17,7 +17,7 @@
 							Margin="1"
 							HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
 							VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-							BorderThickness="{TemplateBinding BorderThickness}"
+							BorderThickness="0"
 							Background="{DynamicResource CheckboxDefaultBackground}"
 							BorderBrush="{TemplateBinding BorderBrush}">
                             <Grid Name="markGrid">
