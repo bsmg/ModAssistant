@@ -16,13 +16,14 @@
 				            AllowsTransparency="True"
 				            Placement="Bottom"
 				            Grid.ColumnSpan="2"
-				            PopupAnimation="{DynamicResource SystemParameters.ComboBoxPopupAnimationKey}"
+				            PopupAnimation="Slide"
 				            IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}">
                             <Border
 						        Name="DropDownBorder"
 						        BorderBrush="{DynamicResource ComboBoxOutline}"
 						        Background="{DynamicResource ComboBoxBackground}"
-						        BorderThickness="0">        
+						        BorderThickness="1"
+                                MinWidth="{Binding ActualWidth, ElementName=templateRoot}">
                                 <ScrollViewer Name="DropDownScrollViewer">
                                     <Grid Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                         <Canvas
@@ -34,14 +35,13 @@
                                             <Rectangle
 										        Name="OpaqueRect"
 										        Fill="{Binding Background, ElementName=DropDownBorder}"
-										        Height="{Binding ActualHeight, ElementName=DropDownBorder}"
-										        Width="{Binding ActualWidth, ElementName=DropDownBorder}" />
+										        MinHeight="{Binding ActualHeight, ElementName=DropDownBorder}"
+										        MinWidth="{Binding ActualWidth, ElementName=DropDownBorder}" />
                                         </Canvas>
                                         <ItemsPresenter
 									        Name="ItemsPresenter"
 									        KeyboardNavigation.DirectionalNavigation="Contained"
-									        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                            Width="{Binding ActualWidth, ElementName=templateRoot}"/>
+									        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                     </Grid>
                                 </ScrollViewer>
                             </Border>
