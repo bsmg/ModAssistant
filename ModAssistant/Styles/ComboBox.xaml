@@ -22,7 +22,7 @@
 						        Name="DropDownBorder"
 						        BorderBrush="{DynamicResource ComboBoxOutline}"
 						        Background="{DynamicResource ComboBoxBackground}"
-						        BorderThickness="1">        
+						        BorderThickness="0">        
                                 <ScrollViewer Name="DropDownScrollViewer">
                                     <Grid Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                         <Canvas
@@ -40,7 +40,8 @@
                                         <ItemsPresenter
 									        Name="ItemsPresenter"
 									        KeyboardNavigation.DirectionalNavigation="Contained"
-									        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+									        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                            Width="{Binding ActualWidth, ElementName=templateRoot}"/>
                                     </Grid>
                                 </ScrollViewer>
                             </Border>
@@ -48,14 +49,14 @@
                         <Border
 				            Name="Border"
                             Background="Transparent"
-				            Margin="{TemplateBinding BorderThickness}">
+				            Margin="0">
                             <TextBox
 					            Name="PART_EditableTextBox"
-					            Margin="{TemplateBinding Padding}"
+					            Margin="2.5"
                                 BorderBrush="Transparent"
                                 BorderThickness="0"
                                 Foreground="{DynamicResource TextColor}"
-					            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+					            HorizontalContentAlignment="Left"
 					            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
 					            IsReadOnly="True"
                                 Background="Transparent"
