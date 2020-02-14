@@ -6,6 +6,8 @@
         Feel free to use this as a template for designing your own themes for Mod Assistant.
     
         The Color fields take in Hexadecimal RGB (#RRGGBB) or Hexadecimal ARGB (#AARRGGBB).
+        They can also take in common names like "Gray", "Maroon", "Magenta", "LimeGreen", etc.
+        For more information, see: https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.colors
         
         To reload your theme, exit and re-enter the Options menu.
     -->
