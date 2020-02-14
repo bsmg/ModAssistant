@@ -14,12 +14,13 @@ namespace ModAssistant
 {
     public class Themes
     {
-        public static string LoadedTheme { get; private set; }
-        public static List<string> LoadedThemes { get => loadedThemes.Keys.ToList(); }
-        public static string ThemeDirectory => $"{Environment.CurrentDirectory}/Themes";
+        public static string LoadedTheme { get; private set; } //Currently loaded theme
+        public static List<string> LoadedThemes { get => loadedThemes.Keys.ToList(); } //String of themes that can be loaded
+        public static string ThemeDirectory => $"{Environment.CurrentDirectory}/Themes"; //Self explanatory.
 
+        //Local dictionary of ResourceDictionarys mapped by their names.
         private static Dictionary<string, ResourceDictionary> loadedThemes = new Dictionary<string, ResourceDictionary>();
-        private static List<string> preInstalledThemes = new List<string> { "Light", "Dark", "Light Pink" };
+        private static List<string> preInstalledThemes = new List<string> { "Light", "Dark" }; //These themes will always be available to use.
 
         /// <summary>
         /// Load all themes from local Themes subfolder and from embedded resources.
@@ -86,14 +87,13 @@ namespace ModAssistant
         /// Applies a loaded theme to ModAssistant.
         /// </summary>
         /// <param name="theme">Name of the theme.</param>
-        /// <param name="sendMessage">Send message to MainText (default: true).</param>
-        public static void ApplyTheme(string theme, bool sendMessage = true)
+        public static void ApplyTheme(string theme)
         {
             if (loadedThemes.TryGetValue(theme, out ResourceDictionary newTheme))
             {
-                Application.Current.Resources.MergedDictionaries.RemoveAt(0);
+                Application.Current.Resources.MergedDictionaries.RemoveAt(0); //We might want to change this to a static integer or search by name.
                 LoadedTheme = theme;
-                Application.Current.Resources.MergedDictionaries.Insert(0, newTheme);
+                Application.Current.Resources.MergedDictionaries.Insert(0, newTheme); //Insert our new theme into the same spot as last time.
                 Properties.Settings.Default.SelectedTheme = theme;
                 Properties.Settings.Default.Save();
                 if (sendMessage)
@@ -118,6 +118,12 @@ namespace ModAssistant
 
             if (!File.Exists($@"{ThemeDirectory}\\{themeName}.xaml"))
             {
+                /*
+                 * Light Pink theme is set to build as an Embedded Resource instead of the default Page.
+                 * This is so that we can grab its exact content from Manifest, shown below.
+                 * Writing it as is instead of using XAMLWriter keeps the source as is with comments, spacing, and organization.
+                 * Using XAMLWriter would compress it into an unorganized mess.
+                 */
                 using (Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream($"ModAssistant.Themes.{themeName}.xaml"))
                 using (FileStream writer = new FileStream($@"{ThemeDirectory}\\{themeName}.xaml", FileMode.Create))
                 {
@@ -157,13 +163,19 @@ namespace ModAssistant
         /// Loads a ResourceDictionary from either Embedded Resources or from a file location.
         /// </summary>
         /// <param name="name">ResourceDictionary file name.</param>
-        /// <param name="localUri">Specifies whether or not to search in Embedded Resources or in the Themes subfolder.</param>
+        /// <param name="localUri">Specifies whether or not to search locally or in the Themes subfolder.</param>
         /// <returns></returns>
         private static ResourceDictionary LoadTheme(string name, bool localUri = false)
         {
             string location = $"{Environment.CurrentDirectory}/Themes/{name}.xaml";
-            if (!File.Exists(location) && !localUri) return null;
-            if (localUri) location = $"Themes/{name}.xaml";
+            if (!File.Exists(location) && !localUri) //Return null if we're looking for an item in the Themes subfolder that doesn't exist.
+            {
+                return null;
+            }
+            if (localUri) //Change the location of the theme since we're not looking in a directory but rather in ModAssistant itself.
+            {
+                location = $"Themes/{name}.xaml";
+            }
             Uri uri = new Uri(location, localUri ? UriKind.Relative : UriKind.Absolute);
             ResourceDictionary dictionary = new ResourceDictionary();
             try
