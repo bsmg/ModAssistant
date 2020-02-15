@@ -22,6 +22,14 @@
     <SolidColorBrush x:Key="ButtonHighlightedBackground" Color="#FFFF84EE" />
     <SolidColorBrush x:Key="ButtonClickedBackground" Color="Magenta" />
     <SolidColorBrush x:Key="ButtonDisabledBackground" Color="#FFD477C8" />
+    <SolidColorBrush x:Key="ButtonDangerBackground" Color="#FF006E" />
+
+    <!-- Page Buttons (Side of Main Page) -->
+    <SolidColorBrush x:Key="PageButtonBackground" Color="#FFE5A3EC" />
+    <SolidColorBrush x:Key="PageButtonOutline" Color="#FF640052" />
+    <SolidColorBrush x:Key="PageButtonHighlightedBackground" Color="#FFFF84EE" />
+    <SolidColorBrush x:Key="PageButtonClickedBackground" Color="Magenta" />
+    <SolidColorBrush x:Key="PageButtonDisabledBackground" Color="#FFD477C8" />
 
     <!--Mod List-->
     <SolidColorBrush x:Key="ModColumnBackground" Color="#FFFFC1F4"/>
