@@ -24,6 +24,13 @@
     <SolidColorBrush x:Key="ButtonDisabledBackground" Color="{DynamicResource ResourceKey=StandardSecondary}" />
     <SolidColorBrush x:Key="ButtonDangerBackground" Color="#ED172F" />
 
+    <!-- Page Buttons (Side of Main Page) -->
+    <SolidColorBrush x:Key="PageButtonBackground" Color="{DynamicResource ResourceKey=StandardPrimary}" />
+    <SolidColorBrush x:Key="PageButtonOutline" Color="{DynamicResource ResourceKey=StandardBorder}" />
+    <SolidColorBrush x:Key="PageButtonHighlightedBackground" Color="{DynamicResource ResourceKey=StandardHighlight}" />
+    <SolidColorBrush x:Key="PageButtonClickedBackground" Color="{DynamicResource ResourceKey=StandardActive}" />
+    <SolidColorBrush x:Key="PageButtonDisabledBackground" Color="{DynamicResource ResourceKey=StandardSecondary}" />
+
     <!-- Mod List -->
     <SolidColorBrush x:Key="ModColumnBackground" Color="{DynamicResource ResourceKey=StandardPrimary}" />
     <SolidColorBrush x:Key="ModColumnBorderBrush" Color="{DynamicResource ResourceKey=StandardBorder}" />

@@ -30,28 +30,28 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Button Name="IntroButton" Grid.Row="0" Height="60" Margin="0,0,10,5" Click="IntroButton_Click">
+                <Button Name="IntroButton" Grid.Row="0" Height="60" Margin="0,0,10,5" Click="IntroButton_Click" Style="{DynamicResource MainPageButton}">
                     <StackPanel Margin="0,8,0,0">
                         <Image Height="30" Source="{StaticResource info_circleDrawingImage}" VerticalAlignment="Bottom"></Image>
                         <TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom">Intro</TextBlock>
                     </StackPanel>
                 </Button>
 
-                <Button IsEnabled="false" Name="ModsButton" Grid.Row="1" Height="60" Margin="0,5,10,5" Click="ModsButton_Click">
+                <Button IsEnabled="false" Name="ModsButton" Grid.Row="1" Height="60" Margin="0,5,10,5" Click="ModsButton_Click" Style="{DynamicResource MainPageButton}">
                     <StackPanel Margin="0,6,0,0">
                         <Image Height="30" Source="{StaticResource microchipDrawingImage}" VerticalAlignment="Bottom"></Image>
                         <TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom">Mods</TextBlock>
                     </StackPanel>
                 </Button>
 
-                <Button Name="AboutButton" Grid.Row="2" Height="60" Margin="0,5,10,5" Click="AboutButton_Click">
+                <Button Name="AboutButton" Grid.Row="2" Height="60" Margin="0,5,10,5" Click="AboutButton_Click" Style="{DynamicResource MainPageButton}">
                     <StackPanel Margin="0,6,0,0">
                         <Image Height="30" Source="{StaticResource heartDrawingImage}" VerticalAlignment="Bottom"></Image>
                         <TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom">About</TextBlock>
                     </StackPanel>
                 </Button>
 
-                <Button Name="OptionsButton" Grid.Row="3" Height="60" Margin="0,5,10,5" Click="OptionsButton_Click">
+                <Button Name="OptionsButton" Grid.Row="3" Height="60" Margin="0,5,10,5" Click="OptionsButton_Click" Style="{DynamicResource MainPageButton}">
                     <StackPanel Margin="0,5,0,0">
                         <Image Height="30" Source="{StaticResource cogDrawingImage}" VerticalAlignment="Bottom"></Image>
                         <TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom">Options</TextBlock>
