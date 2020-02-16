@@ -8,6 +8,7 @@ using ModAssistant.Pages;
 using System.Xml;
 using System.Windows.Markup;
 using System.Reflection;
+using Microsoft.Win32;
 
 namespace ModAssistant
 {
@@ -63,8 +64,8 @@ namespace ModAssistant
         /// Applies a loaded theme to ModAssistant.
         /// </summary>
         /// <param name="theme">Name of the theme.</param>
-        /// <param name="element">Page that this is called on (Used for refreshing button icon colors).</param>
-        public static void ApplyTheme(string theme)
+        /// <param name="sendMessage">Send message to MainText (default: true).</param>
+        public static void ApplyTheme(string theme, bool sendMessage = true)
         {
             if (loadedThemes.TryGetValue(theme, out ResourceDictionary newTheme))
             {
@@ -73,7 +74,10 @@ namespace ModAssistant
                 Application.Current.Resources.MergedDictionaries.Insert(0, newTheme);
                 Properties.Settings.Default.SelectedTheme = theme;
                 Properties.Settings.Default.Save();
-                MainWindow.Instance.MainText = $"Theme changed to {theme}.";
+                if (sendMessage)
+                {
+                    MainWindow.Instance.MainText = $"Theme changed to {theme}.";
+                }
                 ReloadIcons();
             }
             else throw new ArgumentException($"{theme} does not exist.");
@@ -102,6 +106,29 @@ namespace ModAssistant
                 MainWindow.Instance.MainText = $"Template theme \"{themeName}\" saved to Themes folder.";
             }
             else MessageBox.Show("Template theme already exists!");
+        }
+
+        /// <summary>
+        /// Finds the theme set on Windows and applies it.
+        /// </summary>
+        public static void ApplyWindowsTheme()
+        {
+            using (RegistryKey key = Registry.CurrentUser
+                  .OpenSubKey("Software").OpenSubKey("Microsoft")
+                  .OpenSubKey("Windows").OpenSubKey("CurrentVersion")
+                  .OpenSubKey("Themes").OpenSubKey("Personalize"))
+            {
+                object registryValueObject = key?.GetValue("AppsUseLightTheme");
+                if (registryValueObject != null)
+                {
+                    if ((int)registryValueObject <= 0)
+                    {
+                        ApplyTheme("Dark", false);
+                        return;
+                    }
+                }
+                ApplyTheme("Light", false);
+            }
         }
 
         /// <summary>
