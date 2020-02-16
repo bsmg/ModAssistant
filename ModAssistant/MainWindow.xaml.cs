@@ -135,7 +135,7 @@ namespace ModAssistant
             {
                 Properties.Settings.Default.AllGameVersions = versionsString;
                 Properties.Settings.Default.Save();
-                Utils.ShowMessageBoxAsync("似乎游戏有更新。\n\n请仔细检查左下角是否选择了正确的游戏版本！", "检测到新的游戏版本");
+                Utils.ShowMessageBoxAsync("似乎游戏有更新，\n请仔细检查左下角是否选择了正确的游戏版本！\n\n如果左下角没有最新的游戏版本选项，\n很可能是因为游戏完全兼容最后一版的Mod。", "检测到新的游戏版本");
                 return versions[0];
             }
 
