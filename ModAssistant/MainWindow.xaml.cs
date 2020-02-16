@@ -63,11 +63,18 @@ namespace ModAssistant
             Themes.LoadThemes();
             try
             {
-                Themes.ApplyTheme(Properties.Settings.Default.SelectedTheme);
+                if (Properties.Settings.Default.SelectedTheme != null)
+                {
+                    Themes.ApplyTheme(Properties.Settings.Default.SelectedTheme, false);
+                }
+                else
+                {
+                    Themes.ApplyWindowsTheme();
+                }
             }
             catch (ArgumentException)
             {
-                Themes.ApplyTheme("Light");
+                Themes.ApplyTheme("Light", false);
                 MainText = "Theme not found, reverting to Light theme...";
             }
 
