@@ -37,8 +37,8 @@ namespace ModAssistant
                 foreach (string file in Directory.EnumerateFiles(ThemeDirectory))
                 {
                     FileInfo info = new FileInfo(file);
-                    //FileInfo includes the extension in its Name field, so we have to split the string and select only the actual name.
-                    string name = info.Name.Split('.').First();
+                    //FileInfo includes the extension in its Name field, so we have to select only the actual name.
+                    string name = Path.GetFileNameWithoutExtension(info.Name);
                     //Ignore Themes without the xaml extension and ignore themes with the same names as others.
                     //If requests are made I can instead make a Theme class that splits the pre-installed themes from
                     //user-made ones so that one more user-made Light/Dark theme can be added.

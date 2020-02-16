@@ -9,6 +9,7 @@
                 <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
                     <Grid SnapsToDevicePixels="True">
                         <Border Name="HeaderBorder" BorderThickness="0,1,0,1"
+                                Margin="-2,-1,-1,0"
                                 BorderBrush="{DynamicResource ModColumnBorderBrush}"
                                 Background="{DynamicResource ModColumnBackground}">
                             <Grid>
