@@ -1,0 +1,42 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <Style TargetType="ListViewItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListViewItem">
+                    <Border
+						        BorderThickness="{TemplateBinding BorderThickness}"
+						        BorderBrush="{TemplateBinding BorderBrush}"
+						        Background="{TemplateBinding Background}"
+						        CornerRadius="2"
+						        SnapsToDevicePixels="True">
+                        <Border
+							        Name="InnerBorder"
+							        CornerRadius="1"
+							        BorderThickness="1">
+                            <Grid>
+                                <Rectangle
+									        Name="UpperHighlight"
+									        Visibility="Collapsed"
+									        Fill="#75FFFFFF" />
+                                <GridViewRowPresenter
+									        Grid.RowSpan="2"
+									        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+									        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Grid>
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ModListItemHighlighted}"/>
+                            <Setter TargetName="UpperHighlight" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="ListBoxItem.IsSelected" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ModListItemSelected}"/>
+                            <Setter TargetName="UpperHighlight" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

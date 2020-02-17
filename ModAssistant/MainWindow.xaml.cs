@@ -50,6 +50,9 @@ namespace ModAssistant
                 return;
             }
 
+            Themes.LoadThemes();
+            Themes.FirstLoad(Properties.Settings.Default.SelectedTheme);
+
             Task.Run(() => LoadVersionsAsync());
 
             if (!Properties.Settings.Default.Agreed || string.IsNullOrEmpty(Properties.Settings.Default.LastTab))
@@ -71,6 +74,7 @@ namespace ModAssistant
                         break;
                     case "Options":
                         Main.Content = Options.Instance;
+                        Themes.LoadThemes();
                         break;
                     default:
                         Main.Content = Intro.Instance;
@@ -187,6 +191,7 @@ namespace ModAssistant
         private void OptionsButton_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = Options.Instance;
+            Themes.LoadThemes();
             Properties.Settings.Default.LastTab = "Options";
             Properties.Settings.Default.Save();
         }

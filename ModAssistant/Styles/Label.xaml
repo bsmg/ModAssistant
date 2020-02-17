@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="Label"
+                   >
+        <Setter Property="Label.FontFamily"
+                        Value="{DynamicResource DefaultFontFamily}" />
+        <Setter Property="Label.FontSize"
+                        Value="13" />
+        <Setter Property="Label.Foreground"
+                        Value="{DynamicResource TextColor}" />
+        <Setter Property="Label.Height"
+                        Value="Auto" />
+        <Setter Property="Label.Width"
+                        Value="Auto" />
+        <Setter Property="Label.HorizontalAlignment"
+                        Value="Center" />
+        <Setter Property="Label.VerticalAlignment"
+                        Value="Center" />
+        <Setter Property="Label.HorizontalContentAlignment"
+                        Value="Center" />
+        <Setter Property="Label.VerticalContentAlignment"
+                        Value="Center" />
+        <Setter Property="Label.FocusVisualStyle"
+                        Value="{x:Null}" />
+        <Setter Property="TextOptions.TextFormattingMode"
+                        Value="Display" />
+    </Style>
+</ResourceDictionary>

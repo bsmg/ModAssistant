@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Path = System.IO.Path;
+using System.Net;
+using System.Web.Script.Serialization;
+using System.Web;
+using System.ComponentModel;
 
 namespace ModAssistant.Pages
 {
@@ -238,6 +242,37 @@ namespace ModAssistant.Pages
                     Directory.Delete(Path.Combine(App.BeatSaberInstallDirectory, "IPA"), true);
 
                 MainWindow.Instance.MainText = $"{Application.Current.FindResource("Options:AllModsUninstalled")}...";
+            }
+        }
+
+        private void ApplicationThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if ((sender as ComboBox).SelectedItem == null)
+            {
+                Themes.ApplyWindowsTheme();
+                MainWindow.Instance.MainText = "Current theme has been removed, reverting to default...";
+            }
+            else
+            {
+                Themes.ApplyTheme((sender as ComboBox).SelectedItem.ToString());
+            }
+        }
+
+        private void ApplicationThemeExportTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            Themes.WriteThemeToDisk("Ugly Kulu-Ya-Ku");
+            Themes.LoadThemes();
+        }
+
+        private void ApplicationThemeOpenThemesFolder_Click(object sender, RoutedEventArgs e)
+        {
+            if (Directory.Exists(Themes.ThemeDirectory))
+            {
+                System.Diagnostics.Process.Start(Themes.ThemeDirectory);
+            }
+            else
+            {
+                MessageBox.Show("Themes folder not found! Try exporting the template...");
             }
         }
     }

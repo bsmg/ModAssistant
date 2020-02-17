@@ -10,6 +10,25 @@
                 <ResourceDictionary Source="Localisation/en-US.xaml" />
                 <!-- Swapped i88n Definitions -->
                 <ResourceDictionary Source="Localisation/en-US.xaml" />
+
+                <!-- Load default theme. Currently it's Dark, not sure if you want to change it to Light. -->
+                <ResourceDictionary x:Name="LoadedTheme" Source="Themes/Dark.xaml"/>
+
+                <!-- Load SVG icons, courtesy of lolPants. -->
+                <ResourceDictionary x:Name="Icons" Source="Resources/Icons.xaml"/>
+
+                <!-- Load Styles needed for the Theme engine to work. -->
+                <ResourceDictionary x:Name="Button_Style" Source="Styles/Button.xaml"/>
+                <ResourceDictionary x:Name="Label_Style" Source="Styles/Label.xaml"/>
+                <ResourceDictionary x:Name="TextBlock_Style" Source="Styles/TextBlock.xaml"/>
+                <ResourceDictionary x:Name="GridViewColumnHeader_Style" Source="Styles/GridViewColumnHeader.xaml"/>
+                <ResourceDictionary x:Name="ListView_Style" Source="Styles/ListView.xaml"/>
+                <ResourceDictionary x:Name="ListViewItem_Style" Source="Styles/ListViewItem.xaml"/>
+                <ResourceDictionary x:Name="CheckBox_Style" Source="Styles/CheckBox.xaml"/>
+                <ResourceDictionary x:Name="Rectangle_Style" Source="Styles/Rectangle.xaml"/>
+                <ResourceDictionary x:Name="ComboBoxItem_Style" Source="Styles/ComboBoxItem.xaml"/>
+                <ResourceDictionary x:Name="ComboBox_Style" Source="Styles/ComboBox.xaml"/>
+                <ResourceDictionary x:Name="ToggleButton_Style" Source="Styles/ToggleButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

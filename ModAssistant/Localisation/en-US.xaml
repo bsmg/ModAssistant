@@ -126,7 +126,7 @@
     <!-- Options Page -->
     <sys:String x:Key="Options:Title">Options</sys:String>
     <sys:String x:Key="Options:PageTitle">Settings</sys:String>
-    <sys:String x:Key="Options:InstalFolder">Install Folder</sys:String>
+    <sys:String x:Key="Options:InstallFolder">Install Folder</sys:String>
     <sys:String x:Key="Options:SelectFolderButton">Select Folder</sys:String>
     <sys:String x:Key="Options:OpenFolderButton">Open Folder</sys:String>
     <sys:String x:Key="Options:SaveSelectedMods">Save Selected Mods</sys:String>

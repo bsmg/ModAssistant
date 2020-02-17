@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <Style TargetType="TextBlock">
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource TextColor}"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="TextTrimming" Value="None"/>
+    </Style>
+</ResourceDictionary>

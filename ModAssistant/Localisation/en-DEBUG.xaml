@@ -86,7 +86,7 @@
     <!-- Options Page -->
     <sys:String x:Key="Options:Title">Options:Title</sys:String>
     <sys:String x:Key="Options:PageTitle">Options:PageTitle</sys:String>
-    <sys:String x:Key="Options:InstalFolder">Options:InstalFolder</sys:String>
+    <sys:String x:Key="Options:InstallFolder">Options:InstalFolder</sys:String>
     <sys:String x:Key="Options:SelectFolderButton">Options:SelectFolderButton</sys:String>
     <sys:String x:Key="Options:OpenFolderButton">Options:OpenFolderButton</sys:String>
     <sys:String x:Key="Options:SaveSelectedMods">Options:SaveSelectedMods</sys:String>
