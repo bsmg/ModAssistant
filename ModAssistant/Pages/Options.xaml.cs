@@ -263,6 +263,7 @@ namespace ModAssistant.Pages
         private void ApplicationThemeExportTemplate_Click(object sender, RoutedEventArgs e)
         {
             Themes.WriteThemeToDisk("Ugly Kulu-Ya-Ku");
+            Themes.LoadThemes();
         }
 
         private void ApplicationThemeOpenThemesFolder_Click(object sender, RoutedEventArgs e)
