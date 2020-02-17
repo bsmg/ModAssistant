@@ -251,9 +251,13 @@ namespace ModAssistant.Pages
         {
             if ((sender as ComboBox).SelectedItem == null)
             {
-                Themes.ApplyTheme("Light");
-                MainWindow.Instance.MainText = "Current theme has been removed, reverting to Light...";
-            }else Themes.ApplyTheme((sender as ComboBox).SelectedItem.ToString());
+                Themes.ApplyWindowsTheme();
+                MainWindow.Instance.MainText = "Current theme has been removed, reverting to default...";
+            }
+            else
+            {
+                Themes.ApplyTheme((sender as ComboBox).SelectedItem.ToString());
+            }
         }
 
         private void ApplicationThemeExportTemplate_Click(object sender, RoutedEventArgs e)
@@ -265,10 +269,12 @@ namespace ModAssistant.Pages
         {
             if (Directory.Exists(Themes.ThemeDirectory))
             {
-                //Code yeeted from ChroMapper
-                string winPath = Themes.ThemeDirectory.Replace("/", "\\").Replace("\\\\", "\\");
-                System.Diagnostics.Process.Start("explorer.exe", winPath);
-            }else MessageBox.Show("Themes folder not found! Try exporting the template...");
+                System.Diagnostics.Process.Start(Themes.ThemeDirectory);
+            }
+            else 
+            { 
+                MessageBox.Show("Themes folder not found! Try exporting the template..."); 
+            }
         }
     }
 }

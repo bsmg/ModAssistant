@@ -61,22 +61,7 @@ namespace ModAssistant
             }
 
             Themes.LoadThemes();
-            try
-            {
-                if (Properties.Settings.Default.SelectedTheme != null)
-                {
-                    Themes.ApplyTheme(Properties.Settings.Default.SelectedTheme, false);
-                }
-                else
-                {
-                    Themes.ApplyWindowsTheme();
-                }
-            }
-            catch (ArgumentException)
-            {
-                Themes.ApplyTheme("Light", false);
-                MainText = "Theme not found, reverting to Light theme...";
-            }
+            Themes.FirstLoad(Properties.Settings.Default.SelectedTheme);
 
             List<string> versions;
             string json = string.Empty;

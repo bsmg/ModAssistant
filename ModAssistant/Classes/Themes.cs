@@ -61,6 +61,28 @@ namespace ModAssistant
         }
 
         /// <summary>
+        /// Runs once at the start of the program, performs settings checking.
+        /// </summary>
+        /// <param name="savedTheme">Theme name retrieved from the settings file.</param>
+        public static void FirstLoad(string savedTheme)
+        {
+            if (savedTheme == "")
+            {
+                Themes.ApplyWindowsTheme();
+                return;
+            }
+            try
+            {
+                Themes.ApplyTheme(savedTheme, false);
+            }
+            catch (ArgumentException)
+            {
+                Themes.ApplyWindowsTheme();
+                MainWindow.Instance.MainText = "Theme not found, reverting to default theme...";
+            }
+        }
+
+        /// <summary>
         /// Applies a loaded theme to ModAssistant.
         /// </summary>
         /// <param name="theme">Name of the theme.</param>
@@ -76,7 +98,7 @@ namespace ModAssistant
                 Properties.Settings.Default.Save();
                 if (sendMessage)
                 {
-                    MainWindow.Instance.MainText = $"Theme changed to {theme}.";
+                    MainWindow.Instance.MainText = $"Theme set to {theme}.";
                 }
                 ReloadIcons();
             }
