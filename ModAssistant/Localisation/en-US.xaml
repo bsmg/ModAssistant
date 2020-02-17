@@ -142,6 +142,8 @@
     <sys:String x:Key="Options:OpenLogsButton">Open Logs</sys:String>
     <sys:String x:Key="Options:UninstallBSIPAButton">Uninstall BSIPA</sys:String>
     <sys:String x:Key="Options:RemoveAllModsButton">Remove All Mods</sys:String>
+    <sys:String x:Key="Options:ApplicationTheme">Application Theme</sys:String>
+    <sys:String x:Key="Options:ExportTemplateButton">Export Template</sys:String>
     <sys:String x:Key="Options:UploadingLog">Uploading Log</sys:String>
     <sys:String x:Key="Options:LogUrlCopied">Log URL Copied To Clipboard!</sys:String>
     <sys:String x:Key="Options:LogUploadFailed">Uploading Log Failed</sys:String>
@@ -154,6 +156,8 @@
     <sys:String x:Key="Options:YeetModsBox:RemoveAllMods">Are you sure you want to remove ALL mods?</sys:String>
     <sys:String x:Key="Options:YeetModsBox:CannotBeUndone">This cannot be undone.</sys:String>
     <sys:String x:Key="Options:AllModsUninstalled">All Mods Uninstalled</sys:String>
+    <sys:String x:Key="Options:CurrentThemeRemoved">Current theme has been removed, reverting to default...</sys:String>
+    <sys:String x:Key="Options:ThemeFolderNotFound">Themes folder not found! Try exporting the template...</sys:String>
 
     <!-- Invalid Page -->
     <sys:String x:Key="Invalid:Title">Invalid</sys:String>
@@ -197,6 +201,13 @@
     <sys:String x:Key="OneClick:AssetInstallFailed">Failed to install.</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ Install handlers registered!</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ Install handlers unregistered!</sys:String>
+
+    <!-- Themes Class -->
+    <sys:String x:Key="Themes:ThemeNotFound">Theme not found, reverting to default theme...</sys:String>
+    <sys:String x:Key="Themes:ThemeSet">Theme set to {0}.</sys:String>
+    <sys:String x:Key="Themes:ThemeMissing">{0} does not exist.</sys:String>
+    <sys:String x:Key="Themes:SavedTemplateTheme">Template theme "{0}" saved to Themes folder.</sys:String>
+    <sys:String x:Key="Themes:TemplateThemeExists">Template theme already exists!</sys:String>
 
     <!-- Updater Class -->
     <sys:String x:Key="Updater:CheckFailed">Couldn't check for updates.</sys:String>

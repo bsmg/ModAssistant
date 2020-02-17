@@ -246,7 +246,7 @@ namespace ModAssistant.Pages
             if ((sender as ComboBox).SelectedItem == null)
             {
                 Themes.ApplyWindowsTheme();
-                MainWindow.Instance.MainText = "Current theme has been removed, reverting to default...";
+                MainWindow.Instance.MainText = (string)Application.Current.FindResource("Options:CurrentThemeRemoved");
             }
             else
             {
@@ -268,7 +268,7 @@ namespace ModAssistant.Pages
             }
             else
             {
-                MessageBox.Show("Themes folder not found! Try exporting the template...");
+                MessageBox.Show((string)Application.Current.FindResource("Options:ThemeFolderNotFound"));
             }
         }
     }

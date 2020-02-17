@@ -77,7 +77,7 @@ namespace ModAssistant
             catch (ArgumentException)
             {
                 Themes.ApplyWindowsTheme();
-                MainWindow.Instance.MainText = "Theme not found, reverting to default theme...";
+                MainWindow.Instance.MainText = (string)Application.Current.FindResource("Themes:ThemeNotFound");
             }
         }
 
@@ -97,11 +97,14 @@ namespace ModAssistant
                 Properties.Settings.Default.Save();
                 if (sendMessage)
                 {
-                    MainWindow.Instance.MainText = $"Theme set to {theme}.";
+                    MainWindow.Instance.MainText = string.Format((string)Application.Current.FindResource("Themes:ThemeSet"), theme);
                 }
                 ReloadIcons();
             }
-            else throw new ArgumentException($"{theme} does not exist.");
+            else
+            {
+                throw new ArgumentException(string.Format((string)Application.Current.FindResource("Themes:ThemeMissing"), theme));
+            }
         }
 
         /// <summary>
@@ -130,9 +133,13 @@ namespace ModAssistant
                     int read = s.Read(buffer, 0, (int)s.Length);
                     writer.Write(buffer, 0, buffer.Length);
                 }
-                MainWindow.Instance.MainText = $"Template theme \"{themeName}\" saved to Themes folder.";
+
+                MainWindow.Instance.MainText = string.Format((string)Application.Current.FindResource("Themes:SavedTemplateTheme"), themeName);
             }
-            else MessageBox.Show("Template theme already exists!");
+            else
+            {
+                MessageBox.Show((string)Application.Current.FindResource("Themes:TemplateThemeExists"));
+            }
         }
 
         /// <summary>
