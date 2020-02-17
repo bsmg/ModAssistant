@@ -20,7 +20,7 @@ namespace ModAssistant
 
         //Local dictionary of ResourceDictionarys mapped by their names.
         private static Dictionary<string, ResourceDictionary> loadedThemes = new Dictionary<string, ResourceDictionary>();
-        private static List<string> preInstalledThemes = new List<string> { "Light", "Dark" }; //These themes will always be available to use.
+        private static List<string> preInstalledThemes = new List<string> { "Light", "Dark", "Light Pink" }; //These themes will always be available to use.
 
         /// <summary>
         /// Load all themes from local Themes subfolder and from embedded resources.
