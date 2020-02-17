@@ -269,7 +269,17 @@ namespace ModAssistant.Pages
                     if (tran.name == mod.name)
                     {
                         mod.newname = tran.newname;
-                        mod.newdescription = tran.newdescription;
+                        if(tran.description != null)
+                        {
+                            if(tran.description == mod.description)
+                            {
+                                mod.newdescription = tran.newdescription;
+                            }
+                        }
+                        else
+                        {
+                            mod.newdescription = "." + tran.newdescription;
+                        }
                     }
                 }
 
