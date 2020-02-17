@@ -9,63 +9,63 @@
       Title="{DynamicResource Mods:Title}">
 
     <Grid>
-		<ListView Name="ModsListView" Grid.Column="1" SelectionMode="Single" SelectionChanged="ModsListView_SelectionChanged">
-			<ListView.View>
-				<GridView>
-					<GridView.Columns>
-						<GridViewColumn Width="30">
-							<GridViewColumn.CellTemplate>
-								<DataTemplate>
-									<CheckBox Name="ModCheckBox" IsEnabled="{Binding IsEnabled}" Tag="{Binding ModInfo}" IsChecked="{Binding Path=IsSelected, Mode=TwoWay}" Checked="ModCheckBox_Checked" Unchecked="ModCheckBox_Unchecked"/>
-								</DataTemplate>
-							</GridViewColumn.CellTemplate>
-						</GridViewColumn>
-						<GridViewColumn Header="{DynamicResource Mods:Header:Name}" DisplayMemberBinding="{Binding ModName}" />
+        <ListView Name="ModsListView" Grid.Column="1" SelectionMode="Single" SelectionChanged="ModsListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Width="30">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox Name="ModCheckBox" IsEnabled="{Binding IsEnabled}" Tag="{Binding ModInfo}" IsChecked="{Binding Path=IsSelected, Mode=TwoWay}" Checked="ModCheckBox_Checked" Unchecked="ModCheckBox_Unchecked"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="{DynamicResource Mods:Header:Name}" DisplayMemberBinding="{Binding ModName}" />
 
-						<GridViewColumn x:Name="InstalledColumn" Header="{DynamicResource Mods:Header:Installed}">
-							<GridViewColumn.CellTemplate>
-								<DataTemplate>
-									<TextBlock Text="{Binding InstalledVersion}" Foreground="{Binding GetVersionColor}" TextDecorations="{Binding GetVersionDecoration}" />
-								</DataTemplate>
-							</GridViewColumn.CellTemplate>
-						</GridViewColumn>
+                        <GridViewColumn x:Name="InstalledColumn" Header="{DynamicResource Mods:Header:Installed}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding InstalledVersion}" Foreground="{Binding GetVersionColor}" TextDecorations="{Binding GetVersionDecoration}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
 
-						<GridViewColumn Header="{DynamicResource Mods:Header:Latest}" DisplayMemberBinding="{Binding ModVersion}" />
-						<GridViewColumn x:Name="DescriptionColumn" Header="{DynamicResource Mods:Header:Description}" Width="750" >
-							<GridViewColumn.CellTemplate>
-								<DataTemplate>
-									<StackPanel Orientation="Horizontal">
-										<TextBlock Margin="{Binding PromotionMargin}">
+                        <GridViewColumn Header="{DynamicResource Mods:Header:Latest}" DisplayMemberBinding="{Binding ModVersion}" />
+                        <GridViewColumn x:Name="DescriptionColumn" Header="{DynamicResource Mods:Header:Description}" Width="750" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Margin="{Binding PromotionMargin}">
 											<Hyperlink NavigateUri="{Binding PromotionLink}" RequestNavigate="Hyperlink_RequestNavigate">
 												<TextBlock Text="{Binding PromotionText}" />
 											</Hyperlink>
 										</TextBlock>
-										<TextBlock Text="{Binding ModDescription}" />
-									</StackPanel>
-								</DataTemplate>
+                                        <TextBlock Text="{Binding ModDescription}" />
+                                    </StackPanel>
+                                </DataTemplate>
 
-							</GridViewColumn.CellTemplate>
-						</GridViewColumn>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
 
-						<GridViewColumn x:Name="UninstallColumn" Header="{DynamicResource Mods:Header:Uninstall}" Width="70">
-							<GridViewColumn.CellTemplate>
-								<DataTemplate>
-									<Button Name="Uninstall" Content="{DynamicResource Mods:UninstallButton}" Visibility="{Binding CanSeeDelete}" IsEnabled="{Binding CanDelete}" Foreground="Red" Tag="{Binding ModInfo}" Click="Uninstall_Click"/>
-								</DataTemplate>
-							</GridViewColumn.CellTemplate>
-						</GridViewColumn>
-					</GridView.Columns>
-				</GridView>
-			</ListView.View>
-			<ListView.GroupStyle>
-				<GroupStyle>
-					<GroupStyle.HeaderTemplate>
-						<DataTemplate>
-							<TextBlock FontWeight="Bold" FontSize="14" Padding="6,0,0,0" Text="{Binding Name}"/>
-						</DataTemplate>
-					</GroupStyle.HeaderTemplate>
-				</GroupStyle>
-			</ListView.GroupStyle>
-		</ListView>
-	</Grid>
+                        <GridViewColumn x:Name="UninstallColumn" Header="{DynamicResource Mods:Header:Uninstall}" Width="70">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Name="Uninstall" Content="{DynamicResource Mods:UninstallButton}" Visibility="{Binding CanSeeDelete}" IsEnabled="{Binding CanDelete}" Foreground="Red" Tag="{Binding ModInfo}" Click="Uninstall_Click"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock FontWeight="Bold" FontSize="14" Padding="6,0,0,0" Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListView.GroupStyle>
+        </ListView>
+    </Grid>
 </Page>

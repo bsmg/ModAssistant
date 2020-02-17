@@ -5,8 +5,6 @@ using System.Windows;
 using System.IO;
 using System.Windows.Media;
 using ModAssistant.Pages;
-using System.Xml;
-using System.Windows.Markup;
 using System.Reflection;
 using Microsoft.Win32;
 
@@ -183,7 +181,7 @@ namespace ModAssistant
             {
                 dictionary.Source = uri;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Could not load {name}.\n\n{ex.Message}\n\nIgnoring...");
                 return null;

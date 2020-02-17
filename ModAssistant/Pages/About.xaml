@@ -11,66 +11,66 @@
       Title="{DynamicResource About:Title}">
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="auto"/>
-			<RowDefinition Height="auto"/>
-			<RowDefinition Height="auto"/>
-			<RowDefinition Height="auto"/>
-			<RowDefinition Height="auto"/>
-			<RowDefinition Height="auto"/>
-			<RowDefinition Height="auto"/>
-			<RowDefinition Height="auto"/>
-			<RowDefinition Height="auto"/>
-			<RowDefinition Height="auto"/>
-			<RowDefinition Height="auto"/>
-			<RowDefinition Height="auto"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
 
-		</Grid.RowDefinitions>
+        </Grid.RowDefinitions>
 
-		<TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="24" Margin="0" Text="{DynamicResource About:PageTitle}" />
-		<TextBlock Grid.Row="1" TextWrapping="Wrap" Margin="0,5" FontSize="16" Text="{DynamicResource About:List:Header}" >
+        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="24" Margin="0" Text="{DynamicResource About:PageTitle}" />
+        <TextBlock Grid.Row="1" TextWrapping="Wrap" Margin="0,5" FontSize="16" Text="{DynamicResource About:List:Header}" >
 
-		</TextBlock>
-		<TextBlock Grid.Row="2" Margin="15,5" FontSize="16">
+        </TextBlock>
+        <TextBlock Grid.Row="2" Margin="15,5" FontSize="16">
 			• <TextBlock Text="{DynamicResource About:List:Item1}" />
 		</TextBlock>
-		<TextBlock Grid.Row="3" Margin="15,5" FontSize="16">
+        <TextBlock Grid.Row="3" Margin="15,5" FontSize="16">
 			• <TextBlock Text="{DynamicResource About:List:Item2}" />
 		</TextBlock>
-		<TextBlock Grid.Row="4" Margin="15,5" FontSize="16">
+        <TextBlock Grid.Row="4" Margin="15,5" FontSize="16">
 			• <TextBlock Text="{DynamicResource About:List:Item3}" />
 		</TextBlock>
-		<TextBlock Grid.Row="5" Margin="15,5" FontSize="16">
+        <TextBlock Grid.Row="5" Margin="15,5" FontSize="16">
 			• <TextBlock Text="{DynamicResource About:List:Item4}" />
 		</TextBlock>
 
-		<TextBlock TextWrapping="Wrap" Grid.Row="6" Margin="30,5,5,5" FontSize="16">
+        <TextBlock TextWrapping="Wrap" Grid.Row="6" Margin="30,5,5,5" FontSize="16">
 			<StaticResource ResourceKey="About:SupportAssistant" />
-		</TextBlock>
+        </TextBlock>
 
-		<TextBlock Grid.Row="7" Margin="0,10,5,5" FontSize="20" Text="{DynamicResource About:SpecialThanks}" />
+        <TextBlock Grid.Row="7" Margin="0,10,5,5" FontSize="20" Text="{DynamicResource About:SpecialThanks}" />
 
-		<StackPanel Grid.Row="8" Orientation="Horizontal"  HorizontalAlignment="Center">
-			<StackPanel Margin="5"  Orientation="Vertical">
-				<TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Grid.Row="8" Orientation="Horizontal"  HorizontalAlignment="Center">
+            <StackPanel Margin="5"  Orientation="Vertical">
+                <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
 					<Hyperlink NavigateUri="https://www.vanzeben.ca/" RequestNavigate="Hyperlink_RequestNavigate">
 						vanZeben
 					</Hyperlink>
-				</TextBlock>
-				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating BeatMods</TextBlock>
-				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">The current Mod repository</TextBlock>
-				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Used by this Installer</TextBlock>
+                </TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating BeatMods</TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">The current Mod repository</TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Used by this Installer</TextBlock>
 
-			</StackPanel>
+            </StackPanel>
 
-			<StackPanel Margin="5"  Orientation="Vertical">
-				<TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Margin="5"  Orientation="Vertical">
+                <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
 					<Hyperlink NavigateUri="https://linkkle.com/umbranoxus" RequestNavigate="Hyperlink_RequestNavigate">
 						Umbranox
 					</Hyperlink>
-				</TextBlock>
-				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Inspiration</TextBlock>
-				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating the Mod Manager</TextBlock>
+                </TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Inspiration</TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating the Mod Manager</TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">
 					<Hyperlink NavigateUri="https://www.patreon.com/scoresaber" local:HyperlinkExtensions.IsExternal="True">
 						<TextBlock Text="{DynamicResource About:Donate}" />
@@ -78,24 +78,24 @@
                 </TextBlock>
             </StackPanel>
 
-			<StackPanel Margin="5"  Orientation="Vertical">
-				<TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Margin="5"  Orientation="Vertical">
+                <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
 					<Hyperlink NavigateUri="https://www.jackbaron.com/" local:HyperlinkExtensions.IsExternal="True">
 						lolPants
 					</Hyperlink>
-				</TextBlock>
-				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Inspiration</TextBlock>
-				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating ModSaber</TextBlock>
-				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">The first Mod repository</TextBlock>
-				<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">
+                </TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Inspiration</TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating ModSaber</TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">The first Mod repository</TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">
 					<Hyperlink NavigateUri="https://www.paypal.me/jackbarondev" RequestNavigate="Hyperlink_RequestNavigate">
 						<TextBlock Text="{DynamicResource About:Donate}" />
 					</Hyperlink>
 				</TextBlock>
 
-			</StackPanel>
+            </StackPanel>
 
-		</StackPanel>
+        </StackPanel>
         <StackPanel Grid.Row="9" Margin="5" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="PatButton" x:FieldModifier="public" Height="30" Width="80" Margin="0,0,5,0" Content="{DynamicResource About:HeadpatsButton}" Click="HeadpatsButton_Click"/>
             <Button x:Name="HugButton" x:FieldModifier="public" Height="30" Width="80" Margin="5,0,0,0" Content="{DynamicResource About:HugsButton}" Click="HugsButton_Click"/>

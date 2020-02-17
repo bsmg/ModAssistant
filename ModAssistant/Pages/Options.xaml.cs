@@ -6,10 +6,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Path = System.IO.Path;
-using System.Net;
-using System.Web.Script.Serialization;
-using System.Web;
-using System.ComponentModel;
 
 namespace ModAssistant.Pages
 {
