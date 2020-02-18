@@ -71,7 +71,6 @@ namespace ModAssistant
                 Themes.ApplyWindowsTheme();
                 return;
             }
-            MessageBox.Show("gothere");
             try
             {
                 Themes.ApplyTheme(savedTheme, false);
@@ -101,7 +100,7 @@ namespace ModAssistant
                 {
                     MainWindow.Instance.MainText = string.Format((string)Application.Current.FindResource("Themes:ThemeSet"), theme);
                 }
-                LoadWaifu(theme);
+                LoadWaifus(theme);
                 ReloadIcons();
             }
             else
@@ -199,7 +198,11 @@ namespace ModAssistant
             return dictionary;
         }
 
-        private static void LoadWaifu(string name)
+        /// <summary>
+        /// Loads the waifus from the Themes folder if they exist.
+        /// </summary>
+        /// <param name="name">Theme's name.</param>
+        private static void LoadWaifus(string name)
         {
             string location = Path.Combine(Environment.CurrentDirectory, "Themes");
             BitmapImage background = null;
@@ -214,7 +217,6 @@ namespace ModAssistant
             }
             MainWindow.Instance.BackgroundImage.ImageSource = background;
             MainWindow.Instance.SideImage.ImageSource = sidebar;
-
         }
 
         /// <summary>
