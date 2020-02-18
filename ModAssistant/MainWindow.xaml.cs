@@ -18,6 +18,7 @@ namespace ModAssistant
         public static MainWindow Instance;
         public static bool ModsOpened = false;
         public static string GameVersion;
+        public static string GameVersionOverride;
         public TaskCompletionSource<bool> VersionLoadStatus = new TaskCompletionSource<bool>();
 
         public string MainText
@@ -89,14 +90,26 @@ namespace ModAssistant
             {
                 var resp = await HttpClient.GetAsync(Utils.Constants.BeatModsAPIUrl + "version");
                 var body = await resp.Content.ReadAsStringAsync();
-
                 List<string> versions = JsonSerializer.Deserialize<string[]>(body).ToList();
+
+                resp = await HttpClient.GetAsync(Utils.Constants.BeatModsAlias);
+                body = await resp.Content.ReadAsStringAsync();
+                object jsonObject = JsonSerializer.DeserializeObject(body);
+
                 Dispatcher.Invoke(() =>
                 {
-                    GameVersion = GetGameVersion(versions);
+                    GameVersion = GetGameVersion(versions, jsonObject);
 
                     GameVersionsBox.ItemsSource = versions;
                     GameVersionsBox.SelectedValue = GameVersion;
+
+                    if (!string.IsNullOrEmpty(GameVersionOverride))
+                    {
+                        GameVersionsBox.Visibility = Visibility.Collapsed;
+                        GameVersionsBoxOverride.Visibility = Visibility.Visible;
+                        GameVersionsBoxOverride.Text = GameVersionOverride;
+                        GameVersionsBoxOverride.IsEnabled = false;
+                    }
 
                     if (!string.IsNullOrEmpty(GameVersion) && Properties.Settings.Default.Agreed)
                     {
@@ -118,12 +131,18 @@ namespace ModAssistant
             }
         }
 
-        private string GetGameVersion(List<string> versions)
+        private string GetGameVersion(List<string> versions, object aliases)
         {
             string version = Utils.GetVersion();
             if (!string.IsNullOrEmpty(version) && versions.Contains(version))
             {
                 return version;
+            }
+
+            string aliasOf = CheckAliases(versions, aliases, version);
+            if (!string.IsNullOrEmpty(aliasOf))
+            {
+                return aliasOf;
             }
 
             string versionsString = String.Join(",", versions.ToArray());
@@ -143,6 +162,24 @@ namespace ModAssistant
             if (!string.IsNullOrEmpty(Properties.Settings.Default.GameVersion) && versions.Contains(Properties.Settings.Default.GameVersion))
                 return Properties.Settings.Default.GameVersion;
             return versions[0];
+        }
+
+        private string CheckAliases(List<string> versions, object aliases, string detectedVersion)
+        {
+            Dictionary<string, object> Objects = (Dictionary<string, object>)aliases;
+            foreach (string version in versions)
+            {
+                object[] aliasArray = (object[])Objects[version];
+                foreach (object alias in aliasArray)
+                {
+                    if (alias.ToString() == detectedVersion)
+                    {
+                        GameVersionOverride = detectedVersion;
+                        return version;
+                    }
+                }
+            }
+            return string.Empty;
         }
 
         private async Task ShowModsPage()

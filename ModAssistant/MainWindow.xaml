@@ -72,8 +72,8 @@
                     <TextBlock FontSize="10">
                         <TextBlock Text="{DynamicResource MainWindow:GameVersionLabel}" />:
                     </TextBlock>
-                    <ComboBox Name="GameVersionsBox" Margin="0,5,5,0" SelectionChanged="GameVersionsBox_SelectionChanged">
-                    </ComboBox>
+                    <ComboBox Name="GameVersionsBox" Margin="0,5,5,0" SelectionChanged="GameVersionsBox_SelectionChanged" />
+                    <ComboBox Name="GameVersionsBoxOverride" Margin="0,5,5,0" Visibility="Collapsed" />
                 </StackPanel>
 
             </Grid>
