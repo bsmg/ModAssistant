@@ -25,7 +25,6 @@
                 <ResourceDictionary x:Name="ListView_Style" Source="Styles/ListView.xaml"/>
                 <ResourceDictionary x:Name="ListViewItem_Style" Source="Styles/ListViewItem.xaml"/>
                 <ResourceDictionary x:Name="CheckBox_Style" Source="Styles/CheckBox.xaml"/>
-                <ResourceDictionary x:Name="Rectangle_Style" Source="Styles/Rectangle.xaml"/>
                 <ResourceDictionary x:Name="ComboBoxItem_Style" Source="Styles/ComboBoxItem.xaml"/>
                 <ResourceDictionary x:Name="ComboBox_Style" Source="Styles/ComboBox.xaml"/>
                 <ResourceDictionary x:Name="ToggleButton_Style" Source="Styles/ToggleButton.xaml"/>

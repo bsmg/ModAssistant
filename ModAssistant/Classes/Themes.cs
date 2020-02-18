@@ -7,6 +7,7 @@ using System.Windows.Media;
 using ModAssistant.Pages;
 using System.Reflection;
 using Microsoft.Win32;
+using System.Windows.Media.Imaging;
 
 namespace ModAssistant
 {
@@ -65,11 +66,12 @@ namespace ModAssistant
         /// <param name="savedTheme">Theme name retrieved from the settings file.</param>
         public static void FirstLoad(string savedTheme)
         {
-            if (savedTheme == "")
+            if (string.IsNullOrEmpty(savedTheme))
             {
                 Themes.ApplyWindowsTheme();
                 return;
             }
+            MessageBox.Show("gothere");
             try
             {
                 Themes.ApplyTheme(savedTheme, false);
@@ -99,6 +101,7 @@ namespace ModAssistant
                 {
                     MainWindow.Instance.MainText = string.Format((string)Application.Current.FindResource("Themes:ThemeSet"), theme);
                 }
+                LoadWaifu(theme);
                 ReloadIcons();
             }
             else
@@ -194,6 +197,24 @@ namespace ModAssistant
                 return null;
             }
             return dictionary;
+        }
+
+        private static void LoadWaifu(string name)
+        {
+            string location = Path.Combine(Environment.CurrentDirectory, "Themes");
+            BitmapImage background = null;
+            BitmapImage sidebar = null;
+            if (File.Exists(Path.Combine(location, name + ".png")))
+            {
+                background = new BitmapImage(new Uri(Path.Combine(location, name + ".png")));
+            }
+            if (File.Exists(Path.Combine(location, name + ".side.png")))
+            {
+                sidebar = new BitmapImage(new Uri(Path.Combine(location, name + ".side.png")));
+            }
+            MainWindow.Instance.BackgroundImage.ImageSource = background;
+            MainWindow.Instance.SideImage.ImageSource = sidebar;
+
         }
 
         /// <summary>

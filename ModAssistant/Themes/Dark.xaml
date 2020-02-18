@@ -61,6 +61,7 @@
 
     <!-- Various important elements that need to be controlled independently -->
     <SolidColorBrush x:Key="ModAssistantBackground" Color="{DynamicResource ResourceKey=StandardSecondary}" />
+    <SolidColorBrush x:Key="FrameBackgroundColor" Color="#CC0F0F0F"/>
     <SolidColorBrush x:Key="BottomStatusBarBackground" Color="{DynamicResource ResourceKey=StandardPrimary}" />
     <SolidColorBrush x:Key="BottomStatusBarOutline" Color="{DynamicResource ResourceKey=StandardBorder}" />
     <SolidColorBrush x:Key="DirectoryBackground" Color="{DynamicResource ResourceKey=StandardPrimary}" />
@@ -71,5 +72,9 @@
     <SolidColorBrush x:Key="ModsIconColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
     <SolidColorBrush x:Key="AboutIconColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
     <SolidColorBrush x:Key="OptionsIconColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
+
+    <!--Background and Side image settings.-->
+    <Stretch x:Key="BackGroundImageStretch">UniformToFill</Stretch> <!-- Fill, None, Uniform, UniformToFill -->
+    <AlignmentY x:Key="SideImageYPosition">Bottom</AlignmentY> <!-- Bottom, Center, Top -->
 
 </ResourceDictionary>

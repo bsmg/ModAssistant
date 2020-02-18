@@ -9,7 +9,17 @@
         Title="{DynamicResource MainWindow:WindowTitle}" Width="1280" Height="720"
         UIElement.PreviewMouseDown="Window_PreviewMouseDown">
     <Grid>
-        <Rectangle/>
+        <Rectangle Fill="{DynamicResource ModAssistantBackground}"/>
+        <Rectangle>
+            <Rectangle.Fill>
+                <ImageBrush x:Name="BackgroundImage" Stretch="{DynamicResource BackgroundImageStretch}"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle>
+            <Rectangle.Fill>
+                <ImageBrush x:Name="SideImage" Stretch="None" AlignmentX="Left" AlignmentY="{DynamicResource SideImageYPosition}"/>
+            </Rectangle.Fill>
+        </Rectangle>
         <Grid Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -73,7 +83,7 @@
                 <TextBlock Name="VersionText" HorizontalAlignment="Center" />
             </StackPanel>
 
-            <Frame Grid.Column="1" Name="Main" NavigationUIVisibility="Hidden" />
+            <Frame Grid.Column="1" Name="Main" NavigationUIVisibility="Hidden" Background="{DynamicResource FrameBackgroundColor}" />
 
             <Grid Grid.Row="1" Grid.Column="1" >
                 <Grid.ColumnDefinitions>

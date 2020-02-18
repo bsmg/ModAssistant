@@ -3,11 +3,11 @@
 
     <!-- ModAssistant Light Pink Theme by Caeden117 -->
 
-    <!--Default text-->
+    <!-- Default text -->
     <SolidColorBrush x:Key="TextColor" Color="#101010" />
     <SolidColorBrush x:Key="TextHighlighted" Color="Black" />
 
-    <!--Buttons (Info/Mods/About/Options as well as More Info and Install/Update)-->
+    <!-- Buttons (Info/Mods/About/Options as well as More Info and Install/Update) -->
     <SolidColorBrush x:Key="ButtonBackground" Color="#FFE5A3EC" />
     <SolidColorBrush x:Key="ButtonOutline" Color="#FF640052" />
     <SolidColorBrush x:Key="ButtonHighlightedBackground" Color="#FFFF84EE" />
@@ -22,7 +22,7 @@
     <SolidColorBrush x:Key="PageButtonClickedBackground" Color="Magenta" />
     <SolidColorBrush x:Key="PageButtonDisabledBackground" Color="#FFD477C8" />
 
-    <!--Mod List-->
+    <!-- Mod List -->
     <SolidColorBrush x:Key="ModColumnBackground" Color="#FFFFC1F4"/>
     <SolidColorBrush x:Key="ModColumnBorderBrush" Color="Gray"/>
     <SolidColorBrush x:Key="ModColumnHeaderHighlighted" Color="#FFFF86FF"/>
@@ -30,7 +30,7 @@
     <SolidColorBrush x:Key="ModListItemHighlighted" Color="#FFF8B6FF"/>
     <SolidColorBrush x:Key="ModListItemSelected" Color="#FFFF88F4"/>
 
-    <!--Combo Box (Version select)-->
+    <!-- Combo Box (Version select) -->
     <SolidColorBrush x:Key="ComboBoxBackground" Color="#FFE09EE0"/>
     <SolidColorBrush x:Key="ComboBoxOutline" Color="#FF5D0048"/>
     <SolidColorBrush x:Key="ComboBoxHighlighted" Color="#FF814D83"/>
@@ -38,7 +38,7 @@
     <SolidColorBrush x:Key="ComboBoxClicked" Color="#FFFF63EA"/>
     <SolidColorBrush x:Key="ComboBoxArrow" Color="Black"/>
 
-    <!--Checkboxes (Mod List and Options)-->
+    <!-- Checkboxes (Mod List and Options) -->
     <SolidColorBrush x:Key="CheckboxDefaultBackground" Color="#FFAD55B6"/>
     <SolidColorBrush x:Key="CheckboxDefaultOutlineColor" Color="#FFD664D1"/>
     <SolidColorBrush x:Key="CheckboxDisabledBackground" Color="#FF8C4693"/>
@@ -49,19 +49,20 @@
     <SolidColorBrush x:Key="CheckboxTickColor" Color="White"/>
     <SolidColorBrush x:Key="CheckboxPressedBackground" Color="#FFFF80FF"/>
 
-    <!--Various important elements that need to be controlled independently-->
+    <!-- Various important elements that need to be controlled independently -->
     <SolidColorBrush x:Key="ModAssistantBackground" Color="#FFFAE5FF"/>
+    <SolidColorBrush x:Key="FrameBackgroundColor" Color="#CCFAE5FF"/>
     <SolidColorBrush x:Key="BottomStatusBarBackground" Color="#FFE288D6"/>
     <SolidColorBrush x:Key="DirectoryBackground" Color="#FFE288D6"/>
 
-    <!--Colors for the corresponding icons.-->
-    <!--Info Default: #0DCAC8-->
+    <!-- Colors for the corresponding icons. -->
     <SolidColorBrush x:Key="InfoIconColor" Color="White"/>
-    <!--Mods Default: #833BCE-->
     <SolidColorBrush x:Key="ModsIconColor" Color="White"/>
-    <!--About Default: #FF0000-->
     <SolidColorBrush x:Key="AboutIconColor" Color="White"/>
-    <!--Options Default: #4E3BCE-->
     <SolidColorBrush x:Key="OptionsIconColor" Color="White"/>
 
+    <!-- Background and Side image settings. -->
+    <Stretch x:Key="BackGroundImageStretch">UniformToFill</Stretch> <!-- Fill, None, Uniform, UniformToFill -->
+    <AlignmentY x:Key="SideImageYPosition">Bottom</AlignmentY> <!-- Bottom, Center, Top -->
+    
 </ResourceDictionary>
