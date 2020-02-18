@@ -132,9 +132,9 @@ namespace ModAssistant
                 Properties.Settings.Default.AllGameVersions = versionsString;
                 Properties.Settings.Default.Save();
 
-                string title = (string)Application.Current.Resources.FindName("MainWindow:GameUpdateDialog:Title");
-                string line1 = (string)Application.Current.Resources.FindName("MainWindow:GameUpdateDialog:Line1");
-                string line2 = (string)Application.Current.Resources.FindName("MainWindow:GameUpdateDialog:Line2");
+                string title = (string)Application.Current.FindResource("MainWindow:GameUpdateDialog:Title");
+                string line1 = (string)Application.Current.FindResource("MainWindow:GameUpdateDialog:Line1");
+                string line2 = (string)Application.Current.FindResource("MainWindow:GameUpdateDialog:Line2");
 
                 Utils.ShowMessageBoxAsync($"{line1}\n\n{line2}", title);
                 return versions[0];
