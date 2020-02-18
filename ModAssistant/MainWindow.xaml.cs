@@ -111,7 +111,7 @@ namespace ModAssistant
                 Dispatcher.Invoke(() =>
                 {
                     GameVersionsBox.IsEnabled = false;
-                    MessageBox.Show($"{Application.Current.Resources.FindName("MainWindow:GameVersionLoadFailed")}\n{e}");
+                    MessageBox.Show($"{Application.Current.FindResource("MainWindow:GameVersionLoadFailed")}\n{e}");
                 });
 
                 VersionLoadStatus.SetResult(false);
@@ -205,14 +205,14 @@ namespace ModAssistant
         {
             if ((Mods.ModListItem)Mods.Instance.ModsListView.SelectedItem == null)
             {
-                MessageBox.Show((string)Application.Current.Resources.FindName("MainWindow:NoModSelected"));
+                MessageBox.Show((string)Application.Current.FindResource("MainWindow:NoModSelected"));
                 return;
             }
             Mods.ModListItem mod = ((Mods.ModListItem)Mods.Instance.ModsListView.SelectedItem);
             string infoUrl = mod.ModInfo.link;
             if (string.IsNullOrEmpty(infoUrl))
             {
-                MessageBox.Show(string.Format((string)Application.Current.Resources.FindName("MainWindow:NoModInfoPage"), mod.ModName));
+                MessageBox.Show(string.Format((string)Application.Current.FindResource("MainWindow:NoModInfoPage"), mod.ModName));
             }
             else
             {
