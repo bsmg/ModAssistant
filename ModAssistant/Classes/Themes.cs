@@ -216,7 +216,7 @@ namespace ModAssistant
                 sidebar = new BitmapImage(new Uri(Path.Combine(location, name + ".side.png")));
             }
             MainWindow.Instance.BackgroundImage.ImageSource = background;
-            MainWindow.Instance.SideImage.ImageSource = sidebar;
+            MainWindow.Instance.SideImage.Source = sidebar;
         }
 
         /// <summary>
