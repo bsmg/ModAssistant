@@ -36,7 +36,7 @@
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Margin="{Binding PromotionMargin}">
-											<Hyperlink NavigateUri="{Binding PromotionLink}" RequestNavigate="Hyperlink_RequestNavigate">
+											<Hyperlink NavigateUri="{Binding PromotionLink, TargetNullValue=about:blank}" RequestNavigate="Hyperlink_RequestNavigate">
 												<TextBlock Text="{Binding PromotionText}" />
 											</Hyperlink>
 										</TextBlock>
