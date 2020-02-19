@@ -15,11 +15,7 @@
                 <ImageBrush x:Name="BackgroundImage" Stretch="{DynamicResource BackgroundImageStretch}"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle>
-            <Rectangle.Fill>
-                <ImageBrush x:Name="SideImage" Stretch="None" AlignmentX="Left" AlignmentY="{DynamicResource SideImageYPosition}"/>
-            </Rectangle.Fill>
-        </Rectangle>
+        <Image x:Name="SideImage" UseLayoutRounding="True" SnapsToDevicePixels="True" HorizontalAlignment="Left" VerticalAlignment="{DynamicResource SideImageYPosition}"  Width="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelWidth}" Height="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelHeight}" Stretch="Fill"/>
         <Grid Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>

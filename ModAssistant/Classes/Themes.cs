@@ -291,7 +291,7 @@ namespace ModAssistant
         {
             loadedWaifus.TryGetValue(theme, out Waifus waifus);
             MainWindow.Instance.BackgroundImage.ImageSource = waifus.Background;
-            MainWindow.Instance.SideImage.ImageSource = waifus.Sidebar;
+            MainWindow.Instance.SideImage.Source = waifus.Sidebar;
         }
 
         /// <summary>

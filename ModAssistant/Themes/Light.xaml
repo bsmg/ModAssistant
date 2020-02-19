@@ -74,6 +74,6 @@
 
     <!--Background and Side image settings.-->
     <Stretch x:Key="BackgroundImageStretch">UniformToFill</Stretch> <!-- Fill, None, Uniform, UniformToFill -->
-    <AlignmentY x:Key="SideImageYPosition">Bottom</AlignmentY> <!-- Bottom, Center, Top -->
+    <VerticalAlignment x:Key="SideImageYPosition">Bottom</VerticalAlignment> <!-- Bottom, Center, Top, Stretch -->
     
 </ResourceDictionary>
