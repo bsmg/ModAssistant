@@ -17,6 +17,7 @@ namespace ModAssistant
     {
         public static MainWindow Instance;
         public static bool ModsOpened = false;
+        public static bool ModsLoading = false;
         public static string GameVersion;
         public static string GameVersionOverride;
         public TaskCompletionSource<bool> VersionLoadStatus = new TaskCompletionSource<bool>();
@@ -199,12 +200,19 @@ namespace ModAssistant
             }
 
             Main.Content = Loading.Instance;
+
+            if (ModsLoading) return;
+            ModsLoading = true;
             await Mods.Instance.LoadMods();
+            ModsLoading = false;
 
             if (ModsOpened == false) ModsOpened = true;
             if (Mods.Instance.PendingChanges == true) Mods.Instance.PendingChanges = false;
 
-            OpenModsPage();
+            if (Main.Content == Loading.Instance)
+            {
+                OpenModsPage();
+            }
         }
 
         private void ModsButton_Click(object sender, RoutedEventArgs e)
