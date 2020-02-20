@@ -46,6 +46,36 @@ namespace ModAssistant.Pages
             }
         }
 
+        public void RefreshColumns()
+        {
+            if (MainWindow.Instance.Main.Content != Mods.Instance) return;
+            double viewWidth = ModsListView.ActualWidth;
+            double totalSize = 0;
+            GridViewColumn description = null;
+            GridView grid = ModsListView.View as GridView;
+            if (grid != null)
+            {
+                foreach (var column in grid.Columns)
+                {
+                    if (column.Header?.ToString() == "Description")
+                    {
+                        description = column;
+                    }
+                    else
+                    {
+                        totalSize += column.ActualWidth;
+                    }
+                    if (double.IsNaN(column.Width))
+                    {
+                        column.Width = column.ActualWidth;
+                        column.Width = double.NaN;
+                    }
+                }
+                double descriptionNewWidth = viewWidth - totalSize - 35;
+                description.Width = descriptionNewWidth > 200 ? descriptionNewWidth : 200;
+            }
+        }
+
         public async Task LoadMods()
         {
             var versionLoadSuccess = await MainWindow.Instance.VersionLoadStatus.Task;
@@ -630,6 +660,11 @@ namespace ModAssistant.Pages
         {
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             e.Handled = true;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshColumns();
         }
     }
 }

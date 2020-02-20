@@ -189,6 +189,7 @@ namespace ModAssistant
                 Main.Content = Mods.Instance;
                 Properties.Settings.Default.LastTab = "Mods";
                 Properties.Settings.Default.Save();
+                Mods.Instance.RefreshColumns();
             }
 
             if (ModsOpened == true && Mods.Instance.PendingChanges == false)
@@ -285,6 +286,14 @@ namespace ModAssistant
             About.Instance.PatButton.IsEnabled = true;
             About.Instance.HugUp.IsOpen = false;
             About.Instance.HugButton.IsEnabled = true;
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (Main.Content == Mods.Instance)
+            {
+                Mods.Instance.RefreshColumns();
+            }
         }
     }
 }

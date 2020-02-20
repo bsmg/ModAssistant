@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:ModAssistant"
       mc:Ignorable="d" 
       d:DesignHeight="629" d:DesignWidth="1182"
+      Loaded="Page_Loaded"
       Title="{DynamicResource Mods:Title}">
 
     <Grid>
@@ -31,7 +32,7 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="{DynamicResource Mods:Header:Latest}" DisplayMemberBinding="{Binding ModVersion}" />
-                        <GridViewColumn x:Name="DescriptionColumn" Header="{DynamicResource Mods:Header:Description}" Width="750" >
+                        <GridViewColumn x:Name="DescriptionColumn" Header="{DynamicResource Mods:Header:Description}">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
