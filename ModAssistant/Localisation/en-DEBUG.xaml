@@ -100,6 +100,7 @@
     <sys:String x:Key="Options:GameType:Oculus">Options:GameType:Oculus</sys:String>
     <sys:String x:Key="Options:Diagnostics">Options:Diagnostics</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Options:OpenLogsButton</sys:String>
+    <sys:String x:Key="Options:OpenAppDataButton">Options:OpenAppDataButton</sys:String>
     <sys:String x:Key="Options:UninstallBSIPAButton">Options:UninstallBSIPAButton</sys:String>
     <sys:String x:Key="Options:RemoveAllModsButton">Options:RemoveAllModsButton</sys:String>
     <sys:String x:Key="Options:ApplicationTheme">Options:ApplicationTheme</sys:String>

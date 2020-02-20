@@ -191,6 +191,14 @@ namespace ModAssistant.Pages
             LogURL = TeknikResponse.result.url;
         }
 
+        private void OpenAppDataButton_Click(object sender, RoutedEventArgs e)
+        {
+            string location = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                "AppData", "LocalLow", "Hyperbolic Magnetism");
+            System.Diagnostics.Process.Start(location);
+        }
+
         private async void YeetBSIPAButton_Click(object sender, RoutedEventArgs e)
         {
             if (Mods.Instance.AllModsList == null)
