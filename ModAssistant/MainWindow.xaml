@@ -16,6 +16,7 @@
                 <ImageBrush x:Name="BackgroundImage" Stretch="{DynamicResource BackgroundImageStretch}"/>
             </Rectangle.Fill>
         </Rectangle>
+        <MediaElement Visibility="Hidden" LoadedBehavior="Manual" Name="BackgroundVideo"/>
         <Image x:Name="SideImage" UseLayoutRounding="True" SnapsToDevicePixels="True" HorizontalAlignment="Left" VerticalAlignment="{DynamicResource SideImageYPosition}"  Width="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelWidth}" Height="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelHeight}" Stretch="Fill"/>
         <Grid Margin="10">
             <Grid.RowDefinitions>

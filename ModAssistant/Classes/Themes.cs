@@ -307,20 +307,24 @@ namespace ModAssistant
         private static void ApplyWaifus()
         {
             Waifus waifus = loadedThemes[LoadedTheme].Waifus;
-            ApplyImageToBrush(ref MainWindow.Instance.BackgroundImage, waifus?.Background);
-            ApplyImageToBrush(ref MainWindow.Instance.SideImage, waifus?.Background);
-        }
-
-        private static void ApplyImageToBrush(ref ImageBrush brush, BitmapImage image)
-        {
-            if (image is null)
+            if (waifus?.Background is null)
             {
-                brush.Opacity = 0;
+                MainWindow.Instance.BackgroundImage.Opacity = 0;
             }
             else
             {
-                brush.Opacity = 1;
-                brush.ImageSource = image;
+                MainWindow.Instance.BackgroundImage.Opacity = 1;
+                MainWindow.Instance.BackgroundImage.ImageSource = waifus.Background;
+            }
+
+            if (waifus?.Sidebar is null)
+            {
+                MainWindow.Instance.SideImage.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                MainWindow.Instance.SideImage.Visibility = Visibility.Visible;
+                MainWindow.Instance.SideImage.Source = waifus.Sidebar;
             }
         }
 
