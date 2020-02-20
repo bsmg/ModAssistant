@@ -15,6 +15,7 @@
                 <ImageBrush x:Name="BackgroundImage" Stretch="{DynamicResource BackgroundImageStretch}"/>
             </Rectangle.Fill>
         </Rectangle>
+        <MediaElement Visibility="Hidden" LoadedBehavior="Manual" Name="BackgroundVideo"/>
         <Rectangle>
             <Rectangle.Fill>
                 <ImageBrush x:Name="SideImage" Stretch="None" AlignmentX="Left" AlignmentY="{DynamicResource SideImageYPosition}"/>

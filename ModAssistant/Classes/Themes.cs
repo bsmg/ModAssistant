@@ -20,8 +20,7 @@ namespace ModAssistant
         public static string ThemeDirectory => $"{Environment.CurrentDirectory}/Themes"; //Self explanatory.
 
         //Local dictionary of ResourceDictionarys mapped by their names.
-        private static Dictionary<string, ResourceDictionary> loadedThemes = new Dictionary<string, ResourceDictionary>();
-        private static Dictionary<string, Waifus> loadedWaifus = new Dictionary<string, Waifus>();
+        private static Dictionary<string, Theme> loadedThemes = new Dictionary<string, Theme>();
         private static List<string> preInstalledThemes = new List<string> { "Light", "Dark", "Light Pink" }; //These themes will always be available to use.
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace ModAssistant
         public static void LoadThemes()
         {
             loadedThemes.Clear();
-            loadedWaifus.Clear();
             if (Directory.Exists(ThemeDirectory)) //Load themes from Themes subfolder if it exists.
             {
                 foreach (string file in Directory.EnumerateFiles(ThemeDirectory))
@@ -44,7 +42,8 @@ namespace ModAssistant
                     //user-made ones so that one more user-made Light/Dark theme can be added.
                     if (info.Extension.ToLower().Equals(".xaml") && !loadedThemes.ContainsKey(name))
                     {
-                        ResourceDictionary theme = LoadTheme(name);
+                        Theme theme = LoadTheme(name, false);
+                        theme.Waifus = LoadWaifus(name);
                         if (theme != null)
                         {
                             loadedThemes.Add(name, theme);
@@ -58,7 +57,11 @@ namespace ModAssistant
                     //Look for zip files with ".mat" extension.
                     if (info.Extension.ToLower().Equals(".mat") && !loadedThemes.ContainsKey(name))
                     {
-                        LoadZipTheme(ThemeDirectory, name, ".mat");
+                        Theme theme = LoadZipTheme(ThemeDirectory, name, ".mat");
+                        if (theme != null)
+                        {
+                            loadedThemes.Add(name, theme);
+                        }
                     }
                 }
             }
@@ -66,7 +69,7 @@ namespace ModAssistant
             {
                 if (!loadedThemes.ContainsKey(localTheme))
                 {
-                    ResourceDictionary theme = LoadTheme(localTheme, true);
+                    Theme theme = LoadTheme(localTheme, true);
                     loadedThemes.Add(localTheme, theme);
                 }
             }
@@ -106,18 +109,31 @@ namespace ModAssistant
         /// <param name="sendMessage">Send message to MainText (default: true).</param>
         public static void ApplyTheme(string theme, bool sendMessage = true)
         {
-            if (loadedThemes.TryGetValue(theme, out ResourceDictionary newTheme))
+            if (loadedThemes.TryGetValue(theme, out Theme newTheme))
             {
+                MainWindow.Instance.BackgroundVideo.Pause();
+                MainWindow.Instance.BackgroundVideo.Visibility = Visibility.Hidden;
                 Application.Current.Resources.MergedDictionaries.RemoveAt(2); //We might want to change this to a static integer or search by name.
                 LoadedTheme = theme;
-                Application.Current.Resources.MergedDictionaries.Insert(2, newTheme); //Insert our new theme into the same spot as last time.
+                Application.Current.Resources.MergedDictionaries.Insert(2, newTheme.ThemeDictionary); //Insert our new theme into the same spot as last time.
                 Properties.Settings.Default.SelectedTheme = theme;
                 Properties.Settings.Default.Save();
                 if (sendMessage)
                 {
                     MainWindow.Instance.MainText = string.Format((string)Application.Current.FindResource("Themes:ThemeSet"), theme);
                 }
-                LoadWaifus(theme);
+                ApplyWaifus();
+                if (File.Exists(newTheme.VideoLocation))
+                {
+                    Uri videoUri = new Uri(newTheme.VideoLocation, UriKind.Absolute);
+                    MainWindow.Instance.BackgroundVideo.Visibility = Visibility.Visible;
+                    if (!sendMessage || MainWindow.Instance.BackgroundVideo.Source?.AbsoluteUri != videoUri.AbsoluteUri)
+                    {
+                        MainWindow.Instance.BackgroundVideo.Stop();
+                        MainWindow.Instance.BackgroundVideo.Source = videoUri;
+                    }
+                    MainWindow.Instance.BackgroundVideo.Play();
+                }
                 ReloadIcons();
             }
             else
@@ -190,9 +206,9 @@ namespace ModAssistant
         /// <param name="name">ResourceDictionary file name.</param>
         /// <param name="localUri">Specifies whether or not to search locally or in the Themes subfolder.</param>
         /// <returns></returns>
-        private static ResourceDictionary LoadTheme(string name, bool localUri = false)
+        private static Theme LoadTheme(string name, bool localUri = false)
         {
-            string location = $"{Environment.CurrentDirectory}/Themes/{name}.xaml";
+            string location = $"{ThemeDirectory}/{name}.xaml";
             if (!File.Exists(location) && !localUri) //Return null if we're looking for an item in the Themes subfolder that doesn't exist.
             {
                 return null;
@@ -212,7 +228,12 @@ namespace ModAssistant
                 MessageBox.Show($"Could not load {name}.\n\n{ex.Message}\n\nIgnoring...");
                 return null;
             }
-            return dictionary;
+            Theme theme = new Theme(name, dictionary);
+            if (File.Exists($"{ThemeDirectory}/{name}.mp4"))
+            {
+                theme.VideoLocation = $"{ThemeDirectory}/{name}.mp4";
+            }
+            return theme;
         }
 
         /// <summary>
@@ -221,14 +242,10 @@ namespace ModAssistant
         /// <param name="directory">Theme directory</param>
         /// <param name="name">Theme name</param>
         /// <param name="extension">Theme extension</param>
-        private static void LoadZipTheme(string directory, string name, string extension)
+        private static Theme LoadZipTheme(string directory, string name, string extension)
         {
-            if (!loadedWaifus.TryGetValue(name, out Waifus waifus))
-            {
-                waifus = new Waifus();
-                loadedWaifus.Add(name, waifus);
-            }
-
+            Waifus waifus = new Waifus();
+            ResourceDictionary dictionary = null;
             using (FileStream stream = new FileStream(Path.Combine(directory, name + extension), FileMode.Open))
             using (ZipArchive archive = new ZipArchive(stream))
             {
@@ -249,8 +266,7 @@ namespace ModAssistant
                         {
                             try
                             {
-                                ResourceDictionary dictionary = (ResourceDictionary)XamlReader.Load(file.Open());
-                                loadedThemes.Add(name, dictionary);
+                                dictionary = (ResourceDictionary)XamlReader.Load(file.Open());
                             }
                             catch (Exception ex)
                             {
@@ -260,7 +276,9 @@ namespace ModAssistant
                     }
                 }
             }
-            loadedWaifus[name] = waifus;
+            Theme theme = new Theme(name, dictionary);
+            theme.Waifus = waifus;
+            return theme;
         }
 
         /// <summary>
@@ -284,41 +302,44 @@ namespace ModAssistant
         }
 
         /// <summary>
-        /// Applies waifus from Dictionary.
+        /// Applies waifus from currently loaded Theme.
         /// </summary>
-        /// <param name="theme"></param>
-        private static void ApplyWaifus(string theme)
+        private static void ApplyWaifus()
         {
-            loadedWaifus.TryGetValue(theme, out Waifus waifus);
-            MainWindow.Instance.BackgroundImage.ImageSource = waifus.Background;
-            MainWindow.Instance.SideImage.ImageSource = waifus.Sidebar;
+            Waifus waifus = loadedThemes[LoadedTheme].Waifus;
+            ApplyImageToBrush(ref MainWindow.Instance.BackgroundImage, waifus?.Background);
+            ApplyImageToBrush(ref MainWindow.Instance.SideImage, waifus?.Background);
+        }
+
+        private static void ApplyImageToBrush(ref ImageBrush brush, BitmapImage image)
+        {
+            if (image is null)
+            {
+                brush.Opacity = 0;
+            }
+            else
+            {
+                brush.Opacity = 1;
+                brush.ImageSource = image;
+            }
         }
 
         /// <summary>
         /// Loads the waifus from the Themes folder or theme files if they exist.
         /// </summary>
         /// <param name="name">Theme's name.</param>
-        private static void LoadWaifus(string name)
+        private static Waifus LoadWaifus(string name)
         {
-            string location = Path.Combine(Environment.CurrentDirectory, "Themes");
-            if (!loadedWaifus.TryGetValue(name, out Waifus waifus))
+            Waifus waifus = new Waifus();
+            if (File.Exists($"{ThemeDirectory}\\{name}.png"))
             {
-                waifus = new Waifus();
-                loadedWaifus.Add(name, waifus);
+                waifus.Background = new BitmapImage(new Uri(Path.Combine($"{ThemeDirectory}\\{name}.png")));
             }
-
-            if (File.Exists(Path.Combine(location, name + ".png")))
+            if (File.Exists($"{ThemeDirectory}\\{name}.png"))
             {
-                waifus.Background = new BitmapImage(new Uri(Path.Combine(location, name + ".png")));
+                waifus.Sidebar = new BitmapImage(new Uri(Path.Combine($"{ThemeDirectory}\\{name}.side.png")));
             }
-
-            if (File.Exists(Path.Combine(location, name + ".side.png")))
-            {
-                waifus.Sidebar = new BitmapImage(new Uri(Path.Combine(location, name + ".side.png")));
-            }
-
-            loadedWaifus[name] = waifus;
-            ApplyWaifus(name);
+            return waifus;
         }
 
         /// <summary>
@@ -342,7 +363,7 @@ namespace ModAssistant
         /// <param name="DrawingGroupName">DrawingGroup name for the image.</param>
         private static void ChangeColor(ResourceDictionary icons, string ResourceColorName, string DrawingGroupName)
         {
-            Application.Current.Resources[ResourceColorName] = loadedThemes[LoadedTheme][ResourceColorName];
+            Application.Current.Resources[ResourceColorName] = loadedThemes[LoadedTheme].ThemeDictionary[ResourceColorName];
             ((GeometryDrawing)((DrawingGroup)icons[DrawingGroupName]).Children[0]).Brush = (Brush)Application.Current.Resources[ResourceColorName];
         }
 
@@ -350,6 +371,20 @@ namespace ModAssistant
         {
             public BitmapImage Background = null;
             public BitmapImage Sidebar = null;
+        }
+
+        private class Theme
+        {
+            public string Name;
+            public ResourceDictionary ThemeDictionary;
+            public Waifus Waifus = null;
+            public string VideoLocation = null;
+
+            public Theme(string name, ResourceDictionary dictionary)
+            {
+                Name = name;
+                ThemeDictionary = dictionary;
+            }
         }
     }
 }
