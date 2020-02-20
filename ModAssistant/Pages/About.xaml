@@ -51,6 +51,7 @@
         <TextBlock Grid.Row="7" Margin="0,10,5,5" FontSize="20" Text="{DynamicResource About:SpecialThanks}" />
 
         <StackPanel Grid.Row="8" Orientation="Horizontal"  HorizontalAlignment="Center">
+
             <StackPanel Margin="5"  Orientation="Vertical">
                 <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
 					<Hyperlink NavigateUri="https://www.vanzeben.ca/" RequestNavigate="Hyperlink_RequestNavigate">
@@ -60,7 +61,6 @@
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating BeatMods</TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">The current Mod repository</TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Used by this Installer</TextBlock>
-
             </StackPanel>
 
             <StackPanel Margin="5"  Orientation="Vertical">
@@ -92,7 +92,20 @@
 						<TextBlock Text="{DynamicResource About:Donate}" />
 					</Hyperlink>
 				</TextBlock>
-
+            </StackPanel>
+            
+            <StackPanel Margin="5"  Orientation="Vertical">
+                <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
+					<Hyperlink NavigateUri="https://www.github.com/Caeden117" local:HyperlinkExtensions.IsExternal="True">
+						Caeden117
+					</Hyperlink>
+                </TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Theme Support</TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">
+					<Hyperlink NavigateUri="https://ko-fi.com/Caeden117" RequestNavigate="Hyperlink_RequestNavigate">
+						<TextBlock Text="{DynamicResource About:Donate}" />
+					</Hyperlink>
+				</TextBlock>
             </StackPanel>
 
         </StackPanel>
