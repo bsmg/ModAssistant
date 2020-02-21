@@ -30,7 +30,9 @@ namespace ModAssistant
         public static void LoadThemes()
         {
             loadedThemes.Clear();
-            foreach (string localTheme in preInstalledThemes) //Load local themes (Light and Dark). We should always load these first.
+            //Begin by loading local themes. We should always load these first.
+            //I am doing loading here to prevent the LoadTheme function from becoming too crazy.
+            foreach (string localTheme in preInstalledThemes)
             {
                 string location = $"Themes/{localTheme}.xaml";
                 Uri local = new Uri(location, UriKind.Relative);
@@ -41,18 +43,20 @@ namespace ModAssistant
             }
             if (Directory.Exists(ThemeDirectory)) //Load themes from Themes subfolder if it exists.
             {
+                //We then load each zipped theme.
                 foreach (string file in Directory.EnumerateFiles(ThemeDirectory))
                 {
                     FileInfo info = new FileInfo(file);
                     string name = Path.GetFileNameWithoutExtension(info.Name);
                     //Look for zip files with ".mat" extension.
-                    if (info.Extension.ToLower().Equals(".mat") && !loadedThemes.ContainsKey(name))
+                    if (info.Extension.ToLower().Equals(".mat"))
                     {
                         Theme theme = LoadZipTheme(ThemeDirectory, name, ".mat");
                         if (theme is null) continue;
                         AddOrModifyTheme(name, theme);
                     }
                 }
+                //Finally load any loose theme files in subfolders.
                 foreach (string directory in Directory.EnumerateDirectories(ThemeDirectory))
                 {
                     string name = directory.Split('\\').Last();
@@ -99,6 +103,7 @@ namespace ModAssistant
         {
             if (loadedThemes.TryGetValue(theme, out Theme newTheme))
             {
+                //First, pause our video and hide it.
                 MainWindow.Instance.BackgroundVideo.Pause();
                 MainWindow.Instance.BackgroundVideo.Visibility = Visibility.Hidden;
                 Application.Current.Resources.MergedDictionaries.RemoveAt(2); //We might want to change this to a static integer or search by name.
@@ -111,10 +116,11 @@ namespace ModAssistant
                     MainWindow.Instance.MainText = string.Format((string)Application.Current.FindResource("Themes:ThemeSet"), theme);
                 }
                 ApplyWaifus();
-                if (File.Exists(newTheme.VideoLocation))
+                if (File.Exists(newTheme.VideoLocation)) //Load our video if it exists.
                 {
                     Uri videoUri = new Uri(newTheme.VideoLocation, UriKind.Absolute);
                     MainWindow.Instance.BackgroundVideo.Visibility = Visibility.Visible;
+                    //Load the source video if it's not the same as what's playing, or if the theme is loading for the first time.
                     if (!sendMessage || MainWindow.Instance.BackgroundVideo.Source?.AbsoluteUri != videoUri.AbsoluteUri)
                     {
                         MainWindow.Instance.BackgroundVideo.Stop();
@@ -131,7 +137,7 @@ namespace ModAssistant
         }
 
         /// <summary>
-        /// Writes a local theme to disk. You cannot write a theme loaded from the Themes subfolder to disk.
+        /// Writes an Embedded Resource theme to disk. You cannot write an outside theme to disk.
         /// </summary>
         /// <param name="themeName">Name of local theme.</param>
         public static void WriteThemeToDisk(string themeName)
