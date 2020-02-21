@@ -156,7 +156,7 @@ namespace ModAssistant
                  * Using XAMLWriter would compress it into an unorganized mess.
                  */
                 using (Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream($"ModAssistant.Themes.{themeName}.xaml"))
-                using (FileStream writer = new FileStream($@"{ThemeDirectory}\\{themeName}.xaml", FileMode.Create))
+                using (FileStream writer = new FileStream($@"{ThemeDirectory}\\{themeName}\\{themeName}.xaml", FileMode.Create))
                 {
                     byte[] buffer = new byte[s.Length];
                     int read = s.Read(buffer, 0, (int)s.Length);
