@@ -127,7 +127,7 @@ namespace ModAssistant
                     if (!sendMessage || MainWindow.Instance.BackgroundVideo.Source?.AbsoluteUri != videoUri.AbsoluteUri)
                     {
                         MainWindow.Instance.BackgroundVideo.Stop();
-                        MainWindow.Instance.BackgroundVideo.Source = videoUri;
+                        MainWindow.Instance.BackgroundVideoSource.Source = videoUri;
                     }
                     MainWindow.Instance.BackgroundVideo.Play();
                 }
