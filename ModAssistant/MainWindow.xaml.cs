@@ -303,5 +303,11 @@ namespace ModAssistant
                 Mods.Instance.RefreshColumns();
             }
         }
+
+        private void BackgroundVideo_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            BackgroundVideo.Position = TimeSpan.Zero;
+            BackgroundVideo.Play();
+        }
     }
 }

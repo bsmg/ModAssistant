@@ -16,19 +16,7 @@
                 <ImageBrush x:Name="BackgroundImage" Stretch="{DynamicResource BackgroundImageStretch}"/>
             </Rectangle.Fill>
         </Rectangle>
-        <MediaElement Visibility="Hidden" LoadedBehavior="Manual" Name="BackgroundVideo">
-            <MediaElement.Triggers>
-                <EventTrigger RoutedEvent="MediaElement.Loaded">
-                    <EventTrigger.Actions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <MediaTimeline Name="BackgroundVideoSource" Storyboard.TargetName="BackgroundVideo" RepeatBehavior="Forever"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger.Actions>
-                </EventTrigger>
-            </MediaElement.Triggers>
-        </MediaElement>
+        <MediaElement Visibility="Hidden" LoadedBehavior="Manual" Name="BackgroundVideo" MediaEnded="BackgroundVideo_MediaEnded"/>
         <Image x:Name="SideImage" UseLayoutRounding="True" SnapsToDevicePixels="True" HorizontalAlignment="Left" VerticalAlignment="{DynamicResource SideImageYPosition}"  Width="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelWidth}" Height="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelHeight}" Stretch="Fill"/>
         <Grid Margin="10">
             <Grid.RowDefinitions>
