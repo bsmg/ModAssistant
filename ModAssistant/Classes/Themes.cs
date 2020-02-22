@@ -104,11 +104,14 @@ namespace ModAssistant
             if (loadedThemes.TryGetValue(theme, out Theme newTheme))
             {
                 //First, pause our video and hide it.
+                LoadedTheme = theme;
                 MainWindow.Instance.BackgroundVideo.Pause();
                 MainWindow.Instance.BackgroundVideo.Visibility = Visibility.Hidden;
-                Application.Current.Resources.MergedDictionaries.RemoveAt(2); //We might want to change this to a static integer or search by name.
-                LoadedTheme = theme;
-                Application.Current.Resources.MergedDictionaries.Insert(2, newTheme.ThemeDictionary); //Insert our new theme into the same spot as last time.
+                if (newTheme.ThemeDictionary != null)
+                {
+                    Application.Current.Resources.MergedDictionaries.RemoveAt(2); //We might want to change this to a static integer or search by name.
+                    Application.Current.Resources.MergedDictionaries.Insert(2, newTheme.ThemeDictionary); //Insert our new theme into the same spot as last time.
+                }
                 Properties.Settings.Default.SelectedTheme = theme;
                 Properties.Settings.Default.Save();
                 if (sendMessage)
