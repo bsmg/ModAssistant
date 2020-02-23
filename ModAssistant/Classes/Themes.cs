@@ -232,16 +232,21 @@ namespace ModAssistant
             foreach (string file in Directory.EnumerateFiles(directory).OrderBy(x => x))
             {
                 FileInfo info = new FileInfo(file);
-                if (info.Name.EndsWith(".png", StringComparison.OrdinalIgnoreCase) &&
-                    !info.Name.EndsWith(".side.png", StringComparison.OrdinalIgnoreCase))
+                bool isPng = info.Name.EndsWith(".png", StringComparison.OrdinalIgnoreCase);
+                bool isSidePng = info.Name.EndsWith(".side.png", StringComparison.OrdinalIgnoreCase);
+                bool isXaml = info.Name.EndsWith(".xaml", StringComparison.OrdinalIgnoreCase);
+
+                if (isPng && !isSidePng)
                 {
                     theme.Waifus.Background = new BitmapImage(new Uri(info.FullName));
                 }
-                if (info.Name.EndsWith(".side.png", StringComparison.OrdinalIgnoreCase))
+
+                if (isSidePng)
                 {
                     theme.Waifus.Sidebar = new BitmapImage(new Uri(info.FullName));
                 }
-                if (info.Name.EndsWith(".xaml", StringComparison.OrdinalIgnoreCase))
+
+                if (isXaml)
                 {
                     Uri resourceSource = new Uri(info.FullName);
                     ResourceDictionary dictionary = new ResourceDictionary();
@@ -303,12 +308,16 @@ namespace ModAssistant
             {
                 foreach (ZipArchiveEntry file in archive.Entries)
                 {
-                    if (file.Name.EndsWith(".png", StringComparison.OrdinalIgnoreCase) &&
-                        !file.Name.EndsWith(".side.png", StringComparison.OrdinalIgnoreCase))
+                    bool isPng = file.Name.EndsWith(".png", StringComparison.OrdinalIgnoreCase);
+                    bool isSidePng = file.Name.EndsWith(".side.png", StringComparison.OrdinalIgnoreCase);
+                    bool isXaml = file.Name.EndsWith(".xaml", StringComparison.OrdinalIgnoreCase);
+
+                    if (isPng && !isSidePng)
                     {
                         waifus.Background = GetImageFromStream(Utils.StreamToArray(file.Open()));
                     }
-                    if (file.Name.EndsWith(".side.png", StringComparison.OrdinalIgnoreCase))
+
+                    if (isSidePng)
                     {
                         waifus.Sidebar = GetImageFromStream(Utils.StreamToArray(file.Open()));
                     }
@@ -338,22 +347,21 @@ namespace ModAssistant
                             }
                         }
                     }
-                    if (file.Name.EndsWith(".xaml", StringComparison.OrdinalIgnoreCase))
+
+                    if (isXaml && loadedThemes.ContainsKey(name) == false)
                     {
-                        if (!loadedThemes.ContainsKey(name))
+                        try
                         {
-                            try
-                            {
-                                dictionary = (ResourceDictionary)XamlReader.Load(file.Open());
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show($"Could not load {name}.\n\n{ex.Message}\n\nIgnoring...");
-                            }
+                            dictionary = (ResourceDictionary)XamlReader.Load(file.Open());
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Could not load {name}.\n\n{ex.Message}\n\nIgnoring...");
                         }
                     }
                 }
             }
+
             Theme theme = new Theme(name, dictionary);
             theme.Waifus = waifus;
             return theme;
