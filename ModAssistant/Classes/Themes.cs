@@ -23,7 +23,7 @@ namespace ModAssistant
         private static Dictionary<string, Theme> loadedThemes = new Dictionary<string, Theme>();
         private static List<string> preInstalledThemes = new List<string> { "Light", "Dark", "Light Pink" }; //These themes will always be available to use.
 
-        private static readonly int LOADEDTHEME_INDEX = 3;
+        private static readonly int LOADEDTHEME_INDEX = 4;
 
         /// <summary>
         /// Load all themes from local Themes subfolder and from embedded resources.

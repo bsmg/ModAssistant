@@ -13,8 +13,12 @@
 
                 <!-- Load default sidebar theme, in case LoadedTheme doesn't have Sidebar properties applied. -->
                 <ResourceDictionary x:Name="DefaultSidebarTheme" Source="Themes/Default_Sidebar.xaml"/>
-                
-                <!-- Load default theme. Currently it's Dark, not sure if you want to change it to Light. -->
+
+                <!-- Load default theme, in case the LoadedTheme does not include any visual elements for some controls.
+                     If someone tried to load a completely empty theme, it will "fall back" to Light theme.-->
+                <ResourceDictionary x:Name="DefaultTheme" Source="Themes/Light.xaml"/>
+
+                <!-- Load theme to be modified via the Theme engine. -->
                 <ResourceDictionary x:Name="LoadedTheme" Source="Themes/Dark.xaml"/>
 
                 <!-- Load SVG icons, courtesy of lolPants. -->
