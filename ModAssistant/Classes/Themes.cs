@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -48,8 +48,10 @@ namespace ModAssistant
             {
                 string location = $"Themes/{localTheme}.xaml";
                 Uri local = new Uri(location, UriKind.Relative);
+
                 ResourceDictionary localDictionary = new ResourceDictionary();
                 localDictionary.Source = local;
+
                 Theme theme = new Theme(localTheme, localDictionary);
                 loadedThemes.Add(localTheme, theme);
             }
@@ -66,6 +68,7 @@ namespace ModAssistant
                     {
                         Theme theme = LoadZipTheme(ThemeDirectory, name, ".mat");
                         if (theme is null) continue;
+
                         AddOrModifyTheme(name, theme);
                     }
                 }
@@ -75,6 +78,7 @@ namespace ModAssistant
                 {
                     string name = directory.Split('\\').Last();
                     Theme theme = LoadTheme(directory, name);
+
                     if (theme is null) continue;
                     AddOrModifyTheme(name, theme);
                 }
@@ -99,6 +103,7 @@ namespace ModAssistant
                 Themes.ApplyWindowsTheme();
                 return;
             }
+
             try
             {
                 Themes.ApplyTheme(savedTheme, false);
@@ -122,18 +127,22 @@ namespace ModAssistant
                 LoadedTheme = theme;
                 MainWindow.Instance.BackgroundVideo.Pause();
                 MainWindow.Instance.BackgroundVideo.Visibility = Visibility.Hidden;
+
                 if (newTheme.ThemeDictionary != null)
                 {
                     // TODO: Search by name
                     Application.Current.Resources.MergedDictionaries.RemoveAt(LOADED_THEME_INDEX);
                     Application.Current.Resources.MergedDictionaries.Insert(LOADED_THEME_INDEX, newTheme.ThemeDictionary);
                 }
+
                 Properties.Settings.Default.SelectedTheme = theme;
                 Properties.Settings.Default.Save();
+
                 if (sendMessage)
                 {
                     MainWindow.Instance.MainText = string.Format((string)Application.Current.FindResource("Themes:ThemeSet"), theme);
                 }
+
                 ApplyWaifus();
 
                 if (File.Exists(newTheme.VideoLocation))
@@ -147,8 +156,10 @@ namespace ModAssistant
                         MainWindow.Instance.BackgroundVideo.Stop();
                         MainWindow.Instance.BackgroundVideo.Source = videoUri;
                     }
+
                     MainWindow.Instance.BackgroundVideo.Play();
                 }
+
                 ReloadIcons();
             }
             else
@@ -163,16 +174,10 @@ namespace ModAssistant
         /// <param name="themeName">Name of local theme.</param>
         public static void WriteThemeToDisk(string themeName)
         {
-            if (!Directory.Exists(ThemeDirectory))
-            {
-                Directory.CreateDirectory(ThemeDirectory);
-            }
-            if (!Directory.Exists($"{ThemeDirectory}\\{themeName}"))
-            {
-                Directory.CreateDirectory($"{ThemeDirectory}\\{themeName}");
-            }
+            Directory.CreateDirectory(ThemeDirectory);
+            Directory.CreateDirectory($"{ThemeDirectory}\\{themeName}");
 
-            if (!File.Exists($@"{ThemeDirectory}\\{themeName}.xaml"))
+            if (File.Exists($@"{ThemeDirectory}\\{themeName}.xaml") == false)
             {
                 /*
                  * Any theme that you want to write must be set as an Embedded Resource instead of the default Page.
@@ -215,6 +220,7 @@ namespace ModAssistant
                         return;
                     }
                 }
+
                 ApplyTheme("Light", false);
             }
         }
@@ -229,6 +235,7 @@ namespace ModAssistant
         {
             Theme theme = new Theme(name, null);
             theme.Waifus = new Waifus();
+
             foreach (string file in Directory.EnumerateFiles(directory).OrderBy(x => x))
             {
                 FileInfo info = new FileInfo(file);
@@ -253,6 +260,7 @@ namespace ModAssistant
                     dictionary.Source = resourceSource;
                     theme.ThemeDictionary = dictionary;
                 }
+
                 if (supportedVideoExtensions.Contains(info.Extension))
                 {
                     if (info.Name != $"_{name}{info.Extension}" || theme.VideoLocation is null)
@@ -261,6 +269,7 @@ namespace ModAssistant
                     }
                 }
             }
+
             return theme;
         }
 
@@ -277,20 +286,26 @@ namespace ModAssistant
                 {
                     loadedThemes[name].ThemeDictionary = theme.ThemeDictionary;
                 }
+
                 if (theme.Waifus?.Background != null)
                 {
                     loadedThemes[name].Waifus.Background = theme.Waifus.Background;
                 }
+
                 if (theme.Waifus?.Sidebar != null)
                 {
                     loadedThemes[name].Waifus.Sidebar = theme.Waifus.Sidebar;
                 }
+
                 if (!string.IsNullOrEmpty(theme.VideoLocation))
                 {
                     loadedThemes[name].VideoLocation = theme.VideoLocation;
                 }
             }
-            else loadedThemes.Add(name, theme);
+            else
+            {
+                loadedThemes.Add(name, theme);
+            }
         }
 
         /// <summary>
@@ -303,6 +318,7 @@ namespace ModAssistant
         {
             Waifus waifus = new Waifus();
             ResourceDictionary dictionary = null;
+
             using (FileStream stream = new FileStream(Path.Combine(directory, name + extension), FileMode.Open))
             using (ZipArchive archive = new ZipArchive(stream))
             {
@@ -321,15 +337,14 @@ namespace ModAssistant
                     {
                         waifus.Sidebar = GetImageFromStream(Utils.StreamToArray(file.Open()));
                     }
+
                     string videoExtension = $".{file.Name.Split('.').Last()}";
                     if (supportedVideoExtensions.Contains(videoExtension))
                     {
                         string videoName = $"{ThemeDirectory}\\{name}\\_{name}{videoExtension}";
-                        if (!Directory.Exists($"{ThemeDirectory}\\{name}"))
-                        {
-                            Directory.CreateDirectory($"{ThemeDirectory}\\{name}");
-                        }
-                        if (!File.Exists(videoName))
+                        Directory.CreateDirectory($"{ThemeDirectory}\\{name}");
+
+                        if (File.Exists(videoName) == false)
                         {
                             file.ExtractToFile(videoName, false);
                         }
@@ -364,6 +379,7 @@ namespace ModAssistant
 
             Theme theme = new Theme(name, dictionary);
             theme.Waifus = waifus;
+
             return theme;
         }
 
@@ -381,8 +397,8 @@ namespace ModAssistant
                 image.CacheOption = BitmapCacheOption.OnLoad;
                 image.StreamSource = mStream;
                 image.EndInit();
-                if (image.CanFreeze)
-                    image.Freeze();
+                if (image.CanFreeze) image.Freeze();
+
                 return image;
             }
         }
@@ -393,6 +409,7 @@ namespace ModAssistant
         private static void ApplyWaifus()
         {
             Waifus waifus = loadedThemes[LoadedTheme].Waifus;
+
             if (waifus?.Background is null)
             {
                 MainWindow.Instance.BackgroundImage.Opacity = 0;
