@@ -255,10 +255,17 @@ namespace ModAssistant
 
                 if (isXaml)
                 {
-                    Uri resourceSource = new Uri(info.FullName);
-                    ResourceDictionary dictionary = new ResourceDictionary();
-                    dictionary.Source = resourceSource;
-                    theme.ThemeDictionary = dictionary;
+                    try
+                    {
+                        Uri resourceSource = new Uri(info.FullName);
+                        ResourceDictionary dictionary = new ResourceDictionary();
+                        dictionary.Source = resourceSource;
+                        theme.ThemeDictionary = dictionary;
+                    }catch(Exception ex)
+                    {
+                        string message = string.Format((string)Application.Current.FindResource("Themes:FailedToLoadXaml"), name, ex.Message);
+                        MessageBox.Show(message);
+                    }
                 }
 
                 if (supportedVideoExtensions.Contains(info.Extension))
@@ -371,7 +378,8 @@ namespace ModAssistant
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show($"Could not load {name}.\n\n{ex.Message}\n\nIgnoring...");
+                            string message = string.Format((string)Application.Current.FindResource("Themes:FailedToLoadXaml"), name, ex.Message);
+                            MessageBox.Show(message);
                         }
                     }
                 }
