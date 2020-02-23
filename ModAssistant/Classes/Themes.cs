@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -15,17 +15,22 @@ namespace ModAssistant
 {
     public class Themes
     {
-        public static string LoadedTheme { get; private set; } //Currently loaded theme
-        public static List<string> LoadedThemes { get => loadedThemes.Keys.ToList(); } //String of themes that can be loaded
-        public static string ThemeDirectory => $"{Environment.CurrentDirectory}/Themes"; //Self explanatory.
+        public static string LoadedTheme { get; private set; }
+        public static List<string> LoadedThemes { get => loadedThemes.Keys.ToList(); }
+        public static string ThemeDirectory => $"{Environment.CurrentDirectory}/Themes";
 
-        //Local dictionary of ResourceDictionarys mapped by their names.
+        /// <summary>
+        /// Local dictionary of Resource Dictionaries mapped by their names.
+        /// </summary>
         private static Dictionary<string, Theme> loadedThemes = new Dictionary<string, Theme>();
-        private static List<string> preInstalledThemes = new List<string> { "Light", "Dark", "Light Pink" }; //These themes will always be available to use.
+        private static List<string> preInstalledThemes = new List<string> { "Light", "Dark", "Light Pink" };
 
-        private static readonly int LOADEDTHEME_INDEX = 4; //Index of "LoadedTheme" in App.xaml
+        /// <summary>
+        /// Index of "LoadedTheme" in App.xaml
+        /// </summary>
+        private static readonly int LOADED_THEME_INDEX = 4;
 
-        private static List<string> supportedVideoExtensions = new List<string>() { ".mp4", ".webm", ".mkv", ".avi", ".m2ts" }; //Self explanatory.
+        private static List<string> supportedVideoExtensions = new List<string>() { ".mp4", ".webm", ".mkv", ".avi", ".m2ts" };
 
         /// <summary>
         /// Load all themes from local Themes subfolder and from embedded resources.
@@ -34,8 +39,11 @@ namespace ModAssistant
         public static void LoadThemes()
         {
             loadedThemes.Clear();
-            //Begin by loading local themes. We should always load these first.
-            //I am doing loading here to prevent the LoadTheme function from becoming too crazy.
+
+            /*
+             * Begin by loading local themes. We should always load these first.
+             * I am doing loading here to prevent the LoadTheme function from becoming too crazy.
+             */
             foreach (string localTheme in preInstalledThemes)
             {
                 string location = $"Themes/{localTheme}.xaml";
@@ -45,14 +53,15 @@ namespace ModAssistant
                 Theme theme = new Theme(localTheme, localDictionary);
                 loadedThemes.Add(localTheme, theme);
             }
-            if (Directory.Exists(ThemeDirectory)) //Load themes from Themes subfolder if it exists.
+
+            // Load themes from Themes subfolder if it exists.
+            if (Directory.Exists(ThemeDirectory))
             {
-                //We then load each zipped theme.
                 foreach (string file in Directory.EnumerateFiles(ThemeDirectory))
                 {
                     FileInfo info = new FileInfo(file);
                     string name = Path.GetFileNameWithoutExtension(info.Name);
-                    //Look for zip files with ".mat" extension.
+
                     if (info.Extension.ToLower().Equals(".mat"))
                     {
                         Theme theme = LoadZipTheme(ThemeDirectory, name, ".mat");
@@ -60,7 +69,8 @@ namespace ModAssistant
                         AddOrModifyTheme(name, theme);
                     }
                 }
-                //Finally load any loose theme files in subfolders.
+
+                // Finally load any loose theme files in subfolders.
                 foreach (string directory in Directory.EnumerateDirectories(ThemeDirectory))
                 {
                     string name = directory.Split('\\').Last();
@@ -69,7 +79,9 @@ namespace ModAssistant
                     AddOrModifyTheme(name, theme);
                 }
             }
-            if (Options.Instance != null && Options.Instance.ApplicationThemeComboBox != null) //Refresh Themes dropdown in Options screen.
+
+            // Refresh Themes dropdown in Options screen.
+            if (Options.Instance != null && Options.Instance.ApplicationThemeComboBox != null)
             {
                 Options.Instance.ApplicationThemeComboBox.ItemsSource = LoadedThemes;
                 Options.Instance.ApplicationThemeComboBox.SelectedIndex = LoadedThemes.IndexOf(LoadedTheme);
@@ -107,14 +119,14 @@ namespace ModAssistant
         {
             if (loadedThemes.TryGetValue(theme, out Theme newTheme))
             {
-                //First, pause our video and hide it.
                 LoadedTheme = theme;
                 MainWindow.Instance.BackgroundVideo.Pause();
                 MainWindow.Instance.BackgroundVideo.Visibility = Visibility.Hidden;
                 if (newTheme.ThemeDictionary != null)
                 {
-                    Application.Current.Resources.MergedDictionaries.RemoveAt(LOADEDTHEME_INDEX); //We might want to change this to a static integer or search by name.
-                    Application.Current.Resources.MergedDictionaries.Insert(LOADEDTHEME_INDEX, newTheme.ThemeDictionary); //Insert our new theme into the same spot as last time.
+                    // TODO: Search by name
+                    Application.Current.Resources.MergedDictionaries.RemoveAt(LOADED_THEME_INDEX);
+                    Application.Current.Resources.MergedDictionaries.Insert(LOADED_THEME_INDEX, newTheme.ThemeDictionary);
                 }
                 Properties.Settings.Default.SelectedTheme = theme;
                 Properties.Settings.Default.Save();
@@ -123,11 +135,13 @@ namespace ModAssistant
                     MainWindow.Instance.MainText = string.Format((string)Application.Current.FindResource("Themes:ThemeSet"), theme);
                 }
                 ApplyWaifus();
-                if (File.Exists(newTheme.VideoLocation)) //Load our video if it exists.
+
+                if (File.Exists(newTheme.VideoLocation))
                 {
                     Uri videoUri = new Uri(newTheme.VideoLocation, UriKind.Absolute);
                     MainWindow.Instance.BackgroundVideo.Visibility = Visibility.Visible;
-                    //Load the source video if it's not the same as what's playing, or if the theme is loading for the first time.
+
+                    // Load the source video if it's not the same as what's playing, or if the theme is loading for the first time.
                     if (!sendMessage || MainWindow.Instance.BackgroundVideo.Source?.AbsoluteUri != videoUri.AbsoluteUri)
                     {
                         MainWindow.Instance.BackgroundVideo.Stop();
@@ -312,9 +326,11 @@ namespace ModAssistant
                         }
                         else
                         {
-                            //Check to see if the lengths of each file are different. If they are, overwrite what currently exists.
-                            //The reason we are also checking LoadedTheme against the name variable is to prevent overwriting a file that's
-                            //already being used by ModAssistant and causing a System.IO.IOException.
+                            /*
+                             * Check to see if the lengths of each file are different. If they are, overwrite what currently exists.
+                             * The reason we are also checking LoadedTheme against the name variable is to prevent overwriting a file that's
+                             * already being used by ModAssistant and causing a System.IO.IOException.
+                             */
                             FileInfo existingInfo = new FileInfo(videoName);
                             if (existingInfo.Length != file.Length && LoadedTheme != name)
                             {
