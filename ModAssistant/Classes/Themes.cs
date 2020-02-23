@@ -296,7 +296,7 @@ namespace ModAssistant
                         {
                             //Check to see if the lengths of each file are different. If they are, overwrite what currently exists.
                             FileInfo existingInfo = new FileInfo($"{ThemeDirectory}\\{name}\\_{name}.mp4");
-                            if (existingInfo.Length != file.Length)
+                            if (existingInfo.Length != file.Length && LoadedTheme != name)
                             {
                                 file.ExtractToFile($"{ThemeDirectory}\\{name}\\_{name}.mp4", true);
                             }
