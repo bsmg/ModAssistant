@@ -1,6 +1,6 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <!-- This is a default theme for the Sidebars, in case the provided Theme doesn't have these in it..-->
+    <!-- This is a default theme for the Scrollbars, in case the provided Theme doesn't have them -->
     
     <!-- Scroll Bars -->
     <SolidColorBrush x:Key="ScrollBarBackground" Color="{DynamicResource ResourceKey=StandardSecondary}"/>

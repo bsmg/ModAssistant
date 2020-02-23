@@ -1,4 +1,4 @@
-﻿<Application x:Class="ModAssistant.App"
+<Application x:Class="ModAssistant.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			 DispatcherUnhandledException="Application_DispatcherUnhandledException"
@@ -11,8 +11,8 @@
                 <!-- Swapped i88n Definitions -->
                 <ResourceDictionary Source="Localisation/en-US.xaml" />
 
-                <!-- Load default sidebar theme, in case LoadedTheme doesn't have Sidebar properties applied. -->
-                <ResourceDictionary x:Name="DefaultSidebarTheme" Source="Themes/Default_Sidebar.xaml"/>
+                <!-- Load default Scrollbar theme, in case LoadedTheme doesn't have Scrollbar properties applied. -->
+                <ResourceDictionary x:Name="DefaultSidebarTheme" Source="Themes/Default Scrollbar.xaml"/>
 
                 <!-- Load theme to be modified via the Theme engine. -->
                 <ResourceDictionary x:Name="LoadedTheme" Source="Themes/Dark.xaml"/>
