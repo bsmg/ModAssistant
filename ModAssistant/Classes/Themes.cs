@@ -28,7 +28,7 @@ namespace ModAssistant
         /// <summary>
         /// Index of "LoadedTheme" in App.xaml
         /// </summary>
-        private static readonly int LOADED_THEME_INDEX = 4;
+        private static readonly int LOADED_THEME_INDEX = 3;
 
         private static List<string> supportedVideoExtensions = new List<string>() { ".mp4", ".webm", ".mkv", ".avi", ".m2ts" };
 
