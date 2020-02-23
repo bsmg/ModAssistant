@@ -306,6 +306,8 @@ namespace ModAssistant
                         else
                         {
                             //Check to see if the lengths of each file are different. If they are, overwrite what currently exists.
+                            //The reason we are also checking LoadedTheme against the name variable is to prevent overwriting a file that's
+                            //already being used by ModAssistant and causing a System.IO.IOException.
                             FileInfo existingInfo = new FileInfo($"{ThemeDirectory}\\{name}\\_{name}.mp4");
                             if (existingInfo.Length != file.Length && LoadedTheme != name)
                             {
