@@ -211,7 +211,7 @@ namespace ModAssistant
         {
             Theme theme = new Theme(name, null);
             theme.Waifus = new Waifus();
-            foreach (string file in Directory.EnumerateFiles(directory).OrderByDescending(x => x))
+            foreach (string file in Directory.EnumerateFiles(directory).OrderBy(x => x))
             {
                 FileInfo info = new FileInfo(file);
                 if (info.Name.EndsWith(".png", StringComparison.OrdinalIgnoreCase) &&
@@ -291,6 +291,15 @@ namespace ModAssistant
                         if (!File.Exists($"{ThemeDirectory}\\{name}\\_{name}.mp4"))
                         {
                             file.ExtractToFile($"{ThemeDirectory}\\{name}\\_{name}.mp4", false);
+                        }
+                        else
+                        {
+                            //Check to see if the lengths of each file are different. If they are, overwrite what currently exists.
+                            FileInfo existingInfo = new FileInfo($"{ThemeDirectory}\\{name}\\_{name}.mp4");
+                            if (existingInfo.Length != file.Length)
+                            {
+                                file.ExtractToFile($"{ThemeDirectory}\\{name}\\_{name}.mp4", true);
+                            }
                         }
                     }
                     if (file.Name.EndsWith(".xaml", StringComparison.OrdinalIgnoreCase))
