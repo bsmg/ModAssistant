@@ -23,6 +23,8 @@ namespace ModAssistant
         private static Dictionary<string, Theme> loadedThemes = new Dictionary<string, Theme>();
         private static List<string> preInstalledThemes = new List<string> { "Light", "Dark", "Light Pink" }; //These themes will always be available to use.
 
+        private static readonly int LOADEDTHEME_INDEX = 3;
+
         /// <summary>
         /// Load all themes from local Themes subfolder and from embedded resources.
         /// This also refreshes the Themes dropdown in the Options screen.
@@ -109,8 +111,8 @@ namespace ModAssistant
                 MainWindow.Instance.BackgroundVideo.Visibility = Visibility.Hidden;
                 if (newTheme.ThemeDictionary != null)
                 {
-                    Application.Current.Resources.MergedDictionaries.RemoveAt(2); //We might want to change this to a static integer or search by name.
-                    Application.Current.Resources.MergedDictionaries.Insert(2, newTheme.ThemeDictionary); //Insert our new theme into the same spot as last time.
+                    Application.Current.Resources.MergedDictionaries.RemoveAt(LOADEDTHEME_INDEX); //We might want to change this to a static integer or search by name.
+                    Application.Current.Resources.MergedDictionaries.Insert(LOADEDTHEME_INDEX, newTheme.ThemeDictionary); //Insert our new theme into the same spot as last time.
                 }
                 Properties.Settings.Default.SelectedTheme = theme;
                 Properties.Settings.Default.Save();
@@ -238,6 +240,11 @@ namespace ModAssistant
             return theme;
         }
 
+        /// <summary>
+        /// Modifies an already existing theme, or adds the theme if it doesn't exist
+        /// </summary>
+        /// <param name="name">Name of the theme.</param>
+        /// <param name="theme">Theme to modify/apply</param>
         private static void AddOrModifyTheme(string name, Theme theme)
         {
             if (loadedThemes.TryGetValue(name, out _))
@@ -246,9 +253,13 @@ namespace ModAssistant
                 {
                     loadedThemes[name].ThemeDictionary = theme.ThemeDictionary;
                 }
-                if (theme.Waifus != null)
+                if (theme.Waifus?.Background != null)
                 {
-                    loadedThemes[name].Waifus = theme.Waifus;
+                    loadedThemes[name].Waifus.Background = theme.Waifus.Background;
+                }
+                if (theme.Waifus?.Sidebar != null)
+                {
+                    loadedThemes[name].Waifus.Sidebar = theme.Waifus.Sidebar;
                 }
                 if (!string.IsNullOrEmpty(theme.VideoLocation))
                 {

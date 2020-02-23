@@ -11,6 +11,9 @@
                 <!-- Swapped i88n Definitions -->
                 <ResourceDictionary Source="Localisation/en-US.xaml" />
 
+                <!-- Load default sidebar theme, in case LoadedTheme doesn't have Sidebar properties applied. -->
+                <ResourceDictionary x:Name="DefaultSidebarTheme" Source="Themes/Default_Sidebar.xaml"/>
+                
                 <!-- Load default theme. Currently it's Dark, not sure if you want to change it to Light. -->
                 <ResourceDictionary x:Name="LoadedTheme" Source="Themes/Dark.xaml"/>
 
