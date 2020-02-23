@@ -68,7 +68,7 @@
     <SolidColorBrush x:Key="ScrollBarArrowHovered" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
     <SolidColorBrush x:Key="ScrollBarHandle" Color="#FF9B9B9B"/>
     <SolidColorBrush x:Key="ScrollBarHandleHovered" Color="#FFB9B9B9"/>
-    <SolidColorBrush x:Key="ScrollBarHandleClick" Color="White"/>
+    <SolidColorBrush x:Key="ScrollBarHandleClick" Color="#55000000"/>
     <GridLength x:Key="ScrollBarButtonHeight">0</GridLength>
 
     <!-- Various important elements that need to be controlled independently -->
