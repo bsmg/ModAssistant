@@ -23,7 +23,9 @@ namespace ModAssistant
         private static Dictionary<string, Theme> loadedThemes = new Dictionary<string, Theme>();
         private static List<string> preInstalledThemes = new List<string> { "Light", "Dark", "Light Pink" }; //These themes will always be available to use.
 
-        private static readonly int LOADEDTHEME_INDEX = 4;
+        private static readonly int LOADEDTHEME_INDEX = 4; //Index of "LoadedTheme" in App.xaml
+
+        private static List<string> supportedVideoExtensions = new List<string>() { ".mp4", ".webm", ".mkv", ".avi", ".m2ts" }; //Self explanatory.
 
         /// <summary>
         /// Load all themes from local Themes subfolder and from embedded resources.
@@ -232,7 +234,7 @@ namespace ModAssistant
                     dictionary.Source = resourceSource;
                     theme.ThemeDictionary = dictionary;
                 }
-                if (info.Name.EndsWith(".mp4", StringComparison.OrdinalIgnoreCase))
+                if (supportedVideoExtensions.Contains(info.Extension))
                 {
                     theme.VideoLocation = info.FullName;
                 }
@@ -293,25 +295,27 @@ namespace ModAssistant
                     {
                         waifus.Sidebar = GetImageFromStream(Utils.StreamToArray(file.Open()));
                     }
-                    if (file.Name.EndsWith(".mp4", StringComparison.OrdinalIgnoreCase))
+                    string videoExtension = $".{file.Name.Split('.').Last()}";
+                    if (supportedVideoExtensions.Contains(videoExtension))
                     {
+                        string videoName = $"{ThemeDirectory}\\{name}\\_{name}{videoExtension}";
                         if (!Directory.Exists($"{ThemeDirectory}\\{name}"))
                         {
                             Directory.CreateDirectory($"{ThemeDirectory}\\{name}");
                         }
-                        if (!File.Exists($"{ThemeDirectory}\\{name}\\_{name}.mp4"))
+                        if (!File.Exists(videoName))
                         {
-                            file.ExtractToFile($"{ThemeDirectory}\\{name}\\_{name}.mp4", false);
+                            file.ExtractToFile(videoName, false);
                         }
                         else
                         {
                             //Check to see if the lengths of each file are different. If they are, overwrite what currently exists.
                             //The reason we are also checking LoadedTheme against the name variable is to prevent overwriting a file that's
                             //already being used by ModAssistant and causing a System.IO.IOException.
-                            FileInfo existingInfo = new FileInfo($"{ThemeDirectory}\\{name}\\_{name}.mp4");
+                            FileInfo existingInfo = new FileInfo(videoName);
                             if (existingInfo.Length != file.Length && LoadedTheme != name)
                             {
-                                file.ExtractToFile($"{ThemeDirectory}\\{name}\\_{name}.mp4", true);
+                                file.ExtractToFile(videoName, true);
                             }
                         }
                     }
