@@ -236,7 +236,10 @@ namespace ModAssistant
                 }
                 if (supportedVideoExtensions.Contains(info.Extension))
                 {
-                    theme.VideoLocation = info.FullName;
+                    if (info.Name != $"_{name}{info.Extension}" || theme.VideoLocation is null)
+                    {
+                        theme.VideoLocation = info.FullName;
+                    }
                 }
             }
             return theme;
