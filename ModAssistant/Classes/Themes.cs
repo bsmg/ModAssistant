@@ -149,6 +149,10 @@ namespace ModAssistant
             {
                 Directory.CreateDirectory(ThemeDirectory);
             }
+            if (!Directory.Exists($"{ThemeDirectory}\\{themeName}"))
+            {
+                Directory.CreateDirectory($"{ThemeDirectory}\\{themeName}");
+            }
 
             if (!File.Exists($@"{ThemeDirectory}\\{themeName}.xaml"))
             {
@@ -207,7 +211,7 @@ namespace ModAssistant
         {
             Theme theme = new Theme(name, null);
             theme.Waifus = new Waifus();
-            foreach (string file in Directory.EnumerateFiles(directory))
+            foreach (string file in Directory.EnumerateFiles(directory).OrderByDescending(x => x))
             {
                 FileInfo info = new FileInfo(file);
                 if (info.Name.EndsWith(".png", StringComparison.OrdinalIgnoreCase) &&
@@ -277,6 +281,17 @@ namespace ModAssistant
                     if (file.Name.EndsWith(".side.png", StringComparison.OrdinalIgnoreCase))
                     {
                         waifus.Sidebar = GetImageFromStream(Utils.StreamToArray(file.Open()));
+                    }
+                    if (file.Name.EndsWith(".mp4", StringComparison.OrdinalIgnoreCase))
+                    {
+                        if (!Directory.Exists($"{ThemeDirectory}\\{name}"))
+                        {
+                            Directory.CreateDirectory($"{ThemeDirectory}\\{name}");
+                        }
+                        if (!File.Exists($"{ThemeDirectory}\\{name}\\_{name}.mp4"))
+                        {
+                            file.ExtractToFile($"{ThemeDirectory}\\{name}\\_{name}.mp4", false);
+                        }
                     }
                     if (file.Name.EndsWith(".xaml", StringComparison.OrdinalIgnoreCase))
                     {

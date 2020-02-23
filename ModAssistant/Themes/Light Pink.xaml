@@ -49,6 +49,19 @@
     <SolidColorBrush x:Key="CheckboxTickColor" Color="White"/>
     <SolidColorBrush x:Key="CheckboxPressedBackground" Color="#FFFF80FF"/>
 
+    <!-- Scroll Bars -->
+    <SolidColorBrush x:Key="ScrollBarBackground" Color="#FFFFE9FF"/>
+    <SolidColorBrush x:Key="ScrollBarBorder" Color="Black"/>
+    <SolidColorBrush x:Key="ScrollBarTextColor" Color="Black"/>
+    <SolidColorBrush x:Key="ScrollBarDisabled" Color="#FFBF95C5"/>
+    <SolidColorBrush x:Key="ScrollBarArrowColor" Color="#FFF9AEF9"/>
+    <SolidColorBrush x:Key="ScrollBarArrowClicked" Color="#FFEB6CFF"/>
+    <SolidColorBrush x:Key="ScrollBarArrowHovered" Color="#FFFF91EB"/>
+    <SolidColorBrush x:Key="ScrollBarHandle" Color="#FFF19AFF"/>
+    <SolidColorBrush x:Key="ScrollBarHandleHovered" Color="#FFEC72FF"/>
+    <SolidColorBrush x:Key="ScrollBarHandleClick" Color="#FFF744FF"/>
+    <GridLength x:Key="ScrollBarButtonHeight">0</GridLength>
+
     <!-- Various important elements that need to be controlled independently -->
     <SolidColorBrush x:Key="ModAssistantBackground" Color="#FFFAE5FF"/>
     <SolidColorBrush x:Key="FrameBackgroundColor" Color="#CCFAE5FF"/>

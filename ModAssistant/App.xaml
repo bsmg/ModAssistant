@@ -28,6 +28,9 @@
                 <ResourceDictionary x:Name="ComboBoxItem_Style" Source="Styles/ComboBoxItem.xaml"/>
                 <ResourceDictionary x:Name="ComboBox_Style" Source="Styles/ComboBox.xaml"/>
                 <ResourceDictionary x:Name="ToggleButton_Style" Source="Styles/ToggleButton.xaml"/>
+                <ResourceDictionary x:Name="ScrollBar_Style" Source="Styles/ScrollBar.xaml"/>
+                <ResourceDictionary x:Name="RepeatButton_Style" Source="Styles/RepeatButton.xaml"/>
+                <ResourceDictionary x:Name="Thumb_Style" Source="Styles/Thumb.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

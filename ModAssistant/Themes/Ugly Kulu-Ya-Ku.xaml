@@ -73,6 +73,19 @@
     <SolidColorBrush x:Key="CheckboxTickColor" Color="{DynamicResource ResourceKey=StandardIcon}"/>
     <SolidColorBrush x:Key="CheckboxPressedBackground" Color="{DynamicResource ResourceKey=StandardActive}"/>
 
+    <!-- Scroll Bars -->
+    <SolidColorBrush x:Key="ScrollBarBackground" Color="{DynamicResource ResourceKey=StandardSecondary}"/>
+    <SolidColorBrush x:Key="ScrollBarBorder" Color="{DynamicResource ResourceKey=StandardBorder}"/>
+    <SolidColorBrush x:Key="ScrollBarTextColor" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
+    <SolidColorBrush x:Key="ScrollBarDisabled" Color="{DynamicResource ResourceKey=StandardSecondary}"/>
+    <SolidColorBrush x:Key="ScrollBarArrowColor" Color="{DynamicResource ResourceKey=StandardActive}"/>
+    <SolidColorBrush x:Key="ScrollBarArrowClicked" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
+    <SolidColorBrush x:Key="ScrollBarArrowHovered" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
+    <SolidColorBrush x:Key="ScrollBarHandle" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
+    <SolidColorBrush x:Key="ScrollBarHandleHovered" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
+    <SolidColorBrush x:Key="ScrollBarHandleClick" Color="{DynamicResource ResourceKey=StandardBorder}"/>
+    <GridLength x:Key="ScrollBarButtonHeight">0</GridLength>
+
     <!-- Various important elements that need to be controlled independently -->
     <SolidColorBrush x:Key="ModAssistantBackground" Color="{DynamicResource ResourceKey=StandardIcon}"/>
     <SolidColorBrush x:Key="FrameBackgroundColor" Color="#CCFF51B6"/>
