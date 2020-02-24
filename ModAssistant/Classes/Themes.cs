@@ -261,7 +261,8 @@ namespace ModAssistant
                         ResourceDictionary dictionary = new ResourceDictionary();
                         dictionary.Source = resourceSource;
                         theme.ThemeDictionary = dictionary;
-                    }catch(Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         string message = string.Format((string)Application.Current.FindResource("Themes:FailedToLoadXaml"), name, ex.Message);
                         MessageBox.Show(message);

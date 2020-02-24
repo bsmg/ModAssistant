@@ -102,7 +102,9 @@
     <!-- Options Default: #4E3BCE -->
     <SolidColorBrush x:Key="OptionsIconColor" Color="{DynamicResource ResourceKey=StandardIcon}"/>
 
-    <Stretch x:Key="BackgroundImageStretch">UniformToFill</Stretch> <!-- Fill, None, Uniform, UniformToFill -->
-    <VerticalAlignment x:Key="SideImageYPosition">Bottom</VerticalAlignment> <!-- Bottom, Center, Top, Stretch -->
+    <Stretch x:Key="BackgroundImageStretch">UniformToFill</Stretch>
+    <!-- Fill, None, Uniform, UniformToFill -->
+    <VerticalAlignment x:Key="SideImageYPosition">Bottom</VerticalAlignment>
+    <!-- Bottom, Center, Top, Stretch -->
 
 </ResourceDictionary>

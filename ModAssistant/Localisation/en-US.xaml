@@ -71,7 +71,7 @@
         Please read the Beginners Guide on the
         <Hyperlink NavigateUri="https://bsmg.wiki/beginners-guide" local:HyperlinkExtensions.IsExternal="True">
             Wiki
-        </Hyperlink>.
+        </Hyperlink> .
     </Span>
     <sys:String x:Key="Intro:AgreeButton">I Agree</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">Disagree</sys:String>
@@ -169,7 +169,7 @@
         <Bold>please purchase the game
             <Hyperlink NavigateUri="https://beatgames.com/" local:HyperlinkExtensions.IsExternal="True">
                 HERE
-            </Hyperlink>.
+            </Hyperlink> .
         </Bold>
     </Span>
     <Span x:Key="Invalid:List:Line2">
@@ -177,14 +177,14 @@
         <Bold>not</Bold> pirated, please
         <Hyperlink NavigateUri="https://bsmg.wiki/support#clean-installation" local:HyperlinkExtensions.IsExternal="True">
             do a clean install
-        </Hyperlink>.
+        </Hyperlink> .
     </Span>
     <Span x:Key="Invalid:List:Line3">
         If those don't help, ask for support in the
         <Span Foreground="Blue">#support</Span> channel in
         <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
             BSMG
-        </Hyperlink>.
+        </Hyperlink> .
     </Span>
     <sys:String x:Key="Invalid:BoughtGame1">If you used to have a pirated version but have since bought the game</sys:String>
     <sys:String x:Key="Invalid:SelectFolderButton">Select Folder</sys:String>
