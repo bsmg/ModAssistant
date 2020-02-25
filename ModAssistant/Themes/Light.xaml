@@ -85,10 +85,10 @@
     <SolidColorBrush x:Key="AboutIconColor" Color="#FF0000" />
     <SolidColorBrush x:Key="OptionsIconColor" Color="#4E3BCE" />
 
-    <!--Background and Side image settings.-->
-    <Stretch x:Key="BackgroundImageStretch">UniformToFill</Stretch>
+    <!-- Background and Side image settings. -->
     <!-- Fill, None, Uniform, UniformToFill -->
-    <VerticalAlignment x:Key="SideImageYPosition">Bottom</VerticalAlignment>
+    <Stretch x:Key="BackgroundImageStretch">UniformToFill</Stretch>
     <!-- Bottom, Center, Top, Stretch -->
+    <VerticalAlignment x:Key="SideImageYPosition">Bottom</VerticalAlignment>
 
 </ResourceDictionary>
