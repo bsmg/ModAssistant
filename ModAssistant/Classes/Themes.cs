@@ -297,11 +297,13 @@ namespace ModAssistant
 
                 if (theme.Waifus?.Background != null)
                 {
+                    if (loadedThemes[name].Waifus is null) loadedThemes[name].Waifus = new Waifus();
                     loadedThemes[name].Waifus.Background = theme.Waifus.Background;
                 }
 
                 if (theme.Waifus?.Sidebar != null)
                 {
+                    if (loadedThemes[name].Waifus is null) loadedThemes[name].Waifus = new Waifus();
                     loadedThemes[name].Waifus.Sidebar = theme.Waifus.Sidebar;
                 }
 
