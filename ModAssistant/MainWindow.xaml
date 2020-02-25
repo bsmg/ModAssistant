@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ModAssistant"
         mc:Ignorable="d"
 		Icon="Resources/icon.ico"
-        Title="{DynamicResource MainWindow:WindowTitle}" Width="1280" Height="720"
+        Title="{DynamicResource MainWindow:WindowTitle}"
         SizeChanged="Window_SizeChanged"
         UIElement.PreviewMouseDown="Window_PreviewMouseDown">
     <Grid>
