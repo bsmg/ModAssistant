@@ -39,6 +39,16 @@ namespace ModAssistant
             InitializeComponent();
             Instance = this;
 
+            const int ContentWidth = 1280;
+            const int ContentHeight = 720;
+
+            double ChromeWidth = SystemParameters.WindowNonClientFrameThickness.Left + SystemParameters.WindowNonClientFrameThickness.Right;
+            double ChromeHeight = SystemParameters.WindowNonClientFrameThickness.Top + SystemParameters.WindowNonClientFrameThickness.Bottom;
+            double ResizeBorder = SystemParameters.ResizeFrameVerticalBorderWidth;
+
+            Width = ChromeWidth + ContentWidth + 2 * ResizeBorder;
+            Height = ChromeHeight + ContentHeight + 2 * ResizeBorder;
+
             VersionText.Text = App.Version;
 
             if (Utils.IsVoid())
@@ -302,6 +312,12 @@ namespace ModAssistant
             {
                 Mods.Instance.RefreshColumns();
             }
+        }
+
+        private void BackgroundVideo_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            BackgroundVideo.Position = TimeSpan.Zero;
+            BackgroundVideo.Play();
         }
     }
 }

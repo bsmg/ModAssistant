@@ -13,7 +13,7 @@
     <Color x:Key="StandardIcon">#AEAEAE</Color>
 
     <!-- Default Text -->
-    <SolidColorBrush x:Key="TextColor" Color="{StaticResource ResourceKey=StandardContent}" />
+    <SolidColorBrush x:Key="TextColor" Color="{DynamicResource ResourceKey=StandardContent}" />
     <SolidColorBrush x:Key="TextHighlighted" Color="White" />
 
     <!-- Buttons (Info/Mods/About/Options as well as More Info and Install/Update) -->
@@ -56,8 +56,21 @@
     <SolidColorBrush x:Key="CheckboxDisabledTickColor" Color="#66FFFFFF" />
     <SolidColorBrush x:Key="CheckboxHoveredBackground" Color="#696969" />
     <SolidColorBrush x:Key="CheckboxHoveredTickColor" Color="White" />
-    <SolidColorBrush x:Key="CheckboxTickColor" Color="{StaticResource ResourceKey=StandardContent}" />
+    <SolidColorBrush x:Key="CheckboxTickColor" Color="{DynamicResource ResourceKey=StandardContent}" />
     <SolidColorBrush x:Key="CheckboxPressedBackground" Color="#FFBFBFBF" />
+
+    <!-- Scroll Bars -->
+    <SolidColorBrush x:Key="ScrollBarBackground" Color="{DynamicResource ResourceKey=StandardSecondary}"/>
+    <SolidColorBrush x:Key="ScrollBarBorder" Color="{DynamicResource ResourceKey=StandardBorder}"/>
+    <SolidColorBrush x:Key="ScrollBarTextColor" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
+    <SolidColorBrush x:Key="ScrollBarDisabled" Color="{DynamicResource ResourceKey=StandardSecondary}"/>
+    <SolidColorBrush x:Key="ScrollBarArrowColor" Color="{DynamicResource ResourceKey=StandardActive}"/>
+    <SolidColorBrush x:Key="ScrollBarArrowClicked" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
+    <SolidColorBrush x:Key="ScrollBarArrowHovered" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
+    <SolidColorBrush x:Key="ScrollBarHandle" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
+    <SolidColorBrush x:Key="ScrollBarHandleHovered" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
+    <SolidColorBrush x:Key="ScrollBarHandleClick" Color="#55FFFFFF"/>
+    <GridLength x:Key="ScrollBarButtonHeight">0</GridLength>
 
     <!-- Various important elements that need to be controlled independently -->
     <SolidColorBrush x:Key="ModAssistantBackground" Color="{DynamicResource ResourceKey=StandardSecondary}" />
@@ -74,7 +87,9 @@
     <SolidColorBrush x:Key="OptionsIconColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
 
     <!--Background and Side image settings.-->
-    <Stretch x:Key="BackgroundImageStretch">UniformToFill</Stretch> <!-- Fill, None, Uniform, UniformToFill -->
-    <VerticalAlignment x:Key="SideImageYPosition">Bottom</VerticalAlignment> <!-- Bottom, Center, Top, Stretch -->
+    <!-- Fill, None, Uniform, UniformToFill -->
+    <Stretch x:Key="BackgroundImageStretch">UniformToFill</Stretch>
+    <!-- Bottom, Center, Top, Stretch -->
+    <VerticalAlignment x:Key="SideImageYPosition">Bottom</VerticalAlignment>
 
 </ResourceDictionary>

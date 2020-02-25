@@ -51,6 +51,7 @@
     <SolidColorBrush x:Key="ModColumnBorderBrush" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
     <SolidColorBrush x:Key="ModColumnHeaderHighlighted" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
     <SolidColorBrush x:Key="ModListBackground" Color="{DynamicResource ResourceKey=StandardPrimary}" />
+    <SolidColorBrush x:Key="ModListBorderBrush" Color="{DynamicResource ResourceKey=StandardBorder}" />
     <SolidColorBrush x:Key="ModListItemHighlighted" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
     <SolidColorBrush x:Key="ModListItemSelected" Color="{DynamicResource ResourceKey=StandardActive}"/>
 
@@ -73,11 +74,26 @@
     <SolidColorBrush x:Key="CheckboxTickColor" Color="{DynamicResource ResourceKey=StandardIcon}"/>
     <SolidColorBrush x:Key="CheckboxPressedBackground" Color="{DynamicResource ResourceKey=StandardActive}"/>
 
+    <!-- Scroll Bars -->
+    <SolidColorBrush x:Key="ScrollBarBackground" Color="{DynamicResource ResourceKey=StandardSecondary}"/>
+    <SolidColorBrush x:Key="ScrollBarBorder" Color="{DynamicResource ResourceKey=StandardBorder}"/>
+    <SolidColorBrush x:Key="ScrollBarTextColor" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
+    <SolidColorBrush x:Key="ScrollBarDisabled" Color="{DynamicResource ResourceKey=StandardSecondary}"/>
+    <SolidColorBrush x:Key="ScrollBarArrowColor" Color="{DynamicResource ResourceKey=StandardActive}"/>
+    <SolidColorBrush x:Key="ScrollBarArrowClicked" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
+    <SolidColorBrush x:Key="ScrollBarArrowHovered" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
+    <SolidColorBrush x:Key="ScrollBarHandle" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
+    <SolidColorBrush x:Key="ScrollBarHandleHovered" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
+    <SolidColorBrush x:Key="ScrollBarHandleClick" Color="{DynamicResource ResourceKey=StandardBorder}"/>
+    <GridLength x:Key="ScrollBarButtonHeight">0</GridLength>
+
     <!-- Various important elements that need to be controlled independently -->
     <SolidColorBrush x:Key="ModAssistantBackground" Color="{DynamicResource ResourceKey=StandardIcon}"/>
     <SolidColorBrush x:Key="FrameBackgroundColor" Color="#CCFF51B6"/>
     <SolidColorBrush x:Key="BottomStatusBarBackground" Color="#BF489A"/>
+    <SolidColorBrush x:Key="BottomStatusBarOutline" Color="{DynamicResource ResourceKey=StandardBorder}" />
     <SolidColorBrush x:Key="DirectoryBackground" Color="#BF489A"/>
+    <SolidColorBrush x:Key="DirectoryOutline" Color="{DynamicResource ResourceKey=StandardBorder}" />
 
     <!-- Colors for the corresponding icons. -->
     <!-- Info Default: #0DCAC8 -->
@@ -89,7 +105,10 @@
     <!-- Options Default: #4E3BCE -->
     <SolidColorBrush x:Key="OptionsIconColor" Color="{DynamicResource ResourceKey=StandardIcon}"/>
 
-    <Stretch x:Key="BackgroundImageStretch">UniformToFill</Stretch> <!-- Fill, None, Uniform, UniformToFill -->
-    <VerticalAlignment x:Key="SideImageYPosition">Bottom</VerticalAlignment> <!-- Bottom, Center, Top, Stretch -->
+    <!-- Background and Side image settings. -->
+    <!-- Fill, None, Uniform, UniformToFill -->
+    <Stretch x:Key="BackgroundImageStretch">UniformToFill</Stretch>
+    <!-- Bottom, Center, Top, Stretch -->
+    <VerticalAlignment x:Key="SideImageYPosition">Bottom</VerticalAlignment>
 
 </ResourceDictionary>

@@ -1,0 +1,17 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- This is a default theme for the Scrollbars, in case the provided Theme doesn't have them -->
+
+    <!-- Scroll Bars -->
+    <SolidColorBrush x:Key="ScrollBarBackground" Color="{DynamicResource ResourceKey=StandardSecondary}"/>
+    <SolidColorBrush x:Key="ScrollBarBorder" Color="{DynamicResource ResourceKey=StandardBorder}"/>
+    <SolidColorBrush x:Key="ScrollBarTextColor" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
+    <SolidColorBrush x:Key="ScrollBarDisabled" Color="{DynamicResource ResourceKey=StandardSecondary}"/>
+    <SolidColorBrush x:Key="ScrollBarArrowColor" Color="{DynamicResource ResourceKey=StandardActive}"/>
+    <SolidColorBrush x:Key="ScrollBarArrowClicked" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
+    <SolidColorBrush x:Key="ScrollBarArrowHovered" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
+    <SolidColorBrush x:Key="ScrollBarHandle" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
+    <SolidColorBrush x:Key="ScrollBarHandleHovered" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
+    <SolidColorBrush x:Key="ScrollBarHandleClick" Color="{DynamicResource ResourceKey=StandardBorder}"/>
+    <GridLength x:Key="ScrollBarButtonHeight">0</GridLength>
+</ResourceDictionary>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ModAssistant"
         mc:Ignorable="d"
 		Icon="Resources/icon.ico"
-        Title="{DynamicResource MainWindow:WindowTitle}" Width="1280" Height="720"
+        Title="{DynamicResource MainWindow:WindowTitle}"
         SizeChanged="Window_SizeChanged"
         UIElement.PreviewMouseDown="Window_PreviewMouseDown">
     <Grid>
@@ -16,6 +16,7 @@
                 <ImageBrush x:Name="BackgroundImage" Stretch="{DynamicResource BackgroundImageStretch}"/>
             </Rectangle.Fill>
         </Rectangle>
+        <MediaElement Visibility="Hidden" LoadedBehavior="Manual" Name="BackgroundVideo" MediaEnded="BackgroundVideo_MediaEnded"/>
         <Image x:Name="SideImage" UseLayoutRounding="True" SnapsToDevicePixels="True" HorizontalAlignment="Left" VerticalAlignment="{DynamicResource SideImageYPosition}"  Width="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelWidth}" Height="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelHeight}" Stretch="Fill"/>
         <Grid Margin="10">
             <Grid.RowDefinitions>
