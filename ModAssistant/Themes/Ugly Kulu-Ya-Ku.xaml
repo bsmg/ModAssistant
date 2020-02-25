@@ -51,6 +51,7 @@
     <SolidColorBrush x:Key="ModColumnBorderBrush" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
     <SolidColorBrush x:Key="ModColumnHeaderHighlighted" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
     <SolidColorBrush x:Key="ModListBackground" Color="{DynamicResource ResourceKey=StandardPrimary}" />
+    <SolidColorBrush x:Key="ModListBorderBrush" Color="{DynamicResource ResourceKey=StandardBorder}" />
     <SolidColorBrush x:Key="ModListItemHighlighted" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
     <SolidColorBrush x:Key="ModListItemSelected" Color="{DynamicResource ResourceKey=StandardActive}"/>
 
@@ -90,7 +91,9 @@
     <SolidColorBrush x:Key="ModAssistantBackground" Color="{DynamicResource ResourceKey=StandardIcon}"/>
     <SolidColorBrush x:Key="FrameBackgroundColor" Color="#CCFF51B6"/>
     <SolidColorBrush x:Key="BottomStatusBarBackground" Color="#BF489A"/>
+    <SolidColorBrush x:Key="BottomStatusBarOutline" Color="{DynamicResource ResourceKey=StandardBorder}" />
     <SolidColorBrush x:Key="DirectoryBackground" Color="#BF489A"/>
+    <SolidColorBrush x:Key="DirectoryOutline" Color="{DynamicResource ResourceKey=StandardBorder}" />
 
     <!-- Colors for the corresponding icons. -->
     <!-- Info Default: #0DCAC8 -->
