@@ -160,6 +160,9 @@
     <sys:String x:Key="Options:CurrentThemeRemoved">Current theme has been removed, reverting to default...</sys:String>
     <sys:String x:Key="Options:ThemeFolderNotFound">Themes folder not found! Try exporting the template...</sys:String>
 
+    <!-- Loading Page -->
+    <sys:String x:Key="Loading:Loading">Loading Mods</sys:String>
+    
     <!-- Invalid Page -->
     <sys:String x:Key="Invalid:Title">Invalid</sys:String>
     <sys:String x:Key="Invalid:PageTitle">Invalid Installation Detected</sys:String>

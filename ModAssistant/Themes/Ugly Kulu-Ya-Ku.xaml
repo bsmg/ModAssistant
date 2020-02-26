@@ -104,6 +104,8 @@
     <SolidColorBrush x:Key="AboutIconColor" Color="{DynamicResource ResourceKey=StandardIcon}"/>
     <!-- Options Default: #4E3BCE -->
     <SolidColorBrush x:Key="OptionsIconColor" Color="{DynamicResource ResourceKey=StandardIcon}"/>
+    <!-- Loading Icon Default: #6D3B8B -->
+    <SolidColorBrush x:Key="LoadingIconColor" Color="{DynamicResource ResourceKey=StandardContent}" />
 
     <!-- Background and Side image settings. -->
     <!-- Fill, None, Uniform, UniformToFill -->

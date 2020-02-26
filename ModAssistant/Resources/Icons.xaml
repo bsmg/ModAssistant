@@ -25,4 +25,22 @@
         <GeometryDrawing Brush="{DynamicResource ModsIconColor}" Geometry="{StaticResource microchipGeometry}" />
     </DrawingGroup>
     <DrawingImage x:Key="microchipDrawingImage" Drawing="{StaticResource microchipDrawingGroup}" />
+
+    <Geometry x:Key="loadingInnerGeometry">F1 M4000,4000z M0,0z M1833.4,1475.6C1827.5,1490 1818.3,1503.3 1805.8,1514.3 1762.7,1551.9 1697.3,1547.4 1659.7,1504.3 1628.8,1468.8 1626.4,1418.3 1650.5,1380.6L1170.6,1131.3 1336.5,1597.2C1394,1576.7 1460.7,1591.9 1503.2,1640.7 1558.7,1704.4 1552.1,1801.1 1488.4,1856.6 1473.5,1869.6 1456.7,1879.1 1439.1,1885.3L1814.9,2940.7 2747.8,2941 2875.1,2016.8 1833.4,1475.6z</Geometry>
+    <DrawingGroup x:Key="loadingInnerDrawingGroup" ClipGeometry="M0,0 V4000 H4000 V0 H0 Z">
+        <GeometryDrawing Brush="{DynamicResource LoadingIconColor}" Geometry="{StaticResource loadingInnerGeometry}" />
+    </DrawingGroup>
+    <DrawingImage x:Key="loadingInnerDrawingImage" Drawing="{DynamicResource loadingInnerDrawingGroup}" />
+
+    <Geometry x:Key="loadingMiddleGeometry">F1 M4000,4000z M0,0z M3384.4,1915.4C3385.5,2231.2 3278.1,2552.4 3057.5,2818.2 2570.1,3405.4 1714.7,3499.3 1146.9,3028 579.1,2556.7 514.1,1698.6 1001.5,1111.5 1222.2,845.7 1518.2,681 1828.8,624 1491,666 1167.9,831.7 933.3,1114.2 444.1,1703.5 525.3,2577.8 1114.5,3067 1703.7,3556.2 2578.1,3475.1 3067.3,2885.8 3301.9,2603.2 3405.2,2255.1 3384.4,1915.4z</Geometry>
+    <DrawingGroup x:Key="loadingMiddleDrawingGroup" ClipGeometry="M0,0 V4000 H4000 V0 H0 Z">
+        <GeometryDrawing Brush="{DynamicResource LoadingIconColor}" Geometry="{StaticResource loadingMiddleGeometry}" />
+    </DrawingGroup>
+    <DrawingImage x:Key="loadingMiddleDrawingImage" Drawing="{DynamicResource loadingMiddleDrawingGroup}" />
+
+    <Geometry x:Key="loadingOuterGeometry">F1 M4000,4000z M0,0z M3710.9,2000L3870,1840.9 3667.5,1638.4C3501.6,870.1 2818.3,294.3 2000.3,294.3 1182.4,294.3 499.1,870 333.2,1638.2L333,1637.9 130,1840.9 289.1,2000 130,2159.1 333,2362.1 333.2,2361.8C499.2,3130 1182.5,3705.6 2000.3,3705.6 2818.3,3705.6 3501.6,3129.8 3667.5,2361.5L3870,2159 3710.9,2000z M2000.3,3489.8C1177.5,3489.8 510.5,2822.8 510.5,2000 510.5,1177.2 1177.5,510.2 2000.3,510.2 2823.1,510.2 3490.1,1177.2 3490.1,2000 3490.1,2822.8 2823.1,3489.8 2000.3,3489.8z</Geometry>
+    <DrawingGroup x:Key="loadingOuterDrawingGroup" ClipGeometry="M0,0 V4000 H4000 V0 H0 Z">
+        <GeometryDrawing Brush="{DynamicResource LoadingIconColor}" Geometry="{StaticResource loadingOuterGeometry}" />
+    </DrawingGroup>
+    <DrawingImage x:Key="loadingOuterDrawingImage" Drawing="{DynamicResource loadingOuterDrawingGroup}" />
 </ResourceDictionary>

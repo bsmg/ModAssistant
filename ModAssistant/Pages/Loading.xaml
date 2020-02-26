@@ -8,5 +8,39 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Loading">
 
-    <Grid />
+    <Page.Resources>
+        <local:DivideDoubleByTwoConverter x:Key="DivideDoubleByTwoConverter"/>
+        <Style x:Key="Spin" TargetType="{x:Type Image}">
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <RotateTransform Angle="0"
+                                     CenterX="{Binding Path=ActualWidth, Converter={StaticResource DivideDoubleByTwoConverter}, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Image}}"
+                                     CenterY="{Binding Path=ActualHeight, Converter={StaticResource DivideDoubleByTwoConverter}, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Image}}" />
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard x:Name="RotateStarCompass">
+                                <DoubleAnimation AutoReverse="False" Duration="0:0:3" From="0" To="360" Storyboard.TargetProperty="RenderTransform.Angle" RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Image Margin="10" Grid.Row="0" Stretch="Uniform" Source="{DynamicResource loadingInnerDrawingImage}" VerticalAlignment="Center" />
+        <Image Margin="10" Grid.Row="0" Stretch="Uniform" Source="{DynamicResource loadingMiddleDrawingImage}" VerticalAlignment="Center" />
+        <Image Margin="10" Grid.Row="0" Stretch="Uniform" Source="{DynamicResource loadingOuterDrawingImage}" Style="{StaticResource Spin}"  VerticalAlignment="Center" />
+
+        <TextBlock Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="45" Margin="10" Text="{DynamicResource Loading:Loading}" />
+    </Grid>
 </Page>

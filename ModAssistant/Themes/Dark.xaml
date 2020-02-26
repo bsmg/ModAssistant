@@ -85,6 +85,7 @@
     <SolidColorBrush x:Key="ModsIconColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
     <SolidColorBrush x:Key="AboutIconColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
     <SolidColorBrush x:Key="OptionsIconColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
+    <SolidColorBrush x:Key="LoadingIconColor" Color="{DynamicResource ResourceKey=StandardContent}" />
 
     <!--Background and Side image settings.-->
     <!-- Fill, None, Uniform, UniformToFill -->

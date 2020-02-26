@@ -84,6 +84,7 @@
     <SolidColorBrush x:Key="ModsIconColor" Color="#833BCE" />
     <SolidColorBrush x:Key="AboutIconColor" Color="#FF0000" />
     <SolidColorBrush x:Key="OptionsIconColor" Color="#4E3BCE" />
+    <SolidColorBrush x:Key="LoadingIconColor" Color="#101010" />
 
     <!-- Background and Side image settings. -->
     <!-- Fill, None, Uniform, UniformToFill -->

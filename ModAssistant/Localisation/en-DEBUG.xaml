@@ -120,6 +120,9 @@
     <sys:String x:Key="Options:CurrentThemeRemoved">Options:CurrentThemeRemoved</sys:String>
     <sys:String x:Key="Options:ThemeFolderNotFound">Options:ThemeFolderNotFound</sys:String>
 
+    <!-- Loading Page -->
+    <sys:String x:Key="Loading:Loading">Loading:Loading</sys:String>
+
     <!-- Invalid Page -->
     <sys:String x:Key="Invalid:Title">Invalid:Title</sys:String>
     <sys:String x:Key="Invalid:PageTitle">Invalid:PageTitle</sys:String>
