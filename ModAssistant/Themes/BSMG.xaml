@@ -3,20 +3,20 @@
 
     <!--
         ModAssistant BSMG theem by Megalon2D
-		https://twitter.com/megalon2D
+        https://twitter.com/megalon2D
     -->
 
     <!-- Standard Styles -->
     <Color x:Key="StandardContent">#DCDDDE</Color>
     <Color x:Key="StandardPrimary">#36393F</Color>
     <Color x:Key="StandardSecondary">#2F3136</Color>
-	<Color x:Key="StandardBackground">#202225</Color>
+    <Color x:Key="StandardBackground">#202225</Color>
     <Color x:Key="StandardBorder">#202225</Color>
     <Color x:Key="StandardHighlight">#7289DA</Color>
     <Color x:Key="StandardActive">#44347C</Color>
     <Color x:Key="StandardIcon">#DCDDDE</Color>
     <Color x:Key="DiscordTextBox">#40444B</Color>
-	<Color x:Key="DiscordHighlight">#32353B</Color>
+    <Color x:Key="DiscordHighlight">#32353B</Color>
 
     <!--Default text-->
     <SolidColorBrush x:Key="TextColor" Color="{StaticResource ResourceKey=StandardContent}" />
@@ -46,7 +46,7 @@
     <SolidColorBrush x:Key="ModListItemHighlightedOutline" Color="Transparent"/>
     <SolidColorBrush x:Key="ModListItemSelected" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
     <SolidColorBrush x:Key="ModListItemSelectedOutline" Color="Transparent"/>
-	<SolidColorBrush x:Key="ModListBorderBrush" Color="Transparent"/>
+    <SolidColorBrush x:Key="ModListBorderBrush" Color="Transparent"/>
 
     <!--Combo Box (Version select)-->
     <SolidColorBrush x:Key="ComboBoxBackground" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
@@ -94,11 +94,11 @@
     <SolidColorBrush x:Key="AboutIconColor" Color="{DynamicResource ResourceKey=StandardIcon}"/>
     <SolidColorBrush x:Key="OptionsIconColor" Color="{DynamicResource ResourceKey=StandardIcon}"/>
     <SolidColorBrush x:Key="LoadingIconColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
-	
+    
     <!--Background and Side image settings.-->
-	<!-- Fill, None, Uniform, UniformToFill -->
+    <!-- Fill, None, Uniform, UniformToFill -->
     <Stretch x:Key="BackgroundImageStretch">UniformToFill</Stretch>
-	<!-- Bottom, Center, Top -->
+    <!-- Bottom, Center, Top -->
     <VerticalAlignment x:Key="SideImageYPosition">Top</VerticalAlignment>
 
 </ResourceDictionary>
