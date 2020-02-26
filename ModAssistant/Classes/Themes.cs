@@ -55,7 +55,7 @@ namespace ModAssistant
                 /*
                  * Load any Waifus that come with these built-in themes, too.
                  * The format must be: Background.png and Sidebar.png as a subfolder with the same name as the theme name.
-                 * For example: "Themes/Dark/Background.png", or "Themes/Ugly Kulu-Ya-Lu/Sidebar.png"
+                 * For example: "Themes/Dark/Background.png", or "Themes/Ugly Kulu-Ya-Ku/Sidebar.png"
                  */
                 Waifus waifus = new Waifus();
                 waifus.Background = GetImageFromEmbeddedResources(localTheme, "Background");
