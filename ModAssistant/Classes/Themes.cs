@@ -52,7 +52,17 @@ namespace ModAssistant
                 ResourceDictionary localDictionary = new ResourceDictionary();
                 localDictionary.Source = local;
 
+                /*
+                 * Load any Waifus that come with these built-in themes, too.
+                 * The format must be: Background.png and Sidebar.png as a subfolder with the same name as the theme name.
+                 * For example: "Themes/Dark/Background.png", or "Themes/Ugly Kulu-Ya-Lu/Sidebar.png"
+                 */
+                Waifus waifus = new Waifus();
+                waifus.Background = GetImageFromEmbeddedResources(localTheme, "Background");
+                waifus.Sidebar = GetImageFromEmbeddedResources(localTheme, "Sidebar");
+
                 Theme theme = new Theme(localTheme, localDictionary);
+                theme.Waifus = waifus;
                 loadedThemes.Add(localTheme, theme);
             }
 
@@ -412,6 +422,20 @@ namespace ModAssistant
 
                 return image;
             }
+        }
+
+        private static BitmapImage GetImageFromEmbeddedResources(string themeName, string imageName)
+        {
+            try
+            {
+                using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"ModAssistant.Themes.{themeName}.{imageName}.png"))
+                {
+                    byte[] imageBytes = new byte[stream.Length];
+                    stream.Read(imageBytes, 0, (int)stream.Length);
+                    return GetImageFromStream(imageBytes);
+                }
+            }
+            catch { return null; } //We're going to ignore errors here because backgrounds/sidebars should be optional.
         }
 
         /// <summary>
