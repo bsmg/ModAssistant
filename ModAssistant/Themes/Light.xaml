@@ -36,8 +36,10 @@
     <SolidColorBrush x:Key="ModColumnHeaderHighlighted" Color="{DynamicResource ResourceKey=StandardHighlight}" />
     <SolidColorBrush x:Key="ModListBackground" Color="#09000000" />
     <SolidColorBrush x:Key="ModListBorderBrush" Color="{DynamicResource ResourceKey=StandardBorder}" />
-    <SolidColorBrush x:Key="ModListItemHighlighted" Color="#BBBBBB" />
+    <SolidColorBrush x:Key="ModListItemHighlighted" Color="#DADADA" />
+    <SolidColorBrush x:Key="ModListItemHighlightedOutline" Color="#60000000" />
     <SolidColorBrush x:Key="ModListItemSelected" Color="{DynamicResource ResourceKey=StandardActive}" />
+    <SolidColorBrush x:Key="ModListItemSelectedOutline" Color="#70000000" />
 
     <!-- Combo Box (Version select) -->
     <SolidColorBrush x:Key="ComboBoxBackground" Color="{DynamicResource ResourceKey=StandardPrimary}" />
