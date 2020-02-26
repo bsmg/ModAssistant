@@ -1,5 +1,4 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- ModAssistant Light Theme by Caeden117 and lolPants -->
 
@@ -61,21 +60,21 @@
     <SolidColorBrush x:Key="CheckboxPressedBackground" Color="#FFBFBFBF" />
 
     <!-- Scroll Bars -->
-    <SolidColorBrush x:Key="ScrollBarBackground" Color="#FFD8D8D8"/>
-    <SolidColorBrush x:Key="ScrollBarBorder" Color="{DynamicResource ResourceKey=StandardBorder}"/>
-    <SolidColorBrush x:Key="ScrollBarTextColor" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
-    <SolidColorBrush x:Key="ScrollBarDisabled" Color="{DynamicResource ResourceKey=StandardSecondary}"/>
-    <SolidColorBrush x:Key="ScrollBarArrowColor" Color="{DynamicResource ResourceKey=StandardActive}"/>
-    <SolidColorBrush x:Key="ScrollBarArrowClicked" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
-    <SolidColorBrush x:Key="ScrollBarArrowHovered" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
-    <SolidColorBrush x:Key="ScrollBarHandle" Color="#FF9B9B9B"/>
-    <SolidColorBrush x:Key="ScrollBarHandleHovered" Color="#FFB9B9B9"/>
-    <SolidColorBrush x:Key="ScrollBarHandleClick" Color="#55000000"/>
+    <SolidColorBrush x:Key="ScrollBarBackground" Color="#FFD8D8D8" />
+    <SolidColorBrush x:Key="ScrollBarBorder" Color="{DynamicResource ResourceKey=StandardBorder}" />
+    <SolidColorBrush x:Key="ScrollBarTextColor" Color="{DynamicResource ResourceKey=StandardPrimary}" />
+    <SolidColorBrush x:Key="ScrollBarDisabled" Color="{DynamicResource ResourceKey=StandardSecondary}" />
+    <SolidColorBrush x:Key="ScrollBarArrowColor" Color="{DynamicResource ResourceKey=StandardActive}" />
+    <SolidColorBrush x:Key="ScrollBarArrowClicked" Color="{DynamicResource ResourceKey=StandardPrimary}" />
+    <SolidColorBrush x:Key="ScrollBarArrowHovered" Color="{DynamicResource ResourceKey=StandardHighlight}" />
+    <SolidColorBrush x:Key="ScrollBarHandle" Color="#FF9B9B9B" />
+    <SolidColorBrush x:Key="ScrollBarHandleHovered" Color="#FFB9B9B9" />
+    <SolidColorBrush x:Key="ScrollBarHandleClick" Color="#55000000" />
     <GridLength x:Key="ScrollBarButtonHeight">0</GridLength>
 
     <!-- Various important elements that need to be controlled independently -->
     <SolidColorBrush x:Key="ModAssistantBackground" Color="{DynamicResource ResourceKey=StandardSecondary}" />
-    <SolidColorBrush x:Key="FrameBackgroundColor" Color="#CCF3F3F3"/>
+    <SolidColorBrush x:Key="FrameBackgroundColor" Color="#CCF3F3F3" />
     <SolidColorBrush x:Key="BottomStatusBarBackground" Color="{DynamicResource ResourceKey=StandardPrimary}" />
     <SolidColorBrush x:Key="BottomStatusBarOutline" Color="{DynamicResource ResourceKey=StandardBorder}" />
     <SolidColorBrush x:Key="DirectoryBackground" Color="{DynamicResource ResourceKey=StandardPrimary}" />

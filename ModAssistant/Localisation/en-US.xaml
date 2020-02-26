@@ -1,7 +1,8 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:local="clr-namespace:ModAssistant">
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ModAssistant"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <sys:String x:Key="ResourceDictionaryName">i18n:en-US</sys:String>
 
     <!-- App -->
@@ -69,7 +70,7 @@
     </Span>
     <Span x:Key="Intro:WikiGuide">
         Please read the Beginners Guide on the
-        <Hyperlink NavigateUri="https://bsmg.wiki/beginners-guide" local:HyperlinkExtensions.IsExternal="True">
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/beginners-guide">
             Wiki
         </Hyperlink>.
     </Span>
@@ -110,11 +111,11 @@
     <sys:String x:Key="About:List:Item4">Responsible use</sys:String>
     <Span x:Key="About:SupportAssistant">
         If you enjoy this program and would like to support me, please visit my
-        <Hyperlink NavigateUri="https://bs.assistant.moe/Donate/" local:HyperlinkExtensions.IsExternal="True">
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.assistant.moe/Donate/">
             donation page
         </Hyperlink>
         or my
-        <Hyperlink NavigateUri="https://www.patreon.com/AssistantMoe" local:HyperlinkExtensions.IsExternal="True">
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/AssistantMoe">
             Patreon
         </Hyperlink>
     </Span>
@@ -162,7 +163,7 @@
 
     <!-- Loading Page -->
     <sys:String x:Key="Loading:Loading">Loading Mods</sys:String>
-    
+
     <!-- Invalid Page -->
     <sys:String x:Key="Invalid:Title">Invalid</sys:String>
     <sys:String x:Key="Invalid:PageTitle">Invalid Installation Detected</sys:String>
@@ -210,7 +211,7 @@
     <sys:String x:Key="Themes:ThemeNotFound">Theme not found, reverting to default theme...</sys:String>
     <sys:String x:Key="Themes:ThemeSet">Theme set to {0}.</sys:String>
     <sys:String x:Key="Themes:ThemeMissing">{0} does not exist.</sys:String>
-    <sys:String x:Key="Themes:SavedTemplateTheme">Template theme "{0}" saved to Themes folder.</sys:String>
+    <sys:String x:Key="Themes:SavedTemplateTheme">Template theme &quot;{0}&quot; saved to Themes folder.</sys:String>
     <sys:String x:Key="Themes:TemplateThemeExists">Template theme already exists!</sys:String>
     <sys:String x:Key="Themes:FailedToLoadXaml">Failed to load .xaml file for theme {0}: {1}</sys:String>
 

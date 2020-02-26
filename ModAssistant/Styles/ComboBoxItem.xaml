@@ -1,6 +1,5 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style TargetType="ComboBoxItem" x:Key="{x:Type ComboBoxItem}">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="{x:Type ComboBoxItem}" TargetType="ComboBoxItem">
         <Setter Property="UIElement.SnapsToDevicePixels" Value="True" />
         <Setter Property="Padding" Value="4,1" />
         <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
@@ -13,10 +12,10 @@
                 <ControlTemplate TargetType="{x:Type ComboBoxItem}">
                     <Border
                         Name="Bd"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{DynamicResource ComboBoxBackground}"
                         BorderBrush="{DynamicResource ComboBoxOutline}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        Background="{DynamicResource ComboBoxBackground}"
-                        Padding="{TemplateBinding Padding}"
                         SnapsToDevicePixels="True">
                         <ContentPresenter
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -25,7 +24,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SystemColors.GrayTextBrushKey}"/>
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SystemColors.GrayTextBrushKey}" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>

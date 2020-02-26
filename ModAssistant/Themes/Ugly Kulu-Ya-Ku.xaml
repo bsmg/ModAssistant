@@ -1,17 +1,16 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!--
         ModAssistant Ugly Kulu-Ya-Ku Theme by Assistant
         Feel free to use this as a template for designing your own themes for Mod Assistant.
-
+        
         The Color fields take in Hexadecimal RGB (#RRGGBB) or Hexadecimal ARGB (#AARRGGBB).
         They can also take in common names like "Gray", "Maroon", "Magenta", "LimeGreen", etc.
         For more information, see: https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.colors
         You may set color variables like below in the Standard Styles section, or simply set the colors directly.
-
+        
         To reload your theme, exit and re-enter the Options menu.
-
+        
         Inspired by https://www.nexusmods.com/monsterhunterworld/mods/2080
         william requested I make this theme. One time william requested a hug from pook. pook denied said request.
         I then witnessed william hounding pook, until he siezed them by breaking their foot.
@@ -47,65 +46,65 @@
     <SolidColorBrush x:Key="PageButtonDisabledBackground" Color="{DynamicResource ResourceKey=StandardSecondary}" />
 
     <!-- Mod List -->
-    <SolidColorBrush x:Key="ModColumnBackground" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
-    <SolidColorBrush x:Key="ModColumnBorderBrush" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
-    <SolidColorBrush x:Key="ModColumnHeaderHighlighted" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
+    <SolidColorBrush x:Key="ModColumnBackground" Color="{DynamicResource ResourceKey=StandardPrimary}" />
+    <SolidColorBrush x:Key="ModColumnBorderBrush" Color="{DynamicResource ResourceKey=StandardPrimary}" />
+    <SolidColorBrush x:Key="ModColumnHeaderHighlighted" Color="{DynamicResource ResourceKey=StandardHighlight}" />
     <SolidColorBrush x:Key="ModListBackground" Color="{DynamicResource ResourceKey=StandardPrimary}" />
     <SolidColorBrush x:Key="ModListBorderBrush" Color="{DynamicResource ResourceKey=StandardBorder}" />
-    <SolidColorBrush x:Key="ModListItemHighlighted" Color="#A0C29F"/>
+    <SolidColorBrush x:Key="ModListItemHighlighted" Color="#A0C29F" />
     <SolidColorBrush x:Key="ModListItemHighlightedOutline" Color="{DynamicResource ResourceKey=StandardBorder}" />
-    <SolidColorBrush x:Key="ModListItemSelected" Color="{DynamicResource ResourceKey=StandardActive}"/>
+    <SolidColorBrush x:Key="ModListItemSelected" Color="{DynamicResource ResourceKey=StandardActive}" />
     <SolidColorBrush x:Key="ModListItemSelectedOutline" Color="{DynamicResource ResourceKey=StandardBorder}" />
 
     <!-- Combo Box (Version select) -->
-    <SolidColorBrush x:Key="ComboBoxBackground" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
-    <SolidColorBrush x:Key="ComboBoxOutline" Color="{DynamicResource ResourceKey=StandardBorder}"/>
-    <SolidColorBrush x:Key="ComboBoxHighlighted" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
-    <SolidColorBrush x:Key="ComboBoxSelected" Color="{DynamicResource ResourceKey=StandardActive}"/>
-    <SolidColorBrush x:Key="ComboBoxClicked" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
-    <SolidColorBrush x:Key="ComboBoxArrow" Color="{DynamicResource ResourceKey=StandardBorder}"/>
+    <SolidColorBrush x:Key="ComboBoxBackground" Color="{DynamicResource ResourceKey=StandardPrimary}" />
+    <SolidColorBrush x:Key="ComboBoxOutline" Color="{DynamicResource ResourceKey=StandardBorder}" />
+    <SolidColorBrush x:Key="ComboBoxHighlighted" Color="{DynamicResource ResourceKey=StandardHighlight}" />
+    <SolidColorBrush x:Key="ComboBoxSelected" Color="{DynamicResource ResourceKey=StandardActive}" />
+    <SolidColorBrush x:Key="ComboBoxClicked" Color="{DynamicResource ResourceKey=StandardPrimary}" />
+    <SolidColorBrush x:Key="ComboBoxArrow" Color="{DynamicResource ResourceKey=StandardBorder}" />
 
     <!-- Checkboxes (Mod List and Options) -->
-    <SolidColorBrush x:Key="CheckboxDefaultBackground" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
-    <SolidColorBrush x:Key="CheckboxDefaultOutlineColor" Color="{DynamicResource ResourceKey=StandardBorder}"/>
-    <SolidColorBrush x:Key="CheckboxDisabledBackground" Color="{DynamicResource ResourceKey=StandardSecondary}"/>
-    <SolidColorBrush x:Key="CheckboxDisabledOutlineColor" Color="{DynamicResource ResourceKey=StandardBorder}"/>
-    <SolidColorBrush x:Key="CheckboxDisabledTickColor" Color="{DynamicResource ResourceKey=StandardBorder}"/>
-    <SolidColorBrush x:Key="CheckboxHoveredBackground" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
-    <SolidColorBrush x:Key="CheckboxHoveredTickColor" Color="{DynamicResource ResourceKey=StandardIcon}"/>
-    <SolidColorBrush x:Key="CheckboxTickColor" Color="{DynamicResource ResourceKey=StandardIcon}"/>
-    <SolidColorBrush x:Key="CheckboxPressedBackground" Color="{DynamicResource ResourceKey=StandardActive}"/>
+    <SolidColorBrush x:Key="CheckboxDefaultBackground" Color="{DynamicResource ResourceKey=StandardPrimary}" />
+    <SolidColorBrush x:Key="CheckboxDefaultOutlineColor" Color="{DynamicResource ResourceKey=StandardBorder}" />
+    <SolidColorBrush x:Key="CheckboxDisabledBackground" Color="{DynamicResource ResourceKey=StandardSecondary}" />
+    <SolidColorBrush x:Key="CheckboxDisabledOutlineColor" Color="{DynamicResource ResourceKey=StandardBorder}" />
+    <SolidColorBrush x:Key="CheckboxDisabledTickColor" Color="{DynamicResource ResourceKey=StandardBorder}" />
+    <SolidColorBrush x:Key="CheckboxHoveredBackground" Color="{DynamicResource ResourceKey=StandardHighlight}" />
+    <SolidColorBrush x:Key="CheckboxHoveredTickColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
+    <SolidColorBrush x:Key="CheckboxTickColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
+    <SolidColorBrush x:Key="CheckboxPressedBackground" Color="{DynamicResource ResourceKey=StandardActive}" />
 
     <!-- Scroll Bars -->
-    <SolidColorBrush x:Key="ScrollBarBackground" Color="{DynamicResource ResourceKey=StandardSecondary}"/>
-    <SolidColorBrush x:Key="ScrollBarBorder" Color="{DynamicResource ResourceKey=StandardBorder}"/>
-    <SolidColorBrush x:Key="ScrollBarTextColor" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
-    <SolidColorBrush x:Key="ScrollBarDisabled" Color="{DynamicResource ResourceKey=StandardSecondary}"/>
-    <SolidColorBrush x:Key="ScrollBarArrowColor" Color="{DynamicResource ResourceKey=StandardActive}"/>
-    <SolidColorBrush x:Key="ScrollBarArrowClicked" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
-    <SolidColorBrush x:Key="ScrollBarArrowHovered" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
-    <SolidColorBrush x:Key="ScrollBarHandle" Color="{DynamicResource ResourceKey=StandardPrimary}"/>
-    <SolidColorBrush x:Key="ScrollBarHandleHovered" Color="{DynamicResource ResourceKey=StandardHighlight}"/>
-    <SolidColorBrush x:Key="ScrollBarHandleClick" Color="{DynamicResource ResourceKey=StandardBorder}"/>
+    <SolidColorBrush x:Key="ScrollBarBackground" Color="{DynamicResource ResourceKey=StandardSecondary}" />
+    <SolidColorBrush x:Key="ScrollBarBorder" Color="{DynamicResource ResourceKey=StandardBorder}" />
+    <SolidColorBrush x:Key="ScrollBarTextColor" Color="{DynamicResource ResourceKey=StandardPrimary}" />
+    <SolidColorBrush x:Key="ScrollBarDisabled" Color="{DynamicResource ResourceKey=StandardSecondary}" />
+    <SolidColorBrush x:Key="ScrollBarArrowColor" Color="{DynamicResource ResourceKey=StandardActive}" />
+    <SolidColorBrush x:Key="ScrollBarArrowClicked" Color="{DynamicResource ResourceKey=StandardPrimary}" />
+    <SolidColorBrush x:Key="ScrollBarArrowHovered" Color="{DynamicResource ResourceKey=StandardHighlight}" />
+    <SolidColorBrush x:Key="ScrollBarHandle" Color="{DynamicResource ResourceKey=StandardPrimary}" />
+    <SolidColorBrush x:Key="ScrollBarHandleHovered" Color="{DynamicResource ResourceKey=StandardHighlight}" />
+    <SolidColorBrush x:Key="ScrollBarHandleClick" Color="{DynamicResource ResourceKey=StandardBorder}" />
     <GridLength x:Key="ScrollBarButtonHeight">0</GridLength>
 
     <!-- Various important elements that need to be controlled independently -->
-    <SolidColorBrush x:Key="ModAssistantBackground" Color="{DynamicResource ResourceKey=StandardIcon}"/>
-    <SolidColorBrush x:Key="FrameBackgroundColor" Color="#CCFF51B6"/>
-    <SolidColorBrush x:Key="BottomStatusBarBackground" Color="#BF489A"/>
+    <SolidColorBrush x:Key="ModAssistantBackground" Color="{DynamicResource ResourceKey=StandardIcon}" />
+    <SolidColorBrush x:Key="FrameBackgroundColor" Color="#CCFF51B6" />
+    <SolidColorBrush x:Key="BottomStatusBarBackground" Color="#BF489A" />
     <SolidColorBrush x:Key="BottomStatusBarOutline" Color="{DynamicResource ResourceKey=StandardBorder}" />
-    <SolidColorBrush x:Key="DirectoryBackground" Color="#BF489A"/>
+    <SolidColorBrush x:Key="DirectoryBackground" Color="#BF489A" />
     <SolidColorBrush x:Key="DirectoryOutline" Color="{DynamicResource ResourceKey=StandardBorder}" />
 
     <!-- Colors for the corresponding icons. -->
     <!-- Info Default: #0DCAC8 -->
-    <SolidColorBrush x:Key="InfoIconColor" Color="{DynamicResource ResourceKey=StandardIcon}"/>
+    <SolidColorBrush x:Key="InfoIconColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
     <!-- Mods Default: #833BCE -->
-    <SolidColorBrush x:Key="ModsIconColor" Color="{DynamicResource ResourceKey=StandardIcon}"/>
+    <SolidColorBrush x:Key="ModsIconColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
     <!-- About Default: #FF0000 -->
-    <SolidColorBrush x:Key="AboutIconColor" Color="{DynamicResource ResourceKey=StandardIcon}"/>
+    <SolidColorBrush x:Key="AboutIconColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
     <!-- Options Default: #4E3BCE -->
-    <SolidColorBrush x:Key="OptionsIconColor" Color="{DynamicResource ResourceKey=StandardIcon}"/>
+    <SolidColorBrush x:Key="OptionsIconColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
     <!-- Loading Icon Default: #6D3B8B -->
     <SolidColorBrush x:Key="LoadingIconColor" Color="{DynamicResource ResourceKey=StandardContent}" />
 

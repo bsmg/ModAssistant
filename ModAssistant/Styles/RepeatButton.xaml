@@ -1,103 +1,56 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style
-        TargetType="{x:Type RepeatButton}"
-        x:Key="ModAssistantRepeatButton">
-        <Setter
-            Property="BorderThickness"
-            Value="1" />
-        <Setter
-            Property="HorizontalContentAlignment"
-            Value="Center" />
-        <Setter
-            Property="VerticalContentAlignment"
-            Value="Center" />
-        <Setter
-            Property="Padding"
-            Value="1" />
-        <Setter
-            Property="Focusable"
-            Value="False" />
-        <Setter
-            Property="IsTabStop"
-            Value="False" />
-        <Setter
-            Property="Template">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="ModAssistantRepeatButton" TargetType="{x:Type RepeatButton}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="1" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate
-                    TargetType="{x:Type RepeatButton}">
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
                     <Border
                         Name="border"
-                        BorderThickness="1"
-                        SnapsToDevicePixels="True"
                         Background="{DynamicResource ScrollBarBackground}"
-                        BorderBrush="{StaticResource ScrollBarBorder}">
+                        BorderBrush="{StaticResource ScrollBarBorder}"
+                        BorderThickness="1"
+                        SnapsToDevicePixels="True">
                         <ContentPresenter
                             Name="contentPresenter"
                             Margin="{TemplateBinding Padding}"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Focusable="False" />
+                            Focusable="False"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger
-                            Property="UIElement.IsMouseOver"
-                            Value="True">
-                            <Setter
-                                TargetName="border"
-                                Property="Background"
-                                Value="{DynamicResource ScrollBarArrowHovered}" />
+                        <Trigger Property="UIElement.IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource ScrollBarArrowHovered}" />
                         </Trigger>
-                        <Trigger
-                            Property="IsPressed"
-                            Value="True">
-                            <Setter
-                                TargetName="border"
-                                Property="Background"
-                                Value="{DynamicResource ScrollBarArrowClicked}" />
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource ScrollBarArrowClicked}" />
                         </Trigger>
-                        <Trigger
-                            Property="IsEnabled"
-                            Value="False">
-                            <Setter
-                                TargetName="contentPresenter"
-                                Property="UIElement.Opacity"
-                                Value="0.56" />
-                            <Setter
-                                TargetName="border"
-                                Property="Background"
-                                Value="{DynamicResource ScrollBarDisabled}" />
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="contentPresenter" Property="UIElement.Opacity" Value="0.56" />
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource ScrollBarDisabled}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <Style
-        TargetType="{x:Type RepeatButton}"
-        x:Key="ModAssistantSmallRepeatButton">
-        <Setter
-            Property="FrameworkElement.OverridesDefaultStyle"
-            Value="True" />
-        <Setter
-            Property="Background"
-            Value="{DynamicResource ScrollBarBackground}" />
-        <Setter
-            Property="Focusable"
-            Value="False" />
-        <Setter
-            Property="IsTabStop"
-            Value="False" />
-        <Setter
-            Property="Template">
+    <Style x:Key="ModAssistantSmallRepeatButton" TargetType="{x:Type RepeatButton}">
+        <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+        <Setter Property="Background" Value="{DynamicResource ScrollBarBackground}" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate
-                    TargetType="{x:Type RepeatButton}">
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
                     <Rectangle
-                        Fill="{TemplateBinding Background}"
+                        Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
-                        Width="{TemplateBinding Width}" />
+                        Fill="{TemplateBinding Background}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

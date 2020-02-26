@@ -1,42 +1,41 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style TargetType="ComboBox">
-        <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxOutline}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxOutline}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
                     <Grid Name="templateRoot" SnapsToDevicePixels="True">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition MinWidth="{DynamicResource SystemParameters.VerticalScrollBarWidthKey}" Width="0" />
+                            <ColumnDefinition Width="0" MinWidth="{DynamicResource SystemParameters.VerticalScrollBarWidthKey}" />
                         </Grid.ColumnDefinitions>
                         <Popup
                             Name="PART_Popup"
-                            AllowsTransparency="True"
-                            Placement="Bottom"
                             Grid.ColumnSpan="2"
-                            PopupAnimation="Slide"
-                            IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}">
+                            AllowsTransparency="True"
+                            IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                            Placement="Bottom"
+                            PopupAnimation="Slide">
                             <Border
                                 Name="DropDownBorder"
-                                BorderBrush="{DynamicResource ComboBoxOutline}"
+                                MinWidth="{Binding ActualWidth, ElementName=templateRoot}"
                                 Background="{DynamicResource ComboBoxBackground}"
-                                BorderThickness="1"
-                                MinWidth="{Binding ActualWidth, ElementName=templateRoot}">
+                                BorderBrush="{DynamicResource ComboBoxOutline}"
+                                BorderThickness="1">
                                 <ScrollViewer Name="DropDownScrollViewer">
                                     <Grid Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                         <Canvas
                                             Name="canvas"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Top"
+                                            Width="0"
                                             Height="0"
-                                            Width="0">
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Top">
                                             <Rectangle
                                                 Name="OpaqueRect"
-                                                Fill="{Binding Background, ElementName=DropDownBorder}"
+                                                MinWidth="{Binding ActualWidth, ElementName=DropDownBorder}"
                                                 MinHeight="{Binding ActualHeight, ElementName=DropDownBorder}"
-                                                MinWidth="{Binding ActualWidth, ElementName=DropDownBorder}" />
+                                                Fill="{Binding Background, ElementName=DropDownBorder}" />
                                         </Canvas>
                                         <ItemsPresenter
                                             Name="ItemsPresenter"
@@ -48,19 +47,19 @@
                         </Popup>
                         <Border
                             Name="Border"
-                            Background="Transparent"
-                            Margin="0">
+                            Margin="0"
+                            Background="Transparent">
                             <TextBox
                                 Name="PART_EditableTextBox"
                                 Margin="2.5"
+                                HorizontalContentAlignment="Left"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Background="Transparent"
                                 BorderBrush="Transparent"
                                 BorderThickness="0"
                                 Foreground="{DynamicResource TextColor}"
-                                HorizontalContentAlignment="Left"
-                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                 IsReadOnly="True"
-                                Background="Transparent"
-                                Text="{TemplateBinding Text}"/>
+                                Text="{TemplateBinding Text}" />
                         </Border>
                         <ToggleButton
                             Name="toggleButton"
@@ -75,8 +74,7 @@
                         <Trigger Property="UIElement.IsKeyboardFocusWithin" Value="True">
                             <Setter Property="Foreground" Value="#FF000000" />
                         </Trigger>
-                        <Trigger SourceName="PART_Popup" Property="Popup.HasDropShadow" Value="True">
-                        </Trigger>
+                        <Trigger SourceName="PART_Popup" Property="Popup.HasDropShadow" Value="True" />
                         <Trigger Property="ItemsControl.HasItems" Value="False">
                             <Setter TargetName="DropDownBorder" Property="Height" Value="95" />
                         </Trigger>

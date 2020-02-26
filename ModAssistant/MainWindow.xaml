@@ -1,31 +1,44 @@
-<Window x:Class="ModAssistant.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ModAssistant"
-        mc:Ignorable="d"
-        Icon="Resources/icon.ico"
-        Title="{DynamicResource MainWindow:WindowTitle}"
-        SizeChanged="Window_SizeChanged"
-        UIElement.PreviewMouseDown="Window_PreviewMouseDown">
+<Window
+    x:Class="ModAssistant.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ModAssistant"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{DynamicResource MainWindow:WindowTitle}"
+    Icon="Resources/icon.ico"
+    SizeChanged="Window_SizeChanged"
+    UIElement.PreviewMouseDown="Window_PreviewMouseDown"
+    mc:Ignorable="d">
     <Grid>
-        <Rectangle Fill="{DynamicResource ModAssistantBackground}"/>
+        <Rectangle Fill="{DynamicResource ModAssistantBackground}" />
         <Rectangle>
             <Rectangle.Fill>
-                <ImageBrush x:Name="BackgroundImage" Stretch="{DynamicResource BackgroundImageStretch}"/>
+                <ImageBrush x:Name="BackgroundImage" Stretch="{DynamicResource BackgroundImageStretch}" />
             </Rectangle.Fill>
         </Rectangle>
-        <MediaElement Visibility="Hidden" LoadedBehavior="Manual" Name="BackgroundVideo" MediaEnded="BackgroundVideo_MediaEnded"/>
-        <Image x:Name="SideImage" UseLayoutRounding="True" SnapsToDevicePixels="True" HorizontalAlignment="Left" VerticalAlignment="{DynamicResource SideImageYPosition}"  Width="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelWidth}" Height="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelHeight}" Stretch="Fill"/>
+        <MediaElement
+            Name="BackgroundVideo"
+            LoadedBehavior="Manual"
+            MediaEnded="BackgroundVideo_MediaEnded"
+            Visibility="Hidden" />
+        <Image
+            x:Name="SideImage"
+            Width="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelWidth}"
+            Height="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelHeight}"
+            HorizontalAlignment="Left"
+            VerticalAlignment="{DynamicResource SideImageYPosition}"
+            SnapsToDevicePixels="True"
+            Stretch="Fill"
+            UseLayoutRounding="True" />
         <Grid Margin="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="50" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="70"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
@@ -38,71 +51,171 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Button Name="IntroButton" Grid.Row="0" Height="60" Margin="0,0,10,5" Click="IntroButton_Click" Style="{DynamicResource MainPageButton}">
+                <Button
+                    Name="IntroButton"
+                    Grid.Row="0"
+                    Height="60"
+                    Margin="0,0,10,5"
+                    Click="IntroButton_Click"
+                    Style="{DynamicResource MainPageButton}">
                     <StackPanel Margin="0,8,0,0">
-                        <Image Height="30" Source="{StaticResource info_circleDrawingImage}" VerticalAlignment="Bottom"></Image>
-                        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom" Text="{DynamicResource MainWindow:IntroButton}" />
+                        <Image
+                            Height="30"
+                            VerticalAlignment="Bottom"
+                            Source="{StaticResource info_circleDrawingImage}" />
+                        <TextBlock
+                            Margin="0,0,0,5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Text="{DynamicResource MainWindow:IntroButton}" />
                     </StackPanel>
                 </Button>
 
-                <Button IsEnabled="false" Name="ModsButton" Grid.Row="1" Height="60" Margin="0,5,10,5" Click="ModsButton_Click" Style="{DynamicResource MainPageButton}">
+                <Button
+                    Name="ModsButton"
+                    Grid.Row="1"
+                    Height="60"
+                    Margin="0,5,10,5"
+                    Click="ModsButton_Click"
+                    IsEnabled="false"
+                    Style="{DynamicResource MainPageButton}">
                     <StackPanel Margin="0,6,0,0">
-                        <Image Height="30" Source="{StaticResource microchipDrawingImage}" VerticalAlignment="Bottom"></Image>
-                        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom" Text="{DynamicResource MainWindow:ModsButton}" />
+                        <Image
+                            Height="30"
+                            VerticalAlignment="Bottom"
+                            Source="{StaticResource microchipDrawingImage}" />
+                        <TextBlock
+                            Margin="0,0,0,5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Text="{DynamicResource MainWindow:ModsButton}" />
                     </StackPanel>
                 </Button>
 
-                <Button Name="AboutButton" Grid.Row="2" Height="60" Margin="0,5,10,5" Click="AboutButton_Click" Style="{DynamicResource MainPageButton}">
+                <Button
+                    Name="AboutButton"
+                    Grid.Row="2"
+                    Height="60"
+                    Margin="0,5,10,5"
+                    Click="AboutButton_Click"
+                    Style="{DynamicResource MainPageButton}">
                     <StackPanel Margin="0,6,0,0">
-                        <Image Height="30" Source="{StaticResource heartDrawingImage}" VerticalAlignment="Bottom"></Image>
-                        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom" Text="{DynamicResource MainWindow:AboutButton}" />
+                        <Image
+                            Height="30"
+                            VerticalAlignment="Bottom"
+                            Source="{StaticResource heartDrawingImage}" />
+                        <TextBlock
+                            Margin="0,0,0,5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Text="{DynamicResource MainWindow:AboutButton}" />
                     </StackPanel>
                 </Button>
 
-                <Button Name="OptionsButton" Grid.Row="3" Height="60" Margin="0,5,10,5" Click="OptionsButton_Click" Style="{DynamicResource MainPageButton}">
+                <Button
+                    Name="OptionsButton"
+                    Grid.Row="3"
+                    Height="60"
+                    Margin="0,5,10,5"
+                    Click="OptionsButton_Click"
+                    Style="{DynamicResource MainPageButton}">
                     <StackPanel Margin="0,5,0,0">
-                        <Image Height="30" Source="{StaticResource cogDrawingImage}" VerticalAlignment="Bottom"></Image>
-                        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom" Text="{DynamicResource MainWindow:OptionsButton}" />
+                        <Image
+                            Height="30"
+                            VerticalAlignment="Bottom"
+                            Source="{StaticResource cogDrawingImage}" />
+                        <TextBlock
+                            Margin="0,0,0,5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Text="{DynamicResource MainWindow:OptionsButton}" />
                     </StackPanel>
                 </Button>
 
-                <StackPanel Name="GameVersions" Grid.Row="5" VerticalAlignment="Bottom">
+                <StackPanel
+                    Name="GameVersions"
+                    Grid.Row="5"
+                    VerticalAlignment="Bottom">
                     <TextBlock FontSize="10">
-                        <TextBlock Text="{DynamicResource MainWindow:GameVersionLabel}" />:
+                        <TextBlock Text="{DynamicResource MainWindow:GameVersionLabel}" />
+                        :
                     </TextBlock>
-                    <ComboBox Name="GameVersionsBox" Margin="0,5,5,0" SelectionChanged="GameVersionsBox_SelectionChanged" />
-                    <ComboBox Name="GameVersionsBoxOverride" Margin="0,5,5,0" Visibility="Collapsed" />
+                    <ComboBox
+                        Name="GameVersionsBox"
+                        Margin="0,5,5,0"
+                        SelectionChanged="GameVersionsBox_SelectionChanged" />
+                    <ComboBox
+                        Name="GameVersionsBoxOverride"
+                        Margin="0,5,5,0"
+                        Visibility="Collapsed" />
                 </StackPanel>
 
             </Grid>
 
             <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                <TextBlock Text="{DynamicResource MainWindow:VersionLabel}" HorizontalAlignment="Center" />
+                <TextBlock HorizontalAlignment="Center" Text="{DynamicResource MainWindow:VersionLabel}" />
                 <TextBlock Name="VersionText" HorizontalAlignment="Center" />
             </StackPanel>
 
-            <Frame Grid.Column="1" Name="Main" NavigationUIVisibility="Hidden" Background="{DynamicResource FrameBackgroundColor}" />
+            <Frame
+                Name="Main"
+                Grid.Column="1"
+                Background="{DynamicResource FrameBackgroundColor}"
+                NavigationUIVisibility="Hidden" />
 
-            <Grid Grid.Row="1" Grid.Column="1" >
+            <Grid Grid.Row="1" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="115" />
                     <ColumnDefinition Width="115" />
                 </Grid.ColumnDefinitions>
 
-                <Border BorderThickness="1" Height="40" VerticalAlignment="Bottom" BorderBrush="{DynamicResource BottomStatusBarOutline}">
-                    <TextBlock Name="MainTextBlock" Padding="5" Background="{DynamicResource BottomStatusBarBackground}" FontSize="20" />
+                <Border
+                    Height="40"
+                    VerticalAlignment="Bottom"
+                    BorderBrush="{DynamicResource BottomStatusBarOutline}"
+                    BorderThickness="1">
+                    <TextBlock
+                        Name="MainTextBlock"
+                        Padding="5"
+                        Background="{DynamicResource BottomStatusBarBackground}"
+                        FontSize="20" />
                 </Border>
-                <Button Grid.Column="1" Name="InfoButton" IsEnabled="False" Height="40" Width="100" HorizontalAlignment="Right" Margin="0,10,0,0" Click="InfoButton_Click">
+                <Button
+                    Name="InfoButton"
+                    Grid.Column="1"
+                    Width="100"
+                    Height="40"
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Right"
+                    Click="InfoButton_Click"
+                    IsEnabled="False">
                     <StackPanel>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{DynamicResource MainWindow:ModInfoButton}" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Text="{DynamicResource MainWindow:ModInfoButton}" />
                     </StackPanel>
                 </Button>
 
-                <Button Grid.Column="2" Name="InstallButton" IsEnabled="False" Height="40" Width="100" HorizontalAlignment="Right" Margin="0,10,0,0" Click="InstallButton_Click">
+                <Button
+                    Name="InstallButton"
+                    Grid.Column="2"
+                    Width="100"
+                    Height="40"
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Right"
+                    Click="InstallButton_Click"
+                    IsEnabled="False">
                     <StackPanel>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{DynamicResource MainWindow:InstallButtonTop}" />
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{DynamicResource MainWindow:InstallButtonBottom}" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Text="{DynamicResource MainWindow:InstallButtonTop}" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Text="{DynamicResource MainWindow:InstallButtonBottom}" />
                     </StackPanel>
                 </Button>
             </Grid>
