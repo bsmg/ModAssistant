@@ -1,10 +1,10 @@
 <Page x:Class="ModAssistant.Pages.Intro"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ModAssistant"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="629" d:DesignWidth="1182"
       Title="DynamicResource Intro:Title">
 
@@ -27,35 +27,35 @@
         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="48" Margin="0" Text="{DynamicResource Intro:PageTitle}" />
         <TextBlock Grid.Row="1" FontWeight="Bold" Text="{DynamicResource Intro:Terms:Header}" Margin="0" FontSize="28" />
         <TextBlock Grid.Row="2" Margin="0,5" FontSize="16" TextWrapping="Wrap">
-			<StaticResource ResourceKey="Intro:Terms:Line1" />
+            <StaticResource ResourceKey="Intro:Terms:Line1" />
         </TextBlock>
 
         <TextBlock Grid.Row="3" Margin="0,5" FontSize="16" TextWrapping="Wrap">
-			<StaticResource ResourceKey="Intro:Terms:Line2" />
+            <StaticResource ResourceKey="Intro:Terms:Line2" />
         </TextBlock>
 
         <TextBlock Grid.Row="4" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			<StaticResource ResourceKey="Intro:Terms:Term1" />
+            <StaticResource ResourceKey="Intro:Terms:Term1" />
         </TextBlock>
 
         <TextBlock Grid.Row="5" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			<StaticResource ResourceKey="Intro:Terms:Term2" />
+            <StaticResource ResourceKey="Intro:Terms:Term2" />
         </TextBlock>
 
         <TextBlock Grid.Row="6" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			<StaticResource ResourceKey="Intro:Terms:Term3" />
+            <StaticResource ResourceKey="Intro:Terms:Term3" />
         </TextBlock>
 
         <TextBlock Grid.Row="7" Margin="0,5" FontSize="16" TextWrapping="Wrap">
-			<StaticResource ResourceKey="Intro:ReviewsBeatGamesFault" />
+            <StaticResource ResourceKey="Intro:ReviewsBeatGamesFault" />
         </TextBlock>
 
         <TextBlock Grid.Row="8" Margin="0,5" FontSize="16" TextWrapping="Wrap">
-			<StaticResource ResourceKey="Intro:ReviewsRustySpoon" />
+            <StaticResource ResourceKey="Intro:ReviewsRustySpoon" />
         </TextBlock>
 
         <TextBlock Grid.Row="9" Margin="0,5" FontSize="16" TextWrapping="Wrap">
-			<StaticResource ResourceKey="Intro:WikiGuide" />
+            <StaticResource ResourceKey="Intro:WikiGuide" />
         </TextBlock>
 
         <StackPanel Margin="10" Grid.Row="10" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">

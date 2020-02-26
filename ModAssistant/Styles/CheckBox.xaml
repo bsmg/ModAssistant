@@ -5,45 +5,45 @@
             <Setter.Value>
                 <ControlTemplate TargetType="CheckBox">
                     <Grid
-						Name="templateRoot"
-						SnapsToDevicePixels="True"
-						Background="{DynamicResource CheckboxDefaultOutlineColor}">
+                        Name="templateRoot"
+                        SnapsToDevicePixels="True"
+                        Background="{DynamicResource CheckboxDefaultOutlineColor}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Border
-							Name="checkBoxBorder"
-							Margin="1"
-							HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-							VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-							BorderThickness="0"
-							Background="{DynamicResource CheckboxDefaultBackground}"
-							BorderBrush="{TemplateBinding BorderBrush}">
+                            Name="checkBoxBorder"
+                            Margin="1"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            BorderThickness="0"
+                            Background="{DynamicResource CheckboxDefaultBackground}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
                             <Grid Name="markGrid">
                                 <Path
-									Name="optionMark"
-									Opacity="0"
-									Stretch="None"
-									Margin="1"
-									Data="F1 M9.97498,1.22334 L4.6983,9.09834 L4.52164,9.09834 L0,5.19331 L1.27664,3.52165 L4.255,6.08833 L8.33331,1.52588E-05 L9.97498,1.22334"
-									Fill="{DynamicResource CheckboxTickColor}" />
+                                    Name="optionMark"
+                                    Opacity="0"
+                                    Stretch="None"
+                                    Margin="1"
+                                    Data="F1 M9.97498,1.22334 L4.6983,9.09834 L4.52164,9.09834 L0,5.19331 L1.27664,3.52165 L4.255,6.08833 L8.33331,1.52588E-05 L9.97498,1.22334"
+                                    Fill="{DynamicResource CheckboxTickColor}" />
                                 <Rectangle
-									Name="indeterminateMark"
-									Margin="2"
-									Opacity="0"
-									Fill="{DynamicResource CheckboxTickColor}" />
+                                    Name="indeterminateMark"
+                                    Margin="2"
+                                    Opacity="0"
+                                    Fill="{DynamicResource CheckboxTickColor}" />
                             </Grid>
                         </Border>
                         <ContentPresenter
-							Name="contentPresenter"
-							RecognizesAccessKey="True"
-							Grid.Column="1"
-							Margin="{TemplateBinding Padding}"
-							SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-							HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-							VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-							Focusable="False" />
+                            Name="contentPresenter"
+                            RecognizesAccessKey="True"
+                            Grid.Column="1"
+                            Margin="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Focusable="False" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="UIElement.IsMouseOver" Value="True">

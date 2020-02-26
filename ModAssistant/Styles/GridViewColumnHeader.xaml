@@ -29,13 +29,13 @@
                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                 </Border>
                                 <Border
-							        Name="HeaderHoverBorder"
-							        BorderThickness="1,0,1,1"
-							        Margin="1,1,0,0" />
+                                    Name="HeaderHoverBorder"
+                                    BorderThickness="1,0,1,1"
+                                    Margin="1,1,0,0" />
                                 <Border
-							        Name="HeaderPressBorder"
-							        BorderThickness="1,1,1,0"
-							        Margin="1,0,0,1" />
+                                    Name="HeaderPressBorder"
+                                    BorderThickness="1,1,1,0"
+                                    Margin="1,0,0,1" />
                             </Grid>
                         </Border>
                     </Grid>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ModAssistant"
         mc:Ignorable="d"
-		Icon="Resources/icon.ico"
+        Icon="Resources/icon.ico"
         Title="{DynamicResource MainWindow:WindowTitle}"
         SizeChanged="Window_SizeChanged"
         UIElement.PreviewMouseDown="Window_PreviewMouseDown">

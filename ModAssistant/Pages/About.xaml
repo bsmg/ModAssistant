@@ -32,20 +32,20 @@
 
         </TextBlock>
         <TextBlock Grid.Row="2" Margin="15,5" FontSize="16">
-			• <TextBlock Text="{DynamicResource About:List:Item1}" />
-		</TextBlock>
+            • <TextBlock Text="{DynamicResource About:List:Item1}" />
+        </TextBlock>
         <TextBlock Grid.Row="3" Margin="15,5" FontSize="16">
-			• <TextBlock Text="{DynamicResource About:List:Item2}" />
-		</TextBlock>
+            • <TextBlock Text="{DynamicResource About:List:Item2}" />
+        </TextBlock>
         <TextBlock Grid.Row="4" Margin="15,5" FontSize="16">
-			• <TextBlock Text="{DynamicResource About:List:Item3}" />
-		</TextBlock>
+            • <TextBlock Text="{DynamicResource About:List:Item3}" />
+        </TextBlock>
         <TextBlock Grid.Row="5" Margin="15,5" FontSize="16">
-			• <TextBlock Text="{DynamicResource About:List:Item4}" />
-		</TextBlock>
+            • <TextBlock Text="{DynamicResource About:List:Item4}" />
+        </TextBlock>
 
         <TextBlock TextWrapping="Wrap" Grid.Row="6" Margin="30,5,5,5" FontSize="16">
-			<StaticResource ResourceKey="About:SupportAssistant" />
+            <StaticResource ResourceKey="About:SupportAssistant" />
         </TextBlock>
 
         <TextBlock Grid.Row="7" Margin="0,10,5,5" FontSize="20" Text="{DynamicResource About:SpecialThanks}" />
@@ -54,76 +54,76 @@
 
             <StackPanel Margin="10"  Orientation="Vertical">
                 <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
-					<Hyperlink NavigateUri="https://umbranox.carrd.co/" RequestNavigate="Hyperlink_RequestNavigate">
-						Umbranox
-					</Hyperlink>
+                    <Hyperlink NavigateUri="https://umbranox.carrd.co/" RequestNavigate="Hyperlink_RequestNavigate">
+                        Umbranox
+                    </Hyperlink>
                 </TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Inspiration</TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating the Mod Manager</TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">
-					<Hyperlink NavigateUri="https://www.patreon.com/scoresaber" local:HyperlinkExtensions.IsExternal="True">
-						<TextBlock Text="{DynamicResource About:Donate}" />
-					</Hyperlink>
+                    <Hyperlink NavigateUri="https://www.patreon.com/scoresaber" local:HyperlinkExtensions.IsExternal="True">
+                        <TextBlock Text="{DynamicResource About:Donate}" />
+                    </Hyperlink>
                 </TextBlock>
             </StackPanel>
 
             <StackPanel Margin="10"  Orientation="Vertical">
                 <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
-					<Hyperlink NavigateUri="https://www.jackbaron.com/" local:HyperlinkExtensions.IsExternal="True">
-						lolPants
-					</Hyperlink>
+                    <Hyperlink NavigateUri="https://www.jackbaron.com/" local:HyperlinkExtensions.IsExternal="True">
+                        lolPants
+                    </Hyperlink>
                 </TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Inspiration</TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating ModSaber</TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">The first Mod repository</TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">
-					<Hyperlink NavigateUri="https://www.paypal.me/jackbarondev" RequestNavigate="Hyperlink_RequestNavigate">
-						<TextBlock Text="{DynamicResource About:Donate}" />
-					</Hyperlink>
-				</TextBlock>
+                    <Hyperlink NavigateUri="https://www.paypal.me/jackbarondev" RequestNavigate="Hyperlink_RequestNavigate">
+                        <TextBlock Text="{DynamicResource About:Donate}" />
+                    </Hyperlink>
+                </TextBlock>
             </StackPanel>
-            
+
             <StackPanel Margin="10"  Orientation="Vertical">
                 <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
-					<Hyperlink NavigateUri="https://www.github.com/Caeden117" local:HyperlinkExtensions.IsExternal="True">
-						Caeden117
-					</Hyperlink>
+                    <Hyperlink NavigateUri="https://www.github.com/Caeden117" local:HyperlinkExtensions.IsExternal="True">
+                        Caeden117
+                    </Hyperlink>
                 </TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Theme Support</TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">
-					<Hyperlink NavigateUri="https://ko-fi.com/Caeden117" RequestNavigate="Hyperlink_RequestNavigate">
-						<TextBlock Text="{DynamicResource About:Donate}" />
-					</Hyperlink>
-				</TextBlock>
+                    <Hyperlink NavigateUri="https://ko-fi.com/Caeden117" RequestNavigate="Hyperlink_RequestNavigate">
+                        <TextBlock Text="{DynamicResource About:Donate}" />
+                    </Hyperlink>
+                </TextBlock>
             </StackPanel>
 
             <StackPanel Margin="10"  Orientation="Vertical">
                 <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
-					<Hyperlink NavigateUri="https://twitter.com/moarinterz" local:HyperlinkExtensions.IsExternal="True">
-						Interz
-					</Hyperlink>
+                    <Hyperlink NavigateUri="https://twitter.com/moarinterz" local:HyperlinkExtensions.IsExternal="True">
+                        Interz
+                    </Hyperlink>
                 </TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Logos and icon</TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">
-					<Hyperlink NavigateUri="https://streamlabs.com/lnterz/tip" RequestNavigate="Hyperlink_RequestNavigate">
-						<TextBlock Text="{DynamicResource About:Donate}" />
-					</Hyperlink>
-				</TextBlock>
+                    <Hyperlink NavigateUri="https://streamlabs.com/lnterz/tip" RequestNavigate="Hyperlink_RequestNavigate">
+                        <TextBlock Text="{DynamicResource About:Donate}" />
+                    </Hyperlink>
+                </TextBlock>
             </StackPanel>
 
             <StackPanel Margin="10"  Orientation="Vertical">
                 <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
-					<Hyperlink NavigateUri="https://github.com/megalon" local:HyperlinkExtensions.IsExternal="True">
-						Megalon2D
-					</Hyperlink>
+                    <Hyperlink NavigateUri="https://github.com/megalon" local:HyperlinkExtensions.IsExternal="True">
+                        Megalon2D
+                    </Hyperlink>
                 </TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">BSMG Theme</TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Lots of fixes</TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">
-					<Hyperlink NavigateUri="https://ko-fi.com/megalon" RequestNavigate="Hyperlink_RequestNavigate">
-						<TextBlock Text="{DynamicResource About:Donate}" />
-					</Hyperlink>
-				</TextBlock>
+                    <Hyperlink NavigateUri="https://ko-fi.com/megalon" RequestNavigate="Hyperlink_RequestNavigate">
+                        <TextBlock Text="{DynamicResource About:Donate}" />
+                    </Hyperlink>
+                </TextBlock>
             </StackPanel>
 
         </StackPanel>

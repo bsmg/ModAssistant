@@ -4,24 +4,24 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ListViewItem">
                     <Border
-						        BorderThickness="{TemplateBinding BorderThickness}"
-						        BorderBrush="{TemplateBinding BorderBrush}"
-						        Background="{TemplateBinding Background}"
-						        CornerRadius="2"
-						        SnapsToDevicePixels="True">
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="2"
+                                SnapsToDevicePixels="True">
                         <Border
-							        Name="InnerBorder"
-							        CornerRadius="1"
-							        BorderThickness="1">
+                                    Name="InnerBorder"
+                                    CornerRadius="1"
+                                    BorderThickness="1">
                             <Grid>
                                 <Rectangle
-									        Name="BorderBox"
-									        Visibility="Collapsed"
-									        Fill="Transparent" />
+                                            Name="BorderBox"
+                                            Visibility="Collapsed"
+                                            Fill="Transparent" />
                                 <GridViewRowPresenter
-									        Grid.RowSpan="2"
-									        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-									        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                            Grid.RowSpan="2"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             </Grid>
                         </Border>
                     </Border>

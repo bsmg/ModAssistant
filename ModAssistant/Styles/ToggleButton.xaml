@@ -21,17 +21,17 @@
                         <Border
                             HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalAlignment}"
-						    Background="{TemplateBinding Background}"
-						    BorderBrush="{TemplateBinding BorderBrush}"
-						    BorderThickness="{TemplateBinding BorderThickness}"
-						    Padding="{TemplateBinding Padding}"
-						    SnapsToDevicePixels="True"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="True"
                             Opacity="0.5">
                             <Path
-								Name="ArrowDownPath"
-								Data="M2.5,0 L8.5,0 L5.5,3"
-								Fill="{DynamicResource ComboBoxArrow}"
-								VerticalAlignment="Center"
+                                Name="ArrowDownPath"
+                                Data="M2.5,0 L8.5,0 L5.5,3"
+                                Fill="{DynamicResource ComboBoxArrow}"
+                                VerticalAlignment="Center"
                                 HorizontalAlignment="Right"
                                 Margin="5"/>
                         </Border>

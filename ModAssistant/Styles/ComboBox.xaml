@@ -12,61 +12,61 @@
                             <ColumnDefinition MinWidth="{DynamicResource SystemParameters.VerticalScrollBarWidthKey}" Width="0" />
                         </Grid.ColumnDefinitions>
                         <Popup
-				            Name="PART_Popup"
-				            AllowsTransparency="True"
-				            Placement="Bottom"
-				            Grid.ColumnSpan="2"
-				            PopupAnimation="Slide"
-				            IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}">
+                            Name="PART_Popup"
+                            AllowsTransparency="True"
+                            Placement="Bottom"
+                            Grid.ColumnSpan="2"
+                            PopupAnimation="Slide"
+                            IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}">
                             <Border
-						        Name="DropDownBorder"
-						        BorderBrush="{DynamicResource ComboBoxOutline}"
-						        Background="{DynamicResource ComboBoxBackground}"
-						        BorderThickness="1"
+                                Name="DropDownBorder"
+                                BorderBrush="{DynamicResource ComboBoxOutline}"
+                                Background="{DynamicResource ComboBoxBackground}"
+                                BorderThickness="1"
                                 MinWidth="{Binding ActualWidth, ElementName=templateRoot}">
                                 <ScrollViewer Name="DropDownScrollViewer">
                                     <Grid Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                         <Canvas
-									        Name="canvas"
-									        HorizontalAlignment="Left"
-									        VerticalAlignment="Top"
-									        Height="0"
-									        Width="0">
+                                            Name="canvas"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Top"
+                                            Height="0"
+                                            Width="0">
                                             <Rectangle
-										        Name="OpaqueRect"
-										        Fill="{Binding Background, ElementName=DropDownBorder}"
-										        MinHeight="{Binding ActualHeight, ElementName=DropDownBorder}"
-										        MinWidth="{Binding ActualWidth, ElementName=DropDownBorder}" />
+                                                Name="OpaqueRect"
+                                                Fill="{Binding Background, ElementName=DropDownBorder}"
+                                                MinHeight="{Binding ActualHeight, ElementName=DropDownBorder}"
+                                                MinWidth="{Binding ActualWidth, ElementName=DropDownBorder}" />
                                         </Canvas>
                                         <ItemsPresenter
-									        Name="ItemsPresenter"
-									        KeyboardNavigation.DirectionalNavigation="Contained"
-									        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                            Name="ItemsPresenter"
+                                            KeyboardNavigation.DirectionalNavigation="Contained"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                     </Grid>
                                 </ScrollViewer>
                             </Border>
                         </Popup>
                         <Border
-				            Name="Border"
+                            Name="Border"
                             Background="Transparent"
-				            Margin="0">
+                            Margin="0">
                             <TextBox
-					            Name="PART_EditableTextBox"
-					            Margin="2.5"
+                                Name="PART_EditableTextBox"
+                                Margin="2.5"
                                 BorderBrush="Transparent"
                                 BorderThickness="0"
                                 Foreground="{DynamicResource TextColor}"
-					            HorizontalContentAlignment="Left"
-					            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-					            IsReadOnly="True"
+                                HorizontalContentAlignment="Left"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                IsReadOnly="True"
                                 Background="Transparent"
                                 Text="{TemplateBinding Text}"/>
                         </Border>
                         <ToggleButton
-				            Name="toggleButton"
-					        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-					        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-				            IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                            Name="toggleButton"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">

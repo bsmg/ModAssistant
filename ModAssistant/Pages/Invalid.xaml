@@ -32,27 +32,27 @@
         <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5" FontSize="16" TextWrapping="Wrap" Text="{DynamicResource Invalid:List:Header}" />
 
         <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			<StaticResource ResourceKey="Invalid:List:Line1" />
+            <StaticResource ResourceKey="Invalid:List:Line1" />
         </TextBlock>
 
         <TextBlock Grid.Row="4" Grid.ColumnSpan="2" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			<StaticResource ResourceKey="Invalid:List:Line2" />
+            <StaticResource ResourceKey="Invalid:List:Line2" />
         </TextBlock>
 
         <TextBlock Grid.Row="5" Grid.ColumnSpan="2" Margin="15,5" FontSize="16" TextWrapping="Wrap">
-			<StaticResource ResourceKey="Invalid:List:Line3" />
+            <StaticResource ResourceKey="Invalid:List:Line3" />
         </TextBlock>
 
         <TextBlock Grid.Row="6" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="28" />
         <TextBlock Grid.Row="7" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="20">
-			<TextBlock Text="{DynamicResource Invalid:BoughtGame1}" />:
-		</TextBlock>
+            <TextBlock Text="{DynamicResource Invalid:BoughtGame1}" />:
+        </TextBlock>
         <Border Grid.Row="8" Background="LightGray" Height="30" MinWidth="650" >
             <TextBlock Name="DirectoryTextBlock" Margin="5" Text="{Binding InstallDirectory}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16"/>
         </Border>
         <Button Grid.Row="8" Grid.Column="2"  Margin="3" Height="30" Width="80" Content="{DynamicResource Invalid:SelectFolderButton}" Click="SelectDirButton_Click"/>
         <TextBlock Grid.Row="9" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0" FontSize="20">
-				<TextBlock Text="{DynamicResource Invalid:BoughtGame2}" />.
-			</TextBlock>
+                <TextBlock Text="{DynamicResource Invalid:BoughtGame2}" />.
+            </TextBlock>
     </Grid>
 </Page>

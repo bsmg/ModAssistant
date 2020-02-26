@@ -1,10 +1,10 @@
 <Page x:Class="ModAssistant.Pages.Mods"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ModAssistant"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="629" d:DesignWidth="1182"
       Loaded="Page_Loaded"
       Title="{DynamicResource Mods:Title}">
@@ -37,10 +37,10 @@
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Margin="{Binding PromotionMargin}">
-											<Hyperlink NavigateUri="{Binding PromotionLink, TargetNullValue=about:blank}" RequestNavigate="Hyperlink_RequestNavigate">
-												<TextBlock Text="{Binding PromotionText}" />
-											</Hyperlink>
-										</TextBlock>
+                                            <Hyperlink NavigateUri="{Binding PromotionLink, TargetNullValue=about:blank}" RequestNavigate="Hyperlink_RequestNavigate">
+                                                <TextBlock Text="{Binding PromotionText}" />
+                                            </Hyperlink>
+                                        </TextBlock>
                                         <TextBlock Text="{Binding ModDescription}" />
                                     </StackPanel>
                                 </DataTemplate>

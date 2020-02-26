@@ -12,16 +12,16 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBoxItem}">
                     <Border
-						Name="Bd"
-						BorderBrush="{DynamicResource ComboBoxOutline}"
-						BorderThickness="{TemplateBinding BorderThickness}"
-						Background="{DynamicResource ComboBoxBackground}"
-						Padding="{TemplateBinding Padding}"
-						SnapsToDevicePixels="True">
+                        Name="Bd"
+                        BorderBrush="{DynamicResource ComboBoxOutline}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Background="{DynamicResource ComboBoxBackground}"
+                        Padding="{TemplateBinding Padding}"
+                        SnapsToDevicePixels="True">
                         <ContentPresenter
-							HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-							VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-							SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
