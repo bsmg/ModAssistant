@@ -52,18 +52,7 @@
 
         <StackPanel Grid.Row="8" Orientation="Horizontal"  HorizontalAlignment="Center">
 
-            <StackPanel Margin="5"  Orientation="Vertical">
-                <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
-					<Hyperlink NavigateUri="https://www.vanzeben.ca/" RequestNavigate="Hyperlink_RequestNavigate">
-						vanZeben
-					</Hyperlink>
-                </TextBlock>
-                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Creating BeatMods</TextBlock>
-                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">The current Mod repository</TextBlock>
-                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Used by this Installer</TextBlock>
-            </StackPanel>
-
-            <StackPanel Margin="5"  Orientation="Vertical">
+            <StackPanel Margin="10"  Orientation="Vertical">
                 <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
 					<Hyperlink NavigateUri="https://linkkle.com/umbranoxus" RequestNavigate="Hyperlink_RequestNavigate">
 						Umbranox
@@ -78,7 +67,7 @@
                 </TextBlock>
             </StackPanel>
 
-            <StackPanel Margin="5"  Orientation="Vertical">
+            <StackPanel Margin="10"  Orientation="Vertical">
                 <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
 					<Hyperlink NavigateUri="https://www.jackbaron.com/" local:HyperlinkExtensions.IsExternal="True">
 						lolPants
@@ -94,7 +83,7 @@
 				</TextBlock>
             </StackPanel>
             
-            <StackPanel Margin="5"  Orientation="Vertical">
+            <StackPanel Margin="10"  Orientation="Vertical">
                 <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
 					<Hyperlink NavigateUri="https://www.github.com/Caeden117" local:HyperlinkExtensions.IsExternal="True">
 						Caeden117
@@ -103,6 +92,20 @@
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Theme Support</TextBlock>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">
 					<Hyperlink NavigateUri="https://ko-fi.com/Caeden117" RequestNavigate="Hyperlink_RequestNavigate">
+						<TextBlock Text="{DynamicResource About:Donate}" />
+					</Hyperlink>
+				</TextBlock>
+            </StackPanel>
+
+            <StackPanel Margin="10"  Orientation="Vertical">
+                <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
+					<Hyperlink NavigateUri="https://twitter.com/moarinterz" local:HyperlinkExtensions.IsExternal="True">
+						Interz
+					</Hyperlink>
+                </TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Logos and icon</TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">
+					<Hyperlink NavigateUri="https://streamlabs.com/lnterz/tip" RequestNavigate="Hyperlink_RequestNavigate">
 						<TextBlock Text="{DynamicResource About:Donate}" />
 					</Hyperlink>
 				</TextBlock>
