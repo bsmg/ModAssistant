@@ -37,10 +37,10 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Image Margin="10" Grid.Row="0" Stretch="Uniform" Source="{DynamicResource loadingInnerDrawingImage}" VerticalAlignment="Center" />
-        <Image Margin="10" Grid.Row="0" Stretch="Uniform" Source="{DynamicResource loadingMiddleDrawingImage}" VerticalAlignment="Center" />
-        <Image Margin="10" Grid.Row="0" Stretch="Uniform" Source="{DynamicResource loadingOuterDrawingImage}" Style="{StaticResource Spin}"  VerticalAlignment="Center" />
+        <Image Margin="100,100,100,0" Grid.Row="0" Stretch="Uniform" Source="{DynamicResource loadingInnerDrawingImage}" VerticalAlignment="Center" />
+        <Image Margin="100,100,100,0" Grid.Row="0" Stretch="Uniform" Source="{DynamicResource loadingMiddleDrawingImage}" VerticalAlignment="Center" />
+        <Image Margin="100,100,100,0" Grid.Row="0" Stretch="Uniform" Source="{DynamicResource loadingOuterDrawingImage}" Style="{StaticResource Spin}"  VerticalAlignment="Center" />
 
-        <TextBlock Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="45" Margin="10" Text="{DynamicResource Loading:Loading}" />
+        <TextBlock Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="45" Margin="100,10,100,100" Text="{DynamicResource Loading:Loading}" />
     </Grid>
 </Page>
