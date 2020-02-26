@@ -23,7 +23,7 @@ namespace ModAssistant
         /// Local dictionary of Resource Dictionaries mapped by their names.
         /// </summary>
         private static Dictionary<string, Theme> loadedThemes = new Dictionary<string, Theme>();
-        private static List<string> preInstalledThemes = new List<string> { "Light", "Dark", "Light Pink" };
+        private static List<string> preInstalledThemes = new List<string> { "Light", "Dark", "BSMG", "Light Pink" };
 
         /// <summary>
         /// Index of "LoadedTheme" in App.xaml
