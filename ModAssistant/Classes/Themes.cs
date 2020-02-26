@@ -395,9 +395,9 @@ namespace ModAssistant
         }
 
         /// <summary>
-        /// Returns a BeatmapImage from a memory stream.
+        /// Returns a BeatmapImage from a byte array.
         /// </summary>
-        /// <param name="stream">memory stream containing an image.</param>
+        /// <param name="array">byte array containing an image.</param>
         /// <returns></returns>
         private static BitmapImage GetImageFromStream(byte[] array)
         {
