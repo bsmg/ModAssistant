@@ -111,6 +111,21 @@
 				</TextBlock>
             </StackPanel>
 
+            <StackPanel Margin="10"  Orientation="Vertical">
+                <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
+					<Hyperlink NavigateUri="https://github.com/megalon" local:HyperlinkExtensions.IsExternal="True">
+						Megalon2D
+					</Hyperlink>
+                </TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">BSMG Theme</TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Lots of fixes</TextBlock>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">
+					<Hyperlink NavigateUri="https://ko-fi.com/megalon" RequestNavigate="Hyperlink_RequestNavigate">
+						<TextBlock Text="{DynamicResource About:Donate}" />
+					</Hyperlink>
+				</TextBlock>
+            </StackPanel>
+
         </StackPanel>
         <StackPanel Grid.Row="9" Margin="5" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="PatButton" x:FieldModifier="public" Height="30" Width="80" Margin="0,0,5,0" Content="{DynamicResource About:HeadpatsButton}" Click="HeadpatsButton_Click"/>
