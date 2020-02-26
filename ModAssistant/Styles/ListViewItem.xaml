@@ -15,9 +15,9 @@
 							        BorderThickness="1">
                             <Grid>
                                 <Rectangle
-									        Name="UpperHighlight"
+									        Name="BorderBox"
 									        Visibility="Collapsed"
-									        Fill="#75FFFFFF" />
+									        Fill="Transparent" />
                                 <GridViewRowPresenter
 									        Grid.RowSpan="2"
 									        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -28,11 +28,9 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="{DynamicResource ModListItemHighlighted}"/>
-                            <Setter TargetName="UpperHighlight" Property="Visibility" Value="Visible"/>
                         </Trigger>
                         <Trigger Property="ListBoxItem.IsSelected" Value="True">
                             <Setter Property="Background" Value="{DynamicResource ModListItemSelected}"/>
-                            <Setter TargetName="UpperHighlight" Property="Visibility" Value="Hidden"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
