@@ -28,9 +28,11 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="{DynamicResource ModListItemHighlighted}"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource ModListItemHighlightedOutline}"/>
                         </Trigger>
                         <Trigger Property="ListBoxItem.IsSelected" Value="True">
                             <Setter Property="Background" Value="{DynamicResource ModListItemSelected}"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource ModListItemSelectedOutline}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

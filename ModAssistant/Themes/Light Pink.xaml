@@ -28,7 +28,9 @@
     <SolidColorBrush x:Key="ModColumnHeaderHighlighted" Color="#FFFF86FF"/>
     <SolidColorBrush x:Key="ModListBackground" Color="#FFFCDCFF" />
     <SolidColorBrush x:Key="ModListItemHighlighted" Color="#FFFBD7FF"/>
+    <SolidColorBrush x:Key="ModListItemHighlightedOutline" Color="" />
     <SolidColorBrush x:Key="ModListItemSelected" Color="#FFFF88F4"/>
+    <SolidColorBrush x:Key="ModListItemSelectedOutline" Color="" />
 
     <!-- Combo Box (Version select) -->
     <SolidColorBrush x:Key="ComboBoxBackground" Color="#FFE09EE0"/>
