@@ -366,6 +366,26 @@ namespace ModAssistant
             }
         }
 
+        public static void OpenFolder(string location)
+        {
+            if (!location.EndsWith(Path.DirectorySeparatorChar.ToString())) location += Path.DirectorySeparatorChar;
+            if (Directory.Exists(location))
+            {
+                try
+                {
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+                    {
+                        FileName = location,
+                        UseShellExecute = true,
+                        Verb = "open"
+                    });
+                    return;
+                }
+                catch { }
+            }
+            MessageBox.Show($"{string.Format((string)Application.Current.FindResource("Utils:CannotOpenFolder"), location)}.");
+        }
+
         public static async Task Download(string link, string output)
         {
             var resp = await HttpClient.GetAsync(link);

@@ -58,7 +58,7 @@ namespace ModAssistant.Pages
 
         private void OpenDirButton_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start(InstallDirectory);
+            Utils.OpenFolder(InstallDirectory);
         }
 
         private void Test_Click(object sender, RoutedEventArgs e)
@@ -162,7 +162,7 @@ namespace ModAssistant.Pages
                 string title = (string)Application.Current.FindResource("Options:LogUploadFailed:Title");
                 string body = (string)Application.Current.FindResource("Options:LogUploadFailed:Body");
                 MessageBox.Show($"{body}\n ================= \n" + exception, title);
-                System.Diagnostics.Process.Start(Path.Combine(InstallDirectory, "Logs"));
+                Utils.OpenFolder(Path.Combine(InstallDirectory, "Logs"));
             }
         }
 
@@ -196,7 +196,7 @@ namespace ModAssistant.Pages
             string location = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
                 "AppData", "LocalLow", "Hyperbolic Magnetism");
-            System.Diagnostics.Process.Start(location);
+            Utils.OpenFolder(location);
         }
 
         private async void YeetBSIPAButton_Click(object sender, RoutedEventArgs e)
@@ -272,7 +272,7 @@ namespace ModAssistant.Pages
         {
             if (Directory.Exists(Themes.ThemeDirectory))
             {
-                System.Diagnostics.Process.Start(Themes.ThemeDirectory);
+                Utils.OpenFolder(Themes.ThemeDirectory);
             }
             else
             {

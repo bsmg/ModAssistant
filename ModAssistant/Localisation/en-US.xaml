@@ -224,4 +224,5 @@
     <sys:String x:Key="Utils:NoInstallFolder">Could not detect your Beat Saber install folder. Please select it manually.</sys:String>
     <sys:String x:Key="Utils:RunAsAdmin">Mod Assistant needs to run this task as Admin. Please try again.</sys:String>
     <sys:String x:Key="Utils:InstallDir:DialogTitle">Select your Beat Saber install folder</sys:String>
+    <sys:String x:Key="Utils:CannotOpenFolder">Can't open folder: {0}</sys:String>
 </ResourceDictionary>
