@@ -72,7 +72,7 @@
 
         <TextBlock
             Grid.Row="6"
-            Margin="30,5,5,5"
+            Margin="0,5,5,5"
             FontSize="16"
             TextWrapping="Wrap">
             <StaticResource ResourceKey="About:SupportAssistant" />

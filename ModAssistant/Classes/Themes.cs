@@ -339,7 +339,7 @@ namespace ModAssistant
             Waifus waifus = new Waifus();
             ResourceDictionary dictionary = null;
 
-            using (FileStream stream = new FileStream(Path.Combine(directory, name + extension), FileMode.Open))
+            using (FileStream stream = new FileStream(Path.Combine(directory, name + extension), FileMode.Open, FileAccess.Read))
             using (ZipArchive archive = new ZipArchive(stream))
             {
                 foreach (ZipArchiveEntry file in archive.Entries)
