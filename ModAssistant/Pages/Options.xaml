@@ -272,6 +272,7 @@
                 Height="30"
                 Margin="5"
                 Click="YeetBSIPAButton_Click"
+                Background="{DynamicResource ButtonDangerBackground}"
                 Content="{DynamicResource Options:UninstallBSIPAButton}" />
             <Button
                 Width="110"
