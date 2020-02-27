@@ -17,7 +17,7 @@ namespace ModAssistant
     {
         public static string LoadedTheme { get; private set; }
         public static List<string> LoadedThemes { get => loadedThemes.Keys.ToList(); }
-        public static string ThemeDirectory => $"{Environment.CurrentDirectory}/Themes";
+        public static string ThemeDirectory = Path.Combine(Path.GetDirectoryName(Utils.ExePath), "Themes");
 
         /// <summary>
         /// Local dictionary of Resource Dictionaries mapped by their names.
