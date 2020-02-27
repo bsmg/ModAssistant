@@ -15,6 +15,7 @@ namespace ModAssistant
         private static Version CurrentVersion;
         private static Version LatestVersion;
         private static bool NeedsUpdate = false;
+        private static string NewExe = Path.Combine(Path.GetDirectoryName(Utils.ExePath), "ModAssistant.exe");
 
         public static async Task<bool> CheckForUpdate()
         {
@@ -30,6 +31,7 @@ namespace ModAssistant
 
         public static async Task Run()
         {
+            if (Path.GetFileName(Utils.ExePath).Equals("ModAssistant.old.exe")) RunNew();
             try
             {
                 NeedsUpdate = await CheckForUpdate();
@@ -44,9 +46,7 @@ namespace ModAssistant
 
         public static async Task StartUpdate()
         {
-            string Directory = Path.GetDirectoryName(Utils.ExePath);
-            string OldExe = Path.Combine(Directory, "ModAssistant.old.exe");
-
+            string OldExe = Path.Combine(Path.GetDirectoryName(Utils.ExePath), "ModAssistant.old.exe");
             string DownloadLink = null;
 
             foreach (Update.Asset asset in LatestUpdate.assets)
@@ -70,14 +70,16 @@ namespace ModAssistant
 
                 File.Move(Utils.ExePath, OldExe);
 
-                await Utils.Download(DownloadLink, Utils.ExePath);
-                Process.Start(Utils.ExePath);
-                App.Current.Shutdown();
-
+                await Utils.Download(DownloadLink, NewExe);
+                RunNew();
             }
-
         }
 
+        private static void RunNew()
+        {
+            Process.Start(NewExe);
+            Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
+        }
     }
 
     public class Update
