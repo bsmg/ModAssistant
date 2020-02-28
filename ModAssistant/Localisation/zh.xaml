@@ -84,6 +84,8 @@
     <sys:String x:Key="Mods:LoadFailed">无法加载Mod列表</sys:String>
     <sys:String x:Key="Mods:CheckingInstalledMods">正在检查已安装的Mod</sys:String>
     <sys:String x:Key="Mods:LoadingMods">正在加载Mod列表</sys:String>
+    <sys:String x:Key="Mods:LoadingTrans">正在加载Mod翻译...</sys:String>
+    <sys:String x:Key="Mods:DownloadingMod">正在下载{0}</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Mod列表加载完成</sys:String>
     <sys:String x:Key="Mods:InstallingMod">正在安装{0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">已安装{0}</sys:String>

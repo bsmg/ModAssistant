@@ -23,6 +23,7 @@ namespace ModAssistant.Pages
 
         public List<string> DefaultMods = new List<string>() { "SongCore", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "PlaylistCore", "Survey" };
         public Mod[] ModsList;
+        public Mod[] TransList;
         public Mod[] AllModsList;
         public static List<Mod> InstalledMods = new List<Mod>();
         public List<string> CategoryNames = new List<string>();
@@ -92,6 +93,11 @@ namespace ModAssistant.Pages
                 if (ModsList != null)
                 {
                     Array.Clear(ModsList, 0, ModsList.Length);
+                }
+
+                if (TransList != null)
+                {
+                    Array.Clear(TransList, 0, TransList.Length);
                 }
 
                 if (AllModsList != null)
@@ -252,6 +258,21 @@ namespace ModAssistant.Pages
                 return;
             }
 
+            MainWindow.Instance.MainText = $"{FindResource("Mods:LoadingTrans")}...";
+
+            try
+            {
+                var resp = await HttpClient.GetAsync(Utils.Constants.ModTranslationURL);
+                var body = await resp.Content.ReadAsStringAsync();
+                TransList = JsonSerializer.Deserialize<Mod[]>(body);
+            }
+            catch (Exception e)
+            {
+                System.Windows.MessageBox.Show($"{FindResource("Mods:LoadFailed")}.\n\n" + e);
+                return;
+            }
+
+
             foreach (Mod mod in ModsList)
             {
                 bool preSelected = mod.required;
@@ -266,13 +287,35 @@ namespace ModAssistant.Pages
 
                 RegisterDependencies(mod);
 
+                mod.newname = mod.name;
+                mod.newdescription = mod.description;
+
+                foreach (Mod tran in TransList)
+                {
+                    if (tran.name == mod.name)
+                    {
+                        mod.newname = tran.newname;
+                        if (tran.description != null)
+                        {
+                            if (tran.description == mod.description)
+                            {
+                                mod.newdescription = tran.newdescription;
+                            }
+                        }
+                        else
+                        {
+                            mod.newdescription = "." + tran.newdescription;
+                        }
+                    }
+                }
+
                 ModListItem ListItem = new ModListItem()
                 {
                     IsSelected = preSelected,
                     IsEnabled = !mod.required,
-                    ModName = mod.name,
+                    ModName = mod.newname,
                     ModVersion = mod.version,
-                    ModDescription = mod.description.Replace("\r\n", " ").Replace("\n", " "),
+                    ModDescription = mod.newdescription.Replace("\r\n", " ").Replace("\n", " "),
                     ModInfo = mod,
                     Category = mod.category
                 };
@@ -371,9 +414,12 @@ namespace ModAssistant.Pages
                 return;
             }
 
+            MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:DownloadingMod"), mod.name)}...";
+
             using (Stream stream = await DownloadMod(Utils.Constants.BeatModsURL + downloadLink))
             using (ZipArchive archive = new ZipArchive(stream))
             {
+                MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
                 foreach (ZipArchiveEntry file in archive.Entries)
                 {
                     string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
