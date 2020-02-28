@@ -151,6 +151,10 @@ namespace ModAssistant
             }
             catch (IOException)
             {
+                if (culture.Contains("-"))
+                {
+                    LoadLanguage(culture.Split('-').First());
+                }
                 // Can't load language file
             }
         }

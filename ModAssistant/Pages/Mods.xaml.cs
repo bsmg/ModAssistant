@@ -57,7 +57,7 @@ namespace ModAssistant.Pages
             {
                 foreach (var column in grid.Columns)
                 {
-                    if (column.Header?.ToString() == "Description")
+                    if (column.Header?.ToString() == FindResource("Mods:Header:Description").ToString())
                     {
                         description = column;
                     }
