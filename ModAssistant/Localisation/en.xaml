@@ -70,7 +70,7 @@
     </Span>
     <Span x:Key="Intro:WikiGuide">
         Please read the Beginners Guide on the
-        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/beginners-guide">
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
             Wiki
         </Hyperlink>.
     </Span>
