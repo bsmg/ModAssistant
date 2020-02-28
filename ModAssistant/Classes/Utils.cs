@@ -23,12 +23,23 @@ namespace ModAssistant
         public class Constants
         {
             public const string BeatSaberAPPID = "620980";
+            
+            public const string DownloadSite = "源站获取";
             public const string BeatModsAPIUrl = "https://beatmods.com/api/v1/";
             public const string TeknikAPIUrl = "https://api.teknik.io/v1/";
             public const string BeatModsURL = "https://beatmods.com";
             public const string BeatModsAlias = "https://alias.beatmods.com/aliases.json";
             public const string WeebCDNAPIURL = "https://pat.assistant.moe/api/v1.0/";
             public const string ModTranslationURL = "https://wgzeyu.github.io/BeatSaberModListTranslationRepo/zh-Hans.json";
+            /*
+            public const string DownloadSite = "国内中转";
+            public const string BeatModsAPIUrl = "https://beatmods.gtxcn.com/api/v1/";
+            public const string TeknikAPIUrl = "https://beatmods.gtxcn.com/teknik/v1/";
+            public const string BeatModsURL = "https://beatmods.gtxcn.com";
+            public const string BeatModsAlias = "https://beatmods.gtxcn.com/alias/aliases.json";
+            public const string WeebCDNAPIURL = "https://beatmods.gtxcn.com/assistant/api/v1.0/";
+            public const string ModTranslationURL = "https://beatmods.gtxcn.com/github/BeatSaberModListTranslationRepo/zh-Hans.json";
+            */
             public const string BeatModsModsOptions = "mod?status=approved";
             public const string MD5Spacer = "                                 ";
             public static readonly char[] IllegalCharacters = new char[]

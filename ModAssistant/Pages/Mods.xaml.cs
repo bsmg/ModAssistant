@@ -126,7 +126,7 @@ namespace ModAssistant.Pages
                     DescriptionColumn.Width = 800;
                 }
 
-                MainWindow.Instance.MainText = $"{FindResource("Mods:LoadingMods")}...";
+                MainWindow.Instance.MainText = $"{FindResource("Mods:LoadingMods")}..." + " (从" + Utils.Constants.DownloadSite + ")";
                 await Task.Run(async () => await PopulateModsList());
 
                 ModsListView.ItemsSource = ModList;
@@ -258,7 +258,7 @@ namespace ModAssistant.Pages
                 return;
             }
 
-            MainWindow.Instance.MainText = $"{FindResource("Mods:LoadingTrans")}...";
+            MainWindow.Instance.MainText = $"{FindResource("Mods:LoadingTrans")}..." + " (从" + Utils.Constants.DownloadSite + ")";
 
             try
             {
@@ -414,7 +414,7 @@ namespace ModAssistant.Pages
                 return;
             }
 
-            MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:DownloadingMod"), mod.name)}...";
+            MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:DownloadingMod"), mod.name)}..." + " (从" + Utils.Constants.DownloadSite + ")";
 
             using (Stream stream = await DownloadMod(Utils.Constants.BeatModsURL + downloadLink))
             using (ZipArchive archive = new ZipArchive(stream))

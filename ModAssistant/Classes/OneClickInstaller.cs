@@ -25,7 +25,7 @@ namespace ModAssistant
         private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver" };
 
         private const bool BypassDownloadCounter = false;
-        public static async void InstallAsset(string link)
+        public static async Task InstallAsset(string link)
         {
             Uri uri = new Uri(link);
             if (!Protocols.Contains(uri.Scheme)) return;
