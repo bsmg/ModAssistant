@@ -1,5 +1,7 @@
-[![ModAssistant](https://cdn.assistant.moe/images/ModAssistant/Icons/Banner.svg)](https://github.com/Assistant/ModAssistant/releases/latest)
-[![Download here!](https://cdn.assistant.moe/images/ModAssistant/Icons/Download.svg)](https://github.com/Assistant/ModAssistant/releases/latest)
+[![ModAssistant](https://cdn.assistant.moe/images/ModAssistant/Icons/Banner.svg)](https://github.com/wgzeyu/ModAssistant-CN/releases/latest)
+[![点我下载!](https://cdn.assistant.moe/images/ModAssistant/Icons/Download.svg)](https://github.com/wgzeyu/ModAssistant-CN/releases/latest)
+
+添加了列表翻译功能的Mod安装器，懒得翻介绍了
 
 ModAssistant is a PC mod installer for Beat Saber. It uses mods from [BeatMods](https://beatmods.com/).
 
