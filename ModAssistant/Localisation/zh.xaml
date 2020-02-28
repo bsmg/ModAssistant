@@ -82,8 +82,8 @@
     <sys:String x:Key="Mods:Header:Uninstall">卸载</sys:String>
     <sys:String x:Key="Mods:UninstallButton">卸载</sys:String>
     <sys:String x:Key="Mods:LoadFailed">无法加载Mod列表</sys:String>
-    <sys:String x:Key="Mods:CheckingInstalledMods">正在检查已安装的Mod...</sys:String>
-    <sys:String x:Key="Mods:LoadingMods">正在加载Mod列表...</sys:String>
+    <sys:String x:Key="Mods:CheckingInstalledMods">正在检查已安装的Mod</sys:String>
+    <sys:String x:Key="Mods:LoadingMods">正在加载Mod列表</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Mod列表加载完成</sys:String>
     <sys:String x:Key="Mods:InstallingMod">正在安装{0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">已安装{0}</sys:String>
@@ -135,7 +135,7 @@
     <sys:String x:Key="Options:OpenLogsButton">打开日志</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">打开游戏存档</sys:String>
     <sys:String x:Key="Options:UninstallBSIPAButton">卸载BSIPA</sys:String>
-    <sys:String x:Key="Options:RemoveAllModsButton">移除所有MOd</sys:String>
+    <sys:String x:Key="Options:RemoveAllModsButton">移除所有Mod</sys:String>
     <sys:String x:Key="Options:ApplicationTheme">软件主题</sys:String>
     <sys:String x:Key="Options:ExportTemplateButton">导出模板</sys:String>
     <sys:String x:Key="Options:UploadingLog">正在上传日志</sys:String>
