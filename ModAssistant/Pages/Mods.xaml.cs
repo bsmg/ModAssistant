@@ -668,3 +668,4 @@ namespace ModAssistant.Pages
         }
     }
 }
+
