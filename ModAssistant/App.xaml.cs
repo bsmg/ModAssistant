@@ -70,11 +70,11 @@ namespace ModAssistant
             }
             else
             {
-                ArgumentHandler(e.Args);
+                await ArgumentHandler(e.Args);
             }
         }
 
-        private async void ArgumentHandler(string[] args)
+        private async Task ArgumentHandler(string[] args)
         {
             switch (args[0])
             {
