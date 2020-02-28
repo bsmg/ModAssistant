@@ -8,9 +8,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <!-- Global i88n Definitions -->
-                <ResourceDictionary Source="Localisation/en-US.xaml" />
+                <ResourceDictionary Source="Localisation/en.xaml" />
                 <!-- Swapped i88n Definitions -->
-                <ResourceDictionary Source="Localisation/en-US.xaml" />
+                <ResourceDictionary Source="Localisation/en.xaml" />
 
                 <!-- Load default Scrollbar theme, in case LoadedTheme doesn't have Scrollbar properties applied. -->
                 <ResourceDictionary x:Name="DefaultSidebarTheme" Source="Themes/Default Scrollbar.xaml" />
