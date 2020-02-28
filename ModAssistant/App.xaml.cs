@@ -74,7 +74,7 @@ namespace ModAssistant
             }
         }
 
-        private void ArgumentHandler(string[] args)
+        private async void ArgumentHandler(string[] args)
         {
             switch (args[0])
             {
@@ -85,7 +85,7 @@ namespace ModAssistant
                     }
                     else
                     {
-                        OneClickInstaller.InstallAsset(args[1]);
+                        await OneClickInstaller.InstallAsset(args[1]);
                     }
                     break;
 
