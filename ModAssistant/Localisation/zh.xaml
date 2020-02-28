@@ -51,10 +51,10 @@
         爱好者在空闲时间<Bold>用爱发电</Bold>制作了这些Mod，请保持耐心，等待Mod更新。
     </Span>
     <Span x:Key="Intro:ReviewsBeatGamesFault">
-        <Bold>请勿由于MOD不可用而发表差评，Beat Games不会封杀MOD。</Bold>
+        <Bold>请勿由于Mod不可用而发表差评，Beat Games不会封杀Mod。</Bold>
     </Span>
     <Span x:Key="Intro:ReviewsRustySpoon">
-        如果我继续看到因为MOD不可用而留下的差评，<Bold>我会亲自干掉MOD。</Bold>
+        如果我继续看到因为Mod不可用而留下的差评，<Bold>我会亲自干掉Mod。</Bold>
     </Span>
     <Span x:Key="Intro:WikiGuide">
         <Bold><Span Foreground="Red">请务必阅读</Span>
@@ -82,8 +82,8 @@
     <sys:String x:Key="Mods:Header:Uninstall">卸载</sys:String>
     <sys:String x:Key="Mods:UninstallButton">卸载</sys:String>
     <sys:String x:Key="Mods:LoadFailed">无法加载Mod列表</sys:String>
-    <sys:String x:Key="Mods:CheckingInstalledMods">正在检查已安装的Mod...</sys:String>
-    <sys:String x:Key="Mods:LoadingMods">正在加载Mod列表...</sys:String>
+    <sys:String x:Key="Mods:CheckingInstalledMods">正在检查已安装的Mod</sys:String>
+    <sys:String x:Key="Mods:LoadingMods">正在加载Mod列表</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Mod列表加载完成</sys:String>
     <sys:String x:Key="Mods:InstallingMod">正在安装{0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">已安装{0}</sys:String>
@@ -135,7 +135,7 @@
     <sys:String x:Key="Options:OpenLogsButton">打开日志</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">打开游戏存档</sys:String>
     <sys:String x:Key="Options:UninstallBSIPAButton">卸载BSIPA</sys:String>
-    <sys:String x:Key="Options:RemoveAllModsButton">移除所有MOd</sys:String>
+    <sys:String x:Key="Options:RemoveAllModsButton">移除所有Mod</sys:String>
     <sys:String x:Key="Options:ApplicationTheme">软件主题</sys:String>
     <sys:String x:Key="Options:ExportTemplateButton">导出模板</sys:String>
     <sys:String x:Key="Options:UploadingLog">正在上传日志</sys:String>
