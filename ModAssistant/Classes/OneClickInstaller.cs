@@ -20,6 +20,7 @@ namespace ModAssistant
         private const string CustomAvatarsFolder = "CustomAvatars";
         private const string CustomSabersFolder = "CustomSabers";
         private const string CustomPlatformsFolder = "CustomPlatforms";
+        private const string CustomBloqsFolder = "CustomNotes";
         private static readonly string CustomSongsFolder = Path.Combine("Beat Saber_Data", "CustomLevels");
 
         private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver" };
@@ -121,6 +122,9 @@ namespace ModAssistant
                     break;
                 case "platform":
                     await DownloadAsset(ModelSaberURLPrefix + uri.Host + uri.AbsolutePath, CustomPlatformsFolder);
+                    break;
+                case "bloq":
+                    await DownloadAsset(ModelSaberURLPrefix + uri.Host + uri.AbsolutePath, CustomBloqsFolder);
                     break;
             }
         }
