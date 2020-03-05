@@ -110,7 +110,14 @@ namespace ModAssistant
         {
             if (string.IsNullOrEmpty(savedTheme))
             {
-                Themes.ApplyWindowsTheme();
+                try
+                {
+                    Themes.ApplyWindowsTheme();
+                }
+                catch
+                {
+                    Themes.ApplyTheme("Light", false);
+                }
                 return;
             }
 
