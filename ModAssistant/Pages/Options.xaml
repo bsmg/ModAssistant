@@ -10,7 +10,7 @@
     d:DesignWidth="1182"
     mc:Ignorable="d">
     <Page.Resources />
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="262,88,161,89" Width="759">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -30,6 +30,7 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
@@ -240,7 +241,15 @@
             Margin="3"
             Click="ApplicationThemeOpenThemesFolder_Click"
             Content="{DynamicResource Options:OpenFolderButton}" />
-
+        <Button
+            Name="ApplicationThemeRefresh"
+            Grid.Row="13"
+            Grid.Column="4"
+            Width="93"
+            Height="30"
+            Margin="4,5,-94,5"
+            Click="ApplicationThemeRefresh_Click"
+            Content="{DynamicResource Options:ThemesRefreshButton}" />
         <TextBlock
             Grid.Row="14"
             Margin="15,5,5,5"

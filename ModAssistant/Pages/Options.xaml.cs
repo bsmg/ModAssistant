@@ -266,6 +266,12 @@ namespace ModAssistant.Pages
             Themes.LoadThemes();
         }
 
+        private void ApplicationThemeRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            Themes.LoadThemes();
+            MainWindow.Instance.MainText = (string)Application.Current.FindResource("Options:ThemesRefreshSuccess");
+        }
+
         private void ApplicationThemeOpenThemesFolder_Click(object sender, RoutedEventArgs e)
         {
             if (Directory.Exists(Themes.ThemeDirectory))
