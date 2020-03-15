@@ -10,7 +10,7 @@
     d:DesignWidth="1182"
     mc:Ignorable="d">
     <Page.Resources />
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="262,88,161,89" Width="759">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -247,7 +247,7 @@
             Grid.Column="4"
             Width="93"
             Height="30"
-            Margin="4,5,-94,5"
+            Margin="3"
             Click="ApplicationThemeRefresh_Click"
             Content="{DynamicResource Options:ThemesRefreshButton}" />
         <TextBlock
