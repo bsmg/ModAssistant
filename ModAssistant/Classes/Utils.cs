@@ -252,10 +252,10 @@ namespace ModAssistant
 
                 fs.Read(file, 0, Convert.ToInt32(fs.Length));
                 fs.Close();
-                int index = Encoding.Default.GetString(file).IndexOf("public.app-category.games") + 136;
+                int index = Encoding.UTF8.GetString(file).IndexOf("public.app-category.games") + 136;
 
                 Array.Copy(file, index, bytes, 0, 16);
-                string version = Encoding.Default.GetString(bytes).Trim(Utils.Constants.IllegalCharacters);
+                string version = Encoding.UTF8.GetString(bytes).Trim(Utils.Constants.IllegalCharacters);
 
                 return version;
             }

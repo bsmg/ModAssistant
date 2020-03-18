@@ -116,7 +116,7 @@
                     VerticalAlignment="Center"
                     FontSize="16">
                     <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/scoresaber">
-                        <TextBlock Text="{DynamicResource About:Donate}" />
+                        <Run Text="{DynamicResource About:Donate}" />
                     </Hyperlink>
                 </TextBlock>
             </StackPanel>
@@ -154,7 +154,7 @@
                     VerticalAlignment="Center"
                     FontSize="16">
                     <Hyperlink NavigateUri="https://www.paypal.me/jackbarondev" RequestNavigate="Hyperlink_RequestNavigate">
-                        <TextBlock Text="{DynamicResource About:Donate}" />
+                        <Run Text="{DynamicResource About:Donate}" />
                     </Hyperlink>
                 </TextBlock>
             </StackPanel>
@@ -180,7 +180,7 @@
                     VerticalAlignment="Center"
                     FontSize="16">
                     <Hyperlink NavigateUri="https://ko-fi.com/Caeden117" RequestNavigate="Hyperlink_RequestNavigate">
-                        <TextBlock Text="{DynamicResource About:Donate}" />
+                        <Run Text="{DynamicResource About:Donate}" />
                     </Hyperlink>
                 </TextBlock>
             </StackPanel>
@@ -206,7 +206,7 @@
                     VerticalAlignment="Center"
                     FontSize="16">
                     <Hyperlink NavigateUri="https://streamlabs.com/lnterz/tip" RequestNavigate="Hyperlink_RequestNavigate">
-                        <TextBlock Text="{DynamicResource About:Donate}" />
+                        <Run Text="{DynamicResource About:Donate}" />
                     </Hyperlink>
                 </TextBlock>
             </StackPanel>
@@ -238,7 +238,7 @@
                     VerticalAlignment="Center"
                     FontSize="16">
                     <Hyperlink NavigateUri="https://ko-fi.com/megalon" RequestNavigate="Hyperlink_RequestNavigate">
-                        <TextBlock Text="{DynamicResource About:Donate}" />
+                        <Run Text="{DynamicResource About:Donate}" />
                     </Hyperlink>
                 </TextBlock>
             </StackPanel>
