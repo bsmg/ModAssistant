@@ -77,7 +77,7 @@ namespace ModAssistant
 
             if (BypassDownloadCounter)
             {
-                DownloadAsset(BeatSaverURLPrefix + Response.directDownload, CustomSongsFolder, Response.hash + ".zip");
+               await DownloadAsset(BeatSaverURLPrefix + Response.directDownload, CustomSongsFolder, Response.hash + ".zip");
             }
             else
             {
