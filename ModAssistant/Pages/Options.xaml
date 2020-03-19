@@ -28,6 +28,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
@@ -162,6 +163,22 @@
             Checked="BeatSaverProtocolHandler_Checked"
             IsChecked="{Binding BeatSaverProtocolHandlerEnabled}"
             Unchecked="BeatSaverProtocolHandler_Unchecked" />
+        <TextBlock
+            Grid.Row="9"
+            Margin="50,5,5,5"
+            HorizontalAlignment="Left"
+            FontSize="16"
+            FontWeight="Bold"
+            Text="{DynamicResource Options:BSaber}" />
+        <CheckBox
+            Name="BSaberProtocolHandler"
+            Grid.Row="9"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Checked="BSaberProtocolHandler_Checked"
+            IsChecked="{Binding BSaberProtocolHandlerEnabled}"
+            Unchecked="BSaberProtocolHandler_Unchecked" />
 
         <TextBlock
             Grid.Row="8"

@@ -14,6 +14,7 @@ namespace ModAssistant
     {
         private const string ModelSaberURLPrefix = "https://modelsaber.com/files/";
         private const string BeatSaverURLPrefix = "https://beatsaver.com";
+        private const string BSaberURLPrefix = "https://bsaber.com/PlaylistAPI";
 
         private static readonly string BeatSaberPath = App.BeatSaberInstallDirectory;
 
@@ -21,9 +22,10 @@ namespace ModAssistant
         private const string CustomSabersFolder = "CustomSabers";
         private const string CustomPlatformsFolder = "CustomPlatforms";
         private const string CustomBloqsFolder = "CustomNotes";
+        private const string PlaylistsFolder = "Playlists";
         private static readonly string CustomSongsFolder = Path.Combine("Beat Saber_Data", "CustomLevels");
 
-        private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver" };
+        private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver", "bsaber" };
 
         private const bool BypassDownloadCounter = false;
         public static async Task InstallAsset(string link)
@@ -38,6 +40,9 @@ namespace ModAssistant
                     break;
                 case "beatsaver":
                     await BeatSaver(uri);
+                    break;
+                case "bsaber":
+                    await BSaber(uri);
                     break;
             }
         }
@@ -72,7 +77,7 @@ namespace ModAssistant
 
             if (BypassDownloadCounter)
             {
-                await DownloadAsset(BeatSaverURLPrefix + Response.directDownload, CustomSongsFolder, Response.hash + ".zip");
+                DownloadAsset(BeatSaverURLPrefix + Response.directDownload, CustomSongsFolder, Response.hash + ".zip");
             }
             else
             {
@@ -125,6 +130,16 @@ namespace ModAssistant
                     break;
                 case "bloq":
                     await DownloadAsset(ModelSaberURLPrefix + uri.Host + uri.AbsolutePath, CustomBloqsFolder);
+                    break;
+            }
+        }
+
+        private static async Task BSaber(Uri uri)
+        {
+            switch (uri.Host)
+            {
+                case "playlist":
+                    await DownloadAsset(BSaberURLPrefix + uri.Host + uri.AbsolutePath, PlaylistsFolder);
                     break;
             }
         }

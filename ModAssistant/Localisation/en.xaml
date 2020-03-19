@@ -135,6 +135,7 @@
     <sys:String x:Key="Options:SelectInstalledMods">Select Installed Mods</sys:String>
     <sys:String x:Key="Options:EnableOneClickInstalls">Enable OneClick™ Installs</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
+    <sys:String x:Key="Options:BSaber">BeastSaber</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
     <sys:String x:Key="Options:GameType">Game Type</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
