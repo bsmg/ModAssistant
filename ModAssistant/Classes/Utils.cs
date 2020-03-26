@@ -28,6 +28,7 @@ namespace ModAssistant
             public const string BeatModsAPIUrl = "https://beatmods.com/api/v1/";
             public const string TeknikAPIUrl = "https://api.teknik.io/v1/";
             public const string BeatModsURL = "https://beatmods.com";
+            public const string BeatModsVersions = "https://versions.beatmods.com/versions.json";
             public const string BeatModsAlias = "https://alias.beatmods.com/aliases.json";
             public const string WeebCDNAPIURL = "https://pat.assistant.moe/api/v1.0/";
             public const string ModTranslationURL = "https://wgzeyu.github.io/BeatSaberModListTranslationRepo/zh-Hans.json";
@@ -36,6 +37,7 @@ namespace ModAssistant
             public const string BeatModsAPIUrl = "https://beatmods.gtxcn.com/api/v1/";
             public const string TeknikAPIUrl = "https://beatmods.gtxcn.com/teknik/v1/";
             public const string BeatModsURL = "https://beatmods.gtxcn.com";
+            public const string BeatModsVersions = "https://beatmods.gtxcn.com/bmversions/versions.json";
             public const string BeatModsAlias = "https://beatmods.gtxcn.com/alias/aliases.json";
             public const string WeebCDNAPIURL = "https://beatmods.gtxcn.com/assistant/api/v1.0/";
             public const string ModTranslationURL = "https://beatmods.gtxcn.com/github/BeatSaberModListTranslationRepo/zh-Hans.json";
@@ -248,13 +250,13 @@ namespace ModAssistant
             using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
             {
                 byte[] file = File.ReadAllBytes(filename);
-                byte[] bytes = new byte[16];
+                byte[] bytes = new byte[32];
 
                 fs.Read(file, 0, Convert.ToInt32(fs.Length));
                 fs.Close();
                 int index = Encoding.UTF8.GetString(file).IndexOf("public.app-category.games") + 136;
 
-                Array.Copy(file, index, bytes, 0, 16);
+                Array.Copy(file, index, bytes, 0, 32);
                 string version = Encoding.UTF8.GetString(bytes).Trim(Utils.Constants.IllegalCharacters);
 
                 return version;
