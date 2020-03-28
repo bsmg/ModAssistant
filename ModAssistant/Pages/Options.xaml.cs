@@ -229,7 +229,7 @@ namespace ModAssistant.Pages
 
                 if (Mods.Instance.AllModsList == null)
                 {
-                    MainWindow.Instance.MainText = $"{Application.Current.FindResource("Options: GettingModList")}...";
+                    MainWindow.Instance.MainText = $"{Application.Current.FindResource("Options:GettingModList")}...";
                     await Task.Run(async () => await Mods.Instance.CheckInstalledMods());
                 }
                 foreach (Mod mod in Mods.InstalledMods)
