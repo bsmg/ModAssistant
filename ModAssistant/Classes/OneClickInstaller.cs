@@ -259,6 +259,23 @@ namespace ModAssistant
     }
 
 #pragma warning disable IDE1006 // Naming Styles
+
+    class Playlist
+    {
+        public string playlistTitle { get; set; }
+        public string playlistAuthor { get; set; }
+        public string image { get; set; }
+        public Song[] songs { get; set; }
+
+        public class Song
+        {
+            public string key { get; set; }
+            public string hash { get; set; }
+            public string songName { get; set; }
+            public string uploader { get; set; }
+        }
+    }
+
     class BeatSaverApiResponse
     {
         public Metadata metadata { get; set; }
