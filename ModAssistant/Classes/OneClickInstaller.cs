@@ -14,7 +14,7 @@ namespace ModAssistant
     {
         private const string ModelSaberURLPrefix = "https://modelsaber.com/files/";
         private const string BeatSaverURLPrefix = "https://beatsaver.com";
-        private const string BSaberURLPrefix = "https://bsaber.com/PlaylistAPI";
+        private const string BSaberURLPrefix = "https://bsaber.com/PlaylistAPI/";
 
         private static readonly string BeatSaberPath = App.BeatSaberInstallDirectory;
 
@@ -139,7 +139,13 @@ namespace ModAssistant
             switch (uri.Host)
             {
                 case "playlist":
-                    await DownloadAsset(BSaberURLPrefix + uri.Host + uri.AbsolutePath, PlaylistsFolder);
+                    string filename = uri.Segments.Last();
+                    await DownloadAsset(BSaberURLPrefix + filename, PlaylistsFolder);
+                    Playlist playlist = JsonSerializer.Deserialize<Playlist>(File.ReadAllText(Path.Combine(BeatSaberPath, PlaylistsFolder, filename)));
+                    foreach (Playlist.Song song in playlist.songs)
+                    {
+                        await BeatSaver(new Uri("beatsaver://" + song.key));
+                    }
                     break;
             }
         }
