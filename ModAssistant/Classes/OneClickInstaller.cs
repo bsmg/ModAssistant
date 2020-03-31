@@ -66,22 +66,23 @@ namespace ModAssistant
             }
 
             string zip = Path.Combine(BeatSaberPath, CustomSongsFolder, Response.hash) + ".zip";
+            string songFullName = string.Concat(
+                    (Response.key + " (" + Response.metadata.songName + " - " + Response.metadata.levelAuthorName + ")")
+                    .Split(Utils.Constants.IllegalCharacters)
+                );
             string directory = Path.Combine(
                 BeatSaberPath,
                 CustomSongsFolder,
-                string.Concat(
-                    (Response.key + " (" + Response.metadata.songName + " - " + Response.metadata.levelAuthorName + ")")
-                    .Split(Utils.Constants.IllegalCharacters)
-                )
+                songFullName
             );
 
             if (BypassDownloadCounter)
             {
-                await DownloadAsset(BeatSaverURLPrefix + Response.directDownload, CustomSongsFolder, Response.hash + ".zip");
+                await DownloadAsset(BeatSaverURLPrefix + Response.directDownload, CustomSongsFolder, Response.hash + ".zip", songFullName);
             }
             else
             {
-                await DownloadAsset(BeatSaverURLPrefix + Response.downloadURL, CustomSongsFolder, Response.hash + ".zip");
+                await DownloadAsset(BeatSaverURLPrefix + Response.downloadURL, CustomSongsFolder, Response.hash + ".zip", songFullName);
             }
 
             if (File.Exists(zip))
@@ -150,7 +151,7 @@ namespace ModAssistant
             }
         }
 
-        private static async Task DownloadAsset(string link, string folder, string fileName = null)
+        private static async Task DownloadAsset(string link, string folder, string fileName = null, string nickname = null)
         {
             if (string.IsNullOrEmpty(BeatSaberPath))
             {
@@ -169,7 +170,8 @@ namespace ModAssistant
                 }
 
                 await Utils.Download(link, fileName);
-                Utils.SendNotify(string.Format((string)Application.Current.FindResource("OneClick:InstalledAsset"), Path.GetFileNameWithoutExtension(fileName)));
+                if (string.IsNullOrEmpty(nickname)) nickname = fileName;
+                Utils.SendNotify(string.Format((string)Application.Current.FindResource("OneClick:InstalledAsset"), Path.GetFileNameWithoutExtension(nickname)));
             }
             catch
             {
