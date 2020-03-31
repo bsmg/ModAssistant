@@ -122,6 +122,11 @@ namespace ModAssistant.Pages
         {
             OneClickInstaller.Register("beatsaver");
         }
+        
+        public void BeatSaverProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
+        {
+            OneClickInstaller.Unregister("beatsaver");
+        }
 
         public void BSaberProtocolHandler_Checked(object sender, RoutedEventArgs e)
         {
@@ -131,11 +136,6 @@ namespace ModAssistant.Pages
         public void BSaberProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
         {
             OneClickInstaller.Unregister("bsaber");
-        }
-
-        public void BeatSaverProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
-        {
-            OneClickInstaller.Unregister("beatsaver");
         }
 
         private void SelectInstalled_Checked(object sender, RoutedEventArgs e)
