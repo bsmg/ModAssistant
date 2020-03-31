@@ -122,7 +122,7 @@ namespace ModAssistant.Pages
         {
             OneClickInstaller.Register("beatsaver");
         }
-        
+
         public void BeatSaverProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
         {
             OneClickInstaller.Unregister("beatsaver");
