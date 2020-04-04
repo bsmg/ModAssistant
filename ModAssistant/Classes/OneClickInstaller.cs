@@ -22,7 +22,7 @@ namespace ModAssistant
         private const string CustomSabersFolder = "CustomSabers";
         private const string CustomPlatformsFolder = "CustomPlatforms";
         private const string CustomBloqsFolder = "CustomNotes";
-        private const string PlaylistsFolder = "Playlists";
+        private const string CustomPlaylistsFolder = "Playlists";
         private static readonly string CustomSongsFolder = Path.Combine("Beat Saber_Data", "CustomLevels");
 
         private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver", "bsaber" };
@@ -141,8 +141,8 @@ namespace ModAssistant
             {
                 case "playlist":
                     string filename = uri.Segments.Last();
-                    await DownloadAsset(BSaberURLPrefix + filename, PlaylistsFolder);
-                    Playlist playlist = JsonSerializer.Deserialize<Playlist>(File.ReadAllText(Path.Combine(BeatSaberPath, PlaylistsFolder, filename)));
+                    await DownloadAsset(BSaberURLPrefix + filename, CustomPlaylistsFolder);
+                    Playlist playlist = JsonSerializer.Deserialize<Playlist>(File.ReadAllText(Path.Combine(BeatSaberPath, CustomPlaylistsFolder, filename)));
                     foreach (Playlist.Song song in playlist.songs)
                     {
                         await BeatSaver(new Uri("beatsaver://" + song.key));
