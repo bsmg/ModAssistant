@@ -144,13 +144,9 @@ namespace ModAssistant
                     await DownloadAsset(BSaberURLPrefix + filename, CustomPlaylistsFolder);
                     Playlist playlist = JsonSerializer.Deserialize<Playlist>(File.ReadAllText(Path.Combine(BeatSaberPath, CustomPlaylistsFolder, filename)));
                     foreach (Playlist.Song song in playlist.songs)
-                    try
                     {
-                        await BeatSaver(new Uri("beatsaver://" + song.key));
-                    }
-                    catch (Exception e)
-                    {
-                        Application.Current.FindResource("OneClick:SongDownload:Failed");
+                        string HashVarb = "https://beatsaver.com/api/download/hash/";
+                        await BeatSaver(new Uri(HashVarb + song.hash));
                     }
                     break;
             }
@@ -366,5 +362,5 @@ namespace ModAssistant
             public string username { get; set; }
         }
     }
-}
+};
 #pragma warning restore IDE1006 // Naming Styles
