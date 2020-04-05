@@ -92,6 +92,8 @@
     <sys:String x:Key="Mods:UninstallBox:Title">卸载{0}？</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Body1">你确定要移除{0}？</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Body2">这可能会导致其他Mod不可用。</sys:String>
+    <sys:String x:Key="Mods:FailedExtract">{0}解压失败，将在{1}秒后重试。（{2}/{3}）</sys:String>
+    <sys:String x:Key="Mods:FailedExtractMaxReached">{0}在重试{1}次后仍然无法解压，将被跳过。请注意，这个Mod可能无法正常工作。</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">关于</sys:String>
