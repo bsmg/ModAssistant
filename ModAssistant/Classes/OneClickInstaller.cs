@@ -144,8 +144,13 @@ namespace ModAssistant
                     await DownloadAsset(BSaberURLPrefix + filename, CustomPlaylistsFolder);
                     Playlist playlist = JsonSerializer.Deserialize<Playlist>(File.ReadAllText(Path.Combine(BeatSaberPath, CustomPlaylistsFolder, filename)));
                     foreach (Playlist.Song song in playlist.songs)
+                    try
                     {
                         await BeatSaver(new Uri("beatsaver://" + song.key));
+                    }
+                    catch (Exception e)
+                    {
+                        Application.Current.FindResource("OneClick:SongDownload:Failed");
                     }
                     break;
             }
