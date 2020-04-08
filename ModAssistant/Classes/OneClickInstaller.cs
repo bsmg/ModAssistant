@@ -51,6 +51,7 @@ namespace ModAssistant
         {
             string Key = uri.Host;
             BeatSaverApiResponse Response;
+            BeatSaverHashResponse Response2;
 
             try
             {
@@ -58,6 +59,7 @@ namespace ModAssistant
                 var body = await resp.Content.ReadAsStringAsync();
 
                 Response = JsonSerializer.Deserialize<BeatSaverApiResponse>(body);
+                Response2 = JsonSerializer.Deserialize<BeatSaverHashResponse>(body);
             }
             catch (Exception e)
             {
@@ -145,8 +147,12 @@ namespace ModAssistant
                     Playlist playlist = JsonSerializer.Deserialize<Playlist>(File.ReadAllText(Path.Combine(BeatSaberPath, CustomPlaylistsFolder, filename)));
                     foreach (Playlist.Song song in playlist.songs)
                     {
-                        string HashVarb = "https://beatsaver.com/api/download/hash/";
-                        await BeatSaver(new Uri(HashVarb + song.hash));
+                        await BeatSaver(new Uri("beatsaver://" + song.key));
+
+                        if (string.IsNullOrEmpty(song.key))
+                        {
+                            await BeatSaver(new Uri("beatsaver://" + song.hash));
+                        }
                     }
                     break;
             }
@@ -361,6 +367,10 @@ namespace ModAssistant
             public string _id { get; set; }
             public string username { get; set; }
         }
+    }
+    class BeatSaverHashResponse
+    {
+
     }
 };
 #pragma warning restore IDE1006 // Naming Styles
