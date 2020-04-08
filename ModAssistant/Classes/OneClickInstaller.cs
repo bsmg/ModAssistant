@@ -51,7 +51,6 @@ namespace ModAssistant
         {
             string Key = uri.Host;
             BeatSaverApiResponse Response;
-            BeatSaverHashResponse Response2;
 
             try
             {
@@ -59,7 +58,6 @@ namespace ModAssistant
                 var body = await resp.Content.ReadAsStringAsync();
 
                 Response = JsonSerializer.Deserialize<BeatSaverApiResponse>(body);
-                Response2 = JsonSerializer.Deserialize<BeatSaverHashResponse>(body);
             }
             catch (Exception e)
             {
@@ -368,9 +366,5 @@ namespace ModAssistant
             public string username { get; set; }
         }
     }
-    class BeatSaverHashResponse
-    {
-
-    }
-};
+}
 #pragma warning restore IDE1006 // Naming Styles
