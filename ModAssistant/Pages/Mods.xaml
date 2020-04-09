@@ -56,7 +56,7 @@
                                                 <Run Text="{Binding PromotionText}" />
                                             </Hyperlink>
                                         </TextBlock>
-                                        <TextBlock Text="{Binding ModDescription}" />
+                                        <TextBlock Text="{Binding ModDescription}" MouseLeftButtonDown="CopyText" />
                                     </StackPanel>
                                 </DataTemplate>
 

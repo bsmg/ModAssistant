@@ -687,5 +687,11 @@ namespace ModAssistant.Pages
         {
             RefreshColumns();
         }
+
+        private void CopyText(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            System.Windows.Clipboard.SetText(((TextBlock)sender).Text);
+            Utils.SendNotify("Copied text to clipboard");
+        }
     }
 }
