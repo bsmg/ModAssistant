@@ -95,6 +95,44 @@
                     VerticalAlignment="Center"
                     FontSize="20"
                     FontWeight="Bold">
+                    <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://github.com/WGzeyu">
+                        WGzeyu
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="16">
+                    汉化者
+                </TextBlock>
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="16">
+                    制作了列表与界面的
+                </TextBlock>
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="16">
+                    中文翻译和<Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/">问题解答</Hyperlink>
+                </TextBlock>
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="16">
+                    <Hyperlink NavigateUri="https://bs-wgzeyu.gtxcn.com/#donate" RequestNavigate="Hyperlink_RequestNavigate">
+                        <Run Text="{DynamicResource About:Donate}" />
+                    </Hyperlink>
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Margin="10" Orientation="Vertical">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    FontWeight="Bold">
                     <Hyperlink NavigateUri="https://umbranox.carrd.co/" RequestNavigate="Hyperlink_RequestNavigate">
                         Umbranox
                     </Hyperlink>
