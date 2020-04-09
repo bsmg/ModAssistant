@@ -74,7 +74,7 @@ namespace ModAssistant
                 BalloonTipText = message
             };
 
-            notification.ShowBalloonTip(5000);
+            notification.ShowBalloonTip(3000);
 
             notification.Dispose();
         }
