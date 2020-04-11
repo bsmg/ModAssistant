@@ -430,7 +430,7 @@ namespace ModAssistant.Pages
 
                     if (!string.IsNullOrEmpty(file.Name))
                     {
-                        file.ExtractToFile(Path.Combine(directory, file.FullName), true);
+                        await ExtractFile(file, Path.Combine(directory, file.FullName), 3.0, mod.name, 10);
                     }
                 }
             }
@@ -440,6 +440,27 @@ namespace ModAssistant.Pages
                 mod.ListItem.IsInstalled = true;
                 mod.ListItem.InstalledVersion = mod.version;
                 mod.ListItem.InstalledModInfo = mod;
+            }
+        }
+
+        private async Task ExtractFile(ZipArchiveEntry file, string path, double seconds, string name, int maxTries, int tryNumber = 0)
+        {
+            if (tryNumber < maxTries)
+            {
+                try
+                {
+                    file.ExtractToFile(path, true);
+                }
+                catch
+                {
+                    MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:FailedExtract"), name, seconds, tryNumber + 1, maxTries)}";
+                    await Task.Delay((int)(seconds * 1000));
+                    await ExtractFile(file, path, seconds, name, maxTries, tryNumber + 1);
+                }
+            }
+            else
+            {
+                System.Windows.MessageBox.Show($"{string.Format((string)FindResource("Mods:FailedExtractMaxReached"), name, maxTries)}.", "Failed to install " + name);
             }
         }
 
@@ -711,6 +732,12 @@ namespace ModAssistant.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             RefreshColumns();
+        }
+
+        private void CopyText(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            System.Windows.Clipboard.SetText(((TextBlock)sender).Text);
+            Utils.SendNotify("Copied text to clipboard");
         }
     }
 }

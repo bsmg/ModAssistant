@@ -69,7 +69,9 @@
     <sys:String x:Key="Mods:UninstallBox:Title">{0} Mods:UninstallBox:Title</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Body1">{0} Mods:UninstallBox:Body1</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Body2">Mods:UninstallBox:Body2</sys:String>
-
+    <sys:String x:Key="Mods:FailedExtract">{0} {1} {2} {3} Mods:FailedExtract</sys:String>
+    <sys:String x:Key="Mods:FailedExtractMaxReached">{0} {1} Mods:FailedExtractMaxReached</sys:String>
+    
     <!-- About Page -->
     <sys:String x:Key="About:Title">About:Title</sys:String>
     <sys:String x:Key="About:PageTitle">About:PageTitle</sys:String>

@@ -102,6 +102,9 @@
     <sys:String x:Key="Mods:UninstallBox:Title">Uninstall {0}?</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Body1">Are you sure you want to remove {0}?</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Body2">This could break your other mods</sys:String>
+    <sys:String x:Key="Mods:FailedExtract">Failed to extract {0}, trying again in {1} seconds. ({2}/{3})</sys:String>
+    <sys:String x:Key="Mods:FailedExtractMaxReached">Failed to extract {0} after max attempts ({1}), skipping. This mod might not work properly so proceed at your own risk</sys:String>
+
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">About</sys:String>
