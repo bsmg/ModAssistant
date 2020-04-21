@@ -222,7 +222,7 @@ namespace ModAssistant.Pages
         {
             foreach (Mod mod in AllModsList)
             {
-                if (mod.name.ToLower() != "bsipa")
+                if (mod.name.ToLower() != "bsipa" && mod.status != "declined")
                 {
                     foreach (Mod.DownloadLink download in mod.downloads)
                     {
