@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Forms;
 using System.Windows.Navigation;
 using static ModAssistant.Http;
+using ModAssistant.Libs;
 
 namespace ModAssistant.Pages
 {
@@ -531,16 +532,16 @@ namespace ModAssistant.Pages
 
             public Mod InstalledModInfo { get; set; }
             public bool IsInstalled { get; set; }
-            private string _installedVersion { get; set; }
+            private SemVersion _installedVersion { get; set; }
             public string InstalledVersion
             {
                 get
                 {
-                    return (string.IsNullOrEmpty(_installedVersion) || !IsInstalled) ? "-" : _installedVersion;
+                    return !IsInstalled ? "-" : _installedVersion.ToString();
                 }
                 set
                 {
-                    _installedVersion = value;
+                    _installedVersion = SemVersion.Parse(value);
                 }
             }
 
@@ -549,7 +550,7 @@ namespace ModAssistant.Pages
                 get
                 {
                     if (!IsInstalled) return "Black";
-                    return InstalledVersion == ModVersion ? "Green" : "Red";
+                    return _installedVersion >= ModVersion ? "Green" : "Red";
                 }
             }
 
@@ -558,7 +559,7 @@ namespace ModAssistant.Pages
                 get
                 {
                     if (!IsInstalled) return "None";
-                    return InstalledVersion == ModVersion ? "None" : "Strikethrough";
+                    return _installedVersion >= ModVersion ? "None" : "Strikethrough";
                 }
             }
 
