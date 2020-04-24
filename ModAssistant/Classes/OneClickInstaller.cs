@@ -149,7 +149,7 @@ namespace ModAssistant
 
                         if (string.IsNullOrEmpty(song.key))
                         {
-                            await BeatSaver(new Uri(BeatSaverURLPrefix + "api/download/hash/" + song.hash));
+                            await BeatSaver(new Uri("beatsaver://" + song.hash));
                         }
                     }
                     break;
