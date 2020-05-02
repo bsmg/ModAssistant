@@ -314,10 +314,12 @@ namespace ModAssistant.Pages
             MainWindow.Instance.InstallButton.IsEnabled = false;
             string installDirectory = App.BeatSaberInstallDirectory;
 
+            bool allUpToDate = true;
             foreach (Mod mod in ModsList)
             {
                 // Ignore mods that are up to date
                 if (!mod.ListItem.IsOutdated) continue;
+                allUpToDate = false;
 
                 if (mod.name.ToLower() == "bsipa")
                 {
@@ -346,7 +348,13 @@ namespace ModAssistant.Pages
                 }
             }
 
-            MainWindow.Instance.MainText = $"{FindResource("Mods:FinishedInstallingMods")}.";
+            if (allUpToDate)
+            {
+                MainWindow.Instance.MainText = $"{FindResource("Mods:FinishedInstallingMods")}.";
+            } else
+            {
+                MainWindow.Instance.MainText = $"{FindResource("Mods:ModsAlreadyUpToDate")}!";
+            }
             MainWindow.Instance.InstallButton.IsEnabled = true;
             RefreshModsList();
         }
