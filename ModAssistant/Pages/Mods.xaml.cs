@@ -338,8 +338,11 @@ namespace ModAssistant.Pages
                 else if (mod.ListItem.IsSelected)
                 {
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
-                    await Task.Run(async () => await InstallMod(mod, Path.Combine(installDirectory, @"IPA\Pending")));
-                    MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstalledMod"), mod.name)}.";
+                    if (mod.ListItem.IsOutdated)
+                    {
+                        await Task.Run(async () => await InstallMod(mod, Path.Combine(installDirectory, @"IPA\Pending")));
+                        MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstalledMod"), mod.name)}.";
+                    }
                 }
             }
 
@@ -560,6 +563,15 @@ namespace ModAssistant.Pages
                 {
                     if (!IsInstalled) return "None";
                     return _installedVersion >= ModVersion ? "None" : "Strikethrough";
+                }
+            }
+
+            public bool IsOutdated
+            {
+                get
+                {
+                    if (!IsInstalled) return true;
+                    return _installedVersion < ModVersion;
                 }
             }
 
