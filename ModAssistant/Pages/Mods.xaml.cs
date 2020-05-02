@@ -319,10 +319,10 @@ namespace ModAssistant.Pages
             {
                 // Ignore mods that are up to date
                 if (!mod.ListItem.IsOutdated) continue;
-                allUpToDate = false;
 
                 if (mod.name.ToLower() == "bsipa")
                 {
+                    allUpToDate = false;
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
                     await Task.Run(async () => await InstallMod(mod, installDirectory));
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstalledMod"), mod.name)}.";
@@ -342,19 +342,14 @@ namespace ModAssistant.Pages
                 }
                 else if (mod.ListItem.IsSelected)
                 {
+                    allUpToDate = false;
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
                     await Task.Run(async () => await InstallMod(mod, Path.Combine(installDirectory, @"IPA\Pending")));
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstalledMod"), mod.name)}.";
                 }
             }
 
-            if (allUpToDate)
-            {
-                MainWindow.Instance.MainText = $"{FindResource("Mods:FinishedInstallingMods")}.";
-            } else
-            {
-                MainWindow.Instance.MainText = $"{FindResource("Mods:ModsAlreadyUpToDate")}!";
-            }
+            MainWindow.Instance.MainText = allUpToDate ? $"{FindResource("Mods:ModsAlreadyUpToDate")}!" : $"{FindResource("Mods:FinishedInstallingMods")}.";
             MainWindow.Instance.InstallButton.IsEnabled = true;
             RefreshModsList();
         }
