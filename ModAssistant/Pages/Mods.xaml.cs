@@ -317,7 +317,7 @@ namespace ModAssistant.Pages
             foreach (Mod mod in ModsList)
             {
                 // Ignore mods that are newer than installed version
-                if (mod.ListItem.IsNewerVersion) continue;
+                if (mod.ListItem.IsNewerVersionInstalled) continue;
 
                 if (mod.name.ToLower() == "bsipa")
                 {
@@ -572,7 +572,7 @@ namespace ModAssistant.Pages
                 }
             }
 
-            public bool IsNewerVersion
+            public bool IsNewerVersionInstalled
             {
                 get
                 {
