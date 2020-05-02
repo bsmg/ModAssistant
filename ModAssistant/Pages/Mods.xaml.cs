@@ -544,7 +544,13 @@ namespace ModAssistant.Pages
                 }
                 set
                 {
-                    _installedVersion = SemVersion.Parse(value);
+                    if (value != null)
+                    {
+                        _installedVersion = SemVersion.Parse(value);
+                    } else
+                    {
+                        _installedVersion = null;
+                    }
                 }
             }
 
