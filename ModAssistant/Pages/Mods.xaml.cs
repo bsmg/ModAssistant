@@ -314,15 +314,13 @@ namespace ModAssistant.Pages
             MainWindow.Instance.InstallButton.IsEnabled = false;
             string installDirectory = App.BeatSaberInstallDirectory;
 
-            bool allUpToDate = true;
             foreach (Mod mod in ModsList)
             {
-                // Ignore mods that are up to date
-                if (!mod.ListItem.IsOutdated) continue;
+                // Ignore mods that are newer than installed version
+                if (mod.ListItem.IsNewerVersion) continue;
 
                 if (mod.name.ToLower() == "bsipa")
                 {
-                    allUpToDate = false;
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
                     await Task.Run(async () => await InstallMod(mod, installDirectory));
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstalledMod"), mod.name)}.";
@@ -342,14 +340,13 @@ namespace ModAssistant.Pages
                 }
                 else if (mod.ListItem.IsSelected)
                 {
-                    allUpToDate = false;
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
                     await Task.Run(async () => await InstallMod(mod, Path.Combine(installDirectory, @"IPA\Pending")));
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstalledMod"), mod.name)}.";
                 }
             }
 
-            MainWindow.Instance.MainText = allUpToDate ? $"{FindResource("Mods:ModsAlreadyUpToDate")}!" : $"{FindResource("Mods:FinishedInstallingMods")}.";
+            MainWindow.Instance.MainText = $"{FindResource("Mods:FinishedInstallingMods")}.";
             MainWindow.Instance.InstallButton.IsEnabled = true;
             RefreshModsList();
         }
@@ -575,12 +572,12 @@ namespace ModAssistant.Pages
                 }
             }
 
-            public bool IsOutdated
+            public bool IsNewerVersion
             {
                 get
                 {
-                    if (!IsInstalled) return true;
-                    return _installedVersion < ModVersion;
+                    if (!IsInstalled) return false;
+                    return _installedVersion > ModVersion;
                 }
             }
 

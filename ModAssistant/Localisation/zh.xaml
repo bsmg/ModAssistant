@@ -88,7 +88,6 @@
     <sys:String x:Key="Mods:InstallingMod">正在安装{0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">已安装{0}</sys:String>
     <sys:String x:Key="Mods:FinishedInstallingMods">Mod安装完成</sys:String>
-    <sys:String x:Key="Mods:ModsAlreadyUpToDate">Installed mods are all up to date</sys:String>
     <sys:String x:Key="Mods:ModDownloadLinkMissing">{0}找不到下载地址！</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Title">卸载{0}？</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Body1">你确定要移除{0}？</sys:String>

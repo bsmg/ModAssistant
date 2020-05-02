@@ -96,7 +96,6 @@
     <sys:String x:Key="Mods:InstallingMod">Installing {0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">Installed {0}</sys:String>
     <sys:String x:Key="Mods:FinishedInstallingMods">Finished installing mods</sys:String>
-    <sys:String x:Key="Mods:ModsAlreadyUpToDate">Installed mods are all up to date</sys:String>
     <sys:String x:Key="Mods:ModDownloadLinkMissing">Could not find download link for {0}</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Title">Uninstall {0}?</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Body1">Are you sure you want to remove {0}?</sys:String>
