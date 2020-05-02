@@ -71,6 +71,8 @@
     <Compile Include="Classes\Diagnostics.cs" />
     <Compile Include="Classes\Themes.cs" />
     <Compile Include="Classes\Updater.cs" />
+    <Compile Include="Libs\semver\SemVersion.cs" />
+    <Compile Include="Libs\semver\IntExtensions.cs" />
     <Compile Include="Pages\Intro.xaml.cs">
       <DependentUpon>Intro.xaml</DependentUpon>
     </Compile>
@@ -250,7 +252,6 @@
   <ItemGroup>
     <Resource Include="Resources\icon.ico" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Themes\BSMG\Sidebar.png" />
   </ItemGroup>
