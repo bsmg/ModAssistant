@@ -316,6 +316,9 @@ namespace ModAssistant.Pages
 
             foreach (Mod mod in ModsList)
             {
+                // Ignore mods that are up to date
+                if (!mod.ListItem.IsOutdated) continue;
+
                 if (mod.name.ToLower() == "bsipa")
                 {
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
@@ -338,11 +341,8 @@ namespace ModAssistant.Pages
                 else if (mod.ListItem.IsSelected)
                 {
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
-                    if (mod.ListItem.IsOutdated)
-                    {
-                        await Task.Run(async () => await InstallMod(mod, Path.Combine(installDirectory, @"IPA\Pending")));
-                        MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstalledMod"), mod.name)}.";
-                    }
+                    await Task.Run(async () => await InstallMod(mod, Path.Combine(installDirectory, @"IPA\Pending")));
+                    MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstalledMod"), mod.name)}.";
                 }
             }
 
