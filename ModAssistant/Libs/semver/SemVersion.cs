@@ -1,7 +1,4 @@
 /*
-semver by Max Hauser
-https://github.com/maxhauser/semver
-
 Copyright (c) 2013 Max Hauser
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
