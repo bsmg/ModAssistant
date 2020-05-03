@@ -162,6 +162,7 @@
     <sys:String x:Key="Options:AllModsUninstalled">All Mods Uninstalled</sys:String>
     <sys:String x:Key="Options:CurrentThemeRemoved">Current theme has been removed, reverting to default...</sys:String>
     <sys:String x:Key="Options:ThemeFolderNotFound">Themes folder not found! Try exporting the template...</sys:String>
+    <sys:String x:Key="Options:AppDataNotFound">AppData folder not found! Try launching your game...</sys:String>
 
     <!-- Loading Page -->
     <sys:String x:Key="Loading:Loading">Loading Mods</sys:String>
