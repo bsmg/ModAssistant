@@ -136,7 +136,7 @@
     <sys:String x:Key="Options:SelectFolderButton">Select Folder</sys:String>
     <sys:String x:Key="Options:OpenFolderButton">Open Folder</sys:String>
     <sys:String x:Key="Options:SaveSelectedMods">Save Selected Mods</sys:String>
-    <sys:String x:Key="Options:CheckInstalledMods">Check Installed Mods</sys:String>
+    <sys:String x:Key="Options:CheckInstalledMods">Detect Installed Mods</sys:String>
     <sys:String x:Key="Options:SelectInstalledMods">Select Installed Mods</sys:String>
     <sys:String x:Key="Options:EnableOneClickInstalls">Enable OneClick™ Installs</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,6 +26,9 @@ namespace ModAssistant
 
         private async void Application_Startup(object sender, StartupEventArgs e)
         {
+            // Set SecurityProtocol to prevent crash with TLS
+            System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
+
             // Load localisation languages
             LoadLanguage(CultureInfo.CurrentCulture.Name);
 

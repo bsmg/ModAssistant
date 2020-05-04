@@ -138,3 +138,6 @@ Examples:
 **I hit install but now my game won't launch, I can't click any buttons, I only see a black screen, etc**
   Please visit the [Beat Saber Modding Group](https://discord.gg/beatsabermods) `#pc-help` channels. Check the pinned messages or ask for help and see if you can work out things out.
   
+## Credits
+semver by Max Hauser
+https://github.com/maxhauser/semver
