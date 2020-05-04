@@ -540,13 +540,14 @@ namespace ModAssistant.Pages
             {
                 get
                 {
-                    return !IsInstalled ? "-" : _installedVersion.ToString();
+                    if (!IsInstalled || _installedVersion == null) return "-";
+                    return _installedVersion.ToString();
                 }
                 set
                 {
-                    if (value != null)
+                    if (SemVersion.TryParse(value, out SemVersion tempInstalledVersion))
                     {
-                        _installedVersion = SemVersion.Parse(value);
+                        _installedVersion = tempInstalledVersion;
                     } else
                     {
                         _installedVersion = null;
