@@ -55,6 +55,10 @@ namespace ModAssistant
             try
             {
                 var resp = await HttpClient.GetAsync(BeatSaverURLPrefix + "/api/maps/detail/" + Key);
+                if (Key.Length == 40)
+                {
+                    var resp = await HttpClient.GetAsync(BeatSaverURLPrefix + "/api/maps/by-hash" + Key);
+                }
                 var body = await resp.Content.ReadAsStringAsync();
 
                 Response = JsonSerializer.Deserialize<BeatSaverApiResponse>(body);
