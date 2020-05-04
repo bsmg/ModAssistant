@@ -194,7 +194,7 @@ namespace ModAssistant.Pages
             string location = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
                 "AppData", "LocalLow", "Hyperbolic Magnetism");
-            if (Directory.Exists(location)
+            if (Directory.Exists(location))
             {
                 Utils.OpenFolder(location);
             }
