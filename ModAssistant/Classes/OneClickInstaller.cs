@@ -57,7 +57,7 @@ namespace ModAssistant
                 var resp = await HttpClient.GetAsync(BeatSaverURLPrefix + "/api/maps/detail/" + Key);
                 if (Key.Length == 40)
                 {
-                    var resp = await HttpClient.GetAsync(BeatSaverURLPrefix + "/api/maps/by-hash" + Key);
+                    resp = await HttpClient.GetAsync(BeatSaverURLPrefix + "/api/maps/by-hash" + Key);
                 }
                 var body = await resp.Content.ReadAsStringAsync();
 
@@ -149,11 +149,13 @@ namespace ModAssistant
                     Playlist playlist = JsonSerializer.Deserialize<Playlist>(File.ReadAllText(Path.Combine(BeatSaberPath, CustomPlaylistsFolder, filename)));
                     foreach (Playlist.Song song in playlist.songs)
                     {
-                        await BeatSaver(new Uri("beatsaver://" + song.key));
-
                         if (string.IsNullOrEmpty(song.key))
                         {
                             await BeatSaver(new Uri("beatsaver://" + song.hash));
+                        }
+                        else
+                        {
+                            await BeatSaver(new Uri("beatsaver://" + song.key));
                         }
                     }
                     break;
@@ -393,6 +395,20 @@ namespace ModAssistant
             public string songAuthorName { get; set; }
             public string levelAuthorName { get; set; }
             public double bpm { get; set; }
+        }
+        public class Uploader
+        {
+            public string _id { get; set; }
+            public string username { get; set; }
+        }
+        public class Stats
+        {
+            public int downloads { get; set; }
+            public int plays { get; set; }
+            public int downVotes { get; set; }
+            public int upVotes { get; set; }
+            public double heat { get; set; }
+            public double rating { get; set; }
         }
         public class Difficulties
         {
