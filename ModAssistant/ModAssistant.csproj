@@ -65,6 +65,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\External Interfaces\BeatSaver.cs" />
+    <Compile Include="Classes\External Interfaces\ModelSaber.cs" />
+    <Compile Include="Classes\External Interfaces\Utils.cs" />
     <Compile Include="Classes\Http.cs" />
     <Compile Include="Classes\HyperlinkExtensions.cs" />
     <Compile Include="Classes\Promotions.cs" />
