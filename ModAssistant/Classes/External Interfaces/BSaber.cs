@@ -29,7 +29,7 @@ namespace ModAssistant.API
                         }
                         else
                         {
-                            await BeatSaver.GetFromHash(song.key);
+                            await BeatSaver.GetFromKey(song.key);
                         }
                     }
                     break;
