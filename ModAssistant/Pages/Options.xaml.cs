@@ -23,6 +23,7 @@ namespace ModAssistant.Pages
         public bool SelectInstalledMods { get; set; }
         public bool ModelSaberProtocolHandlerEnabled { get; set; }
         public bool BeatSaverProtocolHandlerEnabled { get; set; }
+        public bool BSaberProtocolHandlerEnabled { get; set; }
         public string LogURL { get; private set; }
 
         public Options()
@@ -45,6 +46,7 @@ namespace ModAssistant.Pages
         {
             ModelSaberProtocolHandlerEnabled = OneClickInstaller.IsRegistered("modelsaber");
             BeatSaverProtocolHandlerEnabled = OneClickInstaller.IsRegistered("beatsaver");
+            BSaberProtocolHandlerEnabled = OneClickInstaller.IsRegistered("bsaber");
         }
 
         private void SelectDirButton_Click(object sender, RoutedEventArgs e)
@@ -124,6 +126,15 @@ namespace ModAssistant.Pages
         public void BeatSaverProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
         {
             OneClickInstaller.Unregister("beatsaver");
+        }
+        public void BSaberProtocolHandler_Checked(object sender, RoutedEventArgs e)
+        {
+            OneClickInstaller.Register("bsaber");
+        }
+
+        public void BSaberProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
+        {
+            OneClickInstaller.Unregister("bsaber");
         }
 
         private void SelectInstalled_Checked(object sender, RoutedEventArgs e)
