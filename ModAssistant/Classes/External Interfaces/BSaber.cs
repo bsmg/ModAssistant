@@ -11,7 +11,7 @@ namespace ModAssistant.API
     public class BSaber
     {
         private const string PlaylistAPIUrl = "https://bsaber.com/PlaylistAPI";
-        private static readonly string PlaylistFolder = Path.Combine("Playlists");
+        private static readonly string PlaylistFolder = "Playlists";
 
         public static async Task PlaylistInstall(Uri uri)
         {
