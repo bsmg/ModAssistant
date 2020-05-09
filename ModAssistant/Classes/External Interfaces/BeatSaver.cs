@@ -13,16 +13,16 @@ namespace ModAssistant.API
         private static readonly string CustomSongsFolder = Path.Combine("Beat Saber_Data", "CustomLevels");
         private const bool BypassDownloadCounter = false;
 
-        public static async Task GetFromKey(string Key)
+        public static async Task GetFromKey(string Key, bool showNotification = true)
         {
             BeatSaverApiResponse Map = await GetResponse(BeatSaverURLPrefix + "/api/maps/detail/" + Key);
-            await InstallMap(Map);
+            await InstallMap(Map, showNotification);
         }
 
-        public static async Task GetFromHash(string Hash)
+        public static async Task GetFromHash(string Hash, bool showNotification = true)
         {
             BeatSaverApiResponse Map = await GetResponse(BeatSaverURLPrefix + "/api/maps/by-hash/" + Hash);
-            await InstallMap(Map);
+            await InstallMap(Map, showNotification);
         }
 
         private static async Task<BeatSaverApiResponse> GetResponse(string url)
@@ -41,21 +41,23 @@ namespace ModAssistant.API
             }
         }
 
-        public static async Task InstallMap(BeatSaverApiResponse Map)
+        public static async Task InstallMap(BeatSaverApiResponse Map, bool showNotification = true)
         {
             string zip = Path.Combine(Utils.BeatSaberPath, CustomSongsFolder, Map.hash) + ".zip";
             string mapName = string.Concat(($"{Map.key} ({Map.metadata.songName} - {Map.metadata.levelAuthorName})")
                              .Split(ModAssistant.Utils.Constants.IllegalCharacters));
             string directory = Path.Combine(Utils.BeatSaberPath, CustomSongsFolder, mapName);
 
+#pragma warning disable CS0162 // Unreachable code detected
             if (BypassDownloadCounter)
             {
-                await Utils.DownloadAsset(BeatSaverURLPrefix + Map.directDownload, CustomSongsFolder, Map.hash + ".zip", mapName);
+                await Utils.DownloadAsset(BeatSaverURLPrefix + Map.directDownload, CustomSongsFolder, Map.hash + ".zip", mapName, showNotification);
             }
             else
             {
-                await Utils.DownloadAsset(BeatSaverURLPrefix + Map.downloadURL, CustomSongsFolder, Map.hash + ".zip", mapName);
+                await Utils.DownloadAsset(BeatSaverURLPrefix + Map.downloadURL, CustomSongsFolder, Map.hash + ".zip", mapName, showNotification);
             }
+#pragma warning restore CS0162 // Unreachable code detected
 
             if (File.Exists(zip))
             {

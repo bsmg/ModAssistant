@@ -8,7 +8,7 @@ namespace ModAssistant
 {
     class OneClickInstaller
     {
-        private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver" };
+        private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver", "bsplaylist" };
 
         public static async Task InstallAsset(string link)
         {
@@ -23,6 +23,9 @@ namespace ModAssistant
                 case "beatsaver":
                     await BeatSaver(uri);
                     break;
+                case "bsplaylist":
+                    await Playlist(uri);
+                    break;
             }
         }
 
@@ -35,6 +38,11 @@ namespace ModAssistant
         private static async Task ModelSaber(Uri uri)
         {
             await API.ModelSaber.GetModel(uri);
+        }
+
+        private static async Task Playlist(Uri uri)
+        {
+            await API.Playlists.DownloadAll(uri);
         }
 
         public static void Register(string Protocol, bool Background = false)

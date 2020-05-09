@@ -67,6 +67,7 @@
     </ApplicationDefinition>
     <Compile Include="Classes\External Interfaces\BeatSaver.cs" />
     <Compile Include="Classes\External Interfaces\ModelSaber.cs" />
+    <Compile Include="Classes\External Interfaces\Playlists.cs" />
     <Compile Include="Classes\External Interfaces\Utils.cs" />
     <Compile Include="Classes\Http.cs" />
     <Compile Include="Classes\HyperlinkExtensions.cs" />
