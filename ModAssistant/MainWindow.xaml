@@ -225,11 +225,9 @@
                     <Menu
                         Width="15"
                         Height="40"
-                        HorizontalAlignment="Right" >
-                        <MenuItem Header="V" Height="40">
-                            <MenuItem Header="Install, Reinstall, or Update" Click="ReinstallAllButton_Click"/>
-                            <MenuItem Header="Bruh" Click="ReinstallAllButton_Click"/>
-                            <MenuItem Header="Bruh" Click="ReinstallAllButton_Click"/>
+                        HorizontalAlignment="Right">
+                        <MenuItem Header="^" Height="40" Width="15" Margin="-1" Padding="-2.5">
+                            <MenuItem Header="Install/Reinstall, or Update" Click="ReinstallAllButton_Click"/>
                         </MenuItem>
                     </Menu>
                 </StackPanel>
