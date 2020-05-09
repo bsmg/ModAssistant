@@ -28,6 +28,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
@@ -135,9 +136,26 @@
             Checked="SelectInstalled_Checked"
             IsChecked="{Binding SelectInstalledMods, Mode=TwoWay}"
             Unchecked="SelectInstalled_Unchecked" />
-
+        
         <TextBlock
             Grid.Row="6"
+            Margin="50,5,5,5"
+            HorizontalAlignment="Left"
+            FontSize="16"
+            FontWeight="Bold"
+            Text="{DynamicResource Options:ReinstallInstalledMods}" />
+        <CheckBox
+            Name="ReinstallInstalled"
+            Grid.Row="6"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Checked="ReinstallInstalled_Checked"
+            IsChecked="{Binding ReinstallInstalledMods, Mode=TwoWay}"
+            Unchecked="ReinstallInstalled_Unchecked" />
+
+        <TextBlock
+            Grid.Row="7"
             Margin="5"
             HorizontalAlignment="Left"
             FontSize="16"
@@ -147,7 +165,7 @@
         </TextBlock>
 
         <TextBlock
-            Grid.Row="7"
+            Grid.Row="8"
             Margin="50,5,5,5"
             HorizontalAlignment="Left"
             FontSize="16"
@@ -155,7 +173,7 @@
             Text="{DynamicResource Options:BeatSaver}" />
         <CheckBox
             Name="BeatSaverProtocolHandler"
-            Grid.Row="7"
+            Grid.Row="8"
             Grid.Column="1"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
@@ -164,7 +182,7 @@
             Unchecked="BeatSaverProtocolHandler_Unchecked" />
 
         <TextBlock
-            Grid.Row="8"
+            Grid.Row="9"
             Margin="50,5,5,5"
             HorizontalAlignment="Left"
             FontSize="16"
@@ -172,7 +190,7 @@
             Text="{DynamicResource Options:ModelSaber}" />
         <CheckBox
             Name="ModelSaberProtocolHandler"
-            Grid.Row="8"
+            Grid.Row="9"
             Grid.Column="1"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
