@@ -167,7 +167,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="115" />
-                    <ColumnDefinition Width="131" />
+                    <ColumnDefinition Width="115" />
                 </Grid.ColumnDefinitions>
 
                 <Border
@@ -201,7 +201,7 @@
                 <StackPanel 
                     Grid.Column="2" Orientation="Horizontal"
                     Height="40"
-                    Width="116"
+                    Width="100"
                     Margin="0,10,0,0"
                     HorizontalAlignment="Right">
                     <Button
@@ -222,14 +222,6 @@
                             Text="{DynamicResource MainWindow:InstallButtonBottom}" />
                         </StackPanel>
                     </Button>
-                    <Menu
-                        Width="16"
-                        Height="40"
-                        HorizontalAlignment="Right">
-                        <MenuItem Header="v" Height="40" Width="16" Margin="-1" Padding="0,0,0,4">
-                            <MenuItem Header="Install/Reinstall, or Update" Click="ReinstallAllButton_Click"/>
-                        </MenuItem>
-                    </Menu>
                 </StackPanel>
             </Grid>
         </Grid>

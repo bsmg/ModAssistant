@@ -254,7 +254,7 @@ namespace ModAssistant
 
         private void InstallButton_Click(object sender, RoutedEventArgs e)
         {
-            Mods.Instance.InstallMods(false);
+            Mods.Instance.InstallMods();
         }
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)
@@ -318,11 +318,6 @@ namespace ModAssistant
         {
             BackgroundVideo.Position = TimeSpan.Zero;
             BackgroundVideo.Play();
-        }
-
-        private void ReinstallAllButton_Click(object sender, RoutedEventArgs e)
-        {
-            Mods.Instance.InstallMods(true);
         }
     }
 }
