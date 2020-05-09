@@ -20,6 +20,7 @@ namespace ModAssistant
         public static bool SaveModSelection;
         public static bool CheckInstalledMods;
         public static bool SelectInstalledMods;
+        public static bool ReinstallInstalledMods;
         public static string Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public static List<string> SavedMods = ModAssistant.Properties.Settings.Default.SavedMods.Split(',').ToList();
 
@@ -64,6 +65,7 @@ namespace ModAssistant
             SaveModSelection = ModAssistant.Properties.Settings.Default.SaveSelected;
             CheckInstalledMods = ModAssistant.Properties.Settings.Default.CheckInstalled;
             SelectInstalledMods = ModAssistant.Properties.Settings.Default.SelectInstalled;
+            ReinstallInstalledMods = ModAssistant.Properties.Settings.Default.ReinstallInstalled;
 
             if (e.Args.Length == 0)
             {

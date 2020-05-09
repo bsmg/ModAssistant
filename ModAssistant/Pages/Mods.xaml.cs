@@ -309,7 +309,7 @@ namespace ModAssistant.Pages
             }
         }
 
-        public async void InstallMods(bool reinstallInstalledMods)
+        public async void InstallMods()
         {
             MainWindow.Instance.InstallButton.IsEnabled = false;
             string installDirectory = App.BeatSaberInstallDirectory;
@@ -320,7 +320,7 @@ namespace ModAssistant.Pages
                 if (mod.ListItem.GetVersionComparison > 0) continue;
 
                 // Ignore mods that are on current version if we aren't reinstalling mods
-                if (mod.ListItem.GetVersionComparison == 0 && !reinstallInstalledMods) continue;
+                if (mod.ListItem.GetVersionComparison == 0 && !App.ReinstallInstalledMods) continue;
 
                 if (mod.name.ToLower() == "bsipa")
                 {
