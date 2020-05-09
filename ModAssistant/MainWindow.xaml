@@ -167,7 +167,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="115" />
-                    <ColumnDefinition Width="115" />
+                    <ColumnDefinition Width="130" />
                 </Grid.ColumnDefinitions>
 
                 <Border
@@ -201,33 +201,35 @@
                 <StackPanel 
                     Grid.Column="2" Orientation="Horizontal"
                     Height="40"
-                    Width="100"
+                    Width="115"
                     Margin="0,10,0,0"
                     HorizontalAlignment="Right">
                     <Button
                         Name="InstallButton"
-                        Width="85"
+                        Width="100"
                         Height="40"
                         HorizontalAlignment="Right"
                         Click="InstallButton_Click"
                         IsEnabled="False">
-                    <StackPanel>
-                        <TextBlock
+                        <StackPanel>
+                            <TextBlock
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             Text="{DynamicResource MainWindow:InstallButtonTop}" />
-                        <TextBlock
+                            <TextBlock
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             Text="{DynamicResource MainWindow:InstallButtonBottom}" />
-                    </StackPanel>
+                        </StackPanel>
                     </Button>
                     <Menu
                         Width="15"
                         Height="40"
                         HorizontalAlignment="Right" >
                         <MenuItem Header="V" Height="40">
-                            <MenuItem Header="Reinstall and Update" Click="ReinstallAllButton_Click"/>
+                            <MenuItem Header="Install, Reinstall, or Update" Click="ReinstallAllButton_Click"/>
+                            <MenuItem Header="Bruh" Click="ReinstallAllButton_Click"/>
+                            <MenuItem Header="Bruh" Click="ReinstallAllButton_Click"/>
                         </MenuItem>
                     </Menu>
                 </StackPanel>
