@@ -167,7 +167,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="115" />
-                    <ColumnDefinition Width="130" />
+                    <ColumnDefinition Width="131" />
                 </Grid.ColumnDefinitions>
 
                 <Border
@@ -201,7 +201,7 @@
                 <StackPanel 
                     Grid.Column="2" Orientation="Horizontal"
                     Height="40"
-                    Width="115"
+                    Width="116"
                     Margin="0,10,0,0"
                     HorizontalAlignment="Right">
                     <Button
@@ -223,10 +223,10 @@
                         </StackPanel>
                     </Button>
                     <Menu
-                        Width="15"
+                        Width="16"
                         Height="40"
                         HorizontalAlignment="Right">
-                        <MenuItem Header="^" Height="40" Width="15" Margin="-1" Padding="-2.5">
+                        <MenuItem Header="v" Height="40" Width="16" Margin="-1" Padding="0,0,0,4">
                             <MenuItem Header="Install/Reinstall, or Update" Click="ReinstallAllButton_Click"/>
                         </MenuItem>
                     </Menu>
