@@ -254,7 +254,7 @@ namespace ModAssistant
 
         private void InstallButton_Click(object sender, RoutedEventArgs e)
         {
-            Mods.Instance.InstallMods();
+            Mods.Instance.InstallMods(false);
         }
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)
@@ -322,7 +322,7 @@ namespace ModAssistant
 
         private void ReinstallAllButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Mods.Instance.InstallMods(true);
         }
     }
 }
