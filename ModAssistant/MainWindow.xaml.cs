@@ -319,5 +319,10 @@ namespace ModAssistant
             BackgroundVideo.Position = TimeSpan.Zero;
             BackgroundVideo.Play();
         }
+
+        private void ReinstallAllButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

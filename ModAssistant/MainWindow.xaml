@@ -198,15 +198,19 @@
                     </StackPanel>
                 </Button>
 
-                <Button
-                    Name="InstallButton"
-                    Grid.Column="2"
-                    Width="100"
+                <StackPanel 
+                    Grid.Column="2" Orientation="Horizontal"
                     Height="40"
+                    Width="100"
                     Margin="0,10,0,0"
-                    HorizontalAlignment="Right"
-                    Click="InstallButton_Click"
-                    IsEnabled="False">
+                    HorizontalAlignment="Right">
+                    <Button
+                        Name="InstallButton"
+                        Width="85"
+                        Height="40"
+                        HorizontalAlignment="Right"
+                        Click="InstallButton_Click"
+                        IsEnabled="False">
                     <StackPanel>
                         <TextBlock
                             HorizontalAlignment="Center"
@@ -217,7 +221,16 @@
                             VerticalAlignment="Bottom"
                             Text="{DynamicResource MainWindow:InstallButtonBottom}" />
                     </StackPanel>
-                </Button>
+                    </Button>
+                    <Menu
+                        Width="15"
+                        Height="40"
+                        HorizontalAlignment="Right" >
+                        <MenuItem Header="^" Height="40">
+                            <MenuItem Header="Reinstall All" Click="ReinstallAllButton_Click"/>
+                        </MenuItem>
+                    </Menu>
+                </StackPanel>
             </Grid>
         </Grid>
     </Grid>
