@@ -133,6 +133,7 @@
     <sys:String x:Key="Options:SaveSelectedMods">Sla geselecteerde mods op</sys:String>
     <sys:String x:Key="Options:CheckInstalledMods">Detecteer geïnstalleerde mods</sys:String>
     <sys:String x:Key="Options:SelectInstalledMods">Selecteer geïnstalleerde mods</sys:String>
+    <sys:String x:Key="Options:ReinstallInstalledMods">Geïnstalleerde mods herinstalleren</sys:String>
     <sys:String x:Key="Options:EnableOneClickInstalls">Activeer OneClick™ Installaties</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
@@ -160,6 +161,7 @@
     <sys:String x:Key="Options:AllModsUninstalled">Alle mods gedeïnstalleerd</sys:String>
     <sys:String x:Key="Options:CurrentThemeRemoved">Huidig thema is verwijderd, terugvallen op standaard...</sys:String>
     <sys:String x:Key="Options:ThemeFolderNotFound">Thema map niet gevonden! probeer het sjabloon te exporteren...</sys:String>
+    <sys:String x:Key="Options:AppDataNotFound">Appdata map niet gevonden! probeer Uw spel te starten.</sys:String>
 
     <!-- Loading Page -->
     <sys:String x:Key="Loading:Loading">Mods Laden</sys:String>

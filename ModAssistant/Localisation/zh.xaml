@@ -155,6 +155,7 @@
     <sys:String x:Key="Options:AllModsUninstalled">已卸载所有Mod</sys:String>
     <sys:String x:Key="Options:CurrentThemeRemoved">当前主题已被删除，恢复为默认...</sys:String>
     <sys:String x:Key="Options:ThemeFolderNotFound">找不到主题文件夹！请尝试导出模板</sys:String>
+    <sys:String x:Key="Options:AppDataNotFound">AppData folder not found! Try launching your game.</sys:String>
 
     <!-- Loading Page -->
     <sys:String x:Key="Loading:Loading">正在加载Mod...</sys:String>

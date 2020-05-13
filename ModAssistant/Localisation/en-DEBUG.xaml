@@ -123,6 +123,7 @@
     <sys:String x:Key="Options:AllModsUninstalled">Options:AllModsUninstalled</sys:String>
     <sys:String x:Key="Options:CurrentThemeRemoved">Options:CurrentThemeRemoved</sys:String>
     <sys:String x:Key="Options:ThemeFolderNotFound">Options:ThemeFolderNotFound</sys:String>
+    <sys:String x:Key="Options:AppDataNotFound">Options:AppDataNotFound</sys:String>
 
     <!-- Loading Page -->
     <sys:String x:Key="Loading:Loading">Loading:Loading</sys:String>
