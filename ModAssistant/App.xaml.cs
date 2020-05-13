@@ -23,6 +23,8 @@ namespace ModAssistant
         public static bool ReinstallInstalledMods;
         public static string Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public static List<string> SavedMods = ModAssistant.Properties.Settings.Default.SavedMods.Split(',').ToList();
+        public static bool Update = true;
+        public static bool GUI = true;
 
 
         private async void Application_Startup(object sender, StartupEventArgs e)
@@ -67,68 +69,111 @@ namespace ModAssistant
             SelectInstalledMods = ModAssistant.Properties.Settings.Default.SelectInstalled;
             ReinstallInstalledMods = ModAssistant.Properties.Settings.Default.ReinstallInstalled;
 
-            if (e.Args.Length == 0)
+            await ArgumentHandler(e.Args);
+            await Init(Update, GUI);
+        }
+
+        private async Task Init(bool Update, bool GUI)
+        {
+            if (Update)
             {
                 await Task.Run(async () => await Updater.Run());
+            }
 
+            if (GUI)
+            {
                 MainWindow window = new MainWindow();
                 window.Show();
-            }
-            else
-            {
-                await ArgumentHandler(e.Args);
             }
         }
 
         private async Task ArgumentHandler(string[] args)
         {
-            switch (args[0])
+            while (args.Length > 0)
             {
-                case "--install":
-                    if (args.Length < 2 || string.IsNullOrEmpty(args[1]))
-                    {
-                        Utils.SendNotify(string.Format((string)Current.FindResource("App:InvalidArgument"), "--install"));
-                    }
-                    else
-                    {
-                        await OneClickInstaller.InstallAsset(args[1]);
-                    }
-                    break;
+                switch (args[0])
+                {
+                    case "--install":
+                        if (args.Length < 2 || string.IsNullOrEmpty(args[1]))
+                        {
+                            Utils.SendNotify(string.Format((string)Current.FindResource("App:InvalidArgument"), "--install"));
+                        }
+                        else
+                        {
+                            await OneClickInstaller.InstallAsset(args[1]);
+                        }
 
-                case "--no-update":
-                    MainWindow window = new MainWindow();
-                    window.Show();
-                    break;
+                        Update = false;
+                        GUI = false;
+                        args = Shift(args, 2);
+                        break;
 
-                case "--register":
-                    if (args.Length < 2 || string.IsNullOrEmpty(args[1]))
-                    {
-                        Utils.SendNotify(string.Format((string)Current.FindResource("App:InvalidArgument"), "--register"));
-                    }
-                    else
-                    {
-                        OneClickInstaller.Register(args[1], true);
-                    }
+                    case "--no-update":
+                        Update = false;
+                        args = Shift(args);
+                        break;
 
-                    break;
+                    case "--language":
+                        if (args.Length < 2 || string.IsNullOrEmpty(args[1]))
+                        {
+                            Utils.SendNotify(string.Format((string)Current.FindResource("App:InvalidArgument"), "--language"));
+                        }
+                        else
+                        {
+                            LoadLanguage(args[1]);
+                        }
 
-                case "--unregister":
-                    if (args.Length < 2 || string.IsNullOrEmpty(args[1]))
-                    {
-                        Utils.SendNotify(string.Format((string)Current.FindResource("App:InvalidArgument"), "--unregister"));
-                    }
-                    else
-                    {
-                        OneClickInstaller.Unregister(args[1], true);
-                    }
-                    break;
+                        args = Shift(args, 2);
+                        break;
 
-                default:
-                    Utils.SendNotify((string)Current.FindResource("App:UnrecognizedArgument"));
-                    break;
+                    case "--register":
+                        if (args.Length < 2 || string.IsNullOrEmpty(args[1]))
+                        {
+                            Utils.SendNotify(string.Format((string)Current.FindResource("App:InvalidArgument"), "--register"));
+                        }
+                        else
+                        {
+                            OneClickInstaller.Register(args[1], true);
+                        }
+
+                        Update = false;
+                        GUI = false;
+                        args = Shift(args, 2);
+                        break;
+
+                    case "--unregister":
+                        if (args.Length < 2 || string.IsNullOrEmpty(args[1]))
+                        {
+                            Utils.SendNotify(string.Format((string)Current.FindResource("App:InvalidArgument"), "--unregister"));
+                        }
+                        else
+                        {
+                            OneClickInstaller.Unregister(args[1], true);
+                        }
+
+                        Update = false;
+                        GUI = false;
+                        args = Shift(args, 2);
+                        break;
+
+                    default:
+                        Utils.SendNotify((string)Current.FindResource("App:UnrecognizedArgument"));
+                        args = Shift(args);
+                        break;
+                }
+            }
+        }
+
+        private static string[] Shift(string[] array, int places = 1)
+        {
+            if (places >= array.Length) return Array.Empty<string>();
+            string[] newArray = new string[array.Length - places];
+            for(int i = places; i < array.Length; i++)
+            {
+                newArray[i - places] = array[i];
             }
 
-            Current.Shutdown();
+            return newArray;
         }
 
         private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
