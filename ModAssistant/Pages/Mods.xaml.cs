@@ -317,7 +317,10 @@ namespace ModAssistant.Pages
             foreach (Mod mod in ModsList)
             {
                 // Ignore mods that are newer than installed version
-                if (mod.ListItem.IsNewerVersionInstalled) continue;
+                if (mod.ListItem.GetVersionComparison > 0) continue;
+
+                // Ignore mods that are on current version if we aren't reinstalling mods
+                if (mod.ListItem.GetVersionComparison == 0 && !App.ReinstallInstalledMods) continue;
 
                 if (mod.name.ToLower() == "bsipa")
                 {
@@ -573,12 +576,13 @@ namespace ModAssistant.Pages
                 }
             }
 
-            public bool IsNewerVersionInstalled
+            public int GetVersionComparison
             {
                 get
                 {
-                    if (!IsInstalled) return false;
-                    return _installedVersion > ModVersion;
+                    if (!IsInstalled || _installedVersion < ModVersion) return -1;
+                    if (_installedVersion > ModVersion) return 1;
+                    return 0;
                 }
             }
 

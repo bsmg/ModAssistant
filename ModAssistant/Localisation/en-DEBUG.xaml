@@ -95,6 +95,7 @@
     <sys:String x:Key="Options:SaveSelectedMods">Options:SaveSelectedMods</sys:String>
     <sys:String x:Key="Options:CheckInstalledMods">Options:CheckInstalledMods</sys:String>
     <sys:String x:Key="Options:SelectInstalledMods">Options:SelectInstalledMods</sys:String>
+    <sys:String x:Key="Options:ReinstallInstalledMods">Options:Reinstall Installed Mods</sys:String>
     <sys:String x:Key="Options:EnableOneClickInstalls">Options:EnableOneClickInstalls</sys:String>
     <sys:String x:Key="Options:BeatSaver">Options:BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">Options:ModelSaber</sys:String>

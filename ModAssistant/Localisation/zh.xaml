@@ -127,6 +127,7 @@
     <sys:String x:Key="Options:SaveSelectedMods">保存选中的Mod</sys:String>
     <sys:String x:Key="Options:CheckInstalledMods">检查已安装的Mod</sys:String>
     <sys:String x:Key="Options:SelectInstalledMods">选中已安装的Mod</sys:String>
+    <sys:String x:Key="Options:ReinstallInstalledMods">Reinstall Installed Mods</sys:String>
     <sys:String x:Key="Options:EnableOneClickInstalls">在以下站点启用OneClick™一键安装：</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
