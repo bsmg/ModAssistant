@@ -218,7 +218,14 @@ namespace ModAssistant.Pages
             string location = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
                 "AppData", "LocalLow", "Hyperbolic Magnetism");
-            Utils.OpenFolder(location);
+            if (Directory.Exists(location))
+            {
+                Utils.OpenFolder(location);
+            }
+            else
+            {
+                MessageBox.Show((string)Application.Current.FindResource("Options:AppDataNotFound"));
+            }
         }
 
         private async void YeetBSIPAButton_Click(object sender, RoutedEventArgs e)
