@@ -127,7 +127,7 @@
     <sys:String x:Key="Options:SaveSelectedMods">保存选中的Mod</sys:String>
     <sys:String x:Key="Options:CheckInstalledMods">检查已安装的Mod</sys:String>
     <sys:String x:Key="Options:SelectInstalledMods">选中已安装的Mod</sys:String>
-    <sys:String x:Key="Options:ReinstallInstalledMods">Reinstall Installed Mods</sys:String>
+    <sys:String x:Key="Options:ReinstallInstalledMods">重新安装已有Mod</sys:String>
     <sys:String x:Key="Options:EnableOneClickInstalls">在以下站点启用OneClick™一键安装：</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
@@ -155,7 +155,7 @@
     <sys:String x:Key="Options:AllModsUninstalled">已卸载所有Mod</sys:String>
     <sys:String x:Key="Options:CurrentThemeRemoved">当前主题已被删除，恢复为默认...</sys:String>
     <sys:String x:Key="Options:ThemeFolderNotFound">找不到主题文件夹！请尝试导出模板</sys:String>
-    <sys:String x:Key="Options:AppDataNotFound">AppData folder not found! Try launching your game.</sys:String>
+    <sys:String x:Key="Options:AppDataNotFound">找不到游戏存档路径！请尝试启动游戏后重试。</sys:String>
 
     <!-- Loading Page -->
     <sys:String x:Key="Loading:Loading">正在加载Mod...</sys:String>
