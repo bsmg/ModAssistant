@@ -59,7 +59,7 @@
     <Span x:Key="Intro:WikiGuide">
         <Bold><Span Foreground="Red">请务必阅读</Span>
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/">
-            BS常见问题解答(中文)
+            BS中文教程及常见问题解答
         </Hyperlink>
         </Bold>，以及
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
