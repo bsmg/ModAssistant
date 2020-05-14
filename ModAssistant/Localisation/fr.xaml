@@ -57,7 +57,7 @@
     </Span>
     <Span x:Key="Intro:Terms:Term3">
         Les mods sont créés
-        <Bold>gratuitement</Bold> par des gens gens sur leur
+        <Bold>gratuitement</Bold> par des gens sur leur
         <Bold>temps libre.</Bold> Veuillez être patient et compréhensif.
     </Span>
     <Span x:Key="Intro:ReviewsBeatGamesFault">
@@ -65,13 +65,13 @@
         <Bold>PAS</Bold> de commentaires négatifs parce que les mods ne fonctionnent plus. Ce
         <Bold>n'</Bold>est
         <Bold>pas</Bold> la faute de Beat Games.
-        <LineBreak/> Ils n'essaient pas de tuer les mods.
+        <LineBreak/> Ils n'essaient pas de faire disparaître les mods.
     </Span>
     <Span x:Key="Intro:ReviewsRustySpoon">
         Si je continue de voir des gens laisser des commentaires négatifs
         <Italic>parce que</Italic> les mods ne fonctionnent plus,
         <LineBreak/>
-        <Bold>Je vais tuer personnellement les mods avec une cuillère rouillée</Bold>
+        <Bold>J'irai personnellement liquider les mods avec une cuillère rouillée</Bold>
     </Span>
     <Span x:Key="Intro:WikiGuide">
         Veuillez lire le Guide du Débutant sur le
@@ -81,32 +81,32 @@
     </Span>
     <sys:String x:Key="Intro:AgreeButton">J'accepte</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">Je refuse</sys:String>
-    <sys:String x:Key="Intro:ClosingApp">Fermeture de l'application : Vous n'avez pas accepté les modalités et conditions.</sys:String>
+    <sys:String x:Key="Intro:ClosingApp">Fermeture de l'application : vous n'avez pas accepté les modalités et conditions.</sys:String>
     <sys:String x:Key="Intro:VersionDownloadFailed">Impossible de télécharger la liste des versions</sys:String>
     <sys:String x:Key="Intro:ModsTabDisabled">Onglet Mods désactivé. Veuillez relancer pour réessayer.</sys:String>
-    <sys:String x:Key="Intro:ModsTabEnabled">Vous pouvez désormais l'onglet Mods !</sys:String>
+    <sys:String x:Key="Intro:ModsTabEnabled">Vous pouvez désormais utiliser l'onglet Mods !</sys:String>
 
     <!-- Mods Page -->
     <sys:String x:Key="Mods:Title">Mods</sys:String>
     <sys:String x:Key="Mods:Header:Name">Nom</sys:String>
     <sys:String x:Key="Mods:Header:Installed">Installé</sys:String>
-    <sys:String x:Key="Mods:Header:Latest">Dernier</sys:String>
+    <sys:String x:Key="Mods:Header:Latest">Récent</sys:String>
     <sys:String x:Key="Mods:Header:Description">Description</sys:String>
     <sys:String x:Key="Mods:Header:Uninstall">Désinstaller</sys:String>
     <sys:String x:Key="Mods:UninstallButton">Désinstaller</sys:String>
     <sys:String x:Key="Mods:LoadFailed">Impossible de charger la liste des mods</sys:String>
     <sys:String x:Key="Mods:CheckingInstalledMods">Vérification des mods installés</sys:String>
     <sys:String x:Key="Mods:LoadingMods">Chargement des mods</sys:String>
-    <sys:String x:Key="Mods:FinishedLoadingMods">Fin: mods chargés</sys:String>
+    <sys:String x:Key="Mods:FinishedLoadingMods">Fin : mods chargés</sys:String>
     <sys:String x:Key="Mods:InstallingMod">Installation de {0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">{0} installé</sys:String>
-    <sys:String x:Key="Mods:FinishedInstallingMods">Fin: mods installés</sys:String>
+    <sys:String x:Key="Mods:FinishedInstallingMods">Fin : mods installés</sys:String>
     <sys:String x:Key="Mods:ModDownloadLinkMissing">Impossible de trouver le lien de téléchargement de {0}</sys:String>
-    <sys:String x:Key="Mods:UninstallBox:Title">Désinstaller {0}?</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Title">Désinstaller {0} ?</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Body1">Êtes-vous sûr de vouloir supprimer {0} ?</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Body2">Cela pourrait faire dysfonctionner d'autres mods installés</sys:String>
     <sys:String x:Key="Mods:FailedExtract">Échec de l'extraction de {0}, nouvelle tentative dans {1} secondes. ({2}/{3})</sys:String>
-    <sys:String x:Key="Mods:FailedExtractMaxReached">Échec de l'extraction de {0} après le max de tentatives ({1}), skipping. Ce mod pourrait ne pas fonctionner correctement, continuez à vos propres risques</sys:String>
+    <sys:String x:Key="Mods:FailedExtractMaxReached">Échec de l'extraction de {0} après le maximum de tentatives ({1}), abandon. Ce mod pourrait ne pas fonctionner correctement, continuez à vos propres risques</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">À propos</sys:String>
@@ -129,7 +129,7 @@
     <sys:String x:Key="About:SpecialThanks">Remerciements particuliers ♥</sys:String>
     <sys:String x:Key="About:Donate">Faire un don</sys:String>
     <sys:String x:Key="About:HeadpatsButton">Caresses-tête</sys:String>
-    <sys:String x:Key="About:HugsButton">Calins</sys:String>
+    <sys:String x:Key="About:HugsButton">Câlins</sys:String>
 
     <!-- Options Page -->
     <sys:String x:Key="Options:Title">Options</sys:String>
@@ -148,14 +148,14 @@
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
     <sys:String x:Key="Options:Diagnostics">Diagnostic</sys:String>
-    <sys:String x:Key="Options:OpenLogsButton">Ouvrir les Logs</sys:String>
+    <sys:String x:Key="Options:OpenLogsButton">Ouvrir les logs</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">Ouvrir AppData</sys:String>
     <sys:String x:Key="Options:UninstallBSIPAButton">Désinstaller BSIPA</sys:String>
     <sys:String x:Key="Options:RemoveAllModsButton">Supprimer tous les mods</sys:String>
     <sys:String x:Key="Options:ApplicationTheme">Thème de l'application</sys:String>
     <sys:String x:Key="Options:ExportTemplateButton">Exporter le modèle</sys:String>
     <sys:String x:Key="Options:UploadingLog">Envoi des logs</sys:String>
-    <sys:String x:Key="Options:LogUrlCopied">URL des logs copié dans le presse-papier !</sys:String>
+    <sys:String x:Key="Options:LogUrlCopied">URL des logs copiée dans le presse-papier !</sys:String>
     <sys:String x:Key="Options:LogUploadFailed">L'envoi des logs a échoué</sys:String>
     <sys:String x:Key="Options:LogUploadFailed:Title">L'envoi des logs a échoué !</sys:String>
     <sys:String x:Key="Options:LogUploadFailed:Body">Impossible d'envoyer le fichier de logs à Teknik, veuillez réessayer ou envoyer le fichier manuellement.</sys:String>
@@ -166,7 +166,7 @@
     <sys:String x:Key="Options:YeetModsBox:RemoveAllMods">Êtes-vous sûr de vouloir supprimer TOUS les mods ?</sys:String>
     <sys:String x:Key="Options:YeetModsBox:CannotBeUndone">Cela ne peut pas être annulé.</sys:String>
     <sys:String x:Key="Options:AllModsUninstalled">Tous les mods ont été désinstallés</sys:String>
-    <sys:String x:Key="Options:CurrentThemeRemoved">Le thème actuel a été supprimé, passage en thème par défaut...</sys:String>
+    <sys:String x:Key="Options:CurrentThemeRemoved">Le thème actuel a été supprimé, passage au thème par défaut...</sys:String>
     <sys:String x:Key="Options:ThemeFolderNotFound">Dossier Themes non trouvé ! Essayez d'exporter le modèle...</sys:String>
     <sys:String x:Key="Options:AppDataNotFound">Dossier AppData non trouvé ! Essayez de lancer votre jeu.</sys:String>
 
@@ -195,7 +195,7 @@
         </Hyperlink>.
     </Span>
     <Span x:Key="Invalid:List:Line3">
-        Si cela n'aide pas, demandez de l'aide au support dans le canal textuel
+        Si cela n'a pas fonctionné, demandez de l'aide au support dans le canal textuel
         <Span Foreground="Blue">#support</Span> dans
         <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
             BSMG
@@ -212,13 +212,13 @@
     <sys:String x:Key="OneClick:SongDownload:NetworkIssues">Il pourrait y avoir des problèmes avec BeatSaver ou votre connexion Internet.</sys:String>
     <sys:String x:Key="OneClick:SongDownload:FailedTitle">Échec du téléchargement du ZIP de la musique</sys:String>
     <sys:String x:Key="OneClick:InstallDirNotFound">Chemin de l'installation de Beat Saber non trouvé.</sys:String>
-    <sys:String x:Key="OneClick:InstalledAsset">Installé: {0}</sys:String>
+    <sys:String x:Key="OneClick:InstalledAsset">Installé : {0}</sys:String>
     <sys:String x:Key="OneClick:AssetInstallFailed">Échec de l'installation.</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} : gestionnaires d'installation OneClick™ inscrits !</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} : gestionnaires d'installation OneClick™ désinscrits !</sys:String>
 
     <!-- Themes Class -->
-    <sys:String x:Key="Themes:ThemeNotFound">Thème non trouvé, passage en thème par défaut...</sys:String>
+    <sys:String x:Key="Themes:ThemeNotFound">Thème non trouvé, passage au thème par défaut...</sys:String>
     <sys:String x:Key="Themes:ThemeSet">Thème défini sur {0}.</sys:String>
     <sys:String x:Key="Themes:ThemeMissing">{0} n'existe pas.</sys:String>
     <sys:String x:Key="Themes:SavedTemplateTheme">Modèle du thème &quot;{0}&quot; sauvegardé dans le dossier Themes.</sys:String>
