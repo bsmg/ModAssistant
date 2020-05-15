@@ -10,7 +10,7 @@
     <sys:String x:Key="App:InstallDirDialog:OkCancel">Нажмите ОК, чтобы попробовать снова или ЗАКРЫТЬ, чтобы закрыть приложение.</sys:String>
     <sys:String x:Key="App:InvalidArgument">Недопустимый аргумент! '{0}' требуется выбор.</sys:String>
     <sys:String x:Key="App:UnrecognizedArgument">Нераспознанный аргумент. Закрытие Mod Assistant.</sys:String>
-    <sys:String x:Key="App:UnhandledException">Произошло необработанное исключениеd</sys:String>
+    <sys:String x:Key="App:UnhandledException">Произошло необработанное исключение</sys:String>
     <sys:String x:Key="App:Exception">Исключение</sys:String>
 
     <!-- Main Window -->
