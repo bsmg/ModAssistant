@@ -746,7 +746,7 @@ namespace ModAssistant.Pages
             }
             else
             {
-                SearchText.Text = "Search...";
+                SearchText.Text = (string)FindResource("Mods:SearchLabel");
             }
         }
 
