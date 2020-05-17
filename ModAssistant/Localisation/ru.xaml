@@ -16,19 +16,19 @@
     <!-- Main Window -->
     <sys:String x:Key="MainWindow:WindowTitle">ModAssistant</sys:String>
     <sys:String x:Key="MainWindow:IntroButton">Вступление</sys:String>
-    <sys:String x:Key="MainWindow:ModsButton">Моды</sys:String>
+    <sys:String x:Key="MainWindow:ModsButton">Модификации</sys:String>
     <sys:String x:Key="MainWindow:AboutButton">Информация</sys:String>
     <sys:String x:Key="MainWindow:OptionsButton">Настройки</sys:String>
     <sys:String x:Key="MainWindow:GameVersionLabel">Версия игры</sys:String>
     <sys:String x:Key="MainWindow:VersionLabel">Версия</sys:String>
-    <sys:String x:Key="MainWindow:ModInfoButton">Информация о моде</sys:String>
+    <sys:String x:Key="MainWindow:ModInfoButton">Информация о модификации</sys:String>
     <sys:String x:Key="MainWindow:InstallButtonTop">Установить</sys:String>
     <sys:String x:Key="MainWindow:InstallButtonBottom">или обновить</sys:String>
     <sys:String x:Key="MainWindow:GameVersionLoadFailed">Не удаётся загрузить список версий игры, Вкладка с модификациями недоступна.</sys:String>
     <sys:String x:Key="MainWindow:GameUpdateDialog:Title">Обнаружена новая версия игры!</sys:String>
     <sys:String x:Key="MainWindow:GameUpdateDialog:Line1">Похоже на то, что было обновление игры.</sys:String>
     <sys:String x:Key="MainWindow:GameUpdateDialog:Line2">Пожалуйста, проверьте дважды, что выбрана корректная версия игры в нижнем левом углу!</sys:String>
-    <sys:String x:Key="MainWindow:NoModSelected">Нет выбранных модов!</sys:String>
+    <sys:String x:Key="MainWindow:NoModSelected">Нет выбранных модификаций!</sys:String>
     <sys:String x:Key="MainWindow:NoModInfoPage">{0} Не имеет страницы с информацией.</sys:String>
 
     <!-- Intro Page -->
@@ -40,31 +40,31 @@
     </Span>
     <Span x:Key="Intro:Terms:Line2">
         Beat Saber
-        <Bold>не имеет</Bold> нативной поддержки модов. Это означает:
+        <Bold>не имеет</Bold> нативной поддержки модификаций. Это означает:
     </Span>
     <Span x:Key="Intro:Terms:Term1">
-        Моды
+        Модификации
         <Bold>могут прекращать работоспособность</Bold> каждое обновление. Это нормально, и
         <Bold>это не</Bold> вина Beat Games.
     </Span>
     <Span x:Key="Intro:Terms:Term2">
-        Моды
+        Модификации
         <Bold>могут</Bold> вызывать ошибки и проблемы с производительностью. Это
         <Bold>не</Bold> вина Beat Games.
     </Span>
     <Span x:Key="Intro:Terms:Term3">
-        Моды создаются
+        Модификации создаются
         <Bold>бесплатно</Bold> людьми в их
         <Bold>свободное время.</Bold> Пожалуйста, будьте терпиливыми и взаимопонимающими.
     </Span>
     <Span x:Key="Intro:ReviewsBeatGamesFault">
-        <Bold>НЕ</Bold> оставляйте отрицательные отзывы потому что мод не работает. Это 
+        <Bold>НЕ</Bold> оставляйте отрицательные отзывы потому что модификация не работает. Это 
         <Bold>не</Bold> вина Beat Games.
-        <LineBreak/> Beat Games не пытается уничтожить моды.
+        <LineBreak/> Beat Games не пытается уничтожить модификации.
     </Span>
     <Span x:Key="Intro:ReviewsRustySpoon">
         Если я увижу людей, которые продолжают оставлять негативные комментарии
-        <Italic>потому что</Italic> моды не работают,
+        <Italic>потому что</Italic> модификации не работают,
         <LineBreak/>
         <Bold>Я лично уничтожу модификации ржавой ложкой</Bold>
     </Span>
@@ -78,8 +78,8 @@
     <sys:String x:Key="Intro:DisagreeButton">Я не согласен</sys:String>
     <sys:String x:Key="Intro:ClosingApp">Приложение закрывается: Вы не приняли пользовательскую политику соглашений.</sys:String>
     <sys:String x:Key="Intro:VersionDownloadFailed">Не удаётся получить список версий</sys:String>
-    <sys:String x:Key="Intro:ModsTabDisabled">Вкладка с модами недоступна. Пожалуйста перезапустите, чтобы попробовать снова.</sys:String>
-    <sys:String x:Key="Intro:ModsTabEnabled">Теперь вы можете использовать вкладку с модами!</sys:String>
+    <sys:String x:Key="Intro:ModsTabDisabled">Вкладка с модификациями недоступна. Пожалуйста перезапустите, чтобы попробовать снова.</sys:String>
+    <sys:String x:Key="Intro:ModsTabEnabled">Теперь вы можете использовать вкладку с модификациями!</sys:String>
 
     <!-- Mods Page -->
     <sys:String x:Key="Mods:Title">Модификации</sys:String>
@@ -133,7 +133,7 @@
     <sys:String x:Key="Options:SelectFolderButton">Выбрать папку</sys:String>
     <sys:String x:Key="Options:OpenFolderButton">Открыть папку</sys:String>
     <sys:String x:Key="Options:SaveSelectedMods">Сохранить выбранные модификации</sys:String>
-    <sys:String x:Key="Options:CheckInstalledMods">Обнаружение установленных модов</sys:String>
+    <sys:String x:Key="Options:CheckInstalledMods">Обнаружение установленных модификаций</sys:String>
     <sys:String x:Key="Options:SelectInstalledMods">Выбрать установленные модификации</sys:String>
     <sys:String x:Key="Options:ReinstallInstalledMods">Переустановить установленные модификации</sys:String>
     <sys:String x:Key="Options:EnableOneClickInstalls">Включить OneClick™ установки</sys:String>
@@ -146,7 +146,7 @@
     <sys:String x:Key="Options:OpenLogsButton">Открыть логи</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">Открыть AppData</sys:String>
     <sys:String x:Key="Options:UninstallBSIPAButton">Удалить BSIPA</sys:String>
-    <sys:String x:Key="Options:RemoveAllModsButton">Удалить все моды</sys:String>
+    <sys:String x:Key="Options:RemoveAllModsButton">Удалить все модификации</sys:String>
     <sys:String x:Key="Options:ApplicationTheme">Тема приложения</sys:String>
     <sys:String x:Key="Options:ExportTemplateButton">Экспортировать шаблон</sys:String>
     <sys:String x:Key="Options:UploadingLog">Загрузка логов</sys:String>
@@ -166,7 +166,7 @@
     <sys:String x:Key="Options:AppDataNotFound">Папка AppData не найдена! Попробуйте запустить игру.</sys:String>
 
     <!-- Loading Page -->
-    <sys:String x:Key="Loading:Loading">Загрузка модов</sys:String>
+    <sys:String x:Key="Loading:Loading">Загрузка модификаций</sys:String>
 
     <!-- Invalid Page -->
     <sys:String x:Key="Invalid:Title">Недействительно</sys:String>
