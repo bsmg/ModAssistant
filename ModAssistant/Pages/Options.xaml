@@ -29,6 +29,8 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
@@ -265,9 +267,30 @@
             HorizontalAlignment="Left"
             FontSize="24"
             FontWeight="Bold"
-            Text="{DynamicResource Options:Diagnostics}" />
+            Text="{DynamicResource Options:Tools}" />
         <StackPanel
             Grid.Row="15"
+            Grid.ColumnSpan="4"
+            Margin="0"
+            HorizontalAlignment="Left"
+            Orientation="Horizontal">
+            <Button
+                Height="30"
+                Margin="5"
+                Padding="5"
+                Click="InstallPlaylistButton_Click"
+                Content="{DynamicResource Options:InstallPlaylist}" />
+        </StackPanel>
+   
+        <TextBlock
+            Grid.Row="16"
+            Margin="15,5,5,5"
+            HorizontalAlignment="Left"
+            FontSize="24"
+            FontWeight="Bold"
+            Text="{DynamicResource Options:Diagnostics}" />
+        <StackPanel
+            Grid.Row="17"
             Grid.ColumnSpan="4"
             Margin="0"
             HorizontalAlignment="Left"
