@@ -36,7 +36,7 @@
     <sys:String x:Key="Intro:PageTitle">Welkom bij Mod Assistant</sys:String>
     <sys:String x:Key="Intro:Terms:Header">Lees deze pagina alstublieft volledig en aandachtig</sys:String>
     <Span x:Key="Intro:Terms:Line1">
-        Door het gebruiken van dit programma verlkaar ik de volgende voorwaarden te hebben gelezen en hier mee akkoord te gaan:
+        Door het gebruiken van dit programma verklaar ik de volgende voorwaarden te hebben gelezen en hier mee akkoord te gaan:
     </Span>
     <Span x:Key="Intro:Terms:Line2">
         Beat Saber
@@ -67,7 +67,7 @@
         <Bold>zal ik persoonlijk met een roestige lepel mods niet meer laten werken</Bold>
     </Span>
     <Span x:Key="Intro:WikiGuide">
-        Lees alstublieft de 'Beginners Guide' op de wiki
+        Lees alstublieft de 'Beginners Guide' op de
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
             Wiki
         </Hyperlink>. (engels)
@@ -77,7 +77,7 @@
     <sys:String x:Key="Intro:ClosingApp">Sluit applicatie af: U accepteerde de voorwaarden niet.</sys:String>
     <sys:String x:Key="Intro:VersionDownloadFailed">Kon de versie lijst niet downloaden</sys:String>
     <sys:String x:Key="Intro:ModsTabDisabled">Mods tabblad uitgeschakeld. Herstart het programma om opnieuw te proberen.</sys:String>
-    <sys:String x:Key="Intro:ModsTabEnabled">U kan nu het mods tabblad gebruiken!</sys:String>
+    <sys:String x:Key="Intro:ModsTabEnabled">U kunt nu het mods tabblad gebruiken!</sys:String>
 
     <!-- Mods Page -->
     <sys:String x:Key="Mods:Title">Mods</sys:String>
