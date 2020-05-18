@@ -44,11 +44,17 @@ namespace ModAssistant.API
             }
         }
 
-        public static async Task DownloadFrom(string file)
+        public static async Task DownloadFrom(string file, System.Windows.Controls.ProgressBar progress = null)
         {
+            if (progress != null)
+            {
+                progress.Minimum = 0;
+                progress.Maximum = 1;
+                progress.Value = 0;
+            }
             Playlist playlist = JsonSerializer.Deserialize<Playlist>(File.ReadAllText(file));
-            int songCount = playlist.songs.Length;
-            int processedSongs = 0;
+            if (progress != null) progress.Maximum = playlist.songs.Length;
+
             foreach (Playlist.Song song in playlist.songs)
             {
                 if (!string.IsNullOrEmpty(song.hash))
@@ -59,7 +65,7 @@ namespace ModAssistant.API
                 {
                     await BeatSaver.GetFromKey(song.key, false);
                 }
-                processedSongs++;
+                if (progress != null) progress.Value++;
             }
         }
 
