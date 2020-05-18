@@ -95,7 +95,7 @@ namespace ModAssistant
             }
             if(Utils.Constants.DownloadSite == "国内中转")
             {
-                MessageBox.Show("你当前正在使用国内中转源的ModAssistant。不是从BeatMods源站下载，\n而是连接WGzeyu提供的国际线路较好的国内服务器，中转访问源站下载。\n\n通常，我们建议使用源站版，直接连接BeatMods下载。\n但国内部分运营商连接BeatMods时，下载速度甚至低于20KB/s，\n完全下不动导致报错无法安装，这个版本就是为了这些用户准备的。\n\n国内中转服务器由中文版作者WGzeyu提供。\n由于中转服务器带宽较低，且每次中转安装都会占用作者的网速与流量，\n所以我们对中转下载设置了限速3Mbps，安装常用Mod总计需一分钟左右。\n\n【注意】如果软件发布了更新，那么国内中转版会默认更新到源站版，\n但文件名不会变！如有需要可重新到群文件下载新的国内中转版。\n\n点击确定将打开源站中文列表版ModAssistant下载地址。");
+                MessageBox.Show("你当前正在使用国内中转源的ModAssistant。不是从BeatMods源站下载，\n而是连接WGzeyu提供的国际线路较好的国内服务器，中转访问源站下载。\n\n通常，我们建议使用源站版，直接连接BeatMods下载。\n但国内部分运营商连接BeatMods时，下载速度甚至低于20KB/s，\n完全下不动导致报错无法安装，这个版本就是为了这些用户准备的。\n\n国内中转服务器由中文版作者WGzeyu提供。\n由于中转服务器带宽较低，且每次中转安装都会占用作者的网速与流量，\n所以我们对中转下载设置了限速3Mbps，安装常用Mod总计需一分钟左右。\n\n【注意】如果软件发布了更新，那么国内中转版会默认更新到源站版，\n但文件名不会变！如有需要可重新到资源共享下载新的国内中转版。\n\n点击确定将打开源站中文列表版ModAssistant下载地址。");
                 System.Diagnostics.Process.Start("https://github.com/wgzeyu/ModAssistant-CN/releases/latest");
             }
         }

@@ -72,7 +72,7 @@
         Please read the Beginners Guide on the
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
             Wiki
-        </Hyperlink>.
+        </Hyperlink> .
     </Span>
     <sys:String x:Key="Intro:AgreeButton">I Agree</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">Disagree</sys:String>
@@ -92,8 +92,6 @@
     <sys:String x:Key="Mods:LoadFailed">Could not load mods list</sys:String>
     <sys:String x:Key="Mods:CheckingInstalledMods">Checking installed mods</sys:String>
     <sys:String x:Key="Mods:LoadingMods">Loading Mods</sys:String>
-    <sys:String x:Key="Mods:LoadingTrans">Loading Translation</sys:String>
-    <sys:String x:Key="Mods:DownloadingMod">Downloading {0}</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Finished loading mods</sys:String>
     <sys:String x:Key="Mods:InstallingMod">Installing {0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">Installed {0}</sys:String>
@@ -104,7 +102,7 @@
     <sys:String x:Key="Mods:UninstallBox:Body2">This could break your other mods</sys:String>
     <sys:String x:Key="Mods:FailedExtract">Failed to extract {0}, trying again in {1} seconds. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Failed to extract {0} after max attempts ({1}), skipping. This mod might not work properly so proceed at your own risk</sys:String>
-
+    <sys:String x:Key="Mods:SearchLabel">Search...</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">About</sys:String>
@@ -138,12 +136,18 @@
     <sys:String x:Key="Options:SaveSelectedMods">Save Selected Mods</sys:String>
     <sys:String x:Key="Options:CheckInstalledMods">Detect Installed Mods</sys:String>
     <sys:String x:Key="Options:SelectInstalledMods">Select Installed Mods</sys:String>
+    <sys:String x:Key="Options:ReinstallInstalledMods">Reinstall Installed Mods</sys:String>
     <sys:String x:Key="Options:EnableOneClickInstalls">Enable OneClick™ Installs</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
     <sys:String x:Key="Options:GameType">Game Type</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
+    <sys:String x:Key="Options:Tools">Tools</sys:String>
+    <sys:String x:Key="Options:InstallPlaylist">Install Playlist</sys:String>
+    <sys:String x:Key="Options:InstallingPlaylist">Installing Playlist: {0}</sys:String>
+    <sys:String x:Key="Options:FailedPlaylistSong">Failed song: {0}</sys:String>
+    <sys:String x:Key="Options:FinishedPlaylist">[{0} fails] Finished Installing Playlist: {1}</sys:String>
     <sys:String x:Key="Options:Diagnostics">Diagnostics</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Open Logs</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">Open AppData</sys:String>
@@ -165,6 +169,7 @@
     <sys:String x:Key="Options:AllModsUninstalled">All Mods Uninstalled</sys:String>
     <sys:String x:Key="Options:CurrentThemeRemoved">Current theme has been removed, reverting to default...</sys:String>
     <sys:String x:Key="Options:ThemeFolderNotFound">Themes folder not found! Try exporting the template...</sys:String>
+    <sys:String x:Key="Options:AppDataNotFound">AppData folder not found! Try launching your game.</sys:String>
 
     <!-- Loading Page -->
     <sys:String x:Key="Loading:Loading">Loading Mods</sys:String>
@@ -180,21 +185,21 @@
             <Hyperlink NavigateUri="https://beatgames.com/" local:HyperlinkExtensions.IsExternal="True">
                 HERE
             </Hyperlink>
-        </Bold>.
+        </Bold> .
     </Span>
     <Span x:Key="Invalid:List:Line2">
         If your copy of the game is
         <Bold>not</Bold> pirated, please
         <Hyperlink NavigateUri="https://bsmg.wiki/support#clean-installation" local:HyperlinkExtensions.IsExternal="True">
             do a clean install
-        </Hyperlink>.
+        </Hyperlink> .
     </Span>
     <Span x:Key="Invalid:List:Line3">
         If those don't help, ask for support in the
         <Span Foreground="Blue">#support</Span> channel in
         <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
             BSMG
-        </Hyperlink>.
+        </Hyperlink> .
     </Span>
     <sys:String x:Key="Invalid:BoughtGame1">If you used to have a pirated version but have since bought the game</sys:String>
     <sys:String x:Key="Invalid:SelectFolderButton">Select Folder</sys:String>
