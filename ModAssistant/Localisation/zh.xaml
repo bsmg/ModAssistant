@@ -94,6 +94,7 @@
     <sys:String x:Key="Mods:UninstallBox:Body2">这可能会导致其他Mod不可用。</sys:String>
     <sys:String x:Key="Mods:FailedExtract">{0}解压失败，将在{1}秒后重试。（{2}/{3}）</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">{0}在重试{1}次后仍然无法解压，将被跳过。注意，这个Mod可能无法使用。</sys:String>
+    <sys:String x:Key="Mods:SearchLabel">Search...</sys:String> <!-- NEEDS TRANSLATING -->
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">关于</sys:String>
@@ -134,6 +135,11 @@
     <sys:String x:Key="Options:GameType">游戏类型</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
+    <sys:String x:Key="Options:Tools">Tools</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:InstallPlaylist">Install Playlist</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:InstallingPlaylist">Installing Playlist: {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:FailedPlaylistSong">Failed song: {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:FinishedPlaylist">[{0} fails] Finished Installing Playlist: {1}</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Options:Diagnostics">诊断工具</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">打开日志</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">打开游戏存档</sys:String>

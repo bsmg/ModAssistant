@@ -82,6 +82,10 @@
       <DependentUpon>Intro.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Mod.cs" />
+    <Page Include="Localisation\de.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Localisation\en-DEBUG.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -100,6 +104,18 @@
     </Compile>
     <Compile Include="Classes\Utils.cs" />
     <Page Include="Localisation\en.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\fr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\it.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\ko.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
