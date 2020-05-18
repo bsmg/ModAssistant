@@ -1,6 +1,8 @@
 using System;
 using System.IO;
 using System.IO.Compression;
+using System.Net;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Windows;
 using static ModAssistant.Http;
@@ -13,49 +15,124 @@ namespace ModAssistant.API
         private static readonly string CustomSongsFolder = Path.Combine("Beat Saber_Data", "CustomLevels");
         private const bool BypassDownloadCounter = false;
 
-        public static async Task GetFromKey(string Key)
+        public static async Task<BeatSaverMap> GetFromKey(string Key, bool showNotification = true)
         {
-            BeatSaverApiResponse Map = await GetResponse(BeatSaverURLPrefix + "/api/maps/detail/" + Key);
-            await InstallMap(Map);
+            return await GetMap(Key, "key", showNotification);
         }
 
-        public static async Task GetFromHash(string Hash)
+        public static async Task<BeatSaverMap> GetFromHash(string Hash, bool showNotification = true)
         {
-            BeatSaverApiResponse Map = await GetResponse(BeatSaverURLPrefix + "/api/maps/by-hash/" + Hash);
-            await InstallMap(Map);
+            return await GetMap(Hash, "hash", showNotification);
         }
 
-        private static async Task<BeatSaverApiResponse> GetResponse(string url)
+        private static async Task<BeatSaverMap> GetMap(string id, string type, bool showNotification)
         {
+            string urlSegment;
+            switch (type)
+            {
+                case "hash":
+                    urlSegment = "/api/maps/by-hash/";
+                    break;
+                case "key":
+                    urlSegment = "/api/maps/detail/";
+                    break;
+                default:
+                    return null;
+            }
+
+            BeatSaverMap map = new BeatSaverMap();
+            map.Success = false;
             try
             {
-                var resp = await HttpClient.GetAsync(url);
-                var body = await resp.Content.ReadAsStringAsync();
-
-                return JsonSerializer.Deserialize<BeatSaverApiResponse>(body);
+                BeatSaverApiResponse beatsaver = await GetResponse(BeatSaverURLPrefix + urlSegment + id);
+                map.Name = await InstallMap(beatsaver.map, showNotification);
+                map.Success = true;
             }
             catch (Exception e)
             {
-                MessageBox.Show($"{Application.Current.FindResource("OneClick:MapDownloadFailed")}\n\n" + e);
+                ModAssistant.Utils.Log($"Failed downloading BeatSaver map: {id} | Error: {e}", "ERROR");
+            }
+            return map;
+        }
+
+        private static async Task<BeatSaverApiResponse> GetResponse(string url, bool showNotification = true)
+        {
+            BeatSaverApiResponse response = new BeatSaverApiResponse();
+            try
+            {
+                var resp = await HttpClient.GetAsync(url);
+                response.statusCode = resp.StatusCode;
+                response.ratelimit = GetRatelimit(resp.Headers);
+                if (response.statusCode == HttpStatusCode.OK)
+                {
+                    if (response.ratelimit.IsSafe)
+                    {
+                        string body = await resp.Content.ReadAsStringAsync();
+                        response.map = JsonSerializer.Deserialize<BeatSaverApiResponseMap>(body);
+                        return response;
+                    }
+                    else
+                    {
+                        return response;
+                    }
+                }
+                else
+                {
+                    return response;
+                }
+            }
+            catch (Exception e)
+            {
+                if (showNotification)
+                {
+                    MessageBox.Show($"{Application.Current.FindResource("OneClick:MapDownloadFailed")}\n\n" + e);
+                }
                 return null;
             }
         }
 
-        public static async Task InstallMap(BeatSaverApiResponse Map)
+        private static BeatSaverRatelimit GetRatelimit(HttpResponseHeaders headers)
+        {
+            BeatSaverRatelimit ratelimit = new BeatSaverRatelimit();
+
+            var _rateLimitRemaining = headers.GetValues("Rate-Limit-Remaining").GetEnumerator();
+            var _rateLimitReset = headers.GetValues("Rate-Limit-Reset").GetEnumerator();
+            var _rateLimitTotal = headers.GetValues("Rate-Limit-Total").GetEnumerator();
+            _rateLimitRemaining.MoveNext();
+            _rateLimitReset.MoveNext();
+            _rateLimitTotal.MoveNext();
+            ratelimit.Remaining = Int32.Parse(_rateLimitRemaining.Current);
+            ratelimit.Reset = Int32.Parse(_rateLimitReset.Current);
+            ratelimit.Total = Int32.Parse(_rateLimitTotal.Current);
+            ratelimit.ResetTime = UnixTimestampToDateTime((long)ratelimit.Reset);
+
+            return ratelimit;
+        }
+
+        public static DateTime UnixTimestampToDateTime(double unixTime)
+        {
+            DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            long unixTimeStampInTicks = (long)(unixTime * TimeSpan.TicksPerSecond);
+            return new DateTime(unixStart.Ticks + unixTimeStampInTicks, System.DateTimeKind.Utc);
+        }
+
+        public static async Task<string> InstallMap(BeatSaverApiResponseMap Map, bool showNotification = true)
         {
             string zip = Path.Combine(Utils.BeatSaberPath, CustomSongsFolder, Map.hash) + ".zip";
             string mapName = string.Concat(($"{Map.key} ({Map.metadata.songName} - {Map.metadata.levelAuthorName})")
                              .Split(ModAssistant.Utils.Constants.IllegalCharacters));
             string directory = Path.Combine(Utils.BeatSaberPath, CustomSongsFolder, mapName);
 
+#pragma warning disable CS0162 // Unreachable code detected
             if (BypassDownloadCounter)
             {
-                await Utils.DownloadAsset(BeatSaverURLPrefix + Map.directDownload, CustomSongsFolder, Map.hash + ".zip", mapName);
+                await Utils.DownloadAsset(BeatSaverURLPrefix + Map.directDownload, CustomSongsFolder, Map.hash + ".zip", mapName, showNotification);
             }
             else
             {
-                await Utils.DownloadAsset(BeatSaverURLPrefix + Map.downloadURL, CustomSongsFolder, Map.hash + ".zip", mapName);
+                await Utils.DownloadAsset(BeatSaverURLPrefix + Map.downloadURL, CustomSongsFolder, Map.hash + ".zip", mapName, showNotification);
             }
+#pragma warning restore CS0162 // Unreachable code detected
 
             if (File.Exists(zip))
             {
@@ -81,14 +158,54 @@ namespace ModAssistant.API
             }
             else
             {
-                string line1 = (string)Application.Current.FindResource("OneClick:SongDownload:Failed");
-                string line2 = (string)Application.Current.FindResource("OneClick:SongDownload:NetworkIssues");
-                string title = (string)Application.Current.FindResource("OneClick:SongDownload:FailedTitle");
-                MessageBox.Show($"{line1}\n{line2}", title);
+                if (showNotification)
+                {
+                    string line1 = (string)Application.Current.FindResource("OneClick:SongDownload:Failed");
+                    string line2 = (string)Application.Current.FindResource("OneClick:SongDownload:NetworkIssues");
+                    string title = (string)Application.Current.FindResource("OneClick:SongDownload:FailedTitle");
+                    MessageBox.Show($"{line1}\n{line2}", title);
+                }
+                return null;
             }
+            return mapName;
+        }
+
+        public class BeatSaverMap
+        {
+            public BeatSaverApiResponse response { get; set; }
+            public bool Success { get; set; }
+            public string Name { get; set; }
         }
 
         public class BeatSaverApiResponse
+        {
+            public HttpStatusCode statusCode { get; set; }
+            public BeatSaverRatelimit ratelimit { get; set;}
+            public BeatSaverApiResponseMap map { get; set; }
+        }
+
+        public class BeatSaverRatelimit
+        {
+            public int Remaining { get; set; }
+            public int Total { get; set; }
+            public int Reset { get; set; }
+            public DateTime ResetTime { get; set; }
+            public bool IsSafe
+            {
+                get
+                {
+                    if (Remaining > 3) return true;
+                    else return false;
+                }
+            }
+
+            public async Task Wait()
+            {
+                await Task.Delay(new TimeSpan(ResetTime.Ticks - DateTime.Now.Ticks));
+            }
+        }
+
+        public class BeatSaverApiResponseMap
         {
             public Metadata metadata { get; set; }
             public Stats stats { get; set; }

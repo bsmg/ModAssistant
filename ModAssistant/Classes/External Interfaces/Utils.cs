@@ -11,12 +11,18 @@ namespace ModAssistant.API
     {
         public static readonly string BeatSaberPath = App.BeatSaberInstallDirectory;
 
+        public static async Task DownloadAsset(string link, string folder, bool showNotifcation, string fileName = null)
+        {
+            await DownloadAsset(link, folder, fileName, null, showNotifcation);
+        }
+
         public static async Task DownloadAsset(string link, string folder, string fileName = null, string displayName = null)
         {
-            if (string.IsNullOrEmpty(displayName))
-            {
-                displayName = Path.GetFileNameWithoutExtension(fileName);
-            }
+            await DownloadAsset(link, folder, fileName, displayName, true);
+        }
+
+        public static async Task DownloadAsset(string link, string folder, string fileName, string displayName, bool showNotification)
+        {
             if (string.IsNullOrEmpty(BeatSaberPath))
             {
                 ModAssistant.Utils.SendNotify((string)Application.Current.FindResource("OneClick:InstallDirNotFound"));
@@ -32,9 +38,16 @@ namespace ModAssistant.API
                 {
                     fileName = WebUtility.UrlDecode(Path.Combine(BeatSaberPath, folder, fileName));
                 }
+                if (string.IsNullOrEmpty(displayName))
+                {
+                    displayName = Path.GetFileNameWithoutExtension(fileName);
+                }
 
                 await ModAssistant.Utils.Download(link, fileName);
-                ModAssistant.Utils.SendNotify(string.Format((string)Application.Current.FindResource("OneClick:InstalledAsset"), displayName));
+                if (showNotification)
+                {
+                    ModAssistant.Utils.SendNotify(string.Format((string)Application.Current.FindResource("OneClick:InstalledAsset"), displayName));
+                }
             }
             catch
             {

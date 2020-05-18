@@ -142,6 +142,11 @@
     <sys:String x:Key="Options:GameType">Game Type</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
+    <sys:String x:Key="Options:Tools">Tools</sys:String>
+    <sys:String x:Key="Options:InstallPlaylist">Install Playlist</sys:String>
+    <sys:String x:Key="Options:InstallingPlaylist">Installing Playlist: {0}</sys:String>
+    <sys:String x:Key="Options:FailedPlaylistSong">Failed song: {0}</sys:String>
+    <sys:String x:Key="Options:FinishedPlaylist">[{0} fails] Finished Installing Playlist: {1}</sys:String>
     <sys:String x:Key="Options:Diagnostics">Diagnostics</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Open Logs</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">Open AppData</sys:String>
