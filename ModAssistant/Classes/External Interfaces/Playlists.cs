@@ -43,6 +43,12 @@ namespace ModAssistant.API
 
         public static async Task DownloadFrom(string file, bool gui = false, System.Windows.Controls.ProgressBar progress = null)
         {
+            if (Path.Combine(BeatSaberPath, PlaylistsFolder) != Path.GetDirectoryName(file))
+            {
+                string destination = Path.Combine(BeatSaberPath, PlaylistsFolder, Path.GetFileName(file));
+                File.Copy(file, destination, true);
+            }
+
             int Errors = 0;
             int Minimum = 0;
             int Value = 0;
