@@ -12,15 +12,51 @@
     mc:Ignorable="d">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            Name="SearchText"
+            Padding="5,0,0,0"
+            Height="0"
+            Grid.Row="0"
+            Text="{DynamicResource Mods:SearchLabel}"
+            Panel.ZIndex="1"
+            Foreground="{DynamicResource TextColor}"
+            Background="{DynamicResource BottomStatusBarBackground}" />
+        <TextBox
+            Name="SearchBar"
+            Margin="0,-1,0,0"
+            Padding="3,1,0,0"
+            Height="0"
+            Grid.Row="0"
+            Panel.ZIndex="2"
+            Background="#00000000"
+            Foreground="{DynamicResource TextColor}"
+            TextChanged="SearchBar_TextChanged"
+            BorderThickness="0" />
         <ListView
             Name="ModsListView"
             Grid.Column="1"
+            Grid.Row="1"
             SelectionChanged="ModsListView_SelectionChanged"
             SelectionMode="Single">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn Width="30">
+                            <GridViewColumn.Header>
+                                <Button
+                                    Name="SearchButton"
+                                    Background="#00000000"
+                                    BorderThickness="0"
+                                    Click="SearchButton_Click"
+                                    Padding="9,-1,9,0"
+                                    Margin="-5"
+                                    Content="🔍"
+                                    FontSize="11" />
+                            </GridViewColumn.Header>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <CheckBox
