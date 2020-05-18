@@ -312,9 +312,10 @@ namespace ModAssistant.Pages
         private void InstallPlaylistButton_Click(object sender, RoutedEventArgs e)
         {
             string playlistFile = Utils.GetManualFile();
-            Utils.Log(playlistFile, "DEBUG");
-            var result = Task.Run(async () => { API.Playlists.DownloadFrom(playlistFile).Wait(); });
-            
+            if (File.Exists(playlistFile))
+            {
+                Task.Run(() => { API.Playlists.DownloadFrom(playlistFile, true).Wait(); });
+            }
         }
     }
 }
