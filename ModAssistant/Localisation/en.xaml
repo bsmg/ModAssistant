@@ -135,6 +135,7 @@
     <sys:String x:Key="Options:SaveSelectedMods">Save Selected Mods</sys:String>
     <sys:String x:Key="Options:CheckInstalledMods">Detect Installed Mods</sys:String>
     <sys:String x:Key="Options:SelectInstalledMods">Select Installed Mods</sys:String>
+    <sys:String x:Key="Options:ReinstallInstalledMods">Reinstall Installed Mods</sys:String>
     <sys:String x:Key="Options:EnableOneClickInstalls">Enable OneClick™ Installs</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
@@ -162,6 +163,7 @@
     <sys:String x:Key="Options:AllModsUninstalled">All Mods Uninstalled</sys:String>
     <sys:String x:Key="Options:CurrentThemeRemoved">Current theme has been removed, reverting to default...</sys:String>
     <sys:String x:Key="Options:ThemeFolderNotFound">Themes folder not found! Try exporting the template...</sys:String>
+    <sys:String x:Key="Options:AppDataNotFound">AppData folder not found! Try launching your game.</sys:String>
 
     <!-- Loading Page -->
     <sys:String x:Key="Loading:Loading">Loading Mods</sys:String>

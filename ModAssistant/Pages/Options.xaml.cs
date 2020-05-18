@@ -21,6 +21,7 @@ namespace ModAssistant.Pages
         public bool SaveSelection { get; set; }
         public bool CheckInstalledMods { get; set; }
         public bool SelectInstalledMods { get; set; }
+        public bool ReinstallInstalledMods { get; set; }
         public bool ModelSaberProtocolHandlerEnabled { get; set; }
         public bool BeatSaverProtocolHandlerEnabled { get; set; }
         public string LogURL { get; private set; }
@@ -33,8 +34,13 @@ namespace ModAssistant.Pages
             SaveSelection = App.SaveModSelection;
             CheckInstalledMods = App.CheckInstalledMods;
             SelectInstalledMods = App.SelectInstalledMods;
+            ReinstallInstalledMods = App.ReinstallInstalledMods;
             if (!CheckInstalledMods)
+            {
                 SelectInstalled.IsEnabled = false;
+                ReinstallInstalled.IsEnabled = false;
+            }
+                
 
             UpdateHandlerStatus();
 
@@ -85,6 +91,7 @@ namespace ModAssistant.Pages
             CheckInstalledMods = true;
             Properties.Settings.Default.Save();
             SelectInstalled.IsEnabled = true;
+            ReinstallInstalled.IsEnabled = true;
 
             if (MainWindow.ModsOpened)
             {
@@ -99,6 +106,7 @@ namespace ModAssistant.Pages
             CheckInstalledMods = false;
             Properties.Settings.Default.Save();
             SelectInstalled.IsEnabled = false;
+            ReinstallInstalled.IsEnabled = false;
 
             if (MainWindow.ModsOpened)
             {
@@ -139,6 +147,22 @@ namespace ModAssistant.Pages
             Properties.Settings.Default.SelectInstalled = false;
             App.SelectInstalledMods = false;
             SelectInstalledMods = false;
+            Properties.Settings.Default.Save();
+        }
+
+        private void ReinstallInstalled_Checked(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.ReinstallInstalled = true;
+            App.ReinstallInstalledMods = true;
+            ReinstallInstalledMods = true;
+            Properties.Settings.Default.Save();
+        }
+
+        private void ReinstallInstalled_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.ReinstallInstalled = false;
+            App.ReinstallInstalledMods = false;
+            ReinstallInstalledMods = false;
             Properties.Settings.Default.Save();
         }
 
@@ -194,7 +218,14 @@ namespace ModAssistant.Pages
             string location = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
                 "AppData", "LocalLow", "Hyperbolic Magnetism");
-            Utils.OpenFolder(location);
+            if (Directory.Exists(location))
+            {
+                Utils.OpenFolder(location);
+            }
+            else
+            {
+                MessageBox.Show((string)Application.Current.FindResource("Options:AppDataNotFound"));
+            }
         }
 
         private async void YeetBSIPAButton_Click(object sender, RoutedEventArgs e)

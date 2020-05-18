@@ -95,6 +95,7 @@
     <sys:String x:Key="Options:SaveSelectedMods">Options:SaveSelectedMods</sys:String>
     <sys:String x:Key="Options:CheckInstalledMods">Options:CheckInstalledMods</sys:String>
     <sys:String x:Key="Options:SelectInstalledMods">Options:SelectInstalledMods</sys:String>
+    <sys:String x:Key="Options:ReinstallInstalledMods">Options:Reinstall Installed Mods</sys:String>
     <sys:String x:Key="Options:EnableOneClickInstalls">Options:EnableOneClickInstalls</sys:String>
     <sys:String x:Key="Options:BeatSaver">Options:BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">Options:ModelSaber</sys:String>
@@ -122,6 +123,7 @@
     <sys:String x:Key="Options:AllModsUninstalled">Options:AllModsUninstalled</sys:String>
     <sys:String x:Key="Options:CurrentThemeRemoved">Options:CurrentThemeRemoved</sys:String>
     <sys:String x:Key="Options:ThemeFolderNotFound">Options:ThemeFolderNotFound</sys:String>
+    <sys:String x:Key="Options:AppDataNotFound">Options:AppDataNotFound</sys:String>
 
     <!-- Loading Page -->
     <sys:String x:Key="Loading:Loading">Loading:Loading</sys:String>

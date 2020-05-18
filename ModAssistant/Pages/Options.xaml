@@ -28,6 +28,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
@@ -71,17 +72,17 @@
         <Button
             Grid.Row="2"
             Grid.Column="2"
-            Width="93"
             Height="30"
-            Margin="3"
+            Margin="5"
+            Padding="5"
             Click="SelectDirButton_Click"
             Content="{DynamicResource Options:SelectFolderButton}" />
         <Button
             Grid.Row="2"
             Grid.Column="3"
-            Width="93"
             Height="30"
-            Margin="3"
+            Margin="5"
+            Padding="5"
             Click="OpenDirButton_Click"
             Content="{DynamicResource Options:OpenFolderButton}" />
 
@@ -135,9 +136,26 @@
             Checked="SelectInstalled_Checked"
             IsChecked="{Binding SelectInstalledMods, Mode=TwoWay}"
             Unchecked="SelectInstalled_Unchecked" />
-
+        
         <TextBlock
             Grid.Row="6"
+            Margin="50,5,5,5"
+            HorizontalAlignment="Left"
+            FontSize="16"
+            FontWeight="Bold"
+            Text="{DynamicResource Options:ReinstallInstalledMods}" />
+        <CheckBox
+            Name="ReinstallInstalled"
+            Grid.Row="6"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Checked="ReinstallInstalled_Checked"
+            IsChecked="{Binding ReinstallInstalledMods, Mode=TwoWay}"
+            Unchecked="ReinstallInstalled_Unchecked" />
+
+        <TextBlock
+            Grid.Row="7"
             Margin="5"
             HorizontalAlignment="Left"
             FontSize="16"
@@ -147,7 +165,7 @@
         </TextBlock>
 
         <TextBlock
-            Grid.Row="7"
+            Grid.Row="8"
             Margin="50,5,5,5"
             HorizontalAlignment="Left"
             FontSize="16"
@@ -155,7 +173,7 @@
             Text="{DynamicResource Options:BeatSaver}" />
         <CheckBox
             Name="BeatSaverProtocolHandler"
-            Grid.Row="7"
+            Grid.Row="8"
             Grid.Column="1"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
@@ -164,7 +182,7 @@
             Unchecked="BeatSaverProtocolHandler_Unchecked" />
 
         <TextBlock
-            Grid.Row="8"
+            Grid.Row="9"
             Margin="50,5,5,5"
             HorizontalAlignment="Left"
             FontSize="16"
@@ -172,7 +190,7 @@
             Text="{DynamicResource Options:ModelSaber}" />
         <CheckBox
             Name="ModelSaberProtocolHandler"
-            Grid.Row="8"
+            Grid.Row="9"
             Grid.Column="1"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
@@ -226,18 +244,18 @@
             Name="ApplicationThemeExportTemplate"
             Grid.Row="13"
             Grid.Column="2"
-            Width="93"
             Height="30"
-            Margin="3"
+            Margin="5"
+            Padding="5"
             Click="ApplicationThemeExportTemplate_Click"
             Content="{DynamicResource Options:ExportTemplateButton}" />
         <Button
             Name="ApplicationThemeOpenThemesFolder"
             Grid.Row="13"
             Grid.Column="3"
-            Width="93"
             Height="30"
-            Margin="3"
+            Margin="5"
+            Padding="5"
             Click="ApplicationThemeOpenThemesFolder_Click"
             Content="{DynamicResource Options:OpenFolderButton}" />
 
@@ -250,33 +268,34 @@
             Text="{DynamicResource Options:Diagnostics}" />
         <StackPanel
             Grid.Row="15"
+            Grid.ColumnSpan="4"
             Margin="0"
             HorizontalAlignment="Left"
             Orientation="Horizontal">
             <Button
-                Width="80"
                 Height="30"
                 Margin="5"
+                Padding="5"
                 Click="OpenLogsDirButton_Click"
                 Content="{DynamicResource Options:OpenLogsButton}" />
             <Button
                 x:Name="OpenAppData"
-                Width="100"
                 Height="30"
                 Margin="5"
+                Padding="5"
                 Click="OpenAppDataButton_Click"
                 Content="{DynamicResource Options:OpenAppDataButton}" />
             <Button
                 x:Name="YeetBSIPA"
-                Width="100"
                 Height="30"
                 Margin="5"
+                Padding="5"
                 Click="YeetBSIPAButton_Click"
                 Content="{DynamicResource Options:UninstallBSIPAButton}" />
             <Button
-                Width="110"
                 Height="30"
                 Margin="5"
+                Padding="5"
                 Background="{DynamicResource ButtonDangerBackground}"
                 Click="YeetModsButton_Click">
                 <TextBlock Foreground="White" Text="{DynamicResource Options:RemoveAllModsButton}" />
