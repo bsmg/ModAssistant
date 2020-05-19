@@ -102,7 +102,7 @@
     <sys:String x:Key="Mods:UninstallBox:Body2">Dies kann die anderen Mods unbrauchbar machen</sys:String>
     <sys:String x:Key="Mods:FailedExtract">Fehler beim Extrahieren von {0}, neuer Versuch in {1} Sekunden. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Fehler beim Extrahieren von {0} nach {1} Versuchen, wird übersprungen. Dieser Mod funktioniert möglicherweise nicht richtig, also gehe auf eigenes Risiko vor</sys:String>
-    <sys:String x:Key="Mods:SearchLabel">Search...</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:SearchLabel">Suchen...</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">Über</sys:String>
@@ -143,11 +143,11 @@
     <sys:String x:Key="Options:GameType">Spiel Typ</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
-    <sys:String x:Key="Options:Tools">Tools</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:InstallPlaylist">Install Playlist</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:InstallingPlaylist">Installing Playlist: {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:FailedPlaylistSong">Failed song: {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:FinishedPlaylist">[{0} fails] Finished Installing Playlist: {1}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:Tools">Werkzeuge</sys:String>
+    <sys:String x:Key="Options:InstallPlaylist">Playlist installieren</sys:String>
+    <sys:String x:Key="Options:InstallingPlaylist">Installiere Playlist: {0}</sys:String>
+    <sys:String x:Key="Options:FailedPlaylistSong">Titel fehlgeschlagen: {0}</sys:String>
+    <sys:String x:Key="Options:FinishedPlaylist">[{0} Fehler] Playlist Installation abgeschlossen: {1}</sys:String>
     <sys:String x:Key="Options:Diagnostics">Diagnose</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Log öffnen</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">AppData öffnen</sys:String>
