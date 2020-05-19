@@ -102,24 +102,21 @@ namespace ModAssistant.API
         {
             BeatSaverRatelimit ratelimit = new BeatSaverRatelimit();
 
-            IEnumerable<string> Remaining;
-            IEnumerable<string> Reset;
-            IEnumerable<string> Total;
 
-            if (headers.TryGetValues("Rate-Limit-Remaining", out Remaining))
+            if (headers.TryGetValues("Rate-Limit-Remaining", out IEnumerable<string> Remaining))
             {
                 Remaining.GetEnumerator().MoveNext();
                 ratelimit.Remaining = Int32.Parse(Remaining.GetEnumerator().Current);
             }
 
-            if (headers.TryGetValues("Rate-Limit-Reset", out Reset))
+            if (headers.TryGetValues("Rate-Limit-Reset", out IEnumerable<string> Reset))
             {
                 Reset.GetEnumerator().MoveNext();
                 ratelimit.Reset = Int32.Parse(Reset.GetEnumerator().Current);
                 ratelimit.ResetTime = UnixTimestampToDateTime((long)ratelimit.Reset);
             }
 
-            if (headers.TryGetValues("Rate-Limit-Total", out Total))
+            if (headers.TryGetValues("Rate-Limit-Total", out IEnumerable<string> Total))
             {
                 Total.GetEnumerator().MoveNext();
                 ratelimit.Total = Int32.Parse(Total.GetEnumerator().Current);
@@ -205,9 +202,9 @@ namespace ModAssistant.API
 
         public class BeatSaverRatelimit
         {
-            public int Remaining { get; set; }
-            public int Total { get; set; }
-            public int Reset { get; set; }
+            public int? Remaining { get; set; }
+            public int? Total { get; set; }
+            public int? Reset { get; set; }
             public DateTime ResetTime { get; set; }
             public bool IsSafe
             {
