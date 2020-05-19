@@ -73,8 +73,6 @@ namespace ModAssistant
             ReinstallInstalledMods = ModAssistant.Properties.Settings.Default.ReinstallInstalled;
             CloseWindowOnFinish = ModAssistant.Properties.Settings.Default.CloseWindowOnFinish;
 
-            MessageBox.Show(string.Join(" ", e.Args));
-
             await ArgumentHandler(e.Args);
             await Init();
         }
