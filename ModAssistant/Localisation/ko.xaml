@@ -215,7 +215,11 @@
     <sys:String x:Key="OneClick:AssetInstallFailed">설치에 실패하였습니다.</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ 설치 관리자가 등록되었습니다!</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ 설치 관리자가 등록 취소되었습니다!</sys:String>
-
+    <sys:String x:Key="OneClick:Installing">Installing: {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:RatelimitSkip">Max tries reached: Skipping {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:RatelimitHit">Ratelimit hit. Resuming in {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:Failed">Download failed: {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">테마를 찾을 수 없어, 기본 테마로 돌아갑니다...</sys:String>
     <sys:String x:Key="Themes:ThemeSet">{0} 테마로 설정합니다.</sys:String>

@@ -216,7 +216,11 @@
     <sys:String x:Key="OneClick:AssetInstallFailed">Ошибка установки.</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ установки зарегистрированы</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ установки не зарегистрированы!</sys:String>
-
+    <sys:String x:Key="OneClick:Installing">Installing: {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:RatelimitSkip">Max tries reached: Skipping {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:RatelimitHit">Ratelimit hit. Resuming in {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:Failed">Download failed: {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">Тема не найдена, возвращаемся к стандартной теме...</sys:String>
     <sys:String x:Key="Themes:ThemeSet">Установлена тема: {0}.</sys:String>
