@@ -308,5 +308,14 @@ namespace ModAssistant.Pages
                 MessageBox.Show((string)Application.Current.FindResource("Options:ThemeFolderNotFound"));
             }
         }
+
+        private void InstallPlaylistButton_Click(object sender, RoutedEventArgs e)
+        {
+            string playlistFile = Utils.GetManualFile();
+            if (File.Exists(playlistFile))
+            {
+                Task.Run(() => { API.Playlists.DownloadFrom(playlistFile, true).Wait(); });
+            }
+        }
     }
 }
