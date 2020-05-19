@@ -314,7 +314,7 @@ namespace ModAssistant.Pages
             string playlistFile = Utils.GetManualFile();
             if (File.Exists(playlistFile))
             {
-                Task.Run(() => { API.Playlists.DownloadFrom(playlistFile, true).Wait(); });
+                Task.Run(() => { API.Playlists.DownloadFrom(playlistFile).Wait(); });
             }
         }
     }

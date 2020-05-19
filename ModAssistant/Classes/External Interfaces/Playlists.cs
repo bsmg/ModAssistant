@@ -91,10 +91,7 @@ namespace ModAssistant.API
                     }
                 }
             }
-            if (gui)
-            {
-                MainWindow.Instance.MainText = $"{string.Format((string)Application.Current.FindResource("Options:FinishedPlaylist"), Errors, playlist.playlistTitle)}";
-            }
+            Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("Options:FinishedPlaylist"), Errors, playlist.playlistTitle)}");
         }
 
         private static string TextProgress(int min, int max, int value)
