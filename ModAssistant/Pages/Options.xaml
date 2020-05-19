@@ -218,6 +218,23 @@
             IsChecked="{Binding PlaylistsProtocolHandlerEnabled}"
             Unchecked="PlaylistsProtocolHandler_Unchecked" />
 
+        <TextBlock
+            Grid.Row="11"
+            Margin="50,5,5,5"
+            HorizontalAlignment="Left"
+            FontSize="16"
+            FontWeight="Bold"
+            Text="{DynamicResource Options:CloseWindow}" />
+        <CheckBox
+            Name="CloseWindowToggle"
+            Grid.Row="11"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Checked="CloseWindowOnFinish_Checked"
+            IsChecked="{Binding CloseWindowOnFinish}"
+            Unchecked="CloseWindowOnFinish_Unchecked" />
+
         <StackPanel
             Grid.Row="12"
             Margin="5"

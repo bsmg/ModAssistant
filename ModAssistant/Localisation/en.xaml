@@ -141,6 +141,7 @@
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
     <sys:String x:Key="Options:Playlists">Playlists</sys:String>
+    <sys:String x:Key="Options:CloseWindow">Close window when finished</sys:String>
     <sys:String x:Key="Options:GameType">Game Type</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>

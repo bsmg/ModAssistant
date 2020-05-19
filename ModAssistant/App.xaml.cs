@@ -21,6 +21,7 @@ namespace ModAssistant
         public static bool CheckInstalledMods;
         public static bool SelectInstalledMods;
         public static bool ReinstallInstalledMods;
+        public static bool CloseWindowOnFinish;
         public static string Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public static List<string> SavedMods = ModAssistant.Properties.Settings.Default.SavedMods.Split(',').ToList();
         public static MainWindow window;
@@ -69,6 +70,7 @@ namespace ModAssistant
             CheckInstalledMods = ModAssistant.Properties.Settings.Default.CheckInstalled;
             SelectInstalledMods = ModAssistant.Properties.Settings.Default.SelectInstalled;
             ReinstallInstalledMods = ModAssistant.Properties.Settings.Default.ReinstallInstalled;
+            CloseWindowOnFinish = ModAssistant.Properties.Settings.Default.CloseWindowOnFinish;
 
             await ArgumentHandler(e.Args);
             await Init();
@@ -106,6 +108,12 @@ namespace ModAssistant
                         else
                         {
                             await OneClickInstaller.InstallAsset(args[1]);
+                        }
+
+                        if (CloseWindowOnFinish)
+                        {
+                            await Task.Delay(5 * 1000);
+                            Current.Shutdown();
                         }
 
                         Update = false;

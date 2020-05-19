@@ -25,6 +25,7 @@ namespace ModAssistant.Pages
         public bool ModelSaberProtocolHandlerEnabled { get; set; }
         public bool BeatSaverProtocolHandlerEnabled { get; set; }
         public bool PlaylistsProtocolHandlerEnabled { get; set; }
+        public bool CloseWindowOnFinish { get; set; }
         public string LogURL { get; private set; }
 
         public Options()
@@ -36,6 +37,7 @@ namespace ModAssistant.Pages
             CheckInstalledMods = App.CheckInstalledMods;
             SelectInstalledMods = App.SelectInstalledMods;
             ReinstallInstalledMods = App.ReinstallInstalledMods;
+            CloseWindowOnFinish = App.CloseWindowOnFinish;
             if (!CheckInstalledMods)
             {
                 SelectInstalled.IsEnabled = false;
@@ -114,6 +116,22 @@ namespace ModAssistant.Pages
             {
                 Mods.Instance.PendingChanges = true;
             }
+        }
+
+        private void CloseWindowOnFinish_Checked(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.CloseWindowOnFinish = true;
+            App.CloseWindowOnFinish = true;
+            CloseWindowOnFinish = true;
+            Properties.Settings.Default.Save();
+        }
+
+        private void CloseWindowOnFinish_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.CloseWindowOnFinish = false;
+            App.CloseWindowOnFinish = false;
+            CloseWindowOnFinish = false;
+            Properties.Settings.Default.Save();
         }
 
         public void ModelSaberProtocolHandler_Checked(object sender, RoutedEventArgs e)

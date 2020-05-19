@@ -178,5 +178,17 @@ namespace ModAssistant.Properties {
                 this["ReinstallInstalled"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CloseWindowOnFinish {
+            get {
+                return ((bool)(this["CloseWindowOnFinish"]));
+            }
+            set {
+                this["CloseWindowOnFinish"] = value;
+            }
+        }
     }
 }

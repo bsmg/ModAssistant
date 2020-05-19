@@ -61,6 +61,7 @@ namespace ModAssistant.API
             {
                 ModAssistant.Utils.Log($"Failed downloading BeatSaver map: {id} | Error: {e.Message}", "ERROR");
                 Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Failed"), (map.Name ?? id))}");
+                App.CloseWindowOnFinish = false;
             }
             return map;
         }
@@ -71,6 +72,7 @@ namespace ModAssistant.API
             {
                 ModAssistant.Utils.Log($"Max tries reached: Skipping {url}", "ERROR");
                 Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitSkip"), url)}");
+                App.CloseWindowOnFinish = false;
                 throw new Exception("Max retries allowed");
             }
 
@@ -97,6 +99,7 @@ namespace ModAssistant.API
                 else
                 {
                     Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Failed"), url)}");
+                    App.CloseWindowOnFinish = false;
                     return response;
                 }
             }
@@ -197,9 +200,9 @@ namespace ModAssistant.API
             return mapName;
         }
 
-        public static BeatSaver.BeatSaverRatelimit GetRatelimit(HttpResponseHeaders headers)
+        public static BeatSaverRatelimit GetRatelimit(HttpResponseHeaders headers)
         {
-            BeatSaver.BeatSaverRatelimit ratelimit = new BeatSaver.BeatSaverRatelimit();
+            BeatSaverRatelimit ratelimit = new BeatSaverRatelimit();
 
 
             if (headers.TryGetValues("Rate-Limit-Remaining", out IEnumerable<string> _remaining))
@@ -241,6 +244,8 @@ namespace ModAssistant.API
         {
             if (retries == 0)
             {
+                Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitSkip"), url)}");
+                App.CloseWindowOnFinish = false;
                 ModAssistant.Utils.Log($"Max tries reached: Couldn't download {url}", "ERROR");
                 throw new Exception("Max retries allowed");
             }
