@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
@@ -45,8 +46,11 @@ namespace ModAssistant.API
             try
             {
                 BeatSaverApiResponse beatsaver = await GetResponse(BeatSaverURLPrefix + urlSegment + id);
-                map.Name = await InstallMap(beatsaver.map, showNotification);
-                map.Success = true;
+                if (beatsaver != null && beatsaver.map != null)
+                {
+                    map.Name = await InstallMap(beatsaver.map, showNotification);
+                    map.Success = true;
+                }
             }
             catch (Exception e)
             {
@@ -63,21 +67,24 @@ namespace ModAssistant.API
                 var resp = await HttpClient.GetAsync(url);
                 response.statusCode = resp.StatusCode;
                 response.ratelimit = GetRatelimit(resp.Headers);
+                string body = await resp.Content.ReadAsStringAsync();
+
                 if (response.statusCode == HttpStatusCode.OK)
                 {
                     if (response.ratelimit.IsSafe)
                     {
-                        string body = await resp.Content.ReadAsStringAsync();
                         response.map = JsonSerializer.Deserialize<BeatSaverApiResponseMap>(body);
                         return response;
                     }
                     else
                     {
+                        ModAssistant.Utils.Log($"Ratelimit: ({response.ratelimit.Remaining}/{response.ratelimit.Total}) {response.ratelimit.ResetTime}");
                         return response;
                     }
                 }
                 else
                 {
+                    ModAssistant.Utils.Log($"Ratelimit: [{response.statusCode}]({response.ratelimit.Remaining}/{response.ratelimit.Total}) {response.ratelimit.ResetTime} \n{body}", "ERROR");
                     return response;
                 }
             }
@@ -95,16 +102,28 @@ namespace ModAssistant.API
         {
             BeatSaverRatelimit ratelimit = new BeatSaverRatelimit();
 
-            var _rateLimitRemaining = headers.GetValues("Rate-Limit-Remaining").GetEnumerator();
-            var _rateLimitReset = headers.GetValues("Rate-Limit-Reset").GetEnumerator();
-            var _rateLimitTotal = headers.GetValues("Rate-Limit-Total").GetEnumerator();
-            _rateLimitRemaining.MoveNext();
-            _rateLimitReset.MoveNext();
-            _rateLimitTotal.MoveNext();
-            ratelimit.Remaining = Int32.Parse(_rateLimitRemaining.Current);
-            ratelimit.Reset = Int32.Parse(_rateLimitReset.Current);
-            ratelimit.Total = Int32.Parse(_rateLimitTotal.Current);
-            ratelimit.ResetTime = UnixTimestampToDateTime((long)ratelimit.Reset);
+            IEnumerable<string> Remaining;
+            IEnumerable<string> Reset;
+            IEnumerable<string> Total;
+
+            if (headers.TryGetValues("Rate-Limit-Remaining", out Remaining))
+            {
+                Remaining.GetEnumerator().MoveNext();
+                ratelimit.Remaining = Int32.Parse(Remaining.GetEnumerator().Current);
+            }
+
+            if (headers.TryGetValues("Rate-Limit-Reset", out Reset))
+            {
+                Reset.GetEnumerator().MoveNext();
+                ratelimit.Reset = Int32.Parse(Reset.GetEnumerator().Current);
+                ratelimit.ResetTime = UnixTimestampToDateTime((long)ratelimit.Reset);
+            }
+
+            if (headers.TryGetValues("Rate-Limit-Total", out Total))
+            {
+                Total.GetEnumerator().MoveNext();
+                ratelimit.Total = Int32.Parse(Total.GetEnumerator().Current);
+            }
 
             return ratelimit;
         }
