@@ -70,10 +70,10 @@ namespace ModAssistant
             ReinstallInstalledMods = ModAssistant.Properties.Settings.Default.ReinstallInstalled;
 
             await ArgumentHandler(e.Args);
-            await Init(Update, GUI);
+            await Init();
         }
 
-        private async Task Init(bool Update, bool GUI)
+        private async Task Init()
         {
             if (Update)
             {
@@ -84,6 +84,10 @@ namespace ModAssistant
             {
                 MainWindow window = new MainWindow();
                 window.Show();
+            }
+            else
+            {
+                Application.Current.Shutdown();
             }
         }
 
@@ -102,6 +106,8 @@ namespace ModAssistant
                         {
                             await OneClickInstaller.InstallAsset(args[1]);
                         }
+
+                        Current.Shutdown();
 
                         Update = false;
                         GUI = false;
@@ -155,6 +161,12 @@ namespace ModAssistant
                         GUI = false;
                         args = Shift(args, 2);
                         break;
+
+                    case "--runforever":
+                        while (true)
+                        {
+
+                        }
 
                     default:
                         Utils.SendNotify((string)Current.FindResource("App:UnrecognizedArgument"));

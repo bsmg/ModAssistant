@@ -103,23 +103,29 @@ namespace ModAssistant.API
             BeatSaverRatelimit ratelimit = new BeatSaverRatelimit();
 
 
-            if (headers.TryGetValues("Rate-Limit-Remaining", out IEnumerable<string> Remaining))
+            if (headers.TryGetValues("Rate-Limit-Remaining", out IEnumerable<string> _remaining))
             {
-                Remaining.GetEnumerator().MoveNext();
-                ratelimit.Remaining = Int32.Parse(Remaining.GetEnumerator().Current);
+                var Remaining = _remaining.GetEnumerator();
+                Remaining.MoveNext();
+                ratelimit.Remaining = Int32.Parse(Remaining.Current);
+                Remaining.Dispose();
             }
 
-            if (headers.TryGetValues("Rate-Limit-Reset", out IEnumerable<string> Reset))
+            if (headers.TryGetValues("Rate-Limit-Reset", out IEnumerable<string> _reset))
             {
-                Reset.GetEnumerator().MoveNext();
-                ratelimit.Reset = Int32.Parse(Reset.GetEnumerator().Current);
+                var Reset = _reset.GetEnumerator();
+                Reset.MoveNext();
+                ratelimit.Reset = Int32.Parse(Reset.Current);
                 ratelimit.ResetTime = UnixTimestampToDateTime((long)ratelimit.Reset);
+                Reset.Dispose();
             }
 
-            if (headers.TryGetValues("Rate-Limit-Total", out IEnumerable<string> Total))
+            if (headers.TryGetValues("Rate-Limit-Total", out IEnumerable<string> _total))
             {
-                Total.GetEnumerator().MoveNext();
-                ratelimit.Total = Int32.Parse(Total.GetEnumerator().Current);
+                var Total = _total.GetEnumerator();
+                Total.MoveNext();
+                ratelimit.Total = Int32.Parse(Total.Current);
+                Total.Dispose();
             }
 
             return ratelimit;
