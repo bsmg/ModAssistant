@@ -1,15 +1,30 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Windows;
+using static ModAssistant.Http;
 
 namespace ModAssistant.API
 {
     public class Utils
     {
         public static readonly string BeatSaberPath = App.BeatSaberInstallDirectory;
+
+        public static void SetMessage(string message)
+        {
+            if (App.window == null)
+            {
+                OneClickStatus.Instance.MainText = message;
+            }
+            else
+            {
+                MainWindow.Instance.MainText = message;
+            }
+        }
 
         public static async Task DownloadAsset(string link, string folder, bool showNotifcation, string fileName = null)
         {
@@ -21,7 +36,7 @@ namespace ModAssistant.API
             await DownloadAsset(link, folder, fileName, displayName, true);
         }
 
-        public static async Task DownloadAsset(string link, string folder, string fileName, string displayName, bool showNotification)
+        public static async Task DownloadAsset(string link, string folder, string fileName, string displayName, bool showNotification, bool beatsaver = false)
         {
             if (string.IsNullOrEmpty(BeatSaberPath))
             {
@@ -43,17 +58,18 @@ namespace ModAssistant.API
                     displayName = Path.GetFileNameWithoutExtension(fileName);
                 }
 
-                await ModAssistant.Utils.Download(link, fileName);
+                if (beatsaver) await BeatSaver.Download(link, fileName);
+                else await ModAssistant.Utils.Download(link, fileName);
+
                 if (showNotification)
                 {
-                    ModAssistant.Utils.SendNotify(string.Format((string)Application.Current.FindResource("OneClick:InstalledAsset"), displayName));
+                    SetMessage(string.Format((string)Application.Current.FindResource("OneClick:InstalledAsset"), displayName));
                 }
             }
             catch
             {
-                ModAssistant.Utils.SendNotify((string)Application.Current.FindResource("OneClick:AssetInstallFailed"));
+                SetMessage((string)Application.Current.FindResource("OneClick:AssetInstallFailed"));
             }
         }
-
     }
 }

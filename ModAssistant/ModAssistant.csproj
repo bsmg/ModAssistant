@@ -78,6 +78,9 @@
     <Compile Include="Classes\Updater.cs" />
     <Compile Include="Libs\semver\SemVersion.cs" />
     <Compile Include="Libs\semver\IntExtensions.cs" />
+    <Compile Include="OneClickStatus.xaml.cs">
+      <DependentUpon>OneClickStatus.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Intro.xaml.cs">
       <DependentUpon>Intro.xaml</DependentUpon>
     </Compile>
@@ -123,7 +126,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Localisation\ru.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Localisation\zh.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OneClickStatus.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

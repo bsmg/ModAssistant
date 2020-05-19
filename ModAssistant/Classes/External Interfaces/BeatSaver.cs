@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
 using static ModAssistant.Http;
@@ -17,11 +19,13 @@ namespace ModAssistant.API
 
         public static async Task<BeatSaverMap> GetFromKey(string Key, bool showNotification = true)
         {
+            if (showNotification) OneClickInstaller.Status.Show();
             return await GetMap(Key, "key", showNotification);
         }
 
         public static async Task<BeatSaverMap> GetFromHash(string Hash, bool showNotification = true)
         {
+            if (showNotification) OneClickInstaller.Status.Show();
             return await GetMap(Hash, "hash", showNotification);
         }
 
@@ -42,42 +46,57 @@ namespace ModAssistant.API
 
             BeatSaverMap map = new BeatSaverMap();
             map.Success = false;
+            if (showNotification) Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Installing"), id)}");
             try
             {
                 BeatSaverApiResponse beatsaver = await GetResponse(BeatSaverURLPrefix + urlSegment + id);
-                map.Name = await InstallMap(beatsaver.map, showNotification);
-                map.Success = true;
+                if (beatsaver != null && beatsaver.map != null)
+                {
+                    map.response = beatsaver;
+                    map.Name = await InstallMap(beatsaver.map, showNotification);
+                    map.Success = true;
+                }
             }
             catch (Exception e)
             {
-                ModAssistant.Utils.Log($"Failed downloading BeatSaver map: {id} | Error: {e}", "ERROR");
+                ModAssistant.Utils.Log($"Failed downloading BeatSaver map: {id} | Error: {e.Message}", "ERROR");
+                Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Failed"), (map.Name ?? id))}");
             }
             return map;
         }
 
-        private static async Task<BeatSaverApiResponse> GetResponse(string url, bool showNotification = true)
+        private static async Task<BeatSaverApiResponse> GetResponse(string url, bool showNotification = true, int retries = 3)
         {
+            if (retries == 0)
+            {
+                ModAssistant.Utils.Log($"Max tries reached: Skipping {url}", "ERROR");
+                Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitSkip"), url)}");
+                throw new Exception("Max retries allowed");
+            }
+
             BeatSaverApiResponse response = new BeatSaverApiResponse();
             try
             {
                 var resp = await HttpClient.GetAsync(url);
                 response.statusCode = resp.StatusCode;
                 response.ratelimit = GetRatelimit(resp.Headers);
+                string body = await resp.Content.ReadAsStringAsync();
+
+                if ((int)resp.StatusCode == 429)
+                {
+                    Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), response.ratelimit.ResetTime)}");
+                    await response.ratelimit.Wait();
+                    return await GetResponse(url, showNotification, retries - 1);
+                }
+
                 if (response.statusCode == HttpStatusCode.OK)
                 {
-                    if (response.ratelimit.IsSafe)
-                    {
-                        string body = await resp.Content.ReadAsStringAsync();
-                        response.map = JsonSerializer.Deserialize<BeatSaverApiResponseMap>(body);
-                        return response;
-                    }
-                    else
-                    {
-                        return response;
-                    }
+                    response.map = JsonSerializer.Deserialize<BeatSaverApiResponseMap>(body);
+                    return response;
                 }
                 else
                 {
+                    Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Failed"), url)}");
                     return response;
                 }
             }
@@ -91,30 +110,8 @@ namespace ModAssistant.API
             }
         }
 
-        private static BeatSaverRatelimit GetRatelimit(HttpResponseHeaders headers)
-        {
-            BeatSaverRatelimit ratelimit = new BeatSaverRatelimit();
-
-            var _rateLimitRemaining = headers.GetValues("Rate-Limit-Remaining").GetEnumerator();
-            var _rateLimitReset = headers.GetValues("Rate-Limit-Reset").GetEnumerator();
-            var _rateLimitTotal = headers.GetValues("Rate-Limit-Total").GetEnumerator();
-            _rateLimitRemaining.MoveNext();
-            _rateLimitReset.MoveNext();
-            _rateLimitTotal.MoveNext();
-            ratelimit.Remaining = Int32.Parse(_rateLimitRemaining.Current);
-            ratelimit.Reset = Int32.Parse(_rateLimitReset.Current);
-            ratelimit.Total = Int32.Parse(_rateLimitTotal.Current);
-            ratelimit.ResetTime = UnixTimestampToDateTime((long)ratelimit.Reset);
-
-            return ratelimit;
-        }
-
-        public static DateTime UnixTimestampToDateTime(double unixTime)
-        {
-            DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-            long unixTimeStampInTicks = (long)(unixTime * TimeSpan.TicksPerSecond);
-            return new DateTime(unixStart.Ticks + unixTimeStampInTicks, System.DateTimeKind.Utc);
-        }
+        [DllImport("msvcrt.dll", CallingConvention = CallingConvention.Cdecl)]
+        static extern int memcmp(byte[] b1, byte[] b2, long count);
 
         public static async Task<string> InstallMap(BeatSaverApiResponseMap Map, bool showNotification = true)
         {
@@ -126,34 +123,64 @@ namespace ModAssistant.API
 #pragma warning disable CS0162 // Unreachable code detected
             if (BypassDownloadCounter)
             {
-                await Utils.DownloadAsset(BeatSaverURLPrefix + Map.directDownload, CustomSongsFolder, Map.hash + ".zip", mapName, showNotification);
+                await Utils.DownloadAsset(BeatSaverURLPrefix + Map.directDownload, CustomSongsFolder, Map.hash + ".zip", mapName, showNotification, true);
             }
             else
             {
-                await Utils.DownloadAsset(BeatSaverURLPrefix + Map.downloadURL, CustomSongsFolder, Map.hash + ".zip", mapName, showNotification);
+                await Utils.DownloadAsset(BeatSaverURLPrefix + Map.downloadURL, CustomSongsFolder, Map.hash + ".zip", mapName, showNotification, true);
             }
 #pragma warning restore CS0162 // Unreachable code detected
 
             if (File.Exists(zip))
             {
-                using (FileStream stream = new FileStream(zip, FileMode.Open))
-                using (ZipArchive archive = new ZipArchive(stream))
-                {
-                    foreach (ZipArchiveEntry file in archive.Entries)
-                    {
-                        string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
-                        if (!Directory.Exists(fileDirectory))
-                        {
-                            Directory.CreateDirectory(fileDirectory);
-                        }
+                byte[] zipMagicNumber = { 80, 75, 3, 4 };
+                byte[] magicNumber = new byte[4];
 
-                        if (!string.IsNullOrEmpty(file.Name))
+                try
+                {
+                    using (FileStream fs = new FileStream(zip, FileMode.Open, FileAccess.Read))
+                    {
+                        fs.Read(magicNumber, 0, magicNumber.Length);
+                        fs.Close();
+                    }
+                }
+                catch
+                {
+                    return null;
+                }
+
+                if (!(magicNumber.Length == zipMagicNumber.Length && memcmp(magicNumber, zipMagicNumber, magicNumber.Length) == 0))
+                {
+                    ModAssistant.Utils.Log($"Failed extracting BeatSaver map: {zip} \n| Content: {string.Join("\n", File.ReadAllLines(zip))}", "ERROR");
+                    throw new Exception("File not a zip.");
+                }
+
+                try
+                {
+                    using (FileStream stream = new FileStream(zip, FileMode.Open))
+                    using (ZipArchive archive = new ZipArchive(stream))
+                    {
+                        foreach (ZipArchiveEntry file in archive.Entries)
                         {
-                            file.ExtractToFile(Path.Combine(directory, file.FullName), true);
+                            string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
+                            if (!Directory.Exists(fileDirectory))
+                            {
+                                Directory.CreateDirectory(fileDirectory);
+                            }
+
+                            if (!string.IsNullOrEmpty(file.Name))
+                            {
+                                file.ExtractToFile(Path.Combine(directory, file.FullName), true);
+                            }
                         }
                     }
                 }
-
+                catch (Exception e)
+                {
+                    File.Delete(zip);
+                    ModAssistant.Utils.Log($"Failed extracting BeatSaver map: {zip} | Error: {e} \n| Content: {string.Join("\n", File.ReadAllLines(zip))}", "ERROR");
+                    throw new Exception("File extraction failed.");
+                }
                 File.Delete(zip);
             }
             else
@@ -165,9 +192,75 @@ namespace ModAssistant.API
                     string title = (string)Application.Current.FindResource("OneClick:SongDownload:FailedTitle");
                     MessageBox.Show($"{line1}\n{line2}", title);
                 }
-                return null;
+                throw new Exception("Zip file not found.");
             }
             return mapName;
+        }
+
+        public static BeatSaver.BeatSaverRatelimit GetRatelimit(HttpResponseHeaders headers)
+        {
+            BeatSaver.BeatSaverRatelimit ratelimit = new BeatSaver.BeatSaverRatelimit();
+
+
+            if (headers.TryGetValues("Rate-Limit-Remaining", out IEnumerable<string> _remaining))
+            {
+                var Remaining = _remaining.GetEnumerator();
+                Remaining.MoveNext();
+                ratelimit.Remaining = Int32.Parse(Remaining.Current);
+                Remaining.Dispose();
+            }
+
+            if (headers.TryGetValues("Rate-Limit-Reset", out IEnumerable<string> _reset))
+            {
+                var Reset = _reset.GetEnumerator();
+                Reset.MoveNext();
+                ratelimit.Reset = Int32.Parse(Reset.Current);
+                ratelimit.ResetTime = UnixTimestampToDateTime((long)ratelimit.Reset);
+                Reset.Dispose();
+            }
+
+            if (headers.TryGetValues("Rate-Limit-Total", out IEnumerable<string> _total))
+            {
+                var Total = _total.GetEnumerator();
+                Total.MoveNext();
+                ratelimit.Total = Int32.Parse(Total.Current);
+                Total.Dispose();
+            }
+
+            return ratelimit;
+        }
+
+        public static DateTime UnixTimestampToDateTime(double unixTime)
+        {
+            DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            long unixTimeStampInTicks = (long)(unixTime * TimeSpan.TicksPerSecond);
+            return new DateTime(unixStart.Ticks + unixTimeStampInTicks, System.DateTimeKind.Utc);
+        }
+
+        public static async Task Download(string url, string output, int retries = 3)
+        {
+            if (retries == 0)
+            {
+                ModAssistant.Utils.Log($"Max tries reached: Couldn't download {url}", "ERROR");
+                throw new Exception("Max retries allowed");
+            }
+
+            var resp = await HttpClient.GetAsync(url);
+
+            if ((int)resp.StatusCode == 429)
+            {
+                var ratelimit = new BeatSaver.BeatSaverRatelimit();
+                ratelimit = GetRatelimit(resp.Headers);
+                Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), ratelimit.ResetTime)}");
+                await ratelimit.Wait();
+                await Download(url, output, retries - 1);
+            }
+
+            using (var stream = await resp.Content.ReadAsStreamAsync())
+            using (var fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write))
+            {
+                await stream.CopyToAsync(fs);
+            }
         }
 
         public class BeatSaverMap
@@ -180,25 +273,16 @@ namespace ModAssistant.API
         public class BeatSaverApiResponse
         {
             public HttpStatusCode statusCode { get; set; }
-            public BeatSaverRatelimit ratelimit { get; set;}
+            public BeatSaverRatelimit ratelimit { get; set; }
             public BeatSaverApiResponseMap map { get; set; }
         }
 
         public class BeatSaverRatelimit
         {
-            public int Remaining { get; set; }
-            public int Total { get; set; }
-            public int Reset { get; set; }
+            public int? Remaining { get; set; }
+            public int? Total { get; set; }
+            public int? Reset { get; set; }
             public DateTime ResetTime { get; set; }
-            public bool IsSafe
-            {
-                get
-                {
-                    if (Remaining > 3) return true;
-                    else return false;
-                }
-            }
-
             public async Task Wait()
             {
                 await Task.Delay(new TimeSpan(ResetTime.Ticks - DateTime.Now.Ticks));

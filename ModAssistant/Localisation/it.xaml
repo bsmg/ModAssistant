@@ -63,16 +63,16 @@
         <LineBreak/> Non è loro intenzione "rompere" le mod.
     </Span>
     <Span x:Key="Intro:ReviewsRustySpoon">
-        Se continuerò a trovare persone che lasciano feedback negativi 
+        Se continuerò a trovare persone che lasciano feedback negativi
         <Italic>perchè</Italic> le mod smettono di funzionare,
         <LineBreak/>
         <Bold>Mi assicurerò di farle sparire dalla circolazione</Bold>
     </Span>
     <Span x:Key="Intro:WikiGuide">
-        Ti invitiamo a leggere la guida introduttiva sulla 
+        Ti invitiamo a leggere la guida introduttiva sulla
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
             Wiki
-        </Hyperlink>.
+        </Hyperlink> .
     </Span>
     <sys:String x:Key="Intro:AgreeButton">Accetto</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">Non accetto</sys:String>
@@ -102,7 +102,7 @@
     <sys:String x:Key="Mods:UninstallBox:Body2">Continuando, altre mod potrebbero smettere di funzionare</sys:String>
     <sys:String x:Key="Mods:FailedExtract">Impossibile estrarre {0}, prossimo tentativo in {1} secondi. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Non sono riuscito ad estrarre {0} dopo aver raggiunto il numero massimo di tentativi ({1}), salto questa mod. Questa protrebbe anche non funzionare correttamente, quindi procedi a tuo rischio e pericolo</sys:String>
-    <sys:String x:Key="Mods:SearchLabel">Search...</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:SearchLabel">Cerca...</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">Info</sys:String>
@@ -113,11 +113,11 @@
     <sys:String x:Key="About:List:Item3">Un solo eseguibile</sys:String>
     <sys:String x:Key="About:List:Item4">Uso responsabile</sys:String>
     <Span x:Key="About:SupportAssistant">
-        Se ti piace questo programma, e volessi supportarmi, puoi visitare la mia 
+        Se ti piace questo programma, e volessi supportarmi, puoi visitare la mia
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.assistant.moe/Donate/">
             pagina delle donazioni
         </Hyperlink>
-        oppure il mio 
+        oppure il mio
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/AssistantMoe">
             Patreon
         </Hyperlink>
@@ -143,11 +143,11 @@
     <sys:String x:Key="Options:GameType">Tipo di Installazione</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
-    <sys:String x:Key="Options:Tools">Tools</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:InstallPlaylist">Install Playlist</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:InstallingPlaylist">Installing Playlist: {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:FailedPlaylistSong">Failed song: {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:FinishedPlaylist">[{0} fails] Finished Installing Playlist: {1}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:Tools">Strumenti</sys:String>
+    <sys:String x:Key="Options:InstallPlaylist">Installa Playlist</sys:String>
+    <sys:String x:Key="Options:InstallingPlaylist">Installazione Playlist: {0}</sys:String>
+    <sys:String x:Key="Options:FailedPlaylistSong">Installazione canzone fallita: {0}</sys:String>
+    <sys:String x:Key="Options:FinishedPlaylist">[{0} fails] Installazione playlist terminata: {1}</sys:String>
     <sys:String x:Key="Options:Diagnostics">Diagnostica</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Apri il Log</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">Apri AppData</sys:String>
@@ -185,21 +185,21 @@
             <Hyperlink NavigateUri="https://beatgames.com/" local:HyperlinkExtensions.IsExternal="True">
                 QUI
             </Hyperlink>
-        </Bold>.
+        </Bold> .
     </Span>
     <Span x:Key="Invalid:List:Line2">
         Se la tua copia del gioco
         <Bold>non è</Bold> piratata, ti invitiamo a
         <Hyperlink NavigateUri="https://bsmg.wiki/support#clean-installation" local:HyperlinkExtensions.IsExternal="True">
             reinstallare il gioco
-        </Hyperlink>.
+        </Hyperlink> .
     </Span>
     <Span x:Key="Invalid:List:Line3">
         Se questo non aiuta, puoi sempre chiedere aiuto nel canale
         <Span Foreground="Blue">#support</Span> all'interno del
         <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
             Server Discord di BSMG
-        </Hyperlink>.
+        </Hyperlink> .
     </Span>
     <sys:String x:Key="Invalid:BoughtGame1">Se avevi la versione piratata, ma hai comprato il gioco</sys:String>
     <sys:String x:Key="Invalid:SelectFolderButton">Seleziona cartella</sys:String>

@@ -31,6 +31,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
@@ -199,6 +200,23 @@
             Checked="ModelSaberProtocolHandler_Checked"
             IsChecked="{Binding ModelSaberProtocolHandlerEnabled}"
             Unchecked="ModelSaberProtocolHandler_Unchecked" />
+
+        <TextBlock
+            Grid.Row="10"
+            Margin="50,5,5,5"
+            HorizontalAlignment="Left"
+            FontSize="16"
+            FontWeight="Bold"
+            Text="{DynamicResource Options:Playlists}" />
+        <CheckBox
+            Name="PlaylistProtocolHandler"
+            Grid.Row="10"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Checked="PlaylistsProtocolHandler_Checked"
+            IsChecked="{Binding PlaylistsProtocolHandlerEnabled}"
+            Unchecked="PlaylistsProtocolHandler_Unchecked" />
 
         <StackPanel
             Grid.Row="12"
