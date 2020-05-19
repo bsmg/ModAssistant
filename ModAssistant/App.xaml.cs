@@ -25,6 +25,7 @@ namespace ModAssistant
         public static string Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public static List<string> SavedMods = ModAssistant.Properties.Settings.Default.SavedMods.Split(',').ToList();
         public static MainWindow window;
+        public static string Arguments;
         public static bool Update = true;
         public static bool GUI = true;
 
@@ -72,6 +73,8 @@ namespace ModAssistant
             ReinstallInstalledMods = ModAssistant.Properties.Settings.Default.ReinstallInstalled;
             CloseWindowOnFinish = ModAssistant.Properties.Settings.Default.CloseWindowOnFinish;
 
+            MessageBox.Show(string.Join(" ", e.Args));
+
             await ArgumentHandler(e.Args);
             await Init();
         }
@@ -80,7 +83,14 @@ namespace ModAssistant
         {
             if (Update)
             {
-                await Task.Run(async () => await Updater.Run());
+                try
+                {
+                    await Task.Run(async () => await Updater.Run());
+                }
+                catch (UnauthorizedAccessException e)
+                {
+                    Utils.StartAsAdmin(Arguments, true);
+                }
             }
 
             if (GUI)
@@ -96,6 +106,7 @@ namespace ModAssistant
 
         private async Task ArgumentHandler(string[] args)
         {
+            Arguments = string.Join(" ", args);
             while (args.Length > 0)
             {
                 switch (args[0])
