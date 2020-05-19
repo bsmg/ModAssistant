@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using System.Windows.Navigation;
 using static ModAssistant.Http;
 using ModAssistant.Libs;
+using System.Windows.Media.Animation;
+using TextBox = System.Windows.Controls.TextBox;
 
 namespace ModAssistant.Pages
 {
@@ -716,6 +718,60 @@ namespace ModAssistant.Pages
         {
             System.Windows.Clipboard.SetText(((TextBlock)sender).Text);
             Utils.SendNotify("Copied text to clipboard");
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (SearchBar.Height == 0)
+            {
+                SearchBar.Focus();
+                Animate(SearchBar, 0, 16, new TimeSpan(0, 0, 0, 0, 300));
+                Animate(SearchText, 0, 16, new TimeSpan(0, 0, 0, 0, 300));
+                ModsListView.Items.Filter = new Predicate<object>(SearchFilter);
+            }
+            else
+            {
+                Animate(SearchBar, 16, 0, new TimeSpan(0, 0, 0, 0, 300));
+                Animate(SearchText, 16, 0, new TimeSpan(0, 0, 0, 0, 300));
+                ModsListView.Items.Filter = null;
+            }
+        }
+
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ModsListView.Items.Filter = new Predicate<object>(SearchFilter);
+            if (SearchBar.Text.Length > 0)
+            {
+                SearchText.Text = null;
+            }
+            else
+            {
+                SearchText.Text = (string)FindResource("Mods:SearchLabel");
+            }
+        }
+
+        private bool SearchFilter(object mod)
+        {
+            ModListItem item = mod as ModListItem;
+            if (item.ModName.ToLower().Contains(SearchBar.Text.ToLower())) return true;
+            if (item.ModDescription.ToLower().Contains(SearchBar.Text.ToLower())) return true;
+            if (item.ModName.ToLower().Replace(" ", string.Empty).Contains(SearchBar.Text.ToLower().Replace(" ", string.Empty))) return true;
+            if (item.ModDescription.ToLower().Replace(" ", string.Empty).Contains(SearchBar.Text.ToLower().Replace(" ", string.Empty))) return true;
+            return false;
+        }
+
+        private void Animate(TextBlock target, double oldHeight, double newHeight, TimeSpan duration)
+        {
+            target.Height = oldHeight;
+            DoubleAnimation animation = new DoubleAnimation(newHeight, duration);
+            target.BeginAnimation(TextBlock.HeightProperty, animation);
+        }
+
+        private void Animate(TextBox target, double oldHeight, double newHeight, TimeSpan duration)
+        {
+            target.Height = oldHeight;
+            DoubleAnimation animation = new DoubleAnimation(newHeight, duration);
+            target.BeginAnimation(TextBox.HeightProperty, animation);
         }
     }
 }

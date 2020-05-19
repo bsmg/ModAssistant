@@ -71,6 +71,7 @@
     <sys:String x:Key="Mods:UninstallBox:Body2">Mods:UninstallBox:Body2</sys:String>
     <sys:String x:Key="Mods:FailedExtract">{0} {1} {2} {3} Mods:FailedExtract</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">{0} {1} Mods:FailedExtractMaxReached</sys:String>
+    <sys:String x:Key="Mods:SearchLabel">Mods:SearchLabel</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">About:Title</sys:String>
@@ -99,9 +100,15 @@
     <sys:String x:Key="Options:EnableOneClickInstalls">Options:EnableOneClickInstalls</sys:String>
     <sys:String x:Key="Options:BeatSaver">Options:BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">Options:ModelSaber</sys:String>
+    <sys:String x:Key="Options:Playlists">Options:Playlists</sys:String>
     <sys:String x:Key="Options:GameType">Options:GameType</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Options:GameType:Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Options:GameType:Oculus</sys:String>
+    <sys:String x:Key="Options:Tools">Options:Tools</sys:String>
+    <sys:String x:Key="Options:InstallPlaylist">Options:InstallPlaylist</sys:String>
+    <sys:String x:Key="Options:InstallingPlaylist">{0} Options:InstallingPlaylist</sys:String>
+    <sys:String x:Key="Options:FailedPlaylistSong">{0} Options:FailedPlaylistSong</sys:String>
+    <sys:String x:Key="Options:FinishedPlaylist">{0} {1} Options:FinishedPlaylist</sys:String>
     <sys:String x:Key="Options:Diagnostics">Options:Diagnostics</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Options:OpenLogsButton</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">Options:OpenAppDataButton</sys:String>
@@ -151,6 +158,10 @@
     <sys:String x:Key="OneClick:AssetInstallFailed">OneClick:AssetInstallFailed</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick:ProtocolHandler:Registered</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick:ProtocolHandler:Unregistered</sys:String>
+    <sys:String x:Key="OneClick:Installing">{0} OneClick:Installing</sys:String>
+    <sys:String x:Key="OneClick:RatelimitSkip">{0} OneClick:RatelimitSkip</sys:String>
+    <sys:String x:Key="OneClick:RatelimitHit">{0} OneClick:RatelimitHit</sys:String>
+    <sys:String x:Key="OneClick:Failed">{0} OneClick:Failed</sys:String>
 
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">Themes:ThemeNotFound</sys:String>

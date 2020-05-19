@@ -24,6 +24,7 @@ namespace ModAssistant.Pages
         public bool ReinstallInstalledMods { get; set; }
         public bool ModelSaberProtocolHandlerEnabled { get; set; }
         public bool BeatSaverProtocolHandlerEnabled { get; set; }
+        public bool PlaylistsProtocolHandlerEnabled { get; set; }
         public string LogURL { get; private set; }
 
         public Options()
@@ -51,6 +52,7 @@ namespace ModAssistant.Pages
         {
             ModelSaberProtocolHandlerEnabled = OneClickInstaller.IsRegistered("modelsaber");
             BeatSaverProtocolHandlerEnabled = OneClickInstaller.IsRegistered("beatsaver");
+            PlaylistsProtocolHandlerEnabled = OneClickInstaller.IsRegistered("bsplaylist");
         }
 
         private void SelectDirButton_Click(object sender, RoutedEventArgs e)
@@ -132,6 +134,15 @@ namespace ModAssistant.Pages
         public void BeatSaverProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
         {
             OneClickInstaller.Unregister("beatsaver");
+        }
+        public void PlaylistsProtocolHandler_Checked(object sender, RoutedEventArgs e)
+        {
+            OneClickInstaller.Register("bsplaylist");
+        }
+
+        public void PlaylistsProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
+        {
+            OneClickInstaller.Unregister("bsplaylist");
         }
 
         private void SelectInstalled_Checked(object sender, RoutedEventArgs e)
@@ -306,6 +317,15 @@ namespace ModAssistant.Pages
             else
             {
                 MessageBox.Show((string)Application.Current.FindResource("Options:ThemeFolderNotFound"));
+            }
+        }
+
+        private void InstallPlaylistButton_Click(object sender, RoutedEventArgs e)
+        {
+            string playlistFile = Utils.GetManualFile();
+            if (File.Exists(playlistFile))
+            {
+                Task.Run(() => { API.Playlists.DownloadFrom(playlistFile).Wait(); });
             }
         }
     }

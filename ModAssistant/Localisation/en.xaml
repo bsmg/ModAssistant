@@ -102,6 +102,7 @@
     <sys:String x:Key="Mods:UninstallBox:Body2">This could break your other mods</sys:String>
     <sys:String x:Key="Mods:FailedExtract">Failed to extract {0}, trying again in {1} seconds. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Failed to extract {0} after max attempts ({1}), skipping. This mod might not work properly so proceed at your own risk</sys:String>
+    <sys:String x:Key="Mods:SearchLabel">Search...</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">About</sys:String>
@@ -139,9 +140,15 @@
     <sys:String x:Key="Options:EnableOneClickInstalls">Enable OneClick™ Installs</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
+    <sys:String x:Key="Options:Playlists">Playlists</sys:String>
     <sys:String x:Key="Options:GameType">Game Type</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
+    <sys:String x:Key="Options:Tools">Tools</sys:String>
+    <sys:String x:Key="Options:InstallPlaylist">Install Playlist</sys:String>
+    <sys:String x:Key="Options:InstallingPlaylist">Installing Playlist: {0}</sys:String>
+    <sys:String x:Key="Options:FailedPlaylistSong">Failed song: {0}</sys:String>
+    <sys:String x:Key="Options:FinishedPlaylist">[{0} fails] Finished Installing Playlist: {1}</sys:String>
     <sys:String x:Key="Options:Diagnostics">Diagnostics</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Open Logs</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">Open AppData</sys:String>
@@ -210,6 +217,10 @@
     <sys:String x:Key="OneClick:AssetInstallFailed">Failed to install.</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ Install handlers registered!</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ Install handlers unregistered!</sys:String>
+    <sys:String x:Key="OneClick:Installing">Installing: {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitSkip">Max tries reached: Skipping {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitHit">Ratelimit hit. Resuming in {0}</sys:String>
+    <sys:String x:Key="OneClick:Failed">Download failed: {0}</sys:String>
 
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">Theme not found, reverting to default theme...</sys:String>

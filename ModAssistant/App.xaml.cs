@@ -23,6 +23,7 @@ namespace ModAssistant
         public static bool ReinstallInstalledMods;
         public static string Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public static List<string> SavedMods = ModAssistant.Properties.Settings.Default.SavedMods.Split(',').ToList();
+        public static MainWindow window;
         public static bool Update = true;
         public static bool GUI = true;
 
@@ -70,10 +71,10 @@ namespace ModAssistant
             ReinstallInstalledMods = ModAssistant.Properties.Settings.Default.ReinstallInstalled;
 
             await ArgumentHandler(e.Args);
-            await Init(Update, GUI);
+            await Init();
         }
 
-        private async Task Init(bool Update, bool GUI)
+        private async Task Init()
         {
             if (Update)
             {
@@ -82,8 +83,12 @@ namespace ModAssistant
 
             if (GUI)
             {
-                MainWindow window = new MainWindow();
+                window = new MainWindow();
                 window.Show();
+            }
+            else
+            {
+                //Application.Current.Shutdown();
             }
         }
 
@@ -155,6 +160,12 @@ namespace ModAssistant
                         GUI = false;
                         args = Shift(args, 2);
                         break;
+
+                    case "--runforever":
+                        while (true)
+                        {
+
+                        }
 
                     default:
                         Utils.SendNotify((string)Current.FindResource("App:UnrecognizedArgument"));

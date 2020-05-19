@@ -38,6 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
@@ -67,6 +68,7 @@
     </ApplicationDefinition>
     <Compile Include="Classes\External Interfaces\BeatSaver.cs" />
     <Compile Include="Classes\External Interfaces\ModelSaber.cs" />
+    <Compile Include="Classes\External Interfaces\Playlists.cs" />
     <Compile Include="Classes\External Interfaces\Utils.cs" />
     <Compile Include="Classes\Http.cs" />
     <Compile Include="Classes\HyperlinkExtensions.cs" />
@@ -76,10 +78,17 @@
     <Compile Include="Classes\Updater.cs" />
     <Compile Include="Libs\semver\SemVersion.cs" />
     <Compile Include="Libs\semver\IntExtensions.cs" />
+    <Compile Include="OneClickStatus.xaml.cs">
+      <DependentUpon>OneClickStatus.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Intro.xaml.cs">
       <DependentUpon>Intro.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Mod.cs" />
+    <Page Include="Localisation\de.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Localisation\en-DEBUG.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -101,13 +110,33 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Localisation\fr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\it.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\ko.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Localisation\nl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\ru.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Localisation\zh.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OneClickStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Intro.xaml">
       <SubType>Designer</SubType>
