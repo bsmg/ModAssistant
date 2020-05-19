@@ -41,7 +41,7 @@ namespace ModAssistant.API
             }
         }
 
-        public static async Task DownloadFrom(string file, bool gui = false, System.Windows.Controls.ProgressBar progress = null)
+        public static async Task DownloadFrom(string file)
         {
             if (Path.Combine(BeatSaberPath, PlaylistsFolder) != Path.GetDirectoryName(file))
             {
@@ -52,15 +52,9 @@ namespace ModAssistant.API
             int Errors = 0;
             int Minimum = 0;
             int Value = 0;
-            if (progress != null)
-            {
-                progress.Minimum = 0;
-                progress.Maximum = 1;
-                progress.Value = 0;
-            }
+
             Playlist playlist = JsonSerializer.Deserialize<Playlist>(File.ReadAllText(file));
             int Maximum = playlist.songs.Length;
-            if (progress != null) progress.Maximum = playlist.songs.Length;
 
             foreach (Playlist.Song song in playlist.songs)
             {
@@ -74,27 +68,20 @@ namespace ModAssistant.API
                     response = await BeatSaver.GetFromKey(song.key, false);
                 }
                 Value++;
-                if (progress != null) progress.Value++;
 
-                if (gui)
+                if (response.Success)
                 {
-                    if (response.Success)
-                    {
-                        MainWindow.Instance.MainText = $"{string.Format((string)Application.Current.FindResource("Options:InstallingPlaylist"), TextProgress(Minimum, Maximum, Value))}";
-                    }
-                    else
-                    {
-                        MainWindow.Instance.MainText = $"{string.Format((string)Application.Current.FindResource("Options:FailedPlaylistSong"), song.songName)}";
-                        ModAssistant.Utils.Log($"Failed installing BeatSaver map: {song.songName} | {song.key} | {song.hash}");
-                        await Task.Delay(3 * 1000);
-                        Errors++;
-                    }
+                    Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("Options:InstallingPlaylist"), TextProgress(Minimum, Maximum, Value))} {response.Name}");
+                }
+                else
+                {
+                    Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("Options:FailedPlaylistSong"), song.songName)}");
+                    ModAssistant.Utils.Log($"Failed installing BeatSaver map: {song.songName} | {song.key} | {song.hash} | ({response?.response?.ratelimit?.Remaining})");
+                    await Task.Delay(3 * 1000);
+                    Errors++;
                 }
             }
-            if (gui)
-            {
-                MainWindow.Instance.MainText = $"{string.Format((string)Application.Current.FindResource("Options:FinishedPlaylist"), Errors, playlist.playlistTitle)}";
-            }
+            Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("Options:FinishedPlaylist"), Errors, playlist.playlistTitle)}");
         }
 
         private static string TextProgress(int min, int max, int value)

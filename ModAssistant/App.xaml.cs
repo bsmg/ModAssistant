@@ -23,6 +23,7 @@ namespace ModAssistant
         public static bool ReinstallInstalledMods;
         public static string Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public static List<string> SavedMods = ModAssistant.Properties.Settings.Default.SavedMods.Split(',').ToList();
+        public static MainWindow window;
         public static bool Update = true;
         public static bool GUI = true;
 
@@ -82,12 +83,12 @@ namespace ModAssistant
 
             if (GUI)
             {
-                MainWindow window = new MainWindow();
+                window = new MainWindow();
                 window.Show();
             }
             else
             {
-                Application.Current.Shutdown();
+                //Application.Current.Shutdown();
             }
         }
 
@@ -106,8 +107,6 @@ namespace ModAssistant
                         {
                             await OneClickInstaller.InstallAsset(args[1]);
                         }
-
-                        Current.Shutdown();
 
                         Update = false;
                         GUI = false;
