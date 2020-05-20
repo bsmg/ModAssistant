@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows;
 using static ModAssistant.Http;
 
@@ -113,9 +114,6 @@ namespace ModAssistant.API
             }
         }
 
-        [DllImport("msvcrt.dll", CallingConvention = CallingConvention.Cdecl)]
-        static extern int memcmp(byte[] b1, byte[] b2, long count);
-
         public static async Task<string> InstallMap(BeatSaverApiResponseMap Map, bool showNotification = true)
         {
             string zip = Path.Combine(Utils.BeatSaberPath, CustomSongsFolder, Map.hash) + ".zip";
@@ -136,23 +134,11 @@ namespace ModAssistant.API
 
             if (File.Exists(zip))
             {
-                byte[] zipMagicNumber = { 80, 75, 3, 4 };
-                byte[] magicNumber = new byte[4];
+                string mimeType = MimeMapping.GetMimeMapping(zip);
+                MessageBox.Show(mimeType);
 
-                try
-                {
-                    using (FileStream fs = new FileStream(zip, FileMode.Open, FileAccess.Read))
-                    {
-                        fs.Read(magicNumber, 0, magicNumber.Length);
-                        fs.Close();
-                    }
-                }
-                catch
-                {
-                    return null;
-                }
 
-                if (!(magicNumber.Length == zipMagicNumber.Length && memcmp(magicNumber, zipMagicNumber, magicNumber.Length) == 0))
+                if (!mimeType.StartsWith("application/x-zip"))
                 {
                     ModAssistant.Utils.Log($"Failed extracting BeatSaver map: {zip} \n| Content: {string.Join("\n", File.ReadAllLines(zip))}", "ERROR");
                     throw new Exception("File not a zip.");
