@@ -140,6 +140,8 @@
     <sys:String x:Key="Options:EnableOneClickInstalls">Включить OneClick™ установки</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
+    <sys:String x:Key="Options:Playlists">Playlists</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:CloseWindow">Close window when finished</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Options:GameType">Тип игры</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
@@ -148,7 +150,7 @@
     <sys:String x:Key="Options:InstallingPlaylist">Установка плейлиста: {0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">Ошибка с песней: {0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0} ошибок] Установка плейлиста окончена: {1}</sys:String>
- <sys:String x:Key="Options:Diagnostics">Диагностика</sys:String>
+    <sys:String x:Key="Options:Diagnostics">Диагностика</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Открыть логи</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">Открыть AppData</sys:String>
     <sys:String x:Key="Options:UninstallBSIPAButton">Удалить BSIPA</sys:String>
