@@ -212,7 +212,7 @@
     <sys:String x:Key="OneClick:Installing">正在下载：{0}</sys:String>
     <sys:String x:Key="OneClick:RatelimitSkip">超过重试次数，跳过：{0}</sys:String>
     <sys:String x:Key="OneClick:RatelimitHit">下载超时，重试：{0}</sys:String>
-    <sys:String x:Key="OneClick:Failed">下载失败:{0}</sys:String>
+    <sys:String x:Key="OneClick:Failed">下载失败：{0}</sys:String>
     
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">找不到主题，恢复为默认主题...</sys:String>
