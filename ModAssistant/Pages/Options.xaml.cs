@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
@@ -221,24 +223,33 @@ namespace ModAssistant.Pages
         {
             const string DateFormat = "yyyy-mm-dd HH:mm:ss";
             DateTime now = DateTime.Now;
+            string logPath = Path.GetDirectoryName(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath);
+            string Log = Path.Combine(logPath, "log.log");
+            string GameLog = File.ReadAllText(Path.Combine(InstallDirectory, "Logs", "_latest.log"));
+            string Separator = File.Exists(Log) ? $"\n\n=============================================\n============= Mod Assistant Log =============\n=============================================\n\n" : string.Empty;
+            string ModAssistantLog = File.Exists(Log) ? File.ReadAllText(Log) : string.Empty;
 
             var nvc = new List<KeyValuePair<string, string>>()
             {
                 new KeyValuePair<string, string>("title", $"_latest.log ({now.ToString(DateFormat)})"),
                 new KeyValuePair<string, string>("expireUnit", "hour"),
                 new KeyValuePair<string, string>("expireLength", "5"),
-                new KeyValuePair<string, string>("code", File.ReadAllText(Path.Combine(InstallDirectory, "Logs", "_latest.log"))),
+                new KeyValuePair<string, string>("code", $"{GameLog}{Separator}{ModAssistantLog}"),
             };
 
-            var req = new HttpRequestMessage(HttpMethod.Post, Utils.Constants.TeknikAPIUrl + "Paste")
+            string[] items = new string[nvc.Count];
+
+            for (int i = 0; i < nvc.Count; i++)
             {
-                Content = new FormUrlEncodedContent(nvc),
-            };
+                KeyValuePair<string, string> item = nvc[i];
+                items[i] = WebUtility.UrlEncode(item.Key) + "=" + WebUtility.UrlEncode(item.Value);
+            }
 
-            var resp = await Http.HttpClient.SendAsync(req);
-            var body = await resp.Content.ReadAsStringAsync();
+            StringContent content = new StringContent(String.Join("&", items), null, "application/x-www-form-urlencoded");
+            HttpResponseMessage resp = await Http.HttpClient.PostAsync(Utils.Constants.TeknikAPIUrl + "Paste", content);
+            string body = await resp.Content.ReadAsStringAsync();
 
-            var TeknikResponse = Http.JsonSerializer.Deserialize<Utils.TeknikPasteResponse>(body);
+            Utils.TeknikPasteResponse TeknikResponse = Http.JsonSerializer.Deserialize<Utils.TeknikPasteResponse>(body);
             LogURL = TeknikResponse.result.url;
         }
 
