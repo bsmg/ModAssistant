@@ -36,7 +36,7 @@ namespace ModAssistant
             System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
 
             // Load localisation languages
-            LoadLanguage(CultureInfo.CurrentCulture.Name);
+            LoadLanguage(CultureInfo.CurrentUICulture.Name);
 
             // Uncomment the next line to debug localisation
             // LoadLanguage("en-DEBUG");
