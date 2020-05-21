@@ -106,6 +106,8 @@
     <sys:String x:Key="Mods:FailedExtract">Kon {0} niet extracten, probeer opniew over {1} seconden. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Kon {0} niet extracten na maximaal aantal pogingen ({1}), Overslaan. Deze mod werkt msischien niet goed dus ga verder op eigen risico</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Search...</sys:String>
+    <sys:String x:Key="Mods:LoadingTrans">Loading Mods Translation</sys:String>
+    <sys:String x:Key="Mods:DownloadingMod">Downloading {0}</sys:String>
     <!-- NEEDS TRANSLATING -->
 
     <!-- About Page -->

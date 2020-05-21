@@ -103,6 +103,8 @@
     <sys:String x:Key="Mods:FailedExtract">Impossibile estrarre {0}, prossimo tentativo in {1} secondi. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Non sono riuscito ad estrarre {0} dopo aver raggiunto il numero massimo di tentativi ({1}), salto questa mod. Questa protrebbe anche non funzionare correttamente, quindi procedi a tuo rischio e pericolo</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Cerca...</sys:String>
+    <sys:String x:Key="Mods:LoadingTrans">Loading Mods Translation</sys:String>
+    <sys:String x:Key="Mods:DownloadingMod">Downloading {0}</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">Info</sys:String>
