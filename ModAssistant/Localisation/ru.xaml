@@ -124,7 +124,7 @@
     </Span>
     <sys:String x:Key="About:SpecialThanks">Отдельное спасибо ♥</sys:String>
     <sys:String x:Key="About:Donate">Поддержать</sys:String>
-    <sys:String x:Key="About:HeadpatsButton">Погладить по голове</sys:String>
+    <sys:String x:Key="About:HeadpatsButton">Погладить</sys:String>
     <sys:String x:Key="About:HugsButton">Обнять</sys:String>
 
     <!-- Options Page -->
@@ -135,7 +135,7 @@
     <sys:String x:Key="Options:OpenFolderButton">Открыть папку</sys:String>
     <sys:String x:Key="Options:SaveSelectedMods">Сохранить выбранные модификации</sys:String>
     <sys:String x:Key="Options:CheckInstalledMods">Обнаружение установленных модификаций</sys:String>
-    <sys:String x:Key="Options:SelectInstalledMods">Select Installed Mods</sys:String>
+    <sys:String x:Key="Options:SelectInstalledMods">Выбрать установленные модификации</sys:String>
     <sys:String x:Key="Options:ReinstallInstalledMods">Переустановить установленные модификации</sys:String>
     <sys:String x:Key="Options:EnableOneClickInstalls">Включить OneClick™ установки</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
