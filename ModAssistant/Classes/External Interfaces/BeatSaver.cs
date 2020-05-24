@@ -135,8 +135,6 @@ namespace ModAssistant.API
             if (File.Exists(zip))
             {
                 string mimeType = MimeMapping.GetMimeMapping(zip);
-                MessageBox.Show(mimeType);
-
 
                 if (!mimeType.StartsWith("application/x-zip"))
                 {
