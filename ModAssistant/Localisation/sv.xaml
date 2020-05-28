@@ -9,9 +9,9 @@
     <sys:String x:Key="App:InstallDirDialog:Title">Det gick inte att hitta din Beat Saber-installationsmapp!</sys:String>
     <sys:String x:Key="App:InstallDirDialog:OkCancel">Tryck på OK för att försöka igen, eller Cancel för att avsluta applikationen.</sys:String>
     <sys:String x:Key="App:InvalidArgument">Invalid argument! '{0}' requires an option.</sys:String>
-    <sys:String x:Key="App:UnrecognizedArgument">Unrecognized argument. Closing Mod Assistant.</sys:String>
+    <sys:String x:Key="App:UnrecognizedArgument">Unrecognized argument. Stänger Mod Assistant.</sys:String>
     <sys:String x:Key="App:UnhandledException">An unhandled exception just occurred</sys:String>
-    <sys:String x:Key="App:Exception">Exception</sys:String>
+    <sys:String x:Key="App:Exception">Undantag</sys:String>
 
     <!-- Main Window -->
     <sys:String x:Key="MainWindow:WindowTitle">ModAssistant</sys:String>
@@ -158,75 +158,75 @@
     <sys:String x:Key="Options:FindingBSIPAVersion">Letar efter BSIPA-Version</sys:String>
     <sys:String x:Key="Options:BSIPAUninstalled">BSIPA Avinstallerat</sys:String>
     <sys:String x:Key="Options:YeetModsBox:Title">Avinstallera alla mods?</sys:String>
-    <sys:String x:Key="Options:YeetModsBox:RemoveAllMods">Är du säger på att du vill radera alla mods?</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:RemoveAllMods">Är du säker på att du vill radera alla mods?</sys:String>
     <sys:String x:Key="Options:YeetModsBox:CannotBeUndone">Detta går inte att ångra.</sys:String>
     <sys:String x:Key="Options:AllModsUninstalled">Alla Mods avinstallerade.</sys:String>
-    <sys:String x:Key="Options:CurrentThemeRemoved">Current theme has been removed, reverting to default...</sys:String>
-    <sys:String x:Key="Options:ThemeFolderNotFound">Themes folder not found! Try exporting the template...</sys:String>
-    <sys:String x:Key="Options:AppDataNotFound">AppData folder not found! Try launching your game.</sys:String>
+    <sys:String x:Key="Options:CurrentThemeRemoved">Nuvarande tema borttaget, återställer till standardtemat...</sys:String>
+    <sys:String x:Key="Options:ThemeFolderNotFound">Det gick inte att hitta temamappen! Testa att exportera mallen...</sys:String>
+    <sys:String x:Key="Options:AppDataNotFound">Det gick inte att hitta AppData-mappen! Testa att starta spelet.</sys:String>
 
     <!-- Loading Page -->
-    <sys:String x:Key="Loading:Loading">Loading Mods</sys:String>
+    <sys:String x:Key="Loading:Loading">Laddar Mods</sys:String>
 
     <!-- Invalid Page -->
-    <sys:String x:Key="Invalid:Title">Invalid</sys:String>
-    <sys:String x:Key="Invalid:PageTitle">Invalid Installation Detected</sys:String>
-    <sys:String x:Key="Invalid:PageSubtitle">Your game installation is corrupted or otherwise invalid</sys:String>
-    <sys:String x:Key="Invalid:List:Header">This can happen if your copy of the game is pirated, or if you copied a pirated copy over your legit install</sys:String>
+    <sys:String x:Key="Invalid:Title">Ogiltig</sys:String>
+    <sys:String x:Key="Invalid:PageTitle">Ogiltig Installation Upptäckt</sys:String>
+    <sys:String x:Key="Invalid:PageSubtitle">Din spelinstallation är korrupt eller på annat sätt ogiltig.</sys:String>
+    <sys:String x:Key="Invalid:List:Header">Detta kan hända om din kopia av spelet är piratkopierad, eller om du klistrat in en piratkopia över din lagliga installation.</sys:String>
     <Span x:Key="Invalid:List:Line1">
-        If your copy of the game is pirated,
-        <Bold>please purchase the game
+        Om din kopia av spelet är piratkopierad,
+        <Bold>var vänlig köp spelet
             <Hyperlink NavigateUri="https://beatgames.com/" local:HyperlinkExtensions.IsExternal="True">
-                HERE
+                HÄR
             </Hyperlink>
         </Bold>.
     </Span>
     <Span x:Key="Invalid:List:Line2">
-        If your copy of the game is
-        <Bold>not</Bold> pirated, please
+        Om din kopia av spelet
+        <Bold>inte</Bold> är piratkopierad, var vänlig
         <Hyperlink NavigateUri="https://bsmg.wiki/support#clean-installation" local:HyperlinkExtensions.IsExternal="True">
-            do a clean install
+            ominstallera från grunden
         </Hyperlink>.
     </Span>
     <Span x:Key="Invalid:List:Line3">
-        If those don't help, ask for support in the
-        <Span Foreground="Blue">#support</Span> channel in
+        Om inget hjälper, be om hjälp i
+        <Span Foreground="Blue">#support</Span> -kanalen i
         <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
             BSMG
         </Hyperlink>.
     </Span>
-    <sys:String x:Key="Invalid:BoughtGame1">If you used to have a pirated version but have since bought the game</sys:String>
-    <sys:String x:Key="Invalid:SelectFolderButton">Select Folder</sys:String>
-    <sys:String x:Key="Invalid:BoughtGame2">You will need to restart Mod Assistant after changing to the legit install</sys:String>
+    <sys:String x:Key="Invalid:BoughtGame1">Om du brukade spela på en piratkopierad version men sedan dess har köpt spelet.</sys:String>
+    <sys:String x:Key="Invalid:SelectFolderButton">Välj Mapp</sys:String>
+    <sys:String x:Key="Invalid:BoughtGame2">Du kommer att behöva starta om ModAssistant efter att du bytt till en legitim version.</sys:String>
 
     <!-- OneClick Class -->
-    <sys:String x:Key="OneClick:MapDownloadFailed">Could not get map details.</sys:String>
-    <sys:String x:Key="OneClick:SongDownloadFailed">Could not download the song.</sys:String>
-    <sys:String x:Key="OneClick:SongDownload:Failed">Could not download the song.</sys:String>
-    <sys:String x:Key="OneClick:SongDownload:NetworkIssues">There might be issues with BeatSaver or your internet connection.</sys:String>
-    <sys:String x:Key="OneClick:SongDownload:FailedTitle">Failed to download song ZIP</sys:String>
-    <sys:String x:Key="OneClick:InstallDirNotFound">Beat Saber installation path not found.</sys:String>
-    <sys:String x:Key="OneClick:InstalledAsset">Installed: {0}</sys:String>
-    <sys:String x:Key="OneClick:AssetInstallFailed">Failed to install.</sys:String>
-    <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ Install handlers registered!</sys:String>
-    <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ Install handlers unregistered!</sys:String>
+    <sys:String x:Key="OneClick:MapDownloadFailed">Det gick inte att hämta mapdetaljerna.</sys:String>
+    <sys:String x:Key="OneClick:SongDownloadFailed">Det gick inte att ladda ned låten.</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:Failed">Det gick inte att ladda ned låten.</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:NetworkIssues">Det kan vara strul med BeatSaver eller din internetuppkoppling.</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:FailedTitle">Misslyckades med att ladda ned låtens ZIP-fil.</sys:String>
+    <sys:String x:Key="OneClick:InstallDirNotFound">Det gick inte att hitta installationsvägen för Beat Saber.</sys:String>
+    <sys:String x:Key="OneClick:InstalledAsset">Installerade: {0}</sys:String>
+    <sys:String x:Key="OneClick:AssetInstallFailed">Misslyckades med att installera.</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™-installeringshanterare registrerade!</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™-installeringshanterare avregistrerade!</sys:String>
 
     <!-- Themes Class -->
-    <sys:String x:Key="Themes:ThemeNotFound">Theme not found, reverting to default theme...</sys:String>
-    <sys:String x:Key="Themes:ThemeSet">Theme set to {0}.</sys:String>
-    <sys:String x:Key="Themes:ThemeMissing">{0} does not exist.</sys:String>
-    <sys:String x:Key="Themes:SavedTemplateTheme">Template theme &quot;{0}&quot; saved to Themes folder.</sys:String>
-    <sys:String x:Key="Themes:TemplateThemeExists">Template theme already exists!</sys:String>
-    <sys:String x:Key="Themes:FailedToLoadXaml">Failed to load .xaml file for theme {0}: {1}</sys:String>
+    <sys:String x:Key="Themes:ThemeNotFound">Temat hittades inte, återställer till standardtemat...</sys:String>
+    <sys:String x:Key="Themes:ThemeSet">Tema inställt på {0}.</sys:String>
+    <sys:String x:Key="Themes:ThemeMissing">{0} existerar inte.</sys:String>
+    <sys:String x:Key="Themes:SavedTemplateTheme">Temamall &quot;{0}&quot; sparad till mappen för teman.</sys:String>
+    <sys:String x:Key="Themes:TemplateThemeExists">Temamallen finns redan!</sys:String>
+    <sys:String x:Key="Themes:FailedToLoadXaml">Misslyckades med att ladda .xaml -filen för tema {0}: {1}</sys:String>
 
     <!-- Updater Class -->
-    <sys:String x:Key="Updater:CheckFailed">Couldn't check for updates.</sys:String>
-    <sys:String x:Key="Updater:DownloadFailed">Couldn't download update.</sys:String>
+    <sys:String x:Key="Updater:CheckFailed">Det gick inte att söka efter uppdateringar.</sys:String>
+    <sys:String x:Key="Updater:DownloadFailed">Det gick inte att ladda ned uppdateringen.</sys:String>
 
     <!-- Utils Class -->
     <sys:String x:Key="Utils:NotificationTitle">Mod Assistant</sys:String>
-    <sys:String x:Key="Utils:NoInstallFolder">Could not detect your Beat Saber install folder. Please select it manually.</sys:String>
-    <sys:String x:Key="Utils:RunAsAdmin">Mod Assistant needs to run this task as Admin. Please try again.</sys:String>
-    <sys:String x:Key="Utils:InstallDir:DialogTitle">Select your Beat Saber install folder</sys:String>
-    <sys:String x:Key="Utils:CannotOpenFolder">Can't open folder: {0}</sys:String>
+    <sys:String x:Key="Utils:NoInstallFolder">Kunde inte hitta din Beat Saber-installationsmapp. Var vänlig välj den manuellt.</sys:String>
+    <sys:String x:Key="Utils:RunAsAdmin">Mod Assistant behöver köra detta med Adminbehörigheter. Var vänlig försök igen.</sys:String>
+    <sys:String x:Key="Utils:InstallDir:DialogTitle">Välj din Beat Saber-installationsmapp</sys:String>
+    <sys:String x:Key="Utils:CannotOpenFolder">Kan inte öppna mapp: {0}</sys:String>
 </ResourceDictionary>
