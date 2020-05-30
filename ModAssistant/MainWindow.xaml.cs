@@ -65,7 +65,6 @@ namespace ModAssistant
             Themes.LoadThemes();
             Themes.FirstLoad(Properties.Settings.Default.SelectedTheme);
 
-            // Load languages into combobox
             Languages.LoadLanguages();
 
             Task.Run(() => LoadVersionsAsync());

@@ -35,12 +35,6 @@ namespace ModAssistant
             // Set SecurityProtocol to prevent crash with TLS
             System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
 
-            // Load localisation languages
-            Languages.LoadLanguage(CultureInfo.CurrentCulture.Name);
-
-            // Uncomment the next line to debug localisation
-            // LoadLanguage("en-DEBUG");
-
             if (ModAssistant.Properties.Settings.Default.UpgradeRequired)
             {
                 ModAssistant.Properties.Settings.Default.Upgrade();

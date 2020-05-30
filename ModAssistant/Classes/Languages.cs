@@ -23,12 +23,28 @@ namespace ModAssistant
             var allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
 
             // Get CultureInfo for any of the available translations
-            availableCultures = allCultures.Where(cultureInfo => availableLanguageCodes.Any(code => code.CompareTo(cultureInfo.Name) == 0));
+            availableCultures = allCultures.Where(cultureInfo => availableLanguageCodes.Any(code => code.Equals(cultureInfo.Name)));
+
+            string savedLanguageCode = Properties.Settings.Default.LanguageCode;
+
+            if (savedLanguageCode.Length == 0)
+            {
+                // If no language code was saved, load system language
+                savedLanguageCode = CultureInfo.CurrentUICulture.Name.Split('-').First();
+            }
+            else if (!availableLanguageCodes.Any(code => code.Equals(savedLanguageCode)))
+            {
+                // If language code isn't supported, load English instead
+                savedLanguageCode = "en";
+            }
 
             if (Options.Instance != null && Options.Instance.LanguageSelectComboBox != null)
             {
                 Options.Instance.LanguageSelectComboBox.ItemsSource = availableCultures.Select(cultureInfo => cultureInfo.NativeName).ToList();
+                Options.Instance.LanguageSelectComboBox.SelectedIndex = LoadedLanguages.FindIndex(cultureInfo => cultureInfo.Name.Equals(savedLanguageCode)); ;
             }
+
+            LoadLanguage(savedLanguageCode);
         }
 
         private static ResourceDictionary LanguagesDict
@@ -39,17 +55,19 @@ namespace ModAssistant
             }
         }
 
-        public static void LoadLanguage(string culture)
+        public static void LoadLanguage(string languageCode)
         {
             try
             {
-                LanguagesDict.Source = new Uri($"Localisation/{culture}.xaml", UriKind.Relative);
+                LanguagesDict.Source = new Uri($"Localisation/{languageCode}.xaml", UriKind.Relative);
+                Properties.Settings.Default.LanguageCode = languageCode;
+                Properties.Settings.Default.Save();
             }
             catch (IOException)
             {
-                if (culture.Contains("-"))
+                if (languageCode.Contains("-"))
                 {
-                    LoadLanguage(culture.Split('-').First());
+                    LoadLanguage(languageCode.Split('-').First());
                 }
                 // Can't load language file
             }
