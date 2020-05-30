@@ -36,7 +36,7 @@ namespace ModAssistant
             System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
 
             // Load localisation languages
-            LoadLanguage(CultureInfo.CurrentCulture.Name);
+            Utils.LoadLanguage(CultureInfo.CurrentCulture.Name);
 
             // Uncomment the next line to debug localisation
             // LoadLanguage("en-DEBUG");
@@ -142,7 +142,7 @@ namespace ModAssistant
                         }
                         else
                         {
-                            LoadLanguage(args[1]);
+                            Utils.LoadLanguage(args[1]);
                         }
 
                         args = Shift(args, 2);
@@ -212,30 +212,6 @@ namespace ModAssistant
 
             e.Handled = true;
             Application.Current.Shutdown();
-        }
-
-        private ResourceDictionary LanguagesDict
-        {
-            get
-            {
-                return Resources.MergedDictionaries[1];
-            }
-        }
-
-        private void LoadLanguage(string culture)
-        {
-            try
-            {
-                LanguagesDict.Source = new Uri($"Localisation/{culture}.xaml", UriKind.Relative);
-            }
-            catch (IOException)
-            {
-                if (culture.Contains("-"))
-                {
-                    LoadLanguage(culture.Split('-').First());
-                }
-                // Can't load language file
-            }
         }
     }
 }

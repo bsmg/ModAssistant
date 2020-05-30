@@ -439,5 +439,29 @@ namespace ModAssistant
             ShowMessageBoxDelegate caller = new ShowMessageBoxDelegate(ShowMessageBox);
             caller.BeginInvoke(Message, null, null, null);
         }
+
+        private static ResourceDictionary LanguagesDict
+        {
+            get
+            {
+                return Application.Current.Resources.MergedDictionaries[1];
+            }
+        }
+
+        public static void LoadLanguage(string culture)
+        {
+            try
+            {
+                LanguagesDict.Source = new Uri($"Localisation/{culture}.xaml", UriKind.Relative);
+            }
+            catch (IOException)
+            {
+                if (culture.Contains("-"))
+                {
+                    LoadLanguage(culture.Split('-').First());
+                }
+                // Can't load language file
+            }
+        }
     }
 }
