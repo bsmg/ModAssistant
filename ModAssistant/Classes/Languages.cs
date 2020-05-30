@@ -27,7 +27,7 @@ namespace ModAssistant
 
             if (Options.Instance != null && Options.Instance.LanguageSelectComboBox != null)
             {
-                Options.Instance.LanguageSelectComboBox.ItemsSource = availableCultures.Select(cultureInfo => cultureInfo.EnglishName).ToList();
+                Options.Instance.LanguageSelectComboBox.ItemsSource = availableCultures.Select(cultureInfo => cultureInfo.NativeName).ToList();
             }
         }
 

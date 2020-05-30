@@ -343,7 +343,7 @@ namespace ModAssistant.Pages
             {
                 // Get the matching language from the LoadedLanguages array, then try and use it
                 var languageName = (sender as ComboBox).SelectedItem.ToString();
-                var selectedLanguage = Languages.LoadedLanguages.Find(language => language.EnglishName.CompareTo(languageName) == 0);
+                var selectedLanguage = Languages.LoadedLanguages.Find(language => language.NativeName.CompareTo(languageName) == 0);
                 Languages.LoadLanguage(selectedLanguage.Name);
             }
         }
