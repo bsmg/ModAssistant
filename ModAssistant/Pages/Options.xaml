@@ -47,6 +47,14 @@
             FontSize="24"
             FontWeight="Bold"
             Text="{DynamicResource Options:PageTitle}" />
+        <ComboBox
+            Name="LanguageSelectComboBox"
+            Grid.Row="0"
+            Grid.Column="3"
+            Height="30"
+            HorizontalAlignment="Stretch"
+            VerticalContentAlignment="Center"
+            SelectionChanged="LanguageSelectComboBox_SelectionChanged" />
 
         <TextBlock
             Grid.Row="1"
@@ -295,14 +303,6 @@
             Padding="5"
             Click="ApplicationThemeOpenThemesFolder_Click"
             Content="{DynamicResource Options:OpenFolderButton}" />
-        <ComboBox
-            Name="LanguageSelectComboBox"
-            Grid.Row="14"
-            Grid.Column="1"
-            Height="30"
-            HorizontalAlignment="Stretch"
-            VerticalContentAlignment="Center"
-            SelectionChanged="LanguageSelectComboBox_SelectionChanged" />
 
         <TextBlock
             Grid.Row="14"
