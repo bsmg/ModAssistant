@@ -331,6 +331,21 @@ namespace ModAssistant.Pages
             }
         }
 
+        public void LanguageSelectComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if ((sender as ComboBox).SelectedItem == null)
+            {
+                // Apply default language
+                Console.WriteLine("Applying default language");
+            }
+            else
+            {
+                // Set new language
+                Console.WriteLine("Setting language to:" + (sender as ComboBox).SelectedItem.ToString());
+                //LoadLanguage((sender as ComboBox).SelectedItem.ToString())
+            }
+        }
+
         private void ApplicationThemeExportTemplate_Click(object sender, RoutedEventArgs e)
         {
             Themes.WriteThemeToDisk("Ugly Kulu-Ya-Ku");
