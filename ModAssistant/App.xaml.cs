@@ -35,12 +35,6 @@ namespace ModAssistant
             // Set SecurityProtocol to prevent crash with TLS
             System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
 
-            // Load localisation languages
-            LoadLanguage(CultureInfo.CurrentCulture.Name);
-
-            // Uncomment the next line to debug localisation
-            // LoadLanguage("en-DEBUG");
-
             if (ModAssistant.Properties.Settings.Default.UpgradeRequired)
             {
                 ModAssistant.Properties.Settings.Default.Upgrade();
@@ -142,7 +136,7 @@ namespace ModAssistant
                         }
                         else
                         {
-                            LoadLanguage(args[1]);
+                            Languages.LoadLanguage(args[1]);
                         }
 
                         args = Shift(args, 2);
@@ -212,30 +206,6 @@ namespace ModAssistant
 
             e.Handled = true;
             Application.Current.Shutdown();
-        }
-
-        private ResourceDictionary LanguagesDict
-        {
-            get
-            {
-                return Resources.MergedDictionaries[1];
-            }
-        }
-
-        private void LoadLanguage(string culture)
-        {
-            try
-            {
-                LanguagesDict.Source = new Uri($"Localisation/{culture}.xaml", UriKind.Relative);
-            }
-            catch (IOException)
-            {
-                if (culture.Contains("-"))
-                {
-                    LoadLanguage(culture.Split('-').First());
-                }
-                // Can't load language file
-            }
         }
     }
 }

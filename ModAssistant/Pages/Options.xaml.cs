@@ -331,6 +331,23 @@ namespace ModAssistant.Pages
             }
         }
 
+        public void LanguageSelectComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if ((sender as ComboBox).SelectedItem == null)
+            {
+                // Apply default language
+                Console.WriteLine("Applying default language");
+                Languages.LoadLanguage("en");
+            }
+            else
+            {
+                // Get the matching language from the LoadedLanguages array, then try and use it
+                var languageName = (sender as ComboBox).SelectedItem.ToString();
+                var selectedLanguage = Languages.LoadedLanguages.Find(language => language.NativeName.CompareTo(languageName) == 0);
+                Languages.LoadLanguage(selectedLanguage.Name);
+            }
+        }
+
         private void ApplicationThemeExportTemplate_Click(object sender, RoutedEventArgs e)
         {
             Themes.WriteThemeToDisk("Ugly Kulu-Ya-Ku");

@@ -65,6 +65,8 @@ namespace ModAssistant
             Themes.LoadThemes();
             Themes.FirstLoad(Properties.Settings.Default.SelectedTheme);
 
+            Languages.LoadLanguages();
+
             Task.Run(() => LoadVersionsAsync());
 
             if (!Properties.Settings.Default.Agreed || string.IsNullOrEmpty(Properties.Settings.Default.LastTab))

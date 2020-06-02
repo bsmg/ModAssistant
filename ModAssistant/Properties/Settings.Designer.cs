@@ -190,5 +190,17 @@ namespace ModAssistant.Properties {
                 this["CloseWindowOnFinish"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LanguageCode {
+            get {
+                return ((string)(this["LanguageCode"]));
+            }
+            set {
+                this["LanguageCode"] = value;
+            }
+        }
     }
 }
