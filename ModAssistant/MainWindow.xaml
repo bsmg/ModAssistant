@@ -58,16 +58,17 @@
                     Margin="0,0,10,5"
                     Click="IntroButton_Click"
                     Style="{DynamicResource MainPageButton}">
-                    <StackPanel Margin="0,8,0,0">
+                    <StackPanel Margin="0,6,0,0">
                         <Image
                             Height="30"
                             VerticalAlignment="Bottom"
                             Source="{StaticResource info_circleDrawingImage}" />
-                        <TextBlock
-                            Margin="0,0,0,5"
+                        <Viewbox Stretch="Uniform" Height="16">
+                            <TextBlock
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom"
+                            Padding="2,0,2,0"
                             Text="{DynamicResource MainWindow:IntroButton}" />
+                        </Viewbox>
                     </StackPanel>
                 </Button>
 
@@ -84,11 +85,12 @@
                             Height="30"
                             VerticalAlignment="Bottom"
                             Source="{StaticResource microchipDrawingImage}" />
-                        <TextBlock
-                            Margin="0,0,0,5"
+                        <Viewbox Stretch="Uniform" Height="16">
+                            <TextBlock
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom"
+                            Padding="2,0,2,0"
                             Text="{DynamicResource MainWindow:ModsButton}" />
+                        </Viewbox>
                     </StackPanel>
                 </Button>
 
@@ -104,11 +106,12 @@
                             Height="30"
                             VerticalAlignment="Bottom"
                             Source="{StaticResource heartDrawingImage}" />
-                        <TextBlock
-                            Margin="0,0,0,5"
+                        <Viewbox Stretch="Uniform" Height="16">
+                            <TextBlock
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom"
+                            Padding="2,0,2,0"
                             Text="{DynamicResource MainWindow:AboutButton}" />
+                        </Viewbox>
                     </StackPanel>
                 </Button>
 
@@ -124,11 +127,12 @@
                             Height="30"
                             VerticalAlignment="Bottom"
                             Source="{StaticResource cogDrawingImage}" />
-                        <TextBlock
-                            Margin="0,0,0,5"
+                        <Viewbox Stretch="Uniform" Height="16">
+                            <TextBlock
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom"
+                            Padding="2,0,2,0"
                             Text="{DynamicResource MainWindow:OptionsButton}" />
+                        </Viewbox>
                     </StackPanel>
                 </Button>
 
