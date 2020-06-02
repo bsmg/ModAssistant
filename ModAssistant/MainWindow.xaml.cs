@@ -95,6 +95,21 @@ namespace ModAssistant
             }
         }
 
+        /* Force the app to shutdown when The main window is closed.
+         *
+         * Explaination:
+         * OneClickStatus is initialized as a static object,
+         * so the window will exist, even if it is unused.
+         * This would cause Mod Assistant to not shutdown,
+         * because technically a window was still open.
+         */
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            Application.Current.Shutdown();
+        }
+
         private async void LoadVersionsAsync()
         {
             try
