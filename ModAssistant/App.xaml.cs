@@ -80,7 +80,7 @@ namespace ModAssistant
                 {
                     await Task.Run(async () => await Updater.Run());
                 }
-                catch (UnauthorizedAccessException e)
+                catch (UnauthorizedAccessException)
                 {
                     Utils.StartAsAdmin(Arguments, true);
                 }
