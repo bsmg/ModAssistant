@@ -166,8 +166,8 @@
             <Grid Grid.Row="1" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="115" />
-                    <ColumnDefinition Width="115" />
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
 
                 <Border
@@ -184,9 +184,10 @@
                 <Button
                     Name="InfoButton"
                     Grid.Column="1"
-                    Width="100"
                     Height="40"
-                    Margin="0,10,0,0"
+                    MinWidth="115"
+                    Margin="10,10,0,0"
+                    Padding="20,0,20,0"
                     HorizontalAlignment="Right"
                     Click="InfoButton_Click"
                     IsEnabled="False">
@@ -197,32 +198,27 @@
                             Text="{DynamicResource MainWindow:ModInfoButton}" />
                     </StackPanel>
                 </Button>
-
-                <StackPanel 
-                    Grid.Column="2" Orientation="Horizontal"
+                <Button
+                    Name="InstallButton"
+                    Grid.Column="2" 
                     Height="40"
-                    Width="100"
-                    Margin="0,10,0,0"
-                    HorizontalAlignment="Right">
-                    <Button
-                        Name="InstallButton"
-                        Width="100"
-                        Height="40"
-                        HorizontalAlignment="Right"
-                        Click="InstallButton_Click"
-                        IsEnabled="False">
-                        <StackPanel>
-                            <TextBlock
+                    MinWidth="115"
+                    Margin="10,10,0,0"
+                    Padding="20,0,20,0"
+                    HorizontalAlignment="Right"
+                    Click="InstallButton_Click"
+                    IsEnabled="False">
+                    <StackPanel>
+                        <TextBlock
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             Text="{DynamicResource MainWindow:InstallButtonTop}" />
-                            <TextBlock
+                        <TextBlock
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             Text="{DynamicResource MainWindow:InstallButtonBottom}" />
-                        </StackPanel>
-                    </Button>
-                </StackPanel>
+                    </StackPanel>
+                </Button>
             </Grid>
         </Grid>
     </Grid>
