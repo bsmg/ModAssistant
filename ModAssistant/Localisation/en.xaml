@@ -36,43 +36,43 @@
     <sys:String x:Key="Intro:PageTitle">Welcome to Mod Assistant</sys:String>
     <sys:String x:Key="Intro:Terms:Header">Please read this page entirely and carefully</sys:String>
     <Span x:Key="Intro:Terms:Line1">
-        By using this program attest to have read and agree to the following terms:
+        通过使用此程序，证明您已阅读并同意以下条款：
     </Span>
     <Span x:Key="Intro:Terms:Line2">
         Beat Saber
-        <Bold>does not</Bold> natively support mods. This means:
+        <Bold>并不能原生支持Mod</Bold> 。 这意味着：
     </Span>
     <Span x:Key="Intro:Terms:Term1">
-        Mods
-        <Bold>will break</Bold> every update. This is normal, and
-        <Bold>not</Bold> Beat Games' fault.
+        <Bold>Mod将会在每次游戏更新后无法使用。这很正常，并不是Beat Games的错。</Bold>
     </Span>
     <Span x:Key="Intro:Terms:Term2">
-        Mods
-        <Bold>will</Bold> cause bugs and performance issues. This is
-        <Bold>not</Bold> Beat Games' fault.
+        Mod会导致出现BUG或者性能问题。这并不是Beat Games的错。
     </Span>
     <Span x:Key="Intro:Terms:Term3">
-        Mods are made for
-        <Bold>free</Bold> by people in their
-        <Bold>free time.</Bold> Please be patient and understanding.
+        爱好者在空闲时间
+        <Bold>用爱发电</Bold> 制作了这些Mod，请保持耐心，等待Mod更新。
     </Span>
     <Span x:Key="Intro:ReviewsBeatGamesFault">
-        <Bold>DO NOT</Bold> leave negative reviews because mods broke. This is
-        <Bold>not</Bold> Beat Games' fault.
-        <LineBreak/> They are not trying to kill mods.
+        <Bold>请勿由于Mod不可用而发表差评，Beat Games不会封杀Mod。</Bold>
     </Span>
     <Span x:Key="Intro:ReviewsRustySpoon">
-        If I keep seeing people leave negative reviews
-        <Italic>because</Italic> mods broke,
-        <LineBreak/>
-        <Bold>I will personally kill mods with a rusty spoon</Bold>
+        如果我继续看到因为Mod不可用而留下的差评，
+        <Bold>我会亲自干掉Mod。</Bold>
     </Span>
     <Span x:Key="Intro:WikiGuide">
-        Please read the Beginners Guide on the
+        <Bold>
+            <Span Foreground="Red">请务必阅读</Span>
+            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/">
+                BS中文教程及常见问题解答
+            </Hyperlink>
+        </Bold> ，以及
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
-            Wiki
-        </Hyperlink> .
+            新手指南(英文)
+        </Hyperlink> 。
+        <LineBreak/>
+        <Bold>
+            <Span Foreground="Red">若Mod下载缓慢或报错</Span> ，可在以上问题解答中通过使用本软件国内中转版等方式解决。
+        </Bold>
     </Span>
     <sys:String x:Key="Intro:AgreeButton">I Agree</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">Disagree</sys:String>
