@@ -182,9 +182,9 @@ namespace ModAssistant.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public string CloseWindowOnFinish {
+        public bool CloseWindowOnFinish {
             get {
-                return ((string)(this["CloseWindowOnFinish"]));
+                return ((bool)(this["CloseWindowOnFinish"]));
             }
             set {
                 this["CloseWindowOnFinish"] = value;
