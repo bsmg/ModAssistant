@@ -14,10 +14,10 @@ namespace ModAssistant
     {
         public static string LoadedLanguage { get; private set; }
         public static List<CultureInfo> LoadedLanguages { get => availableCultures.ToList(); }
-
+        public static bool FirstRun = true;
         private static string[] availableLanguageCodes = { "de", "en", "fr", "it", "ko", "nl", "ru", "zh" };
-
         private static IEnumerable<CultureInfo> availableCultures;
+
         public static void LoadLanguages()
         {
             var allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
@@ -26,28 +26,27 @@ namespace ModAssistant
             availableCultures = allCultures.Where(cultureInfo => availableLanguageCodes.Any(code => code.Equals(cultureInfo.Name)));
 
             string savedLanguageCode = Properties.Settings.Default.LanguageCode;
-
-            if (savedLanguageCode.Length == 0)
+            if (!LoadLanguage(savedLanguageCode))
             {
                 // If no language code was saved, load system language
-                savedLanguageCode = CultureInfo.CurrentUICulture.Name.Split('-').First();
+                if (!LoadLanguage(CultureInfo.CurrentUICulture.Name))
+                {
+                    LoadLanguage("en");
+                }
             }
-            else if (!availableLanguageCodes.Any(code => code.Equals(savedLanguageCode)))
-            {
-                // If language code isn't supported, load English instead
-                savedLanguageCode = "en";
-            }
+            UpdateUI(LoadedLanguage);
+        }
 
+        public static void UpdateUI(string languageCode)
+        {
             if (Options.Instance != null && Options.Instance.LanguageSelectComboBox != null)
             {
                 Options.Instance.LanguageSelectComboBox.ItemsSource = availableCultures.Select(cultureInfo => cultureInfo.NativeName).ToList();
-                Options.Instance.LanguageSelectComboBox.SelectedIndex = LoadedLanguages.FindIndex(cultureInfo => cultureInfo.Name.Equals(savedLanguageCode)); ;
+                Options.Instance.LanguageSelectComboBox.SelectedIndex = LoadedLanguages.FindIndex(cultureInfo => cultureInfo.Name.Equals(languageCode));
             }
-
-            LoadLanguage(savedLanguageCode);
         }
 
-        private static ResourceDictionary LanguagesDict
+        public static ResourceDictionary LanguagesDict
         {
             get
             {
@@ -55,21 +54,22 @@ namespace ModAssistant
             }
         }
 
-        public static void LoadLanguage(string languageCode)
+        public static bool LoadLanguage(string languageCode)
         {
+            if (string.IsNullOrEmpty(languageCode)) return false;
             try
             {
                 LanguagesDict.Source = new Uri($"Localisation/{languageCode}.xaml", UriKind.Relative);
-                Properties.Settings.Default.LanguageCode = languageCode;
-                Properties.Settings.Default.Save();
+                LoadedLanguage = languageCode;
+                return true;
             }
             catch (IOException)
             {
                 if (languageCode.Contains("-"))
                 {
-                    LoadLanguage(languageCode.Split('-').First());
+                    return LoadLanguage(languageCode.Split('-').First());
                 }
-                // Can't load language file
+                return false;
             }
         }
     }

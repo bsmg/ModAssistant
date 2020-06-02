@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -344,7 +345,20 @@ namespace ModAssistant.Pages
                 // Get the matching language from the LoadedLanguages array, then try and use it
                 var languageName = (sender as ComboBox).SelectedItem.ToString();
                 var selectedLanguage = Languages.LoadedLanguages.Find(language => language.NativeName.CompareTo(languageName) == 0);
-                Languages.LoadLanguage(selectedLanguage.Name);
+                if (Languages.LoadLanguage(selectedLanguage.Name))
+                {
+                    Properties.Settings.Default.LanguageCode = selectedLanguage.Name;
+                    Properties.Settings.Default.Save();
+                    if (Languages.FirstRun)
+                    {
+                        Languages.FirstRun = false;
+                    }
+                    else
+                    {
+                        Process.Start(Utils.ExePath, App.Arguments);
+                        Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
+                    }
+                }
             }
         }
 

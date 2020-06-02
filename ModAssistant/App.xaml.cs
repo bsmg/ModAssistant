@@ -34,6 +34,7 @@ namespace ModAssistant
         {
             // Set SecurityProtocol to prevent crash with TLS
             System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
+            Languages.LoadLanguages();
 
             if (ModAssistant.Properties.Settings.Default.UpgradeRequired)
             {
@@ -136,7 +137,12 @@ namespace ModAssistant
                         }
                         else
                         {
-                            Languages.LoadLanguage(args[1]);
+                            if (Languages.LoadLanguage(args[1]))
+                            {
+                                ModAssistant.Properties.Settings.Default.LanguageCode = args[1];
+                                ModAssistant.Properties.Settings.Default.Save();
+                                Languages.UpdateUI(args[1]);
+                            }
                         }
 
                         args = Shift(args, 2);
