@@ -146,6 +146,10 @@
     <sys:String x:Key="Options:EnableOneClickInstalls">Activeer OneClick™ Installaties</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
+    <sys:String x:Key="Options:Playlists">Playlists</sys:String>
+    <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:CloseWindow">Close window when finished</sys:String>
+    <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Options:GameType">Game Type</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
@@ -227,6 +231,14 @@
     <sys:String x:Key="OneClick:AssetInstallFailed">Installatie mislukt</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ Installeer afhandelingen geregistreerd!</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ Install afhandelingen uitgeregistreerd!</sys:String>
+    <sys:String x:Key="OneClick:Installing">Installing: {0}</sys:String>
+    <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:RatelimitSkip">Max tries reached: Skipping {0}</sys:String>
+    <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:RatelimitHit">Ratelimit hit. Resuming in {0}</sys:String>
+    <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:Failed">Download failed: {0}</sys:String>
+    <!-- NEEDS TRANSLATING -->
 
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">Thema niet gevonden, terugvallen op standaard thema...</sys:String>

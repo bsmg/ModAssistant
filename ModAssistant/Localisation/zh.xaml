@@ -138,6 +138,8 @@
     <sys:String x:Key="Options:EnableOneClickInstalls">在以下站点启用OneClick™一键安装：</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
+    <sys:String x:Key="Options:Playlists">Playlists</sys:String>
+    <sys:String x:Key="Options:CloseWindow">安装完成时关闭窗口</sys:String>
     <sys:String x:Key="Options:GameType">游戏类型</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
@@ -209,10 +211,14 @@
     <sys:String x:Key="OneClick:SongDownload:NetworkIssues">可能您的互联网连接或BeatSaver存在问题。</sys:String>
     <sys:String x:Key="OneClick:SongDownload:FailedTitle">下载歌曲压缩包失败。</sys:String>
     <sys:String x:Key="OneClick:InstallDirNotFound">找不到Beat Saber安装路径。</sys:String>
-    <sys:String x:Key="OneClick:InstalledAsset">已安装：{0}</sys:String>
+    <sys:String x:Key="OneClick:InstalledAsset">已添加：{0}</sys:String>
     <sys:String x:Key="OneClick:AssetInstallFailed">安装失败。</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ 一键安装处理程序已注册！</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ 一键安装处理程序已移除！</sys:String>
+    <sys:String x:Key="OneClick:Installing">正在下载：{0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitSkip">超过重试次数，跳过：{0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitHit">下载超时，重试：{0}</sys:String>
+    <sys:String x:Key="OneClick:Failed">下载失败：{0}</sys:String>
 
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">找不到主题，恢复为默认主题...</sys:String>

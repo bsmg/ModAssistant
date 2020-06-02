@@ -72,6 +72,7 @@
     <Compile Include="Classes\External Interfaces\Utils.cs" />
     <Compile Include="Classes\Http.cs" />
     <Compile Include="Classes\HyperlinkExtensions.cs" />
+    <Compile Include="Classes\Languages.cs" />
     <Compile Include="Classes\Promotions.cs" />
     <Compile Include="Classes\Diagnostics.cs" />
     <Compile Include="Classes\Themes.cs" />

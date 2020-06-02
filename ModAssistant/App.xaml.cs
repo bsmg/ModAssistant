@@ -21,9 +21,11 @@ namespace ModAssistant
         public static bool CheckInstalledMods;
         public static bool SelectInstalledMods;
         public static bool ReinstallInstalledMods;
+        public static bool CloseWindowOnFinish;
         public static string Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public static List<string> SavedMods = ModAssistant.Properties.Settings.Default.SavedMods.Split(',').ToList();
         public static MainWindow window;
+        public static string Arguments;
         public static bool Update = true;
         public static bool GUI = true;
 
@@ -32,12 +34,6 @@ namespace ModAssistant
         {
             // Set SecurityProtocol to prevent crash with TLS
             System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
-
-            // Load localisation languages
-            LoadLanguage(CultureInfo.CurrentCulture.Name);
-
-            // Uncomment the next line to debug localisation
-            // LoadLanguage("en-DEBUG");
 
             if (ModAssistant.Properties.Settings.Default.UpgradeRequired)
             {
@@ -69,6 +65,7 @@ namespace ModAssistant
             CheckInstalledMods = ModAssistant.Properties.Settings.Default.CheckInstalled;
             SelectInstalledMods = ModAssistant.Properties.Settings.Default.SelectInstalled;
             ReinstallInstalledMods = ModAssistant.Properties.Settings.Default.ReinstallInstalled;
+            CloseWindowOnFinish = ModAssistant.Properties.Settings.Default.CloseWindowOnFinish;
 
             await ArgumentHandler(e.Args);
             await Init();
@@ -78,7 +75,14 @@ namespace ModAssistant
         {
             if (Update)
             {
-                await Task.Run(async () => await Updater.Run());
+                try
+                {
+                    await Task.Run(async () => await Updater.Run());
+                }
+                catch (UnauthorizedAccessException e)
+                {
+                    Utils.StartAsAdmin(Arguments, true);
+                }
             }
 
             if (GUI)
@@ -94,6 +98,7 @@ namespace ModAssistant
 
         private async Task ArgumentHandler(string[] args)
         {
+            Arguments = string.Join(" ", args);
             while (args.Length > 0)
             {
                 switch (args[0])
@@ -106,6 +111,12 @@ namespace ModAssistant
                         else
                         {
                             await OneClickInstaller.InstallAsset(args[1]);
+                        }
+
+                        if (CloseWindowOnFinish)
+                        {
+                            await Task.Delay(5 * 1000);
+                            Current.Shutdown();
                         }
 
                         Update = false;
@@ -125,7 +136,7 @@ namespace ModAssistant
                         }
                         else
                         {
-                            LoadLanguage(args[1]);
+                            Languages.LoadLanguage(args[1]);
                         }
 
                         args = Shift(args, 2);
@@ -195,30 +206,6 @@ namespace ModAssistant
 
             e.Handled = true;
             Application.Current.Shutdown();
-        }
-
-        private ResourceDictionary LanguagesDict
-        {
-            get
-            {
-                return Resources.MergedDictionaries[1];
-            }
-        }
-
-        private void LoadLanguage(string culture)
-        {
-            try
-            {
-                LanguagesDict.Source = new Uri($"Localisation/{culture}.xaml", UriKind.Relative);
-            }
-            catch (IOException)
-            {
-                if (culture.Contains("-"))
-                {
-                    LoadLanguage(culture.Split('-').First());
-                }
-                // Can't load language file
-            }
         }
     }
 }

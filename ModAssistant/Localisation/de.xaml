@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:ModAssistant"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-    <sys:String x:Key="ResourceDictionaryName">i18n:en-US</sys:String>
+    <sys:String x:Key="ResourceDictionaryName">i18n:de-DE</sys:String>
 
     <!-- App -->
     <sys:String x:Key="App:InstallDirDialog:Title">Der Beat Saber Installationsordner konnte nicht gefunden werden!</sys:String>
@@ -36,30 +36,36 @@
     <sys:String x:Key="Intro:PageTitle">Willkommen bei Mod Assistant</sys:String>
     <sys:String x:Key="Intro:Terms:Header">Bitte lies diese Seite vollständig und aufmerksam!</sys:String>
     <Span x:Key="Intro:Terms:Line1">
-        Durch Nutzung des Programms wird bestätigt, dass folgende Bedinungen gelesen und akzeptiert wurden:
+        Durch Nutzung des Programms wird bestätigt, dass folgende Bedingungen gelesen und akzeptiert wurden:
     </Span>
     <Span x:Key="Intro:Terms:Line2">
         Beat Saber
-        unterstützt normalerweise <Bold>keine</Bold> Mods. Das heißt:
+        unterstützt normalerweise
+        <Bold>keine</Bold> Mods. Das heißt:
     </Span>
     <Span x:Key="Intro:Terms:Term1">
         Mods
-        werden nach jedem Update <Bold>nicht mehr funktionieren</Bold>. Dies ist normal, und
-        die Schuld liegt <Bold>nicht</Bold> bei Beat Games.
+        werden nach jedem Update
+        <Bold>nicht mehr funktionieren</Bold> . Dies ist normal, und
+        die Schuld liegt
+        <Bold>nicht</Bold> bei Beat Games.
     </Span>
     <Span x:Key="Intro:Terms:Term2">
         Mods
         <Bold>werden</Bold> Fehler und Leistungsprobleme verursachen. Die Schuld
-        liegt <Bold>nicht</Bold> bei Beat Games.
+        liegt
+        <Bold>nicht</Bold> bei Beat Games.
     </Span>
     <Span x:Key="Intro:Terms:Term3">
         Mods werden
         <Bold>kostenlos</Bold> von Leuten in deren
-        <Bold>Freizeit</Bold> erstellt. Bitte sei geduldig und verständnissvoll.
+        <Bold>Freizeit</Bold> erstellt. Bitte sei geduldig und verständnisvoll.
     </Span>
     <Span x:Key="Intro:ReviewsBeatGamesFault">
-        Bitte gib <Bold>KEINE</Bold> schlechten Bewertungen weil die Mods nicht funktionieren. Die Schuld
-        liegt <Bold>nicht</Bold> bei Beat Games.
+        Bitte gib
+        <Bold>KEINE</Bold> schlechten Bewertungen weil die Mods nicht funktionieren. Die Schuld
+        liegt
+        <Bold>nicht</Bold> bei Beat Games.
         <LineBreak/> Sie versuchen nicht die Mods zu unterbinden.
     </Span>
     <Span x:Key="Intro:ReviewsRustySpoon">
@@ -72,11 +78,11 @@
         Bitte lies den Einsteiger Leitfaden im
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
             Wiki
-        </Hyperlink>.
+        </Hyperlink> .
     </Span>
     <sys:String x:Key="Intro:AgreeButton">Annehmen</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">Ablehnen</sys:String>
-    <sys:String x:Key="Intro:ClosingApp">Programm wird beendet: Du hast den Bedingunen nicht zugestimmt.</sys:String>
+    <sys:String x:Key="Intro:ClosingApp">Programm wird beendet: Du hast den Bedingungen nicht zugestimmt.</sys:String>
     <sys:String x:Key="Intro:VersionDownloadFailed">Versionsliste konnte nicht geladen werden</sys:String>
     <sys:String x:Key="Intro:ModsTabDisabled">Mods Tab deaktiviert. Bitte Programm neu starten um es nochmal zu versuchen.</sys:String>
     <sys:String x:Key="Intro:ModsTabEnabled">Du kannst jetzt den Mods Tab benutzen!</sys:String>
@@ -102,7 +108,7 @@
     <sys:String x:Key="Mods:UninstallBox:Body2">Dies kann die anderen Mods unbrauchbar machen</sys:String>
     <sys:String x:Key="Mods:FailedExtract">Fehler beim Extrahieren von {0}, neuer Versuch in {1} Sekunden. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Fehler beim Extrahieren von {0} nach {1} Versuchen, wird übersprungen. Dieser Mod funktioniert möglicherweise nicht richtig, also gehe auf eigenes Risiko vor</sys:String>
-    <sys:String x:Key="Mods:SearchLabel">Search...</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:SearchLabel">Suchen...</sys:String>
     <sys:String x:Key="Mods:LoadingTrans">Loading Mods Translation</sys:String>
     <sys:String x:Key="Mods:DownloadingMod">Downloading {0}</sys:String>
 
@@ -115,26 +121,26 @@
     <sys:String x:Key="About:List:Item3">Nur eine Datei</sys:String>
     <sys:String x:Key="About:List:Item4">Verantwortungsbewusster Umgang</sys:String>
     <Span x:Key="About:SupportAssistant">
-        Wenn dir das Programm gefällt und du mich unterstützen möchtest, dann besuche meine 
+        Wenn dir das Programm gefällt und du mich unterstützen möchtest, dann besuche meine
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.assistant.moe/Donate/">
             Spendenseite
         </Hyperlink>
-         oder mein 
+        oder mein
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/AssistantMoe">
             Patreon
         </Hyperlink>
     </Span>
-    <sys:String x:Key="About:SpecialThanks">Besonder Dank ♥</sys:String>
+    <sys:String x:Key="About:SpecialThanks">Besonderer Dank ♥</sys:String>
     <sys:String x:Key="About:Donate">Spenden</sys:String>
-    <sys:String x:Key="About:HeadpatsButton">Kopftätscheln</sys:String>
+    <sys:String x:Key="About:HeadpatsButton">Kopf tätscheln</sys:String>
     <sys:String x:Key="About:HugsButton">Umarmungen</sys:String>
 
     <!-- Options Page -->
     <sys:String x:Key="Options:Title">Optionen</sys:String>
     <sys:String x:Key="Options:PageTitle">Einstellungen</sys:String>
-    <sys:String x:Key="Options:InstallFolder">Installations Ordner</sys:String>
+    <sys:String x:Key="Options:InstallFolder">Installationsordner</sys:String>
     <sys:String x:Key="Options:SelectFolderButton">Ordner wählen</sys:String>
-    <sys:String x:Key="Options:OpenFolderButton">Order öffnen</sys:String>
+    <sys:String x:Key="Options:OpenFolderButton">Ordner öffnen</sys:String>
     <sys:String x:Key="Options:SaveSelectedMods">Ausgewählte Mods speichern</sys:String>
     <sys:String x:Key="Options:CheckInstalledMods">Installierte Mods prüfen</sys:String>
     <sys:String x:Key="Options:SelectInstalledMods">Installierte Mods auswählen</sys:String>
@@ -142,14 +148,18 @@
     <sys:String x:Key="Options:EnableOneClickInstalls">OneClick™ Installation aktivieren</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
+    <sys:String x:Key="Options:Playlists">Playlists</sys:String>
+    <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:CloseWindow">Close window when finished</sys:String>
+    <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Options:GameType">Spiel Typ</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
-    <sys:String x:Key="Options:Tools">Tools</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:InstallPlaylist">Install Playlist</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:InstallingPlaylist">Installing Playlist: {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:FailedPlaylistSong">Failed song: {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:FinishedPlaylist">[{0} fails] Finished Installing Playlist: {1}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:Tools">Werkzeuge</sys:String>
+    <sys:String x:Key="Options:InstallPlaylist">Playlist installieren</sys:String>
+    <sys:String x:Key="Options:InstallingPlaylist">Installiere Playlist: {0}</sys:String>
+    <sys:String x:Key="Options:FailedPlaylistSong">Titel fehlgeschlagen: {0}</sys:String>
+    <sys:String x:Key="Options:FinishedPlaylist">[{0} Fehler] Playlist Installation abgeschlossen: {1}</sys:String>
     <sys:String x:Key="Options:Diagnostics">Diagnose</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Log öffnen</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">AppData öffnen</sys:String>
@@ -179,33 +189,33 @@
     <!-- Invalid Page -->
     <sys:String x:Key="Invalid:Title">Ungültig</sys:String>
     <sys:String x:Key="Invalid:PageTitle">Ungültige Installation erkannt</sys:String>
-    <sys:String x:Key="Invalid:PageSubtitle">Die SPielinstallation ist beschädigt oder anderwärtig ungültig</sys:String>
+    <sys:String x:Key="Invalid:PageSubtitle">Die SPielinstallation ist beschädigt oder anderweitig ungültig</sys:String>
     <sys:String x:Key="Invalid:List:Header">Dies kann passieren wenn dein Spiel eine Raubkopie ist oder eine Raubkopie über eine legitime Version kopiert wurde</sys:String>
     <Span x:Key="Invalid:List:Line1">
         Falls dein Spiel eine Raubkopie ist,
-        <Bold>bitte kaufe das Spiel 
+        <Bold>bitte kaufe das Spiel
             <Hyperlink NavigateUri="https://beatgames.com/" local:HyperlinkExtensions.IsExternal="True">
                 HIER
             </Hyperlink>
-        </Bold>.
+        </Bold> .
     </Span>
     <Span x:Key="Invalid:List:Line2">
         Wenn dein Spiel
         <Bold>keine</Bold> Raubkopie ist, bitte
         <Hyperlink NavigateUri="https://bsmg.wiki/support#clean-installation" local:HyperlinkExtensions.IsExternal="True">
             mach eine saubere Neuinstallation
-        </Hyperlink>.
+        </Hyperlink> .
     </Span>
     <Span x:Key="Invalid:List:Line3">
         Falls das nicht hilft, frage im
         <Span Foreground="Blue">#support</Span> Kanal in der
         <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
             BSMG
-        </Hyperlink>.
+        </Hyperlink> .
     </Span>
     <sys:String x:Key="Invalid:BoughtGame1">Falls du eine Raubkopie hattest aber das Spiel jetzt gekauft hast</sys:String>
-    <sys:String x:Key="Invalid:SelectFolderButton">Select Folder</sys:String>
-    <sys:String x:Key="Invalid:BoughtGame2">Muss Mod Assisstant neu gestartet werden wenn eine legitime Version installiert wurde</sys:String>
+    <sys:String x:Key="Invalid:SelectFolderButton">Ordner auswählen</sys:String>
+    <sys:String x:Key="Invalid:BoughtGame2">Muss Mod Assistant neu gestartet werden wenn eine legitime Version installiert wurde</sys:String>
 
     <!-- OneClick Class -->
     <sys:String x:Key="OneClick:MapDownloadFailed">Map Details konnten nicht geladen werden.</sys:String>
@@ -213,14 +223,22 @@
     <sys:String x:Key="OneClick:SongDownload:Failed">Titel konnte nicht geladen werden.</sys:String>
     <sys:String x:Key="OneClick:SongDownload:NetworkIssues">Möglicherweise gibt es Probleme mit BeatSaver oder deiner Internetverbindung.</sys:String>
     <sys:String x:Key="OneClick:SongDownload:FailedTitle">Herunterladen der Titel ZIP fehlgeschlagen</sys:String>
-    <sys:String x:Key="OneClick:InstallDirNotFound">Beat Saber Installations Pfad nicht gefunden.</sys:String>
+    <sys:String x:Key="OneClick:InstallDirNotFound">Beat Saber Installationspfad nicht gefunden.</sys:String>
     <sys:String x:Key="OneClick:InstalledAsset">Installiert: {0}</sys:String>
     <sys:String x:Key="OneClick:AssetInstallFailed">Installation fehlgeschlagen.</sys:String>
-    <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ Installion Handler registriert!</sys:String>
-    <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ Installion Handler entfernt!</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ Installation Handler registriert!</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ Installation Handler entfernt!</sys:String>
+    <sys:String x:Key="OneClick:Installing">Installing: {0}</sys:String>
+    <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:RatelimitSkip">Max tries reached: Skipping {0}</sys:String>
+    <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:RatelimitHit">Ratelimit hit. Resuming in {0}</sys:String>
+    <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:Failed">Download failed: {0}</sys:String>
+    <!-- NEEDS TRANSLATING -->
 
     <!-- Themes Class -->
-    <sys:String x:Key="Themes:ThemeNotFound">Design nicht gefunden, gehe zurück zum Standart Design...</sys:String>
+    <sys:String x:Key="Themes:ThemeNotFound">Design nicht gefunden, gehe zurück zum Standard Design...</sys:String>
     <sys:String x:Key="Themes:ThemeSet">Design gesetzt auf: {0}.</sys:String>
     <sys:String x:Key="Themes:ThemeMissing">{0} existiert nicht.</sys:String>
     <sys:String x:Key="Themes:SavedTemplateTheme">Designvorlage &quot;{0}&quot; in Design Ordner gespeichert.</sys:String>

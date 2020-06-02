@@ -77,6 +77,7 @@ namespace ModAssistant.API
                 {
                     Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("Options:FailedPlaylistSong"), song.songName)}");
                     ModAssistant.Utils.Log($"Failed installing BeatSaver map: {song.songName} | {song.key} | {song.hash} | ({response?.response?.ratelimit?.Remaining})");
+                    App.CloseWindowOnFinish = false;
                     await Task.Delay(3 * 1000);
                     Errors++;
                 }

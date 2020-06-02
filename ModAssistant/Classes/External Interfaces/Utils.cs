@@ -69,6 +69,7 @@ namespace ModAssistant.API
             catch
             {
                 SetMessage((string)Application.Current.FindResource("OneClick:AssetInstallFailed"));
+                App.CloseWindowOnFinish = false;
             }
         }
     }

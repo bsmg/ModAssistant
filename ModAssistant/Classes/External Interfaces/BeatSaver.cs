@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows;
 using static ModAssistant.Http;
 
@@ -61,6 +62,7 @@ namespace ModAssistant.API
             {
                 ModAssistant.Utils.Log($"Failed downloading BeatSaver map: {id} | Error: {e.Message}", "ERROR");
                 Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Failed"), (map.Name ?? id))}");
+                App.CloseWindowOnFinish = false;
             }
             return map;
         }
@@ -71,6 +73,7 @@ namespace ModAssistant.API
             {
                 ModAssistant.Utils.Log($"Max tries reached: Skipping {url}", "ERROR");
                 Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitSkip"), url)}");
+                App.CloseWindowOnFinish = false;
                 throw new Exception("Max retries allowed");
             }
 
@@ -97,6 +100,7 @@ namespace ModAssistant.API
                 else
                 {
                     Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Failed"), url)}");
+                    App.CloseWindowOnFinish = false;
                     return response;
                 }
             }
@@ -109,9 +113,6 @@ namespace ModAssistant.API
                 return null;
             }
         }
-
-        [DllImport("msvcrt.dll", CallingConvention = CallingConvention.Cdecl)]
-        static extern int memcmp(byte[] b1, byte[] b2, long count);
 
         public static async Task<string> InstallMap(BeatSaverApiResponseMap Map, bool showNotification = true)
         {
@@ -133,23 +134,9 @@ namespace ModAssistant.API
 
             if (File.Exists(zip))
             {
-                byte[] zipMagicNumber = { 80, 75, 3, 4 };
-                byte[] magicNumber = new byte[4];
+                string mimeType = MimeMapping.GetMimeMapping(zip);
 
-                try
-                {
-                    using (FileStream fs = new FileStream(zip, FileMode.Open, FileAccess.Read))
-                    {
-                        fs.Read(magicNumber, 0, magicNumber.Length);
-                        fs.Close();
-                    }
-                }
-                catch
-                {
-                    return null;
-                }
-
-                if (!(magicNumber.Length == zipMagicNumber.Length && memcmp(magicNumber, zipMagicNumber, magicNumber.Length) == 0))
+                if (!mimeType.StartsWith("application/x-zip"))
                 {
                     ModAssistant.Utils.Log($"Failed extracting BeatSaver map: {zip} \n| Content: {string.Join("\n", File.ReadAllLines(zip))}", "ERROR");
                     throw new Exception("File not a zip.");
@@ -197,9 +184,9 @@ namespace ModAssistant.API
             return mapName;
         }
 
-        public static BeatSaver.BeatSaverRatelimit GetRatelimit(HttpResponseHeaders headers)
+        public static BeatSaverRatelimit GetRatelimit(HttpResponseHeaders headers)
         {
-            BeatSaver.BeatSaverRatelimit ratelimit = new BeatSaver.BeatSaverRatelimit();
+            BeatSaverRatelimit ratelimit = new BeatSaverRatelimit();
 
 
             if (headers.TryGetValues("Rate-Limit-Remaining", out IEnumerable<string> _remaining))
@@ -241,6 +228,8 @@ namespace ModAssistant.API
         {
             if (retries == 0)
             {
+                Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitSkip"), url)}");
+                App.CloseWindowOnFinish = false;
                 ModAssistant.Utils.Log($"Max tries reached: Couldn't download {url}", "ERROR");
                 throw new Exception("Max retries allowed");
             }
