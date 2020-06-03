@@ -174,15 +174,15 @@
             IsChecked="{Binding ReinstallInstalledMods, Mode=TwoWay}"
             Unchecked="ReinstallInstalled_Unchecked" />
 
-        <TextBlock
-            Grid.Row="7"
-            Margin="5"
+         <ComboBox
             HorizontalAlignment="Left"
-            FontSize="16"
-            FontWeight="Bold">
-            <TextBlock Text="{DynamicResource Options:EnableOneClickInstalls}" />
-            : ↳
-        </TextBlock>
+            Margin="5"
+            Grid.Row="8"
+            Grid.RowSpan="2"
+            FontWeight="Bold"
+            Width="238"
+            Text="{DynamicResource Options:EnableOneClickInstalls}"
+            FontSize="16">
 
         <TextBlock
             Grid.Row="8"
@@ -195,6 +195,7 @@
             Name="BeatSaverProtocolHandler"
             Grid.Row="8"
             Grid.Column="1"
+            Margin="0,-25,5,5"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Checked="BeatSaverProtocolHandler_Checked"
@@ -212,6 +213,7 @@
             Name="ModelSaberProtocolHandler"
             Grid.Row="9"
             Grid.Column="1"
+            Margin="0,-25,5,5"      
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Checked="ModelSaberProtocolHandler_Checked"
@@ -229,6 +231,7 @@
             Name="PlaylistProtocolHandler"
             Grid.Row="10"
             Grid.Column="1"
+            Margin="0,-25,5,5"      
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Checked="PlaylistsProtocolHandler_Checked"
@@ -246,11 +249,13 @@
             Name="CloseWindowToggle"
             Grid.Row="11"
             Grid.Column="1"
+            Margin="0,-25,5,5"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Checked="CloseWindowOnFinish_Checked"
             IsChecked="{Binding CloseWindowOnFinish}"
             Unchecked="CloseWindowOnFinish_Unchecked" />
+        </ComboBox>
 
         <StackPanel
             Grid.Row="12"
