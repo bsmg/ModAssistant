@@ -140,6 +140,8 @@
     <sys:String x:Key="Options:EnableOneClickInstalls">Включить OneClick™ установки</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
+    <sys:String x:Key="Options:Playlists">Playlists</sys:String>
+    <sys:String x:Key="Options:CloseWindow">Закрыть окно после окончания установки</sys:String>
     <sys:String x:Key="Options:GameType">Тип игры</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
