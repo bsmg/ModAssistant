@@ -137,7 +137,7 @@
     <sys:String x:Key="Options:CheckInstalledMods">Detect Installed Mods</sys:String>
     <sys:String x:Key="Options:SelectInstalledMods">Select Installed Mods</sys:String>
     <sys:String x:Key="Options:ReinstallInstalledMods">Reinstall Installed Mods</sys:String>
-    <sys:String x:Key="Options:EnableOneClickInstalls">Enable OneClick™ Installs</sys:String>
+    <sys:String x:Key="Options:EnableOneClickInstalls">Enable OneClick™ Installs : ↳</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
     <sys:String x:Key="Options:Playlists">Playlists</sys:String>
