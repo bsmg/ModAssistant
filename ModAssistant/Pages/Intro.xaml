@@ -110,9 +110,9 @@
             Orientation="Horizontal">
             <Button
                 Name="Agree"
-                Width="100"
                 Height="35"
                 Margin="0,0,10,0"
+                Padding="20,0,20,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Click="Agree_Click">
@@ -124,9 +124,9 @@
             </Button>
             <Button
                 Name="Disagree"
-                Width="100"
                 Height="35"
                 Margin="10,0,0,0"
+                Padding="20,0,20,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Click="Disagree_Click">
