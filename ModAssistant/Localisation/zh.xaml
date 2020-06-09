@@ -55,6 +55,8 @@
     </Span>
     <Span x:Key="Intro:ReviewsRustySpoon">
         如果我继续看到因为Mod不可用而留下的差评，<Bold>我会亲自干掉Mod。</Bold>
+        <LineBreak/><LineBreak/>
+        <Bold>请勿</Bold>从<Bold>围城</Bold>那里购买BS资源，<Bold><Span Foreground="Red">切勿支持恰烂钱！</Span></Bold>
     </Span>
     <Span x:Key="Intro:WikiGuide">
         <Bold><Span Foreground="Red">请务必阅读</Span>
