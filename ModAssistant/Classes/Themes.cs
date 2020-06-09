@@ -433,9 +433,19 @@ namespace ModAssistant
 
         private static BitmapImage GetImageFromEmbeddedResources(string themeName, string imageName)
         {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceNames = assembly.GetManifestResourceNames();
+            var desiredResourceName = $"ModAssistant.Themes.{themeName}.{imageName}.png";
+
+            // Don't attempt to access non-existent manifest resources
+            if (!resourceNames.Contains(desiredResourceName))
+            {
+                return null;
+            }
+
             try
             {
-                using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"ModAssistant.Themes.{themeName}.{imageName}.png"))
+                using (Stream stream = assembly.GetManifestResourceStream(desiredResourceName))
                 {
                     byte[] imageBytes = new byte[stream.Length];
                     stream.Read(imageBytes, 0, (int)stream.Length);
