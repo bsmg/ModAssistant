@@ -716,8 +716,14 @@ namespace ModAssistant.Pages
 
         private void CopyText(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            System.Windows.Clipboard.SetText(((TextBlock)sender).Text);
-            Utils.SendNotify("Copied text to clipboard");
+            var textBlock = sender as TextBlock;
+            if (textBlock == null) { return; }
+            var text = textBlock.Text;
+
+            // Ensure there's text to be copied
+            if (string.IsNullOrWhiteSpace(text)) { return; }
+
+            Utils.SetClipboard(text);
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
