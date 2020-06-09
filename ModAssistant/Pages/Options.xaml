@@ -179,8 +179,7 @@
             Grid.Column="0"
             Margin="5"
             Background="Transparent"
-            BorderBrush="Transparent"
-            >
+            BorderBrush="Transparent">
             <MenuItem
                 Header="{DynamicResource Options:EnableOneClickInstalls}"
                 StaysOpenOnClick="True"
