@@ -177,47 +177,47 @@
         <Menu
             Grid.Row="8"
             Grid.Column="0"
-            Margin="0,5,5,5">
+            Margin="5,5,5,5"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            >
             <MenuItem
                 Header="{DynamicResource Options:EnableOneClickInstalls}"
-                StaysOpenOnClick="True">
+                StaysOpenOnClick="True"
+                    Padding="5,0,5,0">
                 <MenuItem
+                    Padding="5,0,5,0"
                     Header="{DynamicResource Options:BeatSaver}"
                     Name="BeatSaverProtocolHandler"
                     IsCheckable="True"
                     StaysOpenOnClick="True"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
                     Checked="BeatSaverProtocolHandler_Checked"
                     IsChecked="{Binding BeatSaverProtocolHandlerEnabled}"
                     Unchecked="BeatSaverProtocolHandler_Unchecked"/>
                 <MenuItem
+                    Padding="5,0,5,0"
                     Header="{DynamicResource Options:ModelSaber}"
                     Name="ModelSaberProtocolHandler"
                     IsCheckable="True"
                     StaysOpenOnClick="True"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
                     Checked="ModelSaberProtocolHandler_Checked"
                     IsChecked="{Binding ModelSaberProtocolHandlerEnabled}"
                     Unchecked="ModelSaberProtocolHandler_Unchecked"/>
                 <MenuItem
+                    Padding="5,0,5,0"
                     Header="{DynamicResource Options:Playlists}"
                     Name="PlaylistProtocolHandler"
                     IsCheckable="True"
                     StaysOpenOnClick="True"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
                     Checked="PlaylistsProtocolHandler_Checked"
                     IsChecked="{Binding PlaylistsProtocolHandlerEnabled}"
                     Unchecked="PlaylistsProtocolHandler_Unchecked" />
                 <MenuItem
+                    Padding="5,0,5,0"
                     Header="{DynamicResource Options:CloseWindow}"
                     Name="CloseWindowToggle"
                     IsCheckable="True"
                     StaysOpenOnClick="True"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
                     Checked="CloseWindowOnFinish_Checked"
                     IsChecked="{Binding CloseWindowOnFinish}"
                     Unchecked="CloseWindowOnFinish_Unchecked" />
