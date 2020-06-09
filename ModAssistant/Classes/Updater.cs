@@ -16,6 +16,7 @@ namespace ModAssistant
         private static Version LatestVersion;
         private static bool NeedsUpdate = false;
         private static string NewExe = Path.Combine(Path.GetDirectoryName(Utils.ExePath), "ModAssistant.exe");
+        private static string Arguments = App.Arguments;
 
         public static async Task<bool> CheckForUpdate()
         {
@@ -77,7 +78,7 @@ namespace ModAssistant
 
         private static void RunNew()
         {
-            Process.Start(NewExe);
+            Process.Start(NewExe, Arguments);
             Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
         }
     }

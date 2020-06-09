@@ -1,6 +1,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -309,7 +310,7 @@ namespace ModAssistant
 
         public static string GetManualDir()
         {
-            var dialog = new Microsoft.Win32.SaveFileDialog()
+            var dialog = new SaveFileDialog()
             {
                 Title = (string)Application.Current.FindResource("Utils:InstallDir:DialogTitle"),
                 Filter = "Directory|*.this.directory",
@@ -335,6 +336,22 @@ namespace ModAssistant
                     }
                     return SetDir(path, store);
                 }
+            }
+            return null;
+        }
+
+        public static string GetManualFile(string filter = "", string title = "Open File")
+        {
+            var dialog = new OpenFileDialog()
+            {
+                Title = title,
+                Filter = filter,
+                Multiselect = false,
+            };
+
+            if (dialog.ShowDialog() == true)
+            {
+                return dialog.FileName;
             }
             return null;
         }
@@ -385,6 +402,13 @@ namespace ModAssistant
                 catch { }
             }
             MessageBox.Show($"{string.Format((string)Application.Current.FindResource("Utils:CannotOpenFolder"), location)}.");
+        }
+
+        public static void Log(string message, string severity = "LOG")
+        {
+            string path = Path.GetDirectoryName(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath);
+            string logFile = $"{path}{Path.DirectorySeparatorChar}log.log";
+            File.AppendAllText(logFile, $"[{DateTime.UtcNow.ToString("yyyy-mm-dd HH:mm:ss.ffffff")}][{severity.ToUpper()}] {message}\n");
         }
 
         public static async Task Download(string link, string output)

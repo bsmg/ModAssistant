@@ -55,6 +55,10 @@
     </Span>
     <Span x:Key="Intro:ReviewsRustySpoon">
         如果我继续看到因为Mod不可用而留下的差评，<Bold>我会亲自干掉Mod。</Bold>
+        <LineBreak/><LineBreak/>
+        我们发现<Bold><Span Foreground="Red"> 围城 </Span>的网站<Span Foreground="Red">未经作者同意擅自打包贩卖</Span></Bold>歌曲、模型，并抹黑社区中的成员。
+        <LineBreak/>
+        <Bold>请各位玩家引以为鉴，不要攻击其他玩家或支持这种行为，谢谢配合。</Bold>
     </Span>
     <Span x:Key="Intro:WikiGuide">
         <Bold><Span Foreground="Red">请务必阅读</Span>
@@ -63,7 +67,7 @@
         </Hyperlink>
         </Bold>，以及
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
-            新手指南(英文)
+            新手指南（英文）
         </Hyperlink>。
     </Span>
     <sys:String x:Key="Intro:AgreeButton">同意</sys:String>
@@ -94,6 +98,7 @@
     <sys:String x:Key="Mods:UninstallBox:Body2">这可能会导致其他Mod不可用。</sys:String>
     <sys:String x:Key="Mods:FailedExtract">{0}解压失败，将在{1}秒后重试。（{2}/{3}）</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">{0}在重试{1}次后仍然无法解压，将被跳过。注意，这个Mod可能无法使用。</sys:String>
+    <sys:String x:Key="Mods:SearchLabel">搜索...</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">关于</sys:String>
@@ -131,9 +136,16 @@
     <sys:String x:Key="Options:EnableOneClickInstalls">在以下站点启用OneClick™一键安装：</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
+    <sys:String x:Key="Options:Playlists">Playlists</sys:String>
+    <sys:String x:Key="Options:CloseWindow">安装完成时关闭窗口</sys:String>
     <sys:String x:Key="Options:GameType">游戏类型</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
+    <sys:String x:Key="Options:Tools">工具</sys:String>
+    <sys:String x:Key="Options:InstallPlaylist">添加歌单（Playlist）</sys:String>
+    <sys:String x:Key="Options:InstallingPlaylist">正在添加歌单：{0}</sys:String>
+    <sys:String x:Key="Options:FailedPlaylistSong">失败歌曲：{0}</sys:String>
+    <sys:String x:Key="Options:FinishedPlaylist">[{0}失败]添加{1}完成</sys:String>
     <sys:String x:Key="Options:Diagnostics">诊断工具</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">打开日志</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">打开游戏存档</sys:String>
@@ -197,11 +209,15 @@
     <sys:String x:Key="OneClick:SongDownload:NetworkIssues">可能您的互联网连接或BeatSaver存在问题。</sys:String>
     <sys:String x:Key="OneClick:SongDownload:FailedTitle">下载歌曲压缩包失败。</sys:String>
     <sys:String x:Key="OneClick:InstallDirNotFound">找不到Beat Saber安装路径。</sys:String>
-    <sys:String x:Key="OneClick:InstalledAsset">已安装：{0}</sys:String>
+    <sys:String x:Key="OneClick:InstalledAsset">已添加：{0}</sys:String>
     <sys:String x:Key="OneClick:AssetInstallFailed">安装失败。</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ 一键安装处理程序已注册！</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ 一键安装处理程序已移除！</sys:String>
-
+    <sys:String x:Key="OneClick:Installing">正在下载：{0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitSkip">超过重试次数，跳过：{0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitHit">下载超时，重试：{0}</sys:String>
+    <sys:String x:Key="OneClick:Failed">下载失败：{0}</sys:String>
+    
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">找不到主题，恢复为默认主题...</sys:String>
     <sys:String x:Key="Themes:ThemeSet">主题设置为{0}.</sys:String>

@@ -1,0 +1,243 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ModAssistant"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="ResourceDictionaryName">i18n:ko-KR</sys:String>
+
+    <!-- App -->
+    <sys:String x:Key="App:InstallDirDialog:Title">비트세이버 설치 폴더를 찾을 수 없습니다!</sys:String>
+    <sys:String x:Key="App:InstallDirDialog:OkCancel">OK를 눌러 재시도하거나, Cancel을 눌러 프로그램을 종료할 수 있습니다.</sys:String>
+    <sys:String x:Key="App:InvalidArgument">유효하지 않은 인수입니다! '{0}'은 옵션을 필요로 합니다.</sys:String>
+    <sys:String x:Key="App:UnrecognizedArgument">인식할 수 없는 인수입니다. 모드 어시스턴트를 종료합니다.</sys:String>
+    <sys:String x:Key="App:UnhandledException">처리되지 않은 예외가 발생했습니다.</sys:String>
+    <sys:String x:Key="App:Exception">예외</sys:String>
+
+    <!-- Main Window -->
+    <sys:String x:Key="MainWindow:WindowTitle">모드 어시스턴트</sys:String>
+    <sys:String x:Key="MainWindow:IntroButton">인트로</sys:String>
+    <sys:String x:Key="MainWindow:ModsButton">모드</sys:String>
+    <sys:String x:Key="MainWindow:AboutButton">정보</sys:String>
+    <sys:String x:Key="MainWindow:OptionsButton">옵션</sys:String>
+    <sys:String x:Key="MainWindow:GameVersionLabel">게임 버전</sys:String>
+    <sys:String x:Key="MainWindow:VersionLabel">버전</sys:String>
+    <sys:String x:Key="MainWindow:ModInfoButton">모드 설명</sys:String>
+    <sys:String x:Key="MainWindow:InstallButtonTop">설치</sys:String>
+    <sys:String x:Key="MainWindow:InstallButtonBottom">또는 업데이트</sys:String>
+    <sys:String x:Key="MainWindow:GameVersionLoadFailed">게임 버전을 로드할 수 없었기 때문에 모드 탭이 비활성화됩니다.</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Title">새로운 게임 버전이 감지되었습니다!</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Line1">게임 업데이트가 있었던 것 같습니다.</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Line2">왼쪽 아래에 선택된 버전이 맞는 버전인지 다시 한번 확인해주세요!</sys:String>
+    <sys:String x:Key="MainWindow:NoModSelected">아무런 모드도 선택되지 않았습니다!</sys:String>
+    <sys:String x:Key="MainWindow:NoModInfoPage">{0}는 설명 페이지를 가지고 있지 않습니다.</sys:String>
+
+    <!-- Intro Page -->
+    <sys:String x:Key="Intro:Title">인트로</sys:String>
+    <sys:String x:Key="Intro:PageTitle">모드 어시스턴트에 어서오세요</sys:String>
+    <sys:String x:Key="Intro:Terms:Header">이 페이지를 정독해주세요</sys:String>
+    <Span x:Key="Intro:Terms:Line1">
+        이 프로그램을 사용하려면 다음 약관을 읽고 동의해야 합니다:
+    </Span>
+    <Span x:Key="Intro:Terms:Line2">
+        비트세이버는 공식적으로 모드를
+        <Bold>지원하지 않습니다.</Bold>
+    </Span>
+    <Span x:Key="Intro:Terms:Term1">
+        이것은 모드들이 매 업데이트마다
+        <Bold>망가진다는 것을</Bold> 의미합니다. 이것은 일반적이며, Beat Games'의 탓이
+        <Bold>아닙니다.</Bold>
+    </Span>
+    <Span x:Key="Intro:Terms:Term2">
+        모드들은 버그와 성능 문제를
+        <Bold>발생시킵니다.</Bold> 이것은 Beat Games'의 탓이
+        <Bold>아닙니다.</Bold> 
+    </Span>
+    <Span x:Key="Intro:Terms:Term3">
+        모드들은
+        <Bold>무료로</Bold> 만들어졌으며 모더들의
+        <Bold>소중한 시간의 결과물입니다.</Bold>기다림을 갖고 이해해주세요.
+    </Span>
+    <Span x:Key="Intro:ReviewsBeatGamesFault">
+        모드가 망가진 것 때문에 게임에 대한 부정적인 의견을<Bold>남기지 마세요.</Bold> 이것은 Beat Games'의 탓이
+        <Bold>아닙니다.</Bold>
+        <LineBreak/> Beat Games'는 모드를 죽이려 하지 않습니다.
+    </Span>
+    <Span x:Key="Intro:ReviewsRustySpoon">
+        만일 사람들이 모드가
+        <Italic>망가진 것을 이유로</Italic> 부정적인 의견을 남기는 것을 계속 보게 된다면,
+        <LineBreak/>
+        <Bold>제가 개인적으로 모드를 터트릴지도요..?</Bold>
+    </Span>
+    <Span x:Key="Intro:WikiGuide">
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
+            위키
+        </Hyperlink>에 있는 초보자 가이드를 읽어주세요.
+    </Span>
+    <sys:String x:Key="Intro:AgreeButton">동의합니다</sys:String>
+    <sys:String x:Key="Intro:DisagreeButton">거부합니다</sys:String>
+    <sys:String x:Key="Intro:ClosingApp">어플리케이션을 종료합니다: 당신은 약관에 동의하지 않았습니다.</sys:String>
+    <sys:String x:Key="Intro:VersionDownloadFailed">버전 리스트를 다운로드할 수 없었습니다</sys:String>
+    <sys:String x:Key="Intro:ModsTabDisabled">모드 탭이 비활성화되었습니다. 어시스턴트를 재시작해주세요.</sys:String>
+    <sys:String x:Key="Intro:ModsTabEnabled">이제 모드 탭을 사용할 수 있습니다!</sys:String>
+
+    <!-- Mods Page -->
+    <sys:String x:Key="Mods:Title">모드</sys:String>
+    <sys:String x:Key="Mods:Header:Name">이름</sys:String>
+    <sys:String x:Key="Mods:Header:Installed">설치 버전</sys:String>
+    <sys:String x:Key="Mods:Header:Latest">최신 버전</sys:String>
+    <sys:String x:Key="Mods:Header:Description">설명</sys:String>
+    <sys:String x:Key="Mods:Header:Uninstall">제거</sys:String>
+    <sys:String x:Key="Mods:UninstallButton">제거</sys:String>
+    <sys:String x:Key="Mods:LoadFailed">모드 목록을 불러올 수 없었습니다</sys:String>
+    <sys:String x:Key="Mods:CheckingInstalledMods">설치된 모드들을 확인하고 있습니다</sys:String>
+    <sys:String x:Key="Mods:LoadingMods">모드들을 불러오고 있습니다</sys:String>
+    <sys:String x:Key="Mods:FinishedLoadingMods">모드들을 불러왔습니다</sys:String>
+    <sys:String x:Key="Mods:InstallingMod">Installing {0}</sys:String>
+    <sys:String x:Key="Mods:InstalledMod">Installed {0}</sys:String>
+    <sys:String x:Key="Mods:FinishedInstallingMods">모드 설치를 마쳤습니다</sys:String>
+    <sys:String x:Key="Mods:ModDownloadLinkMissing">{0}를 위한 다운로드 링크를 찾을 수 없었습니다</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Title">{0}를 제거하시겠습니까?</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Body1">정말로 {0}를 제거하시겠습니까?</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Body2">다른 모드를 사용 못하게 만들 수도 있습니다.</sys:String>
+    <sys:String x:Key="Mods:FailedExtract">{0}를 추출하는데 실패했습니다. {1}초 안에 재시도합니다. ({2}/{3})</sys:String>
+    <sys:String x:Key="Mods:FailedExtractMaxReached">({1})회동안 {0}를 추출하는데 실패했습니다. 이 모드가 제대로 작동하지 않을지도 모릅니다</sys:String>
+    <sys:String x:Key="Mods:SearchLabel">Search...</sys:String> <!-- NEEDS TRANSLATING -->
+
+    <!-- About Page -->
+    <sys:String x:Key="About:Title">정보</sys:String>
+    <sys:String x:Key="About:PageTitle">모드 어시스턴트에 대하여</sys:String>
+    <sys:String x:Key="About:List:Header">I'm Assistant, and I made Mod Assistant for mod assistance, with a few principles in mind:</sys:String>
+    <sys:String x:Key="About:List:Item1">Simplicity</sys:String>
+    <sys:String x:Key="About:List:Item2">Portability</sys:String>
+    <sys:String x:Key="About:List:Item3">Single Executable</sys:String>
+    <sys:String x:Key="About:List:Item4">Responsible use</sys:String>
+    <Span x:Key="About:SupportAssistant">
+        If you enjoy this program and would like to support me, please visit my
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.assistant.moe/Donate/">
+            donation page
+        </Hyperlink>
+        or my
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/AssistantMoe">
+            Patreon
+        </Hyperlink>
+    </Span>
+    <sys:String x:Key="About:SpecialThanks">Special Thanks ♥</sys:String>
+    <sys:String x:Key="About:Donate">Donate</sys:String>
+    <sys:String x:Key="About:HeadpatsButton">Headpats</sys:String>
+    <sys:String x:Key="About:HugsButton">Hugs</sys:String>
+
+    <!-- Options Page -->
+    <sys:String x:Key="Options:Title">옵션</sys:String>
+    <sys:String x:Key="Options:PageTitle">설정</sys:String>
+    <sys:String x:Key="Options:InstallFolder">설치 폴더</sys:String>
+    <sys:String x:Key="Options:SelectFolderButton">폴더 선택</sys:String>
+    <sys:String x:Key="Options:OpenFolderButton">폴더 열기</sys:String>
+    <sys:String x:Key="Options:SaveSelectedMods">선택된 모드 저장</sys:String>
+    <sys:String x:Key="Options:CheckInstalledMods">설치된 모드 감지</sys:String>
+    <sys:String x:Key="Options:SelectInstalledMods">설치된 모드 선택</sys:String>
+    <sys:String x:Key="Options:ReinstallInstalledMods">설치된 모드 재설치</sys:String>
+    <sys:String x:Key="Options:EnableOneClickInstalls">OneClick™ 설치 활성화</sys:String>
+    <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
+    <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
+    <sys:String x:Key="Options:Playlists">Playlists</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:CloseWindow">Close window when finished</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:GameType">게임 유형</sys:String>
+    <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
+    <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
+    <sys:String x:Key="Options:Tools">Tools</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:InstallPlaylist">Install Playlist</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:InstallingPlaylist">Installing Playlist: {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:FailedPlaylistSong">Failed song: {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:FinishedPlaylist">[{0} fails] Finished Installing Playlist: {1}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:Diagnostics">진단</sys:String>
+    <sys:String x:Key="Options:OpenLogsButton">로그 열기</sys:String>
+    <sys:String x:Key="Options:OpenAppDataButton">앱데이터 열기</sys:String>
+    <sys:String x:Key="Options:UninstallBSIPAButton">BSIPA 삭제</sys:String>
+    <sys:String x:Key="Options:RemoveAllModsButton">모든 모드 삭제</sys:String>
+    <sys:String x:Key="Options:ApplicationTheme">어플리케이션 테마</sys:String>
+    <sys:String x:Key="Options:ExportTemplateButton">템플릿 추출</sys:String>
+    <sys:String x:Key="Options:UploadingLog">로그 제출</sys:String>
+    <sys:String x:Key="Options:LogUrlCopied">로그 URL이 클립보드에 복사되었습니다!</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed">로그 제출에 실패하였습니다</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed:Title">로그 제출에 실패하였습니다!</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed:Body">Teknik에게 로그 파일을 제출하는데에 실패하였습니다. 재시도하거나 수동으로 파일을 보내주세요.</sys:String>
+    <sys:String x:Key="Options:GettingModList">모드 목록을 얻는중입니다</sys:String>
+    <sys:String x:Key="Options:FindingBSIPAVersion">BSIPA 버전을 찾는중입니다</sys:String>
+    <sys:String x:Key="Options:BSIPAUninstalled">BSIPA가 제거되었습니다</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:Title">모든 모드를 제거할까요?</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:RemoveAllMods">정말로 모든 모드를 제거할까요?</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:CannotBeUndone">이것은 취소할 수 없습니다.</sys:String>
+    <sys:String x:Key="Options:AllModsUninstalled">모든 모드가 제거되었습니다</sys:String>
+    <sys:String x:Key="Options:CurrentThemeRemoved">현재 테마를 제거중입니다. 원래 테마로 돌아갑니다...</sys:String>
+    <sys:String x:Key="Options:ThemeFolderNotFound">테마 폴더를 찾을 수 없습니다! 템플릿으로 내보냅니다...</sys:String>
+    <sys:String x:Key="Options:AppDataNotFound">AppData 폴더를 찾을 수 없습니다! 게임을 실행해보세요.</sys:String>
+
+    <!-- Loading Page -->
+    <sys:String x:Key="Loading:Loading">모드 로딩중</sys:String>
+
+    <!-- Invalid Page -->
+    <sys:String x:Key="Invalid:Title">잘못된 프로그램</sys:String>
+    <sys:String x:Key="Invalid:PageTitle">잘못된 프로그램 설치가 감지되었습니다</sys:String>
+    <sys:String x:Key="Invalid:PageSubtitle">게임이 손상되었거나 다른 이유로 잘못된 것 같습니다</sys:String>
+    <sys:String x:Key="Invalid:List:Header">이 오류는 게임이 불법적인 경로로 받아졌거나, 불법적인 경로로 받아진 게임을 당신의 정상적인 게임에 덮어씌워졌을 때에 발생합니다</sys:String>
+    <Span x:Key="Invalid:List:Line1">
+        만일 당신이 게임을 불법적인 경로로 받았다면,
+        <Bold>
+            <Hyperlink NavigateUri="https://beatgames.com/" local:HyperlinkExtensions.IsExternal="True">
+                여기서
+            </Hyperlink>
+        </Bold>게임을 구매해주세요.
+    </Span>
+    <Span x:Key="Invalid:List:Line2">
+        만일 당신의 게임이 불법적인 경로로 받아진게
+        <Bold>아니라면</Bold>,
+        <Hyperlink NavigateUri="https://bsmg.wiki/support#clean-installation" local:HyperlinkExtensions.IsExternal="True">
+            클린재설치
+        </Hyperlink>를 해주세요.
+    </Span>
+    <Span x:Key="Invalid:List:Line3">
+        만일 그것들이 도움되지 않았다면,
+        <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
+            BSMG
+        </Hyperlink>의
+        <Span Foreground="Blue">#support</Span> 채널에서 도움을 구하세요.
+    </Span>
+    <sys:String x:Key="Invalid:BoughtGame1">만일 불법적인 경로로 받아진 게임을 가지고 있었다가 게임을 구매했다면,</sys:String>
+    <sys:String x:Key="Invalid:SelectFolderButton">폴더를 선택해주세요</sys:String>
+    <sys:String x:Key="Invalid:BoughtGame2">정상적인 설치 이후 모드 어시스턴트를 재시작할 필요가 있습니다</sys:String>
+
+    <!-- OneClick Class -->
+    <sys:String x:Key="OneClick:MapDownloadFailed">맵의 세부정보를 얻어올 수 없었습니다.</sys:String>
+    <sys:String x:Key="OneClick:SongDownloadFailed">곡을 받아올 수 없었습니다.</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:Failed">곡을 받아올 수 없었습니다.</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:NetworkIssues">BeatSaver 또는 당신의 인터넷 연결에 문제가 있는 것 같습니다.</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:FailedTitle">노래 ZIP 파일을 받는 데에 실패했습니다.</sys:String>
+    <sys:String x:Key="OneClick:InstallDirNotFound">비트세이버 설치 폴더를 찾을 수 없었습니다.</sys:String>
+    <sys:String x:Key="OneClick:InstalledAsset">설치됨: {0}</sys:String>
+    <sys:String x:Key="OneClick:AssetInstallFailed">설치에 실패하였습니다.</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ 설치 관리자가 등록되었습니다!</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ 설치 관리자가 등록 취소되었습니다!</sys:String>
+    <sys:String x:Key="OneClick:Installing">Installing: {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:RatelimitSkip">Max tries reached: Skipping {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:RatelimitHit">Ratelimit hit. Resuming in {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:Failed">Download failed: {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    
+    <!-- Themes Class -->
+    <sys:String x:Key="Themes:ThemeNotFound">테마를 찾을 수 없어, 기본 테마로 돌아갑니다...</sys:String>
+    <sys:String x:Key="Themes:ThemeSet">{0} 테마로 설정합니다.</sys:String>
+    <sys:String x:Key="Themes:ThemeMissing">{0}는 존재하지 않습니다.</sys:String>
+    <sys:String x:Key="Themes:SavedTemplateTheme">템플릿 테마 &quot;{0}&quot;가 템플릿 폴더에 저장되었습니다.</sys:String>
+    <sys:String x:Key="Themes:TemplateThemeExists">템플릿 테마가 이미 존재합니다!</sys:String>
+    <sys:String x:Key="Themes:FailedToLoadXaml">테마를 위한 .xaml 파일을 불러오지 못했습니다 {0}: {1}</sys:String>
+
+    <!-- Updater Class -->
+    <sys:String x:Key="Updater:CheckFailed">업데이트를 확인할 수 없습니다.</sys:String>
+    <sys:String x:Key="Updater:DownloadFailed">업데이트를 다운로드할 수 없습니다.</sys:String>
+
+    <!-- Utils Class -->
+    <sys:String x:Key="Utils:NotificationTitle">모드 어시스턴트</sys:String>
+    <sys:String x:Key="Utils:NoInstallFolder">비트세이버 설치 폴더를 찾을 수 없습니다. 수동으로 선택해주세요.</sys:String>
+    <sys:String x:Key="Utils:RunAsAdmin">모드 어시스턴트는 이 작업을 관리자 권한으로 실행하는 것을 필요로 합니다. 다시 시도해주세요.</sys:String>
+    <sys:String x:Key="Utils:InstallDir:DialogTitle">비트세이버 설치 폴더를 선택해주세요</sys:String>
+    <sys:String x:Key="Utils:CannotOpenFolder">폴더를 열 수 없습니다: {0}</sys:String>
+</ResourceDictionary>

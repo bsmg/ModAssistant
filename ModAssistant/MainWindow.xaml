@@ -58,16 +58,17 @@
                     Margin="0,0,10,5"
                     Click="IntroButton_Click"
                     Style="{DynamicResource MainPageButton}">
-                    <StackPanel Margin="0,8,0,0">
+                    <StackPanel Margin="0,6,0,0">
                         <Image
                             Height="30"
                             VerticalAlignment="Bottom"
                             Source="{StaticResource info_circleDrawingImage}" />
-                        <TextBlock
-                            Margin="0,0,0,5"
+                        <Viewbox Stretch="Uniform" Height="16">
+                            <TextBlock
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom"
+                            Padding="2,0,2,0"
                             Text="{DynamicResource MainWindow:IntroButton}" />
+                        </Viewbox>
                     </StackPanel>
                 </Button>
 
@@ -84,11 +85,12 @@
                             Height="30"
                             VerticalAlignment="Bottom"
                             Source="{StaticResource microchipDrawingImage}" />
-                        <TextBlock
-                            Margin="0,0,0,5"
+                        <Viewbox Stretch="Uniform" Height="16">
+                            <TextBlock
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom"
+                            Padding="2,0,2,0"
                             Text="{DynamicResource MainWindow:ModsButton}" />
+                        </Viewbox>
                     </StackPanel>
                 </Button>
 
@@ -104,11 +106,12 @@
                             Height="30"
                             VerticalAlignment="Bottom"
                             Source="{StaticResource heartDrawingImage}" />
-                        <TextBlock
-                            Margin="0,0,0,5"
+                        <Viewbox Stretch="Uniform" Height="16">
+                            <TextBlock
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom"
+                            Padding="2,0,2,0"
                             Text="{DynamicResource MainWindow:AboutButton}" />
+                        </Viewbox>
                     </StackPanel>
                 </Button>
 
@@ -124,11 +127,12 @@
                             Height="30"
                             VerticalAlignment="Bottom"
                             Source="{StaticResource cogDrawingImage}" />
-                        <TextBlock
-                            Margin="0,0,0,5"
+                        <Viewbox Stretch="Uniform" Height="16">
+                            <TextBlock
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom"
+                            Padding="2,0,2,0"
                             Text="{DynamicResource MainWindow:OptionsButton}" />
+                        </Viewbox>
                     </StackPanel>
                 </Button>
 
@@ -166,8 +170,8 @@
             <Grid Grid.Row="1" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="115" />
-                    <ColumnDefinition Width="115" />
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
 
                 <Border
@@ -184,9 +188,10 @@
                 <Button
                     Name="InfoButton"
                     Grid.Column="1"
-                    Width="100"
                     Height="40"
-                    Margin="0,10,0,0"
+                    MinWidth="115"
+                    Margin="10,10,0,0"
+                    Padding="20,0,20,0"
                     HorizontalAlignment="Right"
                     Click="InfoButton_Click"
                     IsEnabled="False">
@@ -197,32 +202,27 @@
                             Text="{DynamicResource MainWindow:ModInfoButton}" />
                     </StackPanel>
                 </Button>
-
-                <StackPanel 
-                    Grid.Column="2" Orientation="Horizontal"
+                <Button
+                    Name="InstallButton"
+                    Grid.Column="2" 
                     Height="40"
-                    Width="100"
-                    Margin="0,10,0,0"
-                    HorizontalAlignment="Right">
-                    <Button
-                        Name="InstallButton"
-                        Width="100"
-                        Height="40"
-                        HorizontalAlignment="Right"
-                        Click="InstallButton_Click"
-                        IsEnabled="False">
-                        <StackPanel>
-                            <TextBlock
+                    MinWidth="115"
+                    Margin="10,10,0,0"
+                    Padding="20,0,20,0"
+                    HorizontalAlignment="Right"
+                    Click="InstallButton_Click"
+                    IsEnabled="False">
+                    <StackPanel>
+                        <TextBlock
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             Text="{DynamicResource MainWindow:InstallButtonTop}" />
-                            <TextBlock
+                        <TextBlock
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             Text="{DynamicResource MainWindow:InstallButtonBottom}" />
-                        </StackPanel>
-                    </Button>
-                </StackPanel>
+                    </StackPanel>
+                </Button>
             </Grid>
         </Grid>
     </Grid>
