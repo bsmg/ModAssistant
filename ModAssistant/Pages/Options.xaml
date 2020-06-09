@@ -212,7 +212,7 @@
                     Checked="PlaylistsProtocolHandler_Checked"
                     IsChecked="{Binding PlaylistsProtocolHandlerEnabled}"
                     Unchecked="PlaylistsProtocolHandler_Unchecked" />
-                <MenuItem
+                <!-- <MenuItem
                     Padding="5,0"
                     Header="{DynamicResource Options:CloseWindow}"
                     Name="CloseWindowToggle"
@@ -221,6 +221,7 @@
                     Checked="CloseWindowOnFinish_Checked"
                     IsChecked="{Binding CloseWindowOnFinish}"
                     Unchecked="CloseWindowOnFinish_Unchecked" />
+                -->
             </MenuItem>
         </Menu>
 
