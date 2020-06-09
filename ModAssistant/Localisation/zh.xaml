@@ -205,7 +205,7 @@
     <sys:String x:Key="OneClick:SongDownload:NetworkIssues">可能您的互联网连接或BeatSaver存在问题。</sys:String>
     <sys:String x:Key="OneClick:SongDownload:FailedTitle">下载歌曲压缩包失败。</sys:String>
     <sys:String x:Key="OneClick:InstallDirNotFound">找不到Beat Saber安装路径。</sys:String>
-    <sys:String x:Key="OneClick:InstalledAsset">已安装：{0}</sys:String>
+    <sys:String x:Key="OneClick:InstalledAsset">已添加：{0}</sys:String>
     <sys:String x:Key="OneClick:AssetInstallFailed">安装失败。</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ 一键安装处理程序已注册！</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ 一键安装处理程序已移除！</sys:String>
