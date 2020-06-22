@@ -198,7 +198,7 @@ namespace ModAssistant.Pages
                 await Task.Run(async () => await UploadLog());
 
                 System.Diagnostics.Process.Start(LogURL);
-                Clipboard.SetText(LogURL);
+                Utils.SetClipboard(LogURL);
                 MainWindow.Instance.MainText = (string)Application.Current.FindResource("Options:LogUrlCopied");
             }
             catch (Exception exception)

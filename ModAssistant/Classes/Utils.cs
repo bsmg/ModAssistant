@@ -439,5 +439,30 @@ namespace ModAssistant
             ShowMessageBoxDelegate caller = new ShowMessageBoxDelegate(ShowMessageBox);
             caller.BeginInvoke(Message, null, null, null);
         }
+
+        /// <summary>
+        /// Attempts to write the specified string to the <see cref="System.Windows.Clipboard"/>.
+        /// </summary>
+        /// <param name="text">The string to be written</param>
+        public static void SetClipboard(string text)
+        {
+            bool success = false;
+            try
+            {
+                Clipboard.SetText(text);
+                success = true;
+            }
+            catch (Exception)
+            {
+                // Swallow exceptions relating to writing data to clipboard.
+            }
+
+            // This could be placed in the try/catch block but we don't
+            // want to suppress exceptions for non-clipboard operations
+            if (success)
+            {
+                Utils.SendNotify($"Copied text to clipboard");
+            }
+        }
     }
 }
