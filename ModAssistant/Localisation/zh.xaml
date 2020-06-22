@@ -146,6 +146,10 @@
     <sys:String x:Key="Options:InstallingPlaylist">正在添加歌单：{0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">失败歌曲：{0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0}失败]添加{1}完成</sys:String>
+    <sys:String x:Key="Options:ShowOCIWindow">调整OneClick窗口显示方式</sys:String>
+    <sys:String x:Key="Options:OCIWindowYes">显示</sys:String>
+    <sys:String x:Key="Options:OCIWindowClose">完成后关闭</sys:String>
+    <sys:String x:Key="Options:OCIWindowNo">隐藏</sys:String>
     <sys:String x:Key="Options:Diagnostics">诊断工具</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">打开日志</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">打开游戏存档</sys:String>
