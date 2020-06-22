@@ -131,7 +131,7 @@ Examples:
   Make sure you're looking in the right place. Sometimes mod menus move as  modding libraries/practices change.
   
 **I don't see a certain mod in the mods list!**
-  Mod Assistant uses mods from [BeatMods](https://beatmods.com/) and shows the whatever is available there. If you need to install a mod manually, please refer to the [Beat Saber Modding Group Wiki](https://bsmg.wiki/pc-modding.html#manual-installation).
+  Mod Assistant uses mods from [BeatMods](https://beatmods.com/) and shows whatever is available for download. If you need to install a mod manually, please refer to the [Beat Saber Modding Group Wiki](https://bsmg.wiki/pc-modding.html#manual-installation).
   
 **I hit install but now my game won't launch, I can't click any buttons, I only see a black screen, etc**
   Please visit the [Beat Saber Modding Group](https://discord.gg/beatsabermods) `#pc-help` channels. Check the pinned messages or ask for help and see if you can work out things out.
