@@ -99,7 +99,7 @@
     <sys:String x:Key="Mods:UninstallBox:Body1"> Weet U zeker dat U {0} wilt verwijderen?</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Body2">Dit zou uw andere mods niet meer kunnen laten werken</sys:String>
     <sys:String x:Key="Mods:FailedExtract">Kon {0} niet extracten, probeer opniew over {1} seconden. ({2}/{3})</sys:String>
-    <sys:String x:Key="Mods:FailedExtractMaxReached">Kon {0} niet extracten na maximaal aantal pogingen ({1}), Overslaan. Deze mod werkt msischien niet goed dus ga verder op eigen risico</sys:String>
+    <sys:String x:Key="Mods:FailedExtractMaxReached">Kon {0} niet uitpakken na maximaal aantal pogingen ({1}), deze word nu overgeslagen. Deze mod werkt misschien niet goed dus ga verder op eigen risico</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Zoek...</sys:String>
 
     <!-- About Page -->
