@@ -226,6 +226,7 @@
     <sys:String x:Key="OneClick:RatelimitSkip">Max tries reached: Skipping {0}</sys:String>
     <sys:String x:Key="OneClick:RatelimitHit">Ratelimit hit. Resuming in {0}</sys:String>
     <sys:String x:Key="OneClick:Failed">Download failed: {0}</sys:String>
+    <sys:String x:Key="OneClick:Done">Done'd</sys:String>
 
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">Theme not found, reverting to default theme...</sys:String>

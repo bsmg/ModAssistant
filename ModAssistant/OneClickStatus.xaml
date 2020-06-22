@@ -61,6 +61,7 @@
                 Source="{DynamicResource loadingMiddleDrawingImage}"
                 Stretch="Uniform" />
             <Image
+                Name="Ring"
                 Grid.Row="0"
                 Margin="60,0"
                 VerticalAlignment="Center"
@@ -70,11 +71,26 @@
         </Grid>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <Border
                 Grid.Row="0"
+                Height="40"
+                                Margin="10,0,10,10"
+
+                VerticalAlignment="Bottom"
+                BorderBrush="{DynamicResource BottomStatusBarOutline}"
+                BorderThickness="1">
+                <TextBlock
+                        Name="MainTextBlock"
+                        Padding="5"
+                        Background="{DynamicResource BottomStatusBarBackground}"
+                        FontSize="20" />
+            </Border>
+            <Border
+                Grid.Row="1"
                 Margin="10,0,10,10"
                 BorderBrush="{DynamicResource BottomStatusBarOutline}"
                 BorderThickness="1">

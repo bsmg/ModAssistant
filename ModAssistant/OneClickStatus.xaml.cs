@@ -26,12 +26,13 @@ namespace ModAssistant
         {
             get
             {
-                return HistoryTextBlock.Text;
+                return MainTextBlock.Text;
             }
             set
             {
                 Dispatcher.Invoke(new Action(() => {
-                    OneClickStatus.Instance.HistoryTextBlock.Text = string.IsNullOrEmpty(MainText) ? $"{value}" : $"{value}\n{MainText}";
+                    OneClickStatus.Instance.MainTextBlock.Text = value;
+                    OneClickStatus.Instance.HistoryTextBlock.Text = string.IsNullOrEmpty(MainText) ? $"{value}" : $"{value}\n{HistoryText}";
                 }));
             }
         }
@@ -40,6 +41,11 @@ namespace ModAssistant
         {
             InitializeComponent();
             Instance = App.OCIWindow != "No" ? this : null;
+        }
+
+        public void StopRotation()
+        {
+            Ring.Style = null;
         }
     }
 

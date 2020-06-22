@@ -28,6 +28,11 @@ namespace ModAssistant
                     await Playlist(uri);
                     break;
             }
+            if (App.OCIWindow != "No")
+            {
+                Status.StopRotation();
+                API.Utils.SetMessage((string)Application.Current.FindResource("OneClick:Done"));
+            }
             if (App.OCIWindow == "Close")
             {
                 await Task.Delay(3000);
