@@ -39,7 +39,7 @@ namespace ModAssistant
         public OneClickStatus()
         {
             InitializeComponent();
-            Instance = this;
+            Instance = App.OCIWindow != "No" ? this : null;
         }
     }
 

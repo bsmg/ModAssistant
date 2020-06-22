@@ -202,5 +202,17 @@ namespace ModAssistant.Properties {
                 this["LanguageCode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string OCIWindow {
+            get {
+                return ((string)(this["OCIWindow"]));
+            }
+            set {
+                this["OCIWindow"] = value;
+            }
+        }
     }
 }

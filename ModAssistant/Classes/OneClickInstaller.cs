@@ -28,6 +28,11 @@ namespace ModAssistant
                     await Playlist(uri);
                     break;
             }
+            if (App.OCIWindow == "Close")
+            {
+                await Task.Delay(3000);
+                Application.Current.Shutdown();
+            }
         }
 
         private static async Task BeatSaver(Uri uri)
@@ -38,14 +43,14 @@ namespace ModAssistant
 
         private static async Task ModelSaber(Uri uri)
         {
-            Status.Show();
+            if (App.OCIWindow != "No") Status.Show();
             API.Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Installing"), System.Web.HttpUtility.UrlDecode(uri.Segments.Last()))}");
             await API.ModelSaber.GetModel(uri);
         }
 
         private static async Task Playlist(Uri uri)
         {
-            Status.Show();
+            if (App.OCIWindow != "No") Status.Show();
             await API.Playlists.DownloadAll(uri);
         }
 

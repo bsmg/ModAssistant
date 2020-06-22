@@ -16,13 +16,19 @@ namespace ModAssistant.API
 
         public static void SetMessage(string message)
         {
-            if (App.window == null)
+            if (App.OCIWindow != "No")
             {
-                OneClickStatus.Instance.MainText = message;
-            }
-            else
-            {
-                MainWindow.Instance.MainText = message;
+                if (App.window == null)
+                {
+                    if (App.OCIWindow == "No") OneClickStatus.Instance = null;
+                    if (OneClickStatus.Instance == null) return;
+
+                    OneClickStatus.Instance.MainText = message;
+                }
+                else
+                {
+                    MainWindow.Instance.MainText = message;
+                }
             }
         }
 

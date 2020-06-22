@@ -150,6 +150,10 @@
     <sys:String x:Key="Options:InstallingPlaylist">Installing Playlist: {0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">Failed song: {0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0} fails] Finished Installing Playlist: {1}</sys:String>
+    <sys:String x:Key="Options:ShowOCIWindow">Show OneClick Installer Window</sys:String>
+    <sys:String x:Key="Options:OCIWindowYes">Yes</sys:String>
+    <sys:String x:Key="Options:OCIWindowClose">Close</sys:String>
+    <sys:String x:Key="Options:OCIWindowNo">No</sys:String>
     <sys:String x:Key="Options:Diagnostics">Diagnostics</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Open Logs</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">Open AppData</sys:String>

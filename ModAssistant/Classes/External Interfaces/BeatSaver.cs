@@ -20,13 +20,13 @@ namespace ModAssistant.API
 
         public static async Task<BeatSaverMap> GetFromKey(string Key, bool showNotification = true)
         {
-            if (showNotification) OneClickInstaller.Status.Show();
+            if (showNotification && App.OCIWindow != "No") OneClickInstaller.Status.Show();
             return await GetMap(Key, "key", showNotification);
         }
 
         public static async Task<BeatSaverMap> GetFromHash(string Hash, bool showNotification = true)
         {
-            if (showNotification) OneClickInstaller.Status.Show();
+            if (showNotification && App.OCIWindow != "No") OneClickInstaller.Status.Show();
             return await GetMap(Hash, "hash", showNotification);
         }
 

@@ -156,7 +156,7 @@
             Checked="SelectInstalled_Checked"
             IsChecked="{Binding SelectInstalledMods, Mode=TwoWay}"
             Unchecked="SelectInstalled_Unchecked" />
-        
+
         <TextBlock
             Grid.Row="6"
             Margin="50,5,5,5"
@@ -223,6 +223,30 @@
                 -->
             </MenuItem>
         </Menu>
+
+        <StackPanel
+            Grid.Row="9"
+            Grid.ColumnSpan="2"
+            Orientation="Horizontal">
+            <TextBlock
+                Margin="5,5,10,5"
+                HorizontalAlignment="Left"
+                FontSize="16"
+                FontWeight="Bold"
+                Text="{DynamicResource Options:ShowOCIWindow}" />
+            <ComboBox
+                Margin="0,0,0,5"
+                MinWidth="80"
+                Name="ShowOCIWindowComboBox"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Bottom"
+                SelectionChanged="ShowOCIWindowComboBox_SelectionChanged">
+                <ComboBoxItem Tag="Yes" Content="{DynamicResource Options:OCIWindowYes}" />
+                <ComboBoxItem Tag="Close" Content="{DynamicResource Options:OCIWindowClose}" />
+                <ComboBoxItem Tag="No" Content="{DynamicResource Options:OCIWindowNo}"/>
+            </ComboBox>
+        </StackPanel>
+
 
         <StackPanel
             Grid.Row="12"
@@ -305,7 +329,7 @@
                 Click="InstallPlaylistButton_Click"
                 Content="{DynamicResource Options:InstallPlaylist}" />
         </StackPanel>
-   
+
         <TextBlock
             Grid.Row="16"
             Margin="15,5,5,5"

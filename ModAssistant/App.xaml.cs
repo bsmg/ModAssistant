@@ -28,7 +28,7 @@ namespace ModAssistant
         public static string Arguments;
         public static bool Update = true;
         public static bool GUI = true;
-
+        public static string OCIWindow;
 
         private async void Application_Startup(object sender, StartupEventArgs e)
         {
@@ -43,6 +43,11 @@ namespace ModAssistant
             }
 
             Version = Version.Substring(0, Version.Length - 2);
+            OCIWindow = ModAssistant.Properties.Settings.Default.OCIWindow;
+            if (string.IsNullOrEmpty(OCIWindow))
+            {
+                OCIWindow = "Yes";
+            }
             Pages.Options options = Pages.Options.Instance;
             options.InstallDirectory =
                 BeatSaberInstallDirectory = Utils.GetInstallDir();
@@ -79,6 +84,7 @@ namespace ModAssistant
 
             await ArgumentHandler(e.Args);
             await Init();
+            options.UpdateOCIWindow(OCIWindow);
         }
 
         private async Task Init()
