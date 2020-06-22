@@ -34,22 +34,14 @@ namespace ModAssistant.Pages
         public Options()
         {
             InitializeComponent();
-            InstallDirectory = App.BeatSaberInstallDirectory;
-            InstallType = App.BeatSaberInstallType;
-            SaveSelection = App.SaveModSelection;
-            CheckInstalledMods = App.CheckInstalledMods;
-            SelectInstalledMods = App.SelectInstalledMods;
-            ReinstallInstalledMods = App.ReinstallInstalledMods;
-            CloseWindowOnFinish = App.CloseWindowOnFinish;
+
             if (!CheckInstalledMods)
             {
                 SelectInstalled.IsEnabled = false;
                 ReinstallInstalled.IsEnabled = false;
             }
                 
-
             UpdateHandlerStatus();
-
             this.DataContext = this;
         }
 
