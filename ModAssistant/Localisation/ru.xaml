@@ -140,8 +140,8 @@
     <sys:String x:Key="Options:EnableOneClickInstalls">Включить OneClick™ установки</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
-    <sys:String x:Key="Options:Playlists">Playlists</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:CloseWindow">Close window when finished</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:Playlists">Плейлисты</sys:String> 
+    <sys:String x:Key="Options:CloseWindow">Закрыть окно после окончания установки</sys:String> 
     <sys:String x:Key="Options:GameType">Тип игры</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
@@ -218,10 +218,10 @@
     <sys:String x:Key="OneClick:AssetInstallFailed">Ошибка установки.</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ установки зарегистрированы</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ установки не зарегистрированы!</sys:String>
-    <sys:String x:Key="OneClick:Installing">Installing: {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:RatelimitSkip">Max tries reached: Skipping {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:RatelimitHit">Ratelimit hit. Resuming in {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:Failed">Download failed: {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:Installing">Установка: {0}</sys:String> 
+    <sys:String x:Key="OneClick:RatelimitSkip">Достигнуто максимальное кол-во попыток: Пропускаем {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitHit">Достигнут лимит. Возобновление через {0}</sys:String>
+    <sys:String x:Key="OneClick:Failed">Скачивание неудалось: {0}</sys:String> 
     
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">Тема не найдена, возвращаемся к стандартной теме...</sys:String>
