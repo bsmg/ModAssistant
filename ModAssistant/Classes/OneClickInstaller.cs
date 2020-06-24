@@ -35,7 +35,6 @@ namespace ModAssistant
             }
             if (App.OCIWindow == "Close")
             {
-                await Task.Delay(3000);
                 Application.Current.Shutdown();
             }
         }
