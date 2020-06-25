@@ -32,9 +32,25 @@ namespace ModAssistant
             {
                 Dispatcher.Invoke(new Action(() => {
                     OneClickStatus.Instance.MainTextBlock.Text = value;
-                    OneClickStatus.Instance.HistoryTextBlock.Text = string.IsNullOrEmpty(MainText) ? $"{value}" : $"{value}\n{HistoryText}";
+                    OneClickStatus.Instance.HistoryTextBlock.Text = string.IsNullOrEmpty(MainText) ? $"{value}\n" : $"{HistoryText}{value}\n";
                 }));
             }
+        }
+
+        public void SetMainTextWithoutNl(string text) 
+        {
+            Dispatcher.Invoke(new Action(() => {
+                OneClickStatus.Instance.MainTextBlock.Text += text;
+                OneClickStatus.Instance.HistoryTextBlock.Text = $"{HistoryText}{text}";
+            }));
+        }
+
+        public void ClearTitle()
+        {
+            Dispatcher.Invoke(new Action(() =>
+            {
+                OneClickStatus.Instance.MainTextBlock.Text = "";
+            }));
         }
 
         public OneClickStatus()

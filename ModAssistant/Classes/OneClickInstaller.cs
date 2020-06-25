@@ -28,21 +28,22 @@ namespace ModAssistant
                     await Playlist(uri);
                     break;
             }
+            
             if (App.OCIWindow != "No")
             {
                 Status.StopRotation();
                 API.Utils.SetMessage((string)Application.Current.FindResource("OneClick:Done"));
             }
+
             if (App.OCIWindow == "Close")
             {
-                Status.StopRotation();
-                API.Utils.SetMessage((string)Application.Current.FindResource("OneClick:Done"));
+                API.Utils.ClearTitleMessage();
 
-                API.Utils.SetMessage("3...");
+                API.Utils.SetMessageWithoutNl("3... ");
                 await Task.Delay(1000);
-                API.Utils.SetMessage("3... 2...");
+                API.Utils.SetMessageWithoutNl("2... ");
                 await Task.Delay(1000);
-                API.Utils.SetMessage("3... 2... 1...");
+                API.Utils.SetMessageWithoutNl("1... ");
                 await Task.Delay(1000);
 
                 API.Utils.SetMessage("Exiting...");

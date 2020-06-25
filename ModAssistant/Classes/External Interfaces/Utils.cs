@@ -32,6 +32,29 @@ namespace ModAssistant.API
             }
         }
 
+        public static void SetMessageWithoutNl(string message)
+        {
+            if (App.OCIWindow != "No")
+            {
+                if (App.window == null)
+                {
+                    if (App.OCIWindow == "No") OneClickStatus.Instance = null;
+                    if (OneClickStatus.Instance == null) return;
+                    
+                    OneClickStatus.Instance.SetMainTextWithoutNl(message);
+                }
+                else
+                {
+                    OneClickStatus.Instance.SetMainTextWithoutNl(message);
+                }
+            }
+        }
+
+        public static void ClearTitleMessage()
+        {
+            OneClickStatus.Instance.ClearTitle();
+        }
+
         public static async Task DownloadAsset(string link, string folder, bool showNotifcation, string fileName = null)
         {
             await DownloadAsset(link, folder, fileName, null, showNotifcation);

@@ -33,6 +33,7 @@ namespace ModAssistant
         public static async Task Run()
         {
             if (Path.GetFileName(Utils.ExePath).Equals("ModAssistant.old.exe")) RunNew();
+
             try
             {
                 NeedsUpdate = await CheckForUpdate();
