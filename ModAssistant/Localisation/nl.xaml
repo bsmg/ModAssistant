@@ -220,7 +220,9 @@
     <sys:String x:Key="OneClick:RatelimitSkip">Maximaal aantal pogingen bereikt: {0} word overgeslagen</sys:String>
     <sys:String x:Key="OneClick:RatelimitHit">Snelheidslimiet bereikt. Gaat verder over {0}</sys:String>
     <sys:String x:Key="OneClick:Failed">Download mislukt: {0}</sys:String>
-    
+    <sys:String x:Key="OneClick:Done">Done'd</sys:String>
+    <!-- NEEDS TRANSLATION -->
+
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">Thema niet gevonden, terugvallen op standaard thema...</sys:String>
     <sys:String x:Key="Themes:ThemeSet">Theme ingesteld op {0}.</sys:String>

@@ -221,8 +221,10 @@
     <sys:String x:Key="OneClick:Installing">Установка: {0}</sys:String> 
     <sys:String x:Key="OneClick:RatelimitSkip">Достигнуто максимальное кол-во попыток: Пропускаем {0}</sys:String>
     <sys:String x:Key="OneClick:RatelimitHit">Достигнут лимит. Возобновление через {0}</sys:String>
-    <sys:String x:Key="OneClick:Failed">Скачивание неудалось: {0}</sys:String> 
-    
+    <sys:String x:Key="OneClick:Failed">Скачивание неудалось: {0}</sys:String>
+    <sys:String x:Key="OneClick:Done">Done'd</sys:String>
+    <!-- NEEDS TRANSLATION -->
+
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">Тема не найдена, возвращаемся к стандартной теме...</sys:String>
     <sys:String x:Key="Themes:ThemeSet">Установлена тема: {0}.</sys:String>

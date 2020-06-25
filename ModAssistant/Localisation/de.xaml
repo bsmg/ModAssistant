@@ -218,10 +218,11 @@
     <sys:String x:Key="OneClick:AssetInstallFailed">Installation fehlgeschlagen.</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ Installation Handler registriert!</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ Installation Handler entfernt!</sys:String>
-    <sys:String x:Key="OneClick:Installing">Installiere: {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:RatelimitSkip">Maximale Installationsversuche erreicht: Überspringe! {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:RatelimitHit">Ratelimit erreicht. Fahre fort mit {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:Failed">Download fehlgeschlagen: {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:Installing">Installiere: {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitSkip">Maximale Installationsversuche erreicht: Überspringe! {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitHit">Ratelimit erreicht. Fahre fort mit {0}</sys:String>
+    <sys:String x:Key="OneClick:Failed">Download fehlgeschlagen: {0}</sys:String>
+    <sys:String x:Key="OneClick:Done">Fertig!</sys:String>
 
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">Design nicht gefunden, gehe zurück zum Standard Design...</sys:String>
