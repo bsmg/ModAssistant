@@ -35,7 +35,19 @@ namespace ModAssistant
             }
             if (App.OCIWindow == "Close")
             {
-                await Task.Delay(3000);
+                Status.StopRotation();
+                API.Utils.SetMessage((string)Application.Current.FindResource("OneClick:Done"));
+
+                API.Utils.SetMessage("3...");
+                await Task.Delay(1000);
+                API.Utils.SetMessage("3... 2...");
+                await Task.Delay(1000);
+                API.Utils.SetMessage("3... 2... 1...");
+                await Task.Delay(1000);
+
+                API.Utils.SetMessage("Exiting...");
+                await Task.Delay(1000);
+
                 Application.Current.Shutdown();
             }
         }
