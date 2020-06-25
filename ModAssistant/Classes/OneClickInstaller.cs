@@ -46,9 +46,6 @@ namespace ModAssistant
                 API.Utils.SetMessageWithoutNl("1... ");
                 await Task.Delay(1000);
 
-                API.Utils.SetMessage("Exiting...");
-                await Task.Delay(1000);
-
                 Application.Current.Shutdown();
             }
         }
