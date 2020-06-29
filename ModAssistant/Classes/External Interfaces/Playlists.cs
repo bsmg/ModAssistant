@@ -12,12 +12,15 @@ namespace ModAssistant.API
         private const string BSaberURLPrefix = "https://bsaber.com/PlaylistAPI/";
         private const string PlaylistsFolder = "Playlists";
         private static readonly string BeatSaberPath = Utils.BeatSaberPath;
-        
-        string root = App.BeatSaberInstallDirectory;
-        string subdir = PlaylistsFolder;
-        if (!Directory.Exists(subdir))
+
+        public static bool CreatePlaylistsFolder()
         {
-             Directory.CreateDirectory(subdir);
+            string playlistsPath = Path.Combine(BeatSaberPath, PlaylistsFolder);
+            if (!Directory.Exists(playlistsPath))
+            {
+                Directory.CreateDirectory(playlistsPath);
+            }
+            return true;
         }
 
         public static async Task DownloadAll(Uri uri)
