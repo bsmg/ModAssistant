@@ -134,7 +134,7 @@ namespace ModAssistant.Pages
                     DescriptionColumn.Width = 800;
                 }
 
-                MainWindow.Instance.MainText = $"{FindResource("Mods:LoadingMods")}{(Properties.Settings.Default.LanguageCode == "zh" ? "(从" + Properties.Settings.Default.DownloadServer + ")。" : "from " + Properties.Settings.Default.DownloadServer + "...")}";
+                MainWindow.Instance.MainText = $"{FindResource("Mods:LoadingMods")}{(Properties.Settings.Default.LanguageCode == "zh" ? "（从" + Properties.Settings.Default.DownloadServer + "）" : "from " + Properties.Settings.Default.DownloadServer + "...")}";
                 await Task.Run(async () => await PopulateModsList());
 
                 ModsListView.ItemsSource = ModList;
@@ -180,9 +180,9 @@ namespace ModAssistant.Pages
                 {
                      BeatModsTranslation_now = Utils.Constants.BeatModsTranslation_beatmods;
                 }
+                MainWindow.Instance.MainText = $"{(Properties.Settings.Default.LanguageCode == "zh" ? "正在获取Mod翻译（列表翻译@WGzeyu）" : "Fetching additional translation form WGzuyu.")}";
                 var resp_WGzeyu = await HttpClient.GetAsync(BeatModsTranslation_now);
                 var body_WGzeyu = await resp_WGzeyu.Content.ReadAsStringAsync();
-                MainWindow.Instance.MainText = $"{(Properties.Settings.Default.LanguageCode == "zh" ? "正在获取Mod翻译@WGzeyu" : "Fetching additional translation form WGzuyu.")}";
                 ModsTranslationWGzeyu = JsonSerializer.Deserialize<TranslationWGzeyu[]>(body_WGzeyu);
             }
             AllModsList = JsonSerializer.Deserialize<Mod[]>(body);
@@ -407,7 +407,7 @@ namespace ModAssistant.Pages
                 if (mod.name.ToLower() == "bsipa" || mod.name.ToLower() == "bsipa-netvios" || mod.name.ToLower() == "bsipa-netviosspecial")
                 {
                     if (mod.name.ToLower() == "bsipa" && Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == "网易版@BeatMods.top") continue;
-                    MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)} {(Properties.Settings.Default.LanguageCode == "zh" ? "(从" : "from ")} {Properties.Settings.Default.DownloadServer} {(Properties.Settings.Default.LanguageCode == "zh" ? ")" : "...")}";
+                    MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
                     await Task.Run(async () => await InstallMod(mod, installDirectory));
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstalledMod"), mod.name)}{(Properties.Settings.Default.LanguageCode == "zh" ? "。" : ".")}";
                     if (!File.Exists(Path.Combine(installDirectory, "winhttp.dll")) || mod.name != lastBSIPA)
@@ -427,7 +427,7 @@ namespace ModAssistant.Pages
                 }
                 else if (mod.ListItem.IsSelected)
                 {
-                    MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)} {(Properties.Settings.Default.LanguageCode == "zh" ? "(从" : "from ")} {Properties.Settings.Default.DownloadServer} {(Properties.Settings.Default.LanguageCode == "zh" ? ")" : "...")}";
+                    MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)} {(Properties.Settings.Default.LanguageCode == "zh" ? "（从" : "from ")} {Properties.Settings.Default.DownloadServer} {(Properties.Settings.Default.LanguageCode == "zh" ? "）" : "...")}";
                     await Task.Run(async () => await InstallMod(mod, Path.Combine(installDirectory, @"IPA\Pending")));
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstalledMod"), mod.name)}{(Properties.Settings.Default.LanguageCode == "zh" ? "。" : ".")}";
                 }

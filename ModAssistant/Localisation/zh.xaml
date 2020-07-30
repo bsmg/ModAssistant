@@ -61,14 +61,23 @@
         <Bold>请各位玩家引以为鉴，不要攻击其他玩家或支持这种行为，谢谢配合。</Bold>
     </Span>
     <Span x:Key="Intro:WikiGuide">
-        <Bold><Span Foreground="Red">请务必阅读</Span>
-        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/">
-            BS中文教程及常见问题解答
-        </Hyperlink>
-        </Bold>，以及
+        <Bold>
+            <Span Foreground="Red">请阅读</Span>
+            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/">
+                BS入坑必看中文教程
+            </Hyperlink> 、
+            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="http://bs.zhm233.top/?1">
+                BS曲包模型等资源共享
+            </Hyperlink> 、
+        </Bold>
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
-            新手指南（英文）
-        </Hyperlink>。
+            英文教程
+        </Hyperlink> 。
+        <LineBreak/>
+        <LineBreak/>
+        <Bold>
+            <Span Foreground="#0000FF">若</Span><Span Foreground="#0A0AF4">加</Span><Span Foreground="#1500E9">载</Span><Span Foreground="#1F0ADF">下</Span><Span Foreground="#2A00D4">载</Span><Span Foreground="#350AC9">缓</Span><Span Foreground="#3F00BF">慢</Span><Span Foreground="#4A0AB4">或</Span><Span Foreground="#5500AA">报</Span><Span Foreground="#5F0A9F">错</Span><Span Foreground="#6A0094">，</Span><Span Foreground="#740A8A">请</Span><Span Foreground="#7F007F">在</Span><Span Foreground="#8A0A74">“</Span><Span Foreground="#94006A">选</Span><Span Foreground="#9F0A5F">项</Span><Span Foreground="#AA0055">”</Span><Span Foreground="#B40A4A">中</Span><Span Foreground="#BF003F">切</Span><Span Foreground="#C90A35">换</Span><Span Foreground="#D4002A">下</Span><Span Foreground="#DF0A1F">载</Span><Span Foreground="#E90015">源</Span><Span Foreground="#F40A0A">。</Span>
+        </Bold>
     </Span>
     <sys:String x:Key="Intro:AgreeButton">同意</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">拒绝</sys:String>
@@ -99,7 +108,7 @@
     <sys:String x:Key="Mods:FailedExtract">{0}解压失败，将在{1}秒后重试。（{2}/{3}）</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">{0}在重试{1}次后仍然无法解压，将被跳过。注意，这个Mod可能无法使用。</sys:String>
     <sys:String x:Key="Mods:SearchLabel">搜索...</sys:String>
-    <sys:String x:Key="Mods:DownloadingMod">正在下载{0}...(从{1})</sys:String>
+    <sys:String x:Key="Mods:DownloadingMod">正在下载{0}...（从{1}）</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">关于</sys:String>
