@@ -1,3 +1,4 @@
+![.NET Build](https://github.com/beatmods-top/ModAssistant/workflows/.NET%20Build/badge.svg)
 [![ModAssistant](https://cdn.assistant.moe/images/ModAssistant/Icons/Banner.svg)](https://github.com/beatmods-top/ModAssistant/releases/latest)
 [![Download here!](https://cdn.assistant.moe/images/ModAssistant/Icons/Download.svg)](https://github.com/beatmods-top/ModAssistant/releases/latest)
 
