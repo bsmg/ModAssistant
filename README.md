@@ -1,7 +1,7 @@
-[![ModAssistant](https://cdn.assistant.moe/images/ModAssistant/Icons/Banner.svg)](https://github.com/Assistant/ModAssistant/releases/latest)
-[![Download here!](https://cdn.assistant.moe/images/ModAssistant/Icons/Download.svg)](https://github.com/Assistant/ModAssistant/releases/latest)
+[![ModAssistant](https://cdn.assistant.moe/images/ModAssistant/Icons/Banner.svg)](https://github.com/beatmods-top/ModAssistant/releases/latest)
+[![Download here!](https://cdn.assistant.moe/images/ModAssistant/Icons/Download.svg)](https://github.com/beatmods-top/ModAssistant/releases/latest)
 
-ModAssistant is a PC mod installer for Beat Saber. It uses mods from [BeatMods](https://beatmods.com/).
+ModAssistant is a PC mod installer for Beat Saber. It uses mods from [BeatMods](https://beatmods.com/) and [BeatMods.top](https://beatmods.top) (A 3rd party site mirrors BeatMods.com with Netvios Edition Support).
 
 * [Features](#Features)
 * [Usage](#Usage)
@@ -24,6 +24,8 @@ ModAssistant boasts a rich feature set, some of which include:
 * Complex theming engine
 * Localization support
 * Headpats and Hugs
+* Downloads Server switch
+* Netvios Edition Plugin Support
 
 ## Usage
 Download the newest installer from the release section and run it. This application auto-updates when launched, there is no need to download a new release each time.
