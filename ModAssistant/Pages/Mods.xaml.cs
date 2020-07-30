@@ -462,7 +462,7 @@ namespace ModAssistant.Pages
                 return;
             }
 
-            MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:DownloadingMod"), mod.name,Properties.Settings.Default.DownloadServer)}";
+            MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:DownloadingMod"), mod.name, Properties.Settings.Default.DownloadServer)}";
 
             using (Stream stream = await DownloadMod(Utils.Constants.BeatModsURL + downloadLink))
             using (ZipArchive archive = new ZipArchive(stream))
