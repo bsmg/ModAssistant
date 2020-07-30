@@ -102,6 +102,7 @@
     <sys:String x:Key="Mods:FailedExtract">{0}를 추출하는데 실패했습니다. {1}초 안에 재시도합니다. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">({1})회동안 {0}를 추출하는데 실패했습니다. 이 모드가 제대로 작동하지 않을지도 모릅니다</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Search...</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:DownloadingMod">Downloading {0} from {1}</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">정보</sys:String>

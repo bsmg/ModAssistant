@@ -103,6 +103,7 @@
     <sys:String x:Key="Mods:FailedExtract">Failed to extract {0}, trying again in {1} seconds. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Failed to extract {0} after max attempts ({1}), skipping. This mod might not work properly so proceed at your own risk</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Search...</sys:String>
+    <sys:String x:Key="Mods:DownloadingMod">Downloading {0} from {1}</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">About</sys:String>

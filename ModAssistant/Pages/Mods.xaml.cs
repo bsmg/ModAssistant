@@ -175,9 +175,14 @@ namespace ModAssistant.Pages
             var body = await resp.Content.ReadAsStringAsync();
             if (Properties.Settings.Default.LanguageCode == "zh" && Properties.Settings.Default.DownloadServer != "网易版@BeatMods.top")
             {
-                var resp_WGzeyu = await HttpClient.GetAsync(Utils.Constants.BeatModsTranslation_wgzeyu);
+                string BeatModsTranslation_now = Utils.Constants.BeatModsTranslation_wgzeyu;
+                if (Properties.Settings.Default.DownloadServer != "国内源@WGzeyu")
+                {
+                     BeatModsTranslation_now = Utils.Constants.BeatModsTranslation_beatmods;
+                }
+                var resp_WGzeyu = await HttpClient.GetAsync(BeatModsTranslation_now);
                 var body_WGzeyu = await resp_WGzeyu.Content.ReadAsStringAsync();
-                MainWindow.Instance.MainText = $"{(Properties.Settings.Default.LanguageCode == "zh" ? "正在从 国内源@WGzuyu 获取额外翻译。" : "Fetching additional translation form 国内源@WGzuyu.")}";
+                MainWindow.Instance.MainText = $"{(Properties.Settings.Default.LanguageCode == "zh" ? "正在获取Mod翻译@WGzeyu" : "Fetching additional translation form WGzuyu.")}";
                 ModsTranslationWGzeyu = JsonSerializer.Deserialize<TranslationWGzeyu[]>(body_WGzeyu);
             }
             AllModsList = JsonSerializer.Deserialize<Mod[]>(body);
@@ -457,9 +462,12 @@ namespace ModAssistant.Pages
                 return;
             }
 
+            MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:DownloadingMod"), mod.name,Properties.Settings.Default.DownloadServer)}";
+
             using (Stream stream = await DownloadMod(Utils.Constants.BeatModsURL + downloadLink))
             using (ZipArchive archive = new ZipArchive(stream))
             {
+                MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
                 foreach (ZipArchiveEntry file in archive.Entries)
                 {
                     string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));

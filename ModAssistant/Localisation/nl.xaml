@@ -101,6 +101,7 @@
     <sys:String x:Key="Mods:FailedExtract">Kon {0} niet extracten, probeer opniew over {1} seconden. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Kon {0} niet uitpakken na maximaal aantal pogingen ({1}), deze word nu overgeslagen. Deze mod werkt misschien niet goed dus ga verder op eigen risico</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Zoek...</sys:String>
+    <sys:String x:Key="Mods:DownloadingMod">Downloading {0} from {1}</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">Over</sys:String>

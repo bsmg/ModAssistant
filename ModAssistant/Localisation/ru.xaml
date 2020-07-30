@@ -103,6 +103,7 @@
     <sys:String x:Key="Mods:FailedExtract">Не удалось извлечь {0}, попробуйте снова через {1} секунд. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Не удалось извлечь {0} после попыток ({1}), пропускается. Эта модификация может работать некорректно, используйте на свой страх и риск</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Поиск...</sys:String>
+    <sys:String x:Key="Mods:DownloadingMod">Downloading {0} from {1}</sys:String>
 
   <!-- About Page -->
     <sys:String x:Key="About:Title">Информация</sys:String>
