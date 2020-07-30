@@ -148,6 +148,10 @@ namespace ModAssistant.Pages
                 RefreshModsList();
                 ModsListView.Visibility = Visibility.Visible;
                 MainWindow.Instance.MainText = $"{FindResource("Mods:FinishedLoadingMods")}{(Properties.Settings.Default.LanguageCode == "zh" ? "。" : ".")}";
+                if (Properties.Settings.Default.LanguageCode == "zh")
+                {
+                    MainWindow.Instance.MainText = MainWindow.Instance.MainText + "（翻译来自@WGzeyu）";
+                }
 
                 MainWindow.Instance.InstallButton.IsEnabled = true;
                 MainWindow.Instance.GameVersionsBox.IsEnabled = true;
@@ -180,7 +184,7 @@ namespace ModAssistant.Pages
                 {
                      BeatModsTranslation_now = Utils.Constants.BeatModsTranslation_beatmods;
                 }
-                MainWindow.Instance.MainText = $"{(Properties.Settings.Default.LanguageCode == "zh" ? "正在获取Mod翻译（列表翻译@WGzeyu）" : "Fetching additional translation form WGzuyu.")}";
+                MainWindow.Instance.MainText = $"{(Properties.Settings.Default.LanguageCode == "zh" ? "正在获取Mod翻译（翻译来自@WGzeyu）" : "Fetching additional translation form WGzuyu.")}";
                 var resp_WGzeyu = await HttpClient.GetAsync(BeatModsTranslation_now);
                 var body_WGzeyu = await resp_WGzeyu.Content.ReadAsStringAsync();
                 ModsTranslationWGzeyu = JsonSerializer.Deserialize<TranslationWGzeyu[]>(body_WGzeyu);
