@@ -24,12 +24,36 @@ namespace ModAssistant
         public class Constants
         {
             public const string BeatSaberAPPID = "620980";
-            public const string BeatModsAPIUrl = "https://beatmods.com/api/v1/";
-            public const string TeknikAPIUrl = "https://api.teknik.io/v1/";
-            public const string BeatModsURL = "https://beatmods.com";
-            public const string BeatModsVersions = "https://versions.beatmods.com/versions.json";
-            public const string BeatModsAlias = "https://alias.beatmods.com/aliases.json";
-            public const string WeebCDNAPIURL = "https://pat.assistant.moe/api/v1.0/";
+
+            public const string BeatModsAPIUrl_beatmods = "https://beatmods.com/api/v1/";
+            public const string TeknikAPIUrl_beatmods = "https://api.teknik.io/v1/";
+            public const string BeatModsURL_beatmods = "https://beatmods.com";
+            public const string BeatModsVersions_beatmods = "https://versions.beatmods.com/versions.json";
+            public const string BeatModsAlias_beatmods = "https://alias.beatmods.com/aliases.json";
+            public const string WeebCDNAPIURL_beatmods = "https://pat.assistant.moe/api/v1.0/";
+
+            public const string BeatModsAPIUrl_wgzeyu = "https://beatmods.gtxcn.com/api/v1/";
+            public const string TeknikAPIUrl_wgzeyu = "https://beatmods.gtxcn.com/teknik/v1/";
+            public const string BeatModsURL_wgzeyu = "https://beatmods.gtxcn.com";
+            public const string BeatModsVersions_wgzeyu = "https://beatmods.gtxcn.com/bmversions/versions.json";
+            public const string BeatModsAlias_wgzeyu = "https://beatmods.gtxcn.com/alias/aliases.json";
+            public const string WeebCDNAPIURL_wgzeyu = "https://beatmods.gtxcn.com/assistant/api/v1.0/";
+            public const string BeatModsTranslation_wgzeyu = "https://wgzeyu.github.io/BeatSaberModListTranslationRepo/zh-Hans.json";
+
+            public const string BeatModsAPIUrl_bmtop = "https://api.beatmods.top/api/v1/";
+            public const string TeknikAPIUrl_bmtop = "https://teknikapi.beatmods.top/v1/";
+            public const string BeatModsURL_bmtop = "https://beatmods.beatmods.top";
+            public const string BeatModsVersions_bmtop = "https://versions-beatmods.beatmods.top/versions.json";
+            public const string BeatModsAlias_bmtop = "https://alias-beatmods.beatmods.top/aliases.json";
+            public const string WeebCDNAPIURL_bmtop = "https://pat-assistant-moe.beatmods.top/api/v1.0/";
+
+            public static string BeatModsAPIUrl;
+            public static string TeknikAPIUrl;
+            public static string BeatModsURL;
+            public static string BeatModsVersions;
+            public static string BeatModsAlias;
+            public static string WeebCDNAPIURL;
+
             public const string BeatModsModsOptions = "mod?status=approved";
             public const string MD5Spacer = "                                 ";
             public static readonly char[] IllegalCharacters = new char[]
@@ -40,6 +64,40 @@ namespace ModAssistant
                 '\u000f', '\u0010', '\u0011', '\u0012', '\u0013', '\u0014', '\u0015', '\u0016',
                 '\u0017', '\u0018', '\u0019', '\u001a', '\u001b', '\u001c', '\u001d', '\u001f',
             };
+
+            public static void UpdateDownloadNode() {
+                if (ModAssistant.Properties.Settings.Default.StoreType == "Netvios")
+                {
+                    ModAssistant.Properties.Settings.Default.DownloadServer = "网易版@BeatMods.top";
+                }
+
+                if (ModAssistant.Properties.Settings.Default.DownloadServer == "国内源@WGzeyu")
+                {
+                    Utils.Constants.BeatModsAPIUrl = Utils.Constants.BeatModsAPIUrl_wgzeyu;
+                    Utils.Constants.TeknikAPIUrl = Utils.Constants.TeknikAPIUrl_wgzeyu;
+                    Utils.Constants.BeatModsURL = Utils.Constants.BeatModsURL_wgzeyu;
+                    Utils.Constants.BeatModsVersions = Utils.Constants.BeatModsVersions_wgzeyu;
+                    Utils.Constants.BeatModsAlias = Utils.Constants.BeatModsAlias_wgzeyu;
+                    Utils.Constants.WeebCDNAPIURL = Utils.Constants.WeebCDNAPIURL_wgzeyu;
+                }
+                else if (ModAssistant.Properties.Settings.Default.DownloadServer == "网易版@BeatMods.top")
+                {
+                    Utils.Constants.BeatModsAPIUrl = Utils.Constants.BeatModsAPIUrl_bmtop;
+                    Utils.Constants.TeknikAPIUrl = Utils.Constants.TeknikAPIUrl_bmtop;
+                    Utils.Constants.BeatModsURL = Utils.Constants.BeatModsURL_bmtop;
+                    Utils.Constants.BeatModsVersions = Utils.Constants.BeatModsVersions_bmtop;
+                    Utils.Constants.BeatModsAlias = Utils.Constants.BeatModsAlias_bmtop;
+                    Utils.Constants.WeebCDNAPIURL = Utils.Constants.WeebCDNAPIURL_bmtop;
+                }
+                else {
+                    Utils.Constants.BeatModsAPIUrl = Utils.Constants.BeatModsAPIUrl_beatmods;
+                    Utils.Constants.TeknikAPIUrl = Utils.Constants.TeknikAPIUrl_beatmods;
+                    Utils.Constants.BeatModsURL = Utils.Constants.BeatModsURL_beatmods;
+                    Utils.Constants.BeatModsVersions = Utils.Constants.BeatModsVersions_beatmods;
+                    Utils.Constants.BeatModsAlias = Utils.Constants.BeatModsAlias_beatmods;
+                    Utils.Constants.WeebCDNAPIURL = Utils.Constants.WeebCDNAPIURL_beatmods;
+                }
+            }
         }
 
         public class TeknikPasteResponse
@@ -151,6 +209,16 @@ namespace ModAssistant
                 return InstallDir;
             }
 
+            try
+            {
+                InstallDir = GetNetviosDir();
+            }
+            catch { }
+            if (!string.IsNullOrEmpty(InstallDir))
+            {
+                return InstallDir;
+            }
+
             MessageBox.Show((string)Application.Current.FindResource("Utils:NoInstallFolder"));
 
             InstallDir = GetManualDir();
@@ -171,6 +239,7 @@ namespace ModAssistant
             Properties.Settings.Default.InstallFolder = directory;
             Properties.Settings.Default.StoreType = store;
             Properties.Settings.Default.Save();
+            Constants.UpdateDownloadNode();
             return directory;
         }
 
@@ -308,6 +377,23 @@ namespace ModAssistant
             return null;
         }
 
+        public static string GetNetviosDir()
+        {
+            string NetviosInstall = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64)?.OpenSubKey("Software")?.OpenSubKey("NetVios")?.OpenSubKey("NetViosVR")?.OpenSubKey("Games")?.OpenSubKey("VR000004")?.GetValue("INSTALL").ToString();
+            string NetviosStart = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64)?.OpenSubKey("Software")?.OpenSubKey("NetVios")?.OpenSubKey("NetViosVR")?.OpenSubKey("Games")?.OpenSubKey("VR000004")?.GetValue("STARTUP_PATH").ToString();
+            if (string.IsNullOrEmpty(NetviosInstall) || string.IsNullOrEmpty(NetviosStart)) return null;
+
+            if (!(string.IsNullOrEmpty(NetviosInstall) && string.IsNullOrEmpty(NetviosStart)))
+            {
+                if (File.Exists(Path.Combine(NetviosInstall, NetviosStart))) 
+                {
+                    return SetDir(Path.GetDirectoryName(Path.Combine(NetviosInstall, NetviosStart)), "Netvios");
+                }
+            }
+
+            return null;
+        }
+
         public static string GetManualDir()
         {
             var dialog = new SaveFileDialog()
@@ -317,6 +403,7 @@ namespace ModAssistant
                 FileName = "select"
             };
 
+            var old_store = Properties.Settings.Default.StoreType;
             if (dialog.ShowDialog() == true)
             {
                 string path = dialog.FileName;
@@ -326,7 +413,10 @@ namespace ModAssistant
                 if (File.Exists(Path.Combine(path, "Beat Saber.exe")))
                 {
                     string store;
-                    if (File.Exists(Path.Combine(path, "Beat Saber_Data", "Plugins", "steam_api64.dll")))
+                    if (File.Exists(Path.Combine(path, "NetviosSDK.dll"))) {
+                        store = "Netvios";
+                    }
+                    else if (File.Exists(Path.Combine(path, "Beat Saber_Data", "Plugins", "steam_api64.dll")))
                     {
                         store = "Steam";
                     }
@@ -334,8 +424,12 @@ namespace ModAssistant
                     {
                         store = "Oculus";
                     }
-                    return SetDir(path, store);
+                    SetDir(path, store);
                 }
+            }
+            if (!old_store.Equals(Properties.Settings.Default.StoreType)) {
+                Process.Start(Utils.ExePath, App.Arguments);
+                Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
             }
             return null;
         }

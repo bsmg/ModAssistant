@@ -32,6 +32,8 @@ namespace ModAssistant.Pages
         public string LogURL { get; private set; }
         public string OCIWindow { get; set; }
 
+        public static string[] serverList = { "国际源@BeatMods", "国内源@WGzeyu", "网易版@BeatMods.top" };
+
         public Options()
         {
             InitializeComponent();
@@ -46,7 +48,7 @@ namespace ModAssistant.Pages
                 SelectInstalled.IsEnabled = false;
                 ReinstallInstalled.IsEnabled = false;
             }
-                
+
             UpdateHandlerStatus();
             this.DataContext = this;
         }
@@ -278,10 +280,10 @@ namespace ModAssistant.Pages
             }
             foreach (Mod mod in Mods.InstalledMods)
             {
-                if (mod.name.ToLower() == "bsipa")
+                if (mod.name.ToLower() == "bsipa" || mod.name.ToLower() == "base-netvios" || mod.name.ToLower() == "bsipa-netviosspecial")
                 {
                     Mods.Instance.UninstallMod(mod);
-                    break;
+                    /*break;*/
                 }
             }
 
@@ -357,6 +359,49 @@ namespace ModAssistant.Pages
                         Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
                     }
                 }
+            }
+        }
+
+        public void DownloadServerSelectComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if ((sender as ComboBox).SelectedItem == null)
+            {
+                // Apply default server config
+                Console.WriteLine("Applying default server config");
+                if (Properties.Settings.Default.StoreType == "Netvios")
+                {
+                    DownloadServerSelectComboBox.SelectedItem = "网易版@BeatMods.top";
+                    Properties.Settings.Default.DownloadServer = "网易版@BeatMods.top";
+                    Properties.Settings.Default.Save();
+                }
+                else {
+                    DownloadServerSelectComboBox.SelectedItem = "国际源@BeatMods";
+                    Properties.Settings.Default.DownloadServer = "国际源@BeatMods";
+                    Properties.Settings.Default.Save();
+                }
+                Process.Start(Utils.ExePath, App.Arguments);
+                Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
+            }
+            else
+            {
+                if (Properties.Settings.Default.DownloadServer != (sender as ComboBox).SelectedItem.ToString())
+                {
+                    // Get the matching servers from the server array, then try and use it
+                    var serverName = (sender as ComboBox).SelectedItem.ToString();
+                    var selectedServer = (Array.IndexOf(serverList, serverName) == -1) ? "国际源@BeatMods" : serverName;
+                    if (Properties.Settings.Default.StoreType == "Netvios")
+                    {
+                        Properties.Settings.Default.DownloadServer = "网易版@BeatMods.top";
+                        Properties.Settings.Default.Save();
+                    }
+                    else {
+                        Properties.Settings.Default.DownloadServer = serverName;
+                        Properties.Settings.Default.Save();
+                    }
+                    Process.Start(Utils.ExePath, App.Arguments);
+                    Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
+                }
+                
             }
         }
 

@@ -50,5 +50,11 @@
     <Setting Name="OCIWindow" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="DownloadServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">国际源@BeatMods</Value>
+    </Setting>
+    <Setting Name="Setting" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -7,8 +7,10 @@ namespace ModAssistant
     public class Mod
     {
         public string name;
+        public string nameWithTranslation;
         public string version;
         public string gameVersion;
+        public string trueGameVersion;
         public string _id;
         public string status;
         public string authorId;
@@ -16,6 +18,7 @@ namespace ModAssistant
         public string updatedDate;
         public Author author;
         public string description;
+        public string descriptionWithTranslation;
         public string link;
         public string category;
         public DownloadLink[] downloads;
@@ -23,6 +26,7 @@ namespace ModAssistant
         public Dependency[] dependencies;
         public List<Mod> Dependents = new List<Mod>();
         public Mods.ModListItem ListItem;
+        public Translation[] translations;
 
         public class Author
         {
@@ -49,6 +53,20 @@ namespace ModAssistant
             public string name;
             public string _id;
             public Mod Mod;
+        }
+
+        public class Translation {
+            public string name;
+            public string description;
+            public string language;
+        }
+
+        public class TranslationWGzeyu
+        {
+            public string name;
+            public string description;
+            public string newname;
+            public string newdescription;
         }
     }
 }

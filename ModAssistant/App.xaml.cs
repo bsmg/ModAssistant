@@ -7,6 +7,7 @@ using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
+using ModAssistant.Pages;
 
 namespace ModAssistant
 {
@@ -53,6 +54,9 @@ namespace ModAssistant
                 BeatSaberInstallDirectory = Utils.GetInstallDir();
 
             Languages.LoadLanguages();
+
+            Options.Instance.DownloadServerSelectComboBox.ItemsSource = Options.serverList.ToList();
+            Options.Instance.DownloadServerSelectComboBox.SelectedIndex = Options.serverList.ToList().FindIndex((string server) => server == ModAssistant.Properties.Settings.Default.DownloadServer);
 
             while (string.IsNullOrEmpty(App.BeatSaberInstallDirectory))
             {
