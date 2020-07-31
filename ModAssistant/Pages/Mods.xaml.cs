@@ -148,7 +148,7 @@ namespace ModAssistant.Pages
                 RefreshModsList();
                 ModsListView.Visibility = Visibility.Visible;
                 MainWindow.Instance.MainText = $"{FindResource("Mods:FinishedLoadingMods")}{(Properties.Settings.Default.LanguageCode == "zh" ? "。" : ".")}";
-                if (Properties.Settings.Default.LanguageCode == "zh")
+                if (Properties.Settings.Default.LanguageCode == "zh" && Properties.Settings.Default.DownloadServer != "网易版@BeatMods.top")
                 {
                     MainWindow.Instance.MainText = MainWindow.Instance.MainText + "（翻译来自@WGzeyu）";
                 }
