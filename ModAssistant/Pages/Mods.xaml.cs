@@ -28,7 +28,7 @@ namespace ModAssistant.Pages
         public List<string> DefaultMods = new List<string>() { "SongCore", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "PlaylistCore", "MappingExtensions", "SongBrowser", "BSIPA" , "Noodle Extensions" , "Chroma" };
         public List<string> DefaultModsNetvios = new List<string>() { "Base-Netvios" };
         /*        public List<string> DefaultModsNetvios = new List<string>() { "Base-Netvios", "SongCore-Netvios", "BeatSaberMarkupLanguage-Netvios", "PlayerDataPlugin-Netvios", "NetviosSdkPlugin-Netvios", "NetviosHelperPlugin-Netvios", "LocalizationPlugin-Netvios", "BeatSaverSharp-Netvios", "BS_Utils-Netvios", "BeatSaverDownloader-Netvios", "CommonPlugin-Netvios" };*/
-        public List<string> NetviosNotCompatiblePluginList = new List<string>() { "BSIPA", "Chroma", "Versus" };
+        public List<string> NetviosNotCompatiblePluginList = new List<string>() { "BSIPA", "Chroma", "Versus" , "ScoreSaber" };
         public Mod[] ModsList;
         public Mod[] AllModsList;
         public TranslationWGzeyu[] ModsTranslationWGzeyu;
@@ -326,7 +326,14 @@ namespace ModAssistant.Pages
                         if (mod.name.Equals(singleTranslationWGzeyu.name))
                         {
                             mod.nameWithTranslation = singleTranslationWGzeyu.newname;
-                            mod.descriptionWithTranslation = singleTranslationWGzeyu.newdescription;
+                            if (mod.description.Equals(singleTranslationWGzeyu.description))
+                            {
+                                mod.descriptionWithTranslation = singleTranslationWGzeyu.newdescription;
+                            }
+                            else
+                            {
+                                mod.descriptionWithTranslation = mod.description + singleTranslationWGzeyu.newdescription;
+                            }
                         }
                     }
                 }
