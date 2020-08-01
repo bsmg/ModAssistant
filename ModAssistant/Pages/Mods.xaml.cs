@@ -924,29 +924,36 @@ namespace ModAssistant.Pages
 
         private void CategoryTranslationInit()
         {
-            if (Properties.Settings.Default.LanguageCode == "zh")
-            {
-                CategoryTranslation.Add("Core", "核心");
-                CategoryTranslation.Add("Cosmetic", "美化");
-                CategoryTranslation.Add("Gameplay", "游戏性");
-                CategoryTranslation.Add("Libraries", "支持库");
-                CategoryTranslation.Add("Lighting", "灯光");
-                CategoryTranslation.Add("Netvios", "影核版专用");
-                CategoryTranslation.Add("Other", "其它");
-                CategoryTranslation.Add("Practice / Training", "练习 / 训练");
-                CategoryTranslation.Add("Stream Tools", "直播工具");
-                CategoryTranslation.Add("Text Changes", "自定义文字");
-                CategoryTranslation.Add("Tweaks / Tools", "调整 / 工具");
-                CategoryTranslation.Add("UI Enhancements", "UI增强");
-                CategoryTranslation.Add("Uncategorized", "未分类");
+            if (CategoryTranslation.Count != 0) {
+                CategoryTranslation.Clear();
+            }
+            switch (Properties.Settings.Default.LanguageCode) {
+                case "zh":
+                    CategoryTranslation.Add("core", "核心");
+                    CategoryTranslation.Add("cosmetic", "美化");
+                    CategoryTranslation.Add("for modders", "给Mod制作者");
+                    CategoryTranslation.Add("gameplay", "游戏性");
+                    CategoryTranslation.Add("libraries", "支持库");
+                    CategoryTranslation.Add("lighting", "灯光");
+                    CategoryTranslation.Add("multiplayer", "多人联机");
+                    CategoryTranslation.Add("netvios", "影核版专用");
+                    CategoryTranslation.Add("other", "其它");
+                    CategoryTranslation.Add("practice / training", "练习 / 训练");
+                    CategoryTranslation.Add("stream tools", "直播工具");
+                    CategoryTranslation.Add("streaming tools", "直播工具");
+                    CategoryTranslation.Add("text changes", "自定义文字");
+                    CategoryTranslation.Add("tweaks / tools", "调整 / 工具");
+                    CategoryTranslation.Add("ui enhancements", "UI增强");
+                    CategoryTranslation.Add("uncategorized", "未分类");
+                    break;
             }
         }
 
         private string getCategoryTranslation(string name)
         {
-            if (CategoryTranslation.ContainsKey(name))
+            if (CategoryTranslation.ContainsKey(name.ToLower()))
             {
-                return CategoryTranslation[name];
+                return CategoryTranslation[name.ToLower()];
             }
             else
             {
