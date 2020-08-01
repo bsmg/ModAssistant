@@ -429,6 +429,9 @@ namespace ModAssistant
                 }
             }
             if (!old_store.Equals(Properties.Settings.Default.StoreType)) {
+                if (Properties.Settings.Default.StoreType == "Netvios") {
+                    Properties.Settings.Default.DownloadServer = "网易版@BeatMods.top";
+                }
                 Process.Start(Utils.ExePath, App.Arguments);
                 Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
             }
