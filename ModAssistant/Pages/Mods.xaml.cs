@@ -479,18 +479,36 @@ namespace ModAssistant.Pages
             using (ZipArchive archive = new ZipArchive(stream))
             {
                 MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
-                foreach (ZipArchiveEntry file in archive.Entries)
+                try
                 {
-                    string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
-                    if (!Directory.Exists(fileDirectory))
+                    foreach (ZipArchiveEntry file in archive.Entries)
                     {
-                        Directory.CreateDirectory(fileDirectory);
-                    }
+                        string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
+                        if (!Directory.Exists(fileDirectory))
+                        {
+                            Directory.CreateDirectory(fileDirectory);
+                        }
 
-                    if (!string.IsNullOrEmpty(file.Name))
-                    {
-                        await ExtractFile(file, Path.Combine(directory, file.FullName), 3.0, mod.name, 10);
+                        if (!string.IsNullOrEmpty(file.Name))
+                        {
+                            await ExtractFile(file, Path.Combine(directory, file.FullName), 3.0, mod.name, 10);
+                        }
                     }
+                }
+                catch (InvalidDataException e){
+                    string msg = "";
+                    string caption = "";
+                    switch (Properties.Settings.Default.LanguageCode) {
+                        case "zh":
+                            msg = "下载文件失败或zip文件可能已损坏";
+                            caption = "安装失败";
+                            break;
+                        default:
+                            msg = "File download failed or zip file may broken!";
+                            caption = "Install mod failed!";
+                            break;
+                    }
+                    System.Windows.MessageBox.Show($"{msg}\n{e}", caption);
                 }
             }
 
@@ -627,7 +645,7 @@ namespace ModAssistant.Pages
         private void ModCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             Mod mod = ((sender as System.Windows.Controls.CheckBox).Tag as Mod);
-            if (Properties.Settings.Default.StoreType == "Netvios") {
+            if (Properties.Settings.Default.StoreType == "Netvios" && mod.name.ToLower() == "songcore") {
                 string notice = "";
                 string caption = "";
                 switch (Properties.Settings.Default.LanguageCode) {
