@@ -627,7 +627,6 @@ namespace ModAssistant.Pages
         private void ModCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             Mod mod = ((sender as System.Windows.Controls.CheckBox).Tag as Mod);
-            Mod mod = ((sender as System.Windows.Controls.CheckBox).Tag as Mod);
             if (Properties.Settings.Default.StoreType == "Netvios") {
                 string notice = "";
                 string caption = "";
