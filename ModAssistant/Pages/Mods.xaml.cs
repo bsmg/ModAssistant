@@ -627,6 +627,23 @@ namespace ModAssistant.Pages
         private void ModCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             Mod mod = ((sender as System.Windows.Controls.CheckBox).Tag as Mod);
+            Mod mod = ((sender as System.Windows.Controls.CheckBox).Tag as Mod);
+            if (Properties.Settings.Default.StoreType == "Netvios") {
+                string notice = "";
+                string caption = "";
+                switch (Properties.Settings.Default.LanguageCode) {
+                    case "zh":
+                        caption = "提示";
+                        notice = "您给网易版选择了原版的歌曲核心，如遇歌曲包消失等问题，请手动选择安装 歌曲核心-网易";
+                        break;
+                    default:
+                        caption = "Notice";
+                        notice = "You want to install SongCore non-Netvios edition, If there is no default song in your library, please install SongCore-Netvios!";
+                        break;
+                }
+
+                System.Windows.Forms.MessageBox.Show(notice, caption);
+            }
             mod.ListItem.IsSelected = true;
             ResolveDependencies(mod);
             App.SavedMods.Add(mod.name);
