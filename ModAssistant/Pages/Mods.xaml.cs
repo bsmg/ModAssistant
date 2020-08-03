@@ -177,18 +177,6 @@ namespace ModAssistant.Pages
         {
             var resp = await HttpClient.GetAsync(Utils.Constants.BeatModsAPIUrl + "mod");
             var body = await resp.Content.ReadAsStringAsync();
-            if (Properties.Settings.Default.LanguageCode == "zh" && Properties.Settings.Default.DownloadServer != "网易版@BeatMods.top")
-            {
-                string BeatModsTranslation_now = Utils.Constants.BeatModsTranslation_wgzeyu;
-                if (Properties.Settings.Default.DownloadServer != "国内源@WGzeyu")
-                {
-                     BeatModsTranslation_now = Utils.Constants.BeatModsTranslation_beatmods;
-                }
-                MainWindow.Instance.MainText = $"{(Properties.Settings.Default.LanguageCode == "zh" ? "正在获取Mod翻译（翻译来自@WGzeyu）" : "Fetching additional translation form WGzuyu.")}";
-                var resp_WGzeyu = await HttpClient.GetAsync(BeatModsTranslation_now);
-                var body_WGzeyu = await resp_WGzeyu.Content.ReadAsStringAsync();
-                ModsTranslationWGzeyu = JsonSerializer.Deserialize<TranslationWGzeyu[]>(body_WGzeyu);
-            }
             AllModsList = JsonSerializer.Deserialize<Mod[]>(body);
         }
 
@@ -319,23 +307,34 @@ namespace ModAssistant.Pages
                         }
                     }
                 }
-                else if (Properties.Settings.Default.LanguageCode == "zh")
+                else if (Properties.Settings.Default.LanguageCode == "zh" && Properties.Settings.Default.DownloadServer != "网易版@BeatMods.top")
                 {
-                    foreach (TranslationWGzeyu singleTranslationWGzeyu in ModsTranslationWGzeyu)
-                    {
-                        if (mod.name.Equals(singleTranslationWGzeyu.name))
+                    try {
+                        if (ModsTranslationWGzeyu is null) {
+                            string BeatModsTranslation_now = (Properties.Settings.Default.DownloadServer != "国内源@WGzeyu") ? Utils.Constants.BeatModsTranslation_beatmods : Utils.Constants.BeatModsTranslation_wgzeyu;
+                            MainWindow.Instance.MainText = $"{(Properties.Settings.Default.LanguageCode == "zh" ? "正在获取Mod翻译（翻译来自@WGzeyu）" : "Fetching additional translation form WGzuyu.")}";
+                            var resp_WGzeyu = await HttpClient.GetAsync(BeatModsTranslation_now);
+                            var body_WGzeyu = await resp_WGzeyu.Content.ReadAsStringAsync();
+                            ModsTranslationWGzeyu = JsonSerializer.Deserialize<TranslationWGzeyu[]>(body_WGzeyu);
+                            Console.WriteLine("Finished");
+                        }
+
+                        foreach (TranslationWGzeyu singleTranslationWGzeyu in ModsTranslationWGzeyu)
                         {
-                            mod.nameWithTranslation = singleTranslationWGzeyu.newname;
-                            if (mod.description.Equals(singleTranslationWGzeyu.description))
+                            if (mod.name.Equals(singleTranslationWGzeyu.name))
                             {
-                                mod.descriptionWithTranslation = singleTranslationWGzeyu.newdescription;
-                            }
-                            else
-                            {
-                                mod.descriptionWithTranslation = mod.description + singleTranslationWGzeyu.newdescription;
+                                mod.nameWithTranslation = singleTranslationWGzeyu.newname;
+                                if (mod.description.Equals(singleTranslationWGzeyu.description))
+                                {
+                                    mod.descriptionWithTranslation = singleTranslationWGzeyu.newdescription;
+                                }
+                                else
+                                {
+                                    mod.descriptionWithTranslation = mod.description + singleTranslationWGzeyu.newdescription;
+                                }
                             }
                         }
-                    }
+                    } catch (Exception e) {}
                 }
 
                 bool preSelected = mod.required;
