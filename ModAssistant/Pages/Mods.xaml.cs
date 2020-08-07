@@ -134,7 +134,7 @@ namespace ModAssistant.Pages
                     DescriptionColumn.Width = 800;
                 }
 
-                MainWindow.Instance.MainText = $"{FindResource("Mods:LoadingMods")}{(Properties.Settings.Default.LanguageCode == "zh" ? "（从" + Properties.Settings.Default.DownloadServer + "）" : "from " + Properties.Settings.Default.DownloadServer + "...")}";
+                MainWindow.Instance.MainText = $"{FindResource("Mods:LoadingMods")}{(Properties.Settings.Default.LanguageCode == "zh" ? "（从" + Properties.Settings.Default.DownloadServer + "）" : " from " + Properties.Settings.Default.DownloadServer + "...")}";
                 await Task.Run(async () => await PopulateModsList());
 
                 ModsListView.ItemsSource = ModList;
@@ -273,6 +273,13 @@ namespace ModAssistant.Pages
         {
             try
             {
+                Console.WriteLine(
+                    (Properties.Settings.Default.StoreType == "Netvios" &&
+                     ModAssistant.Properties.Settings.Default.DownloadServer == "网易版@BeatMods.top")
+                        ? (Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions + "&gameVersion=" +
+                           MainWindow.GameVersion + "&withNetvios=true")
+                        : (Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions + "&gameVersion=" +
+                           MainWindow.GameVersion));
                 var resp = await HttpClient.GetAsync((Properties.Settings.Default.StoreType == "Netvios" && ModAssistant.Properties.Settings.Default.DownloadServer == "网易版@BeatMods.top") ? (Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions + "&gameVersion=" + MainWindow.GameVersion + "&withNetvios=true") : (Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions + "&gameVersion=" + MainWindow.GameVersion));
                 var body = await resp.Content.ReadAsStringAsync();
                 ModsList = JsonSerializer.Deserialize<Mod[]>(body);
@@ -294,6 +301,7 @@ namespace ModAssistant.Pages
                 return;
             }
 
+            bool ExceptionShown = false;
             foreach (Mod mod in ModsList)
             {
                 if (!(mod.translations is null || mod.translations.Length == 0))
@@ -309,7 +317,8 @@ namespace ModAssistant.Pages
                 }
                 else if (Properties.Settings.Default.LanguageCode == "zh" && Properties.Settings.Default.DownloadServer != "网易版@BeatMods.top")
                 {
-                    try {
+                    try
+                    {
                         if (ModsTranslationWGzeyu is null) {
                             string BeatModsTranslation_now = (Properties.Settings.Default.DownloadServer != "国内源@WGzeyu") ? Utils.Constants.BeatModsTranslation_beatmods : Utils.Constants.BeatModsTranslation_wgzeyu;
                             MainWindow.Instance.MainText = $"{(Properties.Settings.Default.LanguageCode == "zh" ? "正在获取Mod翻译（翻译来自@WGzeyu）" : "Fetching additional translation form WGzuyu.")}";
@@ -334,7 +343,28 @@ namespace ModAssistant.Pages
                                 }
                             }
                         }
-                    } catch (Exception e) {}
+                    }
+                    catch (Exception e)
+                    {
+                        if (!ExceptionShown)
+                        {
+                           string caption = "";
+                           string notice = "";
+                           switch (Properties.Settings.Default.LanguageCode)
+                           {
+                               case "zh":
+                                   caption = "翻译加载错误";
+                                   notice = "如有疑问可以报告给开发者，该错误只影响翻译载入，并不影响其余功能！";
+                                   break;
+                               default:
+                                   caption = "Fetching Translation Exception";
+                                   notice = "Please report to developer if you want. The Exception only effect translation not other functions!";
+                                   break;
+                           }
+                           System.Windows.MessageBox.Show($"{notice}\n{e}", caption);
+                           ExceptionShown = true;
+                        }
+                    }
                 }
 
                 bool preSelected = mod.required;
@@ -437,7 +467,7 @@ namespace ModAssistant.Pages
                 }
                 else if (mod.ListItem.IsSelected)
                 {
-                    MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)} {(Properties.Settings.Default.LanguageCode == "zh" ? "（从" : "from ")} {Properties.Settings.Default.DownloadServer} {(Properties.Settings.Default.LanguageCode == "zh" ? "）" : "...")}";
+                    MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)} {(Properties.Settings.Default.LanguageCode == "zh" ? "（从" : " from ")} {Properties.Settings.Default.DownloadServer} {(Properties.Settings.Default.LanguageCode == "zh" ? "）" : "...")}";
                     await Task.Run(async () => await InstallMod(mod, Path.Combine(installDirectory, @"IPA\Pending")));
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstalledMod"), mod.name)}{(Properties.Settings.Default.LanguageCode == "zh" ? "。" : ".")}";
                 }
