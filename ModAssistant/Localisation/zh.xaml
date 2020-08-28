@@ -64,7 +64,7 @@
         <Bold>
             <Span Foreground="Red">请阅读</Span>
             <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/">
-                BS入坑必看中文教程
+                BS入坑必看中文教程与问题解答
             </Hyperlink> 、
             <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="http://bs.zhm233.top/?1">
                 BS曲包模型等资源共享
@@ -76,7 +76,7 @@
         <LineBreak/>
         <LineBreak/>
         <Bold>
-            <Span Foreground="#0000FF">若</Span><Span Foreground="#0A0AF4">加</Span><Span Foreground="#1500E9">载</Span><Span Foreground="#1F0ADF">下</Span><Span Foreground="#2A00D4">载</Span><Span Foreground="#350AC9">缓</Span><Span Foreground="#3F00BF">慢</Span><Span Foreground="#4A0AB4">或</Span><Span Foreground="#5500AA">报</Span><Span Foreground="#5F0A9F">错</Span><Span Foreground="#6A0094">，</Span><Span Foreground="#740A8A">请</Span><Span Foreground="#7F007F">在</Span><Span Foreground="#8A0A74">“</Span><Span Foreground="#94006A">选</Span><Span Foreground="#9F0A5F">项</Span><Span Foreground="#AA0055">”</Span><Span Foreground="#B40A4A">中</Span><Span Foreground="#BF003F">切</Span><Span Foreground="#C90A35">换</Span><Span Foreground="#D4002A">下</Span><Span Foreground="#DF0A1F">载</Span><Span Foreground="#E90015">源</Span><Span Foreground="#F40A0A">。</Span>
+            <Span Foreground="#0087FF">若</Span><Span Foreground="#005FFF">执</Span><Span Foreground="#0037FF">行</Span><Span Foreground="#000FFF">缓</Span><Span Foreground="#2800FF">慢</Span><Span Foreground="#5000FF">或</Span><Span Foreground="#7800FF">报</Span><Span Foreground="#A000FF">错</Span><Span Foreground="#C800FF">，</Span><Span Foreground="#F000FF">请</Span><Span Foreground="#FF00D7">在</Span><Span Foreground="#FF00AF">选</Span><Span Foreground="#FF0087">项</Span><Span Foreground="#FF005F">中</Span><Span Foreground="#FF0037">切</Span><Span Foreground="#FF000F">换</Span><Span Foreground="#FF0000">下</Span><Span Foreground="#FF2800">载</Span><Span Foreground="#FF5000">源</Span><Span Foreground="#FF7800">；</Span><Span Foreground="#0087FF">如</Span><Span Foreground="#005FFF">需</Span><Span Foreground="#0037FF">安</Span><Span Foreground="#000FFF">装</Span><Span Foreground="#2800FF">测</Span><Span Foreground="#5000FF">试</Span><Span Foreground="#7800FF">版</Span><Span Foreground="#A000FF">M</Span><Span Foreground="#C800FF">o</Span><Span Foreground="#F000FF">d</Span><Span Foreground="#FF00D7">请</Span><Span Foreground="#FF00AF">查</Span><Span Foreground="#FF0087">看</Span><Span Foreground="#FF005F">上</Span><Span Foreground="#FF0037">方</Span><Span Foreground="#FF000F">中</Span><Span Foreground="#FF0000">文</Span><Span Foreground="#FF2800">教</Span><Span Foreground="#FF5000">程</Span><Span Foreground="#FF7800">。</Span>
         </Bold>
     </Span>
     <sys:String x:Key="Intro:AgreeButton">同意</sys:String>
