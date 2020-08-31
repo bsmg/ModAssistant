@@ -54,6 +54,7 @@ namespace ModAssistant
             public static string BeatModsVersions;
             public static string BeatModsAlias;
             public static string WeebCDNAPIURL;
+            public static string BeatModsTranslation;
 
             public const string BeatModsModsOptions = "mod?status=approved";
             public const string MD5Spacer = "                                 ";
@@ -80,6 +81,7 @@ namespace ModAssistant
                     Utils.Constants.BeatModsVersions = Utils.Constants.BeatModsVersions_wgzeyu;
                     Utils.Constants.BeatModsAlias = Utils.Constants.BeatModsAlias_wgzeyu;
                     Utils.Constants.WeebCDNAPIURL = Utils.Constants.WeebCDNAPIURL_wgzeyu;
+                    Utils.Constants.BeatModsTranslation = Utils.Constants.BeatModsTranslation_wgzeyu;
                 }
                 else if (ModAssistant.Properties.Settings.Default.DownloadServer == "网易版@BeatMods.top")
                 {
@@ -89,6 +91,7 @@ namespace ModAssistant
                     Utils.Constants.BeatModsVersions = Utils.Constants.BeatModsVersions_bmtop;
                     Utils.Constants.BeatModsAlias = Utils.Constants.BeatModsAlias_bmtop;
                     Utils.Constants.WeebCDNAPIURL = Utils.Constants.WeebCDNAPIURL_bmtop;
+                    Utils.Constants.BeatModsTranslation = Utils.Constants.BeatModsTranslation_beatmods;
                 }
                 else {
                     Utils.Constants.BeatModsAPIUrl = Utils.Constants.BeatModsAPIUrl_beatmods;
@@ -97,6 +100,7 @@ namespace ModAssistant
                     Utils.Constants.BeatModsVersions = Utils.Constants.BeatModsVersions_beatmods;
                     Utils.Constants.BeatModsAlias = Utils.Constants.BeatModsAlias_beatmods;
                     Utils.Constants.WeebCDNAPIURL = Utils.Constants.WeebCDNAPIURL_beatmods;
+                    Utils.Constants.BeatModsTranslation = Utils.Constants.BeatModsTranslation_beatmods;
                 }
             }
         }

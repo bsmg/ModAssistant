@@ -320,9 +320,8 @@ namespace ModAssistant.Pages
                     try
                     {
                         if (ModsTranslationWGzeyu is null) {
-                            string BeatModsTranslation_now = (Properties.Settings.Default.DownloadServer != "国内源@WGzeyu") ? Utils.Constants.BeatModsTranslation_beatmods : Utils.Constants.BeatModsTranslation_wgzeyu;
                             MainWindow.Instance.MainText = $"{(Properties.Settings.Default.LanguageCode == "zh" ? "正在获取Mod翻译（翻译来自@WGzeyu）" : "Fetching additional translation form WGzuyu.")}";
-                            var resp_WGzeyu = await HttpClient.GetAsync(BeatModsTranslation_now);
+                            var resp_WGzeyu = await HttpClient.GetAsync(Utils.Constants.BeatModsTranslation);
                             var body_WGzeyu = await resp_WGzeyu.Content.ReadAsStringAsync();
                             ModsTranslationWGzeyu = JsonSerializer.Deserialize<TranslationWGzeyu[]>(body_WGzeyu);
                             Console.WriteLine("Finished");
