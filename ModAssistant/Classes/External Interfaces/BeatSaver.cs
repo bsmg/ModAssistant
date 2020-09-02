@@ -197,7 +197,10 @@ namespace ModAssistant.API
                     var patchSucccess = await SongPatcher.PromptAndPatchSongFromDisk(directory);
                     if (!patchSucccess)
                     {
-                        MessageBox.Show($"{Application.Current.FindResource("OneClick:PatchingFailed")}");
+                        if (showNotification)
+                        {
+                            MessageBox.Show($"{Application.Current.FindResource("OneClick:PatchingFailed")}");
+                        }
                         throw new Exception("Verification and patching failed.");
                     }
                 }

@@ -13,6 +13,8 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,8 +57,8 @@
     <Reference Include="protobuf-net.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
       <HintPath>..\packages\protobuf-net.Core.3.0.29\lib\net461\protobuf-net.Core.dll</HintPath>
     </Reference>
-    <Reference Include="SaberSongPatcherCommon, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SaberSongPatcher.1.0.0\lib\netstandard2.0\SaberSongPatcherCommon.dll</HintPath>
+    <Reference Include="SaberSongPatcherCommon, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SaberSongPatcher.1.0.2\lib\netstandard2.0\SaberSongPatcherCommon.dll</HintPath>
     </Reference>
     <Reference Include="SoundFingerprinting, Version=7.4.12.100, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SoundFingerprinting.7.4.12\lib\netstandard2.0\SoundFingerprinting.dll</HintPath>
@@ -122,6 +124,7 @@
     <Compile Include="Classes\External Interfaces\BeatSaver.cs" />
     <Compile Include="Classes\External Interfaces\ModelSaber.cs" />
     <Compile Include="Classes\External Interfaces\Playlists.cs" />
+    <Compile Include="Classes\External Interfaces\SongPatcher.cs" />
     <Compile Include="Classes\External Interfaces\Utils.cs" />
     <Compile Include="Classes\Http.cs" />
     <Compile Include="Classes\HyperlinkExtensions.cs" />
@@ -358,24 +361,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Themes\BSMG\Sidebar.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="FFmpeg\README.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="FFmpeg\LICENSE.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="FFmpeg\bin\x64\avcodec-58.dll" />
-    <Content Include="FFmpeg\bin\x64\avdevice-58.dll" />
-    <Content Include="FFmpeg\bin\x64\avfilter-7.dll" />
-    <Content Include="FFmpeg\bin\x64\avformat-58.dll" />
-    <Content Include="FFmpeg\bin\x64\avutil-56.dll" />
-    <Content Include="FFmpeg\bin\x64\ffmpeg.exe" />
-    <Content Include="FFmpeg\bin\x64\ffplay.exe" />
-    <Content Include="FFmpeg\bin\x64\ffprobe.exe" />
-    <Content Include="FFmpeg\bin\x64\postproc-55.dll" />
-    <Content Include="FFmpeg\bin\x64\swresample-3.dll" />
-    <Content Include="FFmpeg\bin\x64\swscale-5.dll" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\SaberSongPatcher.1.0.2\build\SaberSongPatcher.targets" Condition="Exists('..\packages\SaberSongPatcher.1.0.2\build\SaberSongPatcher.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SaberSongPatcher.1.0.2\build\SaberSongPatcher.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SaberSongPatcher.1.0.2\build\SaberSongPatcher.targets'))" />
+  </Target>
 </Project>
