@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
@@ -181,6 +182,30 @@ namespace ModAssistant.API
                 }
                 throw new Exception("Zip file not found.");
             }
+
+            // Verify and patch separate audio file if needed
+            var hasFingerprintFile = File.Exists(Path.Combine(directory, "fingerprint.bin"));
+            if (hasFingerprintFile)
+            {
+                var noAudioFile = !Directory.EnumerateFiles(directory).Any(file =>
+                    {
+                        var ext = Path.GetExtension(file);
+                        return ext == ".egg" || ext == ".ogg" || ext == ".wav";
+                    });
+                if (noAudioFile)
+                {
+                    var patchSucccess = await SongPatcher.PromptAndPatchSongFromDisk(directory);
+                    if (!patchSucccess)
+                    {
+                        if (showNotification)
+                        {
+                            MessageBox.Show($"{Application.Current.FindResource("OneClick:PatchingFailed")}");
+                        }
+                        throw new Exception("Verification and patching failed.");
+                    }
+                }
+            }
+
             return mapName;
         }
 

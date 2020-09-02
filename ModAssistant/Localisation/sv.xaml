@@ -205,6 +205,7 @@
     <sys:String x:Key="OneClick:SongDownload:Failed">Det gick inte att ladda ned låten.</sys:String>
     <sys:String x:Key="OneClick:SongDownload:NetworkIssues">Det kan vara strul med BeatSaver eller din internetuppkoppling.</sys:String>
     <sys:String x:Key="OneClick:SongDownload:FailedTitle">Misslyckades med att ladda ned låtens ZIP-fil.</sys:String>
+    <sys:String x:Key="OneClick:PatchingFailed">Input audio file does not match master audio file for this map.</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="OneClick:InstallDirNotFound">Det gick inte att hitta installationsvägen för Beat Saber.</sys:String>
     <sys:String x:Key="OneClick:InstalledAsset">Installerade: {0}</sys:String>
     <sys:String x:Key="OneClick:AssetInstallFailed">Misslyckades med att installera.</sys:String>
