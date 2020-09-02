@@ -214,6 +214,7 @@
     <sys:String x:Key="OneClick:InstallDirNotFound">Kon het Beat Saber installatie pad niet vinden</sys:String>
     <sys:String x:Key="OneClick:InstalledAsset">{0} Geïnstalleerd</sys:String>
     <sys:String x:Key="OneClick:AssetInstallFailed">Installatie mislukt</sys:String>
+    <sys:String x:Key="OneClick:PatchingFailed">Input audio file does not match master audio file for this map.</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ Installeer afhandelingen geregistreerd!</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ Install afhandelingen uitgeregistreerd!</sys:String>
     <sys:String x:Key="OneClick:Installing">{0} word geïnstalleerd</sys:String>
