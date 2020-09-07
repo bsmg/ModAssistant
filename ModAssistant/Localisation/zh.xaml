@@ -215,7 +215,8 @@
     <sys:String x:Key="OneClick:InstallDirNotFound">找不到Beat Saber安装路径。</sys:String>
     <sys:String x:Key="OneClick:InstalledAsset">已添加：{0}</sys:String>
     <sys:String x:Key="OneClick:AssetInstallFailed">添加失败。</sys:String>
-    <sys:String x:Key="OneClick:PatchingFailed">Input audio file does not match master audio file for this map.</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:PatchSong:Failed">Input audio file does not match master audio file for this map.</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:PatchSong:SelectFile">Select master song audio file</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ 一键添加处理程序已注册！</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ 一键添加处理程序已移除！</sys:String>
     <sys:String x:Key="OneClick:Installing">正在下载：{0}</sys:String>

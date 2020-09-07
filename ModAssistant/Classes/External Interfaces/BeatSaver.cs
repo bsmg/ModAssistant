@@ -199,7 +199,7 @@ namespace ModAssistant.API
                     {
                         if (showNotification)
                         {
-                            MessageBox.Show($"{Application.Current.FindResource("OneClick:PatchingFailed")}");
+                            MessageBox.Show($"{Application.Current.FindResource("OneClick:PatchSong:Failed")}");
                         }
                         throw new Exception("Verification and patching failed.");
                     }

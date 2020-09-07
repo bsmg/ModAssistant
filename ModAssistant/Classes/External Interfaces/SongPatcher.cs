@@ -3,7 +3,10 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SaberSongPatcher;
+using Application = System.Windows.Application;
 
 namespace ModAssistant.API
 {
@@ -23,7 +26,7 @@ namespace ModAssistant.API
                 "wma",
             };
             var audioExtensions = string.Join(";", supportedExtensions.Select(ext => $"*.{ext}"));
-            openFileDialog.Title = "Select master song audio file";
+            openFileDialog.Title = (string)Application.Current.FindResource("OneClick:PatchSong:SelectFile");
             openFileDialog.Filter = $"Audio files ({audioExtensions})|{audioExtensions}|All files (*.*)|*.*";
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
@@ -48,7 +51,34 @@ namespace ModAssistant.API
                 return false;
             }
 
-            var outputFile = Path.Combine(mapDirectory, "song.egg");
+            var filename = "song.egg";
+            var infoFile = Path.Combine(mapDirectory, "info.dat");
+            if (!File.Exists(infoFile))
+            {
+                infoFile = Path.Combine(mapDirectory, "Info.dat");
+            }
+            if (File.Exists(infoFile))
+            {
+                try
+                {
+                    // Try to use the output filename from the info.dat file
+                    using (StreamReader file = File.OpenText(infoFile))
+                    using (JsonTextReader reader = new JsonTextReader(file))
+                    {
+                        JObject info = JObject.Load(reader);
+                        var filenameToken = info.Value<string>("_songFilename");
+                        if (!string.IsNullOrEmpty(filenameToken))
+                        {
+                            filename = filenameToken;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+
+            var outputFile = Path.Combine(mapDirectory, filename);
             var success = await inputTransformer.TransformInput(inputFile, outputFile);
             if (!success)
             {

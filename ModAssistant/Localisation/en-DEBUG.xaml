@@ -157,7 +157,8 @@
     <sys:String x:Key="OneClick:InstallDirNotFound">OneClick:InstallDirNotFound</sys:String>
     <sys:String x:Key="OneClick:InstalledAsset">{0} OneClick:InstalledAsset</sys:String>
     <sys:String x:Key="OneClick:AssetInstallFailed">OneClick:AssetInstallFailed</sys:String>
-    <sys:String x:Key="OneClick:PatchingFailed">OneClick:PatchingFailed</sys:String>
+    <sys:String x:Key="OneClick:PatchSong:Failed">OneClick:PatchSong:Failed</sys:String>
+    <sys:String x:Key="OneClick:PatchSong:SelectFile">OneClick:PatchSong:SelectFile</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick:ProtocolHandler:Registered</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick:ProtocolHandler:Unregistered</sys:String>
     <sys:String x:Key="OneClick:Installing">{0} OneClick:Installing</sys:String>
