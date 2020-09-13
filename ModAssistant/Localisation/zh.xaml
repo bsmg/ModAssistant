@@ -62,12 +62,15 @@
     </Span>
     <Span x:Key="Intro:WikiGuide">
         <Bold><Span Foreground="Red">请务必阅读</Span>
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/guide/">
+            新手入门指南
+        </Hyperlink>、
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/">
-            BS入坑必看中文教程
+            详细教程与问题解答
         </Hyperlink>
         </Bold>，以及
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
-            新手指南（英文）
+            英文教程
         </Hyperlink>。
     </Span>
     <sys:String x:Key="Intro:AgreeButton">同意</sys:String>
