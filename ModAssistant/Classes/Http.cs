@@ -22,7 +22,7 @@ namespace ModAssistant
 
                 _client = new HttpClient(handler)
                 {
-                    Timeout = TimeSpan.FromSeconds(300),
+                    Timeout = TimeSpan.FromSeconds(360),
                 };
 
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;

@@ -63,11 +63,14 @@
     <Span x:Key="Intro:WikiGuide">
         <Bold>
             <Span Foreground="Red">请阅读</Span>
+            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/guide/">
+                新手入门指南
+            </Hyperlink> 、
             <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/">
-                BS入坑必看中文教程与问题解答
+                详细教程与问题解答
             </Hyperlink> 、
             <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="http://bs.zhm233.top/?1">
-                BS曲包模型等资源共享
+                曲包等游戏资源
             </Hyperlink> 、
         </Bold>
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
