@@ -195,13 +195,17 @@ namespace ModAssistant
             Dictionary<string, object> Objects = (Dictionary<string, object>)aliases;
             foreach (string version in versions)
             {
-                object[] aliasArray = (object[])Objects[version];
-                foreach (object alias in aliasArray)
+                object x;
+                if (Objects.TryGetValue(version, out x))
                 {
-                    if (alias.ToString() == detectedVersion)
+                    object[] aliasArray = (object[])x;
+                    foreach (object alias in aliasArray)
                     {
-                        GameVersionOverride = detectedVersion;
-                        return version;
+                        if (alias.ToString() == detectedVersion)
+                        {
+                            GameVersionOverride = detectedVersion;
+                            return version;
+                        }
                     }
                 }
             }
