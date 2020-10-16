@@ -136,7 +136,7 @@ namespace ModAssistant.Pages
 
                 RefreshModsList();
                 ModsListView.Visibility = Visibility.Visible;
-                MainWindow.Instance.MainText = $"{FindResource("Mods:FinishedLoadingMods")}.";
+                MainWindow.Instance.MainText = ModList.Count == 0 ? $"{FindResource("Mods:NoMods")}." : $"{FindResource("Mods:FinishedLoadingMods")}.";
 
                 MainWindow.Instance.InstallButton.IsEnabled = true;
                 MainWindow.Instance.GameVersionsBox.IsEnabled = true;
