@@ -201,7 +201,7 @@
             BSMG
         </Hyperlink>. (Engels)
     </Span>
-    <sys:String x:Key="Invalid:BoughtGame1">Als U een illegaal gedownloade versie van het spel had maar nu het spel hebt gekocht</sys:String>
+    <sys:String x:Key="Invalid:BoughtGame1">Als U een illegaal gedownloade versie van het spel had, maar nu het spel heeft gekocht</sys:String>
     <sys:String x:Key="Invalid:SelectFolderButton">Selecteer map</sys:String>
     <sys:String x:Key="Invalid:BoughtGame2">Dan moet U Mod Assistant opnieuw starten na het wisselen naar de legitieme installatie</sys:String>
 
