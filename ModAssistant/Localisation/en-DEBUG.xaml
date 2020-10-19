@@ -62,6 +62,7 @@
     <sys:String x:Key="Mods:CheckingInstalledMods">Mods:CheckingInstalledMods</sys:String>
     <sys:String x:Key="Mods:LoadingMods">Mods:LoadingMods</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Mods:FinishedLoadingMods</sys:String>
+    <sys:String x:Key="Mods:NoMods">Mods:NoMods</sys:String>
     <sys:String x:Key="Mods:InstallingMod">{0} Mods:InstallingMod</sys:String>
     <sys:String x:Key="Mods:InstalledMod">{0} Mods:InstalledMod</sys:String>
     <sys:String x:Key="Mods:FinishedInstallingMods">Mods:FinishedInstallingMods</sys:String>
