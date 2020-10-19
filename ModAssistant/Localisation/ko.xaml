@@ -216,6 +216,8 @@
     <sys:String x:Key="OneClick:InstallDirNotFound">비트세이버 설치 폴더를 찾을 수 없었습니다.</sys:String>
     <sys:String x:Key="OneClick:InstalledAsset">설치됨: {0}</sys:String>
     <sys:String x:Key="OneClick:AssetInstallFailed">설치에 실패하였습니다.</sys:String>
+    <sys:String x:Key="OneClick:PatchSong:Failed">Input audio file does not match master audio file for this map.</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:PatchSong:SelectFile">Select master song audio file</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ 설치 관리자가 등록되었습니다!</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ 설치 관리자가 등록 취소되었습니다!</sys:String>
     <sys:String x:Key="OneClick:Installing">Installing: {0}</sys:String> <!-- NEEDS TRANSLATING -->

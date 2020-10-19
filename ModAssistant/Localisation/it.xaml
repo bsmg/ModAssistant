@@ -217,6 +217,8 @@
     <sys:String x:Key="OneClick:InstallDirNotFound">Directory d'installazione di Beat Saber non trovata.</sys:String>
     <sys:String x:Key="OneClick:InstalledAsset">Installato: {0}</sys:String>
     <sys:String x:Key="OneClick:AssetInstallFailed">Non sono riuscito ad installare la mappa.</sys:String>
+    <sys:String x:Key="OneClick:PatchSong:Failed">Input audio file does not match master audio file for this map.</sys:String>  <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:PatchSong:SelectFile">Select master song audio file</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} Registrazione dei gestori OneClick™ riuscita!</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} De-Regitrazione dei gestori OneClick™ riuscita!</sys:String>
     <sys:String x:Key="OneClick:Installing">Installing: {0}</sys:String> <!-- NEEDS TRANSLATING -->
