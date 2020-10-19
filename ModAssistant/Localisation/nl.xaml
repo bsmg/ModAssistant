@@ -91,7 +91,7 @@
     <sys:String x:Key="Mods:CheckingInstalledMods">Geïnstalleerde mods controleren</sys:String>
     <sys:String x:Key="Mods:LoadingMods">Mods Laden</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Klaar met mods laden</sys:String>
-    <sys:String x:Key="Mods:NoMods">No mods available for this version of Beat Saber</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:NoMods">Geen mods beschikbaar voor deze versie van Beat Saber</sys:String>
     <sys:String x:Key="Mods:InstallingMod">{0} wordt geïnstalleerd</sys:String>
     <sys:String x:Key="Mods:InstalledMod">{0} is geïnstalleerd</sys:String>
     <sys:String x:Key="Mods:FinishedInstallingMods">Klaar met mods installeren</sys:String>
