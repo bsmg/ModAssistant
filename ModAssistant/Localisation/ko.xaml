@@ -92,6 +92,7 @@
     <sys:String x:Key="Mods:CheckingInstalledMods">설치된 모드들을 확인하고 있습니다</sys:String>
     <sys:String x:Key="Mods:LoadingMods">모드들을 불러오고 있습니다</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">모드들을 불러왔습니다</sys:String>
+    <sys:String x:Key="Mods:NoMods">No mods available for this version of Beat Saber</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Mods:InstallingMod">Installing {0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">Installed {0}</sys:String>
     <sys:String x:Key="Mods:FinishedInstallingMods">모드 설치를 마쳤습니다</sys:String>

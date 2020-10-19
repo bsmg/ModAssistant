@@ -93,6 +93,7 @@
     <sys:String x:Key="Mods:CheckingInstalledMods">Kollar efter installerade mods</sys:String>
     <sys:String x:Key="Mods:LoadingMods">Laddar Mods</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Mods färdigladdade!</sys:String>
+    <sys:String x:Key="Mods:NoMods">No mods available for this version of Beat Saber</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Mods:InstallingMod">Installerar {0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">Installerat {0}</sys:String>
     <sys:String x:Key="Mods:FinishedInstallingMods">Mods färdiginstallerade!</sys:String>

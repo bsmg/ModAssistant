@@ -93,6 +93,7 @@
     <sys:String x:Key="Mods:CheckingInstalledMods">Controllo le mod installate</sys:String>
     <sys:String x:Key="Mods:LoadingMods">Carico le mod</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Caricamento delle mod completato</sys:String>
+    <sys:String x:Key="Mods:NoMods">No mods available for this version of Beat Saber</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Mods:InstallingMod">Installazione di {0} in corso</sys:String>
     <sys:String x:Key="Mods:InstalledMod">{0} installato</sys:String>
     <sys:String x:Key="Mods:FinishedInstallingMods">Installazione delle mod completata</sys:String>

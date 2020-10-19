@@ -89,6 +89,7 @@
     <sys:String x:Key="Mods:CheckingInstalledMods">正在检查已安装的Mod</sys:String>
     <sys:String x:Key="Mods:LoadingMods">正在加载Mod列表</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Mod列表加载完成</sys:String>
+    <sys:String x:Key="Mods:NoMods">No mods available for this version of Beat Saber</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Mods:InstallingMod">正在安装{0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">已安装{0}</sys:String>
     <sys:String x:Key="Mods:FinishedInstallingMods">Mod安装完成</sys:String>
