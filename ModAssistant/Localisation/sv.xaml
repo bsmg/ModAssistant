@@ -103,6 +103,7 @@
     <sys:String x:Key="Mods:UninstallBox:Body2">Detta kan leda till att dina andra mods slutar att fungera</sys:String>
     <sys:String x:Key="Mods:FailedExtract">Extrahering misslyckades {0}, försöker igen om {1} sekunder. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Misslyckades med att extrahera {0} efter maxantalet försök ({1}), hoppar över. Denna mod kanske inte fungerar som den ska så fortsätt på egen risk.</sys:String>
+    <sys:String x:Key="Mods:SearchLabel">Search...</sys:String> <!-- NEEDS TRANSLATING -->
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">Om</sys:String>
@@ -140,9 +141,20 @@
     <sys:String x:Key="Options:EnableOneClickInstalls">Aktivera OneClick™-Installationer</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
+    <sys:String x:Key="Options:Playlists">Playlists</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:CloseWindow">Close window when finished</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Options:GameType">Spelvariant</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
+    <sys:String x:Key="Options:Tools">Tools</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:InstallPlaylist">Install Playlist</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:InstallingPlaylist">Installing Playlist: {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:FailedPlaylistSong">Failed song: {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:FinishedPlaylist">[{0} fails] Finished Installing Playlist: {1}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:ShowOCIWindow">Show OneClick Installer Window</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:OCIWindowYes">Yes</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:OCIWindowClose">Close</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:OCIWindowNo">No</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Options:Diagnostics">Diagnostikverktyg</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Öppna Loggar</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">Öppna AppData</sys:String>
@@ -211,6 +223,11 @@
     <sys:String x:Key="OneClick:AssetInstallFailed">Misslyckades med att installera.</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™-installeringshanterare registrerade!</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™-installeringshanterare avregistrerade!</sys:String>
+    <sys:String x:Key="OneClick:Installing">Installing: {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:RatelimitSkip">Max tries reached: Skipping {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:RatelimitHit">Ratelimit hit. Resuming in {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:Failed">Download failed: {0}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:Done">Done'd</sys:String> <!-- NEEDS TRANSLATING -->
 
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">Temat hittades inte, återställer till standardtemat...</sys:String>

@@ -150,6 +150,10 @@
     <sys:String x:Key="Options:InstallingPlaylist">Installing Playlist: {0}</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Options:FailedPlaylistSong">Failed song: {0}</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Options:FinishedPlaylist">[{0} fails] Finished Installing Playlist: {1}</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:ShowOCIWindow">Show OneClick Installer Window</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:OCIWindowYes">Yes</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:OCIWindowClose">Close</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:OCIWindowNo">No</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Options:Diagnostics">진단</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">로그 열기</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">앱데이터 열기</sys:String>
@@ -222,7 +226,8 @@
     <sys:String x:Key="OneClick:RatelimitSkip">Max tries reached: Skipping {0}</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="OneClick:RatelimitHit">Ratelimit hit. Resuming in {0}</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="OneClick:Failed">Download failed: {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    
+    <sys:String x:Key="OneClick:Done">Done'd</sys:String> <!-- NEEDS TRANSLATING -->
+
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">테마를 찾을 수 없어, 기본 테마로 돌아갑니다...</sys:String>
     <sys:String x:Key="Themes:ThemeSet">{0} 테마로 설정합니다.</sys:String>
