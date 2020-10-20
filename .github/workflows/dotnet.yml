@@ -2,33 +2,33 @@ name: .NET Build
 on: [push]
 
 jobs:
-    build:
-        runs-on: windows-latest
-        steps:
-        - name: Checkout
-            uses: actions/checkout@v2
-        - name: Setup msbuild
-            uses: microsoft/setup-msbuild@v1.0.2
-        - name: Install dependencies
-            run: msbuild -t:restore
-        - name: Build project
-            run: msbuild ModAssistant/ModAssistant.csproj /t:Build /p:Configuration=Release
-        - name: Cleanup release
-            shell: bash
-            run: |
-                find "ModAssistant/bin/Release" -type f ! -name "ModAssistant.exe" -delete
-                cp "LICENSE" "ModAssistant/bin/Release/LICENSE.ModAssistant.txt"
-        - name: Upload Build
-            if: startsWith(github.ref, 'refs/tags/') == false
-            uses: actions/upload-artifact@v2
-            with:
-                name: ModAssistant-${{ github.sha }}
-                path: ./ModAssistant/bin/Release/
-        - name: Release
-            if: startsWith(github.ref, 'refs/tags/')
-            uses: softprops/action-gh-release@v1
-            env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            with:
-                name: Mod Assistant ${{ github.ref }}
-                files: ./ModAssistant/bin/Release/ModAssistant.exe
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Setup msbuild
+      uses: microsoft/setup-msbuild@v1.0.2
+    - name: Install dependencies
+      run: msbuild -t:restore
+    - name: Build project
+      run: msbuild ModAssistant/ModAssistant.csproj /t:Build /p:Configuration=Release
+    - name: Cleanup release
+      shell: bash
+      run: |
+        find "ModAssistant/bin/Release" -type f ! -name "ModAssistant.exe" -delete
+        cp "LICENSE" "ModAssistant/bin/Release/LICENSE.ModAssistant.txt"
+    - name: Upload Build
+      if: startsWith(github.ref, 'refs/tags/') == false
+      uses: actions/upload-artifact@v2
+      with:
+        name: ModAssistant-${{ github.sha }}
+        path: ./ModAssistant/bin/Release/
+    - name: Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        name: Mod Assistant ${{ github.ref }}
+        files: ./ModAssistant/bin/Release/ModAssistant.exe
