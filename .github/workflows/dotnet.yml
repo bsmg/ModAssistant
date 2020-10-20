@@ -35,5 +35,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        name: Mod Assistant ${{ steps.get_version.outputs.version }}
+        name: Mod Assistant v${{ steps.get_version.outputs.version }}
         files: ./ModAssistant/bin/Release/ModAssistant.exe
