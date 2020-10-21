@@ -5,15 +5,10 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v1
-    # Set Path workaround for https://github.com/actions/virtual-environments/issues/263
-    - name: "Temp step to Set Path for Windows"
-      run: |
-        echo "::add-path::C:\Program Files\Git\mingw64\bin"
-        echo "::add-path::C:\Program Files\Git\usr\bin"
-        echo "::add-path::C:\Program Files\Git\bin"
-    - name: Setup MSBuild
-      uses: warrenbuckley/Setup-MSBuild@v1
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Setup msbuild
+      uses: microsoft/setup-msbuild@v1.0.2
     - name: Install dependencies
       run: msbuild -t:restore
     - name: Build project
@@ -24,29 +19,21 @@ jobs:
         find "ModAssistant/bin/Release" -type f ! -name "ModAssistant.exe" -delete
         cp "LICENSE" "ModAssistant/bin/Release/LICENSE.ModAssistant.txt"
     - name: Upload Build
-      if: contains(github.ref, 'refs/tags/') == false
-      uses: actions/upload-artifact@v1
+      if: startsWith(github.ref, 'refs/tags/') == false
+      uses: actions/upload-artifact@v2
       with:
         name: ModAssistant-${{ github.sha }}
-        path: ./ModAssistant/bin/Release
-    - name: Create Release
-      if: contains(github.ref, 'refs/tags/') == true
-      id: create_release
-      uses: actions/create-release@v1.0.0
+        path: ./ModAssistant/bin/Release/
+    - name: Extract Release Version
+      if: startsWith(github.ref, 'refs/tags/')
+      id: get_version
+      shell: bash
+      run: echo ::set-output name=version::${GITHUB_REF#refs/tags/v}
+    - name: Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Mod Assistant ${{ github.ref }}
-        draft: false
-        prerelease: false
-    - name: Upload Release Asset
-      if: contains(github.ref, 'refs/tags/') == true
-      uses: actions/upload-release-asset@v1.0.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./ModAssistant/bin/Release/ModAssistant.exe
-        asset_name: ModAssistant.exe
-        asset_content_type: application/vnd.microsoft.portable-executable
+        name: Mod Assistant v${{ steps.get_version.outputs.version }}
+        files: ./ModAssistant/bin/Release/ModAssistant.exe

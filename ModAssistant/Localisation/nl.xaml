@@ -31,7 +31,7 @@
     <sys:String x:Key="MainWindow:NoModSelected">Geen mod geselecteerd!</sys:String>
     <sys:String x:Key="MainWindow:NoModInfoPage">{0} heeft geen info pagina</sys:String>
 
-    <!-- Introductie Pagina -->
+    <!-- Intro Page -->
     <sys:String x:Key="Intro:Title">Introductie</sys:String>
     <sys:String x:Key="Intro:PageTitle">Welkom bij Mod Assistant</sys:String>
     <sys:String x:Key="Intro:Terms:Header">Lees deze pagina alstublieft volledig en aandachtig</sys:String>
@@ -91,6 +91,7 @@
     <sys:String x:Key="Mods:CheckingInstalledMods">Geïnstalleerde mods controleren</sys:String>
     <sys:String x:Key="Mods:LoadingMods">Mods Laden</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Klaar met mods laden</sys:String>
+    <sys:String x:Key="Mods:NoMods">Geen mods beschikbaar voor deze versie van Beat Saber</sys:String>
     <sys:String x:Key="Mods:InstallingMod">{0} wordt geïnstalleerd</sys:String>
     <sys:String x:Key="Mods:InstalledMod">{0} is geïnstalleerd</sys:String>
     <sys:String x:Key="Mods:FinishedInstallingMods">Klaar met mods installeren</sys:String>
@@ -98,7 +99,7 @@
     <sys:String x:Key="Mods:UninstallBox:Title">{0} deïnstalleren?</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Body1"> Weet U zeker dat U {0} wilt verwijderen?</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Body2">Dit zou uw andere mods niet meer kunnen laten werken</sys:String>
-    <sys:String x:Key="Mods:FailedExtract">Kon {0} niet extracten, probeer opniew over {1} seconden. ({2}/{3})</sys:String>
+    <sys:String x:Key="Mods:FailedExtract">Kon {0} niet uitpakken, probeer opniew over {1} seconden. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Kon {0} niet uitpakken na maximaal aantal pogingen ({1}), deze word nu overgeslagen. Deze mod werkt misschien niet goed dus ga verder op eigen risico</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Zoek...</sys:String>
     <sys:String x:Key="Mods:DownloadingMod">Downloading {0} from {1}</sys:String>
@@ -123,7 +124,7 @@
     </Span>
     <sys:String x:Key="About:SpecialThanks">Bijzondere dank ♥</sys:String>
     <sys:String x:Key="About:Donate">Doneer</sys:String>
-    <sys:String x:Key="About:HeadpatsButton">Tik op hoofd</sys:String>
+    <sys:String x:Key="About:HeadpatsButton">Aai over je bol</sys:String>
     <sys:String x:Key="About:HugsButton">Knuffels</sys:String>
 
     <!-- Options Page -->
@@ -149,6 +150,10 @@
     <sys:String x:Key="Options:InstallingPlaylist">Afspeellijst installeren: {0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">Installatie nummer mislukt: {0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0} mislukkingen] Afspeellijst geïnstalleerd: {1}</sys:String>
+    <sys:String x:Key="Options:ShowOCIWindow">Show OneClick Installer Window</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:OCIWindowYes">Yes</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:OCIWindowClose">Close</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:OCIWindowNo">No</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Options:Diagnostics">Diagnostiek</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Open Logs</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">Open AppData</sys:String>
@@ -190,19 +195,19 @@
     </Span>
     <Span x:Key="Invalid:List:Line2">
         Als Uw game versie
-        <Bold>niet</Bold> gepirateerd is, doe dan alstublieft 
+        <Bold>niet</Bold> illegaal gedownload is, doe dan alstublieft 
         <Hyperlink NavigateUri="https://bsmg.wiki/support#clean-installation" local:HyperlinkExtensions.IsExternal="True">
             een "schone" installatie
         </Hyperlink>.
     </Span>
     <Span x:Key="Invalid:List:Line3">
-        Als dat allebei niet helpt, vraag om hulp in de 
-        <Span Foreground="Blue">#support</Span> channel in
+        Als dat allebei niet helpt, vraag om hulp in het 
+        <Span Foreground="Blue">#support</Span> kanaal in
         <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
             BSMG
         </Hyperlink>. (Engels)
     </Span>
-    <sys:String x:Key="Invalid:BoughtGame1">Als U een gepirateerde versie van het spel had maar nu het spel hebt gekocht</sys:String>
+    <sys:String x:Key="Invalid:BoughtGame1">Als U een illegaal gedownloade versie van het spel had, maar nu het spel heeft gekocht</sys:String>
     <sys:String x:Key="Invalid:SelectFolderButton">Selecteer map</sys:String>
     <sys:String x:Key="Invalid:BoughtGame2">Dan moet U Mod Assistant opnieuw starten na het wisselen naar de legitieme installatie</sys:String>
 
@@ -221,7 +226,8 @@
     <sys:String x:Key="OneClick:RatelimitSkip">Maximaal aantal pogingen bereikt: {0} word overgeslagen</sys:String>
     <sys:String x:Key="OneClick:RatelimitHit">Snelheidslimiet bereikt. Gaat verder over {0}</sys:String>
     <sys:String x:Key="OneClick:Failed">Download mislukt: {0}</sys:String>
-    
+    <sys:String x:Key="OneClick:Done">Done'd</sys:String> <!-- NEEDS TRANSLATING -->
+
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">Thema niet gevonden, terugvallen op standaard thema...</sys:String>
     <sys:String x:Key="Themes:ThemeSet">Theme ingesteld op {0}.</sys:String>

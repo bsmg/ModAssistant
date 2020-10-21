@@ -12,126 +12,135 @@
     mc:Ignorable="d">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <TextBlock
-            Name="SearchText"
-            Padding="5,0,0,0"
-            Height="0"
-            Grid.Row="0"
-            Text="{DynamicResource Mods:SearchLabel}"
-            Panel.ZIndex="1"
-            Foreground="{DynamicResource TextColor}"
-            Background="{DynamicResource BottomStatusBarBackground}" />
-        <TextBox
-            Name="SearchBar"
-            Margin="0,-1,0,0"
-            Padding="3,1,0,0"
-            Height="0"
-            Grid.Row="0"
-            Panel.ZIndex="2"
-            Background="#00000000"
-            Foreground="{DynamicResource TextColor}"
-            TextChanged="SearchBar_TextChanged"
-            BorderThickness="0" />
-        <ListView
-            Name="ModsListView"
-            Grid.Column="1"
-            Grid.Row="1"
-            SelectionChanged="ModsListView_SelectionChanged"
-            SelectionMode="Single">
-            <ListView.View>
-                <GridView>
-                    <GridView.Columns>
-                        <GridViewColumn Width="30">
-                            <GridViewColumn.Header>
-                                <Button
-                                    Name="SearchButton"
-                                    Background="#00000000"
-                                    BorderThickness="0"
-                                    Click="SearchButton_Click"
-                                    Padding="9,-1,9,0"
-                                    Margin="-5"
-                                    Content="🔍"
-                                    FontSize="11" />
-                            </GridViewColumn.Header>
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox
-                                        Name="ModCheckBox"
-                                        Checked="ModCheckBox_Checked"
-                                        IsChecked="{Binding Path=IsSelected, Mode=TwoWay}"
-                                        IsEnabled="{Binding IsEnabled}"
-                                        Tag="{Binding ModInfo}"
-                                        Unchecked="ModCheckBox_Unchecked" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding ModName}" Header="{DynamicResource Mods:Header:Name}" />
+        <Grid x:Name="NoModsGrid" Visibility="Visible">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontWeight="SemiBold">
+                <TextBlock Text="{DynamicResource Mods:NoMods}" />.
+            </TextBlock>
+        </Grid>
 
-                        <GridViewColumn x:Name="InstalledColumn" Header="{DynamicResource Mods:Header:Installed}">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock
-                                        Foreground="{Binding GetVersionColor}"
-                                        Text="{Binding InstalledVersion}"
-                                        TextDecorations="{Binding GetVersionDecoration}" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-                        <GridViewColumn DisplayMemberBinding="{Binding ModVersion}" Header="{DynamicResource Mods:Header:Latest}" />
-                        <GridViewColumn x:Name="DescriptionColumn" Header="{DynamicResource Mods:Header:Description}">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Margin="{Binding PromotionMargin}">
-                                            <Hyperlink NavigateUri="{Binding PromotionLink, TargetNullValue=about:blank}" RequestNavigate="Hyperlink_RequestNavigate">
-                                                <Run Text="{Binding PromotionText}" />
-                                            </Hyperlink>
-                                        </TextBlock>
-                                        <TextBlock Text="{Binding ModDescription}" MouseLeftButtonDown="CopyText" />
-                                    </StackPanel>
-                                </DataTemplate>
-
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-
-                        <GridViewColumn
-                            x:Name="UninstallColumn"
-                            Width="70"
-                            Header="{DynamicResource Mods:Header:Uninstall}">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
+            <TextBlock
+                Name="SearchText"
+                Grid.Row="0"
+                Height="0"
+                Padding="5,0,0,0"
+                Panel.ZIndex="1"
+                Background="{DynamicResource BottomStatusBarBackground}"
+                Foreground="{DynamicResource TextColor}"
+                Text="{DynamicResource Mods:SearchLabel}" />
+            <TextBox
+                Name="SearchBar"
+                Grid.Row="0"
+                Height="0"
+                Margin="0,-1,0,0"
+                Padding="3,1,0,0"
+                Panel.ZIndex="2"
+                Background="#00000000"
+                BorderThickness="0"
+                Foreground="{DynamicResource TextColor}"
+                TextChanged="SearchBar_TextChanged" />
+            <ListView
+                Name="ModsListView"
+                Grid.Row="1"
+                Grid.Column="1"
+                SelectionChanged="ModsListView_SelectionChanged"
+                SelectionMode="Single">
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Width="30">
+                                <GridViewColumn.Header>
                                     <Button
-                                        Name="Uninstall"
-                                        Click="Uninstall_Click"
-                                        Content="{DynamicResource Mods:UninstallButton}"
-                                        Foreground="Red"
-                                        IsEnabled="{Binding CanDelete}"
-                                        Tag="{Binding ModInfo}"
-                                        Visibility="{Binding CanSeeDelete}" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView.Columns>
-                </GridView>
-            </ListView.View>
-            <ListView.GroupStyle>
-                <GroupStyle>
-                    <GroupStyle.HeaderTemplate>
-                        <DataTemplate>
-                            <TextBlock
-                                Padding="6,0,0,0"
-                                FontSize="14"
-                                FontWeight="Bold"
-                                Text="{Binding Name}" />
-                        </DataTemplate>
-                    </GroupStyle.HeaderTemplate>
-                </GroupStyle>
-            </ListView.GroupStyle>
-        </ListView>
+                                        Name="SearchButton"
+                                        Margin="-5"
+                                        Padding="9,-1,9,0"
+                                        Background="#00000000"
+                                        BorderThickness="0"
+                                        Click="SearchButton_Click"
+                                        Content="🔍"
+                                        FontSize="11" />
+                                </GridViewColumn.Header>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox
+                                            Name="ModCheckBox"
+                                            Checked="ModCheckBox_Checked"
+                                            IsChecked="{Binding Path=IsSelected, Mode=TwoWay}"
+                                            IsEnabled="{Binding IsEnabled}"
+                                            Tag="{Binding ModInfo}"
+                                            Unchecked="ModCheckBox_Unchecked" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding ModName}" Header="{DynamicResource Mods:Header:Name}" />
+
+                            <GridViewColumn x:Name="InstalledColumn" Header="{DynamicResource Mods:Header:Installed}">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Foreground="{Binding GetVersionColor}"
+                                            Text="{Binding InstalledVersion}"
+                                            TextDecorations="{Binding GetVersionDecoration}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn DisplayMemberBinding="{Binding ModVersion}" Header="{DynamicResource Mods:Header:Latest}" />
+                            <GridViewColumn x:Name="DescriptionColumn" Header="{DynamicResource Mods:Header:Description}">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Margin="{Binding PromotionMargin}">
+                                                <Hyperlink NavigateUri="{Binding PromotionLink, TargetNullValue=about:blank}" RequestNavigate="Hyperlink_RequestNavigate">
+                                                    <Run Text="{Binding PromotionText}" />
+                                                </Hyperlink>
+                                            </TextBlock>
+                                            <TextBlock MouseLeftButtonDown="CopyText" Text="{Binding ModDescription}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn
+                                x:Name="UninstallColumn"
+                                Width="70"
+                                Header="{DynamicResource Mods:Header:Uninstall}">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button
+                                            Name="Uninstall"
+                                            Click="Uninstall_Click"
+                                            Content="{DynamicResource Mods:UninstallButton}"
+                                            Foreground="Red"
+                                            IsEnabled="{Binding CanDelete}"
+                                            Tag="{Binding ModInfo}"
+                                            Visibility="{Binding CanSeeDelete}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+                <ListView.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Padding="6,0,0,0"
+                                    FontSize="14"
+                                    FontWeight="Bold"
+                                    Text="{Binding Name}" />
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </ListView.GroupStyle>
+            </ListView>
+        </Grid>
     </Grid>
 </Page>

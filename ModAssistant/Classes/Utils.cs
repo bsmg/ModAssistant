@@ -461,13 +461,14 @@ namespace ModAssistant
         public static bool IsVoid()
         {
             string directory = App.BeatSaberInstallDirectory;
+            string pluginsDirectory = Path.Combine(directory, "Beat Saber_Data", "Plugins");
 
             if (File.Exists(Path.Combine(directory, "IGG-GAMES.COM.url")) ||
                 File.Exists(Path.Combine(directory, "SmartSteamEmu.ini")) ||
                 File.Exists(Path.Combine(directory, "GAMESTORRENT.CO.url")) ||
-                File.Exists(Path.Combine(directory, "Beat Saber_Data", "Plugins", "BSteam crack.dll")) ||
-                File.Exists(Path.Combine(directory, "Beat Saber_Data", "Plugins", "HUHUVR_steam_api64.dll")) ||
-                Directory.GetFiles(Path.Combine(directory, "Beat Saber_Data", "Plugins"), "*.ini", SearchOption.TopDirectoryOnly).Length > 0)
+                File.Exists(Path.Combine(pluginsDirectory, "BSteam crack.dll")) ||
+                File.Exists(Path.Combine(pluginsDirectory, "HUHUVR_steam_api64.dll")) ||
+                Directory.GetFiles(pluginsDirectory, "*.ini", SearchOption.TopDirectoryOnly).Where(x => Path.GetFileName(x) != "desktop.ini").Any())
                 return true;
             return false;
         }

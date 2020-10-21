@@ -62,6 +62,7 @@
     <sys:String x:Key="Mods:CheckingInstalledMods">Mods:CheckingInstalledMods</sys:String>
     <sys:String x:Key="Mods:LoadingMods">Mods:LoadingMods</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Mods:FinishedLoadingMods</sys:String>
+    <sys:String x:Key="Mods:NoMods">Mods:NoMods</sys:String>
     <sys:String x:Key="Mods:InstallingMod">{0} Mods:InstallingMod</sys:String>
     <sys:String x:Key="Mods:InstalledMod">{0} Mods:InstalledMod</sys:String>
     <sys:String x:Key="Mods:FinishedInstallingMods">Mods:FinishedInstallingMods</sys:String>
@@ -111,6 +112,10 @@
     <sys:String x:Key="Options:InstallingPlaylist">{0} Options:InstallingPlaylist</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">{0} Options:FailedPlaylistSong</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">{0} {1} Options:FinishedPlaylist</sys:String>
+    <sys:String x:Key="Options:ShowOCIWindow">Options:ShowOCIWindow</sys:String>
+    <sys:String x:Key="Options:OCIWindowYes">Options:OCIWindowYes</sys:String>
+    <sys:String x:Key="Options:OCIWindowClose">Options:OCIWindowClose</sys:String>
+    <sys:String x:Key="Options:OCIWindowNo">Options:OCIWindowNo</sys:String>
     <sys:String x:Key="Options:Diagnostics">Options:Diagnostics</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Options:OpenLogsButton</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">Options:OpenAppDataButton</sys:String>
@@ -164,6 +169,7 @@
     <sys:String x:Key="OneClick:RatelimitSkip">{0} OneClick:RatelimitSkip</sys:String>
     <sys:String x:Key="OneClick:RatelimitHit">{0} OneClick:RatelimitHit</sys:String>
     <sys:String x:Key="OneClick:Failed">{0} OneClick:Failed</sys:String>
+    <sys:String x:Key="OneClick:Done">OneClick:Done</sys:String>
 
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">Themes:ThemeNotFound</sys:String>
