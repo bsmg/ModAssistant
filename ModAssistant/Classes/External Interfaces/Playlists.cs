@@ -13,14 +13,10 @@ namespace ModAssistant.API
         private const string PlaylistsFolder = "Playlists";
         private static readonly string BeatSaberPath = Utils.BeatSaberPath;
 
-        public static bool CreatePlaylistsFolder()
+        public static void CreatePlaylistsFolder()
         {
             string playlistsPath = Path.Combine(BeatSaberPath, PlaylistsFolder);
-            if (!Directory.Exists(playlistsPath))
-            {
-                Directory.CreateDirectory(playlistsPath);
-            }
-            return true;
+            Directory.CreateDirectory(playlistsPath);
         }
 
         public static async Task DownloadAll(Uri uri)
