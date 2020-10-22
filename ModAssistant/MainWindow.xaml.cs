@@ -315,10 +315,17 @@ namespace ModAssistant
 
         private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            About.Instance.PatUp.IsOpen = false;
-            About.Instance.PatButton.IsEnabled = true;
-            About.Instance.HugUp.IsOpen = false;
-            About.Instance.HugButton.IsEnabled = true;
+            if (About.Instance.PatUp.IsOpen)
+            {
+                About.Instance.PatUp.IsOpen = false;
+                About.Instance.PatButton.IsEnabled = true;
+            }
+
+            if (About.Instance.HugUp.IsOpen)
+            {
+                About.Instance.HugUp.IsOpen = false;
+                About.Instance.HugButton.IsEnabled = true;
+            }
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
