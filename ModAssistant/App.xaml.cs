@@ -69,8 +69,6 @@ namespace ModAssistant
                 }
             }
 
-            API.Playlists.CreatePlaylistsFolder();
-
             options.InstallType =
                 BeatSaberInstallType = ModAssistant.Properties.Settings.Default.StoreType;
             options.SaveSelection =
