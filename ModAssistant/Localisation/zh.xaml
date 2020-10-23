@@ -156,7 +156,7 @@
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
     <sys:String x:Key="Options:Tools">工具</sys:String>
-    <sys:String x:Key="Options:InstallPlaylist">添加歌单（Playlist）</sys:String>
+    <sys:String x:Key="Options:InstallPlaylist">将歌单下载进游戏（仅限playlist文件）</sys:String>
     <sys:String x:Key="Options:InstallingPlaylist">正在添加歌单：{0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">失败歌曲：{0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0}失败]添加{1}完成</sys:String>
