@@ -93,7 +93,7 @@
     <sys:String x:Key="Mods:CheckingInstalledMods">Prüfe installierte Mods</sys:String>
     <sys:String x:Key="Mods:LoadingMods">Lade Mods</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Laden der Mods abgeschlossen</sys:String>
-    <sys:String x:Key="Mods:NoMods">No mods available for this version of Beat Saber</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:NoMods">Für diese Version von Beat Saber sind keine Mods verfügbar.</sys:String>
     <sys:String x:Key="Mods:InstallingMod">Installiere {0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">{0} installiert</sys:String>
     <sys:String x:Key="Mods:FinishedInstallingMods">Mod Installation abgeschlossen</sys:String>
@@ -109,7 +109,7 @@
     <!-- About Page -->
     <sys:String x:Key="About:Title">Über</sys:String>
     <sys:String x:Key="About:PageTitle">Über Mod Assistant</sys:String>
-    <sys:String x:Key="About:List:Header">Ich bin Assistant und ich habe Mod Assistant als Assistent für Mods mit ein paar Prinzipen im Auge gemacht:</sys:String>
+    <sys:String x:Key="About:List:Header">Ich bin Assistant und ich habe Mod Assistant zum Verwalten von Mods nach folgenden Prinzipien erstellt:</sys:String>
     <sys:String x:Key="About:List:Item1">Einfachheit</sys:String>
     <sys:String x:Key="About:List:Item2">Portabilität</sys:String>
     <sys:String x:Key="About:List:Item3">Nur eine Datei</sys:String>
@@ -142,9 +142,9 @@
     <sys:String x:Key="Options:EnableOneClickInstalls">OneClick™ Installation aktivieren</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
-    <sys:String x:Key="Options:Playlists">Playlists</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:CloseWindow">Close window when finished</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:GameType">Spiel Typ</sys:String>
+    <sys:String x:Key="Options:Playlists">Playlists</sys:String>
+    <sys:String x:Key="Options:CloseWindow">Schließe Fenster wenn fertig</sys:String>
+    <sys:String x:Key="Options:GameType">Spiel-Typ</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
     <sys:String x:Key="Options:Tools">Werkzeuge</sys:String>
@@ -152,10 +152,10 @@
     <sys:String x:Key="Options:InstallingPlaylist">Installiere Playlist: {0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">Titel fehlgeschlagen: {0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0} Fehler] Playlist Installation abgeschlossen: {1}</sys:String>
-    <sys:String x:Key="Options:ShowOCIWindow">Show OneClick Installer Window</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:OCIWindowYes">Yes</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:OCIWindowClose">Close</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:OCIWindowNo">No</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:ShowOCIWindow">Zeige OneClick Installations-Fenster</sys:String>
+    <sys:String x:Key="Options:OCIWindowYes">Ja</sys:String>
+    <sys:String x:Key="Options:OCIWindowClose">Schließen</sys:String>
+    <sys:String x:Key="Options:OCIWindowNo">Nein</sys:String>
     <sys:String x:Key="Options:Diagnostics">Diagnose</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Log öffnen</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">AppData öffnen</sys:String>
@@ -224,11 +224,11 @@
     <sys:String x:Key="OneClick:AssetInstallFailed">Installation fehlgeschlagen.</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ Installation Handler registriert!</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ Installation Handler entfernt!</sys:String>
-    <sys:String x:Key="OneClick:Installing">Installing: {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:RatelimitSkip">Max tries reached: Skipping {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:RatelimitHit">Ratelimit hit. Resuming in {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:Failed">Download failed: {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:Done">Done'd</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:Installing">Installiere: {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitSkip">Maximale Anzahl an Versuchen erreicht: Überspringe {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitHit">Wiederholungs-Limit erreicht. Setze fort in {0}</sys:String>
+    <sys:String x:Key="OneClick:Failed">Download fehlgeschlagen: {0}</sys:String>
+    <sys:String x:Key="OneClick:Done">Abgeschlossen</sys:String>
 
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">Design nicht gefunden, gehe zurück zum Standard Design...</sys:String>

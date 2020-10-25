@@ -20,6 +20,10 @@ namespace ModAssistant
 
         public static async Task<bool> CheckForUpdate()
         {
+#if DEBUG
+            return false;
+#endif
+
             var resp = await HttpClient.GetAsync(APILatestURL);
             var body = await resp.Content.ReadAsStringAsync();
             LatestUpdate = JsonSerializer.Deserialize<Update>(body);

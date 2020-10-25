@@ -13,6 +13,12 @@ namespace ModAssistant.API
         private const string PlaylistsFolder = "Playlists";
         private static readonly string BeatSaberPath = Utils.BeatSaberPath;
 
+        public static void CreatePlaylistsFolder()
+        {
+            string playlistsPath = Path.Combine(BeatSaberPath, PlaylistsFolder);
+            Directory.CreateDirectory(playlistsPath);
+        }
+
         public static async Task DownloadAll(Uri uri)
         {
             switch (uri.Host)
@@ -22,7 +28,6 @@ namespace ModAssistant.API
                     string filename = await Get(url);
                     await DownloadFrom(filename);
                     break;
-
             }
         }
 
@@ -32,7 +37,9 @@ namespace ModAssistant.API
             string absolutePath = Path.Combine(BeatSaberPath, PlaylistsFolder, filename);
             try
             {
+                CreatePlaylistsFolder();
                 await Utils.DownloadAsset(url.ToString(), PlaylistsFolder, filename);
+
                 return absolutePath;
             }
             catch
@@ -43,6 +50,8 @@ namespace ModAssistant.API
 
         public static async Task DownloadFrom(string file)
         {
+            CreatePlaylistsFolder();
+
             if (Path.Combine(BeatSaberPath, PlaylistsFolder) != Path.GetDirectoryName(file))
             {
                 string destination = Path.Combine(BeatSaberPath, PlaylistsFolder, Path.GetFileName(file));
