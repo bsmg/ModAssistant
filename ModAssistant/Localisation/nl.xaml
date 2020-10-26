@@ -201,7 +201,7 @@
     </Span>
     <Span x:Key="Invalid:List:Line3">
         Als dat allebei niet helpt, vraag om hulp in het
-        <Span Foreground="Blue">#support</Span> kanaal in
+        <Span Foreground="Blue">#pc-help</Span> kanaal in
         <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
             BSMG
         </Hyperlink>. (Engels)

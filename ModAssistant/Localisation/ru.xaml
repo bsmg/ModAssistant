@@ -203,7 +203,7 @@
     </Span>
     <Span x:Key="Invalid:List:Line3">
         Если из этого ничего вам не помогает, попросите помощи в
-        <Span Foreground="Blue">#support</Span> канал в
+        <Span Foreground="Blue">#pc-help</Span> канал в
         <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
             BSMG
         </Hyperlink>.

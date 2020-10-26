@@ -205,7 +205,7 @@
         <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
             BSMG
         </Hyperlink>의
-        <Span Foreground="Blue">#support</Span> 채널에서 도움을 구하세요.
+        <Span Foreground="Blue">#pc-help</Span> 채널에서 도움을 구하세요.
     </Span>
     <sys:String x:Key="Invalid:BoughtGame1">만일 불법적인 경로로 받아진 게임을 가지고 있었다가 게임을 구매했다면,</sys:String>
     <sys:String x:Key="Invalid:SelectFolderButton">폴더를 선택해주세요</sys:String>

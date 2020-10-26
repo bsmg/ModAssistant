@@ -204,7 +204,7 @@
         如果这些方法没有帮助，请在BSMG的
         <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
             Discord
-        </Hyperlink><Span Foreground="Blue">#support</Span>频道寻求帮助。
+        </Hyperlink><Span Foreground="Blue">#pc-help</Span>频道寻求帮助。
     </Span>
     <sys:String x:Key="Invalid:BoughtGame1">如果您曾经使用盗版，但之后购买了正版游戏</sys:String>
     <sys:String x:Key="Invalid:SelectFolderButton">选择路径</sys:String>
