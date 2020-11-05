@@ -702,7 +702,10 @@ namespace ModAssistant.Pages
                 }
                 else
                 {
-                    System.Windows.Forms.MessageBox.Show("BSIPA was not uninstalled as it was not found.", "Failed to uninstall BSIPA.", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    var title = (string)FindResource("Mods:UninstallBSIPANotFound:Title");
+                    var body = (string)FindResource("Mods:UninstallBSIPANotFound:Body");
+
+                    System.Windows.Forms.MessageBox.Show(body, title, MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 }
             }
             foreach (Mod.FileHashes files in links.hashMd5)
