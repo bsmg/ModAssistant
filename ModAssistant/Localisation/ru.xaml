@@ -104,8 +104,10 @@
     <sys:String x:Key="Mods:FailedExtract">Не удалось извлечь {0}, попробуйте снова через {1} секунд. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Не удалось извлечь {0} после попыток ({1}), пропускается. Эта модификация может работать некорректно, используйте на свой страх и риск</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Поиск...</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Failed to Uninstall BSIPA</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA installation not found, uninstall operation skipped.</sys:String> <!-- NEEDS TRANSLATING -->
 
-  <!-- About Page -->
+    <!-- About Page -->
     <sys:String x:Key="About:Title">Информация</sys:String>
     <sys:String x:Key="About:PageTitle">Про Mod Assistant</sys:String>
     <sys:String x:Key="About:List:Header">Я ассистент, и я создал Mod Assistant для помощи модификациям с некоторыми личными принципами:</sys:String>

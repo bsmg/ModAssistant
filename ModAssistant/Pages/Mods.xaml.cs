@@ -693,8 +693,21 @@ namespace ModAssistant.Pages
                     break;
                 }
             }
-            if (mod.name.ToLower() == "bsipa")
-                UninstallBSIPA(links);
+            if (mod.name.ToLower() == "bsipa") {
+                var hasIPAExe = File.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA.exe"));
+                var hasIPADir = Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA"));
+
+                if (hasIPADir && hasIPAExe){
+                    UninstallBSIPA(links);
+                }
+                else
+                {
+                    var title = (string)FindResource("Mods:UninstallBSIPANotFound:Title");
+                    var body = (string)FindResource("Mods:UninstallBSIPANotFound:Body");
+
+                    System.Windows.Forms.MessageBox.Show(body, title, MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                }
+            }
             foreach (Mod.FileHashes files in links.hashMd5)
             {
                 if (File.Exists(Path.Combine(App.BeatSaberInstallDirectory, files.file)))
