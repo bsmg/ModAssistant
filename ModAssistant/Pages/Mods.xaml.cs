@@ -693,8 +693,11 @@ namespace ModAssistant.Pages
                     break;
                 }
             }
-            if (mod.name.ToLower() == "bsipa") { 
-                if (Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA")) & File.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA.exe"))){
+            if (mod.name.ToLower() == "bsipa") {
+                var hasIPAExe = File.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA.exe"));
+                var hasIPADir = Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA"));
+
+                if (hasIPADir && hasIPAExe){
                     UninstallBSIPA(links);
                 }
                 else
