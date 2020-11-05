@@ -109,7 +109,8 @@
     <sys:String x:Key="Mods:FailedExtract">Échec de l'extraction de {0}, nouvelle tentative dans {1} secondes. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Échec de l'extraction de {0} après le maximum de tentatives ({1}), abandon. Ce mod pourrait ne pas fonctionner correctement, continuez à vos propres risques</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Recherche...</sys:String>
-
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Failed to Uninstall BSIPA</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA installation not found, uninstall operation skipped.</sys:String> <!-- NEEDS TRANSLATING -->
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">À propos</sys:String>
