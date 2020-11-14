@@ -18,12 +18,12 @@
     <sys:String x:Key="MainWindow:IntroButton">Intro</sys:String>
     <sys:String x:Key="MainWindow:ModsButton">Mods</sys:String>
     <sys:String x:Key="MainWindow:AboutButton">Om</sys:String>
-    <sys:String x:Key="MainWindow:OptionsButton">Instillinger</sys:String>
+    <sys:String x:Key="MainWindow:OptionsButton">Oppsett</sys:String>
     <sys:String x:Key="MainWindow:GameVersionLabel">Spillversjon</sys:String>
     <sys:String x:Key="MainWindow:VersionLabel">Versjon</sys:String>
     <sys:String x:Key="MainWindow:ModInfoButton">Modinformation</sys:String>
-    <sys:String x:Key="MainWindow:InstallButtonTop">Installere</sys:String>
-    <sys:String x:Key="MainWindow:InstallButtonBottom">eller oppdatere</sys:String>
+    <sys:String x:Key="MainWindow:InstallButtonTop">Installer</sys:String>
+    <sys:String x:Key="MainWindow:InstallButtonBottom">eller oppdater</sys:String>
     <sys:String x:Key="MainWindow:GameVersionLoadFailed">Klarte ikke hente spillversjonen, Mod-fanen er derfor ikke tilgjengelig.</sys:String>
     <sys:String x:Key="MainWindow:GameUpdateDialog:Title">Ny spillversjon er tilgjengelig!</sys:String>
     <sys:String x:Key="MainWindow:GameUpdateDialog:Line1">Spillet ser ut til å ha fått en oppdatering.</sys:String>
@@ -40,16 +40,19 @@
     </Span>
     <Span x:Key="Intro:Terms:Line2">
         Beat Saber
-        Har <Bold>ikke</Bold> innebygget støtte for mods. Det betyr at:
+        har <Bold>ikke</Bold> innebygget støtte for mods.
+        <LineBreak /> Det betyr at:
     </Span>
     <Span x:Key="Intro:Terms:Term1">
-        Mods
-        <Bold>kommer til å slutte å fungere</Bold> etter hver oppdatering. Dette er standard, og
+        Mods kommer til å
+        <Bold>slutte å fungere</Bold> etter hver oppdatering. Dette er standard og
         <Bold>ikke</Bold> Beat Games sin feil.
     </Span>
     <Span x:Key="Intro:Terms:Term2">
         Mods
-        <Bold>kommer til å</Bold> forårsake feil og ytelseproblemer. Dette er
+        kommer til å
+        <Bold>forårsake feil og ytelseproblemer
+        </Bold> . Dette er
         <Bold>ikke</Bold> Beat Games sin feil.
     </Span>
     <Span x:Key="Intro:Terms:Term3">
@@ -58,8 +61,8 @@
         <Bold>fritid.</Bold> Vennligst ha tålmodighet og vis forståelse for det.
     </Span>
     <Span x:Key="Intro:ReviewsBeatGamesFault">
-        <Bold>SKRIV IKKE</Bold> negative anmeldelser på grunn av at mods slutter å fungere. Det er
-        <Bold>ikke</Bold> Beat Games fel.
+        <Bold>IKKE SKRIV</Bold> negative anmeldelser på grunn av at mods slutter å fungere. Det er
+        <Bold>ikke</Bold> Beat Games sin feil.
         <LineBreak/> De prøver ikke å "drepe" mods.
     </Span>
     <Span x:Key="Intro:ReviewsRustySpoon">
@@ -71,11 +74,11 @@
     <Span x:Key="Intro:WikiGuide">
         Vennligst les guiden på
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
-            Wikisidan
+            Wikisiden
         </Hyperlink>.
     </Span>
-    <sys:String x:Key="Intro:AgreeButton">Godkjent</sys:String>
-    <sys:String x:Key="Intro:DisagreeButton">Uenig</sys:String>
+    <sys:String x:Key="Intro:AgreeButton">Godkjenner</sys:String>
+    <sys:String x:Key="Intro:DisagreeButton">Nekter</sys:String>
     <sys:String x:Key="Intro:ClosingApp">Lukker programmet: Du godkjente ikke vilkårene.</sys:String>
     <sys:String x:Key="Intro:VersionDownloadFailed">Klarte ikke å hente liste med versjoner.</sys:String>
     <sys:String x:Key="Intro:ModsTabDisabled">Mod-fanen er ikke tilgjengelig. Vennligst start på nytt for å prøve igjen.</sys:String>
@@ -88,15 +91,15 @@
     <sys:String x:Key="Mods:Header:Latest">Siste</sys:String>
     <sys:String x:Key="Mods:Header:Description">Beskrivelse</sys:String>
     <sys:String x:Key="Mods:Header:Uninstall">Avinstallere</sys:String>
-    <sys:String x:Key="Mods:UninstallButton">Avinstallér</sys:String>
+    <sys:String x:Key="Mods:UninstallButton">Avinstaller</sys:String>
     <sys:String x:Key="Mods:LoadFailed">Klarte ikke laste mod-listen</sys:String>
     <sys:String x:Key="Mods:CheckingInstalledMods">Sjekker installerte mods</sys:String>
     <sys:String x:Key="Mods:LoadingMods">Laster inn Mods</sys:String>
-    <sys:String x:Key="Mods:FinishedLoadingMods">Mods er lastet!</sys:String>
+    <sys:String x:Key="Mods:FinishedLoadingMods">Mods er lastet</sys:String>
     <sys:String x:Key="Mods:NoMods">Ingen mods er tilgjengelig for denne versjonen av Beat Saber</sys:String>
     <sys:String x:Key="Mods:InstallingMod">Installerer {0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">Installerte {0}</sys:String>
-    <sys:String x:Key="Mods:FinishedInstallingMods">Mods er installert!</sys:String>
+    <sys:String x:Key="Mods:FinishedInstallingMods">Mods er installert</sys:String>
     <sys:String x:Key="Mods:ModDownloadLinkMissing">Fant ingen nedlastningslenke for {0}</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Title">Avinstallere {0}?</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Body1">Er du sikker på at du vil avinstallere {0}?</sys:String>
@@ -131,8 +134,8 @@
     <sys:String x:Key="About:HugsButton">Klem</sys:String>
 
     <!-- Options Page -->
-    <sys:String x:Key="Options:Title">Instillinger</sys:String>
-    <sys:String x:Key="Options:PageTitle">Alternativ</sys:String>
+    <sys:String x:Key="Options:Title">Innstillinger</sys:String>
+    <sys:String x:Key="Options:PageTitle">Oppsett</sys:String>
     <sys:String x:Key="Options:InstallFolder">Installationsmappe</sys:String>
     <sys:String x:Key="Options:SelectFolderButton">Velg mappe</sys:String>
     <sys:String x:Key="Options:OpenFolderButton">Åpne mappe</sys:String>
@@ -149,7 +152,7 @@
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
     <sys:String x:Key="Options:Tools">Verktøy</sys:String>
-    <sys:String x:Key="Options:InstallPlaylist">Installere spilleliste</sys:String>
+    <sys:String x:Key="Options:InstallPlaylist">Installer spilleliste</sys:String>
     <sys:String x:Key="Options:InstallingPlaylist">Installerer spillelisten: {0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">Mislykket låt: {0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0} feil] Ferdig med å installere spillelister: {1}</sys:String>
