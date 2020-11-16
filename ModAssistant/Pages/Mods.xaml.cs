@@ -554,7 +554,8 @@ namespace ModAssistant.Pages
                     if (SemVersion.TryParse(value, out SemVersion tempInstalledVersion))
                     {
                         _installedVersion = tempInstalledVersion;
-                    } else
+                    }
+                    else
                     {
                         _installedVersion = null;
                     }
@@ -693,11 +694,13 @@ namespace ModAssistant.Pages
                     break;
                 }
             }
-            if (mod.name.ToLower() == "bsipa") {
+            if (mod.name.ToLower() == "bsipa")
+            {
                 var hasIPAExe = File.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA.exe"));
                 var hasIPADir = Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA"));
 
-                if (hasIPADir && hasIPAExe){
+                if (hasIPADir && hasIPAExe)
+                {
                     UninstallBSIPA(links);
                 }
                 else
@@ -705,7 +708,7 @@ namespace ModAssistant.Pages
                     var title = (string)FindResource("Mods:UninstallBSIPANotFound:Title");
                     var body = (string)FindResource("Mods:UninstallBSIPANotFound:Body");
 
-                    System.Windows.Forms.MessageBox.Show(body, title, MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    System.Windows.Forms.MessageBox.Show(body, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             foreach (Mod.FileHashes files in links.hashMd5)
@@ -730,11 +733,11 @@ namespace ModAssistant.Pages
 
         private void CopyText(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (!(sender is TextBlock textBlock)) { return; }
+            if (!(sender is TextBlock textBlock)) return;
             var text = textBlock.Text;
 
             // Ensure there's text to be copied
-            if (string.IsNullOrWhiteSpace(text)) { return; }
+            if (string.IsNullOrWhiteSpace(text)) return;
 
             Utils.SetClipboard(text);
         }

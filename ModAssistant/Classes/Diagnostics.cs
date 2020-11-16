@@ -36,11 +36,11 @@ namespace ModAssistant
                 {
                     MessageBox.Show("! " + file);
                 }
-
-
             }
             if (entries.Count > 0)
+            {
                 entries[entries.Count - 1] = entries[entries.Count - 1].Replace("├", "└");
+            }
 
             return entries.ToArray();
         }

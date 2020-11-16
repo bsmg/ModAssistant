@@ -77,7 +77,7 @@ namespace ModAssistant
                 SelectInstalledMods = ModAssistant.Properties.Settings.Default.SelectInstalled;
             options.ReinstallInstalledMods =
                 ReinstallInstalledMods = ModAssistant.Properties.Settings.Default.ReinstallInstalled;
-            options.CloseWindowOnFinish = 
+            options.CloseWindowOnFinish =
                 CloseWindowOnFinish = ModAssistant.Properties.Settings.Default.CloseWindowOnFinish;
 
             await ArgumentHandler(e.Args);
@@ -209,7 +209,7 @@ namespace ModAssistant
         {
             if (places >= array.Length) return Array.Empty<string>();
             string[] newArray = new string[array.Length - places];
-            for(int i = places; i < array.Length; i++)
+            for (int i = places; i < array.Length; i++)
             {
                 newArray[i - places] = array[i];
             }

@@ -46,7 +46,7 @@ namespace ModAssistant.Pages
                 SelectInstalled.IsEnabled = false;
                 ReinstallInstalled.IsEnabled = false;
             }
-                
+
             UpdateHandlerStatus();
             this.DataContext = this;
         }
@@ -391,7 +391,7 @@ namespace ModAssistant.Pages
         {
             ComboBox comboBox = sender as ComboBox;
             if (comboBox.SelectedItem != null)
-            { 
+            {
                 ComboBoxItem comboBoxItem = (ComboBoxItem)comboBox.SelectedItem;
                 UpdateOCIWindow(comboBoxItem.Tag.ToString());
             }

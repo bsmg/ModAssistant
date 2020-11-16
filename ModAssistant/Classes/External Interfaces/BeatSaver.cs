@@ -190,7 +190,6 @@ namespace ModAssistant.API
         {
             BeatSaverRatelimit ratelimit = new BeatSaverRatelimit();
 
-
             if (headers.TryGetValues("Rate-Limit-Remaining", out IEnumerable<string> _remaining))
             {
                 var Remaining = _remaining.GetEnumerator();
@@ -265,7 +264,7 @@ namespace ModAssistant.API
         public class BeatSaverApiResponse
         {
             public HttpStatusCode statusCode { get; set; }
-            public BeatSaverRatelimit ratelimit { get; set;}
+            public BeatSaverRatelimit ratelimit { get; set; }
             public BeatSaverApiResponseMap map { get; set; }
         }
 

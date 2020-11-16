@@ -100,7 +100,7 @@ namespace ModAssistant.API
             {
                 return $" {string.Concat(Enumerable.Repeat("▒", 10))} [{value}/{max}]";
             }
-            int interval = (int)Math.Floor((double)value / ( ((double)max - (double)min ) / (double)10));
+            int interval = (int)Math.Floor((double)value / (((double)max - (double)min) / (double)10));
             return $" {string.Concat(Enumerable.Repeat("▒", interval))}{string.Concat(Enumerable.Repeat("░", 10 - interval))} [{value}/{max}]";
         }
 

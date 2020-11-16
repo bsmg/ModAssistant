@@ -30,7 +30,8 @@ namespace ModAssistant
             }
             set
             {
-                Dispatcher.Invoke(new Action(() => {
+                Dispatcher.Invoke(new Action(() =>
+                {
                     Instance.MainTextBlock.Text = value;
                     Instance.HistoryTextBlock.Text = string.IsNullOrEmpty(MainText) ? $"{value}" : $"{value}\n{HistoryText}";
                 }));
