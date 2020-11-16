@@ -22,15 +22,15 @@ namespace ModAssistant
         /// <summary>
         /// Local dictionary of Resource Dictionaries mapped by their names.
         /// </summary>
-        private static Dictionary<string, Theme> loadedThemes = new Dictionary<string, Theme>();
-        private static List<string> preInstalledThemes = new List<string> { "Light", "Dark", "BSMG", "Light Pink" };
+        private static readonly Dictionary<string, Theme> loadedThemes = new Dictionary<string, Theme>();
+        private static readonly List<string> preInstalledThemes = new List<string> { "Light", "Dark", "BSMG", "Light Pink" };
 
         /// <summary>
         /// Index of "LoadedTheme" in App.xaml
         /// </summary>
         private static readonly int LOADED_THEME_INDEX = 3;
 
-        private static List<string> supportedVideoExtensions = new List<string>() { ".mp4", ".webm", ".mkv", ".avi", ".m2ts" };
+        private static readonly List<string> supportedVideoExtensions = new List<string>() { ".mp4", ".webm", ".mkv", ".avi", ".m2ts" };
 
         /// <summary>
         /// Load all themes from local Themes subfolder and from embedded resources.

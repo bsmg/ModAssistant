@@ -15,8 +15,8 @@ namespace ModAssistant
         private static Version CurrentVersion;
         private static Version LatestVersion;
         private static bool NeedsUpdate = false;
-        private static string NewExe = Path.Combine(Path.GetDirectoryName(Utils.ExePath), "ModAssistant.exe");
-        private static string Arguments = App.Arguments;
+        private static readonly string NewExe = Path.Combine(Path.GetDirectoryName(Utils.ExePath), "ModAssistant.exe");
+        private static readonly string Arguments = App.Arguments;
 
         public static async Task<bool> CheckForUpdate()
         {
