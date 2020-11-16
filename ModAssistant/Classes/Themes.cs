@@ -49,20 +49,27 @@ namespace ModAssistant
                 string location = $"Themes/{localTheme}.xaml";
                 Uri local = new Uri(location, UriKind.Relative);
 
-                ResourceDictionary localDictionary = new ResourceDictionary();
-                localDictionary.Source = local;
+                ResourceDictionary localDictionary = new ResourceDictionary
+                {
+                    Source = local
+                };
 
                 /*
                  * Load any Waifus that come with these built-in themes, too.
                  * The format must be: Background.png and Sidebar.png as a subfolder with the same name as the theme name.
                  * For example: "Themes/Dark/Background.png", or "Themes/Ugly Kulu-Ya-Ku/Sidebar.png"
                  */
-                Waifus waifus = new Waifus();
-                waifus.Background = GetImageFromEmbeddedResources(localTheme, "Background");
-                waifus.Sidebar = GetImageFromEmbeddedResources(localTheme, "Sidebar");
+                Waifus waifus = new Waifus
+                {
+                    Background = GetImageFromEmbeddedResources(localTheme, "Background"),
+                    Sidebar = GetImageFromEmbeddedResources(localTheme, "Sidebar")
+                };
 
-                Theme theme = new Theme(localTheme, localDictionary);
-                theme.Waifus = waifus;
+                Theme theme = new Theme(localTheme, localDictionary)
+                {
+                    Waifus = waifus
+                };
+
                 loadedThemes.Add(localTheme, theme);
             }
 
@@ -250,8 +257,10 @@ namespace ModAssistant
         /// <returns></returns>
         private static Theme LoadTheme(string directory, string name)
         {
-            Theme theme = new Theme(name, null);
-            theme.Waifus = new Waifus();
+            Theme theme = new Theme(name, null)
+            {
+                Waifus = new Waifus()
+            };
 
             foreach (string file in Directory.EnumerateFiles(directory).OrderBy(x => x))
             {
@@ -275,8 +284,11 @@ namespace ModAssistant
                     try
                     {
                         Uri resourceSource = new Uri(info.FullName);
-                        ResourceDictionary dictionary = new ResourceDictionary();
-                        dictionary.Source = resourceSource;
+                        ResourceDictionary dictionary = new ResourceDictionary
+                        {
+                            Source = resourceSource
+                        };
+
                         theme.ThemeDictionary = dictionary;
                     }
                     catch (Exception ex)
@@ -405,8 +417,10 @@ namespace ModAssistant
                 }
             }
 
-            Theme theme = new Theme(name, dictionary);
-            theme.Waifus = waifus;
+            Theme theme = new Theme(name, dictionary)
+            {
+                Waifus = waifus
+            };
 
             return theme;
         }

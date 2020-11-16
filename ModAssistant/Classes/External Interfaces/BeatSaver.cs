@@ -44,8 +44,11 @@ namespace ModAssistant.API
                     return null;
             }
 
-            BeatSaverMap map = new BeatSaverMap();
-            map.Success = false;
+            BeatSaverMap map = new BeatSaverMap
+            {
+                Success = false
+            };
+
             if (showNotification) Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Installing"), id)}");
             try
             {
