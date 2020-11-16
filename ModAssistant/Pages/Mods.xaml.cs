@@ -151,12 +151,12 @@ namespace ModAssistant.Pages
         public async Task CheckInstalledMods()
         {
             await GetAllMods();
-            List<string> empty = new List<string>();
+
             GetBSIPAVersion();
-            CheckInstallDir("IPA/Pending/Plugins", empty);
-            CheckInstallDir("IPA/Pending/Libs", empty);
-            CheckInstallDir("Plugins", empty);
-            CheckInstallDir("Libs", empty);
+            CheckInstallDir("IPA/Pending/Plugins");
+            CheckInstallDir("IPA/Pending/Libs");
+            CheckInstallDir("Plugins");
+            CheckInstallDir("Libs");
         }
 
         public async Task GetAllMods()
@@ -166,7 +166,7 @@ namespace ModAssistant.Pages
             AllModsList = JsonSerializer.Deserialize<Mod[]>(body);
         }
 
-        private void CheckInstallDir(string directory, List<string> blacklist)
+        private void CheckInstallDir(string directory)
         {
             if (!Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, directory)))
             {
