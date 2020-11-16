@@ -31,7 +31,7 @@ namespace ModAssistant
         private async void Application_Startup(object sender, StartupEventArgs e)
         {
             // Set SecurityProtocol to prevent crash with TLS
-            System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
+            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
 
             if (ModAssistant.Properties.Settings.Default.UpgradeRequired)
             {
@@ -52,14 +52,14 @@ namespace ModAssistant
 
             Languages.LoadLanguages();
 
-            while (string.IsNullOrEmpty(App.BeatSaberInstallDirectory))
+            while (string.IsNullOrEmpty(BeatSaberInstallDirectory))
             {
                 string title = (string)Current.FindResource("App:InstallDirDialog:Title");
                 string body = (string)Current.FindResource("App:InstallDirDialog:OkCancel");
 
                 if (System.Windows.Forms.MessageBox.Show(body, title, System.Windows.Forms.MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    App.BeatSaberInstallDirectory = Utils.GetManualDir();
+                    BeatSaberInstallDirectory = Utils.GetManualDir();
                 }
                 else
                 {
@@ -224,7 +224,7 @@ namespace ModAssistant
             MessageBox.Show($"{body}: {e.Exception}", title, MessageBoxButton.OK, MessageBoxImage.Warning);
 
             e.Handled = true;
-            Application.Current.Shutdown();
+            Current.Shutdown();
         }
     }
 }

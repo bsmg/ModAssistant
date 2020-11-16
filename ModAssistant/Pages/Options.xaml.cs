@@ -203,7 +203,7 @@ namespace ModAssistant.Pages
                 MainWindow.Instance.MainText = $"{Application.Current.FindResource("Options:UploadingLog")}...";
                 await Task.Run(async () => await UploadLog());
 
-                System.Diagnostics.Process.Start(LogURL);
+                Process.Start(LogURL);
                 Utils.SetClipboard(LogURL);
                 MainWindow.Instance.MainText = (string)Application.Current.FindResource("Options:LogUrlCopied");
             }

@@ -112,22 +112,22 @@ namespace ModAssistant
             {
                 try
                 {
-                    Themes.ApplyWindowsTheme();
+                    ApplyWindowsTheme();
                 }
                 catch
                 {
-                    Themes.ApplyTheme("Light", false);
+                    ApplyTheme("Light", false);
                 }
                 return;
             }
 
             try
             {
-                Themes.ApplyTheme(savedTheme, false);
+                ApplyTheme(savedTheme, false);
             }
             catch (ArgumentException)
             {
-                Themes.ApplyWindowsTheme();
+                ApplyWindowsTheme();
                 MainWindow.Instance.MainText = (string)Application.Current.FindResource("Themes:ThemeNotFound");
             }
         }

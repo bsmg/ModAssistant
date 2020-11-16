@@ -19,7 +19,7 @@ namespace ModAssistant
             }
             set
             {
-                Dispatcher.Invoke(new Action(() => { OneClickStatus.Instance.HistoryTextBlock.Text = value; }));
+                Dispatcher.Invoke(new Action(() => { Instance.HistoryTextBlock.Text = value; }));
             }
         }
         public string MainText
@@ -31,8 +31,8 @@ namespace ModAssistant
             set
             {
                 Dispatcher.Invoke(new Action(() => {
-                    OneClickStatus.Instance.MainTextBlock.Text = value;
-                    OneClickStatus.Instance.HistoryTextBlock.Text = string.IsNullOrEmpty(MainText) ? $"{value}" : $"{value}\n{HistoryText}";
+                    Instance.MainTextBlock.Text = value;
+                    Instance.HistoryTextBlock.Text = string.IsNullOrEmpty(MainText) ? $"{value}" : $"{value}\n{HistoryText}";
                 }));
             }
         }

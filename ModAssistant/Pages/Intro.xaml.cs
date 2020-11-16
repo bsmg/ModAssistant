@@ -29,7 +29,7 @@ namespace ModAssistant.Pages
             Properties.Settings.Default.Agreed = false;
             Properties.Settings.Default.Save();
             MessageBox.Show((string)FindResource("Intro:ClosingApp"));
-            System.Windows.Application.Current.Shutdown();
+            Application.Current.Shutdown();
         }
 
         private void Agree_Click(object sender, RoutedEventArgs e)

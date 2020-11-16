@@ -51,7 +51,7 @@ namespace ModAssistant.Pages
 
         public void RefreshColumns()
         {
-            if (MainWindow.Instance.Main.Content != Mods.Instance) return;
+            if (MainWindow.Instance.Main.Content != Instance) return;
             double viewWidth = ModsListView.ActualWidth;
             double totalSize = 0;
             GridViewColumn description = null;
@@ -342,7 +342,7 @@ namespace ModAssistant.Pages
                         );
                     }
 
-                    Pages.Options.Instance.YeetBSIPA.IsEnabled = true;
+                    Options.Instance.YeetBSIPA.IsEnabled = true;
                 }
                 else if (mod.ListItem.IsSelected)
                 {
@@ -622,7 +622,7 @@ namespace ModAssistant.Pages
 
         private void ModsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if ((Mods.ModListItem)Mods.Instance.ModsListView.SelectedItem == null)
+            if ((Mods.ModListItem)Instance.ModsListView.SelectedItem == null)
             {
                 MainWindow.Instance.InfoButton.IsEnabled = false;
             }
@@ -647,7 +647,7 @@ namespace ModAssistant.Pages
                 if (File.Exists(Path.Combine(App.BeatSaberInstallDirectory, file)))
                     File.Delete(Path.Combine(App.BeatSaberInstallDirectory, file));
             }
-            Pages.Options.Instance.YeetBSIPA.IsEnabled = false;
+            Options.Instance.YeetBSIPA.IsEnabled = false;
         }
 
         private void Uninstall_Click(object sender, RoutedEventArgs e)
@@ -784,14 +784,14 @@ namespace ModAssistant.Pages
         {
             target.Height = oldHeight;
             DoubleAnimation animation = new DoubleAnimation(newHeight, duration);
-            target.BeginAnimation(TextBlock.HeightProperty, animation);
+            target.BeginAnimation(HeightProperty, animation);
         }
 
         private void Animate(TextBox target, double oldHeight, double newHeight, TimeSpan duration)
         {
             target.Height = oldHeight;
             DoubleAnimation animation = new DoubleAnimation(newHeight, duration);
-            target.BeginAnimation(TextBox.HeightProperty, animation);
+            target.BeginAnimation(HeightProperty, animation);
         }
     }
 }

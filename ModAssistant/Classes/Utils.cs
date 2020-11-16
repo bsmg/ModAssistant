@@ -245,7 +245,7 @@ namespace ModAssistant
                 int index = Encoding.UTF8.GetString(file).IndexOf("public.app-category.games") + 136;
 
                 Array.Copy(file, index, bytes, 0, 32);
-                string version = Encoding.UTF8.GetString(bytes).Trim(Utils.Constants.IllegalCharacters);
+                string version = Encoding.UTF8.GetString(bytes).Trim(Constants.IllegalCharacters);
 
                 return version;
             }
@@ -392,7 +392,7 @@ namespace ModAssistant
             {
                 try
                 {
-                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+                    Process.Start(new System.Diagnostics.ProcessStartInfo()
                     {
                         FileName = location,
                         UseShellExecute = true,
@@ -462,7 +462,7 @@ namespace ModAssistant
             // want to suppress exceptions for non-clipboard operations
             if (success)
             {
-                Utils.SendNotify($"Copied text to clipboard");
+                SendNotify($"Copied text to clipboard");
             }
         }
     }
