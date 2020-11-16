@@ -244,7 +244,7 @@ namespace ModAssistant.Pages
                 items[i] = WebUtility.UrlEncode(item.Key) + "=" + WebUtility.UrlEncode(item.Value);
             }
 
-            StringContent content = new StringContent(String.Join("&", items), null, "application/x-www-form-urlencoded");
+            StringContent content = new StringContent(string.Join("&", items), null, "application/x-www-form-urlencoded");
             HttpResponseMessage resp = await Http.HttpClient.PostAsync(Utils.Constants.TeknikAPIUrl + "Paste", content);
             string body = await resp.Content.ReadAsStringAsync();
 

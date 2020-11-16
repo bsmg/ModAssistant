@@ -171,7 +171,7 @@ namespace ModAssistant
                 return aliasOf;
             }
 
-            string versionsString = String.Join(",", versions.ToArray());
+            string versionsString = string.Join(",", versions.ToArray());
             if (Properties.Settings.Default.AllGameVersions != versionsString)
             {
                 Properties.Settings.Default.AllGameVersions = versionsString;

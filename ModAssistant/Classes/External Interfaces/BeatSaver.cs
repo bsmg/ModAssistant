@@ -195,7 +195,7 @@ namespace ModAssistant.API
             {
                 var Remaining = _remaining.GetEnumerator();
                 Remaining.MoveNext();
-                ratelimit.Remaining = Int32.Parse(Remaining.Current);
+                ratelimit.Remaining = int.Parse(Remaining.Current);
                 Remaining.Dispose();
             }
 
@@ -203,7 +203,7 @@ namespace ModAssistant.API
             {
                 var Reset = _reset.GetEnumerator();
                 Reset.MoveNext();
-                ratelimit.Reset = Int32.Parse(Reset.Current);
+                ratelimit.Reset = int.Parse(Reset.Current);
                 ratelimit.ResetTime = UnixTimestampToDateTime((long)ratelimit.Reset);
                 Reset.Dispose();
             }
@@ -212,7 +212,7 @@ namespace ModAssistant.API
             {
                 var Total = _total.GetEnumerator();
                 Total.MoveNext();
-                ratelimit.Total = Int32.Parse(Total.Current);
+                ratelimit.Total = int.Parse(Total.Current);
                 Total.Dispose();
             }
 
