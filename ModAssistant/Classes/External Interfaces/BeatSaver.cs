@@ -254,6 +254,7 @@ namespace ModAssistant.API
             }
         }
 
+#pragma warning disable IDE1006 // Naming Styles
         public class BeatSaverMap
         {
             public BeatSaverApiResponse response { get; set; }
@@ -361,3 +362,4 @@ namespace ModAssistant.API
         }
     }
 }
+#pragma warning restore IDE1006 // Naming Styles

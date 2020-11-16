@@ -104,6 +104,7 @@ namespace ModAssistant.API
             return $" {string.Concat(Enumerable.Repeat("▒", interval))}{string.Concat(Enumerable.Repeat("░", 10 - interval))} [{value}/{max}]";
         }
 
+#pragma warning disable IDE1006 // Naming Styles
         class Playlist
         {
             public string playlistTitle { get; set; }
@@ -121,3 +122,4 @@ namespace ModAssistant.API
         }
     }
 }
+#pragma warning restore IDE1006 // Naming Styles
