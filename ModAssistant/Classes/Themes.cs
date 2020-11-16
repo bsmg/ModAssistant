@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
 using System.IO;
-using System.Windows.Media;
-using ModAssistant.Pages;
-using System.Reflection;
-using Microsoft.Win32;
-using System.Windows.Media.Imaging;
 using System.IO.Compression;
+using System.Linq;
+using System.Reflection;
+using System.Windows;
 using System.Windows.Markup;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using Microsoft.Win32;
+using ModAssistant.Pages;
 
 namespace ModAssistant
 {

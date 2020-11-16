@@ -1,5 +1,3 @@
-using System;
-
 namespace ModAssistant
 {
     class Promotions

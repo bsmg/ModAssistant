@@ -9,10 +9,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Forms;
-using System.Windows.Navigation;
-using static ModAssistant.Http;
-using ModAssistant.Libs;
 using System.Windows.Media.Animation;
+using System.Windows.Navigation;
+using ModAssistant.Libs;
+using static ModAssistant.Http;
 using TextBox = System.Windows.Controls.TextBox;
 
 namespace ModAssistant.Pages

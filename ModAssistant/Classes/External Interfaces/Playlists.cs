@@ -2,8 +2,8 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using static ModAssistant.Http;
 using System.Windows;
+using static ModAssistant.Http;
 
 namespace ModAssistant.API
 {
