@@ -240,9 +240,9 @@ namespace ModAssistant.API
 
             if ((int)resp.StatusCode == 429)
             {
-                var ratelimit = new BeatSaver.BeatSaverRatelimit();
-                ratelimit = GetRatelimit(resp.Headers);
+                var ratelimit = GetRatelimit(resp.Headers);
                 Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), ratelimit.ResetTime)}");
+
                 await ratelimit.Wait();
                 await Download(url, output, retries - 1);
             }
