@@ -55,8 +55,8 @@ namespace ModAssistant.Pages
             double viewWidth = ModsListView.ActualWidth;
             double totalSize = 0;
             GridViewColumn description = null;
-            GridView grid = ModsListView.View as GridView;
-            if (grid != null)
+
+            if (ModsListView.View is GridView grid)
             {
                 foreach (var column in grid.Columns)
                 {
@@ -730,8 +730,7 @@ namespace ModAssistant.Pages
 
         private void CopyText(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            var textBlock = sender as TextBlock;
-            if (textBlock == null) { return; }
+            if (!(sender is TextBlock textBlock)) { return; }
             var text = textBlock.Text;
 
             // Ensure there's text to be copied

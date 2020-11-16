@@ -409,7 +409,7 @@ namespace ModAssistant
         {
             string path = Path.GetDirectoryName(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath);
             string logFile = $"{path}{Path.DirectorySeparatorChar}log.log";
-            File.AppendAllText(logFile, $"[{DateTime.UtcNow.ToString("yyyy-mm-dd HH:mm:ss.ffffff")}][{severity.ToUpper()}] {message}\n");
+            File.AppendAllText(logFile, $"[{DateTime.UtcNow:yyyy-mm-dd HH:mm:ss.ffffff}][{severity.ToUpper()}] {message}\n");
         }
 
         public static async Task Download(string link, string output)
