@@ -221,7 +221,7 @@ namespace ModAssistant
         {
             string title = (string)Current.FindResource("App:Exception");
             string body = (string)Current.FindResource("App:UnhandledException");
-            MessageBox.Show($"{body}: {e.Exception}", "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show($"{body}: {e.Exception}", title, MessageBoxButton.OK, MessageBoxImage.Warning);
 
             e.Handled = true;
             Application.Current.Shutdown();
