@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:ModAssistant"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-    <sys:String x:Key="ResourceDictionaryName">i18n:en-US</sys:String>
+    <sys:String x:Key="ResourceDictionaryName">i18n:nl-NL</sys:String>
 
     <!-- App -->
     <sys:String x:Key="App:InstallDirDialog:Title">Beat Saber installatie map niet gevonden!</sys:String>
