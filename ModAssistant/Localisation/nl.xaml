@@ -102,13 +102,13 @@
     <sys:String x:Key="Mods:FailedExtract">Kon {0} niet uitpakken, probeer opniew over {1} seconden. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Kon {0} niet uitpakken na maximaal aantal pogingen ({1}), deze word nu overgeslagen. Deze mod werkt misschien niet goed dus ga verder op eigen risico</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Zoek...</sys:String>
-    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Failed to Uninstall BSIPA</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA installation not found, uninstall operation skipped.</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">BSIPA deïnstallatie mislukt</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA was niet gevonden, deïnstallatie overgeslagen.</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">Over</sys:String>
     <sys:String x:Key="About:PageTitle">Over Mod Assistant</sys:String>
-    <sys:String x:Key="About:List:Header">Ik ben Assistant, en ik heb Mod Assistant gemaakt om te assisteren met mods, met een aantal principes als basis:</sys:String>
+    <sys:String x:Key="About:List:Header">Ik ben Assistant, en ik heb Mod Assistant gemaakt om te assisteren met mods, dit met een aantal principes als basis:</sys:String>
     <sys:String x:Key="About:List:Item1">Eenvoud</sys:String>
     <sys:String x:Key="About:List:Item2">Draagbaarheid</sys:String>
     <sys:String x:Key="About:List:Item3">Één enkel uitvoerbaar bestand</sys:String>
