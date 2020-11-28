@@ -42,10 +42,10 @@
         Beat Saber<Bold>并不能原生支持Mod</Bold>。 这意味着：
     </Span>
     <Span x:Key="Intro:Terms:Term1">
-        <Bold>Mod将会在每次游戏更新后无法使用。这很正常，并不是Beat Games的错。</Bold>
+        <Bold>Mod将会在每次游戏更新后无法使用。这很正常，并不是游戏开发商的问题。</Bold>
     </Span>
     <Span x:Key="Intro:Terms:Term2">
-        Mod会导致出现BUG或者性能问题。这并不是Beat Games的错。
+        Mod会导致出现BUG或者性能问题。这也不是游戏开发商的问题。
     </Span>
     <Span x:Key="Intro:Terms:Term3">
         爱好者在空闲时间<Bold>用爱发电</Bold>制作了这些Mod，请保持耐心，等待Mod更新。
@@ -61,6 +61,11 @@
         <Bold>请各位玩家引以为鉴，不要攻击其他玩家或支持这种行为，谢谢配合。</Bold>
     </Span>
     <Span x:Key="Intro:WikiGuide">
+        <Bold>
+            <Span Foreground="#FF0000">选</Span><Span Foreground="#F60009">项</Span><Span Foreground="#ED0012">界</Span><Span Foreground="#E4001B">面</Span><Span Foreground="#DB0024">中</Span><Span Foreground="#D2002D">切</Span><Span Foreground="#C90036">换</Span><Span Foreground="#C0003F">下</Span><Span Foreground="#B70048">载</Span><Span Foreground="#AE0051">源</Span><Span Foreground="#A5005A">可</Span><Span Foreground="#9C0063">解</Span><Span Foreground="#93006C">决</Span><Span Foreground="#8A0075">加</Span><Span Foreground="#81007E">载</Span><Span Foreground="#780087">下</Span><Span Foreground="#6F0090">载</Span><Span Foreground="#660099">缓</Span><Span Foreground="#5D00A2">慢</Span><Span Foreground="#5400AB">或</Span><Span Foreground="#4B00B4">报</Span><Span Foreground="#4200BD">错</Span><Span Foreground="#3900C6">的</Span><Span Foreground="#3000CF">问</Span><Span Foreground="#2700D8">题</Span><Span Foreground="#1E00E1">！</Span>
+        </Bold>
+        <LineBreak/>
+        <LineBreak/>
         <Bold>
             <Span Foreground="Red">请阅读</Span>
             <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/pc-guide/">
@@ -85,9 +90,9 @@
     <sys:String x:Key="Intro:AgreeButton">同意</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">拒绝</sys:String>
     <sys:String x:Key="Intro:ClosingApp">关闭软件：您不同意此条款。</sys:String>
-    <sys:String x:Key="Intro:VersionDownloadFailed">下载版本列表失败</sys:String>
-    <sys:String x:Key="Intro:ModsTabDisabled">无法启用Mod选项卡。请尝试多等几秒再点击同意，若没有解决，请在左侧的选项界面中切换下载源，通常是网络原因造成的。</sys:String>
-    <sys:String x:Key="Intro:ModsTabEnabled">你现在可以使用Mod选项卡了！</sys:String>
+    <sys:String x:Key="Intro:VersionDownloadFailed">下载版本列表失败，无法启用Mod选项卡。</sys:String>
+    <sys:String x:Key="Intro:ModsTabDisabled">每次打开后必须要多等几秒才能点同意，若没有解决，请在左侧选项界面中切换下载源，通常是因为网络不好。在你点击同意的时候，还没有加载出数据，就会出现这个报错。</sys:String>
+    <sys:String x:Key="Intro:ModsTabEnabled">你现在可以安装Mod了！若遇到问题请切回简介看教程，全都有说明！</sys:String>
 
     <!-- Mods Page -->
     <sys:String x:Key="Mods:Title">Mod</sys:String>
@@ -97,10 +102,10 @@
     <sys:String x:Key="Mods:Header:Description">介绍</sys:String>
     <sys:String x:Key="Mods:Header:Uninstall">卸载</sys:String>
     <sys:String x:Key="Mods:UninstallButton">卸载</sys:String>
-    <sys:String x:Key="Mods:LoadFailed">无法加载Mod列表</sys:String>
+    <sys:String x:Key="Mods:LoadFailed">Mod列表加载失败</sys:String>
     <sys:String x:Key="Mods:CheckingInstalledMods">正在检查已安装的Mod</sys:String>
     <sys:String x:Key="Mods:LoadingMods">正在加载Mod列表</sys:String>
-    <sys:String x:Key="Mods:FinishedLoadingMods">Mod列表加载完成</sys:String>
+    <sys:String x:Key="Mods:FinishedLoadingMods">已加载Mod列表</sys:String>
     <sys:String x:Key="Mods:NoMods">当前版本的游戏暂时没有Mod，请等待Mod更新</sys:String>
     <sys:String x:Key="Mods:InstallingMod">正在安装{0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">已安装{0}</sys:String>
