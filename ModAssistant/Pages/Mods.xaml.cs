@@ -414,7 +414,8 @@ namespace ModAssistant.Pages
                         maxVersion = mod.version;
                         ListItem.InstalledModInfo = installedMod;
                         ListItem.IsInstalled = true;
-                        ListItem.InstalledVersion = maxVersion;
+                        //ListItem.InstalledVersion = maxVersion;
+                        ListItem.InstalledVersion = installedMod.version;
                         if (Properties.Settings.Default.StoreType != "Netvios" || Properties.Settings.Default.DownloadServer != "网易版@BeatMods.top") {
                             break;
                         }
