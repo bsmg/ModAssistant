@@ -92,7 +92,7 @@
     <sys:String x:Key="Mods:CheckingInstalledMods">설치된 모드들을 확인하고 있습니다</sys:String>
     <sys:String x:Key="Mods:LoadingMods">모드들을 불러오고 있습니다</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">모드들을 불러왔습니다</sys:String>
-    <sys:String x:Key="Mods:NoMods">No mods available for this version of Beat Saber</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:NoMods">이 비트세이버 버전에선 사용할 수 있는 모드가 없습니다</sys:String>
     <sys:String x:Key="Mods:InstallingMod">Installing {0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">Installed {0}</sys:String>
     <sys:String x:Key="Mods:FinishedInstallingMods">모드 설치를 마쳤습니다</sys:String>
@@ -102,9 +102,9 @@
     <sys:String x:Key="Mods:UninstallBox:Body2">다른 모드를 사용 못하게 만들 수도 있습니다.</sys:String>
     <sys:String x:Key="Mods:FailedExtract">{0}를 추출하는데 실패했습니다. {1}초 안에 재시도합니다. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">({1})회동안 {0}를 추출하는데 실패했습니다. 이 모드가 제대로 작동하지 않을지도 모릅니다</sys:String>
-    <sys:String x:Key="Mods:SearchLabel">Search...</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Failed to Uninstall BSIPA</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA installation not found, uninstall operation skipped.</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:SearchLabel">검색 중...</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">BSIPA 제거에 실패하였습니다</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">설치된 BSIPA 를 찾을 수 없습니다. 제거하지 못했습니다.</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">정보</sys:String>
@@ -142,20 +142,20 @@
     <sys:String x:Key="Options:EnableOneClickInstalls">OneClick™ 설치 활성화</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
-    <sys:String x:Key="Options:Playlists">Playlists</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:CloseWindow">Close window when finished</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:Playlists">Playlists</sys:String>
+    <sys:String x:Key="Options:CloseWindow">완료되면 창 닫기</sys:String>
     <sys:String x:Key="Options:GameType">게임 유형</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
-    <sys:String x:Key="Options:Tools">Tools</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:InstallPlaylist">Install Playlist</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:InstallingPlaylist">Installing Playlist: {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:FailedPlaylistSong">Failed song: {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:FinishedPlaylist">[{0} fails] Finished Installing Playlist: {1}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:ShowOCIWindow">Show OneClick Installer Window</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:OCIWindowYes">Yes</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:OCIWindowClose">Close</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:OCIWindowNo">No</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:Tools">도구</sys:String>
+    <sys:String x:Key="Options:InstallPlaylist">재생목록 설치</sys:String>
+    <sys:String x:Key="Options:InstallingPlaylist">재생목록 설치 중 : {0}</sys:String>
+    <sys:String x:Key="Options:FailedPlaylistSong">실패한 노래: {0}</sys:String>
+    <sys:String x:Key="Options:FinishedPlaylist">[{0} 실패] 재생목록 설치 완료: {1}</sys:String>
+    <sys:String x:Key="Options:ShowOCIWindow">OneClick™ 설치 윈도우 보기</sys:String>
+    <sys:String x:Key="Options:OCIWindowYes">예</sys:String>
+    <sys:String x:Key="Options:OCIWindowClose">닫기</sys:String>
+    <sys:String x:Key="Options:OCIWindowNo">아니오</sys:String>
     <sys:String x:Key="Options:Diagnostics">진단</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">로그 열기</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">앱데이터 열기</sys:String>
@@ -224,11 +224,11 @@
     <sys:String x:Key="OneClick:AssetInstallFailed">설치에 실패하였습니다.</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ 설치 관리자가 등록되었습니다!</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ 설치 관리자가 등록 취소되었습니다!</sys:String>
-    <sys:String x:Key="OneClick:Installing">Installing: {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:RatelimitSkip">Max tries reached: Skipping {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:RatelimitHit">Ratelimit hit. Resuming in {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:Failed">Download failed: {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:Done">Done'd</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:Installing">설치중: {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitSkip">최대 시도 횟수 도달: {0} 건너뜀</sys:String>
+    <sys:String x:Key="OneClick:RatelimitHit">요청 제한 도달. {0} 재시도</sys:String>
+    <sys:String x:Key="OneClick:Failed">다운로드 실패: {0}</sys:String>
+    <sys:String x:Key="OneClick:Done">완료</sys:String>
 
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">테마를 찾을 수 없어, 기본 테마로 돌아갑니다...</sys:String>
