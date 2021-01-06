@@ -44,29 +44,29 @@
     </Span>
     <Span x:Key="Intro:Terms:Term1">
         이것은 모드들이 매 업데이트마다
-        <Bold>망가진다는 것을</Bold> 의미합니다. 이것은 일반적이며, Beat Games'의 탓이
+        <Bold>망가진다는 것을</Bold> 의미합니다. 이것은 일반적이며, Beat Games의 탓이
         <Bold>아닙니다.</Bold>
     </Span>
     <Span x:Key="Intro:Terms:Term2">
         모드들은 버그와 성능 문제를
-        <Bold>발생시킵니다.</Bold> 이것은 Beat Games'의 탓이
+        <Bold>발생시킵니다.</Bold> 이것은 Beat Games의 탓이
         <Bold>아닙니다.</Bold> 
     </Span>
     <Span x:Key="Intro:Terms:Term3">
         모드들은
         <Bold>무료로</Bold> 만들어졌으며 모더들의
-        <Bold>소중한 시간의 결과물입니다.</Bold>기다림을 갖고 이해해주세요.
+        <Bold>소중한 시간의 결과물입니다.</Bold> 기다림을 갖고 이해해주세요.
     </Span>
     <Span x:Key="Intro:ReviewsBeatGamesFault">
-        모드가 망가진 것 때문에 게임에 대한 부정적인 의견을<Bold>남기지 마세요.</Bold> 이것은 Beat Games'의 탓이
+        모드가 망가진 것 때문에 게임에 대한 부정적인 의견을 <Bold>남기지 마세요.</Bold> 이것은 Beat Games의 탓이
         <Bold>아닙니다.</Bold>
-        <LineBreak/> Beat Games'는 모드를 죽이려 하지 않습니다.
+        <LineBreak/> Beat Games는 모드를 죽이려 하지 않습니다.
     </Span>
     <Span x:Key="Intro:ReviewsRustySpoon">
         만일 사람들이 모드가
-        <Italic>망가진 것을 이유로</Italic> 부정적인 의견을 남기는 것을 계속 보게 된다면,
+        <Italic>망가진 것을 이유로</Italic> 부정적인 의견을 남기는 것이 계속된다면,
         <LineBreak/>
-        <Bold>제가 개인적으로 모드를 터트릴지도요..?</Bold>
+        <Bold>쥐도새도 모르게 모드가 사라질지도 모릅니다.</Bold>
     </Span>
     <Span x:Key="Intro:WikiGuide">
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
