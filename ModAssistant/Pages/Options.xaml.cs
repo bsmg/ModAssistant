@@ -137,7 +137,7 @@ namespace ModAssistant.Pages
 
         public void ModelSaberProtocolHandler_Checked(object sender, RoutedEventArgs e)
         {
-            OneClickInstaller.Register("modelsaber");
+            OneClickInstaller.Register("modelsaber", Description: "URL:ModelSaber OneClick Install");
         }
 
         public void ModelSaberProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
@@ -147,7 +147,7 @@ namespace ModAssistant.Pages
 
         public void BeatSaverProtocolHandler_Checked(object sender, RoutedEventArgs e)
         {
-            OneClickInstaller.Register("beatsaver");
+            OneClickInstaller.Register("beatsaver", Description: "URL:BeatSaver OneClick Install");
         }
 
         public void BeatSaverProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
@@ -156,7 +156,7 @@ namespace ModAssistant.Pages
         }
         public void PlaylistsProtocolHandler_Checked(object sender, RoutedEventArgs e)
         {
-            OneClickInstaller.Register("bsplaylist");
+            OneClickInstaller.Register("bsplaylist", Description: "URL:BeatSaver Playlist OneClick Install");
         }
 
         public void PlaylistsProtocolHandler_Unchecked(object sender, RoutedEventArgs e)

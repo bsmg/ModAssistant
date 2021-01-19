@@ -168,12 +168,12 @@ namespace ModAssistant
                         }
                         else
                         {
-                            OneClickInstaller.Register(args[1], true);
+                            OneClickInstaller.Register(args[1], true, args[2]);
                         }
 
                         Update = false;
                         GUI = false;
-                        args = Shift(args, 2);
+                        args = Shift(args, args.Length);
                         break;
 
                     case "--unregister":
