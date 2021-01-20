@@ -162,7 +162,7 @@ namespace ModAssistant
                         break;
 
                     case "--register":
-                        if (args.Length < 2 || string.IsNullOrEmpty(args[1]))
+                        if (args.Length < 3 || string.IsNullOrEmpty(args[1]))
                         {
                             Utils.SendNotify(string.Format((string)Current.FindResource("App:InvalidArgument"), "--register"));
                         }
@@ -173,7 +173,7 @@ namespace ModAssistant
 
                         Update = false;
                         GUI = false;
-                        args = Shift(args, args.Length);
+                        args = Shift(args, 3);
                         break;
 
                     case "--unregister":
