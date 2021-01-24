@@ -164,6 +164,59 @@ namespace ModAssistant.Pages
             var resp = await HttpClient.GetAsync(Utils.Constants.BeatModsAPIUrl + "mod");
             var body = await resp.Content.ReadAsStringAsync();
             AllModsList = JsonSerializer.Deserialize<Mod[]>(body);
+            Array.Sort(AllModsList, new ModSorter());
+        }
+
+        public class ModSorter : IComparer<Mod>
+        {
+            int IComparer<Mod>.Compare(Mod x, Mod y)
+            {
+                int xValue = GetStatusValue(x.status) * 10000;
+                int yValue = GetStatusValue(y.status) * 10000;
+
+                xValue += GetGameVersionValue(x.gameVersion) * 1000;
+                yValue += GetGameVersionValue(y.gameVersion) * 1000;
+
+                int[] versionValues = GetVersionValues(x.version, y.version);
+                xValue += versionValues[0];
+                yValue += versionValues[1];
+
+                return yValue - xValue;
+            }
+        }
+
+        static int GetStatusValue(string status)
+        {
+            if (status == "approved") return 3;
+            if (status == "pending") return 2;
+            if (status == "inactive") return 1;
+            return 0;
+        }
+
+        static int GetGameVersionValue(string gameVersion)
+        {
+            if (gameVersion == MainWindow.GameVersion) return 1;
+            return 0;
+        }
+
+        static int[] GetVersionValues(string xVersion, string yVersion)
+        {
+            int x = 0;
+            int y = 0;
+            string[] xVersions = xVersion.Split('.');
+            string[] yVersions = yVersion.Split('.');
+            int xMajor = int.Parse(xVersions[0]);
+            int xMinor = int.Parse(xVersions[1]);
+            int xPatch = int.Parse(xVersions[2]);
+            int yMajor = int.Parse(yVersions[0]);
+            int yMinor = int.Parse(yVersions[1]);
+            int yPatch = int.Parse(yVersions[2]);
+
+            if (xMajor != yMajor) (xMajor > yMajor ? ref x : ref y) += 100;
+            if (xMinor != yMinor) (xMinor > yMinor ? ref x : ref y) += 10;
+            if (xPatch != yPatch) (xPatch > yPatch ? ref x : ref y) += 1;
+
+            return new int[]{x, y};
         }
 
         private void CheckInstallDir(string directory)
