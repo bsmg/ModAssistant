@@ -233,8 +233,8 @@
     <sys:String x:Key="Themes:ThemeNotFound">Thema niet gevonden, teruggevallen op standaard thema...</sys:String>
     <sys:String x:Key="Themes:ThemeSet">Thema ingesteld op {0}.</sys:String>
     <sys:String x:Key="Themes:ThemeMissing">{0} bestaat niet.</sys:String>
-    <sys:String x:Key="Themes:SavedTemplateTheme">Thema-sjabloon &quot;{0}&quot; opgeslagen in de Thema map.</sys:String>
-    <sys:String x:Key="Themes:TemplateThemeExists">Thema-sjabloon bestaat al!</sys:String>
+    <sys:String x:Key="Themes:SavedTemplateTheme">Themasjabloon &quot;{0}&quot; opgeslagen in de Thema map.</sys:String>
+    <sys:String x:Key="Themes:TemplateThemeExists">Themasjabloon bestaat al!</sys:String>
     <sys:String x:Key="Themes:FailedToLoadXaml">Laden van .xaml bestand voor {0} mislukt: {1}</sys:String>
 
     <!-- Updater Class -->
