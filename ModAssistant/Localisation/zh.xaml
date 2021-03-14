@@ -103,8 +103,8 @@
     <sys:String x:Key="Mods:FailedExtract">{0}解压失败，将在{1}秒后重试。（{2}/{3}）</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">{0}在重试{1}次后仍然无法解压，将被跳过。注意，这个Mod可能无法使用。</sys:String>
     <sys:String x:Key="Mods:SearchLabel">搜索...</sys:String>
-    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">BSIPA卸载失败</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">找不到BSIPA，已跳过卸载操作。</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">BSIPA卸载失败</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">找不到BSIPA，已跳过卸载操作。</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">关于</sys:String>
