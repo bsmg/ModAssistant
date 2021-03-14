@@ -42,10 +42,10 @@
         Beat Saber<Bold>并不能原生支持Mod</Bold>。 这意味着：
     </Span>
     <Span x:Key="Intro:Terms:Term1">
-        <Bold>Mod将会在每次游戏更新后无法使用。这很正常，并不是Beat Games的错。</Bold>
+        <Bold>Mod将会在每次游戏更新后无法使用。这很正常，并不是游戏开发商的问题。</Bold>
     </Span>
     <Span x:Key="Intro:Terms:Term2">
-        Mod会导致出现BUG或者性能问题。这并不是Beat Games的错。
+        Mod会导致出现BUG或者性能问题。这也不是游戏开发商的问题。
     </Span>
     <Span x:Key="Intro:Terms:Term3">
         爱好者在空闲时间<Bold>用爱发电</Bold>制作了这些Mod，请保持耐心，等待Mod更新。
@@ -62,10 +62,10 @@
     </Span>
     <Span x:Key="Intro:WikiGuide">
         <Bold><Span Foreground="Red">请务必阅读</Span>
-        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/guide/">
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/pc-guide/">
             新手入门指南
         </Hyperlink>、
-        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/">
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/pc-faq/">
             详细教程与问题解答
         </Hyperlink>
         </Bold>，以及
@@ -76,9 +76,9 @@
     <sys:String x:Key="Intro:AgreeButton">同意</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">拒绝</sys:String>
     <sys:String x:Key="Intro:ClosingApp">关闭软件：您不同意此条款。</sys:String>
-    <sys:String x:Key="Intro:VersionDownloadFailed">下载版本列表失败</sys:String>
-    <sys:String x:Key="Intro:ModsTabDisabled">已禁用Mod选项卡，请尝试重新打开软件，或按照简介页面的中文教程解决。</sys:String>
-    <sys:String x:Key="Intro:ModsTabEnabled">你现在可以使用Mod选项卡了！</sys:String>
+    <sys:String x:Key="Intro:VersionDownloadFailed">版本列表加载失败</sys:String>
+    <sys:String x:Key="Intro:ModsTabDisabled">已禁用Mod选项卡，请尝试重新打开软件后多等待一会再操作，或按照简介页面的中文教程解决。</sys:String>
+    <sys:String x:Key="Intro:ModsTabEnabled">你现在可以安装Mod了！</sys:String>
 
     <!-- Mods Page -->
     <sys:String x:Key="Mods:Title">Mod</sys:String>
@@ -88,12 +88,12 @@
     <sys:String x:Key="Mods:Header:Description">介绍</sys:String>
     <sys:String x:Key="Mods:Header:Uninstall">卸载</sys:String>
     <sys:String x:Key="Mods:UninstallButton">卸载</sys:String>
-    <sys:String x:Key="Mods:LoadFailed">无法加载Mod列表</sys:String>
+    <sys:String x:Key="Mods:LoadFailed">Mod列表加载失败</sys:String>
     <sys:String x:Key="Mods:CheckingInstalledMods">正在检查已安装的Mod</sys:String>
     <sys:String x:Key="Mods:LoadingMods">正在加载Mod列表</sys:String>
-    <sys:String x:Key="Mods:FinishedLoadingMods">Mod列表加载完成</sys:String>
+    <sys:String x:Key="Mods:FinishedLoadingMods">已加载Mod列表</sys:String>
     <sys:String x:Key="Mods:NoMods">当前版本的游戏暂时没有Mod，请等待Mod更新</sys:String>
-    <sys:String x:Key="Mods:InstallingMod">正在安装{0}</sys:String>
+    <sys:String x:Key="Mods:InstallingMod">正在下载安装{0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">已安装{0}</sys:String>
     <sys:String x:Key="Mods:FinishedInstallingMods">Mod安装完成</sys:String>
     <sys:String x:Key="Mods:ModDownloadLinkMissing">{0}找不到下载地址！</sys:String>
@@ -103,8 +103,8 @@
     <sys:String x:Key="Mods:FailedExtract">{0}解压失败，将在{1}秒后重试。（{2}/{3}）</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">{0}在重试{1}次后仍然无法解压，将被跳过。注意，这个Mod可能无法使用。</sys:String>
     <sys:String x:Key="Mods:SearchLabel">搜索...</sys:String>
-    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Failed to Uninstall BSIPA</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA installation not found, uninstall operation skipped.</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">BSIPA卸载失败</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">找不到BSIPA，已跳过卸载操作。</sys:String> <!-- NEEDS TRANSLATING -->
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">关于</sys:String>
