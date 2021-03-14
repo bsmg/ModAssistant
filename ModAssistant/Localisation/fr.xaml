@@ -110,7 +110,8 @@
     <sys:String x:Key="Mods:FailedExtractMaxReached">Échec de l'extraction de {0} après le maximum de tentatives ({1}), abandon. Ce mod pourrait ne pas fonctionner correctement, continuez à vos propres risques</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Recherche...</sys:String>
     <sys:String x:Key="Mods:DownloadingMod">Downloading {0} from {1}</sys:String>
-
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Échec de la désinstallation de BSIPA</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA installation pas trouvée, opération de désinstallation ignorée.</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">À propos</sys:String>
@@ -211,7 +212,7 @@
     </Span>
     <Span x:Key="Invalid:List:Line3">
         Si cela n'a pas fonctionné, demandez de l'aide au support dans le canal textuel
-        <Span Foreground="Blue">#support</Span> dans
+        <Span Foreground="Blue">#pc-help</Span> dans
         <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
             BSMG
         </Hyperlink>.

@@ -1,4 +1,3 @@
-using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -12,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using Microsoft.Win32;
 using static ModAssistant.Http;
 
 namespace ModAssistant
@@ -319,7 +319,7 @@ namespace ModAssistant
                 int index = Encoding.UTF8.GetString(file).IndexOf("public.app-category.games") + 136;
 
                 Array.Copy(file, index, bytes, 0, 32);
-                string version = Encoding.UTF8.GetString(bytes).Trim(Utils.Constants.IllegalCharacters);
+                string version = Encoding.UTF8.GetString(bytes).Trim(Constants.IllegalCharacters);
 
                 return version;
             }
@@ -494,7 +494,7 @@ namespace ModAssistant
             {
                 try
                 {
-                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+                    Process.Start(new System.Diagnostics.ProcessStartInfo()
                     {
                         FileName = location,
                         UseShellExecute = true,
@@ -511,7 +511,7 @@ namespace ModAssistant
         {
             string path = Path.GetDirectoryName(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath);
             string logFile = $"{path}{Path.DirectorySeparatorChar}log.log";
-            File.AppendAllText(logFile, $"[{DateTime.UtcNow.ToString("yyyy-mm-dd HH:mm:ss.ffffff")}][{severity.ToUpper()}] {message}\n");
+            File.AppendAllText(logFile, $"[{DateTime.UtcNow:yyyy-mm-dd HH:mm:ss.ffffff}][{severity.ToUpper()}] {message}\n");
         }
 
         public static async Task Download(string link, string output)
@@ -564,7 +564,7 @@ namespace ModAssistant
             // want to suppress exceptions for non-clipboard operations
             if (success)
             {
-                Utils.SendNotify($"Copied text to clipboard");
+                SendNotify($"Copied text to clipboard");
             }
         }
     }

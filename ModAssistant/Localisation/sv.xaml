@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:ModAssistant"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-    <sys:String x:Key="ResourceDictionaryName">i18n:en-US</sys:String>
+    <sys:String x:Key="ResourceDictionaryName">i18n:sv-SE</sys:String>
 
     <!-- App -->
     <sys:String x:Key="App:InstallDirDialog:Title">Det gick inte att hitta din Beat Saber-installationsmapp!</sys:String>
@@ -55,7 +55,7 @@
     <Span x:Key="Intro:Terms:Term3">
         Mods utvecklas
         <Bold>gratis</Bold> av människor på deras
-        <Bold>fritid.</Bold> Var vänlig, ha tålamod och visa förståelse för det.
+        <Bold>fritid.</Bold> Var vänlig ha tålamod och visa förståelse för det.
     </Span>
     <Span x:Key="Intro:ReviewsBeatGamesFault">
         <Bold>LÄMNA INTE</Bold> negativa recensioner för att mods slutat att fungera. Det är 
@@ -93,7 +93,7 @@
     <sys:String x:Key="Mods:CheckingInstalledMods">Kollar efter installerade mods</sys:String>
     <sys:String x:Key="Mods:LoadingMods">Laddar Mods</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Mods färdigladdade!</sys:String>
-    <sys:String x:Key="Mods:NoMods">Inga mods tillgänglig för denna Beat Saber version</sys:String>
+    <sys:String x:Key="Mods:NoMods">Inga mods tillgängliga för denna Beat Saber-version</sys:String>
     <sys:String x:Key="Mods:InstallingMod">Installerar {0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">Installerat {0}</sys:String>
     <sys:String x:Key="Mods:FinishedInstallingMods">Mods färdiginstallerade!</sys:String>
@@ -104,11 +104,13 @@
     <sys:String x:Key="Mods:FailedExtract">Extrahering misslyckades {0}, försöker igen om {1} sekunder. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Misslyckades med att extrahera {0} efter maxantalet försök ({1}), hoppar över. Denna mod kanske inte fungerar som den ska så fortsätt på egen risk.</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Sök...</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Misslyckades med att avinstallera BSIPA</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA-installation hittades inte, hoppar över avinstallation.</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">Om</sys:String>
     <sys:String x:Key="About:PageTitle">Om Mod Assistant</sys:String>
-    <sys:String x:Key="About:List:Header">Jag är Assistant, och jag gjorde Mod Assistant för mod bistånd, med några grundläggande principer i åtanke:</sys:String>
+    <sys:String x:Key="About:List:Header">Jag är Assistant, och jag skapade Mod Assistant för just att assistera med mods, med några grundläggande principer i åtanke:</sys:String>
     <sys:String x:Key="About:List:Item1">Enkelhet</sys:String>
     <sys:String x:Key="About:List:Item2">Portabilitet</sys:String>
     <sys:String x:Key="About:List:Item3">En enkel, körbar fil</sys:String>
@@ -123,7 +125,7 @@
             Patreon
         </Hyperlink>
     </Span>
-    <sys:String x:Key="About:SpecialThanks">Special Thanks ♥</sys:String>
+    <sys:String x:Key="About:SpecialThanks">Särskilt Tack ♥</sys:String>
     <sys:String x:Key="About:Donate">Donera</sys:String>
     <sys:String x:Key="About:HeadpatsButton">Klapp på huvudet</sys:String>
     <sys:String x:Key="About:HugsButton">Krama</sys:String>
@@ -142,7 +144,7 @@
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
     <sys:String x:Key="Options:Playlists">Spellistor</sys:String>
-    <sys:String x:Key="Options:CloseWindow">Stäng flikor när det är färdig</sys:String>
+    <sys:String x:Key="Options:CloseWindow">Stäng fönstret efter nedladdning</sys:String>
     <sys:String x:Key="Options:GameType">Spelvariant</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
@@ -150,8 +152,8 @@
     <sys:String x:Key="Options:InstallPlaylist">Installera spellista</sys:String>
     <sys:String x:Key="Options:InstallingPlaylist">Installerar spellista: {0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">Misslyckad låt: {0}</sys:String>
-    <sys:String x:Key="Options:FinishedPlaylist">[{0} fails] Färdig med installera av spellistor: {1}</sys:String>
-    <sys:String x:Key="Options:ShowOCIWindow">Visa OneClick Installationsflika</sys:String>
+    <sys:String x:Key="Options:FinishedPlaylist">[{0} fails] Färdig med installation av spellistor: {1}</sys:String>
+    <sys:String x:Key="Options:ShowOCIWindow">Visa OneClick-installationsfönstret</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">Ja</sys:String>
     <sys:String x:Key="Options:OCIWindowClose">Stäng</sys:String>
     <sys:String x:Key="Options:OCIWindowNo">Nej</sys:String>
@@ -174,7 +176,7 @@
     <sys:String x:Key="Options:YeetModsBox:RemoveAllMods">Är du säker på att du vill radera alla mods?</sys:String>
     <sys:String x:Key="Options:YeetModsBox:CannotBeUndone">Detta går inte att ångra.</sys:String>
     <sys:String x:Key="Options:AllModsUninstalled">Alla Mods avinstallerade.</sys:String>
-    <sys:String x:Key="Options:CurrentThemeRemoved">Nuvarande tema borttagit, återställer till standardtemat...</sys:String>
+    <sys:String x:Key="Options:CurrentThemeRemoved">Nuvarande tema borttaget, återställer till standardtemat...</sys:String>
     <sys:String x:Key="Options:ThemeFolderNotFound">Det gick inte att hitta temamappen! Testa att exportera mallen...</sys:String>
     <sys:String x:Key="Options:AppDataNotFound">Det gick inte att hitta AppData-mappen! Testa att starta spelet.</sys:String>
 
@@ -203,7 +205,7 @@
     </Span>
     <Span x:Key="Invalid:List:Line3">
         Om inget hjälper, be om hjälp i
-        <Span Foreground="Blue">#support</Span> -kanalen i
+        <Span Foreground="Blue">#pc-help</Span> -kanalen i
         <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
             BSMG
         </Hyperlink>.
@@ -221,11 +223,11 @@
     <sys:String x:Key="OneClick:InstallDirNotFound">Det gick inte att hitta installationsvägen för Beat Saber.</sys:String>
     <sys:String x:Key="OneClick:InstalledAsset">Installerade: {0}</sys:String>
     <sys:String x:Key="OneClick:AssetInstallFailed">Misslyckades med att installera.</sys:String>
-    <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™-installeringshanterare registrerade!</sys:String>
-    <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™-installeringshanterare avregistrerade!</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™-installeringshanterare registrerad!</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™-installeringshanterare avregistrerad!</sys:String>
     <sys:String x:Key="OneClick:Installing">Installerar: {0}</sys:String>
-    <sys:String x:Key="OneClick:RatelimitSkip">Maximal antal försök uppnåd: hoppar över {0}</sys:String>
-    <sys:String x:Key="OneClick:RatelimitHit">Ratelimit uppnåd. Fortsätter om {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitSkip">Maximalt antal försök uppnådda: hoppar över {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitHit">Ratelimit nådd. Fortsätter om {0}</sys:String>
     <sys:String x:Key="OneClick:Failed">Nedladdning misslyckades: {0}</sys:String>
     <sys:String x:Key="OneClick:Done">Färdig</sys:String>
 

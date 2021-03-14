@@ -30,7 +30,7 @@ namespace ModAssistant
             }
             set
             {
-                Dispatcher.Invoke(new Action(() => { MainWindow.Instance.MainTextBlock.Text = value; }));
+                Dispatcher.Invoke(new Action(() => { Instance.MainTextBlock.Text = value; }));
             }
         }
 
@@ -54,11 +54,11 @@ namespace ModAssistant
             if (Utils.IsVoid())
             {
                 Main.Content = Invalid.Instance;
-                MainWindow.Instance.ModsButton.IsEnabled = false;
-                MainWindow.Instance.OptionsButton.IsEnabled = false;
-                MainWindow.Instance.IntroButton.IsEnabled = false;
-                MainWindow.Instance.AboutButton.IsEnabled = false;
-                MainWindow.Instance.GameVersionsBox.IsEnabled = false;
+                Instance.ModsButton.IsEnabled = false;
+                Instance.OptionsButton.IsEnabled = false;
+                Instance.IntroButton.IsEnabled = false;
+                Instance.AboutButton.IsEnabled = false;
+                Instance.GameVersionsBox.IsEnabled = false;
                 return;
             }
 
@@ -140,7 +140,7 @@ namespace ModAssistant
 
                     if (!string.IsNullOrEmpty(GameVersion) && Properties.Settings.Default.Agreed)
                     {
-                        MainWindow.Instance.ModsButton.IsEnabled = true;
+                        Instance.ModsButton.IsEnabled = true;
                     }
                 });
 
@@ -172,7 +172,7 @@ namespace ModAssistant
                 return aliasOf;
             }
 
-            string versionsString = String.Join(",", versions.ToArray());
+            string versionsString = string.Join(",", versions.ToArray());
             if (Properties.Settings.Default.AllGameVersions != versionsString)
             {
                 Properties.Settings.Default.AllGameVersions = versionsString;

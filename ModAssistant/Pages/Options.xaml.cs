@@ -205,7 +205,7 @@ namespace ModAssistant.Pages
                 MainWindow.Instance.MainText = $"{Application.Current.FindResource("Options:UploadingLog")}...";
                 await Task.Run(async () => await UploadLog());
 
-                System.Diagnostics.Process.Start(LogURL);
+                Process.Start(LogURL);
                 Utils.SetClipboard(LogURL);
                 MainWindow.Instance.MainText = (string)Application.Current.FindResource("Options:LogUrlCopied");
             }
@@ -246,7 +246,7 @@ namespace ModAssistant.Pages
                 items[i] = WebUtility.UrlEncode(item.Key) + "=" + WebUtility.UrlEncode(item.Value);
             }
 
-            StringContent content = new StringContent(String.Join("&", items), null, "application/x-www-form-urlencoded");
+            StringContent content = new StringContent(string.Join("&", items), null, "application/x-www-form-urlencoded");
             HttpResponseMessage resp = await Http.HttpClient.PostAsync(Utils.Constants.TeknikAPIUrl + "Paste", content);
             string body = await resp.Content.ReadAsStringAsync();
 
@@ -436,7 +436,7 @@ namespace ModAssistant.Pages
         {
             ComboBox comboBox = sender as ComboBox;
             if (comboBox.SelectedItem != null)
-            { 
+            {
                 ComboBoxItem comboBoxItem = (ComboBoxItem)comboBox.SelectedItem;
                 UpdateOCIWindow(comboBoxItem.Tag.ToString());
             }

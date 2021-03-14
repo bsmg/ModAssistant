@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
@@ -37,11 +36,11 @@ namespace ModAssistant
                 {
                     MessageBox.Show("! " + file);
                 }
-
-
             }
             if (entries.Count > 0)
+            {
                 entries[entries.Count - 1] = entries[entries.Count - 1].Replace("├", "└");
+            }
 
             return entries.ToArray();
         }
