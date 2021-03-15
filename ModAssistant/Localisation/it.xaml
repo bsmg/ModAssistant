@@ -14,7 +14,7 @@
     <sys:String x:Key="App:Exception">Eccezione</sys:String>
 
     <!-- Main Window -->
-    <sys:String x:Key="MainWindow:WindowTitle">ModAssistant</sys:String>
+    <sys:String x:Key="MainWindow:WindowTitle">Mod Assistant</sys:String>
     <sys:String x:Key="MainWindow:IntroButton">Introduzione</sys:String>
     <sys:String x:Key="MainWindow:ModsButton">Mod</sys:String>
     <sys:String x:Key="MainWindow:AboutButton">Info</sys:String>
@@ -212,7 +212,7 @@
     </Span>
     <sys:String x:Key="Invalid:BoughtGame1">Se avevi la versione piratata, ma hai comprato il gioco</sys:String>
     <sys:String x:Key="Invalid:SelectFolderButton">Seleziona cartella</sys:String>
-    <sys:String x:Key="Invalid:BoughtGame2">Dovrai riavviare ModAssistant dopo aver cambiato la directory d'Installazione</sys:String>
+    <sys:String x:Key="Invalid:BoughtGame2">Dovrai riavviare Mod Assistant dopo aver cambiato la directory d'Installazione</sys:String>
 
     <!-- OneClick Class -->
     <sys:String x:Key="OneClick:MapDownloadFailed">Impossibile estrarre i dettagli della mappa.</sys:String>
