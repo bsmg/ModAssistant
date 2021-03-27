@@ -1,5 +1,5 @@
-[![Mod Assistant](https://cdn.assistant.moe/images/ModAssistant/Icons/Banner.svg)](https://github.com/Assistant/ModAssistant/releases/latest)
-[![Download here!](https://cdn.assistant.moe/images/ModAssistant/Icons/Download.svg)](https://github.com/Assistant/ModAssistant/releases/latest)
+[![Mod Assistant](https://cdn.assistant.moe/images/ModAssistant/Icons/Banner.svg)](https://github.com/beatmods-top/ModAssistant/releases/latest)
+[![Download here!](https://cdn.assistant.moe/images/ModAssistant/Icons/Download.svg)](https://github.com/beatmods-top/ModAssistant/releases/latest)
 
 Mod Assistant is a PC mod installer for Beat Saber. It uses mods from [BeatMods](https://beatmods.com/) and [BeatMods.top](https://beatmods.top) (A 3rd party site mirrors BeatMods.com with Netvios Edition Support).
 
