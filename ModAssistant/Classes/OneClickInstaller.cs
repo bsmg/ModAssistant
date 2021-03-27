@@ -58,7 +58,7 @@ namespace ModAssistant
             await API.Playlists.DownloadAll(uri);
         }
 
-        public static void Register(string Protocol, bool Background = false)
+        public static void Register(string Protocol, bool Background = false, string Description = null)
         {
             if (IsRegistered(Protocol) == true)
                 return;
@@ -75,6 +75,10 @@ namespace ModAssistant
 
                     if (ProtocolKey.GetValue("OneClick-Provider", "").ToString() != "ModAssistant")
                     {
+                        if (Description != null)
+                        {
+                            ProtocolKey.SetValue("", Description, RegistryValueKind.String);
+                        }
                         ProtocolKey.SetValue("URL Protocol", "", RegistryValueKind.String);
                         ProtocolKey.SetValue("OneClick-Provider", "ModAssistant", RegistryValueKind.String);
                         CommandKey.SetValue("", $"\"{Utils.ExePath}\" \"--install\" \"%1\"");
@@ -84,7 +88,7 @@ namespace ModAssistant
                 }
                 else
                 {
-                    Utils.StartAsAdmin($"\"--register\" \"{Protocol}\"");
+                    Utils.StartAsAdmin($"\"--register\" \"{Protocol}\" \"{Description}\"");
                 }
             }
             catch (Exception e)

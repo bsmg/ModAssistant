@@ -14,7 +14,7 @@
     <sys:String x:Key="App:Exception">Undantag</sys:String>
 
     <!-- Main Window -->
-    <sys:String x:Key="MainWindow:WindowTitle">ModAssistant</sys:String>
+    <sys:String x:Key="MainWindow:WindowTitle">Mod Assistant</sys:String>
     <sys:String x:Key="MainWindow:IntroButton">Intro</sys:String>
     <sys:String x:Key="MainWindow:ModsButton">Mods</sys:String>
     <sys:String x:Key="MainWindow:AboutButton">Om</sys:String>
@@ -212,7 +212,7 @@
     </Span>
     <sys:String x:Key="Invalid:BoughtGame1">Om du brukade spela på en piratkopierad version men sedan dess har köpt spelet.</sys:String>
     <sys:String x:Key="Invalid:SelectFolderButton">Välj Mapp</sys:String>
-    <sys:String x:Key="Invalid:BoughtGame2">Du kommer att behöva starta om ModAssistant efter att du har bytt till en legitim version.</sys:String>
+    <sys:String x:Key="Invalid:BoughtGame2">Du kommer att behöva starta om Mod Assistant efter att du har bytt till en legitim version.</sys:String>
 
     <!-- OneClick Class -->
     <sys:String x:Key="OneClick:MapDownloadFailed">Det gick inte att hämta mapdetaljerna.</sys:String>
