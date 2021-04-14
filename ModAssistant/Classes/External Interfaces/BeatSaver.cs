@@ -89,7 +89,7 @@ namespace ModAssistant.API
 
                 if ((int)resp.StatusCode == 429)
                 {
-                    Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), response.ratelimit.ResetTime)}");
+                    Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), response.ratelimit.ResetTime.ToLocalTime())}");
                     await response.ratelimit.Wait();
                     return await GetResponse(url, showNotification, retries - 1);
                 }
@@ -240,7 +240,7 @@ namespace ModAssistant.API
             if ((int)resp.StatusCode == 429)
             {
                 var ratelimit = GetRatelimit(resp.Headers);
-                Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), ratelimit.ResetTime)}");
+                Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), ratelimit.ResetTime.ToLocalTime())}");
 
                 await ratelimit.Wait();
                 await Download(url, output, retries - 1);
@@ -276,7 +276,7 @@ namespace ModAssistant.API
             public DateTime ResetTime { get; set; }
             public async Task Wait()
             {
-                await Task.Delay(new TimeSpan(ResetTime.Ticks - DateTime.Now.Ticks));
+                await Task.Delay(new TimeSpan(Math.Max(ResetTime.Ticks - DateTime.UtcNow.Ticks, 0)));
             }
         }
 
