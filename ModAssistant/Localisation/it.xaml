@@ -93,7 +93,7 @@
     <sys:String x:Key="Mods:CheckingInstalledMods">Controllo le mod installate</sys:String>
     <sys:String x:Key="Mods:LoadingMods">Carico le mod</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Caricamento delle mod completato</sys:String>
-    <sys:String x:Key="Mods:NoMods">No mods available for this version of Beat Saber</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:NoMods">Non ci sono Mod disponibili per questa versione di Beat Saber</sys:String>
     <sys:String x:Key="Mods:InstallingMod">Installazione di {0} in corso</sys:String>
     <sys:String x:Key="Mods:InstalledMod">{0} installato</sys:String>
     <sys:String x:Key="Mods:FinishedInstallingMods">Installazione delle mod completata</sys:String>
@@ -104,8 +104,8 @@
     <sys:String x:Key="Mods:FailedExtract">Impossibile estrarre {0}, prossimo tentativo in {1} secondi. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Non sono riuscito ad estrarre {0} dopo aver raggiunto il numero massimo di tentativi ({1}), salto questa mod. Questa protrebbe anche non funzionare correttamente, quindi procedi a tuo rischio e pericolo</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Cerca...</sys:String>
-    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Failed to Uninstall BSIPA</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA installation not found, uninstall operation skipped.</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Errore durante la disinstallazione di BSIPA</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">Installazione di BSIPA non trovata, operazione di disinstallazione saltata</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">Info</sys:String>
@@ -143,8 +143,8 @@
     <sys:String x:Key="Options:EnableOneClickInstalls">Attiva OneClick™</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
-    <sys:String x:Key="Options:Playlists">Playlists</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:CloseWindow">Close window when finished</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:Playlists">Playlist</sys:String>
+    <sys:String x:Key="Options:CloseWindow">Chiudi la finestra al termine</sys:String>
     <sys:String x:Key="Options:GameType">Tipo di Installazione</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
@@ -153,10 +153,10 @@
     <sys:String x:Key="Options:InstallingPlaylist">Installazione Playlist: {0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">Installazione canzone fallita: {0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0} fails] Installazione playlist terminata: {1}</sys:String>
-    <sys:String x:Key="Options:ShowOCIWindow">Show OneClick Installer Window</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:OCIWindowYes">Yes</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:OCIWindowClose">Close</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:OCIWindowNo">No</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:ShowOCIWindow">Mostra finestra di installazione OneClick</sys:String>
+    <sys:String x:Key="Options:OCIWindowYes">Si</sys:String>
+    <sys:String x:Key="Options:OCIWindowClose">Chiudi</sys:String>
+    <sys:String x:Key="Options:OCIWindowNo">No</sys:String>
     <sys:String x:Key="Options:Diagnostics">Diagnostica</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Apri il Log</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">Apri AppData</sys:String>
@@ -225,11 +225,11 @@
     <sys:String x:Key="OneClick:AssetInstallFailed">Non sono riuscito ad installare la mappa.</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} Registrazione dei gestori OneClick™ riuscita!</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} De-Regitrazione dei gestori OneClick™ riuscita!</sys:String>
-    <sys:String x:Key="OneClick:Installing">Installing: {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:RatelimitSkip">Max tries reached: Skipping {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:RatelimitHit">Ratelimit hit. Resuming in {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:Failed">Download failed: {0}</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="OneClick:Done">Done'd</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:Installing">Installazione: {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitSkip">Numero massimo di tentativi raggiunto: Salto {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitHit">Rate-limit raggiunto. Ripresa in {0}</sys:String>
+    <sys:String x:Key="OneClick:Failed">Download fallito: {0}</sys:String>
+    <sys:String x:Key="OneClick:Done">Fattoh</sys:String>
 
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">Tema non trovato, ritorno al tema predefinito...</sys:String>
