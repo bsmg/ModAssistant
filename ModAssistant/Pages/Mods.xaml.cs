@@ -625,7 +625,7 @@ namespace ModAssistant.Pages
             {
                 get
                 {
-                    if  (PromotionTexts == null || string.IsNullOrEmpty(PromotionTexts[0])) return "0";
+                    if  (PromotionTexts == null || string.IsNullOrEmpty(PromotionTexts[0])) return "-15,0,0,0";
                     return "0,0,5,0";
                 }
             }
