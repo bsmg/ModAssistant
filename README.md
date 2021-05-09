@@ -131,18 +131,19 @@ Mod Assistant拥有丰富的功能，其中包括：
   请点击左侧栏中的`Options`标签页，在右上角找到`A 文`标识右侧下拉框 选择`中文`即可。
 
 **mod列表加载不出来**
-  由于你的运营商或者节点原因，你可能无法正常访问服务器。可以尝试切换节点。
-  请点击左侧栏中的`Options/选项`标签页，在右上角找到`⏬`标识右侧下拉框切换节点。
-  国际源使用Cloudflare的CDN。
-  国内源使用联通家宽。
-  增强源使用美国机房。
+  由于你的运营商或者节点原因，你可能无法正常访问服务器。可以尝试切换节点。  
+  请点击左侧栏中的`Options/选项`标签页，在右上角找到`⏬`标识右侧下拉框切换节点。  
+  国际源使用Cloudflare的CDN。  
+  国内源使用上海阿里云。  
+  增强源使用美国机房。  
 
 **我点了安装但是游戏里什么都看不到**
   请仔细阅读[用法](#用法)里的说明。
   确保你没有看差任何地方。有些时候mod的菜单会随着列表宽度而变化。
+  如果没有解决，请查看[详细教程与问题解答](https://bs-wgzeyu.gtxcn.com/pc-faq/)。
 
 **我在mod列表中找不到一些mod!**
-  Mod Assistant使用的mod来自[BeatMods](https://beatmods.com/)和[BeatMods.top](https://beatmods.top)而且只显示可供下载的mod。 如果你想手动安装mod，请阅读[Beat Saber Modding Group Wiki](https://bsmg.wiki/pc-modding.html#manual-installation)。
+  Mod Assistant使用的mod来自[BeatMods](https://beatmods.com/)和[BeatMods.top](https://beatmods.top)而且只显示可供下载的mod。 如果你想手动安装mod，请阅读[新手入门指南](https://bs-wgzeyu.gtxcn.com/pc-guide/)或[详细教程与问题解答](https://bs-wgzeyu.gtxcn.com/pc-faq/)中的手动安装Mod教程。
   *增强源在国际源的基础上包含了国际源和国内源所没有的一些第三方插件。*
   
 **我使用网易影核版节奏空间想装mod**
@@ -152,7 +153,7 @@ Mod Assistant拥有丰富的功能，其中包括：
   你可以通过安装影核版BSIPA恢复至官方状态(仅可加载官方mod)。
 
 **我点了安装但是游戏打不开，点不了任何按钮或者只能看到黑屏**
-  请访问[Beat Saber Modding Group](https://discord.gg/beatsabermods) `#pc-help` 频道。检查钉住的消息或者向频道里人求助。
+  请查看[详细教程与问题解答](https://bs-wgzeyu.gtxcn.com/pc-faq/)。如果解决不了，可以在右上角加群提问，也可以访问[Beat Saber Modding Group](https://discord.gg/beatsabermods) `#pc-help` 频道。
 
 ## 鸣谢
 semver by Max Hauser
