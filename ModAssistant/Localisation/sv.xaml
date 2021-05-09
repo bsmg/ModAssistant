@@ -104,6 +104,7 @@
     <sys:String x:Key="Mods:FailedExtract">Extrahering misslyckades {0}, försöker igen om {1} sekunder. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Misslyckades med att extrahera {0} efter maxantalet försök ({1}), hoppar över. Denna mod kanske inte fungerar som den ska så fortsätt på egen risk.</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Sök...</sys:String>
+    <sys:String x:Key="Mods:DownloadingMod">Hämtar {0} från {1}</sys:String>
     <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Misslyckades med att avinstallera BSIPA</sys:String>
     <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA-installation hittades inte, hoppar över avinstallation.</sys:String>
 
