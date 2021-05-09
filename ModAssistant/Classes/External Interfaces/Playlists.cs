@@ -2,8 +2,9 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using static ModAssistant.Http;
+using System.Web;
 using System.Windows;
+using static ModAssistant.Http;
 
 namespace ModAssistant.API
 {
@@ -33,7 +34,7 @@ namespace ModAssistant.API
 
         public static async Task<string> Get(Uri url)
         {
-            string filename = url.Segments.Last();
+            string filename = HttpUtility.UrlDecode(url.Segments.Last());
             string absolutePath = Path.Combine(BeatSaberPath, PlaylistsFolder, filename);
             try
             {
@@ -100,10 +101,11 @@ namespace ModAssistant.API
             {
                 return $" {string.Concat(Enumerable.Repeat("▒", 10))} [{value}/{max}]";
             }
-            int interval = (int)Math.Floor((double)value / ( ((double)max - (double)min ) / (double)10));
+            int interval = (int)Math.Floor((double)value / (((double)max - (double)min) / (double)10));
             return $" {string.Concat(Enumerable.Repeat("▒", interval))}{string.Concat(Enumerable.Repeat("░", 10 - interval))} [{value}/{max}]";
         }
 
+#pragma warning disable IDE1006 // Naming Styles
         class Playlist
         {
             public string playlistTitle { get; set; }
@@ -121,3 +123,4 @@ namespace ModAssistant.API
         }
     }
 }
+#pragma warning restore IDE1006 // Naming Styles

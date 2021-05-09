@@ -1,9 +1,164 @@
-[![ModAssistant](https://cdn.assistant.moe/images/ModAssistant/Icons/Banner.svg)](https://github.com/beatmods-top/ModAssistant/releases/latest)
-[![Download here!](https://cdn.assistant.moe/images/ModAssistant/Icons/Download.svg)](https://github.com/beatmods-top/ModAssistant/releases/latest)
+[![Mod Assistant](https://cdn.assistant.moe/images/ModAssistant/Icons/Banner.svg?v=5)](https://github.com/Assistant/ModAssistant/releases/latest)
+[![点此下载! Download here!](https://cdn.assistant.moe/images/ModAssistant/Icons/Download.svg)](https://github.com/Assistant/ModAssistant/releases/latest)
 
-![.NET Build](https://github.com/beatmods-top/ModAssistant/workflows/.NET%20Build/badge.svg)
+Mod Assistant 是节奏光剑(Beat Saber)PC版mod安装器。它使用来自[BeatMods](https://beatmods.com/)和[BeatMods.top](https://beatmods.top) (第三方源，镜像BeatMods.com并包含第三方上传插件和网易影核1.8.0版支持)
 
-ModAssistant is a PC mod installer for Beat Saber. It uses mods from [BeatMods](https://beatmods.com/) and [BeatMods.top](https://beatmods.top) (A 3rd party site mirrors BeatMods.com with Netvios Edition Support).
+* [特性](#特性)
+* [用法](#用法)
+* [主题](#主题)
+  * [自定义主题](#自定义主题)
+  * [内置主题](#内置主题)
+  * [打包 `.mat` 文件](#打包mat文件)
+  * [主题文件夹](#主题文件夹)
+  * [覆盖主题](#覆盖主题)
+* [常见问题](#常见问题)
+
+## 特性
+
+Mod Assistant拥有丰富的功能，其中包括：
+* 处理依赖项
+* 检测已安装mod
+* 卸载mod
+* OneClick&trade; 一键安装支持
+* 复杂主题引擎
+* 本地化支持
+* 摸摸头贴贴
+* 切换下载节点
+* 网易影核版插件支持(1.8.0)
+
+## 用法
+从Release中下载最新安装器并运行。程序在启动时会自动更新，所以不需要每次都下载新版本。
+
+1. **在为游戏安装mod前请至少运行一次游戏！** 重装游戏也需要这样做。所有旧的mod会在游戏版本变更后的第一次启动时被移动到`Old X.X.X Plugins`文件夹，所以在更新游戏后别忘启动游戏一次。
+2. 做完上一步后，你只需要打勾想要安装的mod然后点击<kbd>安装或更新</kbd>按钮。同样，如果你想卸载mod的话点击<kbd>卸载</kbd>按钮。
+3. 安装的mod会在游戏运行前放在 `IPA/Pending`文件夹中。运行游戏来完成mod安装。
+
+## 主题
+<details>
+    <summary><b>明亮(Light)</b></summary>
+    <div>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Light/Intro.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Light/Mods.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Light/About.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Light/Options.png" /></p>
+    </div>
+</details>
+
+<details>
+    <summary><b>黑暗(Dark)</b></summary>
+    <div>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Dark/Intro.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Dark/Mods.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Dark/About.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Dark/Options.png" /></p>
+    </div>
+</details>
+
+<details>
+    <summary><b>BSMG</b></summary>
+    <div>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/BSMG/Intro.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/BSMG/Mods.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/BSMG/About.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/BSMG/Options.png" /></p>
+    </div>
+</details>
+
+<details>
+    <summary><b>浅粉(Light Pink)</b></summary>
+    <div>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Light Pink/Intro.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Light Pink/Mods.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Light Pink/About.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Light Pink/Options.png" /></p>
+    </div>
+</details>
+
+<details>
+    <summary><b>你自定义的!</b></summary>
+    <div>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Custom/Intro.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Custom/Mods.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Custom/About.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Custom/Options.png" /></p>
+    </div>
+</details>
+
+### 自定义主题
+自定义主题保存在`ModAssistant.exe`所在文件夹的`Themes`文件夹中。Mod Assistant可以通过以下三种方式加载主题。
+
+### 内置主题
+这些主题内置于程序并且无法更改。但是你可以通过以下另外两种方式创建同名主题来覆盖内置主题。
+
+如果你有特别好的人气主题，你可以到这里[提交请求(Pull Request)](https://github.com/Assistant/ModAssistant/pulls)来作为内置主题。
+
+### 打包`.mat`文件
+这些是预打包好的主题文件。你可以把它们重命名为`.zip`文件，并且文件结构和下面的`文件夹`类型主题相同。但是这类主题会被下面的同名`文件夹`类型主题覆盖。
+创建该类主题请按照下面的`文件夹`类型主题说明创建主题，打成zip压缩文件并重命名为`<主题名>.mat`。
+
+### 主题文件夹
+这类主题将会覆盖其他主题，并且从以主题名命名的文件夹中加载。里面可以包含以下4类文件：
+
+* `Theme.xaml` 
+  * 该文件定义主题颜色和主题样式。
+  * 文件名叫什么不重要，但是一定要保证扩展名为`.xaml`。
+  * 要查看示例文件，请在`选项`页点击<kbd>导出模板</kbd> 按钮。在`Themes`文件夹中会生成一个名为`Ugly Kulu-Ya-Ku`的文件夹。你可以打开其中的文件作为模板文件进行修改。
+  
+* `Waifu.png` 
+  * 该文件作为背景图片加载。
+  * 默认为居中显示，你可以在关联的`.xaml`文件中定义如何拉伸。
+  * 文件名叫什么不重要，但是一定要保证扩展名为`.png`。
+* `Waifu.side.png`
+  * 该文件作为左侧栏图片加载。
+  * 默认为左对齐，你可以在关联的`.xaml`文件中定义垂直对齐属性。
+  * 文件名叫什么不重要，但是一定要保证扩展名为`.side.png`。
+* `Video.{mp4, webm, mkv, avi, m2ts}`
+  * 该文件作为背景视频加载并播放声音。
+  * 文件名叫什么不重要，但是一定要保证扩展名为支持的文件格式 (`.mp4`, `.webm`, `.mkv`, `.avi`, `.m2ts`)
+  * 文件是否支持还取决于文件编码格式是否能在你的设备上播放。
+
+### 覆盖主题
+你可以在同一主题名中使用多种匹配的组件。
+使用优先级为`文件夹主题` > `打包.mat文件` > `内置主题`。覆盖主题仅在文件存在时有效。
+
+示例:
+* 添加`/Themes/Dark.mat`文件，其中包含`.png`和`.xaml`文件将会覆盖`Dark`主题中的对应文件。.
+* 添加`/Themes/Dark/image.png`文件将会将该图片作为`Dark`主题的背景图并覆盖内置, `Dark`主题以及`Dark.mat`文件(如果存在的话)。
+
+
+## 常见问题
+**我看不懂英文**
+  请点击左侧栏中的`Options`标签页，在右上角找到`A 文`标识右侧下拉框 选择`中文`即可。
+
+**mod列表加载不出来**
+  由于你的运营商或者节点原因，你可能无法正常访问服务器。可以尝试切换节点。
+  请点击左侧栏中的`Options/选项`标签页，在右上角找到`⏬`标识右侧下拉框切换节点。
+  国际源使用Cloudflare的CDN。
+  国内源使用联通家宽。
+  增强源使用美国机房。
+
+**我点了安装但是游戏里什么都看不到**
+  请仔细阅读[用法](#用法)里的说明。
+  确保你没有看差任何地方。有些时候mod的菜单会随着列表宽度而变化。
+
+**我在mod列表中找不到一些mod!**
+  Mod Assistant使用的mod来自[BeatMods](https://beatmods.com/)和[BeatMods.top](https://beatmods.top)而且只显示可供下载的mod。 如果你想手动安装mod，请阅读[Beat Saber Modding Group Wiki](https://bsmg.wiki/pc-modding.html#manual-installation)。
+  *增强源在国际源的基础上包含了国际源和国内源所没有的一些第三方插件。*
+  
+**我使用网易影核版节奏空间想装mod**
+  *目前网易影核版节奏空间mod只支持游戏版本为1.8.0*
+  请切换下载节点至`增强源`并将游戏目录定位到节奏空间安装文件夹。
+  安装任何非官方mod都将安装特别版BSIPA，并且限制可加载mod项为列表中所列出的mod。
+  你可以通过安装影核版BSIPA恢复至官方状态(仅可加载官方mod)。
+
+**我点了安装但是游戏打不开，点不了任何按钮或者只能看到黑屏**
+  请访问[Beat Saber Modding Group](https://discord.gg/beatsabermods) `#pc-help` 频道。检查钉住的消息或者向频道里人求助。
+
+## 鸣谢
+semver by Max Hauser
+https://github.com/maxhauser/semver
+
+Mod Assistant is a PC mod installer for Beat Saber. It uses mods from [BeatMods](https://beatmods.com/) and [BeatMods.top](https://beatmods.top) (A 3rd party site mirrors BeatMods.com with 3rd party plugins and Netvios Edition Support).
 
 * [Features](#Features)
 * [Usage](#Usage)
@@ -18,7 +173,7 @@ ModAssistant is a PC mod installer for Beat Saber. It uses mods from [BeatMods](
 
 ## Features
 
-ModAssistant boasts a rich feature set, some of which include:
+Mod Assistant boasts a rich feature set, some of which include:
 * Dependency resolution
 * Installed mod detection
 * Mod uninstallation
@@ -89,7 +244,7 @@ Download the newest installer from the release section and run it. This applicat
 </details>
 
 ### Custom Themes
-Custom themes are located in a folder called `Themes` in the same folder as `ModAssistant.exe`. ModAssistant can load themes from one of three sources.
+Custom themes are located in a folder called `Themes` in the same folder as `ModAssistant.exe`. Mod Assistant can load themes from one of three sources.
 
 ### Built In
 These come with the program and you can't change them, however you can overwrite them by creating one of the other two theme types with the same name.
@@ -133,13 +288,13 @@ Examples:
 **I hit install but I don't see anything in game!**
   Double check that you followed the [Usage](#usage) instructions correctly.
   Make sure you're looking in the right place. Sometimes mod menus move as  modding libraries/practices change.
-  
+
 **I don't see a certain mod in the mods list!**
   Mod Assistant uses mods from [BeatMods](https://beatmods.com/) and shows whatever is available for download. If you need to install a mod manually, please refer to the [Beat Saber Modding Group Wiki](https://bsmg.wiki/pc-modding.html#manual-installation).
-  
+
 **I hit install but now my game won't launch, I can't click any buttons, I only see a black screen, etc**
   Please visit the [Beat Saber Modding Group](https://discord.gg/beatsabermods) `#pc-help` channels. Check the pinned messages or ask for help and see if you can work out things out.
-  
+
 ## Credits
 semver by Max Hauser
 https://github.com/maxhauser/semver

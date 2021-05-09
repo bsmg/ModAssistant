@@ -15,9 +15,10 @@ namespace ModAssistant
         private static Version CurrentVersion;
         private static Version LatestVersion;
         private static bool NeedsUpdate = false;
-        private static string NewExe = Path.Combine(Path.GetDirectoryName(Utils.ExePath), "ModAssistant.exe");
-        private static string Arguments = App.Arguments;
+        private static readonly string NewExe = Path.Combine(Path.GetDirectoryName(Utils.ExePath), "ModAssistant.exe");
+        private static readonly string Arguments = App.Arguments;
 
+#pragma warning disable CS0162 // Unreachable code detected
         public static async Task<bool> CheckForUpdate()
         {
 #if DEBUG
@@ -33,6 +34,7 @@ namespace ModAssistant
 
             return (LatestVersion > CurrentVersion);
         }
+#pragma warning restore CS0162 // Unreachable code detected
 
         public static async Task Run()
         {

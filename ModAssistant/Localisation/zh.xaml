@@ -14,7 +14,7 @@
     <sys:String x:Key="App:Exception">例外</sys:String>
 
     <!-- Main Window -->
-    <sys:String x:Key="MainWindow:WindowTitle">ModAssistant</sys:String>
+    <sys:String x:Key="MainWindow:WindowTitle">Mod Assistant</sys:String>
     <sys:String x:Key="MainWindow:IntroButton">简介</sys:String>
     <sys:String x:Key="MainWindow:ModsButton">Mod</sys:String>
     <sys:String x:Key="MainWindow:AboutButton">关于</sys:String>
@@ -42,10 +42,10 @@
         Beat Saber<Bold>并不能原生支持Mod</Bold>。 这意味着：
     </Span>
     <Span x:Key="Intro:Terms:Term1">
-        <Bold>Mod将会在每次游戏更新后无法使用。这很正常，并不是Beat Games的错。</Bold>
+        <Bold>Mod将会在每次游戏更新后无法使用。这很正常，并不是游戏开发商的问题。</Bold>
     </Span>
     <Span x:Key="Intro:Terms:Term2">
-        Mod会导致出现BUG或者性能问题。这并不是Beat Games的错。
+        Mod会导致出现BUG或者性能问题。这也不是游戏开发商的问题。
     </Span>
     <Span x:Key="Intro:Terms:Term3">
         爱好者在空闲时间<Bold>用爱发电</Bold>制作了这些Mod，请保持耐心，等待Mod更新。
@@ -61,6 +61,14 @@
         <Bold>请各位玩家引以为鉴，不要攻击其他玩家或支持这种行为，谢谢配合。</Bold>
     </Span>
     <Span x:Key="Intro:WikiGuide">
+        <Bold><Span Foreground="Red">请务必阅读</Span>
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/pc-guide/">
+            新手入门指南
+        </Hyperlink>、
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/pc-faq/">
+            详细教程与问题解答
+        </Hyperlink>
+        </Bold>，以及
         <Bold>
             <Span Foreground="Red">请阅读</Span>
             <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/pc-guide/">
@@ -81,6 +89,12 @@
         <Bold>
             <Span Foreground="#0087FF">若</Span><Span Foreground="#005FFF">执</Span><Span Foreground="#0037FF">行</Span><Span Foreground="#000FFF">缓</Span><Span Foreground="#2800FF">慢</Span><Span Foreground="#5000FF">或</Span><Span Foreground="#7800FF">报</Span><Span Foreground="#A000FF">错</Span><Span Foreground="#C800FF">，</Span><Span Foreground="#F000FF">请</Span><Span Foreground="#FF00D7">在</Span><Span Foreground="#FF00AF">选</Span><Span Foreground="#FF0087">项</Span><Span Foreground="#FF005F">中</Span><Span Foreground="#FF0037">切</Span><Span Foreground="#FF000F">换</Span><Span Foreground="#FF0000">下</Span><Span Foreground="#FF2800">载</Span><Span Foreground="#FF5000">源</Span><Span Foreground="#FF7800">；</Span><Span Foreground="#0087FF">如</Span><Span Foreground="#005FFF">需</Span><Span Foreground="#0037FF">安</Span><Span Foreground="#000FFF">装</Span><Span Foreground="#2800FF">测</Span><Span Foreground="#5000FF">试</Span><Span Foreground="#7800FF">版</Span><Span Foreground="#A000FF">M</Span><Span Foreground="#C800FF">o</Span><Span Foreground="#F000FF">d</Span><Span Foreground="#FF00D7">请</Span><Span Foreground="#FF00AF">查</Span><Span Foreground="#FF0087">看</Span><Span Foreground="#FF005F">上</Span><Span Foreground="#FF0037">方</Span><Span Foreground="#FF000F">中</Span><Span Foreground="#FF0000">文</Span><Span Foreground="#FF2800">教</Span><Span Foreground="#FF5000">程</Span><Span Foreground="#FF7800">。</Span>
         </Bold>
+        <LineBreak/>
+        <Bold>
+            国际源为Beatmods.com；国内源为WGzeyu国内镜像
+            <LineBreak/>
+            增强源为Beatmods.top管理，同步国际源并支持第三方上传的插件以及游戏版本为1.8.0的网易影核版插件
+        </Bold>
     </Span>
     <sys:String x:Key="Intro:AgreeButton">同意</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">拒绝</sys:String>
@@ -97,7 +111,7 @@
     <sys:String x:Key="Mods:Header:Description">介绍</sys:String>
     <sys:String x:Key="Mods:Header:Uninstall">卸载</sys:String>
     <sys:String x:Key="Mods:UninstallButton">卸载</sys:String>
-    <sys:String x:Key="Mods:LoadFailed">无法加载Mod列表</sys:String>
+    <sys:String x:Key="Mods:LoadFailed">Mod列表加载失败</sys:String>
     <sys:String x:Key="Mods:CheckingInstalledMods">正在检查已安装的Mod</sys:String>
     <sys:String x:Key="Mods:LoadingMods">正在加载Mod列表</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Mod列表加载完成</sys:String>
@@ -112,7 +126,8 @@
     <sys:String x:Key="Mods:FailedExtract">{0}解压失败，将在{1}秒后重试。（{2}/{3}）</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">{0}在重试{1}次后仍然无法解压，将被跳过。注意，这个Mod可能无法使用。</sys:String>
     <sys:String x:Key="Mods:SearchLabel">搜索...</sys:String>
-    <sys:String x:Key="Mods:DownloadingMod">正在下载{0}...（从{1}）</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">BSIPA卸载失败</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">找不到BSIPA，已跳过卸载操作。</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">关于</sys:String>
@@ -214,7 +229,7 @@
         如果这些方法没有帮助，请在BSMG的
         <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
             Discord
-        </Hyperlink><Span Foreground="Blue">#support</Span>频道寻求帮助。
+        </Hyperlink><Span Foreground="Blue">#pc-help</Span>频道寻求帮助。
     </Span>
     <sys:String x:Key="Invalid:BoughtGame1">如果您曾经使用盗版，但之后购买了正版游戏</sys:String>
     <sys:String x:Key="Invalid:SelectFolderButton">选择路径</sys:String>

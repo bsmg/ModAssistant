@@ -14,7 +14,7 @@
     <sys:String x:Key="App:Exception">Exception</sys:String>
 
     <!-- Main Window -->
-    <sys:String x:Key="MainWindow:WindowTitle">ModAssistant</sys:String>
+    <sys:String x:Key="MainWindow:WindowTitle">Mod Assistant</sys:String>
     <sys:String x:Key="MainWindow:IntroButton">Intro</sys:String>
     <sys:String x:Key="MainWindow:ModsButton">Mods</sys:String>
     <sys:String x:Key="MainWindow:AboutButton">About</sys:String>
@@ -73,6 +73,12 @@
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
             Wiki
         </Hyperlink>.
+        <LineBreak/>
+        <Bold>
+            The first server node is Beatmods.com. The second server node is hosted by WGzeyu in China Mainland.
+            <LineBreak/>
+            The third server node is hosted by Beatmods.top in U.S., it mirror the beatmods.com with extra 3rd party plugins and support Netvios version 1.8.0.
+        </Bold>
     </Span>
     <sys:String x:Key="Intro:AgreeButton">I Agree</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">Disagree</sys:String>
@@ -104,7 +110,8 @@
     <sys:String x:Key="Mods:FailedExtract">Failed to extract {0}, trying again in {1} seconds. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Failed to extract {0} after max attempts ({1}), skipping. This mod might not work properly so proceed at your own risk</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Search...</sys:String>
-    <sys:String x:Key="Mods:DownloadingMod">Downloading {0} from {1}</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Failed to Uninstall BSIPA</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA installation not found, uninstall operation skipped.</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">About</sys:String>
@@ -204,7 +211,7 @@
     </Span>
     <Span x:Key="Invalid:List:Line3">
         If those don't help, ask for support in the
-        <Span Foreground="Blue">#support</Span> channel in
+        <Span Foreground="Blue">#pc-help</Span> channel in
         <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
             BSMG
         </Hyperlink>.

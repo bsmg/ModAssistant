@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -34,7 +32,7 @@ namespace ModAssistant
         private async void Application_Startup(object sender, StartupEventArgs e)
         {
             // Set SecurityProtocol to prevent crash with TLS
-            System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
+            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
 
             if (ModAssistant.Properties.Settings.Default.UpgradeRequired)
             {
@@ -58,14 +56,14 @@ namespace ModAssistant
             Options.Instance.DownloadServerSelectComboBox.ItemsSource = Options.serverList.ToList();
             Options.Instance.DownloadServerSelectComboBox.SelectedIndex = Options.serverList.ToList().FindIndex((string server) => server == ModAssistant.Properties.Settings.Default.DownloadServer);
 
-            while (string.IsNullOrEmpty(App.BeatSaberInstallDirectory))
+            while (string.IsNullOrEmpty(BeatSaberInstallDirectory))
             {
                 string title = (string)Current.FindResource("App:InstallDirDialog:Title");
                 string body = (string)Current.FindResource("App:InstallDirDialog:OkCancel");
 
                 if (System.Windows.Forms.MessageBox.Show(body, title, System.Windows.Forms.MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    App.BeatSaberInstallDirectory = Utils.GetManualDir();
+                    BeatSaberInstallDirectory = Utils.GetManualDir();
                 }
                 else
                 {
@@ -83,7 +81,7 @@ namespace ModAssistant
                 SelectInstalledMods = ModAssistant.Properties.Settings.Default.SelectInstalled;
             options.ReinstallInstalledMods =
                 ReinstallInstalledMods = ModAssistant.Properties.Settings.Default.ReinstallInstalled;
-            options.CloseWindowOnFinish = 
+            options.CloseWindowOnFinish =
                 CloseWindowOnFinish = ModAssistant.Properties.Settings.Default.CloseWindowOnFinish;
 
             await ArgumentHandler(e.Args);
@@ -168,18 +166,18 @@ namespace ModAssistant
                         break;
 
                     case "--register":
-                        if (args.Length < 2 || string.IsNullOrEmpty(args[1]))
+                        if (args.Length < 3 || string.IsNullOrEmpty(args[1]))
                         {
                             Utils.SendNotify(string.Format((string)Current.FindResource("App:InvalidArgument"), "--register"));
                         }
                         else
                         {
-                            OneClickInstaller.Register(args[1], true);
+                            OneClickInstaller.Register(args[1], true, args[2]);
                         }
 
                         Update = false;
                         GUI = false;
-                        args = Shift(args, 2);
+                        args = Shift(args, 3);
                         break;
 
                     case "--unregister":
@@ -215,7 +213,7 @@ namespace ModAssistant
         {
             if (places >= array.Length) return Array.Empty<string>();
             string[] newArray = new string[array.Length - places];
-            for(int i = places; i < array.Length; i++)
+            for (int i = places; i < array.Length; i++)
             {
                 newArray[i - places] = array[i];
             }
@@ -227,10 +225,10 @@ namespace ModAssistant
         {
             string title = (string)Current.FindResource("App:Exception");
             string body = (string)Current.FindResource("App:UnhandledException");
-            MessageBox.Show($"{body}: {e.Exception}", "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show($"{body}: {e.Exception}", title, MessageBoxButton.OK, MessageBoxImage.Warning);
 
             e.Handled = true;
-            Application.Current.Shutdown();
+            Current.Shutdown();
         }
     }
 }

@@ -14,7 +14,7 @@
     <sys:String x:Key="App:Exception">Ausnahme</sys:String>
 
     <!-- Main Window -->
-    <sys:String x:Key="MainWindow:WindowTitle">ModAssistant</sys:String>
+    <sys:String x:Key="MainWindow:WindowTitle">Mod Assistant</sys:String>
     <sys:String x:Key="MainWindow:IntroButton">Intro</sys:String>
     <sys:String x:Key="MainWindow:ModsButton">Mods</sys:String>
     <sys:String x:Key="MainWindow:AboutButton">Über</sys:String>
@@ -104,7 +104,8 @@
     <sys:String x:Key="Mods:FailedExtract">Fehler beim Extrahieren von {0}, neuer Versuch in {1} Sekunden. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Fehler beim Extrahieren von {0} nach {1} Versuchen, wird übersprungen. Dieser Mod funktioniert möglicherweise nicht richtig, also gehe auf eigenes Risiko vor</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Suchen...</sys:String>
-    <sys:String x:Key="Mods:DownloadingMod">Downloading {0} from {1}</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Deinstallieren von BSIPA ist fehlgeschlagen</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA Installation wurde nicht gefunden, Deinstallation wurde übersprungen.</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">Über</sys:String>
@@ -204,7 +205,7 @@
     </Span>
     <Span x:Key="Invalid:List:Line3">
         Falls das nicht hilft, frage im
-        <Span Foreground="Blue">#support</Span> Kanal in der
+        <Span Foreground="Blue">#pc-help</Span> Kanal in der
         <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
             BSMG
         </Hyperlink>.

@@ -14,7 +14,7 @@
     <sys:String x:Key="App:Exception">Исключение</sys:String>
 
     <!-- Main Window -->
-    <sys:String x:Key="MainWindow:WindowTitle">ModAssistant</sys:String>
+    <sys:String x:Key="MainWindow:WindowTitle">Mod Assistant</sys:String>
     <sys:String x:Key="MainWindow:IntroButton">Начало</sys:String>
     <sys:String x:Key="MainWindow:ModsButton">Модификации</sys:String>
     <sys:String x:Key="MainWindow:AboutButton">Информация</sys:String>
@@ -58,7 +58,7 @@
         <Bold>свободное время.</Bold> Пожалуйста, будьте терпиливыми и взаимопонимающими.
     </Span>
     <Span x:Key="Intro:ReviewsBeatGamesFault">
-        <Bold>НЕ</Bold> оставляйте отрицательные отзывы потому что модификация не работает. Это 
+        <Bold>НЕ</Bold> оставляйте отрицательные отзывы из-за того, что модификация не работает. Это 
         <Bold>не</Bold> вина Beat Games.
         <LineBreak/> Beat Games не пытается уничтожить модификации.
     </Span>
@@ -104,12 +104,13 @@
     <sys:String x:Key="Mods:FailedExtract">Не удалось извлечь {0}, попробуйте снова через {1} секунд. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Не удалось извлечь {0} после попыток ({1}), пропускается. Эта модификация может работать некорректно, используйте на свой страх и риск</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Поиск...</sys:String>
-    <sys:String x:Key="Mods:DownloadingMod">Downloading {0} from {1}</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Failed to Uninstall BSIPA</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA installation not found, uninstall operation skipped.</sys:String> <!-- NEEDS TRANSLATING -->
 
-  <!-- About Page -->
+    <!-- About Page -->
     <sys:String x:Key="About:Title">Информация</sys:String>
     <sys:String x:Key="About:PageTitle">Про Mod Assistant</sys:String>
-    <sys:String x:Key="About:List:Header">Я ассистент, и я создал Mod Assistant для помощи модификациям с некоторыми личными принципами:</sys:String>
+    <sys:String x:Key="About:List:Header">Я Ассистент, и я создал Mod Assistant для помощи модификациям с некоторыми личными принципами:</sys:String>
     <sys:String x:Key="About:List:Item1">Простота</sys:String>
     <sys:String x:Key="About:List:Item2">Портативность </sys:String>
     <sys:String x:Key="About:List:Item3">Приложение одним файлом</sys:String>
@@ -142,8 +143,8 @@
     <sys:String x:Key="Options:EnableOneClickInstalls">Включить OneClick™ установки</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
-    <sys:String x:Key="Options:Playlists">Плейлисты</sys:String> 
-    <sys:String x:Key="Options:CloseWindow">Закрыть окно после окончания установки</sys:String> 
+    <sys:String x:Key="Options:Playlists">Плейлисты</sys:String>
+    <sys:String x:Key="Options:CloseWindow">Закрыть окно после окончания установки</sys:String>
     <sys:String x:Key="Options:GameType">Тип игры</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
@@ -152,10 +153,10 @@
     <sys:String x:Key="Options:InstallingPlaylist">Установка плейлиста: {0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">Ошибка с песней: {0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0} ошибок] Установка плейлиста окончена: {1}</sys:String>
-    <sys:String x:Key="Options:ShowOCIWindow">Show OneClick Installer Window</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:OCIWindowYes">Yes</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:OCIWindowClose">Close</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Options:OCIWindowNo">No</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Options:ShowOCIWindow">Показать OneClick окно установок</sys:String>
+    <sys:String x:Key="Options:OCIWindowYes">Да</sys:String>
+    <sys:String x:Key="Options:OCIWindowClose">Закрывать</sys:String>
+    <sys:String x:Key="Options:OCIWindowNo">Нет</sys:String>
     <sys:String x:Key="Options:Diagnostics">Диагностика</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Открыть логи</sys:String>
     <sys:String x:Key="Options:OpenAppDataButton">Открыть AppData</sys:String>
@@ -204,7 +205,7 @@
     </Span>
     <Span x:Key="Invalid:List:Line3">
         Если из этого ничего вам не помогает, попросите помощи в
-        <Span Foreground="Blue">#support</Span> канал в
+        <Span Foreground="Blue">#pc-help</Span> канал в
         <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
             BSMG
         </Hyperlink>.
@@ -224,11 +225,11 @@
     <sys:String x:Key="OneClick:AssetInstallFailed">Ошибка установки.</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ установки зарегистрированы</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ установки не зарегистрированы!</sys:String>
-    <sys:String x:Key="OneClick:Installing">Установка: {0}</sys:String> 
+    <sys:String x:Key="OneClick:Installing">Установка: {0}</sys:String>
     <sys:String x:Key="OneClick:RatelimitSkip">Достигнуто максимальное кол-во попыток: Пропускаем {0}</sys:String>
     <sys:String x:Key="OneClick:RatelimitHit">Достигнут лимит. Возобновление через {0}</sys:String>
     <sys:String x:Key="OneClick:Failed">Скачивание неудалось: {0}</sys:String>
-    <sys:String x:Key="OneClick:Done">Done'd</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:Done">Завершено</sys:String>
 
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">Тема не найдена, возвращаемся к стандартной теме...</sys:String>

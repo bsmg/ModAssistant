@@ -32,7 +32,7 @@ namespace ModAssistant.Pages
         public string LogURL { get; private set; }
         public string OCIWindow { get; set; }
 
-        public static string[] serverList = { "国际源@BeatMods", "国内源@WGzeyu", "网易版@BeatMods.top" };
+        public static string[] serverList = { "国际源@BeatMods", "国内源@WGzeyu", "增强源@BeatMods.top" };
 
         public Options()
         {
@@ -139,7 +139,7 @@ namespace ModAssistant.Pages
 
         public void ModelSaberProtocolHandler_Checked(object sender, RoutedEventArgs e)
         {
-            OneClickInstaller.Register("modelsaber");
+            OneClickInstaller.Register("modelsaber", Description: "URL:ModelSaber OneClick Install");
         }
 
         public void ModelSaberProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
@@ -149,7 +149,7 @@ namespace ModAssistant.Pages
 
         public void BeatSaverProtocolHandler_Checked(object sender, RoutedEventArgs e)
         {
-            OneClickInstaller.Register("beatsaver");
+            OneClickInstaller.Register("beatsaver", Description: "URL:BeatSaver OneClick Install");
         }
 
         public void BeatSaverProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
@@ -158,7 +158,7 @@ namespace ModAssistant.Pages
         }
         public void PlaylistsProtocolHandler_Checked(object sender, RoutedEventArgs e)
         {
-            OneClickInstaller.Register("bsplaylist");
+            OneClickInstaller.Register("bsplaylist", Description: "URL:BeatSaver Playlist OneClick Install");
         }
 
         public void PlaylistsProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
@@ -205,7 +205,7 @@ namespace ModAssistant.Pages
                 MainWindow.Instance.MainText = $"{Application.Current.FindResource("Options:UploadingLog")}...";
                 await Task.Run(async () => await UploadLog());
 
-                System.Diagnostics.Process.Start(LogURL);
+                Process.Start(LogURL);
                 Utils.SetClipboard(LogURL);
                 MainWindow.Instance.MainText = (string)Application.Current.FindResource("Options:LogUrlCopied");
             }
@@ -246,7 +246,7 @@ namespace ModAssistant.Pages
                 items[i] = WebUtility.UrlEncode(item.Key) + "=" + WebUtility.UrlEncode(item.Value);
             }
 
-            StringContent content = new StringContent(String.Join("&", items), null, "application/x-www-form-urlencoded");
+            StringContent content = new StringContent(string.Join("&", items), null, "application/x-www-form-urlencoded");
             HttpResponseMessage resp = await Http.HttpClient.PostAsync(Utils.Constants.TeknikAPIUrl + "Paste", content);
             string body = await resp.Content.ReadAsStringAsync();
 
@@ -370,13 +370,13 @@ namespace ModAssistant.Pages
                 Console.WriteLine("Applying default server config");
                 if (Properties.Settings.Default.StoreType == "Netvios")
                 {
-                    DownloadServerSelectComboBox.SelectedItem = "网易版@BeatMods.top";
-                    Properties.Settings.Default.DownloadServer = "网易版@BeatMods.top";
+                    DownloadServerSelectComboBox.SelectedItem = Server.BeatModsTop;
+                    Properties.Settings.Default.DownloadServer = Server.BeatModsTop;
                     Properties.Settings.Default.Save();
                 }
                 else {
-                    DownloadServerSelectComboBox.SelectedItem = "国际源@BeatMods";
-                    Properties.Settings.Default.DownloadServer = "国际源@BeatMods";
+                    DownloadServerSelectComboBox.SelectedItem = Server.BeatMods;
+                    Properties.Settings.Default.DownloadServer = Server.BeatMods;
                     Properties.Settings.Default.Save();
                 }
                 Process.Start(Utils.ExePath, App.Arguments);
@@ -388,10 +388,10 @@ namespace ModAssistant.Pages
                 {
                     // Get the matching servers from the server array, then try and use it
                     var serverName = (sender as ComboBox).SelectedItem.ToString();
-                    var selectedServer = (Array.IndexOf(serverList, serverName) == -1) ? "国际源@BeatMods" : serverName;
+                    var selectedServer = (Array.IndexOf(serverList, serverName) == -1) ? Server.BeatMods : serverName;
                     if (Properties.Settings.Default.StoreType == "Netvios")
                     {
-                        Properties.Settings.Default.DownloadServer = "网易版@BeatMods.top";
+                        Properties.Settings.Default.DownloadServer = Server.BeatModsTop;
                         Properties.Settings.Default.Save();
                     }
                     else {
@@ -436,7 +436,7 @@ namespace ModAssistant.Pages
         {
             ComboBox comboBox = sender as ComboBox;
             if (comboBox.SelectedItem != null)
-            { 
+            {
                 ComboBoxItem comboBoxItem = (ComboBoxItem)comboBox.SelectedItem;
                 UpdateOCIWindow(comboBoxItem.Tag.ToString());
             }

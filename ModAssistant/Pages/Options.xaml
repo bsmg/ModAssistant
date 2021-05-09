@@ -79,7 +79,7 @@
 			HorizontalAlignment="Right"
 			FontSize="22"
 			FontWeight="Bold"
-			Text="↓ ⚙" />
+			Text="⏬" />
         <ComboBox
             Name="DownloadServerSelectComboBox"
             Grid.Row="1"

@@ -1,4 +1,3 @@
-using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,7 +29,7 @@ namespace ModAssistant.Pages
             Properties.Settings.Default.Agreed = false;
             Properties.Settings.Default.Save();
             MessageBox.Show((string)FindResource("Intro:ClosingApp"));
-            System.Windows.Application.Current.Shutdown();
+            Application.Current.Shutdown();
         }
 
         private void Agree_Click(object sender, RoutedEventArgs e)

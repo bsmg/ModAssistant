@@ -9,10 +9,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Forms;
-using System.Windows.Navigation;
-using static ModAssistant.Http;
-using ModAssistant.Libs;
 using System.Windows.Media.Animation;
+using System.Windows.Navigation;
+using ModAssistant.Libs;
+using static ModAssistant.Http;
 using TextBox = System.Windows.Controls.TextBox;
 using static ModAssistant.Mod;
 
@@ -61,12 +61,12 @@ namespace ModAssistant.Pages
 
         public void RefreshColumns()
         {
-            if (MainWindow.Instance.Main.Content != Mods.Instance) return;
+            if (MainWindow.Instance.Main.Content != Instance) return;
             double viewWidth = ModsListView.ActualWidth;
             double totalSize = 0;
             GridViewColumn description = null;
-            GridView grid = ModsListView.View as GridView;
-            if (grid != null)
+
+            if (ModsListView.View is GridView grid)
             {
                 foreach (var column in grid.Columns)
                 {
@@ -150,7 +150,7 @@ namespace ModAssistant.Pages
                 NoModsGrid.Visibility = ModList.Count == 0 ? Visibility.Visible : Visibility.Hidden;
 
                 MainWindow.Instance.MainText = $"{FindResource("Mods:FinishedLoadingMods")}{(Properties.Settings.Default.LanguageCode == "zh" ? "。" : ".")}";
-                if (Properties.Settings.Default.LanguageCode == "zh" && Properties.Settings.Default.DownloadServer != "网易版@BeatMods.top")
+                if (Properties.Settings.Default.LanguageCode == "zh" && Properties.Settings.Default.DownloadServer != Server.BeatModsTop)
                 {
                     MainWindow.Instance.MainText = MainWindow.Instance.MainText + "（翻译来自@WGzeyu）";
                 }
@@ -167,12 +167,12 @@ namespace ModAssistant.Pages
         public async Task CheckInstalledMods()
         {
             await GetAllMods();
-            List<string> empty = new List<string>();
+
             GetBSIPAVersion();
-            CheckInstallDir("IPA/Pending/Plugins", empty);
-            CheckInstallDir("IPA/Pending/Libs", empty);
-            CheckInstallDir("Plugins", empty);
-            CheckInstallDir("Libs", empty);
+            CheckInstallDir("IPA/Pending/Plugins");
+            CheckInstallDir("IPA/Pending/Libs");
+            CheckInstallDir("Plugins");
+            CheckInstallDir("Libs");
         }
 
         public async Task GetAllMods()
@@ -182,7 +182,7 @@ namespace ModAssistant.Pages
             AllModsList = JsonSerializer.Deserialize<Mod[]>(body);
         }
 
-        private void CheckInstallDir(string directory, List<string> blacklist)
+        private void CheckInstallDir(string directory)
         {
             if (!Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, directory)))
             {
@@ -277,7 +277,7 @@ namespace ModAssistant.Pages
             {
                 Console.WriteLine(
                     (Properties.Settings.Default.StoreType == "Netvios" &&
-                     ModAssistant.Properties.Settings.Default.DownloadServer == "网易版@BeatMods.top")
+                     ModAssistant.Properties.Settings.Default.DownloadServer == Server.BeatModsTop)
                         ? (Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions + "&gameVersion=" +
                            MainWindow.GameVersion + "&withNetvios=true")
                         : (Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions + "&gameVersion=" +
@@ -317,7 +317,7 @@ namespace ModAssistant.Pages
                         }
                     }
                 }
-                else if (Properties.Settings.Default.LanguageCode == "zh" && Properties.Settings.Default.DownloadServer != "网易版@BeatMods.top")
+                else if (Properties.Settings.Default.LanguageCode == "zh" && Properties.Settings.Default.DownloadServer != Server.BeatModsTop)
                 {
                     try
                     {
@@ -370,12 +370,12 @@ namespace ModAssistant.Pages
 
                 bool preSelected = mod.required;
 
-                if (Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == "网易版@BeatMods.top") {
+                if (Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == Server.BeatModsTop) {
                     /*mod.required = false;*/
                     preSelected = false;
                 }
 
-                if (((Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == "网易版@BeatMods.top") ? DefaultModsNetvios.Contains(mod.name) : DefaultMods.Contains(mod.name)) || (App.SaveModSelection && App.SavedMods.Contains(mod.name)))
+                if (((Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == Server.BeatModsTop) ? DefaultModsNetvios.Contains(mod.name) : DefaultMods.Contains(mod.name)) || (App.SaveModSelection && App.SavedMods.Contains(mod.name)))
                 {
                     preSelected = true;
                     if (!App.SavedMods.Contains(mod.name))
@@ -388,8 +388,8 @@ namespace ModAssistant.Pages
 
                 ModListItem ListItem = new ModListItem()
                 {
-                    IsSelected = (Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == "网易版@BeatMods.top" && NetviosNotCompatiblePluginList.Contains(mod.name)) ? false : preSelected,
-                    IsEnabled = (Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == "网易版@BeatMods.top" && NetviosNotCompatiblePluginList.Contains(mod.name)) ? false : !mod.required,
+                    IsSelected = (Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == Server.BeatModsTop && NetviosNotCompatiblePluginList.Contains(mod.name)) ? false : preSelected,
+                    IsEnabled = (Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == Server.BeatModsTop && NetviosNotCompatiblePluginList.Contains(mod.name)) ? false : !mod.required,
                     ModName = (mod.nameWithTranslation is null || mod.nameWithTranslation == "") ? mod.name : mod.nameWithTranslation,
                     ModVersion = mod.version,
                     ModDescription = ((mod.descriptionWithTranslation is null || mod.descriptionWithTranslation == "") ? mod.description : mod.descriptionWithTranslation).Replace("\r\n", " ").Replace("\n", " "),
@@ -415,7 +415,7 @@ namespace ModAssistant.Pages
                         ListItem.InstalledModInfo = installedMod;
                         ListItem.IsInstalled = true;
                         ListItem.InstalledVersion = maxVersion;
-                        if (Properties.Settings.Default.StoreType != "Netvios" || Properties.Settings.Default.DownloadServer != "网易版@BeatMods.top") {
+                        if (Properties.Settings.Default.StoreType != "Netvios" || Properties.Settings.Default.DownloadServer != Server.BeatModsTop) {
                             break;
                         }
                     }
@@ -447,7 +447,7 @@ namespace ModAssistant.Pages
 
                 if (mod.name.ToLower() == "bsipa" || mod.name.ToLower() == "bsipa-netvios" || mod.name.ToLower() == "bsipa-netviosspecial")
                 {
-                    if (mod.name.ToLower() == "bsipa" && Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == "网易版@BeatMods.top") continue;
+                    if (mod.name.ToLower() == "bsipa" && Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == Server.BeatModsTop) continue;
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
                     await Task.Run(async () => await InstallMod(mod, installDirectory));
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstalledMod"), mod.name)}{(Properties.Settings.Default.LanguageCode == "zh" ? "。" : ".")}";
@@ -464,7 +464,7 @@ namespace ModAssistant.Pages
                         lastBSIPA = mod.name;
                     }
 
-                    Pages.Options.Instance.YeetBSIPA.IsEnabled = true;
+                    Options.Instance.YeetBSIPA.IsEnabled = true;
                 }
                 else if (mod.ListItem.IsSelected)
                 {
@@ -599,7 +599,7 @@ namespace ModAssistant.Pages
 
         private void ResolveDependencies(Mod dependent)
         {
-            if (dependent.ListItem.IsSelected && Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == "网易版@BeatMods.top") {
+            if (dependent.ListItem.IsSelected && Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == Server.BeatModsTop) {
                 if (!dependent.name.Contains("Netvios") || dependent.name == "BSIPA-NetviosSpecial")
                 {
                     BSIPAVersion = "BSIPA-NetviosSpecial";
@@ -743,7 +743,8 @@ namespace ModAssistant.Pages
                     if (SemVersion.TryParse(value, out SemVersion tempInstalledVersion))
                     {
                         _installedVersion = tempInstalledVersion;
-                    } else
+                    }
+                    else
                     {
                         _installedVersion = null;
                     }
@@ -811,7 +812,7 @@ namespace ModAssistant.Pages
 
         private void ModsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if ((Mods.ModListItem)Mods.Instance.ModsListView.SelectedItem == null)
+            if ((Mods.ModListItem)Instance.ModsListView.SelectedItem == null)
             {
                 MainWindow.Instance.InfoButton.IsEnabled = false;
             }
@@ -836,7 +837,7 @@ namespace ModAssistant.Pages
                 if (File.Exists(Path.Combine(App.BeatSaberInstallDirectory, file)))
                     File.Delete(Path.Combine(App.BeatSaberInstallDirectory, file));
             }
-            Pages.Options.Instance.YeetBSIPA.IsEnabled = false;
+            Options.Instance.YeetBSIPA.IsEnabled = false;
         }
 
         private void Uninstall_Click(object sender, RoutedEventArgs e)
@@ -883,7 +884,22 @@ namespace ModAssistant.Pages
                 }
             }
             if (mod.name.ToLower() == "bsipa" || mod.name.ToLower() == "base-netvios" || mod.name.ToLower() == "bsipa-netviosspecial")
-                UninstallBSIPA(links);
+            {
+                var hasIPAExe = File.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA.exe"));
+                var hasIPADir = Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA"));
+
+                if (hasIPADir && hasIPAExe)
+                {
+                    UninstallBSIPA(links);
+                }
+                else
+                {
+                    var title = (string)FindResource("Mods:UninstallBSIPANotFound:Title");
+                    var body = (string)FindResource("Mods:UninstallBSIPANotFound:Body");
+
+                    System.Windows.Forms.MessageBox.Show(body, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
             foreach (Mod.FileHashes files in links.hashMd5)
             {
                 if (File.Exists(Path.Combine(App.BeatSaberInstallDirectory, files.file)))
@@ -906,12 +922,11 @@ namespace ModAssistant.Pages
 
         private void CopyText(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            var textBlock = sender as TextBlock;
-            if (textBlock == null) { return; }
+            if (!(sender is TextBlock textBlock)) return;
             var text = textBlock.Text;
 
             // Ensure there's text to be copied
-            if (string.IsNullOrWhiteSpace(text)) { return; }
+            if (string.IsNullOrWhiteSpace(text)) return;
 
             Utils.SetClipboard(text);
         }
@@ -960,14 +975,14 @@ namespace ModAssistant.Pages
         {
             target.Height = oldHeight;
             DoubleAnimation animation = new DoubleAnimation(newHeight, duration);
-            target.BeginAnimation(TextBlock.HeightProperty, animation);
+            target.BeginAnimation(HeightProperty, animation);
         }
 
         private void Animate(TextBox target, double oldHeight, double newHeight, TimeSpan duration)
         {
             target.Height = oldHeight;
             DoubleAnimation animation = new DoubleAnimation(newHeight, duration);
-            target.BeginAnimation(TextBox.HeightProperty, animation);
+            target.BeginAnimation(HeightProperty, animation);
         }
 
         private void CategoryTranslationInit()

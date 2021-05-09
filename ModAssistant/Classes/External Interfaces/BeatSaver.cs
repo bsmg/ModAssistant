@@ -4,7 +4,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Net.Http.Headers;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows;
@@ -45,8 +44,11 @@ namespace ModAssistant.API
                     return null;
             }
 
-            BeatSaverMap map = new BeatSaverMap();
-            map.Success = false;
+            BeatSaverMap map = new BeatSaverMap
+            {
+                Success = false
+            };
+
             if (showNotification) Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Installing"), id)}");
             try
             {
@@ -87,7 +89,7 @@ namespace ModAssistant.API
 
                 if ((int)resp.StatusCode == 429)
                 {
-                    Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), response.ratelimit.ResetTime)}");
+                    Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), response.ratelimit.ResetTime.ToLocalTime())}");
                     await response.ratelimit.Wait();
                     return await GetResponse(url, showNotification, retries - 1);
                 }
@@ -188,12 +190,11 @@ namespace ModAssistant.API
         {
             BeatSaverRatelimit ratelimit = new BeatSaverRatelimit();
 
-
             if (headers.TryGetValues("Rate-Limit-Remaining", out IEnumerable<string> _remaining))
             {
                 var Remaining = _remaining.GetEnumerator();
                 Remaining.MoveNext();
-                ratelimit.Remaining = Int32.Parse(Remaining.Current);
+                ratelimit.Remaining = int.Parse(Remaining.Current);
                 Remaining.Dispose();
             }
 
@@ -201,7 +202,7 @@ namespace ModAssistant.API
             {
                 var Reset = _reset.GetEnumerator();
                 Reset.MoveNext();
-                ratelimit.Reset = Int32.Parse(Reset.Current);
+                ratelimit.Reset = int.Parse(Reset.Current);
                 ratelimit.ResetTime = UnixTimestampToDateTime((long)ratelimit.Reset);
                 Reset.Dispose();
             }
@@ -210,7 +211,7 @@ namespace ModAssistant.API
             {
                 var Total = _total.GetEnumerator();
                 Total.MoveNext();
-                ratelimit.Total = Int32.Parse(Total.Current);
+                ratelimit.Total = int.Parse(Total.Current);
                 Total.Dispose();
             }
 
@@ -219,9 +220,9 @@ namespace ModAssistant.API
 
         public static DateTime UnixTimestampToDateTime(double unixTime)
         {
-            DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
             long unixTimeStampInTicks = (long)(unixTime * TimeSpan.TicksPerSecond);
-            return new DateTime(unixStart.Ticks + unixTimeStampInTicks, System.DateTimeKind.Utc);
+            return new DateTime(unixStart.Ticks + unixTimeStampInTicks, DateTimeKind.Utc);
         }
 
         public static async Task Download(string url, string output, int retries = 3)
@@ -238,9 +239,9 @@ namespace ModAssistant.API
 
             if ((int)resp.StatusCode == 429)
             {
-                var ratelimit = new BeatSaver.BeatSaverRatelimit();
-                ratelimit = GetRatelimit(resp.Headers);
-                Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), ratelimit.ResetTime)}");
+                var ratelimit = GetRatelimit(resp.Headers);
+                Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), ratelimit.ResetTime.ToLocalTime())}");
+
                 await ratelimit.Wait();
                 await Download(url, output, retries - 1);
             }
@@ -252,6 +253,7 @@ namespace ModAssistant.API
             }
         }
 
+#pragma warning disable IDE1006 // Naming Styles
         public class BeatSaverMap
         {
             public BeatSaverApiResponse response { get; set; }
@@ -262,7 +264,7 @@ namespace ModAssistant.API
         public class BeatSaverApiResponse
         {
             public HttpStatusCode statusCode { get; set; }
-            public BeatSaverRatelimit ratelimit { get; set;}
+            public BeatSaverRatelimit ratelimit { get; set; }
             public BeatSaverApiResponseMap map { get; set; }
         }
 
@@ -274,7 +276,7 @@ namespace ModAssistant.API
             public DateTime ResetTime { get; set; }
             public async Task Wait()
             {
-                await Task.Delay(new TimeSpan(ResetTime.Ticks - DateTime.Now.Ticks));
+                await Task.Delay(new TimeSpan(Math.Max(ResetTime.Ticks - DateTime.UtcNow.Ticks, 0)));
             }
         }
 
@@ -359,3 +361,4 @@ namespace ModAssistant.API
         }
     }
 }
+#pragma warning restore IDE1006 // Naming Styles

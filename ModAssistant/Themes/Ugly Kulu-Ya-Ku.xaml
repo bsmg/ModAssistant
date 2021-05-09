@@ -1,16 +1,16 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!--
-        ModAssistant Ugly Kulu-Ya-Ku Theme by Assistant
+        Mod Assistant Ugly Kulu-Ya-Ku Theme by Assistant
         Feel free to use this as a template for designing your own themes for Mod Assistant.
-        
+
         The Color fields take in Hexadecimal RGB (#RRGGBB) or Hexadecimal ARGB (#AARRGGBB).
         They can also take in common names like "Gray", "Maroon", "Magenta", "LimeGreen", etc.
         For more information, see: https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.colors
         You may set color variables like below in the Standard Styles section, or simply set the colors directly.
-        
+
         To reload your theme, exit and re-enter the Options menu.
-        
+
         Inspired by https://www.nexusmods.com/monsterhunterworld/mods/2080
         william requested I make this theme. One time william requested a hug from pook. pook denied said request.
         I then witnessed william hounding pook, until he siezed them by breaking their foot.

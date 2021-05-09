@@ -70,10 +70,10 @@ namespace ModAssistant
             public static void UpdateDownloadNode() {
                 if (ModAssistant.Properties.Settings.Default.StoreType == "Netvios")
                 {
-                    ModAssistant.Properties.Settings.Default.DownloadServer = "网易版@BeatMods.top";
+                    ModAssistant.Properties.Settings.Default.DownloadServer = Server.BeatModsTop;
                 }
 
-                if (ModAssistant.Properties.Settings.Default.DownloadServer == "国内源@WGzeyu")
+                if (ModAssistant.Properties.Settings.Default.DownloadServer == Server.WGZeyu)
                 {
                     Utils.Constants.BeatModsAPIUrl = Utils.Constants.BeatModsAPIUrl_wgzeyu;
                     Utils.Constants.TeknikAPIUrl = Utils.Constants.TeknikAPIUrl_wgzeyu;
@@ -83,7 +83,7 @@ namespace ModAssistant
                     Utils.Constants.WeebCDNAPIURL = Utils.Constants.WeebCDNAPIURL_wgzeyu;
                     Utils.Constants.BeatModsTranslation = Utils.Constants.BeatModsTranslation_wgzeyu;
                 }
-                else if (ModAssistant.Properties.Settings.Default.DownloadServer == "网易版@BeatMods.top")
+                else if (ModAssistant.Properties.Settings.Default.DownloadServer == Server.BeatModsTop)
                 {
                     Utils.Constants.BeatModsAPIUrl = Utils.Constants.BeatModsAPIUrl_bmtop;
                     Utils.Constants.TeknikAPIUrl = Utils.Constants.TeknikAPIUrl_bmtop;
@@ -434,7 +434,7 @@ namespace ModAssistant
             }
             if (!old_store.Equals(Properties.Settings.Default.StoreType)) {
                 if (Properties.Settings.Default.StoreType == "Netvios") {
-                    Properties.Settings.Default.DownloadServer = "网易版@BeatMods.top";
+                    Properties.Settings.Default.DownloadServer = Server.BeatModsTop;
                 }
                 Process.Start(Utils.ExePath, App.Arguments);
                 Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
