@@ -248,7 +248,7 @@ namespace ModAssistant
                 }
 
                 if (stream.Position == stream.Length) // we went through the entire stream without finding the key
-                    throw new KeyNotFoundException("Could not find key '" + key + "' in " + filename);
+                    return null;
 
                 while (stream.Position < stream.Length)
                 {
