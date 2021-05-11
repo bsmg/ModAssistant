@@ -235,19 +235,35 @@ namespace ModAssistant
         public static string GetVersion()
         {
             string filename = Path.Combine(App.BeatSaberInstallDirectory, "Beat Saber_Data", "globalgamemanagers");
-            using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
+            using (var stream = File.OpenRead(filename))
+            using (var reader = new BinaryReader(stream, Encoding.UTF8))
             {
-                byte[] file = File.ReadAllBytes(filename);
-                byte[] bytes = new byte[32];
+                const string key = "public.app-category.games";
+                int pos = 0;
 
-                fs.Read(file, 0, Convert.ToInt32(fs.Length));
-                fs.Close();
-                int index = Encoding.UTF8.GetString(file).IndexOf("public.app-category.games") + 136;
+                while (stream.Position < stream.Length && pos < key.Length)
+                {
+                    if (reader.ReadByte() == key[pos]) pos++;
+                    else pos = 0;
+                }
 
-                Array.Copy(file, index, bytes, 0, 32);
-                string version = Encoding.UTF8.GetString(bytes).Trim(Constants.IllegalCharacters);
+                if (stream.Position == stream.Length) // we went through the entire stream without finding the key
+                    return null;
 
-                return version;
+                while (stream.Position < stream.Length)
+                {
+                    var current = (char)reader.ReadByte();
+                    if (char.IsDigit(current))
+                        break;
+                }
+
+                var rewind = -sizeof(int) - sizeof(byte);
+                stream.Seek(rewind, SeekOrigin.Current); // rewind to the string length
+
+                var strlen = reader.ReadInt32();
+                var strbytes = reader.ReadBytes(strlen);
+
+                return Encoding.UTF8.GetString(strbytes);
             }
         }
 
