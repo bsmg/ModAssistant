@@ -95,11 +95,26 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock Margin="{Binding PromotionMargin}">
-                                                <Hyperlink NavigateUri="{Binding PromotionLink, TargetNullValue=about:blank}" RequestNavigate="Hyperlink_RequestNavigate">
-                                                    <Run Text="{Binding PromotionText}" />
-                                                </Hyperlink>
-                                            </TextBlock>
+                                            <TextBlock Margin="{Binding PromotionMargin}" Padding="0">
+		                                        <Hyperlink NavigateUri="{Binding PromotionLinks[0], TargetNullValue=about:blank}" RequestNavigate="Hyperlink_RequestNavigate">
+			                                        <Run Text="{Binding PromotionTexts[0]}" />
+		                                        </Hyperlink>
+                                                
+	                                            <TextBlock Text="{Binding PromotionTextAfterLinks[0]}" Padding="0" Margin="0" />
+		
+		                                        <Hyperlink NavigateUri="{Binding PromotionLinks[1], TargetNullValue=about:blank}" RequestNavigate="Hyperlink_RequestNavigate">
+			                                        <Run Text="{Binding PromotionTexts[1]}" />
+		                                        </Hyperlink>
+                                                
+	                                            <TextBlock Text="{Binding PromotionTextAfterLinks[1]}" Padding="0" Margin="0" />
+		
+		                                        <Hyperlink NavigateUri="{Binding PromotionLinks[2], TargetNullValue=about:blank}" RequestNavigate="Hyperlink_RequestNavigate">
+			                                        <Run Text="{Binding PromotionTexts[2]}" />
+		                                        </Hyperlink>
+                                                
+	                                            <TextBlock Text="{Binding PromotionTextAfterLinks[2]}" Padding="0" Margin="0" />
+		
+	                                        </TextBlock>
                                             <TextBlock MouseLeftButtonDown="CopyText" Text="{Binding ModDescription}" />
                                         </StackPanel>
                                     </DataTemplate>

@@ -285,8 +285,17 @@ namespace ModAssistant.Pages
                 {
                     if (mod.name == promo.ModName)
                     {
-                        ListItem.PromotionText = promo.Text;
-                        ListItem.PromotionLink = promo.Link;
+                        ListItem.PromotionTexts = new string[promo.Links.Count];
+                        ListItem.PromotionLinks = new string[promo.Links.Count];
+                        ListItem.PromotionTextAfterLinks = new string[promo.Links.Count];
+
+                        for (int i = 0; i < promo.Links.Count; ++i)
+                        {
+                            PromotionLink link = promo.Links[i];
+                            ListItem.PromotionTexts[i] = link.Text;
+                            ListItem.PromotionLinks[i] = link.Link;
+                            ListItem.PromotionTextAfterLinks[i] = link.TextAfterLink;
+                        }
                     }
                 }
 
@@ -609,13 +618,14 @@ namespace ModAssistant.Pages
                 }
             }
 
-            public string PromotionText { get; set; }
-            public string PromotionLink { get; set; }
+            public string[] PromotionTexts { get; set; }
+            public string[] PromotionLinks { get; set; }
+            public string[] PromotionTextAfterLinks { get; set; }
             public string PromotionMargin
             {
                 get
                 {
-                    if (string.IsNullOrEmpty(PromotionText)) return "0";
+                    if  (PromotionTexts == null || string.IsNullOrEmpty(PromotionTexts[0])) return "-15,0,0,0";
                     return "0,0,5,0";
                 }
             }
