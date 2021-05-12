@@ -119,6 +119,15 @@ namespace ModAssistant
             }
         }
 
+        public static string CalculateMD5FromStream(Stream stream)
+        {
+            using (var md5 = MD5.Create())
+            {
+                var hash = md5.ComputeHash(stream);
+                return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+            }
+        }
+
         public static string GetInstallDir()
         {
             string InstallDir = Properties.Settings.Default.InstallFolder;
