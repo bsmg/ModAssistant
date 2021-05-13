@@ -10,105 +10,106 @@
     d:DesignWidth="1182"
     mc:Ignorable="d">
 
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
 
-        </Grid.RowDefinitions>
+            </Grid.RowDefinitions>
 
-        <TextBlock
+            <TextBlock
             Margin="0"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             FontSize="48"
             Text="{DynamicResource Intro:PageTitle}" />
-        <TextBlock
+            <TextBlock
             Grid.Row="1"
             Margin="0"
             FontSize="28"
             FontWeight="Bold"
             Text="{DynamicResource Intro:Terms:Header}" />
-        <TextBlock
+            <TextBlock
             Grid.Row="2"
             Margin="0,5"
             FontSize="16"
             TextWrapping="Wrap">
             <StaticResource ResourceKey="Intro:Terms:Line1" />
-        </TextBlock>
+            </TextBlock>
 
-        <TextBlock
+            <TextBlock
             Grid.Row="3"
             Margin="0,5"
             FontSize="16"
             TextWrapping="Wrap">
             <StaticResource ResourceKey="Intro:Terms:Line2" />
-        </TextBlock>
+            </TextBlock>
 
-        <TextBlock
+            <TextBlock
             Grid.Row="4"
             Margin="15,5"
             FontSize="16"
             TextWrapping="Wrap">
             <StaticResource ResourceKey="Intro:Terms:Term1" />
-        </TextBlock>
+            </TextBlock>
 
-        <TextBlock
+            <TextBlock
             Grid.Row="5"
             Margin="15,5"
             FontSize="16"
             TextWrapping="Wrap">
             <StaticResource ResourceKey="Intro:Terms:Term2" />
-        </TextBlock>
+            </TextBlock>
 
-        <TextBlock
+            <TextBlock
             Grid.Row="6"
             Margin="15,5"
             FontSize="16"
             TextWrapping="Wrap">
             <StaticResource ResourceKey="Intro:Terms:Term3" />
-        </TextBlock>
+            </TextBlock>
 
-        <TextBlock
+            <TextBlock
             Grid.Row="7"
             Margin="0,5"
             FontSize="16"
             TextWrapping="Wrap">
             <StaticResource ResourceKey="Intro:ReviewsBeatGamesFault" />
-        </TextBlock>
+            </TextBlock>
 
-        <TextBlock
+            <TextBlock
             Grid.Row="8"
             Margin="0,5"
             FontSize="16"
             TextWrapping="Wrap">
             <StaticResource ResourceKey="Intro:ReviewsRustySpoon" />
-        </TextBlock>
+            </TextBlock>
 
-        <TextBlock
+            <TextBlock
             Grid.Row="9"
             Margin="0,5"
             FontSize="16"
             TextWrapping="Wrap">
             <StaticResource ResourceKey="Intro:WikiGuide" />
-        </TextBlock>
+            </TextBlock>
 
-        <StackPanel
+            <StackPanel
             Grid.Row="10"
             Margin="10"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Orientation="Horizontal">
-            <Button
+                <Button
                 Name="Agree"
                 Height="35"
                 Margin="0,0,10,0"
@@ -116,13 +117,13 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Click="Agree_Click">
-                <TextBlock
+                    <TextBlock
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     FontSize="18"
                     Text="{DynamicResource Intro:AgreeButton}" />
-            </Button>
-            <Button
+                </Button>
+                <Button
                 Name="Disagree"
                 Height="35"
                 Margin="10,0,0,0"
@@ -130,12 +131,13 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Click="Disagree_Click">
-                <TextBlock
+                    <TextBlock
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     FontSize="18"
                     Text="{DynamicResource Intro:DisagreeButton}" />
-            </Button>
-        </StackPanel>
-    </Grid>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>
