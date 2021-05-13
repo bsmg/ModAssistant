@@ -395,43 +395,40 @@ namespace ModAssistant.Pages
 
             List<ZipArchiveEntry> files = new List<ZipArchiveEntry>(filesCount);
 
-            using (Stream stream = await DownloadMod(Utils.Constants.BeatModsURL + downloadLink))
-            using (ZipArchive archive = new ZipArchive(stream))
+            do
             {
-                foreach (ZipArchiveEntry file in archive.Entries)
+                using (Stream stream = await DownloadMod(Utils.Constants.BeatModsURL + downloadLink))
+                using (ZipArchive archive = new ZipArchive(stream))
                 {
-                    string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
-                    if (!Directory.Exists(fileDirectory))
+                    foreach (ZipArchiveEntry file in archive.Entries)
                     {
-                        Directory.CreateDirectory(fileDirectory);
-                    }
-
-                    if (!string.IsNullOrEmpty(file.Name))
-                    {
-                        foreach (Mod.DownloadLink download in mod.downloads)
+                        string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
+                        if (!Directory.Exists(fileDirectory))
                         {
-                            foreach (Mod.FileHashes fileHash in download.hashMd5)
+                            Directory.CreateDirectory(fileDirectory);
+                        }
+
+                        if (!string.IsNullOrEmpty(file.Name))
+                        {
+                            foreach (Mod.DownloadLink download in mod.downloads)
                             {
-                                if (fileHash.hash == Utils.CalculateMD5FromStream(file.Open()))
+                                foreach (Mod.FileHashes fileHash in download.hashMd5)
                                 {
-                                    files.Add(file);
-                                    break;
+                                    if (fileHash.hash == Utils.CalculateMD5FromStream(file.Open()))
+                                    {
+                                        files.Add(file);
+                                        break;
+                                    }
                                 }
                             }
                         }
                     }
                 }
+            } while (files.Count != filesCount);
 
-                if (files.Count != filesCount)
-                {
-                    _ = Task.Run(async () => await InstallMod(mod, directory));
-                    return;
-                }
-
-                foreach (ZipArchiveEntry file in files)
-                {
-                    await ExtractFile(file, Path.Combine(directory, file.FullName), 3.0, mod.name, 10);
-                }
+            foreach (ZipArchiveEntry file in files)
+            {
+                await ExtractFile(file, Path.Combine(directory, file.FullName), 3.0, mod.name, 10);
             }
 
             if (App.CheckInstalledMods)
