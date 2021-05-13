@@ -393,10 +393,12 @@ namespace ModAssistant.Pages
                 return;
             }
 
-            List<ZipArchiveEntry> files = new List<ZipArchiveEntry>(filesCount);
+            List<ZipArchiveEntry> files;
 
             do
             {
+                files = new List<ZipArchiveEntry>(filesCount);
+
                 using (Stream stream = await DownloadMod(Utils.Constants.BeatModsURL + downloadLink))
                 using (ZipArchive archive = new ZipArchive(stream))
                 {
