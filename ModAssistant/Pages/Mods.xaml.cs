@@ -28,7 +28,7 @@ namespace ModAssistant.Pages
         public Mod[] ModsList;
         public Mod[] AllModsList;
         public static List<Mod> InstalledMods = new List<Mod>();
-        public static List<Mod> ManifestsToMatch = new List<Mod>();
+        public static List<Mod> LibsToMatch = new List<Mod>();
         public List<string> CategoryNames = new List<string>();
         public CollectionView view;
         public bool PendingChanges;
@@ -185,15 +185,15 @@ namespace ModAssistant.Pages
                     {
                         if (fileExtension == ".manifest")
                         {
-                            ManifestsToMatch.Add(mod);
+                            LibsToMatch.Add(mod);
                         }
                         else
                         {
                             if (directory.Contains("Libs"))
                             {
-                                if (!ManifestsToMatch.Contains(mod)) continue;
+                                if (!LibsToMatch.Contains(mod)) continue;
 
-                                ManifestsToMatch.Remove(mod);
+                                LibsToMatch.Remove(mod);
                             }
 
                             AddDetectedMod(mod);
