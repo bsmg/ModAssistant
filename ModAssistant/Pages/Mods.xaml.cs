@@ -28,6 +28,7 @@ namespace ModAssistant.Pages
         public Mod[] ModsList;
         public Mod[] AllModsList;
         public static List<Mod> InstalledMods = new List<Mod>();
+        public static List<Mod> LibsToMatch = new List<Mod>();
         public List<string> CategoryNames = new List<string>();
         public CollectionView view;
         public bool PendingChanges;
@@ -175,12 +176,28 @@ namespace ModAssistant.Pages
 
             foreach (string file in Directory.GetFileSystemEntries(Path.Combine(App.BeatSaberInstallDirectory, directory)))
             {
-                if (File.Exists(file) && Path.GetExtension(file) == ".dll" || Path.GetExtension(file) == ".manifest")
+                string fileExtension = Path.GetExtension(file);
+
+                if (File.Exists(file) && (fileExtension == ".dll" || fileExtension == ".manifest"))
                 {
                     Mod mod = GetModFromHash(Utils.CalculateMD5(file));
                     if (mod != null)
                     {
-                        AddDetectedMod(mod);
+                        if (fileExtension == ".manifest")
+                        {
+                            LibsToMatch.Add(mod);
+                        }
+                        else
+                        {
+                            if (directory.Contains("Libs"))
+                            {
+                                if (!LibsToMatch.Contains(mod)) continue;
+
+                                LibsToMatch.Remove(mod);
+                            }
+
+                            AddDetectedMod(mod);
+                        }
                     }
                 }
             }
