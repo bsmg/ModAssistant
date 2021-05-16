@@ -11,8 +11,8 @@ namespace ModAssistant
                 ModName = "YUR Fit Calorie Tracker",
                 Links = new List<PromotionLink>(){
                     new PromotionLink{Text = "Join our Discord!", Link = "https://yur.chat", TextAfterLink = " Or find us on "},
-                    new PromotionLink{Text = "iOS", Link = "https://y.at/💣🍑📱", TextAfterLink = " and " },
-                    new PromotionLink{Text = "Android", Link = "https://y.at/💾🔬📡💻📱", TextAfterLink = "!" }
+                    new PromotionLink{Text = "iOS", Link = "https://testflight.apple.com/join/GsTrCPFE", TextAfterLink = " and " },
+                    new PromotionLink{Text = "Android", Link = "https://play.google.com/store/apps/details?id=com.yur", TextAfterLink = "!" }
                 },
             }
         };

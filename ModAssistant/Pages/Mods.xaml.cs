@@ -33,6 +33,7 @@ namespace ModAssistant.Pages
         public Mod[] AllModsList;
         public TranslationWGzeyu[] ModsTranslationWGzeyu;
         public static List<Mod> InstalledMods = new List<Mod>();
+        public static List<Mod> LibsToMatch = new List<Mod>();
         public List<string> CategoryNames = new List<string>();
         public CollectionView view;
         public bool PendingChanges;
@@ -191,12 +192,28 @@ namespace ModAssistant.Pages
 
             foreach (string file in Directory.GetFileSystemEntries(Path.Combine(App.BeatSaberInstallDirectory, directory)))
             {
-                if (File.Exists(file) && Path.GetExtension(file) == ".dll" || Path.GetExtension(file) == ".manifest")
+                string fileExtension = Path.GetExtension(file);
+
+                if (File.Exists(file) && (fileExtension == ".dll" || fileExtension == ".manifest"))
                 {
                     Mod mod = GetModFromHash(Utils.CalculateMD5(file));
                     if (mod != null)
                     {
-                        AddDetectedMod(mod);
+                        if (fileExtension == ".manifest")
+                        {
+                            LibsToMatch.Add(mod);
+                        }
+                        else
+                        {
+                            if (directory.Contains("Libs"))
+                            {
+                                if (!LibsToMatch.Contains(mod)) continue;
+
+                                LibsToMatch.Remove(mod);
+                            }
+
+                            AddDetectedMod(mod);
+                        }
                     }
                     else
                     {
@@ -492,10 +509,13 @@ namespace ModAssistant.Pages
 
         private async Task InstallMod(Mod mod, string directory)
         {
+            int filesCount = 0;
             string downloadLink = null;
 
             foreach (Mod.DownloadLink link in mod.downloads)
             {
+                filesCount = link.hashMd5.Length;
+
                 if (link.type == "universal")
                 {
                     downloadLink = link.url;
@@ -514,14 +534,16 @@ namespace ModAssistant.Pages
                 return;
             }
 
-            MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:DownloadingMod"), mod.name, Properties.Settings.Default.DownloadServer)}";
+			MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:DownloadingMod"), mod.name, Properties.Settings.Default.DownloadServer)}";
 
-            using (Stream stream = await DownloadMod(Utils.Constants.BeatModsURL + downloadLink))
-            using (ZipArchive archive = new ZipArchive(stream))
+            while (true)
             {
-                MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
-                try
+                List<ZipArchiveEntry> files = new List<ZipArchiveEntry>(filesCount);
+
+                using (Stream stream = await DownloadMod(Utils.Constants.BeatModsURL + downloadLink))
+                using (ZipArchive archive = new ZipArchive(stream))
                 {
+                	MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
                     foreach (ZipArchiveEntry file in archive.Entries)
                     {
                         string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
@@ -532,7 +554,30 @@ namespace ModAssistant.Pages
 
                         if (!string.IsNullOrEmpty(file.Name))
                         {
-                            await ExtractFile(file, Path.Combine(directory, file.FullName), 3.0, mod.name, 10);
+                            foreach (Mod.DownloadLink download in mod.downloads)
+                            {
+                                foreach (Mod.FileHashes fileHash in download.hashMd5)
+                                {
+                                    using (Stream fileStream = file.Open())
+                                    {
+                                        if (fileHash.hash == Utils.CalculateMD5FromStream(fileStream))
+                                        {
+                                            files.Add(file);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        if (files.Count == filesCount)
+                        {
+                            foreach (ZipArchiveEntry file in files)
+                            {
+                                await ExtractFile(file, Path.Combine(directory, file.FullName), 3.0, mod.name, 10);
+                            }
+
+                            break;
                         }
                     }
                 }
@@ -816,7 +861,7 @@ namespace ModAssistant.Pages
             {
                 get
                 {
-                    if  (PromotionTexts == null || string.IsNullOrEmpty(PromotionTexts[0])) return "-15,0,0,0";
+                    if (PromotionTexts == null || string.IsNullOrEmpty(PromotionTexts[0])) return "-15,0,0,0";
                     return "0,0,5,0";
                 }
             }
