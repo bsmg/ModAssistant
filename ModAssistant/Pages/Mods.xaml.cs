@@ -393,11 +393,9 @@ namespace ModAssistant.Pages
                 return;
             }
 
-            List<ZipArchiveEntry> files;
-
-            do
+            while (true)
             {
-                files = new List<ZipArchiveEntry>(filesCount);
+                List<ZipArchiveEntry> files = new List<ZipArchiveEntry>(filesCount);
 
                 using (Stream stream = await DownloadMod(Utils.Constants.BeatModsURL + downloadLink))
                 using (ZipArchive archive = new ZipArchive(stream))
@@ -416,21 +414,29 @@ namespace ModAssistant.Pages
                             {
                                 foreach (Mod.FileHashes fileHash in download.hashMd5)
                                 {
-                                    if (fileHash.hash == Utils.CalculateMD5FromStream(file.Open()))
+                                    using (Stream fileStream = file.Open())
                                     {
-                                        files.Add(file);
-                                        break;
+                                        if (fileHash.hash == Utils.CalculateMD5FromStream(fileStream))
+                                        {
+                                            files.Add(file);
+                                            break;
+                                        }
                                     }
                                 }
                             }
                         }
                     }
-                }
-            } while (files.Count != filesCount);
 
-            foreach (ZipArchiveEntry file in files)
-            {
-                await ExtractFile(file, Path.Combine(directory, file.FullName), 3.0, mod.name, 10);
+                    if (files.Count == filesCount)
+                    {
+                        foreach (ZipArchiveEntry file in files)
+                        {
+                            await ExtractFile(file, Path.Combine(directory, file.FullName), 3.0, mod.name, 10);
+                        }
+
+                        break;
+                    }
+                }
             }
 
             if (App.CheckInstalledMods)
