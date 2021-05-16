@@ -10,37 +10,38 @@
     d:DesignWidth="1182"
     mc:Ignorable="d">
     <Page.Resources />
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-        </Grid.ColumnDefinitions>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
 
-        <TextBlock
+            <TextBlock
             Grid.Row="0"
             Margin="15,5,5,5"
             HorizontalAlignment="Left"
@@ -48,7 +49,7 @@
             FontWeight="Bold"
             Text="{DynamicResource Options:PageTitle}" />
 
-        <TextBlock
+            <TextBlock
             Grid.Row="0"
             Grid.Column="2"
             Margin="5"
@@ -56,7 +57,7 @@
             FontSize="22"
             FontWeight="Bold"
             Text="A 文" />
-        <ComboBox
+            <ComboBox
             Name="LanguageSelectComboBox"
             Grid.Row="0"
             Grid.Column="3"
@@ -65,14 +66,14 @@
             VerticalContentAlignment="Center"
             SelectionChanged="LanguageSelectComboBox_SelectionChanged" />
 
-        <TextBlock
+            <TextBlock
             Grid.Row="1"
             Margin="5"
             HorizontalAlignment="Left"
             FontSize="16"
             FontWeight="Bold"
             Text="{DynamicResource Options:InstallFolder}" />
-        <Border
+            <Border
             Grid.Row="2"
             Grid.ColumnSpan="2"
             Height="30"
@@ -81,15 +82,15 @@
             Background="{DynamicResource DirectoryBackground}"
             BorderBrush="{DynamicResource DirectoryOutline}"
             BorderThickness="1">
-            <TextBlock
+                <TextBlock
                 Name="DirectoryTextBlock"
                 Margin="5"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 FontSize="16"
                 Text="{Binding InstallDirectory}" />
-        </Border>
-        <Button
+            </Border>
+            <Button
             Grid.Row="2"
             Grid.Column="2"
             Height="30"
@@ -97,7 +98,7 @@
             Padding="5"
             Click="SelectDirButton_Click"
             Content="{DynamicResource Options:SelectFolderButton}" />
-        <Button
+            <Button
             Grid.Row="2"
             Grid.Column="3"
             Height="30"
@@ -106,14 +107,14 @@
             Click="OpenDirButton_Click"
             Content="{DynamicResource Options:OpenFolderButton}" />
 
-        <TextBlock
+            <TextBlock
             Grid.Row="3"
             Margin="5"
             HorizontalAlignment="Left"
             FontSize="16"
             FontWeight="Bold"
             Text="{DynamicResource Options:SaveSelectedMods}" />
-        <CheckBox
+            <CheckBox
             Name="SaveSelected"
             Grid.Row="3"
             Grid.Column="1"
@@ -123,14 +124,14 @@
             IsChecked="{Binding SaveSelection, Mode=TwoWay}"
             Unchecked="SaveSelected_Unchecked" />
 
-        <TextBlock
+            <TextBlock
             Grid.Row="4"
             Margin="5"
             HorizontalAlignment="Left"
             FontSize="16"
             FontWeight="Bold"
             Text="{DynamicResource Options:CheckInstalledMods}" />
-        <CheckBox
+            <CheckBox
             Name="CheckInstalled"
             Grid.Row="4"
             Grid.Column="1"
@@ -140,14 +141,14 @@
             IsChecked="{Binding CheckInstalledMods, Mode=TwoWay}"
             Unchecked="CheckInstalled_Unchecked" />
 
-        <TextBlock
+            <TextBlock
             Grid.Row="5"
             Margin="50,5,5,5"
             HorizontalAlignment="Left"
             FontSize="16"
             FontWeight="Bold"
             Text="{DynamicResource Options:SelectInstalledMods}" />
-        <CheckBox
+            <CheckBox
             Name="SelectInstalled"
             Grid.Row="5"
             Grid.Column="1"
@@ -157,14 +158,14 @@
             IsChecked="{Binding SelectInstalledMods, Mode=TwoWay}"
             Unchecked="SelectInstalled_Unchecked" />
 
-        <TextBlock
+            <TextBlock
             Grid.Row="6"
             Margin="50,5,5,5"
             HorizontalAlignment="Left"
             FontSize="16"
             FontWeight="Bold"
             Text="{DynamicResource Options:ReinstallInstalledMods}" />
-        <CheckBox
+            <CheckBox
             Name="ReinstallInstalled"
             Grid.Row="6"
             Grid.Column="1"
@@ -174,17 +175,17 @@
             IsChecked="{Binding ReinstallInstalledMods, Mode=TwoWay}"
             Unchecked="ReinstallInstalled_Unchecked" />
 
-        <Menu
+            <Menu
             Grid.Row="8"
             Grid.Column="0"
             Margin="5"
             Background="Transparent"
             BorderBrush="Transparent">
-            <MenuItem
+                <MenuItem
                 Header="{DynamicResource Options:EnableOneClickInstalls}"
                 StaysOpenOnClick="True"
                 Padding="5,0">
-                <MenuItem
+                    <MenuItem
                     Padding="5,0"
                     Header="{DynamicResource Options:BeatSaver}"
                     Name="BeatSaverProtocolHandler"
@@ -193,7 +194,7 @@
                     Checked="BeatSaverProtocolHandler_Checked"
                     IsChecked="{Binding BeatSaverProtocolHandlerEnabled}"
                     Unchecked="BeatSaverProtocolHandler_Unchecked"/>
-                <MenuItem
+                    <MenuItem
                     Padding="5,0"
                     Header="{DynamicResource Options:ModelSaber}"
                     Name="ModelSaberProtocolHandler"
@@ -202,7 +203,7 @@
                     Checked="ModelSaberProtocolHandler_Checked"
                     IsChecked="{Binding ModelSaberProtocolHandlerEnabled}"
                     Unchecked="ModelSaberProtocolHandler_Unchecked"/>
-                <MenuItem
+                    <MenuItem
                     Padding="5,0"
                     Header="{DynamicResource Options:Playlists}"
                     Name="PlaylistProtocolHandler"
@@ -211,7 +212,7 @@
                     Checked="PlaylistsProtocolHandler_Checked"
                     IsChecked="{Binding PlaylistsProtocolHandlerEnabled}"
                     Unchecked="PlaylistsProtocolHandler_Unchecked" />
-                <!-- <MenuItem
+                    <!-- <MenuItem
                     Padding="5,0"
                     Header="{DynamicResource Options:CloseWindow}"
                     Name="CloseWindowToggle"
@@ -221,76 +222,76 @@
                     IsChecked="{Binding CloseWindowOnFinish}"
                     Unchecked="CloseWindowOnFinish_Unchecked" />
                 -->
-            </MenuItem>
-        </Menu>
+                </MenuItem>
+            </Menu>
 
-        <StackPanel
+            <StackPanel
             Grid.Row="9"
             Grid.ColumnSpan="2"
             Orientation="Horizontal">
-            <TextBlock
+                <TextBlock
                 Margin="5,5,10,5"
                 HorizontalAlignment="Left"
                 FontSize="16"
                 FontWeight="Bold"
                 Text="{DynamicResource Options:ShowOCIWindow}" />
-            <ComboBox
+                <ComboBox
                 Margin="0,0,0,5"
                 MinWidth="80"
                 Name="ShowOCIWindowComboBox"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Bottom"
                 SelectionChanged="ShowOCIWindowComboBox_SelectionChanged">
-                <ComboBoxItem Tag="Yes" Content="{DynamicResource Options:OCIWindowYes}" />
-                <ComboBoxItem Tag="Close" Content="{DynamicResource Options:OCIWindowClose}" />
-                <ComboBoxItem Tag="No" Content="{DynamicResource Options:OCIWindowNo}"/>
-            </ComboBox>
-        </StackPanel>
+                    <ComboBoxItem Tag="Yes" Content="{DynamicResource Options:OCIWindowYes}" />
+                    <ComboBoxItem Tag="Close" Content="{DynamicResource Options:OCIWindowClose}" />
+                    <ComboBoxItem Tag="No" Content="{DynamicResource Options:OCIWindowNo}"/>
+                </ComboBox>
+            </StackPanel>
 
 
-        <StackPanel
+            <StackPanel
             Grid.Row="12"
             Margin="5"
             HorizontalAlignment="Left"
             Orientation="Horizontal">
-            <TextBlock FontSize="16" FontWeight="Bold">
+                <TextBlock FontSize="16" FontWeight="Bold">
                 <TextBlock Text="{DynamicResource Options:GameType}" />
                 :&#160;
             </TextBlock>
-            <TextBlock
+                <TextBlock
                 Name="GameTypeTextBlock"
                 FontSize="16"
                 Text="{Binding InstallType}" />
-        </StackPanel>
+            </StackPanel>
 
-        <StackPanel
+            <StackPanel
             Grid.Row="13"
             Grid.ColumnSpan="2"
             Margin="5"
             HorizontalAlignment="Stretch">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
                     HorizontalAlignment="Left"
                     FontSize="16"
                     FontWeight="Bold">
                     <TextBlock Text="{DynamicResource Options:ApplicationTheme}" />
                     :&#160;
                 </TextBlock>
-                <ComboBox
+                    <ComboBox
                     Name="ApplicationThemeComboBox"
                     Grid.Column="2"
                     Height="30"
                     HorizontalAlignment="Stretch"
                     VerticalContentAlignment="Center"
                     SelectionChanged="ApplicationThemeComboBox_SelectionChanged" />
-            </Grid>
-        </StackPanel>
-        <Button
+                </Grid>
+            </StackPanel>
+            <Button
             Name="ApplicationThemeExportTemplate"
             Grid.Row="13"
             Grid.Column="2"
@@ -299,7 +300,7 @@
             Padding="5"
             Click="ApplicationThemeExportTemplate_Click"
             Content="{DynamicResource Options:ExportTemplateButton}" />
-        <Button
+            <Button
             Name="ApplicationThemeOpenThemesFolder"
             Grid.Row="13"
             Grid.Column="3"
@@ -309,69 +310,70 @@
             Click="ApplicationThemeOpenThemesFolder_Click"
             Content="{DynamicResource Options:OpenFolderButton}" />
 
-        <TextBlock
+            <TextBlock
             Grid.Row="14"
             Margin="15,5,5,5"
             HorizontalAlignment="Left"
             FontSize="24"
             FontWeight="Bold"
             Text="{DynamicResource Options:Tools}" />
-        <StackPanel
+            <StackPanel
             Grid.Row="15"
             Grid.ColumnSpan="4"
             Margin="0"
             HorizontalAlignment="Left"
             Orientation="Horizontal">
-            <Button
+                <Button
                 Height="30"
                 Margin="5"
                 Padding="5"
                 Click="InstallPlaylistButton_Click"
                 Content="{DynamicResource Options:InstallPlaylist}" />
-        </StackPanel>
+            </StackPanel>
 
-        <TextBlock
+            <TextBlock
             Grid.Row="16"
             Margin="15,5,5,5"
             HorizontalAlignment="Left"
             FontSize="24"
             FontWeight="Bold"
             Text="{DynamicResource Options:Diagnostics}" />
-        <StackPanel
+            <StackPanel
             Grid.Row="17"
             Grid.ColumnSpan="4"
             Margin="0"
             HorizontalAlignment="Left"
             Orientation="Horizontal">
-            <Button
+                <Button
                 Height="30"
                 Margin="5"
                 Padding="5"
                 Click="OpenLogsDirButton_Click"
                 Content="{DynamicResource Options:OpenLogsButton}" />
-            <Button
+                <Button
                 x:Name="OpenAppData"
                 Height="30"
                 Margin="5"
                 Padding="5"
                 Click="OpenAppDataButton_Click"
                 Content="{DynamicResource Options:OpenAppDataButton}" />
-            <Button
+                <Button
                 x:Name="YeetBSIPA"
                 Height="30"
                 Margin="5"
                 Padding="5"
                 Click="YeetBSIPAButton_Click"
                 Content="{DynamicResource Options:UninstallBSIPAButton}" />
-            <Button
+                <Button
                 Height="30"
                 Margin="5"
                 Padding="5"
                 Background="{DynamicResource ButtonDangerBackground}"
                 Click="YeetModsButton_Click">
-                <TextBlock Foreground="White" Text="{DynamicResource Options:RemoveAllModsButton}" />
-            </Button>
-        </StackPanel>
+                    <TextBlock Foreground="White" Text="{DynamicResource Options:RemoveAllModsButton}" />
+                </Button>
+            </StackPanel>
 
-    </Grid>
+        </Grid>
+    </ScrollViewer>
 </Page>
