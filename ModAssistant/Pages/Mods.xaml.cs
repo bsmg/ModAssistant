@@ -542,6 +542,7 @@ namespace ModAssistant.Pages
 
                 using (Stream stream = await DownloadMod(Utils.Constants.BeatModsURL + downloadLink))
                 using (ZipArchive archive = new ZipArchive(stream))
+                try
                 {
                 	MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
                     foreach (ZipArchiveEntry file in archive.Entries)
@@ -569,7 +570,7 @@ namespace ModAssistant.Pages
                                 }
                             }
                         }
-                        
+                    }
                         if (files.Count == filesCount)
                         {
                             foreach (ZipArchiveEntry file in files)
@@ -579,7 +580,6 @@ namespace ModAssistant.Pages
 
                             break;
                         }
-                    }
                 }
                 catch (InvalidDataException e){
                     string msg = "";
