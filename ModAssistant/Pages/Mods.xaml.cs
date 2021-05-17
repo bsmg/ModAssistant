@@ -542,35 +542,37 @@ namespace ModAssistant.Pages
 
                 using (Stream stream = await DownloadMod(Utils.Constants.BeatModsURL + downloadLink))
                 using (ZipArchive archive = new ZipArchive(stream))
-                try
                 {
                 	MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
-                    foreach (ZipArchiveEntry file in archive.Entries)
-                    {
-                        string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
-                        if (!Directory.Exists(fileDirectory))
-                        {
-                            Directory.CreateDirectory(fileDirectory);
-                        }
 
-                        if (!string.IsNullOrEmpty(file.Name))
+                    try
+                    {
+                        foreach (ZipArchiveEntry file in archive.Entries)
                         {
-                            foreach (Mod.DownloadLink download in mod.downloads)
+                            string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
+                            if (!Directory.Exists(fileDirectory))
                             {
-                                foreach (Mod.FileHashes fileHash in download.hashMd5)
+                                Directory.CreateDirectory(fileDirectory);
+                            }
+
+                            if (!string.IsNullOrEmpty(file.Name))
+                            {
+                                foreach (Mod.DownloadLink download in mod.downloads)
                                 {
-                                    using (Stream fileStream = file.Open())
+                                    foreach (Mod.FileHashes fileHash in download.hashMd5)
                                     {
-                                        if (fileHash.hash == Utils.CalculateMD5FromStream(fileStream))
+                                        using (Stream fileStream = file.Open())
                                         {
-                                            files.Add(file);
-                                            break;
+                                            if (fileHash.hash == Utils.CalculateMD5FromStream(fileStream))
+                                            {
+                                                files.Add(file);
+                                                break;
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
-                    }
                         if (files.Count == filesCount)
                         {
                             foreach (ZipArchiveEntry file in files)
@@ -580,21 +582,22 @@ namespace ModAssistant.Pages
 
                             break;
                         }
-                }
-                catch (InvalidDataException e){
-                    string msg = "";
-                    string caption = "";
-                    switch (Properties.Settings.Default.LanguageCode) {
-                        case "zh":
-                            msg = "下载文件失败或zip文件可能已损坏";
-                            caption = "安装失败";
-                            break;
-                        default:
-                            msg = "File download failed or zip file may broken!";
-                            caption = "Install mod failed!";
-                            break;
+                     }
+                     catch (InvalidDataException e){
+                        string msg = "";
+                        string caption = "";
+                        switch (Properties.Settings.Default.LanguageCode) {
+                            case "zh":
+                                msg = "ZIP文件已损坏或下载失败";
+                                caption = "安装失败";
+                                break;
+                            default:
+                                msg = "ZIP file broken or file download failed!";
+                                caption = "Install mod failed!";
+                                break;
+                        }
+                        System.Windows.MessageBox.Show($"{msg}\n{e}", caption);
                     }
-                    System.Windows.MessageBox.Show($"{msg}\n{e}", caption);
                 }
             }
 
