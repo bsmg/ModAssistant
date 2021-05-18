@@ -211,7 +211,7 @@ namespace ModAssistant.Pages
             string InjectorHash = Utils.CalculateMD5(InjectorPath);
             foreach (Mod mod in AllModsList)
             {
-                if (mod.name.ToLower() == "bsipa")
+                if (mod.name.ToLowerInvariant() == "bsipa")
                 {
                     foreach (Mod.DownloadLink download in mod.downloads)
                     {
@@ -243,7 +243,7 @@ namespace ModAssistant.Pages
         {
             foreach (Mod mod in AllModsList)
             {
-                if (mod.name.ToLower() != "bsipa" && mod.status != "declined")
+                if (mod.name.ToLowerInvariant() != "bsipa" && mod.status != "declined")
                 {
                     foreach (Mod.DownloadLink download in mod.downloads)
                     {
@@ -351,7 +351,7 @@ namespace ModAssistant.Pages
                 // Ignore mods that are on current version if we aren't reinstalling mods
                 if (mod.ListItem.GetVersionComparison == 0 && !App.ReinstallInstalledMods) continue;
 
-                if (mod.name.ToLower() == "bsipa")
+                if (mod.name.ToLowerInvariant() == "bsipa")
                 {
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
                     await Task.Run(async () => await InstallMod(mod, installDirectory));
@@ -397,7 +397,7 @@ namespace ModAssistant.Pages
                     downloadLink = link.url;
                     break;
                 }
-                else if (link.type.ToLower() == App.BeatSaberInstallType.ToLower())
+                else if (link.type.ToLowerInvariant() == App.BeatSaberInstallType.ToLowerInvariant())
                 {
                     downloadLink = link.url;
                     break;
@@ -746,13 +746,13 @@ namespace ModAssistant.Pages
             Mod.DownloadLink links = null;
             foreach (Mod.DownloadLink link in mod.downloads)
             {
-                if (link.type.ToLower() == "universal" || link.type.ToLower() == App.BeatSaberInstallType.ToLower())
+                if (link.type.ToLowerInvariant() == "universal" || link.type.ToLowerInvariant() == App.BeatSaberInstallType.ToLowerInvariant())
                 {
                     links = link;
                     break;
                 }
             }
-            if (mod.name.ToLower() == "bsipa")
+            if (mod.name.ToLowerInvariant() == "bsipa")
             {
                 var hasIPAExe = File.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA.exe"));
                 var hasIPADir = Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA"));
@@ -833,10 +833,10 @@ namespace ModAssistant.Pages
         private bool SearchFilter(object mod)
         {
             ModListItem item = mod as ModListItem;
-            if (item.ModName.ToLower().Contains(SearchBar.Text.ToLower())) return true;
-            if (item.ModDescription.ToLower().Contains(SearchBar.Text.ToLower())) return true;
-            if (item.ModName.ToLower().Replace(" ", string.Empty).Contains(SearchBar.Text.ToLower().Replace(" ", string.Empty))) return true;
-            if (item.ModDescription.ToLower().Replace(" ", string.Empty).Contains(SearchBar.Text.ToLower().Replace(" ", string.Empty))) return true;
+            if (item.ModName.ToLowerInvariant().Contains(SearchBar.Text.ToLowerInvariant())) return true;
+            if (item.ModDescription.ToLowerInvariant().Contains(SearchBar.Text.ToLowerInvariant())) return true;
+            if (item.ModName.ToLowerInvariant().Replace(" ", string.Empty).Contains(SearchBar.Text.ToLowerInvariant().Replace(" ", string.Empty))) return true;
+            if (item.ModDescription.ToLowerInvariant().Replace(" ", string.Empty).Contains(SearchBar.Text.ToLowerInvariant().Replace(" ", string.Empty))) return true;
             return false;
         }
 
