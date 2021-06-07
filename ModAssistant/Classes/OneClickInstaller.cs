@@ -6,7 +6,7 @@ using Microsoft.Win32;
 
 namespace ModAssistant
 {
-    class OneClickInstaller
+    internal class OneClickInstaller
     {
         private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver", "bsplaylist" };
         public static OneClickStatus Status = new OneClickStatus();
@@ -14,7 +14,10 @@ namespace ModAssistant
         public static async Task InstallAsset(string link)
         {
             Uri uri = new Uri(link);
-            if (!Protocols.Contains(uri.Scheme)) return;
+            if (!Protocols.Contains(uri.Scheme))
+            {
+                return;
+            }
 
             switch (uri.Scheme)
             {
@@ -47,31 +50,47 @@ namespace ModAssistant
 
         private static async Task ModelSaber(Uri uri)
         {
-            if (App.OCIWindow != "No") Status.Show();
+            if (App.OCIWindow != "No")
+            {
+                Status.Show();
+            }
+
             API.Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Installing"), System.Web.HttpUtility.UrlDecode(uri.Segments.Last()))}");
             await API.ModelSaber.GetModel(uri);
         }
 
         private static async Task Playlist(Uri uri)
         {
-            if (App.OCIWindow != "No") Status.Show();
+            if (App.OCIWindow != "No")
+            {
+                Status.Show();
+            }
+
             await API.Playlists.DownloadAll(uri);
         }
 
         public static void Register(string Protocol, bool Background = false, string Description = null)
         {
             if (IsRegistered(Protocol) == true)
+            {
                 return;
+            }
+
             try
             {
                 if (Utils.IsAdmin)
                 {
                     RegistryKey ProtocolKey = Registry.ClassesRoot.OpenSubKey(Protocol, true);
                     if (ProtocolKey == null)
+                    {
                         ProtocolKey = Registry.ClassesRoot.CreateSubKey(Protocol, true);
+                    }
+
                     RegistryKey CommandKey = ProtocolKey.CreateSubKey(@"shell\open\command", true);
                     if (CommandKey == null)
+                    {
                         CommandKey = Registry.ClassesRoot.CreateSubKey(@"shell\open\command", true);
+                    }
 
                     if (ProtocolKey.GetValue("OneClick-Provider", "").ToString() != "ModAssistant")
                     {
@@ -97,15 +116,22 @@ namespace ModAssistant
             }
 
             if (Background)
+            {
                 Application.Current.Shutdown();
+            }
             else
+            {
                 Pages.Options.Instance.UpdateHandlerStatus();
+            }
         }
 
         public static void Unregister(string Protocol, bool Background = false)
         {
             if (IsRegistered(Protocol) == false)
+            {
                 return;
+            }
+
             try
             {
                 if (Utils.IsAdmin)
@@ -133,9 +159,13 @@ namespace ModAssistant
             }
 
             if (Background)
+            {
                 Application.Current.Shutdown();
+            }
             else
+            {
                 Pages.Options.Instance.UpdateHandlerStatus();
+            }
         }
 
         public static bool IsRegistered(string Protocol)
@@ -143,9 +173,13 @@ namespace ModAssistant
             RegistryKey ProtocolKey = Registry.ClassesRoot.OpenSubKey(Protocol);
             if (ProtocolKey != null
                 && ProtocolKey.GetValue("OneClick-Provider", "").ToString() == "ModAssistant")
+            {
                 return true;
+            }
             else
+            {
                 return false;
+            }
         }
     }
 }

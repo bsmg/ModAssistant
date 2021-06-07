@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using ModAssistant.Pages;
+using Newtonsoft.Json;
 using static ModAssistant.Http;
 
 namespace ModAssistant
@@ -24,14 +25,8 @@ namespace ModAssistant
 
         public string MainText
         {
-            get
-            {
-                return MainTextBlock.Text;
-            }
-            set
-            {
-                Dispatcher.Invoke(new Action(() => { Instance.MainTextBlock.Text = value; }));
-            }
+            get => MainTextBlock.Text;
+            set => Dispatcher.Invoke(new Action(() => { Instance.MainTextBlock.Text = value; }));
         }
 
         public MainWindow()
@@ -114,13 +109,13 @@ namespace ModAssistant
         {
             try
             {
-                var resp = await HttpClient.GetAsync(Utils.Constants.BeatModsVersions);
-                var body = await resp.Content.ReadAsStringAsync();
-                List<string> versions = JsonSerializer.Deserialize<string[]>(body).ToList();
+                System.Net.Http.HttpResponseMessage? resp = await HttpClient.GetAsync(Utils.Constants.BeatModsVersions);
+                string? body = await resp.Content.ReadAsStringAsync();
+                List<string> versions = JsonConvert.DeserializeObject<string[]>(body).ToList();
 
                 resp = await HttpClient.GetAsync(Utils.Constants.BeatModsAlias);
                 body = await resp.Content.ReadAsStringAsync();
-                Dictionary<string, string[]> aliases = JsonSerializer.Deserialize<Dictionary<string, string[]>>(body);
+                Dictionary<string, string[]> aliases = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(body);
 
                 Dispatcher.Invoke(() =>
                 {
@@ -186,7 +181,10 @@ namespace ModAssistant
             }
 
             if (!string.IsNullOrEmpty(Properties.Settings.Default.GameVersion) && versions.Contains(Properties.Settings.Default.GameVersion))
+            {
                 return Properties.Settings.Default.GameVersion;
+            }
+
             return versions[0];
         }
 
@@ -195,7 +193,7 @@ namespace ModAssistant
             Dictionary<string, List<string>> aliases = aliasesDict.ToDictionary(x => x.Key, x => x.Value.ToList());
             foreach (string version in versions)
             {
-                if (aliases.TryGetValue(version, out var x))
+                if (aliases.TryGetValue(version, out List<string>? x))
                 {
                     if (x.Contains(detectedVersion))
                     {
@@ -226,13 +224,24 @@ namespace ModAssistant
 
             Main.Content = Loading.Instance;
 
-            if (ModsLoading) return;
+            if (ModsLoading)
+            {
+                return;
+            }
+
             ModsLoading = true;
             await Mods.Instance.LoadMods();
             ModsLoading = false;
 
-            if (ModsOpened == false) ModsOpened = true;
-            if (Mods.Instance.PendingChanges == true) Mods.Instance.PendingChanges = false;
+            if (ModsOpened == false)
+            {
+                ModsOpened = true;
+            }
+
+            if (Mods.Instance.PendingChanges == true)
+            {
+                Mods.Instance.PendingChanges = false;
+            }
 
             if (Main.Content == Loading.Instance)
             {
@@ -297,14 +306,17 @@ namespace ModAssistant
 
             GameVersion = (sender as ComboBox).SelectedItem.ToString();
 
-            if (string.IsNullOrEmpty(oldGameVersion)) return;
+            if (string.IsNullOrEmpty(oldGameVersion))
+            {
+                return;
+            }
 
             Properties.Settings.Default.GameVersion = GameVersion;
             Properties.Settings.Default.Save();
 
             if (ModsOpened)
             {
-                var prevPage = Main.Content;
+                object? prevPage = Main.Content;
 
                 Mods.Instance.PendingChanges = true;
                 await ShowModsPage();

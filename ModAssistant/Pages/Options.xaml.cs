@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Newtonsoft.Json;
 using Path = System.IO.Path;
 
 namespace ModAssistant.Pages
@@ -48,7 +49,7 @@ namespace ModAssistant.Pages
             }
 
             UpdateHandlerStatus();
-            this.DataContext = this;
+            DataContext = this;
         }
 
         public void UpdateHandlerStatus()
@@ -228,7 +229,7 @@ namespace ModAssistant.Pages
             string Separator = File.Exists(Log) ? $"\n\n=============================================\n============= Mod Assistant Log =============\n=============================================\n\n" : string.Empty;
             string ModAssistantLog = File.Exists(Log) ? File.ReadAllText(Log) : string.Empty;
 
-            var nvc = new List<KeyValuePair<string, string>>()
+            List<KeyValuePair<string, string>>? nvc = new List<KeyValuePair<string, string>>()
             {
                 new KeyValuePair<string, string>("title", $"_latest.log ({now.ToString(DateFormat)})"),
                 new KeyValuePair<string, string>("expireUnit", "hour"),
@@ -248,7 +249,7 @@ namespace ModAssistant.Pages
             HttpResponseMessage resp = await Http.HttpClient.PostAsync(Utils.Constants.TeknikAPIUrl + "Paste", content);
             string body = await resp.Content.ReadAsStringAsync();
 
-            Utils.TeknikPasteResponse TeknikResponse = Http.JsonSerializer.Deserialize<Utils.TeknikPasteResponse>(body);
+            Utils.TeknikPasteResponse TeknikResponse = JsonConvert.DeserializeObject<Utils.TeknikPasteResponse>(body);
             LogURL = TeknikResponse.result.url;
         }
 
@@ -293,7 +294,7 @@ namespace ModAssistant.Pages
             string line1 = (string)Application.Current.FindResource("Options:YeetModsBox:RemoveAllMods");
             string line2 = (string)Application.Current.FindResource("Options:YeetModsBox:CannotBeUndone");
 
-            var resp = System.Windows.Forms.MessageBox.Show($"{line1}\n{line2}", title, System.Windows.Forms.MessageBoxButtons.YesNo);
+            System.Windows.Forms.DialogResult resp = System.Windows.Forms.MessageBox.Show($"{line1}\n{line2}", title, System.Windows.Forms.MessageBoxButtons.YesNo);
             if (resp == System.Windows.Forms.DialogResult.Yes)
             {
 
@@ -307,11 +308,19 @@ namespace ModAssistant.Pages
                     Mods.Instance.UninstallMod(mod);
                 }
                 if (Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, "Plugins")))
+                {
                     Directory.Delete(Path.Combine(App.BeatSaberInstallDirectory, "Plugins"), true);
+                }
+
                 if (Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, "Libs")))
+                {
                     Directory.Delete(Path.Combine(App.BeatSaberInstallDirectory, "Libs"), true);
+                }
+
                 if (Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA")))
+                {
                     Directory.Delete(Path.Combine(App.BeatSaberInstallDirectory, "IPA"), true);
+                }
 
                 MainWindow.Instance.MainText = $"{Application.Current.FindResource("Options:AllModsUninstalled")}...";
             }
@@ -341,8 +350,8 @@ namespace ModAssistant.Pages
             else
             {
                 // Get the matching language from the LoadedLanguages array, then try and use it
-                var languageName = (sender as ComboBox).SelectedItem.ToString();
-                var selectedLanguage = Languages.LoadedLanguages.Find(language => language.NativeName.CompareTo(languageName) == 0);
+                string? languageName = (sender as ComboBox).SelectedItem.ToString();
+                System.Globalization.CultureInfo? selectedLanguage = Languages.LoadedLanguages.Find(language => language.NativeName.CompareTo(languageName) == 0);
                 if (Languages.LoadLanguage(selectedLanguage.Name))
                 {
                     Properties.Settings.Default.LanguageCode = selectedLanguage.Name;
@@ -402,10 +411,22 @@ namespace ModAssistant.Pages
             ComboBox comboBox = ShowOCIWindowComboBox;
             if (comboBox != null)
             {
-                if (state == "Yes") comboBox.SelectedIndex = 0;
-                else if (state == "Close") comboBox.SelectedIndex = 1;
-                else if (state == "No") comboBox.SelectedIndex = 2;
-                else return;
+                if (state == "Yes")
+                {
+                    comboBox.SelectedIndex = 0;
+                }
+                else if (state == "Close")
+                {
+                    comboBox.SelectedIndex = 1;
+                }
+                else if (state == "No")
+                {
+                    comboBox.SelectedIndex = 2;
+                }
+                else
+                {
+                    return;
+                }
             }
             if (!string.IsNullOrEmpty(state))
             {

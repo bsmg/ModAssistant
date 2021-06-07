@@ -3,11 +3,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
+using Newtonsoft.Json;
 using static ModAssistant.Http;
 
 namespace ModAssistant
 {
-    class Updater
+    internal class Updater
     {
         private static readonly string APILatestURL = "https://api.github.com/repos/Assistant/ModAssistant/releases/latest";
 
@@ -25,9 +26,9 @@ namespace ModAssistant
             return false;
 #endif
 
-            var resp = await HttpClient.GetAsync(APILatestURL);
-            var body = await resp.Content.ReadAsStringAsync();
-            LatestUpdate = JsonSerializer.Deserialize<Update>(body);
+            System.Net.Http.HttpResponseMessage? resp = await HttpClient.GetAsync(APILatestURL);
+            string? body = await resp.Content.ReadAsStringAsync();
+            LatestUpdate = JsonConvert.DeserializeObject<Update>(body);
 
             LatestVersion = new Version(LatestUpdate.tag_name.Substring(1));
             CurrentVersion = new Version(App.Version);
@@ -38,7 +39,11 @@ namespace ModAssistant
 
         public static async Task Run()
         {
-            if (Path.GetFileName(Utils.ExePath).Equals("ModAssistant.old.exe")) RunNew();
+            if (Path.GetFileName(Utils.ExePath).Equals("ModAssistant.old.exe"))
+            {
+                RunNew();
+            }
+
             try
             {
                 NeedsUpdate = await CheckForUpdate();
@@ -48,7 +53,10 @@ namespace ModAssistant
                 Utils.SendNotify((string)Application.Current.FindResource("Updater:CheckFailed"));
             }
 
-            if (NeedsUpdate) await StartUpdate();
+            if (NeedsUpdate)
+            {
+                await StartUpdate();
+            }
         }
 
         public static async Task StartUpdate()

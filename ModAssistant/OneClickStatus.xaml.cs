@@ -13,29 +13,17 @@ namespace ModAssistant
 
         public string HistoryText
         {
-            get
-            {
-                return HistoryTextBlock.Text;
-            }
-            set
-            {
-                Dispatcher.Invoke(new Action(() => { Instance.HistoryTextBlock.Text = value; }));
-            }
+            get => HistoryTextBlock.Text;
+            set => Dispatcher.Invoke(new Action(() => { Instance.HistoryTextBlock.Text = value; }));
         }
         public string MainText
         {
-            get
-            {
-                return MainTextBlock.Text;
-            }
-            set
-            {
-                Dispatcher.Invoke(new Action(() =>
-                {
-                    Instance.MainTextBlock.Text = value;
-                    Instance.HistoryTextBlock.Text = string.IsNullOrEmpty(MainText) ? $"{value}" : $"{value}\n{HistoryText}";
-                }));
-            }
+            get => MainTextBlock.Text;
+            set => Dispatcher.Invoke(new Action(() =>
+                 {
+                     Instance.MainTextBlock.Text = value;
+                     Instance.HistoryTextBlock.Text = string.IsNullOrEmpty(MainText) ? $"{value}" : $"{value}\n{HistoryText}";
+                 }));
         }
 
         public OneClickStatus()

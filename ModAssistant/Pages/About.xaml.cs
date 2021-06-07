@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using Newtonsoft.Json;
 using static ModAssistant.Http;
 
 namespace ModAssistant.Pages
@@ -41,10 +42,10 @@ namespace ModAssistant.Pages
 
         private async Task<string> WeebCDN(string type)
         {
-            var resp = await HttpClient.GetAsync(Utils.Constants.WeebCDNAPIURL + type + "/random");
-            var body = await resp.Content.ReadAsStringAsync();
+            System.Net.Http.HttpResponseMessage? resp = await HttpClient.GetAsync(Utils.Constants.WeebCDNAPIURL + type + "/random");
+            string? body = await resp.Content.ReadAsStringAsync();
 
-            var response = JsonSerializer.Deserialize<Utils.WeebCDNRandomResponse>(body);
+            Utils.WeebCDNRandomResponse? response = JsonConvert.DeserializeObject<Utils.WeebCDNRandomResponse>(body);
             return response.url;
         }
 

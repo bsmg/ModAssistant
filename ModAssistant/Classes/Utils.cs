@@ -67,7 +67,7 @@ namespace ModAssistant
         {
             string defaultTitle = (string)Application.Current.FindResource("Utils:NotificationTitle");
 
-            var notification = new System.Windows.Forms.NotifyIcon()
+            System.Windows.Forms.NotifyIcon? notification = new System.Windows.Forms.NotifyIcon()
             {
                 Visible = true,
                 Icon = System.Drawing.SystemIcons.Information,
@@ -103,17 +103,20 @@ namespace ModAssistant
                     MessageBox.Show((string)Application.Current.FindResource("Utils:RunAsAdmin"));
                 }
 
-                if (Close) Application.Current.Shutdown();
+                if (Close)
+                {
+                    Application.Current.Shutdown();
+                }
             }
         }
 
         public static string CalculateMD5(string filename)
         {
-            using (var md5 = MD5.Create())
+            using (MD5? md5 = MD5.Create())
             {
-                using (var stream = File.OpenRead(filename))
+                using (FileStream? stream = File.OpenRead(filename))
                 {
-                    var hash = md5.ComputeHash(stream);
+                    byte[]? hash = md5.ComputeHash(stream);
                     return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
                 }
             }
@@ -121,9 +124,9 @@ namespace ModAssistant
 
         public static string CalculateMD5FromStream(Stream stream)
         {
-            using (var md5 = MD5.Create())
+            using (MD5? md5 = MD5.Create())
             {
-                var hash = md5.ComputeHash(stream);
+                byte[]? hash = md5.ComputeHash(stream);
                 return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
             }
         }
@@ -192,10 +195,16 @@ namespace ModAssistant
                 SteamInstall = Registry.LocalMachine.OpenSubKey("SOFTWARE")?.OpenSubKey("WOW6432Node")?.OpenSubKey("Valve")?.OpenSubKey("Steam")?.GetValue("InstallPath").ToString();
             }
 
-            if (string.IsNullOrEmpty(SteamInstall)) return null;
+            if (string.IsNullOrEmpty(SteamInstall))
+            {
+                return null;
+            }
 
             string vdf = Path.Combine(SteamInstall, @"steamapps\libraryfolders.vdf");
-            if (!File.Exists(@vdf)) return null;
+            if (!File.Exists(@vdf))
+            {
+                return null;
+            }
 
             Regex regex = new Regex("\\s\"\\d\"\\s+\"(.+)\"");
             List<string> SteamPaths = new List<string>
@@ -244,33 +253,43 @@ namespace ModAssistant
         public static string GetVersion()
         {
             string filename = Path.Combine(App.BeatSaberInstallDirectory, "Beat Saber_Data", "globalgamemanagers");
-            using (var stream = File.OpenRead(filename))
-            using (var reader = new BinaryReader(stream, Encoding.UTF8))
+            using (FileStream? stream = File.OpenRead(filename))
+            using (BinaryReader? reader = new BinaryReader(stream, Encoding.UTF8))
             {
                 const string key = "public.app-category.games";
                 int pos = 0;
 
                 while (stream.Position < stream.Length && pos < key.Length)
                 {
-                    if (reader.ReadByte() == key[pos]) pos++;
-                    else pos = 0;
+                    if (reader.ReadByte() == key[pos])
+                    {
+                        pos++;
+                    }
+                    else
+                    {
+                        pos = 0;
+                    }
                 }
 
                 if (stream.Position == stream.Length) // we went through the entire stream without finding the key
+                {
                     return null;
+                }
 
                 while (stream.Position < stream.Length)
                 {
-                    var current = (char)reader.ReadByte();
+                    char current = (char)reader.ReadByte();
                     if (char.IsDigit(current))
+                    {
                         break;
+                    }
                 }
 
-                var rewind = -sizeof(int) - sizeof(byte);
+                int rewind = -sizeof(int) - sizeof(byte);
                 stream.Seek(rewind, SeekOrigin.Current); // rewind to the string length
 
-                var strlen = reader.ReadInt32();
-                var strbytes = reader.ReadBytes(strlen);
+                int strlen = reader.ReadInt32();
+                byte[]? strbytes = reader.ReadBytes(strlen);
 
                 return Encoding.UTF8.GetString(strbytes);
             }
@@ -279,7 +298,10 @@ namespace ModAssistant
         public static string GetOculusDir()
         {
             string OculusInstall = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)?.OpenSubKey("SOFTWARE")?.OpenSubKey("Wow6432Node")?.OpenSubKey("Oculus VR, LLC")?.OpenSubKey("Oculus")?.OpenSubKey("Config")?.GetValue("InitialAppLibrary").ToString();
-            if (string.IsNullOrEmpty(OculusInstall)) return null;
+            if (string.IsNullOrEmpty(OculusInstall))
+            {
+                return null;
+            }
 
             if (!string.IsNullOrEmpty(OculusInstall))
             {
@@ -300,8 +322,8 @@ namespace ModAssistant
 
                     foreach (ManagementBaseObject disk in searcher.Get())
                     {
-                        var diskId = ((string)disk.GetPropertyValue("DeviceID")).Substring(11, 36);
-                        var diskLetter = ((string)disk.GetPropertyValue("DriveLetter")) + @"\";
+                        string? diskId = ((string)disk.GetPropertyValue("DeviceID")).Substring(11, 36);
+                        string? diskLetter = ((string)disk.GetPropertyValue("DriveLetter")) + @"\";
 
                         if (!string.IsNullOrWhiteSpace(diskLetter))
                         {
@@ -335,7 +357,7 @@ namespace ModAssistant
 
         public static string GetManualDir()
         {
-            var dialog = new SaveFileDialog()
+            SaveFileDialog? dialog = new SaveFileDialog()
             {
                 Title = (string)Application.Current.FindResource("Utils:InstallDir:DialogTitle"),
                 Filter = "Directory|*.this.directory",
@@ -368,7 +390,7 @@ namespace ModAssistant
 
         public static string GetManualFile(string filter = "", string title = "Open File")
         {
-            var dialog = new OpenFileDialog()
+            OpenFileDialog? dialog = new OpenFileDialog()
             {
                 Title = title,
                 Filter = filter,
@@ -393,7 +415,10 @@ namespace ModAssistant
                 File.Exists(Path.Combine(pluginsDirectory, "BSteam crack.dll")) ||
                 File.Exists(Path.Combine(pluginsDirectory, "HUHUVR_steam_api64.dll")) ||
                 Directory.GetFiles(pluginsDirectory, "*.ini", SearchOption.TopDirectoryOnly).Where(x => Path.GetFileName(x) != "desktop.ini").Any())
+            {
                 return true;
+            }
+
             return false;
         }
 
@@ -413,7 +438,11 @@ namespace ModAssistant
 
         public static void OpenFolder(string location)
         {
-            if (!location.EndsWith(Path.DirectorySeparatorChar.ToString())) location += Path.DirectorySeparatorChar;
+            if (!location.EndsWith(Path.DirectorySeparatorChar.ToString()))
+            {
+                location += Path.DirectorySeparatorChar;
+            }
+
             if (Directory.Exists(location))
             {
                 try
@@ -440,9 +469,9 @@ namespace ModAssistant
 
         public static async Task Download(string link, string output)
         {
-            var resp = await HttpClient.GetAsync(link);
-            using (var stream = await resp.Content.ReadAsStreamAsync())
-            using (var fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write))
+            System.Net.Http.HttpResponseMessage? resp = await HttpClient.GetAsync(link);
+            using (Stream? stream = await resp.Content.ReadAsStreamAsync())
+            using (FileStream? fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write))
             {
                 await stream.CopyToAsync(fs);
             }

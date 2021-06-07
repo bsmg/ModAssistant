@@ -207,7 +207,11 @@ namespace ModAssistant
 
         private static string[] Shift(string[] array, int places = 1)
         {
-            if (places >= array.Length) return Array.Empty<string>();
+            if (places >= array.Length)
+            {
+                return Array.Empty<string>();
+            }
+
             string[] newArray = new string[array.Length - places];
             for (int i = places; i < array.Length; i++)
             {

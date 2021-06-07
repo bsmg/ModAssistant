@@ -1,21 +1,23 @@
 using System;
 using System.Net;
 using System.Net.Http;
-using System.Web.Script.Serialization;
 
 namespace ModAssistant
 {
-    static class Http
+    internal static class Http
     {
-        private static HttpClient _client = null;
+        private static HttpClient? _client;
 
         public static HttpClient HttpClient
         {
             get
             {
-                if (_client != null) return _client;
+                if (_client != null)
+                {
+                    return _client;
+                }
 
-                var handler = new HttpClientHandler()
+                HttpClientHandler? handler = new()
                 {
                     AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
                 };
@@ -31,10 +33,5 @@ namespace ModAssistant
                 return _client;
             }
         }
-
-        public static JavaScriptSerializer JsonSerializer = new JavaScriptSerializer()
-        {
-            MaxJsonLength = int.MaxValue,
-        };
     }
 }

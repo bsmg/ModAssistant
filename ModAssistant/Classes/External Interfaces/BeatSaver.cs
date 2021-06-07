@@ -5,8 +5,8 @@ using System.IO.Compression;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using System.Web;
 using System.Windows;
+using Newtonsoft.Json;
 using static ModAssistant.Http;
 
 namespace ModAssistant.API
@@ -19,13 +19,21 @@ namespace ModAssistant.API
 
         public static async Task<BeatSaverMap> GetFromKey(string Key, bool showNotification = true)
         {
-            if (showNotification && App.OCIWindow != "No") OneClickInstaller.Status.Show();
+            if (showNotification && App.OCIWindow != "No")
+            {
+                OneClickInstaller.Status.Show();
+            }
+
             return await GetMap(Key, "key", showNotification);
         }
 
         public static async Task<BeatSaverMap> GetFromHash(string Hash, bool showNotification = true)
         {
-            if (showNotification && App.OCIWindow != "No") OneClickInstaller.Status.Show();
+            if (showNotification && App.OCIWindow != "No")
+            {
+                OneClickInstaller.Status.Show();
+            }
+
             return await GetMap(Hash, "hash", showNotification);
         }
 
@@ -49,7 +57,11 @@ namespace ModAssistant.API
                 Success = false
             };
 
-            if (showNotification) Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Installing"), id)}");
+            if (showNotification)
+            {
+                Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Installing"), id)}");
+            }
+
             try
             {
                 BeatSaverApiResponse beatsaver = await GetResponse(BeatSaverURLPrefix + urlSegment + id);
@@ -82,7 +94,7 @@ namespace ModAssistant.API
             BeatSaverApiResponse response = new BeatSaverApiResponse();
             try
             {
-                var resp = await HttpClient.GetAsync(url);
+                System.Net.Http.HttpResponseMessage? resp = await HttpClient.GetAsync(url);
                 response.statusCode = resp.StatusCode;
                 response.ratelimit = GetRatelimit(resp.Headers);
                 string body = await resp.Content.ReadAsStringAsync();
@@ -96,7 +108,7 @@ namespace ModAssistant.API
 
                 if (response.statusCode == HttpStatusCode.OK)
                 {
-                    response.map = JsonSerializer.Deserialize<BeatSaverApiResponseMap>(body);
+                    response.map = JsonConvert.DeserializeObject<BeatSaverApiResponseMap>(body);
                     return response;
                 }
                 else
@@ -123,20 +135,18 @@ namespace ModAssistant.API
                              .Split(ModAssistant.Utils.Constants.IllegalCharacters));
             string directory = Path.Combine(Utils.BeatSaberPath, CustomSongsFolder, mapName);
 
-#pragma warning disable CS0162 // Unreachable code detected
-            if (BypassDownloadCounter)
-            {
-                await Utils.DownloadAsset(BeatSaverURLPrefix + Map.directDownload, CustomSongsFolder, Map.hash + ".zip", mapName, showNotification, true);
-            }
-            else
-            {
-                await Utils.DownloadAsset(BeatSaverURLPrefix + Map.downloadURL, CustomSongsFolder, Map.hash + ".zip", mapName, showNotification, true);
-            }
-#pragma warning restore CS0162 // Unreachable code detected
+            //if (BypassDownloadCounter)
+            //{
+            //    await Utils.DownloadAsset(BeatSaverURLPrefix + Map.directDownload, CustomSongsFolder, Map.hash + ".zip", mapName, showNotification, true);
+            //}
+            //else
+            //{
+            //    await Utils.DownloadAsset(BeatSaverURLPrefix + Map.downloadURL, CustomSongsFolder, Map.hash + ".zip", mapName, showNotification, true);
+            //}
 
             if (File.Exists(zip))
             {
-                string mimeType = MimeMapping.GetMimeMapping(zip);
+                string mimeType = MimeMapping.MimeUtility.GetMimeMapping(zip);
 
                 if (!mimeType.StartsWith("application/x-zip"))
                 {
@@ -192,7 +202,7 @@ namespace ModAssistant.API
 
             if (headers.TryGetValues("Rate-Limit-Remaining", out IEnumerable<string> _remaining))
             {
-                var Remaining = _remaining.GetEnumerator();
+                IEnumerator<string>? Remaining = _remaining.GetEnumerator();
                 Remaining.MoveNext();
                 ratelimit.Remaining = int.Parse(Remaining.Current);
                 Remaining.Dispose();
@@ -200,7 +210,7 @@ namespace ModAssistant.API
 
             if (headers.TryGetValues("Rate-Limit-Reset", out IEnumerable<string> _reset))
             {
-                var Reset = _reset.GetEnumerator();
+                IEnumerator<string>? Reset = _reset.GetEnumerator();
                 Reset.MoveNext();
                 ratelimit.Reset = int.Parse(Reset.Current);
                 ratelimit.ResetTime = UnixTimestampToDateTime((long)ratelimit.Reset);
@@ -209,7 +219,7 @@ namespace ModAssistant.API
 
             if (headers.TryGetValues("Rate-Limit-Total", out IEnumerable<string> _total))
             {
-                var Total = _total.GetEnumerator();
+                IEnumerator<string>? Total = _total.GetEnumerator();
                 Total.MoveNext();
                 ratelimit.Total = int.Parse(Total.Current);
                 Total.Dispose();
@@ -235,19 +245,19 @@ namespace ModAssistant.API
                 throw new Exception("Max retries allowed");
             }
 
-            var resp = await HttpClient.GetAsync(url);
+            System.Net.Http.HttpResponseMessage? resp = await HttpClient.GetAsync(url);
 
             if ((int)resp.StatusCode == 429)
             {
-                var ratelimit = GetRatelimit(resp.Headers);
+                BeatSaverRatelimit? ratelimit = GetRatelimit(resp.Headers);
                 Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), ratelimit.ResetTime.ToLocalTime())}");
 
                 await ratelimit.Wait();
                 await Download(url, output, retries - 1);
             }
 
-            using (var stream = await resp.Content.ReadAsStreamAsync())
-            using (var fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write))
+            using (Stream? stream = await resp.Content.ReadAsStreamAsync())
+            using (FileStream? fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write))
             {
                 await stream.CopyToAsync(fs);
             }

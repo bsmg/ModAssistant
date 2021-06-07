@@ -64,8 +64,12 @@ namespace ModAssistant.Libs
         private SemVersion(SerializationInfo info, StreamingContext context)
 #pragma warning restore CA1801 // Parameter unused
         {
-            if (info == null) throw new ArgumentNullException(nameof(info));
-            var semVersion = Parse(info.GetString("SemVersion"));
+            if (info == null)
+            {
+                throw new ArgumentNullException(nameof(info));
+            }
+
+            SemVersion? semVersion = Parse(info.GetString("SemVersion"));
             Major = semVersion.Major;
             Minor = semVersion.Minor;
             Patch = semVersion.Patch;
@@ -105,13 +109,17 @@ namespace ModAssistant.Libs
         public SemVersion(Version version)
         {
             if (version == null)
+            {
                 throw new ArgumentNullException(nameof(version));
+            }
 
             Major = version.Major;
             Minor = version.Minor;
 
             if (version.Revision >= 0)
+            {
                 Patch = version.Revision;
+            }
 
             Prerelease = "";
 
@@ -131,28 +139,38 @@ namespace ModAssistant.Libs
         /// <exception cref="OverflowException">The Major, Minor, or Patch versions are larger than <code>int.MaxValue</code>.</exception>
         public static SemVersion Parse(string version, bool strict = false)
         {
-            var match = ParseEx.Match(version);
+            Match? match = ParseEx.Match(version);
             if (!match.Success)
+            {
                 throw new ArgumentException($"Invalid version '{version}'.", nameof(version));
+            }
 
-            var major = int.Parse(match.Groups["major"].Value, CultureInfo.InvariantCulture);
+            int major = int.Parse(match.Groups["major"].Value, CultureInfo.InvariantCulture);
 
-            var minorMatch = match.Groups["minor"];
+            Group? minorMatch = match.Groups["minor"];
             int minor = 0;
             if (minorMatch.Success)
+            {
                 minor = int.Parse(minorMatch.Value, CultureInfo.InvariantCulture);
+            }
             else if (strict)
+            {
                 throw new InvalidOperationException("Invalid version (no minor version given in strict mode)");
+            }
 
-            var patchMatch = match.Groups["patch"];
+            Group? patchMatch = match.Groups["patch"];
             int patch = 0;
             if (patchMatch.Success)
+            {
                 patch = int.Parse(patchMatch.Value, CultureInfo.InvariantCulture);
+            }
             else if (strict)
+            {
                 throw new InvalidOperationException("Invalid version (no patch version given in strict mode)");
+            }
 
-            var prerelease = match.Groups["pre"].Value;
-            var build = match.Groups["build"].Value;
+            string? prerelease = match.Groups["pre"].Value;
+            string? build = match.Groups["build"].Value;
 
             return new SemVersion(major, minor, patch, prerelease, build);
         }
@@ -171,34 +189,52 @@ namespace ModAssistant.Libs
         public static bool TryParse(string version, out SemVersion semver, bool strict = false)
         {
             semver = null;
-            if (version is null) return false;
-
-            var match = ParseEx.Match(version);
-            if (!match.Success) return false;
-
-            if (!int.TryParse(match.Groups["major"].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out var major))
+            if (version is null)
+            {
                 return false;
+            }
 
-            var minorMatch = match.Groups["minor"];
+            Match? match = ParseEx.Match(version);
+            if (!match.Success)
+            {
+                return false;
+            }
+
+            if (!int.TryParse(match.Groups["major"].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out int major))
+            {
+                return false;
+            }
+
+            Group? minorMatch = match.Groups["minor"];
             int minor = 0;
             if (minorMatch.Success)
             {
                 if (!int.TryParse(minorMatch.Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out minor))
+                {
                     return false;
+                }
             }
-            else if (strict) return false;
+            else if (strict)
+            {
+                return false;
+            }
 
-            var patchMatch = match.Groups["patch"];
+            Group? patchMatch = match.Groups["patch"];
             int patch = 0;
             if (patchMatch.Success)
             {
                 if (!int.TryParse(patchMatch.Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out patch))
+                {
                     return false;
+                }
             }
-            else if (strict) return false;
+            else if (strict)
+            {
+                return false;
+            }
 
-            var prerelease = match.Groups["pre"].Value;
-            var build = match.Groups["build"].Value;
+            string? prerelease = match.Groups["pre"].Value;
+            string? build = match.Groups["build"].Value;
 
             semver = new SemVersion(major, minor, patch, prerelease, build);
             return true;
@@ -212,8 +248,16 @@ namespace ModAssistant.Libs
         /// <returns><see langword="true"/> if the two values are equal, otherwise <see langword="false"/>.</returns>
         public static bool Equals(SemVersion versionA, SemVersion versionB)
         {
-            if (ReferenceEquals(versionA, versionB)) return true;
-            if (versionA is null || versionB is null) return false;
+            if (ReferenceEquals(versionA, versionB))
+            {
+                return true;
+            }
+
+            if (versionA is null || versionB is null)
+            {
+                return false;
+            }
+
             return versionA.Equals(versionB);
         }
 
@@ -225,9 +269,21 @@ namespace ModAssistant.Libs
         /// <returns>A signed number indicating the relative values of <paramref name="versionA"/> and <paramref name="versionB"/>.</returns>
         public static int Compare(SemVersion versionA, SemVersion versionB)
         {
-            if (ReferenceEquals(versionA, versionB)) return 0;
-            if (versionA is null) return -1;
-            if (versionB is null) return 1;
+            if (ReferenceEquals(versionA, versionB))
+            {
+                return 0;
+            }
+
+            if (versionA is null)
+            {
+                return -1;
+            }
+
+            if (versionB is null)
+            {
+                return 1;
+            }
+
             return versionA.CompareTo(versionB);
         }
 
@@ -308,9 +364,9 @@ namespace ModAssistant.Libs
         public override string ToString()
         {
             // Assume all separators ("..-+"), at most 2 extra chars
-            var estimatedLength = 4 + Major.Digits() + Minor.Digits() + Patch.Digits()
+            int estimatedLength = 4 + Major.Digits() + Minor.Digits() + Patch.Digits()
                                   + Prerelease.Length + Build.Length;
-            var version = new StringBuilder(estimatedLength);
+            StringBuilder? version = new StringBuilder(estimatedLength);
             version.Append(Major);
             version.Append('.');
             version.Append(Minor);
@@ -363,8 +419,11 @@ namespace ModAssistant.Libs
         /// </returns>
         public int CompareTo(SemVersion other)
         {
-            var r = CompareByPrecedence(other);
-            if (r != 0) return r;
+            int r = CompareByPrecedence(other);
+            if (r != 0)
+            {
+                return r;
+            }
 
 #pragma warning disable CA1062 // Validate arguments of public methods
             // If other is null, CompareByPrecedence() returns 1
@@ -398,57 +457,86 @@ namespace ModAssistant.Libs
         public int CompareByPrecedence(SemVersion other)
         {
             if (other is null)
+            {
                 return 1;
+            }
 
-            var r = Major.CompareTo(other.Major);
-            if (r != 0) return r;
+            int r = Major.CompareTo(other.Major);
+            if (r != 0)
+            {
+                return r;
+            }
 
             r = Minor.CompareTo(other.Minor);
-            if (r != 0) return r;
+            if (r != 0)
+            {
+                return r;
+            }
 
             r = Patch.CompareTo(other.Patch);
-            if (r != 0) return r;
+            if (r != 0)
+            {
+                return r;
+            }
 
             return CompareComponent(Prerelease, other.Prerelease, true);
         }
 
         private static int CompareComponent(string a, string b, bool nonemptyIsLower = false)
         {
-            var aEmpty = string.IsNullOrEmpty(a);
-            var bEmpty = string.IsNullOrEmpty(b);
+            bool aEmpty = string.IsNullOrEmpty(a);
+            bool bEmpty = string.IsNullOrEmpty(b);
             if (aEmpty && bEmpty)
+            {
                 return 0;
+            }
 
             if (aEmpty)
+            {
                 return nonemptyIsLower ? 1 : -1;
+            }
+
             if (bEmpty)
+            {
                 return nonemptyIsLower ? -1 : 1;
+            }
 
-            var aComps = a.Split('.');
-            var bComps = b.Split('.');
+            string[]? aComps = a.Split('.');
+            string[]? bComps = b.Split('.');
 
-            var minLen = Math.Min(aComps.Length, bComps.Length);
+            int minLen = Math.Min(aComps.Length, bComps.Length);
             for (int i = 0; i < minLen; i++)
             {
-                var ac = aComps[i];
-                var bc = bComps[i];
-                var aIsNum = int.TryParse(ac, out var aNum);
-                var bIsNum = int.TryParse(bc, out var bNum);
+                string? ac = aComps[i];
+                string? bc = bComps[i];
+                bool aIsNum = int.TryParse(ac, out int aNum);
+                bool bIsNum = int.TryParse(bc, out int bNum);
                 int r;
                 if (aIsNum && bIsNum)
                 {
                     r = aNum.CompareTo(bNum);
-                    if (r != 0) return r;
+                    if (r != 0)
+                    {
+                        return r;
+                    }
                 }
                 else
                 {
                     if (aIsNum)
+                    {
                         return -1;
+                    }
+
                     if (bIsNum)
+                    {
                         return 1;
+                    }
+
                     r = string.CompareOrdinal(ac, bc);
                     if (r != 0)
+                    {
                         return r;
+                    }
                 }
             }
 
@@ -466,12 +554,16 @@ namespace ModAssistant.Libs
         public override bool Equals(object obj)
         {
             if (obj is null)
+            {
                 return false;
+            }
 
             if (ReferenceEquals(this, obj))
+            {
                 return true;
+            }
 
-            var other = (SemVersion)obj;
+            SemVersion? other = (SemVersion)obj;
 
             return Major == other.Major
                 && Minor == other.Minor
@@ -509,7 +601,11 @@ namespace ModAssistant.Libs
         [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            if (info == null) throw new ArgumentNullException(nameof(info));
+            if (info == null)
+            {
+                throw new ArgumentNullException(nameof(info));
+            }
+
             info.AddValue("SemVersion", ToString());
         }
 #endif

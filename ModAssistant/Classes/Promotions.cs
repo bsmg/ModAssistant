@@ -2,7 +2,7 @@
 
 namespace ModAssistant
 {
-    class Promotions
+    internal class Promotions
     {
         public static Promotion[] ActivePromotions =
         {
@@ -18,13 +18,13 @@ namespace ModAssistant
         };
     }
 
-    class Promotion
+    internal class Promotion
     {
         public string ModName;
         public List<PromotionLink> Links;
     }
 
-    class PromotionLink
+    internal class PromotionLink
     {
         public string Text;
         public string Link;

@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace ModAssistant
 {
-    class Diagnostics
+    internal class Diagnostics
     {
         public static string[] ReadFolder(string path, int level = 0)
         {

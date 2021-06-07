@@ -16,7 +16,7 @@ namespace ModAssistant
     public class Themes
     {
         public static string LoadedTheme { get; private set; }
-        public static List<string> LoadedThemes { get => loadedThemes.Keys.ToList(); }
+        public static List<string> LoadedThemes => loadedThemes.Keys.ToList();
         public static string ThemeDirectory = Path.Combine(Path.GetDirectoryName(Utils.ExePath), "Themes");
 
         /// <summary>
@@ -84,7 +84,10 @@ namespace ModAssistant
                     if (info.Extension.ToLower().Equals(".mat"))
                     {
                         Theme theme = LoadZipTheme(ThemeDirectory, name, ".mat");
-                        if (theme is null) continue;
+                        if (theme is null)
+                        {
+                            continue;
+                        }
 
                         AddOrModifyTheme(name, theme);
                     }
@@ -96,7 +99,11 @@ namespace ModAssistant
                     string name = directory.Split('\\').Last();
                     Theme theme = LoadTheme(directory, name);
 
-                    if (theme is null) continue;
+                    if (theme is null)
+                    {
+                        continue;
+                    }
+
                     AddOrModifyTheme(name, theme);
                 }
             }
@@ -326,13 +333,21 @@ namespace ModAssistant
 
                 if (theme.Waifus?.Background != null)
                 {
-                    if (loadedThemes[name].Waifus is null) loadedThemes[name].Waifus = new Waifus();
+                    if (loadedThemes[name].Waifus is null)
+                    {
+                        loadedThemes[name].Waifus = new Waifus();
+                    }
+
                     loadedThemes[name].Waifus.Background = theme.Waifus.Background;
                 }
 
                 if (theme.Waifus?.Sidebar != null)
                 {
-                    if (loadedThemes[name].Waifus is null) loadedThemes[name].Waifus = new Waifus();
+                    if (loadedThemes[name].Waifus is null)
+                    {
+                        loadedThemes[name].Waifus = new Waifus();
+                    }
+
                     loadedThemes[name].Waifus.Sidebar = theme.Waifus.Sidebar;
                 }
 
@@ -432,14 +447,17 @@ namespace ModAssistant
         /// <returns></returns>
         private static BitmapImage GetImageFromStream(byte[] array)
         {
-            using (var mStream = new MemoryStream(array))
+            using (MemoryStream? mStream = new MemoryStream(array))
             {
                 BitmapImage image = new BitmapImage();
                 image.BeginInit();
                 image.CacheOption = BitmapCacheOption.OnLoad;
                 image.StreamSource = mStream;
                 image.EndInit();
-                if (image.CanFreeze) image.Freeze();
+                if (image.CanFreeze)
+                {
+                    image.Freeze();
+                }
 
                 return image;
             }
@@ -447,9 +465,9 @@ namespace ModAssistant
 
         private static BitmapImage GetImageFromEmbeddedResources(string themeName, string imageName)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-            var resourceNames = assembly.GetManifestResourceNames();
-            var desiredResourceName = $"ModAssistant.Themes.{themeName}.{imageName}.png";
+            Assembly? assembly = Assembly.GetExecutingAssembly();
+            string[]? resourceNames = assembly.GetManifestResourceNames();
+            string? desiredResourceName = $"ModAssistant.Themes.{themeName}.{imageName}.png";
 
             // Don't attempt to access non-existent manifest resources
             if (!resourceNames.Contains(desiredResourceName))

@@ -8,17 +8,17 @@ using ModAssistant.Pages;
 
 namespace ModAssistant
 {
-    class Languages
+    internal class Languages
     {
         public static string LoadedLanguage { get; private set; }
-        public static List<CultureInfo> LoadedLanguages { get => availableCultures.ToList(); }
+        public static List<CultureInfo> LoadedLanguages => availableCultures.ToList();
         public static bool FirstRun = true;
         private static readonly string[] availableLanguageCodes = { "de", "en", "es", "fr", "it", "ko", "nb", "nl", "ru", "sv", "zh" };
         private static IEnumerable<CultureInfo> availableCultures;
 
         public static void LoadLanguages()
         {
-            var allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
+            CultureInfo[]? allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
 
             // Get CultureInfo for any of the available translations
             availableCultures = allCultures.Where(cultureInfo => availableLanguageCodes.Any(code => code.Equals(cultureInfo.Name)));
@@ -44,17 +44,15 @@ namespace ModAssistant
             }
         }
 
-        public static ResourceDictionary LanguagesDict
-        {
-            get
-            {
-                return Application.Current.Resources.MergedDictionaries[1];
-            }
-        }
+        public static ResourceDictionary LanguagesDict => Application.Current.Resources.MergedDictionaries[1];
 
         public static bool LoadLanguage(string languageCode)
         {
-            if (string.IsNullOrEmpty(languageCode)) return false;
+            if (string.IsNullOrEmpty(languageCode))
+            {
+                return false;
+            }
+
             try
             {
                 LanguagesDict.Source = new Uri($"Localisation/{languageCode}.xaml", UriKind.Relative);

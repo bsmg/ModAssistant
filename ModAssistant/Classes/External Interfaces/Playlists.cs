@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows;
-using static ModAssistant.Http;
+using Newtonsoft.Json;
 
 namespace ModAssistant.API
 {
@@ -63,7 +63,7 @@ namespace ModAssistant.API
             int Minimum = 0;
             int Value = 0;
 
-            Playlist playlist = JsonSerializer.Deserialize<Playlist>(File.ReadAllText(file));
+            Playlist playlist = JsonConvert.DeserializeObject<Playlist>(File.ReadAllText(file));
             int Maximum = playlist.songs.Length;
 
             foreach (Playlist.Song song in playlist.songs)
@@ -101,12 +101,12 @@ namespace ModAssistant.API
             {
                 return $" {string.Concat(Enumerable.Repeat("▒", 10))} [{value}/{max}]";
             }
-            int interval = (int)Math.Floor((double)value / (((double)max - (double)min) / (double)10));
+            int interval = (int)Math.Floor(value / ((max - (double)min) / 10));
             return $" {string.Concat(Enumerable.Repeat("▒", interval))}{string.Concat(Enumerable.Repeat("░", 10 - interval))} [{value}/{max}]";
         }
 
 #pragma warning disable IDE1006 // Naming Styles
-        class Playlist
+        private class Playlist
         {
             public string playlistTitle { get; set; }
             public string playlistAuthor { get; set; }

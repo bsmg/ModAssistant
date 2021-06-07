@@ -17,8 +17,15 @@ namespace ModAssistant.API
             {
                 if (App.window == null)
                 {
-                    if (App.OCIWindow == "No") OneClickStatus.Instance = null;
-                    if (OneClickStatus.Instance == null) return;
+                    if (App.OCIWindow == "No")
+                    {
+                        OneClickStatus.Instance = null;
+                    }
+
+                    if (OneClickStatus.Instance == null)
+                    {
+                        return;
+                    }
 
                     OneClickStatus.Instance.MainText = message;
                 }
@@ -61,8 +68,14 @@ namespace ModAssistant.API
                     displayName = Path.GetFileNameWithoutExtension(fileName);
                 }
 
-                if (beatsaver) await BeatSaver.Download(link, fileName);
-                else await ModAssistant.Utils.Download(link, fileName);
+                if (beatsaver)
+                {
+                    await BeatSaver.Download(link, fileName);
+                }
+                else
+                {
+                    await ModAssistant.Utils.Download(link, fileName);
+                }
 
                 if (showNotification)
                 {

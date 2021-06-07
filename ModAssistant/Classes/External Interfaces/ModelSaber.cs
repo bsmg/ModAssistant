@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace ModAssistant.API
 {
-    class ModelSaber
+    internal class ModelSaber
     {
         private const string ModelSaberURLPrefix = "https://modelsaber.com/files/";
         private const string CustomAvatarsFolder = "CustomAvatars";
