@@ -351,7 +351,8 @@ namespace ModAssistant
                 if (File.Exists(Path.Combine(path, "Beat Saber.exe")))
                 {
                     string store;
-                    if (File.Exists(Path.Combine(path, "Beat Saber_Data", "Plugins", "steam_api64.dll")))
+                    if (File.Exists(Path.Combine(path, "Beat Saber_Data", "Plugins", "steam_api64.dll"))
+                       || File.Exists(Path.Combine(path, "Beat Saber_Data", "Plugins", "x86_64", "steam_api64.dll")))
                     {
                         store = "Steam";
                     }
