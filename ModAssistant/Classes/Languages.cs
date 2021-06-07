@@ -47,12 +47,6 @@ namespace ModAssistant
 
         public static ResourceDictionary LanguagesDict => Application.Current.Resources.MergedDictionaries[1];
 
-        public static bool LoadLanguage(string languageCode)
-        {
-            if (string.IsNullOrEmpty(languageCode))
-            {
-                return false;
-            }
 
         public static bool LoadLanguage(string languageCode)
         {
