@@ -44,8 +44,8 @@
     </Span>
     <Span x:Key="Intro:Terms:Term1">
         Модификации
-        <Bold>могут прекращать работоспособность</Bold> каждое обновление. Это нормально, и
-        <Bold>это не</Bold> вина Beat Games.
+        <Bold>будут прекращать работоспособность</Bold> при каждом обновлении игры. Это нормально, и это
+        <Bold>не</Bold> вина Beat Games.
     </Span>
     <Span x:Key="Intro:Terms:Term2">
         Модификации
@@ -53,17 +53,17 @@
         <Bold>не</Bold> вина Beat Games.
     </Span>
     <Span x:Key="Intro:Terms:Term3">
-        Модификации создаются
-        <Bold>добровольно</Bold> людьми в их
-        <Bold>свободное время.</Bold> Пожалуйста, будьте терпиливыми и взаимопонимающими.
+        Модификации создаются людьми
+        <Bold>бесплатно</Bold> в их
+        <Bold>свободное время.</Bold> Пожалуйста, имейте терпение и понимание.
     </Span>
     <Span x:Key="Intro:ReviewsBeatGamesFault">
-        <Bold>НЕ</Bold> оставляйте отрицательные отзывы из-за того, что модификация не работает. Это 
+        <Bold>НЕ</Bold> оставляйте отрицательные отзывы из-за того, что модификации не работают. Это 
         <Bold>не</Bold> вина Beat Games.
         <LineBreak/> Beat Games не пытаются уничтожить модификации.
     </Span>
     <Span x:Key="Intro:ReviewsRustySpoon">
-        Если я увижу людей, которые продолжают оставлять негативные комментарии,
+        Если я так и буду наблюдать людей, которые продолжают оставлять негативные комментарии,
         <Italic>потому что</Italic> модификации не работают,
         <LineBreak/>
         <Bold>Я лично уничтожу модификации ржавой ложкой</Bold>
@@ -110,11 +110,11 @@
     <!-- About Page -->
     <sys:String x:Key="About:Title">Информация</sys:String>
     <sys:String x:Key="About:PageTitle">Про Mod Assistant</sys:String>
-    <sys:String x:Key="About:List:Header">Я Ассистент, и я создал Mod Assistant для помощи модификациям с некоторыми личными принципами:</sys:String>
+    <sys:String x:Key="About:List:Header">Я Assistant, и я создал Mod Assistant для помощи в модифицировании игры с некоторыми личными принципами:</sys:String>
     <sys:String x:Key="About:List:Item1">Простота</sys:String>
     <sys:String x:Key="About:List:Item2">Портативность </sys:String>
-    <sys:String x:Key="About:List:Item3">Приложение одним файлом</sys:String>
-    <sys:String x:Key="About:List:Item4">Ответственное использование</sys:String>
+    <sys:String x:Key="About:List:Item3">Приложение являлось одним исполняемым файлом</sys:String>
+    <sys:String x:Key="About:List:Item4">Использование утилиты было ответственным и лёгким процессом</sys:String>
     <Span x:Key="About:SupportAssistant">
         Если вам нравится программа и вы хотите меня поддержать, пожалуйста, посетите
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.assistant.moe/Donate/">
