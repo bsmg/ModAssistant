@@ -24,7 +24,7 @@
     <sys:String x:Key="MainWindow:ModInfoButton">Mod信息</sys:String>
     <sys:String x:Key="MainWindow:InstallButtonTop">安装</sys:String>
     <sys:String x:Key="MainWindow:InstallButtonBottom">或更新</sys:String>
-    <sys:String x:Key="MainWindow:GameVersionLoadFailed">无法获取游戏版本，Mod选项卡将不可用。</sys:String>
+    <sys:String x:Key="MainWindow:GameVersionLoadFailed">无法获取游戏版本，Mod选项卡将不可用，该问题可能与网络有关，请查看简介中的问题解答。</sys:String>
     <sys:String x:Key="MainWindow:GameUpdateDialog:Title">检测到新的游戏版本！</sys:String>
     <sys:String x:Key="MainWindow:GameUpdateDialog:Line1">似乎游戏更新了，</sys:String>
     <sys:String x:Key="MainWindow:GameUpdateDialog:Line2">请仔细检查左下角是否选择了正确的游戏版本！</sys:String>
@@ -61,20 +61,20 @@
     </Span>
     <Span x:Key="Intro:ReviewsRustySpoon">
         <Bold>
-            <Span Foreground="#0087FF">若</Span><Span Foreground="#005FFF">执</Span><Span Foreground="#0037FF">行</Span><Span Foreground="#000FFF">缓</Span><Span Foreground="#2800FF">慢</Span><Span Foreground="#5000FF">或</Span><Span Foreground="#7800FF">报</Span><Span Foreground="#A000FF">错</Span><Span Foreground="#C800FF">，</Span><Span Foreground="#F000FF">请</Span><Span Foreground="#FF00D7">在</Span><Span Foreground="#FF00AF">选</Span><Span Foreground="#FF0087">项</Span><Span Foreground="#FF005F">中</Span><Span Foreground="#FF0037">切</Span><Span Foreground="#FF000F">换</Span><Span Foreground="#FF0000">下</Span><Span Foreground="#FF2800">载</Span><Span Foreground="#FF5000">源</Span><Span Foreground="#FF7800">；</Span><Span Foreground="#0087FF">如</Span><Span Foreground="#005FFF">需</Span><Span Foreground="#0037FF">安</Span><Span Foreground="#000FFF">装</Span><Span Foreground="#2800FF">测</Span><Span Foreground="#5000FF">试</Span><Span Foreground="#7800FF">版</Span><Span Foreground="#A000FF">M</Span><Span Foreground="#C800FF">o</Span><Span Foreground="#F000FF">d</Span><Span Foreground="#FF00D7">请</Span><Span Foreground="#FF00AF">查</Span><Span Foreground="#FF0087">看</Span><Span Foreground="#FF005F">下</Span><Span Foreground="#FF0037">方</Span><Span Foreground="#FF000F">中</Span><Span Foreground="#FF0000">文</Span><Span Foreground="#FF2800">教</Span><Span Foreground="#FF5000">程</Span><Span Foreground="#FF7800">。</Span>
+            <Span Foreground="#0087FF">若</Span><Span Foreground="#005FFF">执</Span><Span Foreground="#0037FF">行</Span><Span Foreground="#000FFF">缓</Span><Span Foreground="#2800FF">慢</Span><Span Foreground="#5000FF">或</Span><Span Foreground="#7800FF">报</Span><Span Foreground="#A000FF">错</Span><Span Foreground="#C800FF">，</Span><Span Foreground="#F000FF">请</Span><Span Foreground="#FF00D7">在</Span><Span Foreground="#FF00AF">选</Span><Span Foreground="#FF0087">项</Span><Span Foreground="#FF005F">中</Span><Span Foreground="#FF0037">切</Span><Span Foreground="#FF000F">换</Span><Span Foreground="#FF0000">下</Span><Span Foreground="#FF2800">载</Span><Span Foreground="#FF5000">源</Span><Span Foreground="#FF7800">；</Span><Span Foreground="#0087FF">如</Span><Span Foreground="#005FFF">需</Span><Span Foreground="#0037FF">安</Span><Span Foreground="#000FFF">装</Span><Span Foreground="#2800FF">测</Span><Span Foreground="#5000FF">试</Span><Span Foreground="#7800FF">版</Span><Span Foreground="#A000FF">M</Span><Span Foreground="#C800FF">o</Span><Span Foreground="#F000FF">d</Span><Span Foreground="#FF00D7">请</Span><Span Foreground="#FF00AF">查</Span><Span Foreground="#FF0087">看</Span><Span Foreground="#FF005F">下</Span><Span Foreground="#FF0037">方</Span><Span Foreground="#FF000F">新</Span><Span Foreground="#FF0000">手</Span><Span Foreground="#FF2800">教</Span><Span Foreground="#FF5000">程</Span><Span Foreground="#FF7800">。</Span>
         </Bold>
     </Span>
     <Span x:Key="Intro:WikiGuide">
         <Bold>
             <Span Foreground="Red">请阅读</Span>
             <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/pc-guide/">
-                新手入门指南
+                新手基础教程
             </Hyperlink> 、
             <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/pc-faq/">
-                详细教程与问题解答
+                详细问题解答
             </Hyperlink> 、
-            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="http://bs.zhm233.top/?1">
-                曲包等游戏资源
+            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/drive/">
+                曲包资源网盘
             </Hyperlink> 、
         </Bold>
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
@@ -90,7 +90,7 @@
         <LineBreak/>
         国内源为BeatMods镜像，服务器使用<Bold>上海阿里云</Bold>（由WGzeyu提供），推荐国内用户使用；
         <LineBreak/>
-        增强源为BeatTop管理，服务器使用美国机房，同步国际源并支持部分第三方插件以及1.8.0版本的网易影核插件。
+        增强源为BeatTop管理，服务器使用<Bold>美国机房</Bold>，同步国际源并支持部分第三方插件以及1.8.0版本的网易影核插件。
     </Span>
     <sys:String x:Key="Intro:AgreeButton">同意</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">拒绝</sys:String>
@@ -168,7 +168,7 @@
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
     <sys:String x:Key="Options:Tools">工具</sys:String>
-    <sys:String x:Key="Options:InstallPlaylist">将歌单下载进游戏（仅限playlist文件）</sys:String>
+    <sys:String x:Key="Options:InstallPlaylist">将歌曲列表添加到游戏并下载歌曲（.bplist）</sys:String>
     <sys:String x:Key="Options:InstallingPlaylist">正在添加歌单：{0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">失败歌曲：{0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0}失败]添加{1}完成</sys:String>
