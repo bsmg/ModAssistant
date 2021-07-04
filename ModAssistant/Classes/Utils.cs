@@ -290,6 +290,20 @@ namespace ModAssistant
                 }
             }
 
+            regex = new Regex("\\s\"(?:\\d|path)\"\\s+\"(.+)\"");
+            using (StreamReader reader = new StreamReader(@vdf))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    Match match = regex.Match(line);
+                    if (match.Success)
+                    {
+                        SteamPaths.Add(Path.Combine(match.Groups[1].Value.Replace(@"\\", @"\"), @"steamapps"));
+                    }
+                }
+            }
+
             regex = new Regex("\\s\"installdir\"\\s+\"(.+)\"");
             foreach (string path in SteamPaths)
             {

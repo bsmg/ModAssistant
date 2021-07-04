@@ -25,7 +25,7 @@ namespace ModAssistant.Pages
     {
         public static Mods Instance = new Mods();
 
-        public List<string> DefaultMods = new List<string>() { "SongCore", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "PlaylistCore", "MappingExtensions", "SongBrowser", "BSIPA" , "Noodle Extensions" , "NoodleExtensions" , "Chroma" , "SiraUtil" , "SiraLocalizer" };
+        public List<string> DefaultMods = new List<string>() { "SongCore", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "PlaylistManager", "ModelDownloader", "MappingExtensions", "SongBrowser", "BSIPA" , "Noodle Extensions" , "NoodleExtensions" , "Chroma" , "SiraUtil" , "SiraLocalizer" };
         public List<string> DefaultModsNetvios = new List<string>() { "Base-Netvios" };
         /*        public List<string> DefaultModsNetvios = new List<string>() { "Base-Netvios", "SongCore-Netvios", "BeatSaberMarkupLanguage-Netvios", "PlayerDataPlugin-Netvios", "NetviosSdkPlugin-Netvios", "NetviosHelperPlugin-Netvios", "LocalizationPlugin-Netvios", "BeatSaverSharp-Netvios", "BS_Utils-Netvios", "BeatSaverDownloader-Netvios", "CommonPlugin-Netvios" };*/
         public List<string> NetviosNotCompatiblePluginList = new List<string>() { "BSIPA", "Chroma", "Versus" , "ScoreSaber", "Saber Factory" };
