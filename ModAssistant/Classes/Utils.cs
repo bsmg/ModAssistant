@@ -273,7 +273,6 @@ namespace ModAssistant
 
             Regex regex = new Regex("\\s\"\\d\"\\s+\"(.+)\"");
             Regex regex_new = new Regex("\\s\"(?:\\d|path)\"\\s+\"(.+)\"");
-
             List<string> SteamPaths = new List<string>
             {
                 Path.Combine(SteamInstall, @"steamapps")
@@ -454,7 +453,8 @@ namespace ModAssistant
                     if (File.Exists(Path.Combine(path, "NetviosSDK.dll"))) {
                         store = "Netvios";
                     }
-                    else if (File.Exists(Path.Combine(path, "Beat Saber_Data", "Plugins", "steam_api64.dll")))
+                    else if (File.Exists(Path.Combine(path, "Beat Saber_Data", "Plugins", "steam_api64.dll"))
+                       || File.Exists(Path.Combine(path, "Beat Saber_Data", "Plugins", "x86_64", "steam_api64.dll")))
                     {
                         store = "Steam";
                     }
