@@ -206,7 +206,7 @@ namespace ModAssistant
                 return null;
             }
 
-            Regex regex = new Regex("\\s\"\\d\"\\s+\"(.+)\"");
+            Regex regex = new Regex("\\s\"(?:\\d|path)\"\\s+\"(.+)\"");
             List<string> SteamPaths = new List<string>
             {
                 Path.Combine(SteamInstall, @"steamapps")
