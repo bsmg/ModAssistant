@@ -272,6 +272,8 @@ namespace ModAssistant
             if (!File.Exists(@vdf)) return null;
 
             Regex regex = new Regex("\\s\"\\d\"\\s+\"(.+)\"");
+            Regex regex_new = new Regex("\\s\"(?:\\d|path)\"\\s+\"(.+)\"");
+
             List<string> SteamPaths = new List<string>
             {
                 Path.Combine(SteamInstall, @"steamapps")
@@ -279,29 +281,21 @@ namespace ModAssistant
 
             using (StreamReader reader = new StreamReader(@vdf))
             {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    Match match = regex.Match(line);
-                    if (match.Success)
-                    {
-                        SteamPaths.Add(Path.Combine(match.Groups[1].Value.Replace(@"\\", @"\"), @"steamapps"));
-                    }
-                }
-            }
-
-            regex = new Regex("\\s\"(?:\\d|path)\"\\s+\"(.+)\"");
-            using (StreamReader reader = new StreamReader(@vdf))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    Match match = regex.Match(line);
-                    if (match.Success)
-                    {
-                        SteamPaths.Add(Path.Combine(match.Groups[1].Value.Replace(@"\\", @"\"), @"steamapps"));
-                    }
-                }
+	            string line;
+	            while ((line = reader.ReadLine()) != null)
+	            {
+		            Match match_old = regex.Match(line);
+		            if (match_old.Success)
+		            {
+			            SteamPaths.Add(Path.Combine(match_old.Groups[1].Value.Replace(@"\\", @"\"), @"steamapps"));
+		            } else
+		            {
+			            Match match_new = regex_new.Match(line);
+			            if (match_new.Success) {
+				            SteamPaths.Add(Path.Combine(match_new.Groups[1].Value.Replace(@"\\", @"\"), @"steamapps"));
+			            }
+		            }  
+	            }
             }
 
             regex = new Regex("\\s\"installdir\"\\s+\"(.+)\"");
