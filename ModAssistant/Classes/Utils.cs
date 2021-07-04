@@ -197,7 +197,7 @@ namespace ModAssistant
             string vdf = Path.Combine(SteamInstall, @"steamapps\libraryfolders.vdf");
             if (!File.Exists(@vdf)) return null;
 
-            Regex regex = new Regex("\\s\"\\d\"\\s+\"(.+)\"");
+            Regex regex = new Regex("\\s\"(?:\\d|path)\"\\s+\"(.+)\"");
             List<string> SteamPaths = new List<string>
             {
                 Path.Combine(SteamInstall, @"steamapps")
