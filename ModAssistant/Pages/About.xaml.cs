@@ -66,9 +66,11 @@ namespace ModAssistant.Pages
             }
             catch (Exception ex)
             {
-                // TODO: Localize
-                MessageBox.Show("Headpat Error", "Failed to load headpat image!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                var buttonType = (string)FindResource("About:HeadpatsButton");
+                var title = string.Format((string)FindResource("About:ImageError:Title"), buttonType);
+                var message = string.Format((string)FindResource("About:ImageError:Message"), buttonType);
 
+                MessageBox.Show($"{message}\n{ex.Message}", title, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -84,9 +86,11 @@ namespace ModAssistant.Pages
             }
             catch (Exception ex)
             {
-                // TODO: Localize
-                MessageBox.Show("Hug Error", "Failed to load hug image!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                var buttonType = (string)FindResource("About:HugsButton");
+                var title = string.Format((string)FindResource("About:ImageError:Title"), buttonType);
+                var message = string.Format((string)FindResource("About:ImageError:Message"), buttonType);
 
+                MessageBox.Show($"{message}\n{ex.Message}", title, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
