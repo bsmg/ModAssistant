@@ -129,6 +129,8 @@
     <sys:String x:Key="About:Donate">Поддержать</sys:String>
     <sys:String x:Key="About:HeadpatsButton">Погладить</sys:String>
     <sys:String x:Key="About:HugsButton">Обнять</sys:String>
+    <sys:String x:Key="About:ImageError:Title">{0} Error</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="About:ImageError:Message">Failed to load {0} image!</sys:String> <!-- NEEDS TRANSLATING -->
 
     <!-- Options Page -->
     <sys:String x:Key="Options:Title">Опции</sys:String>
