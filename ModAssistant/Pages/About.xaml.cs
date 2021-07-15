@@ -1,9 +1,12 @@
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Navigation;
 using static ModAssistant.Http;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace ModAssistant.Pages
 {
@@ -28,15 +31,19 @@ namespace ModAssistant.Pages
         private async void HeadpatsButton_Click(object sender, RoutedEventArgs e)
         {
             PatButton.IsEnabled = false;
-            await Task.Run(async () => await HeadPat());
-            PatUp.IsOpen = true;
+            var success = await Task.Run(async () => await HeadPat());
+
+            PatUp.IsOpen = success;
+            if (!success) PatButton.IsEnabled = true;
         }
 
         private async void HugsButton_Click(object sender, RoutedEventArgs e)
         {
             HugButton.IsEnabled = false;
-            await Task.Run(async () => await Hug());
-            HugUp.IsOpen = true;
+            var success = await Task.Run(async () => await Hug());
+
+            HugUp.IsOpen = success;
+            if (!success) HugButton.IsEnabled = true;
         }
 
         private async Task<string> WeebCDN(string type)
@@ -48,14 +55,40 @@ namespace ModAssistant.Pages
             return response.url;
         }
 
-        private async Task HeadPat()
+        private async Task<bool> HeadPat()
         {
-            PatImage.Load(await WeebCDN("pats"));
+            try
+            {
+                var image = await WeebCDN("pats");
+                PatImage.Load(image);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // TODO: Localize
+                MessageBox.Show("Headpat Error", "Failed to load headpat image!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
         }
 
-        private async Task Hug()
+        private async Task<bool> Hug()
         {
-            HugImage.Load(await WeebCDN("hugs"));
+            try
+            {
+                var image = await WeebCDN("hugs");
+                HugImage.Load(image);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // TODO: Localize
+                MessageBox.Show("Hug Error", "Failed to load hug image!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
         }
     }
 }
