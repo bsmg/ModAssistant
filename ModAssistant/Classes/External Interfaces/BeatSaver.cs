@@ -99,8 +99,8 @@ namespace ModAssistant.API
                 var resp = await HttpClient.GetAsync(url);
                 response.statusCode = resp.StatusCode;
                 response.ratelimit = GetRatelimit(resp.Headers);
-                Console.WriteLine(resp.Headers.ToString());
                 string body = await resp.Content.ReadAsStringAsync();
+
                 if ((int)resp.StatusCode == 429)
                 {
                     Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), response.ratelimit.ResetTime.ToLocalTime())}");
