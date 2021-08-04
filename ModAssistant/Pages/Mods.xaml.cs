@@ -23,15 +23,15 @@ namespace ModAssistant.Pages
     /// </summary>
     public sealed partial class Mods : Page
     {
-        public static Mods? Instance = new();
+        public static Mods Instance = new Mods();
 
-        public List<string>? DefaultMods = new() { "SongCore", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "PlaylistCore", "Survey", "ModelDownloader" };
-        public Mod[]? ModsList;
-        public Mod[]? AllModsList;
-        public static List<Mod>? InstalledMods = new();
-        public static List<Mod?> LibsToMatch = new();
-        public List<string>? CategoryNames = new();
-        public CollectionView? view;
+        public List<string> DefaultMods = new List<string>() { "SongCore", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "PlaylistManager", "ModelDownloader" };
+        public Mod[] ModsList;
+        public Mod[] AllModsList;
+        public static List<Mod> InstalledMods = new List<Mod>();
+        public static List<Mod> LibsToMatch = new List<Mod>();
+        public List<string> CategoryNames = new List<string>();
+        public CollectionView view;
         public bool PendingChanges;
 
         private readonly SemaphoreSlim? _modsLoadSem = new(1, 1);
