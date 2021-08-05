@@ -148,6 +148,8 @@
     <sys:String x:Key="About:Donate">捐助</sys:String>
     <sys:String x:Key="About:HeadpatsButton">摸摸头</sys:String>
     <sys:String x:Key="About:HugsButton">抱抱</sys:String>
+    <sys:String x:Key="About:ImageError:Title">{0} 错误</sys:String>
+    <sys:String x:Key="About:ImageError:Message">图片 {0} 加载失败！</sys:String>
 
     <!-- Options Page -->
     <sys:String x:Key="Options:Title">选项</sys:String>
