@@ -142,13 +142,15 @@
                     Grid.Row="4"
                     Margin="0,0,10,0"
                     Click="PlayButton_Click"
-                    Style="{DynamicResource MainPageButton}" Height="30" VerticalAlignment="Bottom">
+                    Style="{DynamicResource MainPageButton}"
+                    Height="60"
+                    VerticalAlignment="Bottom">
                     <StackPanel Margin="0,0,0,0">
                         <Image
                             Height="30"
                             VerticalAlignment="Bottom"
                             Source="{StaticResource playDrawingImage}" />
-                        <Viewbox Stretch="Uniform" Height="25">
+                        <Viewbox Stretch="Uniform" Height="16">
                             <TextBlock
                             HorizontalAlignment="Center"
                             Padding="2,0,2,0"
