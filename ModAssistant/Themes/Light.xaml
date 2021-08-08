@@ -86,6 +86,7 @@
     <SolidColorBrush x:Key="AboutIconColor" Color="#FF0000" />
     <SolidColorBrush x:Key="OptionsIconColor" Color="#4E3BCE" />
     <SolidColorBrush x:Key="LoadingIconColor" Color="#101010" />
+    <SolidColorBrush x:Key="PlayIconColor" Color="#00FF00" />
 
     <!-- Background and Side image settings. -->
     <!-- Fill, None, Uniform, UniformToFill -->
