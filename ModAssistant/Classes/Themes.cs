@@ -508,6 +508,7 @@ namespace ModAssistant
             ChangeColor(icons, "InfoIconColor", "info_circleDrawingGroup");
             ChangeColor(icons, "OptionsIconColor", "cogDrawingGroup");
             ChangeColor(icons, "ModsIconColor", "microchipDrawingGroup");
+            ChangeColor(icons, "PlayIconColor", "playDrawingGroup");
             ChangeColor(icons, "LoadingIconColor", "loadingInnerDrawingGroup");
             ChangeColor(icons, "LoadingIconColor", "loadingMiddleDrawingGroup");
             ChangeColor(icons, "LoadingIconColor", "loadingOuterDrawingGroup");
