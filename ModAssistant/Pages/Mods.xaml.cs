@@ -24,7 +24,7 @@ namespace ModAssistant.Pages
     {
         public static Mods Instance = new Mods();
 
-        public List<string> DefaultMods = new List<string>() { "SongCore", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "PlaylistManager", "Survey", "ModelDownloader" };
+        public List<string> DefaultMods = new List<string>() { "SongCore", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "PlaylistManager", "ModelDownloader" };
         public Mod[] ModsList;
         public Mod[] AllModsList;
         public static List<Mod> InstalledMods = new List<Mod>();
@@ -558,24 +558,26 @@ namespace ModAssistant.Pages
 
         private void ModCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            Mod mod = ((sender as System.Windows.Controls.CheckBox).Tag as Mod);
+            Mod mod = (sender as System.Windows.Controls.CheckBox).Tag as Mod;
             mod.ListItem.IsSelected = true;
             ResolveDependencies(mod);
             App.SavedMods.Add(mod.name);
             Properties.Settings.Default.SavedMods = string.Join(",", App.SavedMods.ToArray());
             Properties.Settings.Default.Save();
-            RefreshModsList();
+
+            // RefreshModsList();
         }
 
         private void ModCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            Mod mod = ((sender as System.Windows.Controls.CheckBox).Tag as Mod);
+            Mod mod = (sender as System.Windows.Controls.CheckBox).Tag as Mod;
             mod.ListItem.IsSelected = false;
             UnresolveDependencies(mod);
             App.SavedMods.Remove(mod.name);
             Properties.Settings.Default.SavedMods = string.Join(",", App.SavedMods.ToArray());
             Properties.Settings.Default.Save();
-            RefreshModsList();
+
+            // RefreshModsList();
         }
 
         public class Category
