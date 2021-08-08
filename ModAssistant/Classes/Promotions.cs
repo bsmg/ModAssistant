@@ -1,4 +1,4 @@
-using System;
+﻿using System.Collections.Generic;
 
 namespace ModAssistant
 {
@@ -9,8 +9,11 @@ namespace ModAssistant
             new Promotion
             {
                 ModName = "YUR Fit Calorie Tracker",
-                Text = "Join our Discord!",
-                Link = "https://yur.chat"
+                Links = new List<PromotionLink>(){
+                    new PromotionLink{Text = "Join our Discord!", Link = "https://yur.chat", TextAfterLink = " Or find us on "},
+                    new PromotionLink{Text = "iOS", Link = "https://bit.ly/yuriphone", TextAfterLink = " and " },
+                    new PromotionLink{Text = "Android", Link = "https://play.google.com/store/apps/details?id=com.yur", TextAfterLink = "!" }
+                },
             }
         };
     }
@@ -18,7 +21,13 @@ namespace ModAssistant
     class Promotion
     {
         public string ModName;
+        public List<PromotionLink> Links;
+    }
+
+    class PromotionLink
+    {
         public string Text;
         public string Link;
+        public string TextAfterLink;
     }
 }

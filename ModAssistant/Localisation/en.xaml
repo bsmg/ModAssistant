@@ -14,7 +14,7 @@
     <sys:String x:Key="App:Exception">Exception</sys:String>
 
     <!-- Main Window -->
-    <sys:String x:Key="MainWindow:WindowTitle">ModAssistant</sys:String>
+    <sys:String x:Key="MainWindow:WindowTitle">Mod Assistant</sys:String>
     <sys:String x:Key="MainWindow:IntroButton">Intro</sys:String>
     <sys:String x:Key="MainWindow:ModsButton">Mods</sys:String>
     <sys:String x:Key="MainWindow:AboutButton">About</sys:String>
@@ -105,6 +105,8 @@
     <sys:String x:Key="Mods:FailedExtract">Failed to extract {0}, trying again in {1} seconds. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Failed to extract {0} after max attempts ({1}), skipping. This mod might not work properly so proceed at your own risk</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Search...</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Failed to Uninstall BSIPA</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA installation not found, uninstall operation skipped.</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">About</sys:String>
@@ -128,6 +130,8 @@
     <sys:String x:Key="About:Donate">Donate</sys:String>
     <sys:String x:Key="About:HeadpatsButton">Headpats</sys:String>
     <sys:String x:Key="About:HugsButton">Hugs</sys:String>
+    <sys:String x:Key="About:ImageError:Title">{0} Error</sys:String>
+    <sys:String x:Key="About:ImageError:Message">Failed to load {0} image!</sys:String>
 
     <!-- Options Page -->
     <sys:String x:Key="Options:Title">Options</sys:String>

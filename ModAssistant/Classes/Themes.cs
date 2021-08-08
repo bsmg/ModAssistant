@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
 using System.IO;
-using System.Windows.Media;
-using ModAssistant.Pages;
-using System.Reflection;
-using Microsoft.Win32;
-using System.Windows.Media.Imaging;
 using System.IO.Compression;
+using System.Linq;
+using System.Reflection;
+using System.Windows;
 using System.Windows.Markup;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using Microsoft.Win32;
+using ModAssistant.Pages;
 
 namespace ModAssistant
 {
@@ -22,15 +22,15 @@ namespace ModAssistant
         /// <summary>
         /// Local dictionary of Resource Dictionaries mapped by their names.
         /// </summary>
-        private static Dictionary<string, Theme> loadedThemes = new Dictionary<string, Theme>();
-        private static List<string> preInstalledThemes = new List<string> { "Light", "Dark", "BSMG", "Light Pink" };
+        private static readonly Dictionary<string, Theme> loadedThemes = new Dictionary<string, Theme>();
+        private static readonly List<string> preInstalledThemes = new List<string> { "Light", "Dark", "BSMG", "Light Pink" };
 
         /// <summary>
         /// Index of "LoadedTheme" in App.xaml
         /// </summary>
         private static readonly int LOADED_THEME_INDEX = 3;
 
-        private static List<string> supportedVideoExtensions = new List<string>() { ".mp4", ".webm", ".mkv", ".avi", ".m2ts" };
+        private static readonly List<string> supportedVideoExtensions = new List<string>() { ".mp4", ".webm", ".mkv", ".avi", ".m2ts" };
 
         /// <summary>
         /// Load all themes from local Themes subfolder and from embedded resources.
@@ -49,20 +49,27 @@ namespace ModAssistant
                 string location = $"Themes/{localTheme}.xaml";
                 Uri local = new Uri(location, UriKind.Relative);
 
-                ResourceDictionary localDictionary = new ResourceDictionary();
-                localDictionary.Source = local;
+                ResourceDictionary localDictionary = new ResourceDictionary
+                {
+                    Source = local
+                };
 
                 /*
                  * Load any Waifus that come with these built-in themes, too.
                  * The format must be: Background.png and Sidebar.png as a subfolder with the same name as the theme name.
                  * For example: "Themes/Dark/Background.png", or "Themes/Ugly Kulu-Ya-Ku/Sidebar.png"
                  */
-                Waifus waifus = new Waifus();
-                waifus.Background = GetImageFromEmbeddedResources(localTheme, "Background");
-                waifus.Sidebar = GetImageFromEmbeddedResources(localTheme, "Sidebar");
+                Waifus waifus = new Waifus
+                {
+                    Background = GetImageFromEmbeddedResources(localTheme, "Background"),
+                    Sidebar = GetImageFromEmbeddedResources(localTheme, "Sidebar")
+                };
 
-                Theme theme = new Theme(localTheme, localDictionary);
-                theme.Waifus = waifus;
+                Theme theme = new Theme(localTheme, localDictionary)
+                {
+                    Waifus = waifus
+                };
+
                 loadedThemes.Add(localTheme, theme);
             }
 
@@ -112,22 +119,22 @@ namespace ModAssistant
             {
                 try
                 {
-                    Themes.ApplyWindowsTheme();
+                    ApplyWindowsTheme();
                 }
                 catch
                 {
-                    Themes.ApplyTheme("Light", false);
+                    ApplyTheme("Light", false);
                 }
                 return;
             }
 
             try
             {
-                Themes.ApplyTheme(savedTheme, false);
+                ApplyTheme(savedTheme, false);
             }
             catch (ArgumentException)
             {
-                Themes.ApplyWindowsTheme();
+                ApplyWindowsTheme();
                 MainWindow.Instance.MainText = (string)Application.Current.FindResource("Themes:ThemeNotFound");
             }
         }
@@ -250,8 +257,10 @@ namespace ModAssistant
         /// <returns></returns>
         private static Theme LoadTheme(string directory, string name)
         {
-            Theme theme = new Theme(name, null);
-            theme.Waifus = new Waifus();
+            Theme theme = new Theme(name, null)
+            {
+                Waifus = new Waifus()
+            };
 
             foreach (string file in Directory.EnumerateFiles(directory).OrderBy(x => x))
             {
@@ -275,8 +284,11 @@ namespace ModAssistant
                     try
                     {
                         Uri resourceSource = new Uri(info.FullName);
-                        ResourceDictionary dictionary = new ResourceDictionary();
-                        dictionary.Source = resourceSource;
+                        ResourceDictionary dictionary = new ResourceDictionary
+                        {
+                            Source = resourceSource
+                        };
+
                         theme.ThemeDictionary = dictionary;
                     }
                     catch (Exception ex)
@@ -405,8 +417,10 @@ namespace ModAssistant
                 }
             }
 
-            Theme theme = new Theme(name, dictionary);
-            theme.Waifus = waifus;
+            Theme theme = new Theme(name, dictionary)
+            {
+                Waifus = waifus
+            };
 
             return theme;
         }

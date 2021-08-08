@@ -3,18 +3,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:ModAssistant"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-    <sys:String x:Key="ResourceDictionaryName">i18n:en-US</sys:String>
+    <sys:String x:Key="ResourceDictionaryName">i18n:nl-NL</sys:String>
 
     <!-- App -->
-    <sys:String x:Key="App:InstallDirDialog:Title">Beat Saber installatie map niet gevonden!</sys:String>
-    <sys:String x:Key="App:InstallDirDialog:OkCancel">Klik OK om opnieuw te proberen, of Annuleren om de applicatie af te sluiten.</sys:String>
+    <sys:String x:Key="App:InstallDirDialog:Title">Beat Saber installatiemap niet gevonden!</sys:String>
+    <sys:String x:Key="App:InstallDirDialog:OkCancel">Klik OK om het opnieuw te proberen of Annuleren om de toepassing af te sluiten.</sys:String>
     <sys:String x:Key="App:InvalidArgument">Ongeldig argument! '{0}' heeft een optie nodig.</sys:String>
     <sys:String x:Key="App:UnrecognizedArgument">Niet herkend argument. Mod Assistant sluit af.</sys:String>
     <sys:String x:Key="App:UnhandledException">Een onverwachte foutcode is zojuist opgetreden</sys:String>
     <sys:String x:Key="App:Exception">Foutcode</sys:String>
 
     <!-- Main Window -->
-    <sys:String x:Key="MainWindow:WindowTitle">ModAssistant</sys:String>
+    <sys:String x:Key="MainWindow:WindowTitle">Mod Assistant</sys:String>
     <sys:String x:Key="MainWindow:IntroButton">Introductie</sys:String>
     <sys:String x:Key="MainWindow:ModsButton">Mods</sys:String>
     <sys:String x:Key="MainWindow:AboutButton">Over</sys:String>
@@ -35,13 +35,13 @@
     <!-- Intro Page -->
     <sys:String x:Key="Intro:Title">Introductie</sys:String>
     <sys:String x:Key="Intro:PageTitle">Welkom bij Mod Assistant</sys:String>
-    <sys:String x:Key="Intro:Terms:Header">Lees deze pagina alstublieft volledig en aandachtig</sys:String>
+    <sys:String x:Key="Intro:Terms:Header">Lees deze pagina alstublieft volledig en aandachtig door</sys:String>
     <Span x:Key="Intro:Terms:Line1">
-        Door het gebruiken van dit programma verklaar ik de volgende voorwaarden te hebben gelezen en hier mee akkoord te gaan:
+        Door het gebruiken van dit programma verklaar ik de volgende voorwaarden te hebben gelezen en hiermee akkoord te gaan:
     </Span>
     <Span x:Key="Intro:Terms:Line2">
         Beat Saber
-        Ondersteund mods <Bold>niet</Bold> van zichzelf, dit betekent dat:
+        Heeft <Bold>geen</Bold> ingebouwde ondersteuning voor mods, dit betekent dat:
     </Span>
     <Span x:Key="Intro:Terms:Term1">
         Mods
@@ -57,7 +57,7 @@
         <Bold>vrije tijd.</Bold> Wees alstublieft geduldig en begripvol.
     </Span>
     <Span x:Key="Intro:ReviewsBeatGamesFault">
-        Laat <Bold>GEEN</Bold> negatieve beoordelingen achter op beat saber omdat mods niet meer werken. Dit is
+        Laat <Bold>GEEN</Bold> negatieve beoordelingen achter op Beat Saber omdat mods niet meer werken. Dit is
         <Bold>niet</Bold> de fout van Beat Games.
         <LineBreak/> Ze proberen niet mods ontoegankelijk te maken.
     </Span>
@@ -71,13 +71,13 @@
         Lees alstublieft de 'Beginners Guide' op de
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
             Wiki
-        </Hyperlink>. (engels)
+        </Hyperlink>. (Engels)
     </Span>
     <sys:String x:Key="Intro:AgreeButton">Accepteer</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">Weiger</sys:String>
-    <sys:String x:Key="Intro:ClosingApp">Sluit applicatie af: U accepteerde de voorwaarden niet.</sys:String>
-    <sys:String x:Key="Intro:VersionDownloadFailed">Kon de versie lijst niet downloaden</sys:String>
-    <sys:String x:Key="Intro:ModsTabDisabled">Mods tabblad uitgeschakeld. Herstart het programma om opnieuw te proberen.</sys:String>
+    <sys:String x:Key="Intro:ClosingApp">Sluit toepassing af: U accepteerde de voorwaarden niet.</sys:String>
+    <sys:String x:Key="Intro:VersionDownloadFailed">Kon de versielijst niet downloaden</sys:String>
+    <sys:String x:Key="Intro:ModsTabDisabled">Mods tabblad uitgeschakeld. Herstart het programma om het opnieuw te proberen.</sys:String>
     <sys:String x:Key="Intro:ModsTabEnabled">U kunt nu het mods tabblad gebruiken!</sys:String>
 
     <!-- Mods Page -->
@@ -88,7 +88,7 @@
     <sys:String x:Key="Mods:Header:Description">Beschrijving</sys:String>
     <sys:String x:Key="Mods:Header:Uninstall">Deïnstalleer</sys:String>
     <sys:String x:Key="Mods:UninstallButton">Deïnstalleer</sys:String>
-    <sys:String x:Key="Mods:LoadFailed">Kon de mod lijst niet laden</sys:String>
+    <sys:String x:Key="Mods:LoadFailed">Kon de modlijst niet laden</sys:String>
     <sys:String x:Key="Mods:CheckingInstalledMods">Geïnstalleerde mods controleren</sys:String>
     <sys:String x:Key="Mods:LoadingMods">Mods Laden</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Klaar met mods laden</sys:String>
@@ -98,11 +98,13 @@
     <sys:String x:Key="Mods:FinishedInstallingMods">Klaar met mods installeren</sys:String>
     <sys:String x:Key="Mods:ModDownloadLinkMissing">Kon de download link voor {0} niet vinden</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Title">{0} deïnstalleren?</sys:String>
-    <sys:String x:Key="Mods:UninstallBox:Body1">Weet u zeker dat u {0} wilt verwijderen?</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Body1">Weet u zeker dat u {0} wil verwijderen?</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Body2">Dit zou uw andere mods niet meer kunnen laten werken</sys:String>
     <sys:String x:Key="Mods:FailedExtract">Kon {0} niet uitpakken, probeer opniew over {1} seconden. ({2}/{3})</sys:String>
-    <sys:String x:Key="Mods:FailedExtractMaxReached">Kon {0} niet uitpakken na maximaal aantal pogingen ({1}), deze word nu overgeslagen. Deze mod werkt misschien niet goed dus ga verder op eigen risico</sys:String>
+    <sys:String x:Key="Mods:FailedExtractMaxReached">Kon {0} niet uitpakken na maximaal aantal pogingen ({1}), deze wordt nu overgeslagen. Deze mod werkt misschien niet goed, dus ga verder op eigen risico</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Zoek...</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">BSIPA deïnstallatie mislukt</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA installatie niet gevonden, deïnstallatie overgeslagen.</sys:String>
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">Over</sys:String>
@@ -110,10 +112,10 @@
     <sys:String x:Key="About:List:Header">Ik ben Assistant, en ik heb Mod Assistant gemaakt om te assisteren met mods, met een aantal principes als basis:</sys:String>
     <sys:String x:Key="About:List:Item1">Eenvoud</sys:String>
     <sys:String x:Key="About:List:Item2">Draagbaarheid</sys:String>
-    <sys:String x:Key="About:List:Item3">Één enkel uitvoerbaar bestand</sys:String>
+    <sys:String x:Key="About:List:Item3">Eén enkel uitvoerbaar bestand</sys:String>
     <sys:String x:Key="About:List:Item4">Verantwoordelijk gebruik</sys:String>
     <Span x:Key="About:SupportAssistant">
-        Als u dit programma nuttig vind en mij graag wilt steunen, ga dan naar mijn
+        Als u dit programma nuttig vindt en mij graag wil steunen, ga dan naar mijn
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.assistant.moe/Donate/">
             donatie pagina
         </Hyperlink>
@@ -126,11 +128,13 @@
     <sys:String x:Key="About:Donate">Doneer</sys:String>
     <sys:String x:Key="About:HeadpatsButton">Aai over je bol</sys:String>
     <sys:String x:Key="About:HugsButton">Knuffels</sys:String>
+    <sys:String x:Key="About:ImageError:Title">{0} Fout</sys:String>
+    <sys:String x:Key="About:ImageError:Message">Het laden van de {0} afbeelding is mislukt!</sys:String>
 
     <!-- Options Page -->
     <sys:String x:Key="Options:Title">Opties</sys:String>
     <sys:String x:Key="Options:PageTitle">Instellingen</sys:String>
-    <sys:String x:Key="Options:InstallFolder">Installatie map</sys:String>
+    <sys:String x:Key="Options:InstallFolder">Installatiemap</sys:String>
     <sys:String x:Key="Options:SelectFolderButton">Selecteer map</sys:String>
     <sys:String x:Key="Options:OpenFolderButton">Open map</sys:String>
     <sys:String x:Key="Options:SaveSelectedMods">Sla geselecteerde mods op</sys:String>
@@ -148,7 +152,7 @@
     <sys:String x:Key="Options:Tools">Hulpmiddelen</sys:String>
     <sys:String x:Key="Options:InstallPlaylist">Installeer afspeellijst</sys:String>
     <sys:String x:Key="Options:InstallingPlaylist">Afspeellijst installeren: {0}</sys:String>
-    <sys:String x:Key="Options:FailedPlaylistSong">Installatie nummer mislukt: {0}</sys:String>
+    <sys:String x:Key="Options:FailedPlaylistSong">Mislukt nummer: {0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0} mislukkingen] Afspeellijst geïnstalleerd: {1}</sys:String>
     <sys:String x:Key="Options:ShowOCIWindow">Toon OneClick Installatie Scherm</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">Ja</sys:String>
@@ -159,23 +163,23 @@
     <sys:String x:Key="Options:OpenAppDataButton">Open AppData</sys:String>
     <sys:String x:Key="Options:UninstallBSIPAButton">Deïnstalleer BSIPA</sys:String>
     <sys:String x:Key="Options:RemoveAllModsButton">Verwijder Alle Mods</sys:String>
-    <sys:String x:Key="Options:ApplicationTheme">Applicatie thema</sys:String>
+    <sys:String x:Key="Options:ApplicationTheme">Toepassingsthema</sys:String>
     <sys:String x:Key="Options:ExportTemplateButton">Exporteer sjabloon</sys:String>
     <sys:String x:Key="Options:UploadingLog">Log aan het uploaden</sys:String>
     <sys:String x:Key="Options:LogUrlCopied">Log URL gekopieerd naar klembord!</sys:String>
     <sys:String x:Key="Options:LogUploadFailed">Log Upload Mislukt</sys:String>
     <sys:String x:Key="Options:LogUploadFailed:Title">Log upload mislukt!</sys:String>
-    <sys:String x:Key="Options:LogUploadFailed:Body">Kon het log bestand niet uploaden naar teknik, probeer alstublieft opnieuw of upload handmatig.</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed:Body">Kon het log bestand niet uploaden naar Teknik, probeer het alstublieft opnieuw of upload het bestand handmatig.</sys:String>
     <sys:String x:Key="Options:GettingModList">Mod Lijst Ophalen</sys:String>
     <sys:String x:Key="Options:FindingBSIPAVersion">BSIPA versie vinden</sys:String>
     <sys:String x:Key="Options:BSIPAUninstalled">BSIPA Gedeïnstalleerd</sys:String>
     <sys:String x:Key="Options:YeetModsBox:Title">Deïnstalleer ALLE mods?</sys:String>
-    <sys:String x:Key="Options:YeetModsBox:RemoveAllMods">Weet u zeker dat u ALLE mods wilt deïnstalleren?</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:RemoveAllMods">Weet u zeker dat u ALLE mods wil deïnstalleren?</sys:String>
     <sys:String x:Key="Options:YeetModsBox:CannotBeUndone">Dit kan niet ongedaan gemaakt worden.</sys:String>
     <sys:String x:Key="Options:AllModsUninstalled">Alle mods gedeïnstalleerd</sys:String>
     <sys:String x:Key="Options:CurrentThemeRemoved">Huidig thema is verwijderd, terugvallen op standaard...</sys:String>
-    <sys:String x:Key="Options:ThemeFolderNotFound">Thema map niet gevonden! probeer het sjabloon te exporteren...</sys:String>
-    <sys:String x:Key="Options:AppDataNotFound">AppData map niet gevonden! probeer uw spel te starten.</sys:String>
+    <sys:String x:Key="Options:ThemeFolderNotFound">Thema map niet gevonden! Probeer het sjabloon te exporteren...</sys:String>
+    <sys:String x:Key="Options:AppDataNotFound">AppData map niet gevonden! Probeer uw spel te starten.</sys:String>
 
     <!-- Loading Page -->
     <sys:String x:Key="Loading:Loading">Mods Laden</sys:String>
@@ -184,9 +188,9 @@
     <sys:String x:Key="Invalid:Title">Ongeldig</sys:String>
     <sys:String x:Key="Invalid:PageTitle">Ongeldige Installatie Gedetecteerd</sys:String>
     <sys:String x:Key="Invalid:PageSubtitle">Uw game installatie is corrupt of ongeldig</sys:String>
-    <sys:String x:Key="Invalid:List:Header">Dit kan gebeuren als u een illegale versie heeft, of een illegale versie over de legitieme versie heeft gekopieerd</sys:String>
+    <sys:String x:Key="Invalid:List:Header">Dit kan gebeuren als u een illegale versie heeft of een illegale versie over de legitieme versie heeft gekopieerd</sys:String>
     <Span x:Key="Invalid:List:Line1">
-        Als uw game versie illegaal is gedownload,
+        Als uw game versie illegaal gedownload is,
         <Bold>koop alstublieft de game
             <Hyperlink NavigateUri="https://beatgames.com/" local:HyperlinkExtensions.IsExternal="True">
                 HIER
@@ -209,22 +213,22 @@
     </Span>
     <sys:String x:Key="Invalid:BoughtGame1">Als u een illegaal gedownloade versie van het spel had, maar nu het spel heeft gekocht</sys:String>
     <sys:String x:Key="Invalid:SelectFolderButton">Selecteer map</sys:String>
-    <sys:String x:Key="Invalid:BoughtGame2">Dan moet u Mod Assistant opnieuw starten na het wisselen naar de legitieme installatie</sys:String>
+    <sys:String x:Key="Invalid:BoughtGame2">Moet u Mod Assistant opnieuw starten na het wisselen naar de legitieme installatie</sys:String>
 
     <!-- OneClick Class -->
-    <sys:String x:Key="OneClick:MapDownloadFailed">Kon de map details niet vinden.</sys:String>
+    <sys:String x:Key="OneClick:MapDownloadFailed">Kon map details niet ophalen.</sys:String>
     <sys:String x:Key="OneClick:SongDownloadFailed">Kon het nummer niet downloaden.</sys:String>
     <sys:String x:Key="OneClick:SongDownload:Failed">Kon het nummer niet downloaden.</sys:String>
     <sys:String x:Key="OneClick:SongDownload:NetworkIssues">Er kunnen problemen zijn met BeatSaver of uw internet verbinding.</sys:String>
     <sys:String x:Key="OneClick:SongDownload:FailedTitle">Kon de ZIP van het nummer niet downloaden</sys:String>
-    <sys:String x:Key="OneClick:InstallDirNotFound">Kon het Beat Saber installatie pad niet vinden</sys:String>
+    <sys:String x:Key="OneClick:InstallDirNotFound">Kon het Beat Saber installatiepad niet vinden.</sys:String>
     <sys:String x:Key="OneClick:InstalledAsset">{0} Geïnstalleerd</sys:String>
-    <sys:String x:Key="OneClick:AssetInstallFailed">Installatie mislukt</sys:String>
+    <sys:String x:Key="OneClick:AssetInstallFailed">Installatie mislukt.</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ Installatie koppeling geregistreerd!</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ Installatie koppeling verwijderd!</sys:String>
-    <sys:String x:Key="OneClick:Installing">{0} word geïnstalleerd</sys:String>
+    <sys:String x:Key="OneClick:Installing">{0} wordt geïnstalleerd</sys:String>
     <sys:String x:Key="OneClick:RatelimitSkip">Maximaal aantal pogingen bereikt: {0} wordt overgeslagen</sys:String>
-    <sys:String x:Key="OneClick:RatelimitHit">Snelheidslimiet bereikt. Gaat verder over {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitHit">Snelheidslimiet bereikt. Hervat over {0}</sys:String>
     <sys:String x:Key="OneClick:Failed">Download mislukt: {0}</sys:String>
     <sys:String x:Key="OneClick:Done">Voltooid</sys:String>
 
@@ -232,18 +236,18 @@
     <sys:String x:Key="Themes:ThemeNotFound">Thema niet gevonden, teruggevallen op standaard thema...</sys:String>
     <sys:String x:Key="Themes:ThemeSet">Thema ingesteld op {0}.</sys:String>
     <sys:String x:Key="Themes:ThemeMissing">{0} bestaat niet.</sys:String>
-    <sys:String x:Key="Themes:SavedTemplateTheme">Thema sjabloon &quot;{0}&quot; opgeslagen in de thema map.</sys:String>
-    <sys:String x:Key="Themes:TemplateThemeExists">Thema sjabloon bestaat al!</sys:String>
-    <sys:String x:Key="Themes:FailedToLoadXaml">.xaml bestand laden voor {0} mislukt: {1}</sys:String>
+    <sys:String x:Key="Themes:SavedTemplateTheme">Themasjabloon &quot;{0}&quot; opgeslagen in de Thema map.</sys:String>
+    <sys:String x:Key="Themes:TemplateThemeExists">Themasjabloon bestaat al!</sys:String>
+    <sys:String x:Key="Themes:FailedToLoadXaml">Laden van .xaml bestand voor {0} mislukt: {1}</sys:String>
 
     <!-- Updater Class -->
-    <sys:String x:Key="Updater:CheckFailed">Kon niet controleren op updates</sys:String>
-    <sys:String x:Key="Updater:DownloadFailed">Kon update niet downloaden</sys:String>
+    <sys:String x:Key="Updater:CheckFailed">Kon niet controleren op updates.</sys:String>
+    <sys:String x:Key="Updater:DownloadFailed">Kon update niet downloaden.</sys:String>
 
     <!-- Utils Class -->
     <sys:String x:Key="Utils:NotificationTitle">Mod Assistant</sys:String>
-    <sys:String x:Key="Utils:NoInstallFolder">Kon uw Beat Saber installatie map niet vinden. Selecteer deze alstublieft handmatig.</sys:String>
-    <sys:String x:Key="Utils:RunAsAdmin">Mod Assistant moet deze taak als administrator uitvoeren. Probeer alstublieft opnieuw.</sys:String>
-    <sys:String x:Key="Utils:InstallDir:DialogTitle">Selecteer uw Beat Saber installatie map</sys:String>
+    <sys:String x:Key="Utils:NoInstallFolder">Kon uw Beat Saber installatiemap niet vinden. Selecteer deze alstublieft handmatig.</sys:String>
+    <sys:String x:Key="Utils:RunAsAdmin">Mod Assistant moet deze taak als administrator uitvoeren. Probeer het alstublieft opnieuw.</sys:String>
+    <sys:String x:Key="Utils:InstallDir:DialogTitle">Selecteer uw Beat Saber installatiemap</sys:String>
     <sys:String x:Key="Utils:CannotOpenFolder">Kan map niet openen: {0}</sys:String>
 </ResourceDictionary>

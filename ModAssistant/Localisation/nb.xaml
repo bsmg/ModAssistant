@@ -1,0 +1,257 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ModAssistant"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="ResourceDictionaryName">i18n:nb-NO</sys:String>
+
+    <!-- App -->
+    <sys:String x:Key="App:InstallDirDialog:Title">Fant ikke installasjonsmappen til Beat Saber!</sys:String>
+    <sys:String x:Key="App:InstallDirDialog:OkCancel">Trykk Ok for å prøve igjen eller Avbryt for å avslutte.</sys:String>
+    <sys:String x:Key="App:InvalidArgument">Feil parameter! '{0}' krever en verdi.</sys:String>
+    <sys:String x:Key="App:UnrecognizedArgument">Ukjent parameter. Lukker Mod Assistant.</sys:String>
+    <sys:String x:Key="App:UnhandledException">Et uhåndtert unntak har oppstått</sys:String>
+    <sys:String x:Key="App:Exception">Unntak</sys:String>
+
+    <!-- Main Window -->
+    <sys:String x:Key="MainWindow:WindowTitle">Mod Assistant</sys:String>
+    <sys:String x:Key="MainWindow:IntroButton">Intro</sys:String>
+    <sys:String x:Key="MainWindow:ModsButton">Mods</sys:String>
+    <sys:String x:Key="MainWindow:AboutButton">Om</sys:String>
+    <sys:String x:Key="MainWindow:OptionsButton">Oppsett</sys:String>
+    <sys:String x:Key="MainWindow:GameVersionLabel">Spillversjon</sys:String>
+    <sys:String x:Key="MainWindow:VersionLabel">Versjon</sys:String>
+    <sys:String x:Key="MainWindow:ModInfoButton">Modinformation</sys:String>
+    <sys:String x:Key="MainWindow:InstallButtonTop">Installer</sys:String>
+    <sys:String x:Key="MainWindow:InstallButtonBottom">eller oppdater</sys:String>
+    <sys:String x:Key="MainWindow:GameVersionLoadFailed">Klarte ikke hente spillversjonen, Mod-fanen er derfor ikke tilgjengelig.</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Title">Ny spillversjon er tilgjengelig!</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Line1">Spillet ser ut til å ha fått en oppdatering.</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Line2">Dobbeltsjekk at rett versjon er valgt nede i venstre hjørnet!</sys:String>
+    <sys:String x:Key="MainWindow:NoModSelected">Ingen mods er valgt!</sys:String>
+    <sys:String x:Key="MainWindow:NoModInfoPage">{0} Denne mod har ingen informasjonsside. </sys:String>
+
+    <!-- Intro Page -->
+    <sys:String x:Key="Intro:Title">Intro</sys:String>
+    <sys:String x:Key="Intro:PageTitle">Velkommen til Mod Assistant</sys:String>
+    <sys:String x:Key="Intro:Terms:Header">Vennligst les hele denne siden nøye.</sys:String>
+    <Span x:Key="Intro:Terms:Line1">
+        Ved å benytte dette programmet bekrefter du at du har lest og godkjent følgende vilkår:
+    </Span>
+    <Span x:Key="Intro:Terms:Line2">
+        Beat Saber
+        har <Bold>ikke</Bold> innebygget støtte for mods.
+        <LineBreak /> Det betyr at:
+    </Span>
+    <Span x:Key="Intro:Terms:Term1">
+        Mods kommer til å
+        <Bold>slutte å fungere</Bold> etter hver oppdatering. Dette er standard og
+        <Bold>ikke</Bold> Beat Games sin feil.
+    </Span>
+    <Span x:Key="Intro:Terms:Term2">
+        Mods
+        kommer til å
+        <Bold>forårsake feil og ytelseproblemer
+        </Bold> . Dette er
+        <Bold>ikke</Bold> Beat Games sin feil.
+    </Span>
+    <Span x:Key="Intro:Terms:Term3">
+        Mods utvikles
+        <Bold>gratis</Bold> av mennesker på deres
+        <Bold>fritid.</Bold> Vennligst ha tålmodighet og vis forståelse for det.
+    </Span>
+    <Span x:Key="Intro:ReviewsBeatGamesFault">
+        <Bold>IKKE SKRIV</Bold> negative anmeldelser på grunn av at mods slutter å fungere. Det er
+        <Bold>ikke</Bold> Beat Games sin feil.
+        <LineBreak/> De prøver ikke å "drepe" mods.
+    </Span>
+    <Span x:Key="Intro:ReviewsRustySpoon">
+        Hvis jeg ser mennesker som skriver negative anmeldelser
+        <Italic>på grunn av</Italic> at mods slutter å fungere, kommer jeg
+        <LineBreak/>
+        <Bold>personlig til å avlive hele moddingvirksomheten med en rusten skje.</Bold>
+    </Span>
+    <Span x:Key="Intro:WikiGuide">
+        Vennligst les guiden på
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
+            Wikisiden
+        </Hyperlink>.
+    </Span>
+    <sys:String x:Key="Intro:AgreeButton">Godkjenner</sys:String>
+    <sys:String x:Key="Intro:DisagreeButton">Nekter</sys:String>
+    <sys:String x:Key="Intro:ClosingApp">Lukker programmet: Du godkjente ikke vilkårene.</sys:String>
+    <sys:String x:Key="Intro:VersionDownloadFailed">Klarte ikke å hente liste med versjoner.</sys:String>
+    <sys:String x:Key="Intro:ModsTabDisabled">Mod-fanen er ikke tilgjengelig. Vennligst start på nytt for å prøve igjen.</sys:String>
+    <sys:String x:Key="Intro:ModsTabEnabled">Du har nå tilgang til Mod-fanen!</sys:String>
+
+    <!-- Mods Page -->
+    <sys:String x:Key="Mods:Title">Mods</sys:String>
+    <sys:String x:Key="Mods:Header:Name">Navn</sys:String>
+    <sys:String x:Key="Mods:Header:Installed">Installert</sys:String>
+    <sys:String x:Key="Mods:Header:Latest">Siste</sys:String>
+    <sys:String x:Key="Mods:Header:Description">Beskrivelse</sys:String>
+    <sys:String x:Key="Mods:Header:Uninstall">Avinstallere</sys:String>
+    <sys:String x:Key="Mods:UninstallButton">Avinstaller</sys:String>
+    <sys:String x:Key="Mods:LoadFailed">Klarte ikke laste mod-listen</sys:String>
+    <sys:String x:Key="Mods:CheckingInstalledMods">Sjekker installerte mods</sys:String>
+    <sys:String x:Key="Mods:LoadingMods">Laster inn Mods</sys:String>
+    <sys:String x:Key="Mods:FinishedLoadingMods">Mods er lastet</sys:String>
+    <sys:String x:Key="Mods:NoMods">Ingen mods er tilgjengelig for denne versjonen av Beat Saber</sys:String>
+    <sys:String x:Key="Mods:InstallingMod">Installerer {0}</sys:String>
+    <sys:String x:Key="Mods:InstalledMod">Installerte {0}</sys:String>
+    <sys:String x:Key="Mods:FinishedInstallingMods">Mods er installert</sys:String>
+    <sys:String x:Key="Mods:ModDownloadLinkMissing">Fant ingen nedlastningslenke for {0}</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Title">Avinstallere {0}?</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Body1">Er du sikker på at du vil avinstallere {0}?</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Body2">Dette kan forårsake at andre mods slutter å fungere</sys:String>
+    <sys:String x:Key="Mods:FailedExtract">Utpakking av {0} feilet, prøver igjen om {1} sekunder. ({2}/{3})</sys:String>
+    <sys:String x:Key="Mods:FailedExtractMaxReached">Utpakking av {0} feilet alle forsøk ({1}), hopper over. Denne moden fungerer muligens ikke, så fortsett på eget ansvar.</sys:String>
+    <sys:String x:Key="Mods:SearchLabel">Søk...</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Klarte ikke avinstallere BSIPA</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">Fant ingen BSIPA-installasjon, hopper over avinstallering.</sys:String>
+
+    <!-- About Page -->
+    <sys:String x:Key="About:Title">Om</sys:String>
+    <sys:String x:Key="About:PageTitle">Om Mod Assistant</sys:String>
+    <sys:String x:Key="About:List:Header">Jeg er Assistant, og jeg lagde Mod Assistant for mod-assistanse med noen grunnleggende prinsipper:</sys:String>
+    <sys:String x:Key="About:List:Item1">Enkelhet</sys:String>
+    <sys:String x:Key="About:List:Item2">Portabilitet</sys:String>
+    <sys:String x:Key="About:List:Item3">En enkeltstående, kjørbar fil</sys:String>
+    <sys:String x:Key="About:List:Item4">Ansvarsfull bruk</sys:String>
+    <Span x:Key="About:SupportAssistant">
+        Om du liker programmet og vil støtte meg, kan du besøke min
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.assistant.moe/Donate/">
+            donasjonsside
+        </Hyperlink>
+        eller min
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/AssistantMoe">
+            Patreon
+        </Hyperlink>
+    </Span>
+    <sys:String x:Key="About:SpecialThanks">Ekstra takk ♥</sys:String>
+    <sys:String x:Key="About:Donate">Donere</sys:String>
+    <sys:String x:Key="About:HeadpatsButton">Klapp på hodet</sys:String>
+    <sys:String x:Key="About:HugsButton">Klem</sys:String>
+    <sys:String x:Key="About:ImageError:Title">{0} Error</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="About:ImageError:Message">Failed to load {0} image!</sys:String> <!-- NEEDS TRANSLATING -->
+
+    <!-- Options Page -->
+    <sys:String x:Key="Options:Title">Innstillinger</sys:String>
+    <sys:String x:Key="Options:PageTitle">Oppsett</sys:String>
+    <sys:String x:Key="Options:InstallFolder">Installationsmappe</sys:String>
+    <sys:String x:Key="Options:SelectFolderButton">Velg mappe</sys:String>
+    <sys:String x:Key="Options:OpenFolderButton">Åpne mappe</sys:String>
+    <sys:String x:Key="Options:SaveSelectedMods">Lagre valgte mods</sys:String>
+    <sys:String x:Key="Options:CheckInstalledMods">Sjekk installerte mods</sys:String>
+    <sys:String x:Key="Options:SelectInstalledMods">Velg installerte mods</sys:String>
+    <sys:String x:Key="Options:ReinstallInstalledMods">Reinstaller installerte mods</sys:String>
+    <sys:String x:Key="Options:EnableOneClickInstalls">Aktiver OneClick™-installasjoner</sys:String>
+    <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
+    <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
+    <sys:String x:Key="Options:Playlists">Spillelister</sys:String>
+    <sys:String x:Key="Options:CloseWindow">Lukk vinduet når det er ferdig</sys:String>
+    <sys:String x:Key="Options:GameType">Spillvariant</sys:String>
+    <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
+    <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
+    <sys:String x:Key="Options:Tools">Verktøy</sys:String>
+    <sys:String x:Key="Options:InstallPlaylist">Installer spilleliste</sys:String>
+    <sys:String x:Key="Options:InstallingPlaylist">Installerer spillelisten: {0}</sys:String>
+    <sys:String x:Key="Options:FailedPlaylistSong">Mislykket låt: {0}</sys:String>
+    <sys:String x:Key="Options:FinishedPlaylist">[{0} feil] Ferdig med å installere spillelister: {1}</sys:String>
+    <sys:String x:Key="Options:ShowOCIWindow">Vis OneClick installasjonsvindu</sys:String>
+    <sys:String x:Key="Options:OCIWindowYes">Ja</sys:String>
+    <sys:String x:Key="Options:OCIWindowClose">Lukk</sys:String>
+    <sys:String x:Key="Options:OCIWindowNo">Nei</sys:String>
+    <sys:String x:Key="Options:Diagnostics">Diagnostikkverktøy</sys:String>
+    <sys:String x:Key="Options:OpenLogsButton">Åpne logg</sys:String>
+    <sys:String x:Key="Options:OpenAppDataButton">Åpne AppData</sys:String>
+    <sys:String x:Key="Options:UninstallBSIPAButton">Avinstallere BSIPA</sys:String>
+    <sys:String x:Key="Options:RemoveAllModsButton">Fjern alle mods</sys:String>
+    <sys:String x:Key="Options:ApplicationTheme">Applikasjonstema</sys:String>
+    <sys:String x:Key="Options:ExportTemplateButton">Eksporter mal</sys:String>
+    <sys:String x:Key="Options:UploadingLog">Laster opp logg</sys:String>
+    <sys:String x:Key="Options:LogUrlCopied">Logg-URL ble kopiert!</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed">Opplasting av logg feilet</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed:Title">Opplasting av logg feilet!</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed:Body">Klarte ikke laste opp loggen til Teknik, prøv igjen eller last den opp manuelt</sys:String>
+    <sys:String x:Key="Options:GettingModList">Henter mod-liste</sys:String>
+    <sys:String x:Key="Options:FindingBSIPAVersion">Leter etter BSIPA-versjon</sys:String>
+    <sys:String x:Key="Options:BSIPAUninstalled">BSIPA ble avinstallert</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:Title">Avinstallere alle mods?</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:RemoveAllMods">Er du sikker på at du vil avinstallere alle mods?</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:CannotBeUndone">Du kan ikke angre.</sys:String>
+    <sys:String x:Key="Options:AllModsUninstalled">Alle mods er nå avinstallert.</sys:String>
+    <sys:String x:Key="Options:CurrentThemeRemoved">Temaet du benytter har blitt slettet, bytter til standardtema...</sys:String>
+    <sys:String x:Key="Options:ThemeFolderNotFound">Fant ikke temamappen! Prøv å eksportere malen...</sys:String>
+    <sys:String x:Key="Options:AppDataNotFound">Fant ikke AppData-mappen! Prøv å starte spillet.</sys:String>
+
+    <!-- Loading Page -->
+    <sys:String x:Key="Loading:Loading">Laster mods</sys:String>
+
+    <!-- Invalid Page -->
+    <sys:String x:Key="Invalid:Title">Ugyldig</sys:String>
+    <sys:String x:Key="Invalid:PageTitle">Fant en ugyldig installasjon</sys:String>
+    <sys:String x:Key="Invalid:PageSubtitle">Spillinstallasjonen din er brukket eller fungerer ikke av andre årsaker.</sys:String>
+    <sys:String x:Key="Invalid:List:Header">Dette kan skje dersom du har en piratversjon av spillet eller kopiert en priatversjon over din gyldige versjon av spillet.</sys:String>
+    <Span x:Key="Invalid:List:Line1">
+        Hvis du har en piratversjon,
+        <Bold>vennligst kjøp spillet
+            <Hyperlink NavigateUri="https://beatgames.com/" local:HyperlinkExtensions.IsExternal="True">
+                HER
+            </Hyperlink>
+        </Bold>.
+    </Span>
+    <Span x:Key="Invalid:List:Line2">
+        Om din kopi av spillet
+        <Bold>ikke</Bold> er piratkopiert, vennligst
+        <Hyperlink NavigateUri="https://bsmg.wiki/support#clean-installation" local:HyperlinkExtensions.IsExternal="True">
+            installer spillet på nytt
+        </Hyperlink>.
+    </Span>
+    <Span x:Key="Invalid:List:Line3">
+        Hvis ingenting hjelper kan du be om hjelp i
+        <Span Foreground="Blue">#pc-help</Span> -kanalen i
+        <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
+            BSMG
+        </Hyperlink>.
+    </Span>
+    <sys:String x:Key="Invalid:BoughtGame1">Hvis du har spilt med en piratversjon før og kjøpt spillet i senere tid</sys:String>
+    <sys:String x:Key="Invalid:SelectFolderButton">Velg mappe</sys:String>
+    <sys:String x:Key="Invalid:BoughtGame2">Du må starte Mod Assistant på nytt etter du har byttet til en legitim installasjon</sys:String>
+
+    <!-- OneClick Class -->
+    <sys:String x:Key="OneClick:MapDownloadFailed">Kunne ikke laste kartdetaljer.</sys:String>
+    <sys:String x:Key="OneClick:SongDownloadFailed">Kunne ikke laste ned låta.</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:Failed">Kunne ikke laste ned låta.</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:NetworkIssues">Det kan være problemer med BeatSaver eller din internettoppkobling.</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:FailedTitle">Klarte ikke laste ned ZIP-filen til låta.</sys:String>
+    <sys:String x:Key="OneClick:InstallDirNotFound">Fant ikke installasjonsmappen til Beat Saber.</sys:String>
+    <sys:String x:Key="OneClick:InstalledAsset">Installerte: {0}</sys:String>
+    <sys:String x:Key="OneClick:AssetInstallFailed">Klarte ikke installere.</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™-installeringshåndterer ble registrert!</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™-installeringshåndterer ble avregistrert!</sys:String>
+    <sys:String x:Key="OneClick:Installing">Installerer: {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitSkip">Maks antall forsøk oppbrukt: hopper over {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitHit">For mange forsøk på kort tid. Fortsetter om {0}</sys:String>
+    <sys:String x:Key="OneClick:Failed">Nedlasting mislykkes: {0}</sys:String>
+    <sys:String x:Key="OneClick:Done">Ferdig</sys:String>
+
+    <!-- Themes Class -->
+    <sys:String x:Key="Themes:ThemeNotFound">Fant ikke temaet, går tilbake til standardtema...</sys:String>
+    <sys:String x:Key="Themes:ThemeSet">Tema ble installert på {0}.</sys:String>
+    <sys:String x:Key="Themes:ThemeMissing">{0} eksisterer ikke.</sys:String>
+    <sys:String x:Key="Themes:SavedTemplateTheme">Temamal &quot;{0}&quot; ble lagret i temamappen.</sys:String>
+    <sys:String x:Key="Themes:TemplateThemeExists">Temamalen finnes allerede!</sys:String>
+    <sys:String x:Key="Themes:FailedToLoadXaml">Klarte ikke laste .xaml-filen for tema {0}: {1}</sys:String>
+
+    <!-- Updater Class -->
+    <sys:String x:Key="Updater:CheckFailed">Klarte ikke søke etter oppdateringer.</sys:String>
+    <sys:String x:Key="Updater:DownloadFailed">Klarte ikke laste ned oppdateringen.</sys:String>
+
+    <!-- Utils Class -->
+    <sys:String x:Key="Utils:NotificationTitle">Mod Assistant</sys:String>
+    <sys:String x:Key="Utils:NoInstallFolder">Fant ikke installasjonsmappen til Beat Saber. Velg den manuelt.</sys:String>
+    <sys:String x:Key="Utils:RunAsAdmin">Mod Assistant må kjøres med adminrettigheter. Prøv igjen.</sys:String>
+    <sys:String x:Key="Utils:InstallDir:DialogTitle">Velg installasjonsmappen til Beat Saber</sys:String>
+    <sys:String x:Key="Utils:CannotOpenFolder">Klarte ikke åpne mappen: {0}</sys:String>
+</ResourceDictionary>

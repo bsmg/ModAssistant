@@ -9,10 +9,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Forms;
-using System.Windows.Navigation;
-using static ModAssistant.Http;
-using ModAssistant.Libs;
 using System.Windows.Media.Animation;
+using System.Windows.Navigation;
+using ModAssistant.Libs;
+using static ModAssistant.Http;
 using TextBox = System.Windows.Controls.TextBox;
 
 namespace ModAssistant.Pages
@@ -24,10 +24,11 @@ namespace ModAssistant.Pages
     {
         public static Mods Instance = new Mods();
 
-        public List<string> DefaultMods = new List<string>() { "SongCore", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "PlaylistCore", "Survey" };
+        public List<string> DefaultMods = new List<string>() { "SongCore", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "PlaylistManager", "ModelDownloader" };
         public Mod[] ModsList;
         public Mod[] AllModsList;
         public static List<Mod> InstalledMods = new List<Mod>();
+        public static List<Mod> LibsToMatch = new List<Mod>();
         public List<string> CategoryNames = new List<string>();
         public CollectionView view;
         public bool PendingChanges;
@@ -51,12 +52,12 @@ namespace ModAssistant.Pages
 
         public void RefreshColumns()
         {
-            if (MainWindow.Instance.Main.Content != Mods.Instance) return;
+            if (MainWindow.Instance.Main.Content != Instance) return;
             double viewWidth = ModsListView.ActualWidth;
             double totalSize = 0;
             GridViewColumn description = null;
-            GridView grid = ModsListView.View as GridView;
-            if (grid != null)
+
+            if (ModsListView.View is GridView grid)
             {
                 foreach (var column in grid.Columns)
                 {
@@ -151,12 +152,12 @@ namespace ModAssistant.Pages
         public async Task CheckInstalledMods()
         {
             await GetAllMods();
-            List<string> empty = new List<string>();
+
             GetBSIPAVersion();
-            CheckInstallDir("IPA/Pending/Plugins", empty);
-            CheckInstallDir("IPA/Pending/Libs", empty);
-            CheckInstallDir("Plugins", empty);
-            CheckInstallDir("Libs", empty);
+            CheckInstallDir("IPA/Pending/Plugins");
+            CheckInstallDir("IPA/Pending/Libs");
+            CheckInstallDir("Plugins");
+            CheckInstallDir("Libs");
         }
 
         public async Task GetAllMods()
@@ -166,7 +167,7 @@ namespace ModAssistant.Pages
             AllModsList = JsonSerializer.Deserialize<Mod[]>(body);
         }
 
-        private void CheckInstallDir(string directory, List<string> blacklist)
+        private void CheckInstallDir(string directory)
         {
             if (!Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, directory)))
             {
@@ -175,12 +176,28 @@ namespace ModAssistant.Pages
 
             foreach (string file in Directory.GetFileSystemEntries(Path.Combine(App.BeatSaberInstallDirectory, directory)))
             {
-                if (File.Exists(file) && Path.GetExtension(file) == ".dll" || Path.GetExtension(file) == ".manifest")
+                string fileExtension = Path.GetExtension(file);
+
+                if (File.Exists(file) && (fileExtension == ".dll" || fileExtension == ".manifest"))
                 {
                     Mod mod = GetModFromHash(Utils.CalculateMD5(file));
                     if (mod != null)
                     {
-                        AddDetectedMod(mod);
+                        if (fileExtension == ".manifest")
+                        {
+                            LibsToMatch.Add(mod);
+                        }
+                        else
+                        {
+                            if (directory.Contains("Libs"))
+                            {
+                                if (!LibsToMatch.Contains(mod)) continue;
+
+                                LibsToMatch.Remove(mod);
+                            }
+
+                            AddDetectedMod(mod);
+                        }
                     }
                 }
             }
@@ -194,7 +211,7 @@ namespace ModAssistant.Pages
             string InjectorHash = Utils.CalculateMD5(InjectorPath);
             foreach (Mod mod in AllModsList)
             {
-                if (mod.name.ToLower() == "bsipa")
+                if (mod.name.ToLowerInvariant() == "bsipa")
                 {
                     foreach (Mod.DownloadLink download in mod.downloads)
                     {
@@ -226,7 +243,7 @@ namespace ModAssistant.Pages
         {
             foreach (Mod mod in AllModsList)
             {
-                if (mod.name.ToLower() != "bsipa" && mod.status != "declined")
+                if (mod.name.ToLowerInvariant() != "bsipa" && mod.status != "declined")
                 {
                     foreach (Mod.DownloadLink download in mod.downloads)
                     {
@@ -285,8 +302,17 @@ namespace ModAssistant.Pages
                 {
                     if (mod.name == promo.ModName)
                     {
-                        ListItem.PromotionText = promo.Text;
-                        ListItem.PromotionLink = promo.Link;
+                        ListItem.PromotionTexts = new string[promo.Links.Count];
+                        ListItem.PromotionLinks = new string[promo.Links.Count];
+                        ListItem.PromotionTextAfterLinks = new string[promo.Links.Count];
+
+                        for (int i = 0; i < promo.Links.Count; ++i)
+                        {
+                            PromotionLink link = promo.Links[i];
+                            ListItem.PromotionTexts[i] = link.Text;
+                            ListItem.PromotionLinks[i] = link.Link;
+                            ListItem.PromotionTextAfterLinks[i] = link.TextAfterLink;
+                        }
                     }
                 }
 
@@ -325,7 +351,7 @@ namespace ModAssistant.Pages
                 // Ignore mods that are on current version if we aren't reinstalling mods
                 if (mod.ListItem.GetVersionComparison == 0 && !App.ReinstallInstalledMods) continue;
 
-                if (mod.name.ToLower() == "bsipa")
+                if (mod.name.ToLowerInvariant() == "bsipa")
                 {
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
                     await Task.Run(async () => await InstallMod(mod, installDirectory));
@@ -342,7 +368,7 @@ namespace ModAssistant.Pages
                         );
                     }
 
-                    Pages.Options.Instance.YeetBSIPA.IsEnabled = true;
+                    Options.Instance.YeetBSIPA.IsEnabled = true;
                 }
                 else if (mod.ListItem.IsSelected)
                 {
@@ -359,16 +385,19 @@ namespace ModAssistant.Pages
 
         private async Task InstallMod(Mod mod, string directory)
         {
+            int filesCount = 0;
             string downloadLink = null;
 
             foreach (Mod.DownloadLink link in mod.downloads)
             {
+                filesCount = link.hashMd5.Length;
+
                 if (link.type == "universal")
                 {
                     downloadLink = link.url;
                     break;
                 }
-                else if (link.type.ToLower() == App.BeatSaberInstallType.ToLower())
+                else if (link.type.ToLowerInvariant() == App.BeatSaberInstallType.ToLowerInvariant())
                 {
                     downloadLink = link.url;
                     break;
@@ -381,20 +410,48 @@ namespace ModAssistant.Pages
                 return;
             }
 
-            using (Stream stream = await DownloadMod(Utils.Constants.BeatModsURL + downloadLink))
-            using (ZipArchive archive = new ZipArchive(stream))
+            while (true)
             {
-                foreach (ZipArchiveEntry file in archive.Entries)
+                List<ZipArchiveEntry> files = new List<ZipArchiveEntry>(filesCount);
+
+                using (Stream stream = await DownloadMod(Utils.Constants.BeatModsURL + downloadLink))
+                using (ZipArchive archive = new ZipArchive(stream))
                 {
-                    string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
-                    if (!Directory.Exists(fileDirectory))
+                    foreach (ZipArchiveEntry file in archive.Entries)
                     {
-                        Directory.CreateDirectory(fileDirectory);
+                        string fileDirectory = Path.GetDirectoryName(Path.Combine(directory, file.FullName));
+                        if (!Directory.Exists(fileDirectory))
+                        {
+                            Directory.CreateDirectory(fileDirectory);
+                        }
+
+                        if (!string.IsNullOrEmpty(file.Name))
+                        {
+                            foreach (Mod.DownloadLink download in mod.downloads)
+                            {
+                                foreach (Mod.FileHashes fileHash in download.hashMd5)
+                                {
+                                    using (Stream fileStream = file.Open())
+                                    {
+                                        if (fileHash.hash == Utils.CalculateMD5FromStream(fileStream))
+                                        {
+                                            files.Add(file);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
 
-                    if (!string.IsNullOrEmpty(file.Name))
+                    if (files.Count == filesCount)
                     {
-                        await ExtractFile(file, Path.Combine(directory, file.FullName), 3.0, mod.name, 10);
+                        foreach (ZipArchiveEntry file in files)
+                        {
+                            await ExtractFile(file, Path.Combine(directory, file.FullName), 3.0, mod.name, 10);
+                        }
+
+                        break;
                     }
                 }
             }
@@ -554,7 +611,8 @@ namespace ModAssistant.Pages
                     if (SemVersion.TryParse(value, out SemVersion tempInstalledVersion))
                     {
                         _installedVersion = tempInstalledVersion;
-                    } else
+                    }
+                    else
                     {
                         _installedVersion = null;
                     }
@@ -608,13 +666,14 @@ namespace ModAssistant.Pages
                 }
             }
 
-            public string PromotionText { get; set; }
-            public string PromotionLink { get; set; }
+            public string[] PromotionTexts { get; set; }
+            public string[] PromotionLinks { get; set; }
+            public string[] PromotionTextAfterLinks { get; set; }
             public string PromotionMargin
             {
                 get
                 {
-                    if (string.IsNullOrEmpty(PromotionText)) return "0";
+                    if (PromotionTexts == null || string.IsNullOrEmpty(PromotionTexts[0])) return "-15,0,0,0";
                     return "0,0,5,0";
                 }
             }
@@ -622,7 +681,7 @@ namespace ModAssistant.Pages
 
         private void ModsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if ((Mods.ModListItem)Mods.Instance.ModsListView.SelectedItem == null)
+            if ((Mods.ModListItem)Instance.ModsListView.SelectedItem == null)
             {
                 MainWindow.Instance.InfoButton.IsEnabled = false;
             }
@@ -647,7 +706,7 @@ namespace ModAssistant.Pages
                 if (File.Exists(Path.Combine(App.BeatSaberInstallDirectory, file)))
                     File.Delete(Path.Combine(App.BeatSaberInstallDirectory, file));
             }
-            Pages.Options.Instance.YeetBSIPA.IsEnabled = false;
+            Options.Instance.YeetBSIPA.IsEnabled = false;
         }
 
         private void Uninstall_Click(object sender, RoutedEventArgs e)
@@ -687,14 +746,29 @@ namespace ModAssistant.Pages
             Mod.DownloadLink links = null;
             foreach (Mod.DownloadLink link in mod.downloads)
             {
-                if (link.type.ToLower() == "universal" || link.type.ToLower() == App.BeatSaberInstallType.ToLower())
+                if (link.type.ToLowerInvariant() == "universal" || link.type.ToLowerInvariant() == App.BeatSaberInstallType.ToLowerInvariant())
                 {
                     links = link;
                     break;
                 }
             }
-            if (mod.name.ToLower() == "bsipa")
-                UninstallBSIPA(links);
+            if (mod.name.ToLowerInvariant() == "bsipa")
+            {
+                var hasIPAExe = File.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA.exe"));
+                var hasIPADir = Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA"));
+
+                if (hasIPADir && hasIPAExe)
+                {
+                    UninstallBSIPA(links);
+                }
+                else
+                {
+                    var title = (string)FindResource("Mods:UninstallBSIPANotFound:Title");
+                    var body = (string)FindResource("Mods:UninstallBSIPANotFound:Body");
+
+                    System.Windows.Forms.MessageBox.Show(body, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
             foreach (Mod.FileHashes files in links.hashMd5)
             {
                 if (File.Exists(Path.Combine(App.BeatSaberInstallDirectory, files.file)))
@@ -717,12 +791,11 @@ namespace ModAssistant.Pages
 
         private void CopyText(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            var textBlock = sender as TextBlock;
-            if (textBlock == null) { return; }
+            if (!(sender is TextBlock textBlock)) return;
             var text = textBlock.Text;
 
             // Ensure there's text to be copied
-            if (string.IsNullOrWhiteSpace(text)) { return; }
+            if (string.IsNullOrWhiteSpace(text)) return;
 
             Utils.SetClipboard(text);
         }
@@ -760,10 +833,10 @@ namespace ModAssistant.Pages
         private bool SearchFilter(object mod)
         {
             ModListItem item = mod as ModListItem;
-            if (item.ModName.ToLower().Contains(SearchBar.Text.ToLower())) return true;
-            if (item.ModDescription.ToLower().Contains(SearchBar.Text.ToLower())) return true;
-            if (item.ModName.ToLower().Replace(" ", string.Empty).Contains(SearchBar.Text.ToLower().Replace(" ", string.Empty))) return true;
-            if (item.ModDescription.ToLower().Replace(" ", string.Empty).Contains(SearchBar.Text.ToLower().Replace(" ", string.Empty))) return true;
+            if (item.ModName.ToLowerInvariant().Contains(SearchBar.Text.ToLowerInvariant())) return true;
+            if (item.ModDescription.ToLowerInvariant().Contains(SearchBar.Text.ToLowerInvariant())) return true;
+            if (item.ModName.ToLowerInvariant().Replace(" ", string.Empty).Contains(SearchBar.Text.ToLowerInvariant().Replace(" ", string.Empty))) return true;
+            if (item.ModDescription.ToLowerInvariant().Replace(" ", string.Empty).Contains(SearchBar.Text.ToLowerInvariant().Replace(" ", string.Empty))) return true;
             return false;
         }
 
@@ -771,14 +844,14 @@ namespace ModAssistant.Pages
         {
             target.Height = oldHeight;
             DoubleAnimation animation = new DoubleAnimation(newHeight, duration);
-            target.BeginAnimation(TextBlock.HeightProperty, animation);
+            target.BeginAnimation(HeightProperty, animation);
         }
 
         private void Animate(TextBox target, double oldHeight, double newHeight, TimeSpan duration)
         {
             target.Height = oldHeight;
             DoubleAnimation animation = new DoubleAnimation(newHeight, duration);
-            target.BeginAnimation(TextBox.HeightProperty, animation);
+            target.BeginAnimation(HeightProperty, animation);
         }
     }
 }

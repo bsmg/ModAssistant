@@ -1,6 +1,6 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- ModAssistant Light Pink Theme by Caeden117 -->
+    <!-- Mod Assistant Light Pink Theme by Caeden117 -->
 
     <!-- Default text -->
     <SolidColorBrush x:Key="TextColor" Color="#101010" />
