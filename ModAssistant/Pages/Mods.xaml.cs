@@ -316,7 +316,7 @@ namespace ModAssistant.Pages
 
                 foreach (Promotion promo in Promotions.List)
                 {
-                    if (if promo.active && mod.name == promo.ModName)
+                    if (promo.Active && mod.name == promo.ModName)
                     {
                         ListItem.PromotionTexts = new string[promo.Links.Count];
                         ListItem.PromotionLinks = new string[promo.Links.Count];
