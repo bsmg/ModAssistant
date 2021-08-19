@@ -23,7 +23,7 @@ namespace ModAssistant
     {
         public string ModName;
         public List<PromotionLink> Links;
-        public boolean Active;
+        public bool Active;
     }
 
     class PromotionLink
