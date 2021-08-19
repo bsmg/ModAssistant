@@ -298,9 +298,9 @@ namespace ModAssistant.Pages
                     Category = mod.category
                 };
 
-                foreach (Promotion promo in Promotions.ActivePromotions)
+                foreach (Promotion promo in Promotions.List)
                 {
-                    if (mod.name == promo.ModName)
+                    if (if promo.active && mod.name == promo.ModName)
                     {
                         ListItem.PromotionTexts = new string[promo.Links.Count];
                         ListItem.PromotionLinks = new string[promo.Links.Count];
