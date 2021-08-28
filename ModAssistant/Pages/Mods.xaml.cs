@@ -414,9 +414,9 @@ namespace ModAssistant.Pages
                     Category = getCategoryTranslation(mod.category)
                 };
 
-                foreach (Promotion promo in Promotions.ActivePromotions)
+                foreach (Promotion promo in Promotions.List)
                 {
-                    if (mod.name == promo.ModName)
+                    if (promo.Active && mod.name == promo.ModName)
                     {
                         ListItem.PromotionTexts = new string[promo.Links.Count];
                         ListItem.PromotionLinks = new string[promo.Links.Count];
@@ -733,7 +733,8 @@ namespace ModAssistant.Pages
 
         private void ModCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            Mod mod = ((sender as System.Windows.Controls.CheckBox).Tag as Mod);
+
+            Mod mod = (sender as System.Windows.Controls.CheckBox).Tag as Mod;
             if (Properties.Settings.Default.StoreType == "Netvios" && mod.name.ToLowerInvariant() == "songcore") {
                 string notice = "";
                 string caption = "";
@@ -755,18 +756,20 @@ namespace ModAssistant.Pages
             App.SavedMods.Add(mod.name);
             Properties.Settings.Default.SavedMods = string.Join(",", App.SavedMods.ToArray());
             Properties.Settings.Default.Save();
-            RefreshModsList();
+
+            // RefreshModsList();
         }
 
         private void ModCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            Mod mod = ((sender as System.Windows.Controls.CheckBox).Tag as Mod);
+            Mod mod = (sender as System.Windows.Controls.CheckBox).Tag as Mod;
             mod.ListItem.IsSelected = false;
             UnresolveDependencies(mod);
             App.SavedMods.Remove(mod.name);
             Properties.Settings.Default.SavedMods = string.Join(",", App.SavedMods.ToArray());
             Properties.Settings.Default.Save();
-            RefreshModsList();
+
+            // RefreshModsList();
         }
 
         public class Category
