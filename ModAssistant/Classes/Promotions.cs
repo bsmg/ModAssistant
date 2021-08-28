@@ -4,7 +4,7 @@ namespace ModAssistant
 {
     class Promotions
     {
-        public static Promotion[] ActivePromotions =
+        public static Promotion[] List =
         {
             new Promotion
             {
@@ -14,6 +14,7 @@ namespace ModAssistant
                     new PromotionLink{Text = "iOS", Link = "https://bit.ly/yuriphone", TextAfterLink = " and " },
                     new PromotionLink{Text = "Android", Link = "https://play.google.com/store/apps/details?id=com.yur", TextAfterLink = "!" }
                 },
+                Active = false
             }
         };
     }
@@ -22,6 +23,7 @@ namespace ModAssistant
     {
         public string ModName;
         public List<PromotionLink> Links;
+        public bool Active;
     }
 
     class PromotionLink
