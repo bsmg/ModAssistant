@@ -31,8 +31,8 @@ namespace ModAssistant.Pages
         public static List<Mod> InstalledMods = new List<Mod>();
         public static List<Mod> LibsToMatch = new List<Mod>();
         public List<string> CategoryNames = new List<string>();
-        public CollectionView view;
         public static List<string> MissingOldMods = new List<string>();
+        public CollectionView view;
         public bool PendingChanges;
 
         private readonly SemaphoreSlim _modsLoadSem = new SemaphoreSlim(1, 1);
@@ -316,7 +316,6 @@ namespace ModAssistant.Pages
 
         private void AddDetectedMod(Mod mod)
         {
-            Console.WriteLine(mod.name);
             if (!InstalledMods.Contains(mod))
             {
                 InstalledMods.Add(mod);
