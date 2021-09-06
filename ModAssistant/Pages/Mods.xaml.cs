@@ -131,15 +131,23 @@ namespace ModAssistant.Pages
                     !DirectoryContainsMods(Path.Combine(App.BeatSaberInstallDirectory, "Plugins")) &&
                     !DirectoryContainsMods(Path.Combine(App.BeatSaberInstallDirectory, "IPA/Pending/Plugins")))
                 {
-                    var reinstallMods = System.Windows.Forms.MessageBox.Show("The game has updated since you last played, would you like to automatically re-select the mods you had installed previously?", "Reinstall mods?", MessageBoxButtons.OKCancel) == DialogResult.OK;
+                    string body = (string)FindResource("Mods:GameUpdatedPrompt:OkCancel");
+                    string title = (string)FindResource("Mods:GameUpdatedPrompt:Title");
+
+                    var reinstallMods = System.Windows.Forms.MessageBox.Show(body, title, MessageBoxButtons.OKCancel) == DialogResult.OK;
                     if (reinstallMods) {
-                        MainWindow.Instance.MainText = $"Checking mods for previous version of the game...";
+                        MainWindow.Instance.MainText = $"{FindResource("Mods:CheckingPreviousMods")}...";
                         await Task.Run(async () => await SelectPreviousMods(lastModdedVersion));
                         InstalledColumn.Width = double.NaN;
                         UninstallColumn.Width = 70;
                         DescriptionColumn.Width = 750;
-                        
-                        var modsDialog2 = System.Windows.Forms.MessageBox.Show($"The following mods could not be found and weren't selected:\n{string.Join(",\n", MissingOldMods)}\n\nThese mods might not be updated yet.", "Reinstall mods?", MessageBoxButtons.OKCancel) == DialogResult.OK;
+                        if (MissingOldMods.Count > 0) {
+                            string notSelectedTitle = string.Format((string)FindResource("Mods:FailedToSelect:Title"), MissingOldMods.Count);
+                            string notSelectedBody1 = (string)FindResource("Mods:FailedToSelect:Body1");
+                            string notSelectedBody2 = (string)FindResource("Mods:FailedToSelect:Body2");
+
+                            System.Windows.Forms.MessageBox.Show($"{notSelectedBody1}\n{string.Join(",\n", MissingOldMods)}\n\n{notSelectedBody2}", notSelectedTitle, MessageBoxButtons.OK);
+                        }
                     }
                 }
 
