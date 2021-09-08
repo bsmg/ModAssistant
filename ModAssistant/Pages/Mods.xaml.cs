@@ -751,7 +751,7 @@ namespace ModAssistant.Pages
 
                 System.Windows.Forms.MessageBox.Show(notice, caption);
             }
-            if (Environment.OSVersion.Version.Major < 6 || (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 1)) {
+            if (mod.name.ToLowerInvariant() == "bsipa" && (Environment.OSVersion.Version.Major < 6 || (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 1))) {
                 string notice = "";
                 string caption = "";
                 switch (Properties.Settings.Default.LanguageCode)
