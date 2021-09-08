@@ -303,6 +303,24 @@ namespace ModAssistant.Pages
                 var body = await resp.Content.ReadAsStringAsync();
                 ModsList = JsonSerializer.Deserialize<Mod[]>(body);
 
+                if (new Version(MainWindow.GameVersion) >= new Version("1.17.0") && (Environment.OSVersion.Version.Major < 6 || (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 1)))
+                {
+                    string notice = "";
+                    string caption = "";
+                    switch (Properties.Settings.Default.LanguageCode)
+                    {
+                        case "zh":
+                            caption = "提示";
+                            notice = "您的系统版本过低，可能会有部分Mod不兼容，导致出现黑屏等问题，建议升级至Windows10再安装Mod。";
+                            break;
+                        default:
+                            caption = "Notice";
+                            notice = "Your Windows version is old. Some Mods may be incompatible with BeatSaber, a possible issue like black screen. ModAssistant recommends upgrading your OS to Windows 10.";
+                            break;
+                    }
+                    System.Windows.Forms.MessageBox.Show(notice, caption);
+                }
+
                 foreach (Mod mod in ModsList)
                 {
                     // duplicate detection
@@ -313,6 +331,7 @@ namespace ModAssistant.Pages
                         mod.version = versions[versions.Length - 3] + "." + versions[versions.Length - 2] + "." + versions[versions.Length - 1];
                     }
                 }
+
             }
             catch (Exception e)
             {
@@ -750,21 +769,6 @@ namespace ModAssistant.Pages
                 }
 
                 System.Windows.Forms.MessageBox.Show(notice, caption);
-            }
-            if (mod.name.ToLowerInvariant() == "bsipa" && (Environment.OSVersion.Version.Major < 6 || (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 1))) {
-                string notice = "";
-                string caption = "";
-                switch (Properties.Settings.Default.LanguageCode)
-                {
-                    case "zh":
-                        caption = "提示";
-                        notice = "您的系统版本过低，可能会有部分Mod不兼容，导致出现黑屏等问题，建议升级至Windows10再安装Mod。";
-                        break;
-                    default:
-                        caption = "Notice";
-                        notice = "Your Windows version is old. Some Mods may be incompatible with BeatSaber, a possible issue like black screen. ModAssistant recommends upgrading your OS to Windows 10.";
-                        break;
-                }
             }
             mod.ListItem.IsSelected = true;
             ResolveDependencies(mod);
