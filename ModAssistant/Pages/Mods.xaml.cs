@@ -303,7 +303,7 @@ namespace ModAssistant.Pages
                 var body = await resp.Content.ReadAsStringAsync();
                 ModsList = JsonSerializer.Deserialize<Mod[]>(body);
 
-                if (new Version(MainWindow.GameVersion) >= new Version("1.17.0") && (Environment.OSVersion.Version.Major < 6 || (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 1)))
+                if (new Version(MainWindow.GameVersion) >= new Version("1.16.3") && (Environment.OSVersion.Version.Major < 6 || (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 1)))
                 {
                     string notice = "";
                     string caption = "";
