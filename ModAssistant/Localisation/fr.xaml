@@ -14,7 +14,7 @@
     <sys:String x:Key="App:Exception">Exception</sys:String>
 
     <!-- Main Window -->
-    <sys:String x:Key="MainWindow:WindowTitle">ModAssistant</sys:String>
+    <sys:String x:Key="MainWindow:WindowTitle">Mod Assistant</sys:String>
     <sys:String x:Key="MainWindow:IntroButton">Intro</sys:String>
     <sys:String x:Key="MainWindow:ModsButton">Mods</sys:String>
     <sys:String x:Key="MainWindow:AboutButton">À propos</sys:String>
@@ -134,6 +134,8 @@
     <sys:String x:Key="About:Donate">Faire un don</sys:String>
     <sys:String x:Key="About:HeadpatsButton">Caresses-tête</sys:String>
     <sys:String x:Key="About:HugsButton">Câlins</sys:String>
+    <sys:String x:Key="About:ImageError:Title">Erreur de {0}</sys:String>
+    <sys:String x:Key="About:ImageError:Message">Impossible de charger une image de {0} !</sys:String>
 
     <!-- Options Page -->
     <sys:String x:Key="Options:Title">Options</sys:String>

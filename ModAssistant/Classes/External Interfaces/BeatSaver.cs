@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace ModAssistant.API
 {
     public class BeatSaver
     {
-        private const string BeatSaverURLPrefix = "https://beatsaver.com";
+        private const string BeatSaverURLPrefix = "https://api.beatsaver.com";
         private static readonly string CustomSongsFolder = Path.Combine("Beat Saber_Data", "CustomLevels");
         private const bool BypassDownloadCounter = false;
 
@@ -35,10 +36,10 @@ namespace ModAssistant.API
             switch (type)
             {
                 case "hash":
-                    urlSegment = "/api/maps/by-hash/";
+                    urlSegment = "/maps/hash/";
                     break;
                 case "key":
-                    urlSegment = "/api/maps/detail/";
+                    urlSegment = "/maps/id/";
                     break;
                 default:
                     return null;
@@ -56,7 +57,20 @@ namespace ModAssistant.API
                 if (beatsaver != null && beatsaver.map != null)
                 {
                     map.response = beatsaver;
-                    map.Name = await InstallMap(beatsaver.map, showNotification);
+                    if (type == "hash")
+                    {
+                        map.HashToDownload = id.ToLower();
+                    }
+                    else
+                    {
+                        BeatSaverApiResponseMap.BeatsaverMapVersion mapVersion = null;
+                        foreach (var version in map.response.map.versions)
+                        {
+                            if (mapVersion == null || version.createdAt > mapVersion.createdAt) mapVersion = version;
+                        }
+                        map.HashToDownload = mapVersion.hash;
+                    }
+                    map.Name = await InstallMap(map, showNotification);
                     map.Success = true;
                 }
             }
@@ -89,7 +103,7 @@ namespace ModAssistant.API
 
                 if ((int)resp.StatusCode == 429)
                 {
-                    Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), response.ratelimit.ResetTime)}");
+                    Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), response.ratelimit.ResetTime.ToLocalTime())}");
                     await response.ratelimit.Wait();
                     return await GetResponse(url, showNotification, retries - 1);
                 }
@@ -116,21 +130,28 @@ namespace ModAssistant.API
             }
         }
 
-        public static async Task<string> InstallMap(BeatSaverApiResponseMap Map, bool showNotification = true)
+        public static async Task<string> InstallMap(BeatSaverMap Map, bool showNotification = true)
         {
-            string zip = Path.Combine(Utils.BeatSaberPath, CustomSongsFolder, Map.hash) + ".zip";
-            string mapName = string.Concat(($"{Map.key} ({Map.metadata.songName} - {Map.metadata.levelAuthorName})")
+            BeatSaverApiResponseMap responseMap = Map.response.map;
+            BeatSaverApiResponseMap.BeatsaverMapVersion mapVersion = responseMap.versions.Where(r => r.hash == Map.HashToDownload).First();
+            if (mapVersion == null)
+            {
+                throw new Exception("Could not find map version.");
+            }
+
+            string zip = Path.Combine(Utils.BeatSaberPath, CustomSongsFolder, Map.HashToDownload) + ".zip";
+            string mapName = string.Concat(($"{responseMap.id} ({responseMap.metadata.songName} - {responseMap.metadata.levelAuthorName})")
                              .Split(ModAssistant.Utils.Constants.IllegalCharacters));
             string directory = Path.Combine(Utils.BeatSaberPath, CustomSongsFolder, mapName);
 
 #pragma warning disable CS0162 // Unreachable code detected
             if (BypassDownloadCounter)
             {
-                await Utils.DownloadAsset(BeatSaverURLPrefix + Map.directDownload, CustomSongsFolder, Map.hash + ".zip", mapName, showNotification, true);
+                await Utils.DownloadAsset(mapVersion.downloadURL, CustomSongsFolder, Map.HashToDownload + ".zip", mapName, showNotification, true);
             }
             else
             {
-                await Utils.DownloadAsset(BeatSaverURLPrefix + Map.downloadURL, CustomSongsFolder, Map.hash + ".zip", mapName, showNotification, true);
+                await Utils.DownloadAsset(mapVersion.downloadURL, CustomSongsFolder, Map.HashToDownload + ".zip", mapName, showNotification, true);
             }
 #pragma warning restore CS0162 // Unreachable code detected
 
@@ -240,7 +261,7 @@ namespace ModAssistant.API
             if ((int)resp.StatusCode == 429)
             {
                 var ratelimit = GetRatelimit(resp.Headers);
-                Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), ratelimit.ResetTime)}");
+                Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), ratelimit.ResetTime.ToLocalTime())}");
 
                 await ratelimit.Wait();
                 await Download(url, output, retries - 1);
@@ -259,6 +280,7 @@ namespace ModAssistant.API
             public BeatSaverApiResponse response { get; set; }
             public bool Success { get; set; }
             public string Name { get; set; }
+            public string HashToDownload { get; set; }
         }
 
         public class BeatSaverApiResponse
@@ -276,87 +298,90 @@ namespace ModAssistant.API
             public DateTime ResetTime { get; set; }
             public async Task Wait()
             {
-                await Task.Delay(new TimeSpan(ResetTime.Ticks - DateTime.Now.Ticks));
+                await Task.Delay(new TimeSpan(Math.Max(ResetTime.Ticks - DateTime.UtcNow.Ticks, 0)));
             }
         }
 
         public class BeatSaverApiResponseMap
         {
+            public string id { get; set; }
+            public string name { get; set; }
+            public string description { get; set; }
+            public Uploader uploader { get; set; }
             public Metadata metadata { get; set; }
             public Stats stats { get; set; }
-            public string description { get; set; }
-            public DateTime? deletedAt { get; set; }
-            public string _id { get; set; }
-            public string key { get; set; }
-            public string name { get; set; }
-            public Uploader uploader { get; set; }
             public DateTime uploaded { get; set; }
-            public string hash { get; set; }
-            public string directDownload { get; set; }
-            public string downloadURL { get; set; }
-            public string coverURL { get; set; }
-
-            public class Difficulties
-            {
-                public bool easy { get; set; }
-                public bool normal { get; set; }
-                public bool hard { get; set; }
-                public bool expert { get; set; }
-                public bool expertPlus { get; set; }
-            }
+            public bool automapper { get; set; }
+            public bool ranked { get; set; }
+            public bool qualified { get; set; }
+            public BeatsaverMapVersion[] versions { get; set; }
 
             public class Metadata
             {
-                public Difficulties difficulties { get; set; }
-                public Characteristic[] characteristics { get; set; }
-                public double duration { get; set; }
+                public double bpm { get; set; }
+                public int duration { get; set; }
                 public string songName { get; set; }
                 public string songSubName { get; set; }
                 public string songAuthorName { get; set; }
                 public string levelAuthorName { get; set; }
-                public double bpm { get; set; }
-            }
-
-            public class Characteristic
-            {
-                public string name { get; set; }
-                public CharacteristicDifficulties difficulties { get; set; }
-            }
-
-            public class CharacteristicDifficulties
-            {
-                public Difficulty easy { get; set; }
-                public Difficulty normal { get; set; }
-                public Difficulty hard { get; set; }
-                public Difficulty expert { get; set; }
-                public Difficulty expertPlus { get; set; }
-            }
-
-            public class Difficulty
-            {
-                public double? duration { get; set; }
-                public double? length { get; set; }
-                public double bombs { get; set; }
-                public double notes { get; set; }
-                public double obstacles { get; set; }
-                public double njs { get; set; }
-                public double njsOffset { get; set; }
-            }
-
-            public class Stats
-            {
-                public int downloads { get; set; }
-                public int plays { get; set; }
-                public int downVotes { get; set; }
-                public int upVotes { get; set; }
-                public double heat { get; set; }
-                public double rating { get; set; }
             }
 
             public class Uploader
             {
-                public string _id { get; set; }
-                public string username { get; set; }
+                public int id { get; set; }
+                public string name { get; set; }
+                public string hash { get; set; }
+                public string avatar { get; set; }
+            }
+
+            public class Stats
+            {
+                public int plays { get; set; }
+                public int downloads { get; set; }
+                public int upvotes { get; set; }
+                public int downvotes { get; set; }
+                public double score { get; set; }
+            }
+
+            public class BeatsaverMapVersion
+            {
+                public string hash { get; set; }
+                public string key { get; set; }
+                public string state { get; set; }
+                public DateTime createdAt { get; set; }
+                public int sageScore { get; set; }
+                public Difficulty[] diffs { get; set; }
+                public string downloadURL { get; set; }
+                public string coverURL { get; set; }
+                public string previewURL { get; set; }
+            }
+
+            public class Difficulty
+            {
+                public double njs { get; set; }
+                public double offset { get; set; }
+                public int notes { get; set; }
+                public int bombs { get; set; }
+                public int obstacles { get; set; }
+                public double nps { get; set; }
+                public double length { get; set; }
+                public string characteristic { get; set; }
+                public string difficulty { get; set; }
+                public int events { get; set; }
+                public bool chroma { get; set; }
+                public bool me { get; set; }
+                public bool ne { get; set; }
+                public bool cinema { get; set; }
+                public double seconds { get; set; }
+                public ParitySummary paritySummary { get; set; }
+                public double stars { get; set; }
+            }
+
+            public class ParitySummary
+            {
+                public int errors { get; set; }
+                public int warns { get; set; }
+                public int resets { get; set; }
             }
         }
     }

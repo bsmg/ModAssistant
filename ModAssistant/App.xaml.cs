@@ -162,18 +162,18 @@ namespace ModAssistant
                         break;
 
                     case "--register":
-                        if (args.Length < 2 || string.IsNullOrEmpty(args[1]))
+                        if (args.Length < 3 || string.IsNullOrEmpty(args[1]))
                         {
                             Utils.SendNotify(string.Format((string)Current.FindResource("App:InvalidArgument"), "--register"));
                         }
                         else
                         {
-                            OneClickInstaller.Register(args[1], true);
+                            OneClickInstaller.Register(args[1], true, args[2]);
                         }
 
                         Update = false;
                         GUI = false;
-                        args = Shift(args, 2);
+                        args = Shift(args, 3);
                         break;
 
                     case "--unregister":

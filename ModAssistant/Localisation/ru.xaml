@@ -58,9 +58,9 @@
         <Bold>свободное время.</Bold> Пожалуйста, имейте терпение и понимание.
     </Span>
     <Span x:Key="Intro:ReviewsBeatGamesFault">
-        <Bold>НЕ</Bold> оставляйте отрицательные отзывы из-за того, что модификации не работают. Это 
-        <Bold>не</Bold> вина Beat Games.
-        <LineBreak/> Beat Games не пытаются уничтожить модификации.
+      <Bold>НЕ</Bold> оставляйте отрицательные отзывы из-за того, что модификации не работают. Это 
+      <Bold>не</Bold> вина Beat Games.
+      <LineBreak/> Beat Games не пытаются уничтожить модификации.
     </Span>
     <Span x:Key="Intro:ReviewsRustySpoon">
         Если я так и буду наблюдать людей, которые продолжают оставлять негативные комментарии,
@@ -129,6 +129,8 @@
     <sys:String x:Key="About:Donate">Поддержать</sys:String>
     <sys:String x:Key="About:HeadpatsButton">Погладить</sys:String>
     <sys:String x:Key="About:HugsButton">Обнять</sys:String>
+    <sys:String x:Key="About:ImageError:Title">{0} Error</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="About:ImageError:Message">Failed to load {0} image!</sys:String> <!-- NEEDS TRANSLATING -->
 
     <!-- Options Page -->
     <sys:String x:Key="Options:Title">Опции</sys:String>

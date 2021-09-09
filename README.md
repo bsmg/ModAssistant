@@ -1,7 +1,7 @@
-[![ModAssistant](https://cdn.assistant.moe/images/ModAssistant/Icons/Banner.svg)](https://github.com/Assistant/ModAssistant/releases/latest)
+[![Mod Assistant](https://cdn.assistant.moe/images/ModAssistant/Icons/Banner.svg?v=5)](https://github.com/Assistant/ModAssistant/releases/latest)
 [![Download here!](https://cdn.assistant.moe/images/ModAssistant/Icons/Download.svg)](https://github.com/Assistant/ModAssistant/releases/latest)
 
-ModAssistant is a PC mod installer for Beat Saber. It uses mods from [BeatMods](https://beatmods.com/).
+Mod Assistant is a PC mod installer for Beat Saber. It uses mods from [BeatMods](https://beatmods.com/).
 
 * [Features](#Features)
 * [Usage](#Usage)
@@ -16,7 +16,7 @@ ModAssistant is a PC mod installer for Beat Saber. It uses mods from [BeatMods](
 
 ## Features
 
-ModAssistant boasts a rich feature set, some of which include:
+Mod Assistant boasts a rich feature set, some of which include:
 * Dependency resolution
 * Installed mod detection
 * Mod uninstallation
@@ -85,7 +85,7 @@ Download the newest installer from the release section and run it. This applicat
 </details>
 
 ### Custom Themes
-Custom themes are located in a folder called `Themes` in the same folder as `ModAssistant.exe`. ModAssistant can load themes from one of three sources.
+Custom themes are located in a folder called `Themes` in the same folder as `ModAssistant.exe`. Mod Assistant can load themes from one of three sources.
 
 ### Built In
 These come with the program and you can't change them, however you can overwrite them by creating one of the other two theme types with the same name.
@@ -134,7 +134,7 @@ Examples:
   Mod Assistant uses mods from [BeatMods](https://beatmods.com/) and shows whatever is available for download. If you need to install a mod manually, please refer to the [Beat Saber Modding Group Wiki](https://bsmg.wiki/pc-modding.html#manual-installation).
   
 **I hit install but now my game won't launch, I can't click any buttons, I only see a black screen, etc**
-  Please visit the [Beat Saber Modding Group](https://discord.gg/beatsabermods) `#pc-help` channels. Check the pinned messages or ask for help and see if you can work out things out.
+  Please visit the [Beat Saber Modding Group](https://discord.gg/beatsabermods) `#pc-help` channels. Check the pinned messages or ask for help and see if you can work things out.
   
 ## Credits
 semver by Max Hauser
