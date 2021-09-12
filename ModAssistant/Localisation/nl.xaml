@@ -127,6 +127,8 @@
     <sys:String x:Key="About:Donate">Doneer</sys:String>
     <sys:String x:Key="About:HeadpatsButton">Aai over je bol</sys:String>
     <sys:String x:Key="About:HugsButton">Knuffels</sys:String>
+    <sys:String x:Key="About:ImageError:Title">{0} Fout</sys:String>
+    <sys:String x:Key="About:ImageError:Message">Het laden van de {0} afbeelding is mislukt!</sys:String>
 
     <!-- Options Page -->
     <sys:String x:Key="Options:Title">Opties</sys:String>

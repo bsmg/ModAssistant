@@ -63,10 +63,10 @@
     <Span x:Key="Intro:WikiGuide">
         <Bold><Span Foreground="Red">请务必阅读</Span>
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/pc-guide/">
-            新手入门指南
+            新手基础教程
         </Hyperlink>、
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/pc-faq/">
-            详细教程与问题解答
+            详细问题解答
         </Hyperlink>
         </Bold>，以及
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
@@ -76,8 +76,8 @@
     <sys:String x:Key="Intro:AgreeButton">同意</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">拒绝</sys:String>
     <sys:String x:Key="Intro:ClosingApp">关闭软件：您不同意此条款。</sys:String>
-    <sys:String x:Key="Intro:VersionDownloadFailed">版本列表加载失败</sys:String>
-    <sys:String x:Key="Intro:ModsTabDisabled">已禁用Mod选项卡，请尝试重新打开软件后多等待一会再操作，或按照简介页面的中文教程解决。</sys:String>
+    <sys:String x:Key="Intro:VersionDownloadFailed">下载版本列表失败</sys:String>
+    <sys:String x:Key="Intro:ModsTabDisabled">已禁用Mod选项卡，请尝试重新打开软件后多等待一会再操作，或按照简介页面的问题解答解决。</sys:String>
     <sys:String x:Key="Intro:ModsTabEnabled">你现在可以安装Mod了！</sys:String>
 
     <!-- Mods Page -->
@@ -128,6 +128,8 @@
     <sys:String x:Key="About:Donate">捐助</sys:String>
     <sys:String x:Key="About:HeadpatsButton">摸摸头</sys:String>
     <sys:String x:Key="About:HugsButton">抱抱</sys:String>
+    <sys:String x:Key="About:ImageError:Title">{0} 错误</sys:String>
+    <sys:String x:Key="About:ImageError:Message">图片 {0} 加载失败！</sys:String>
 
     <!-- Options Page -->
     <sys:String x:Key="Options:Title">选项</sys:String>
@@ -148,7 +150,7 @@
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
     <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
     <sys:String x:Key="Options:Tools">工具</sys:String>
-    <sys:String x:Key="Options:InstallPlaylist">将歌单下载进游戏（仅限playlist文件）</sys:String>
+    <sys:String x:Key="Options:InstallPlaylist">将歌曲列表添加到游戏并下载歌曲（.bplist）</sys:String>
     <sys:String x:Key="Options:InstallingPlaylist">正在添加歌单：{0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">失败歌曲：{0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0}失败]添加{1}完成</sys:String>
