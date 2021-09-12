@@ -179,7 +179,7 @@
     <sys:String x:Key="Options:YeetModsBox:CannotBeUndone">การดำเนินการนี้ไม่สามารถยกเลิกได้</sys:String>
     <sys:String x:Key="Options:AllModsUninstalled">ถอนการติดตั้ง Mods ทั้งหมดแล้ว</sys:String>
     <sys:String x:Key="Options:CurrentThemeRemoved">ธีมปัจจุบันถูกเอาออกแล้ว กำลังเปลี่ยนกลับเป็นค่าเริ่มต้น...</sys:String>
-    <sys:String x:Key="Options:ThemeFolderNotFound">ไม่พบโฟลเดอร์ธีม! กำลังลองส่งออกเทมเพลต...<sys:String>
+    <sys:String x:Key="Options:ThemeFolderNotFound">ไม่พบโฟลเดอร์ธีม! กำลังลองส่งออกเทมเพลต...</sys:String>
     <sys:String x:Key="Options:AppDataNotFound">ไม่พบโฟลเดอร์ AppData! กำลังลองเปิดเกมของคุณ</sys:String>
 
     <!-- Loading Page -->
@@ -234,7 +234,7 @@
     <sys:String x:Key="OneClick:Done">เสร็จแล้ว</sys:String>
 
     <!-- Themes Class -->
-    <sys:String x:Key="Themes:ThemeNotFound">ไม่พบธีม กำลังเปลี่ยนกลับเป็นค่าเริ่มต้น...<sys:String>
+    <sys:String x:Key="Themes:ThemeNotFound">ไม่พบธีม กำลังเปลี่ยนกลับเป็นค่าเริ่มต้น...</sys:String>
     <sys:String x:Key="Themes:ThemeSet">ตั้งค่าธีมเป็น {0}</sys:String>
     <sys:String x:Key="Themes:ThemeMissing">{0} ไม่มีอยู่</sys:String>
     <sys:String x:Key="Themes:SavedTemplateTheme">ธีมเทมเพลต &quot;{0}&quot; บันทึกลงในโฟลเดอร์ธีม</sys:String>
