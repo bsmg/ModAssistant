@@ -565,7 +565,7 @@ namespace ModAssistant.Pages
             Properties.Settings.Default.SavedMods = string.Join(",", App.SavedMods.ToArray());
             Properties.Settings.Default.Save();
 
-            // RefreshModsList();
+            RefreshModsList();
         }
 
         private void ModCheckBox_Unchecked(object sender, RoutedEventArgs e)
@@ -577,7 +577,7 @@ namespace ModAssistant.Pages
             Properties.Settings.Default.SavedMods = string.Join(",", App.SavedMods.ToArray());
             Properties.Settings.Default.Save();
 
-            // RefreshModsList();
+            RefreshModsList();
         }
 
         public class Category
