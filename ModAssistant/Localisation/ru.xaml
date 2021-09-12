@@ -26,7 +26,7 @@
     <sys:String x:Key="MainWindow:InstallButtonBottom">или обновить</sys:String>
     <sys:String x:Key="MainWindow:GameVersionLoadFailed">Не удаётся загрузить список версий игры, Вкладка с модификациями недоступна.</sys:String>
     <sys:String x:Key="MainWindow:GameUpdateDialog:Title">Обнаружена новая версия игры!</sys:String>
-    <sys:String x:Key="MainWindow:GameUpdateDialog:Line1">Похоже на то, что было обновление игры.</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Line1">Похоже на то, что вышло обновление игры.</sys:String>
     <sys:String x:Key="MainWindow:GameUpdateDialog:Line2">Пожалуйста, проверьте дважды, что выбрана корректная версия игры в нижнем левом углу!</sys:String>
     <sys:String x:Key="MainWindow:NoModSelected">Нет выбранных модификаций!</sys:String>
     <sys:String x:Key="MainWindow:NoModInfoPage">{0} Не имеет страницы с информацией.</sys:String>
@@ -34,9 +34,9 @@
  <!-- Intro Page -->
     <sys:String x:Key="Intro:Title">Вступление</sys:String>
     <sys:String x:Key="Intro:PageTitle">Добро пожаловать в Mod Assistant</sys:String>
-    <sys:String x:Key="Intro:Terms:Header">Прочитайте эту страницу полностью и внимательно</sys:String>
+    <sys:String x:Key="Intro:Terms:Header">Прочитайте эту страницу внимательно до конца</sys:String>
     <Span x:Key="Intro:Terms:Line1">
-        Используя эту программу, вы прочитали и принимаете эти условия:
+        Используя эту программу, вы принимаете эти условия:
     </Span>
     <Span x:Key="Intro:Terms:Line2">
         Beat Saber
@@ -44,8 +44,8 @@
     </Span>
     <Span x:Key="Intro:Terms:Term1">
         Модификации
-        <Bold>могут прекращать работоспособность</Bold> каждое обновление. Это нормально, и
-        <Bold>это не</Bold> вина Beat Games.
+        <Bold>будут прекращать работоспособность</Bold> при каждом обновлении игры. Это нормально, и это
+        <Bold>не</Bold> вина Beat Games.
     </Span>
     <Span x:Key="Intro:Terms:Term2">
         Модификации
@@ -53,23 +53,23 @@
         <Bold>не</Bold> вина Beat Games.
     </Span>
     <Span x:Key="Intro:Terms:Term3">
-        Модификации создаются
-        <Bold>бесплатно</Bold> людьми в их
-        <Bold>свободное время.</Bold> Пожалуйста, будьте терпиливыми и взаимопонимающими.
+        Модификации создаются людьми
+        <Bold>бесплатно</Bold> в их
+        <Bold>свободное время.</Bold> Пожалуйста, имейте терпение и понимание.
     </Span>
     <Span x:Key="Intro:ReviewsBeatGamesFault">
-        <Bold>НЕ</Bold> оставляйте отрицательные отзывы из-за того, что модификация не работает. Это 
-        <Bold>не</Bold> вина Beat Games.
-        <LineBreak/> Beat Games не пытается уничтожить модификации.
+      <Bold>НЕ</Bold> оставляйте отрицательные отзывы из-за того, что модификации не работают. Это 
+      <Bold>не</Bold> вина Beat Games.
+      <LineBreak/> Beat Games не пытаются уничтожить модификации.
     </Span>
     <Span x:Key="Intro:ReviewsRustySpoon">
-        Если я увижу людей, которые продолжают оставлять негативные комментарии,
+        Если я так и буду наблюдать людей, которые продолжают оставлять негативные комментарии,
         <Italic>потому что</Italic> модификации не работают,
         <LineBreak/>
         <Bold>Я лично уничтожу модификации ржавой ложкой</Bold>
     </Span>
     <Span x:Key="Intro:WikiGuide">
-        Пожалуйста, прочитайте инструкцию для начинающих на
+        Пожалуйста, прочитайте руководство для начинающих на
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
             Вики
         </Hyperlink>.
@@ -78,7 +78,7 @@
     <sys:String x:Key="Intro:DisagreeButton">Я не согласен</sys:String>
     <sys:String x:Key="Intro:ClosingApp">Приложение закрывается: Вы не приняли пользовательскую политику соглашений.</sys:String>
     <sys:String x:Key="Intro:VersionDownloadFailed">Не удаётся получить список версий</sys:String>
-    <sys:String x:Key="Intro:ModsTabDisabled">Вкладка с модификациями недоступна. Пожалуйста перезапустите, чтобы попробовать снова.</sys:String>
+    <sys:String x:Key="Intro:ModsTabDisabled">Вкладка с модификациями недоступна. Пожалуйста, перезапустите, чтобы попробовать снова.</sys:String>
     <sys:String x:Key="Intro:ModsTabEnabled">Теперь вы можете использовать вкладку с модификациями!</sys:String>
 
     <!-- Mods Page -->
@@ -93,7 +93,7 @@
     <sys:String x:Key="Mods:CheckingInstalledMods">Проверка установленных модификаций</sys:String>
     <sys:String x:Key="Mods:LoadingMods">Загрузка модификаций</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Загрузка модификаций окончена</sys:String>
-    <sys:String x:Key="Mods:NoMods">No mods available for this version of Beat Saber</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:NoMods">Нет доступных модификаций для этой версии Beat Saber!</sys:String>
     <sys:String x:Key="Mods:InstallingMod">Установка {0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">Установлено {0}</sys:String>
     <sys:String x:Key="Mods:FinishedInstallingMods">Установка модификаций окончена.</sys:String>
@@ -104,17 +104,17 @@
     <sys:String x:Key="Mods:FailedExtract">Не удалось извлечь {0}, попробуйте снова через {1} секунд. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Не удалось извлечь {0} после попыток ({1}), пропускается. Эта модификация может работать некорректно, используйте на свой страх и риск</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Поиск...</sys:String>
-    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Failed to Uninstall BSIPA</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA installation not found, uninstall operation skipped.</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Не удалось удалить BSIPA!</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">Не найден установленный BSIPA, процесс удаления пропущен.</sys:String> 
 
     <!-- About Page -->
     <sys:String x:Key="About:Title">Информация</sys:String>
     <sys:String x:Key="About:PageTitle">Про Mod Assistant</sys:String>
-    <sys:String x:Key="About:List:Header">Я Ассистент, и я создал Mod Assistant для помощи модификациям с некоторыми личными принципами:</sys:String>
+    <sys:String x:Key="About:List:Header">Я Assistant, и я создал Mod Assistant для помощи в модифицировании игры с некоторыми личными принципами:</sys:String>
     <sys:String x:Key="About:List:Item1">Простота</sys:String>
     <sys:String x:Key="About:List:Item2">Портативность </sys:String>
-    <sys:String x:Key="About:List:Item3">Приложение одним файлом</sys:String>
-    <sys:String x:Key="About:List:Item4">Ответственное использование</sys:String>
+    <sys:String x:Key="About:List:Item3">Приложение являлось одним исполняемым файлом</sys:String>
+    <sys:String x:Key="About:List:Item4">Использование утилиты было ответственным и лёгким процессом</sys:String>
     <Span x:Key="About:SupportAssistant">
         Если вам нравится программа и вы хотите меня поддержать, пожалуйста, посетите
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.assistant.moe/Donate/">
@@ -155,7 +155,7 @@
     <sys:String x:Key="Options:InstallingPlaylist">Установка плейлиста: {0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">Ошибка с песней: {0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0} ошибок] Установка плейлиста окончена: {1}</sys:String>
-    <sys:String x:Key="Options:ShowOCIWindow">Показать OneClick окно установок</sys:String>
+    <sys:String x:Key="Options:ShowOCIWindow">Показать окно установок OneClick™</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">Да</sys:String>
     <sys:String x:Key="Options:OCIWindowClose">Закрывать</sys:String>
     <sys:String x:Key="Options:OCIWindowNo">Нет</sys:String>
