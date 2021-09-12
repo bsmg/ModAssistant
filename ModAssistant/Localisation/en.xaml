@@ -19,6 +19,7 @@
     <sys:String x:Key="MainWindow:ModsButton">Mods</sys:String>
     <sys:String x:Key="MainWindow:AboutButton">About</sys:String>
     <sys:String x:Key="MainWindow:OptionsButton">Options</sys:String>
+    <sys:String x:Key="MainWindow:PlayButton">Play</sys:String>
     <sys:String x:Key="MainWindow:GameVersionLabel">Game Version</sys:String>
     <sys:String x:Key="MainWindow:VersionLabel">Version</sys:String>
     <sys:String x:Key="MainWindow:ModInfoButton">Mod Info</sys:String>
@@ -93,10 +94,10 @@
     <sys:String x:Key="Mods:CheckingInstalledMods">Checking installed mods</sys:String>
     <sys:String x:Key="Mods:LoadingMods">Loading Mods</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">Finished loading mods</sys:String>
-    <sys:String x:Key="Mods:NoMods">No mods available for this version of Beat Saber</sys:String>
+    <sys:String x:Key="Mods:NoMods">No mods available. Wait for mods to be updated or check your Internet connection.</sys:String>
     <sys:String x:Key="Mods:InstallingMod">Installing {0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">Installed {0}</sys:String>
-    <sys:String x:Key="Mods:FinishedInstallingMods">Finished installing mods</sys:String>
+    <sys:String x:Key="Mods:FinishedInstallingMods">Finished installing mods. </sys:String>
     <sys:String x:Key="Mods:ModDownloadLinkMissing">Could not find download link for {0}</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Title">Uninstall {0}?</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Body1">Are you sure you want to remove {0}?</sys:String>
@@ -229,7 +230,7 @@
     <sys:String x:Key="OneClick:RatelimitSkip">Max tries reached: Skipping {0}</sys:String>
     <sys:String x:Key="OneClick:RatelimitHit">Ratelimit hit. Resuming in {0}</sys:String>
     <sys:String x:Key="OneClick:Failed">Download failed: {0}</sys:String>
-    <sys:String x:Key="OneClick:Done">Done'd</sys:String>
+    <sys:String x:Key="OneClick:Done">Done.</sys:String>
 
     <!-- Themes Class -->
     <sys:String x:Key="Themes:ThemeNotFound">Theme not found, reverting to default theme...</sys:String>

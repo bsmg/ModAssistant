@@ -13,7 +13,7 @@
 
     <Grid>
         <Grid x:Name="NoModsGrid" Visibility="Visible">
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontWeight="SemiBold">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="SemiBold">
                 <TextBlock Text="{DynamicResource Mods:NoMods}" />.
             </TextBlock>
         </Grid>

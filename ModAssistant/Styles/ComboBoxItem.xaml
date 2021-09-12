@@ -12,6 +12,7 @@
                 <ControlTemplate TargetType="{x:Type ComboBoxItem}">
                     <Border
                         Name="Bd"
+                        CornerRadius="5"
                         Padding="{TemplateBinding Padding}"
                         Background="{DynamicResource ComboBoxBackground}"
                         BorderBrush="{DynamicResource ComboBoxOutline}"

@@ -31,6 +31,7 @@ namespace ModAssistant.Pages
         public bool CloseWindowOnFinish { get; set; }
         public string LogURL { get; private set; }
         public string OCIWindow { get; set; }
+        public int CornerRadius { get; private set; }
 
         public Options()
         {

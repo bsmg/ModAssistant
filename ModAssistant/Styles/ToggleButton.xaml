@@ -19,6 +19,7 @@
                         </Grid.ColumnDefinitions>
                         <Border
                             Padding="{TemplateBinding Padding}"
+                            CornerRadius="5"
                             HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalAlignment}"
                             Background="{TemplateBinding Background}"
@@ -76,5 +77,4 @@
             </Setter.Value>
         </Setter>
     </Style>
-
 </ResourceDictionary>

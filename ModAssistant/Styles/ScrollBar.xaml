@@ -5,7 +5,7 @@
         <Setter Property="Background" Value="{DynamicResource ScrollBarBackground}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ScrollBarBorder}" />
         <Setter Property="Foreground" Value="{DynamicResource ScrollBarTextColor}" />
-        <Setter Property="BorderThickness" Value="1,0" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Width" Value="{DynamicResource SystemParameters.VerticalScrollBarWidthKey}" />
         <Setter Property="MinWidth" Value="16" />
         <Setter Property="Template">
@@ -20,6 +20,7 @@
                         <Border
                             Grid.Row="1"
                             Background="{TemplateBinding Background}"
+                            CornerRadius="5"
                             BorderThickness="{TemplateBinding BorderThickness}" />
                         <RepeatButton
                             Name="PART_LineUpButton"
@@ -123,6 +124,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Border
                                     Grid.Column="1"
+                                    CornerRadius="5"
                                     Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}" />

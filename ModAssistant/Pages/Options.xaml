@@ -39,11 +39,12 @@
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
 
             <TextBlock
             Grid.Row="0"
-            Margin="15,5,5,5"
+            Margin="5,5,0,5"
             HorizontalAlignment="Left"
             FontSize="24"
             FontWeight="Bold"
@@ -78,6 +79,7 @@
             Grid.ColumnSpan="2"
             Height="30"
             MinWidth="450"
+            CornerRadius="5"
             Margin="5"
             Background="{DynamicResource DirectoryBackground}"
             BorderBrush="{DynamicResource DirectoryOutline}"
@@ -178,7 +180,7 @@
             <Menu
             Grid.Row="8"
             Grid.Column="0"
-            Margin="5"
+            Margin="4"
             Background="Transparent"
             BorderBrush="Transparent">
                 <MenuItem
@@ -212,16 +214,6 @@
                     Checked="PlaylistsProtocolHandler_Checked"
                     IsChecked="{Binding PlaylistsProtocolHandlerEnabled}"
                     Unchecked="PlaylistsProtocolHandler_Unchecked" />
-                    <!-- <MenuItem
-                    Padding="5,0"
-                    Header="{DynamicResource Options:CloseWindow}"
-                    Name="CloseWindowToggle"
-                    IsCheckable="True"
-                    StaysOpenOnClick="True"
-                    Checked="CloseWindowOnFinish_Checked"
-                    IsChecked="{Binding CloseWindowOnFinish}"
-                    Unchecked="CloseWindowOnFinish_Unchecked" />
-                -->
                 </MenuItem>
             </Menu>
 
@@ -234,7 +226,7 @@
                 HorizontalAlignment="Left"
                 FontSize="16"
                 FontWeight="Bold"
-                Text="{DynamicResource Options:ShowOCIWindow}" />
+                Text="Show OneClick™️ Installer Window" />
                 <ComboBox
                 Margin="0,0,0,5"
                 MinWidth="80"
@@ -248,16 +240,18 @@
                 </ComboBox>
             </StackPanel>
 
-
             <StackPanel
             Grid.Row="12"
             Margin="5"
             HorizontalAlignment="Left"
             Orientation="Horizontal">
-                <TextBlock FontSize="16" FontWeight="Bold">
-                <TextBlock Text="{DynamicResource Options:GameType}" />
-                :&#160;
-            </TextBlock>
+                <TextBlock FontSize="16" FontWeight="Bold"><InlineUIContainer>
+                        <TextBlock Text="{DynamicResource Options:GameType}"/>
+                    </InlineUIContainer><Run Text=""/><InlineUIContainer>
+                        <TextBlock Text=":" />
+                    </InlineUIContainer>
+
+                </TextBlock>
                 <TextBlock
                 Name="GameTypeTextBlock"
                 FontSize="16"

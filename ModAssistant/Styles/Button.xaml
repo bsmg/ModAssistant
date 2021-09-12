@@ -2,7 +2,7 @@
     <Style x:Key="DefaultButton" TargetType="Button">
         <Setter Property="Background" Value="{DynamicResource ButtonBackground}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ButtonBackground}" />
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -15,6 +15,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{DynamicResource ButtonOutline}"
                         BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5"
                         SnapsToDevicePixels="true"
                         TextBlock.Foreground="{DynamicResource TextColor}">
                         <ContentPresenter
@@ -60,6 +61,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{DynamicResource PageButtonOutline}"
                         BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5"
                         SnapsToDevicePixels="true"
                         TextBlock.Foreground="{DynamicResource TextColor}">
                         <ContentPresenter

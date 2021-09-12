@@ -22,7 +22,8 @@
                                 MinWidth="{Binding ActualWidth, ElementName=templateRoot}"
                                 Background="{DynamicResource ComboBoxBackground}"
                                 BorderBrush="{DynamicResource ComboBoxOutline}"
-                                BorderThickness="1">
+                                CornerRadius="5"
+                                BorderThickness="0">
                                 <ScrollViewer Name="DropDownScrollViewer">
                                     <Grid Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                         <Canvas
@@ -48,6 +49,7 @@
                         <Border
                             Name="Border"
                             Margin="0"
+                            CornerRadius="3"
                             Background="Transparent">
                             <TextBox
                                 Name="PART_EditableTextBox"

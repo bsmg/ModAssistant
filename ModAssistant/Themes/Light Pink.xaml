@@ -74,6 +74,7 @@
     <SolidColorBrush x:Key="ModsIconColor" Color="White" />
     <SolidColorBrush x:Key="AboutIconColor" Color="White" />
     <SolidColorBrush x:Key="OptionsIconColor" Color="White" />
+    <SolidColorBrush x:Key="PlayIconColor" Color="White" />
     <SolidColorBrush x:Key="LoadingIconColor" Color="#101010" />
 
     <!-- Background and Side image settings. -->

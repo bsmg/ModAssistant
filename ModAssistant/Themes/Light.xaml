@@ -35,7 +35,7 @@
     <SolidColorBrush x:Key="ModColumnHeaderHighlighted" Color="{DynamicResource ResourceKey=StandardHighlight}" />
     <SolidColorBrush x:Key="ModListBackground" Color="#09000000" />
     <SolidColorBrush x:Key="ModListBorderBrush" Color="{DynamicResource ResourceKey=StandardBorder}" />
-    <SolidColorBrush x:Key="ModListItemHighlighted" Color="#DADADA" />
+    <SolidColorBrush x:Key="ModListItemHighlighted" Color="#DADADADA" />
     <SolidColorBrush x:Key="ModListItemHighlightedOutline" Color="#60000000" />
     <SolidColorBrush x:Key="ModListItemSelected" Color="{DynamicResource ResourceKey=StandardActive}" />
     <SolidColorBrush x:Key="ModListItemSelectedOutline" Color="#70000000" />
@@ -85,6 +85,7 @@
     <SolidColorBrush x:Key="ModsIconColor" Color="#833BCE" />
     <SolidColorBrush x:Key="AboutIconColor" Color="#FF0000" />
     <SolidColorBrush x:Key="OptionsIconColor" Color="#4E3BCE" />
+    <SolidColorBrush x:Key="PlayIconColor" Color="#00FF00" />
     <SolidColorBrush x:Key="LoadingIconColor" Color="#101010" />
 
     <!-- Background and Side image settings. -->

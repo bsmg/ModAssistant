@@ -27,7 +27,7 @@
                                     Fill="{DynamicResource CheckboxTickColor}"
                                     Opacity="0"
                                     Stretch="None" />
-                                <Rectangle
+                                <Ellipse
                                     Name="indeterminateMark"
                                     Margin="2"
                                     Fill="{DynamicResource CheckboxTickColor}"

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ModAssistant"
         mc:Ignorable="d"
-        Title="OneClick Installer" Height="800" Width="600" WindowStyle="ToolWindow" ResizeMode="NoResize">
+        Title="OneClick Installer™️" Height="485" Width="800" ResizeMode="CanResize" Icon="Resources/icon.ico">
 
     <Window.Resources>
         <local:DivideDoubleByTwoConverter x:Key="DivideDoubleByTwoConverter" />
@@ -44,30 +44,41 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
+                <RowDefinition Height="400" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <Image
                 Grid.Row="0"
-                Margin="60,0"
-                VerticalAlignment="Center"
+                Margin=".5,40"
+                HorizontalAlignment="Left"
                 Source="{DynamicResource loadingInnerDrawingImage}"
                 Stretch="Uniform" />
             <Image
                 Grid.Row="0"
-                Margin="60,0"
-                VerticalAlignment="Center"
+                Margin=".5,40"
+                HorizontalAlignment="Left"
                 Source="{DynamicResource loadingMiddleDrawingImage}"
                 Stretch="Uniform" />
             <Image
                 Name="Ring"
                 Grid.Row="0"
-                Margin="60,0"
-                VerticalAlignment="Center"
+                Margin=".5,40"
+                HorizontalAlignment="Left"
                 Source="{DynamicResource loadingOuterDrawingImage}"
-                Stretch="Uniform"
                 Style="{StaticResource Spin}" />
+            <ScrollViewer
+                    VerticalScrollBarVisibility="Auto"
+                    HorizontalScrollBarVisibility="Auto"
+                    Background="{DynamicResource BottomStatusBarBackground}"
+                    Margin="330,10,10,10">
+                <TextBox
+                        x:Name="HistoryTextBlock"
+                        Padding="5"
+                        Background="{DynamicResource BottomStatusBarBackground}"
+                        BorderThickness="0"
+                        Foreground="{DynamicResource TextColor}" />
+            </ScrollViewer>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
@@ -89,26 +100,6 @@
                         Background="{DynamicResource BottomStatusBarBackground}"
                         FontSize="20" />
             </Border>
-            <Border
-                Grid.Row="1"
-                Margin="10,0,10,10"
-                BorderBrush="{DynamicResource BottomStatusBarOutline}"
-                BorderThickness="1">
-                <ScrollViewer
-                    VerticalScrollBarVisibility="Auto"
-                    HorizontalScrollBarVisibility="Auto"
-                    Background="{DynamicResource BottomStatusBarBackground}"
-                    Margin="0">
-                    <TextBox
-                        Name="HistoryTextBlock"
-                        Margin="0"
-                        Padding="5"
-                        Background="{DynamicResource BottomStatusBarBackground}"
-                        BorderThickness="0"
-                        Foreground="{DynamicResource TextColor}" />
-                </ScrollViewer>
-            </Border>
-
         </Grid>
     </Grid>
 </Window>

@@ -4,11 +4,11 @@
 
     <!-- Standard Styles -->
     <Color x:Key="StandardContent">#E0E0E0</Color>
-    <Color x:Key="StandardPrimary">#2E2E2E</Color>
+    <Color x:Key="StandardPrimary">#1a1a1a</Color>
     <Color x:Key="StandardSecondary">#0F0F0F</Color>
     <Color x:Key="StandardBorder">#696969</Color>
     <Color x:Key="StandardHighlight">#454545</Color>
-    <Color x:Key="StandardActive">#696969</Color>
+    <Color x:Key="StandardActive">#000000</Color>
     <Color x:Key="StandardIcon">#AEAEAE</Color>
 
     <!-- Default Text -->
@@ -21,7 +21,7 @@
     <SolidColorBrush x:Key="ButtonHighlightedBackground" Color="{DynamicResource ResourceKey=StandardHighlight}" />
     <SolidColorBrush x:Key="ButtonClickedBackground" Color="{DynamicResource ResourceKey=StandardActive}" />
     <SolidColorBrush x:Key="ButtonDisabledBackground" Color="{DynamicResource ResourceKey=StandardSecondary}" />
-    <SolidColorBrush x:Key="ButtonDangerBackground" Color="#ED172F" />
+    <SolidColorBrush x:Key="ButtonDangerBackground" Color="Red" />
 
     <!-- Page Buttons (Side of Main Page) -->
     <SolidColorBrush x:Key="PageButtonBackground" Color="{DynamicResource ResourceKey=StandardPrimary}" />
@@ -86,6 +86,7 @@
     <SolidColorBrush x:Key="ModsIconColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
     <SolidColorBrush x:Key="AboutIconColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
     <SolidColorBrush x:Key="OptionsIconColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
+    <SolidColorBrush x:Key="PlayIconColor" Color="{DynamicResource ResourceKey=StandardIcon}" />
     <SolidColorBrush x:Key="LoadingIconColor" Color="{DynamicResource ResourceKey=StandardContent}" />
 
     <!-- Background and Side image settings. -->

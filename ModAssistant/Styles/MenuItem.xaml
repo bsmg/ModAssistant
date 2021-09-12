@@ -2,7 +2,7 @@
     <Style TargetType="MenuItem">
         <Setter Property="Background" Value="{DynamicResource ButtonBackground}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ButtonBackground}" />
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -12,6 +12,7 @@
                         BorderBrush="{DynamicResource ButtonOutline}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         Padding="4"
+                        CornerRadius="5"
                         Background="{TemplateBinding Background}"
                         SnapsToDevicePixels="True">
                         <Grid VerticalAlignment="Center">

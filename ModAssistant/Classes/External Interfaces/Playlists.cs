@@ -11,6 +11,7 @@ namespace ModAssistant.API
     public class Playlists
     {
         private const string BSaberURLPrefix = "https://bsaber.com/PlaylistAPI/";
+        private const string HitbloqURLPrefix = "https://hitbloq.com/static/hashlists/";
         private const string PlaylistsFolder = "Playlists";
         private static readonly string BeatSaberPath = Utils.BeatSaberPath;
 
@@ -25,6 +26,14 @@ namespace ModAssistant.API
             switch (uri.Host)
             {
                 case "playlist":
+                    Uri url = new Uri($"{uri.LocalPath.Trim('/')}");
+                    string filename = await Get(url);
+                    await DownloadFrom(filename);
+                    break;
+            }
+            switch (uri.Host)
+            {
+                case "hitbloq":
                     Uri url = new Uri($"{uri.LocalPath.Trim('/')}");
                     string filename = await Get(url);
                     await DownloadFrom(filename);
