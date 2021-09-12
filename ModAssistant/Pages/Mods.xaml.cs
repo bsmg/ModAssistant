@@ -298,9 +298,9 @@ namespace ModAssistant.Pages
                     Category = mod.category
                 };
 
-                foreach (Promotion promo in Promotions.ActivePromotions)
+                foreach (Promotion promo in Promotions.List)
                 {
-                    if (mod.name == promo.ModName)
+                    if (promo.Active && mod.name == promo.ModName)
                     {
                         ListItem.PromotionTexts = new string[promo.Links.Count];
                         ListItem.PromotionLinks = new string[promo.Links.Count];
@@ -565,7 +565,7 @@ namespace ModAssistant.Pages
             Properties.Settings.Default.SavedMods = string.Join(",", App.SavedMods.ToArray());
             Properties.Settings.Default.Save();
 
-            // RefreshModsList();
+            RefreshModsList();
         }
 
         private void ModCheckBox_Unchecked(object sender, RoutedEventArgs e)
@@ -577,7 +577,7 @@ namespace ModAssistant.Pages
             Properties.Settings.Default.SavedMods = string.Join(",", App.SavedMods.ToArray());
             Properties.Settings.Default.Save();
 
-            // RefreshModsList();
+            RefreshModsList();
         }
 
         public class Category
