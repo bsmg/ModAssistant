@@ -129,8 +129,8 @@
     <sys:String x:Key="About:Donate">Spenden</sys:String>
     <sys:String x:Key="About:HeadpatsButton">Kopf tätscheln</sys:String>
     <sys:String x:Key="About:HugsButton">Umarmungen</sys:String>
-    <sys:String x:Key="About:ImageError:Title">{0} Error</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="About:ImageError:Message">Failed to load {0} image!</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="About:ImageError:Title">{0} Fehler</sys:String>
+    <sys:String x:Key="About:ImageError:Message">Fehler beim Laden des Bildes {0}!</sys:String>
 
     <!-- Options Page -->
     <sys:String x:Key="Options:Title">Optionen</sys:String>
