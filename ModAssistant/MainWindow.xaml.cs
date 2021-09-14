@@ -278,11 +278,7 @@ namespace ModAssistant
             {
                 string exePath = Path.Combine(Options.Instance.InstallDirectory, "Beat Saber.exe");
 
-<<<<<<< HEAD
                 Process Process = new Process()
-=======
-                Process process = new Process()
->>>>>>> bf6286ebd5320dbe1fe271fe21d9bb3887a5829d
                 {
                     StartInfo = new ProcessStartInfo(exePath)
                     {
@@ -290,14 +286,9 @@ namespace ModAssistant
                     }
                 };
 
-<<<<<<< HEAD
                 Process.Start();
             }
             Application.Current.Shutdown();
-=======
-                process.Start();
-            }
->>>>>>> bf6286ebd5320dbe1fe271fe21d9bb3887a5829d
         }
 
         private void InstallButton_Click(object sender, RoutedEventArgs e)
