@@ -63,6 +63,8 @@ namespace ModAssistant.Pages
         {
             Utils.GetManualDir();
             DirectoryTextBlock.Text = InstallDirectory;
+            Process.Start(Utils.ExePath, App.Arguments);
+            Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
             GameTypeTextBlock.Text = InstallType;
         }
 

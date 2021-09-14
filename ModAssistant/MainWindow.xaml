@@ -12,17 +12,45 @@
     mc:Ignorable="d"
     MinWidth="800" MinHeight="430">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Rectangle Fill="{DynamicResource ModAssistantBackground}" Grid.RowSpan="2"/>
-
-        <Grid>
+        <Rectangle Fill="{DynamicResource ModAssistantBackground}" />
+        <Rectangle>
+            <Rectangle.Fill>
+                <ImageBrush x:Name="BackgroundImage" Stretch="{DynamicResource BackgroundImageStretch}" />
+            </Rectangle.Fill>
+        </Rectangle>
+        <MediaElement
+            Name="BackgroundVideo"
+            LoadedBehavior="Manual"
+            MediaEnded="BackgroundVideo_MediaEnded"
+            Visibility="Hidden" />
+        <Image
+            x:Name="SideImage"
+            Width="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelWidth}"
+            Height="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelHeight}"
+            HorizontalAlignment="Left"
+            VerticalAlignment="{DynamicResource SideImageYPosition}"
+            SnapsToDevicePixels="True"
+            Stretch="Fill"
+            UseLayoutRounding="True" />
+        <Grid Margin="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="400" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="50" />
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="65" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
                 <Button
                     Name="IntroButton"
@@ -40,7 +68,7 @@
                             <TextBlock
                             HorizontalAlignment="Center"
                             Padding="2,0,2,0"
-                            Text="{DynamicResource MainWindow:IntroButton}" FontWeight="SemiBold" />
+                            Text="{DynamicResource MainWindow:IntroButton}" />
                         </Viewbox>
                     </StackPanel>
                 </Button>
@@ -62,7 +90,7 @@
                             <TextBlock
                             HorizontalAlignment="Center"
                             Padding="2,0,2,0"
-                            Text="{DynamicResource MainWindow:ModsButton}" FontWeight="SemiBold" />
+                            Text="{DynamicResource MainWindow:ModsButton}" />
                         </Viewbox>
                     </StackPanel>
                 </Button>
@@ -71,7 +99,7 @@
                     Name="AboutButton"
                     Grid.Row="3"
                     Height="60"
-                    Margin="0,10,10,0"
+                    Margin="0,5,10,5"
                     Click="AboutButton_Click"
                     Style="{DynamicResource MainPageButton}">
                     <StackPanel Margin="0,6,0,0">
@@ -83,7 +111,7 @@
                             <TextBlock
                             HorizontalAlignment="Center"
                             Padding="2,0,2,0"
-                            Text="{DynamicResource MainWindow:AboutButton}" FontWeight="SemiBold" />
+                            Text="{DynamicResource MainWindow:AboutButton}" />
                         </Viewbox>
                     </StackPanel>
                 </Button>
@@ -95,7 +123,7 @@
                     Margin="0,5,10,5"
                     Click="OptionsButton_Click"
                     Style="{DynamicResource MainPageButton}">
-                    <StackPanel Margin="0,6,0,0">
+                    <StackPanel Margin="0,5,0,0">
                         <Image
                             Height="30"
                             VerticalAlignment="Bottom"
@@ -104,10 +132,11 @@
                             <TextBlock
                             HorizontalAlignment="Center"
                             Padding="2,0,2,0"
-                            Text="{DynamicResource MainWindow:OptionsButton}" FontWeight="SemiBold" />
+                            Text="{DynamicResource MainWindow:OptionsButton}" />
                         </Viewbox>
                     </StackPanel>
                 </Button>
+
                 <Button
                     Name="PlayButton"
                     Grid.Row="4"
@@ -135,7 +164,8 @@
                     Grid.Row="5"
                     VerticalAlignment="Bottom">
                     <TextBlock FontSize="10">
-                        <TextBlock Text="{DynamicResource MainWindow:GameVersionLabel}" RenderTransformOrigin="0.94,0.41" Width="65" TextAlignment="Center" />
+                        <TextBlock Text="{DynamicResource MainWindow:GameVersionLabel}" />
+                        :
                     </TextBlock>
                     <ComboBox
                         Name="GameVersionsBox"
@@ -171,7 +201,6 @@
                     Height="40"
                     VerticalAlignment="Bottom"
                     BorderBrush="{DynamicResource BottomStatusBarOutline}"
-                    CornerRadius="2"
                     BorderThickness="1">
                     <TextBlock
                         Name="MainTextBlock"
