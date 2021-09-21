@@ -29,9 +29,10 @@ namespace ModAssistant
                 // If no language code was saved, load system language
                 if (!LoadLanguage(CultureInfo.CurrentUICulture.Name))
                 {
-                    LoadLanguage("en");
+                    _ = LoadLanguage("en");
                 }
             }
+
             UpdateUI(LoadedLanguage);
         }
 
@@ -53,6 +54,13 @@ namespace ModAssistant
                 return false;
             }
 
+        public static bool LoadLanguage(string languageCode)
+        {
+            if (string.IsNullOrEmpty(languageCode))
+            {
+                return false;
+            }
+
             try
             {
                 LanguagesDict.Source = new Uri($"Localisation/{languageCode}.xaml", UriKind.Relative);
@@ -65,6 +73,7 @@ namespace ModAssistant
                 {
                     return LoadLanguage(languageCode.Split('-').First());
                 }
+
                 return false;
             }
         }
