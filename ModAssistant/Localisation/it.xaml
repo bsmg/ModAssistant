@@ -129,8 +129,8 @@
     <sys:String x:Key="About:Donate">Donazioni</sys:String>
     <sys:String x:Key="About:HeadpatsButton">Carezze</sys:String>
     <sys:String x:Key="About:HugsButton">Abbracci</sys:String>
-    <sys:String x:Key="About:ImageError:Title">{0} Error</sys:String> <!-- NEEDS TRANSLATING -->
-    <sys:String x:Key="About:ImageError:Message">Failed to load {0} image!</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="About:ImageError:Title">Errore {0}</sys:String>
+    <sys:String x:Key="About:ImageError:Message">Caricamento dell'Immagine Fallito! {0}</sys:String>
 
     <!-- Options Page -->
     <sys:String x:Key="Options:Title">Opzioni</sys:String>
