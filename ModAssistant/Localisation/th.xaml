@@ -18,10 +18,10 @@
     <sys:String x:Key="MainWindow:IntroButton">บทนำ</sys:String>
     <sys:String x:Key="MainWindow:ModsButton">Mods</sys:String>
     <sys:String x:Key="MainWindow:AboutButton">เกี่ยวกับ</sys:String>
-    <sys:String x:Key="MainWindow:OptionsButton">ตัวเลือกการตั้งค่า</sys:String>
+    <sys:String x:Key="MainWindow:OptionsButton">การตั้งค่า</sys:String>
     <sys:String x:Key="MainWindow:GameVersionLabel">เวอร์ชั่นของเกม</sys:String>
     <sys:String x:Key="MainWindow:VersionLabel">เวอร์ชั่น</sys:String>
-    <sys:String x:Key="MainWindow:ModInfoButton">ข้อมูล  Mods</sys:String>
+    <sys:String x:Key="MainWindow:ModInfoButton">ข้อมูล Mods</sys:String>
     <sys:String x:Key="MainWindow:InstallButtonTop">ติดตั้ง</sys:String>
     <sys:String x:Key="MainWindow:InstallButtonBottom">หรืออัพเดท</sys:String>
     <sys:String x:Key="MainWindow:GameVersionLoadFailed">ไม่สามารถโหลดเวอร์ชั่นเกมได้ เมนู Mods จะไม่สามารถใช้งานได้</sys:String>
@@ -36,7 +36,7 @@
     <sys:String x:Key="Intro:PageTitle">ยินดีต้อนรับเข้าสู่ Mod Assistant</sys:String>
     <sys:String x:Key="Intro:Terms:Header">โปรดอ่านหน้านี้ให้ครบถ้วนและระมัดระวัง</sys:String>
     <Span x:Key="Intro:Terms:Line1">
-        โดยที่จะใช้โปรแกรมนี้ ยืนยันว่าได้อ่านและยอมรับข้อกำหนดต่อไปนี้:
+        โดยที่จะใช้โปรแกรมนี้ โปรดยืนยันว่าได้อ่านและยอมรับข้อกำหนดต่อไปนี้:
     </Span>
     <Span x:Key="Intro:Terms:Line2">
         Beat Saber
@@ -58,7 +58,7 @@
         <Bold>เวลาว่าง</Bold>ของพวกเขา โปรดอดทนและเข้าใจ
     </Span>
     <Span x:Key="Intro:ReviewsBeatGamesFault">
-        <Bold>อย่า</Bold> ได้แสดงความคิดเห็นเชิงลบ เพียงเพราะ mods เสีย สิ่งนี้
+        <Bold>อย่า</Bold> ได้แสดงความคิดเห็นเชิงลบ เพียงเพราะ mods เสีย และสิ่งนี้
         <Bold>ไม่ใช่</Bold> ความผิดของ Beat Games
         <LineBreak/> พวกเขาไม่ได้พยายามกำจัด mods
     </Span>
@@ -110,7 +110,7 @@
     <!-- About Page -->
     <sys:String x:Key="About:Title">เกี่ยวกับ</sys:String>
     <sys:String x:Key="About:PageTitle">เกี่ยวกับ Mod Assistant</sys:String>
-    <sys:String x:Key="About:List:Header">ฉันคือ Assistant และฉันทำ Mod Assistant สำหรับความช่วยเหลือในหการติดตัง Mods โดยคำนึงถึงหลักการในใจ:</sys:String>
+    <sys:String x:Key="About:List:Header">ฉันคือ Assistant และฉันทำ Mod Assistant สำหรับความช่วยเหลือในการติดตัง Mods โดยคำนึงถึงหลักการในใจดังนี้:</sys:String>
     <sys:String x:Key="About:List:Item1">เรียบง่าย</sys:String>
     <sys:String x:Key="About:List:Item2">พกพาได้สะดวก</sys:String>
     <sys:String x:Key="About:List:Item3">ปฏิบัติการอันเดียว</sys:String>
