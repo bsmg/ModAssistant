@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management;
+using System.Net;
 using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Text;
@@ -438,14 +439,28 @@ namespace ModAssistant
             File.AppendAllText(logFile, $"[{DateTime.UtcNow:yyyy-mm-dd HH:mm:ss.ffffff}][{severity.ToUpper()}] {message}\n");
         }
 
-        public static async Task Download(string link, string output)
+        public static async Task<string> Download(string link, string folder, string output, bool preferContentDisposition = false)
         {
             var resp = await HttpClient.GetAsync(link);
+            var cdFilename = resp.Content.Headers.ContentDisposition.FileName.Trim('"');
+            // Prevent path traversal
+            if (cdFilename.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+            {
+                cdFilename = null;
+            }
+
+            var filename = WebUtility.UrlDecode(Path.Combine(
+                folder,
+                (preferContentDisposition ? cdFilename : null) ?? output
+            ));
+
             using (var stream = await resp.Content.ReadAsStreamAsync())
-            using (var fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write))
+            using (var fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.Write))
             {
                 await stream.CopyToAsync(fs);
             }
+
+            return filename;
         }
 
         private delegate void ShowMessageBoxDelegate(string Message, string Caption);
