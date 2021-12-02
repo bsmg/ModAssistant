@@ -20,14 +20,14 @@ jobs:
     - name: Cleanup release
       shell: bash
       run: |
-        find "ModAssistant/bin/Release" -type f ! -name "ModAssistant.exe" -delete
-        cp "LICENSE" "ModAssistant/bin/Release/LICENSE.ModAssistant.txt"
+        find "ModAssistant/bin/Release/net461" -type f ! -name "ModAssistant.exe" -delete
+        cp "LICENSE" "ModAssistant/bin/Release/net461/LICENSE.ModAssistant.txt"
     - name: Upload Build
       if: startsWith(github.ref, 'refs/tags/') == false
       uses: actions/upload-artifact@v2
       with:
         name: ModAssistant-${{ github.sha }}
-        path: ./ModAssistant/bin/Release/
+        path: ./ModAssistant/bin/Release/net461/
     - name: Extract Release Version
       if: startsWith(github.ref, 'refs/tags/')
       id: get_version
@@ -40,4 +40,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         name: Mod Assistant v${{ steps.get_version.outputs.version }}
-        files: ./ModAssistant/bin/Release/ModAssistant.exe
+        files: ./ModAssistant/bin/Release/net461/ModAssistant.exe
