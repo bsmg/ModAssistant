@@ -83,9 +83,9 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock
-                                            Foreground="{Binding GetVersionColor}"
+                                            Foreground="{Binding VersionColor}"
                                             Text="{Binding InstalledVersion}"
-                                            TextDecorations="{Binding GetVersionDecoration}" />
+                                            TextDecorations="{Binding VersionDecoration}" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,6 +30,7 @@ namespace ModAssistant.Pages
         public Mod[] AllModsList;
         public static List<Mod> InstalledMods = new List<Mod>();
         public static List<Mod> ManifestsToMatch = new List<Mod>();
+        public static List<Mod.Dependency> InstalledModsDependencies = new List<Mod.Dependency>();
         public List<string> CategoryNames = new List<string>();
         public CollectionView view;
         public bool PendingChanges;
@@ -40,14 +42,6 @@ namespace ModAssistant.Pages
         public Mods()
         {
             InitializeComponent();
-        }
-
-        private void RefreshModsList()
-        {
-            if (view != null)
-            {
-                view.Refresh();
-            }
         }
 
         public void RefreshColumns()
@@ -135,7 +129,6 @@ namespace ModAssistant.Pages
 
                 this.DataContext = this;
 
-                RefreshModsList();
                 ModsListView.Visibility = ModList.Count == 0 ? Visibility.Hidden : Visibility.Visible;
                 NoModsGrid.Visibility = ModList.Count == 0 ? Visibility.Visible : Visibility.Hidden;
 
@@ -331,6 +324,7 @@ namespace ModAssistant.Pages
                 }
 
                 mod.ListItem = ListItem;
+                mod.ListItem.Update();
 
                 ModList.Add(ListItem);
             }
@@ -383,7 +377,6 @@ namespace ModAssistant.Pages
 
             MainWindow.Instance.MainText = $"{FindResource("Mods:FinishedInstallingMods")}.";
             MainWindow.Instance.InstallButton.IsEnabled = true;
-            RefreshModsList();
         }
 
         private async Task InstallMod(Mod mod, string directory)
@@ -464,6 +457,7 @@ namespace ModAssistant.Pages
                 mod.ListItem.IsInstalled = true;
                 mod.ListItem.InstalledVersion = mod.version;
                 mod.ListItem.InstalledModInfo = mod;
+                mod.ListItem.Update();
             }
         }
 
@@ -522,7 +516,10 @@ namespace ModAssistant.Pages
                 {
                     if (dependency.Mod.ListItem.IsEnabled)
                     {
-                        dependency.Mod.ListItem.PreviousState = dependency.Mod.ListItem.IsSelected;
+                        if (!InstalledModsDependencies.Contains(dependency))
+                        {
+                            InstalledModsDependencies.Add(dependency);
+                        }
                         dependency.Mod.ListItem.IsSelected = true;
                         dependency.Mod.ListItem.IsEnabled = false;
                         ResolveDependencies(dependency.Mod);
@@ -550,7 +547,8 @@ namespace ModAssistant.Pages
                         }
                         if (!needed && !dependency.Mod.required)
                         {
-                            dependency.Mod.ListItem.IsSelected = dependency.Mod.ListItem.PreviousState;
+                            InstalledModsDependencies.Remove(dependency);
+                            dependency.Mod.ListItem.IsSelected = App.SelectInstalledMods && dependency.Mod.ListItem.IsInstalled;
                             dependency.Mod.ListItem.IsEnabled = true;
                             UnresolveDependencies(dependency.Mod);
                         }
@@ -567,8 +565,6 @@ namespace ModAssistant.Pages
             App.SavedMods.Add(mod.name);
             Properties.Settings.Default.SavedMods = string.Join(",", App.SavedMods.ToArray());
             Properties.Settings.Default.Save();
-
-            RefreshModsList();
         }
 
         private void ModCheckBox_Unchecked(object sender, RoutedEventArgs e)
@@ -579,8 +575,6 @@ namespace ModAssistant.Pages
             App.SavedMods.Remove(mod.name);
             Properties.Settings.Default.SavedMods = string.Join(",", App.SavedMods.ToArray());
             Properties.Settings.Default.Save();
-
-            RefreshModsList();
         }
 
         public class Category
@@ -589,21 +583,37 @@ namespace ModAssistant.Pages
             public List<ModListItem> Mods = new List<ModListItem>();
         }
 
-        public class ModListItem
+        public class ModListItem : ObservableObject
         {
             public string ModName { get; set; }
             public string ModVersion { get; set; }
             public string ModDescription { get; set; }
-            public bool PreviousState { get; set; }
 
-            public bool IsEnabled { get; set; }
-            public bool IsSelected { get; set; }
+            private bool _isEnabled;
+            public bool IsEnabled
+            {
+                get => _isEnabled;
+                set => SetProperty(ref _isEnabled, value);
+            }
+
+            private bool _isSelected;
+            public bool IsSelected
+            {
+                get => _isSelected;
+                set => SetProperty(ref _isSelected, value);
+            }
+
             public Mod ModInfo { get; set; }
             public string Category { get; set; }
 
             public Mod InstalledModInfo { get; set; }
-            public bool IsInstalled { get; set; }
-            private SemVersion _installedVersion { get; set; }
+            private bool _isInstalled;
+            public bool IsInstalled
+            {
+                get => _isInstalled;
+                set => SetProperty(ref _isInstalled, value);
+            }
+            private SemVersion _installedVersion;
             public string InstalledVersion
             {
                 get
@@ -615,31 +625,27 @@ namespace ModAssistant.Pages
                 {
                     if (SemVersion.TryParse(value, out SemVersion tempInstalledVersion))
                     {
-                        _installedVersion = tempInstalledVersion;
+                        SetProperty(ref _installedVersion, tempInstalledVersion);
                     }
                     else
                     {
-                        _installedVersion = null;
+                        SetProperty(ref _installedVersion, null);
                     }
                 }
             }
 
-            public string GetVersionColor
+            private string _versionColor;
+            public string VersionColor
             {
-                get
-                {
-                    if (!IsInstalled) return "Black";
-                    return _installedVersion >= ModVersion ? "Green" : "Red";
-                }
+                get => _versionColor;
+                set => SetProperty(ref _versionColor, value);
             }
 
-            public string GetVersionDecoration
+            private string _versionDecoration;
+            public string VersionDecoration
             {
-                get
-                {
-                    if (!IsInstalled) return "None";
-                    return _installedVersion >= ModVersion ? "None" : "Strikethrough";
-                }
+                get => _versionDecoration;
+                set => SetProperty(ref _versionDecoration, value);
             }
 
             public int GetVersionComparison
@@ -652,23 +658,18 @@ namespace ModAssistant.Pages
                 }
             }
 
+            private bool _canDelete;
             public bool CanDelete
             {
-                get
-                {
-                    return (!ModInfo.required && IsInstalled);
-                }
+                get => _canDelete;
+                set => SetProperty(ref _canDelete, value);
             }
 
+            private string _canSeeDelete;
             public string CanSeeDelete
             {
-                get
-                {
-                    if (!ModInfo.required && IsInstalled)
-                        return "Visible";
-                    else
-                        return "Hidden";
-                }
+                get => _canSeeDelete;
+                set => SetProperty(ref _canSeeDelete, value);
             }
 
             public string[] PromotionTexts { get; set; }
@@ -681,6 +682,14 @@ namespace ModAssistant.Pages
                     if (PromotionTexts == null || string.IsNullOrEmpty(PromotionTexts[0])) return "-15,0,0,0";
                     return "0,0,5,0";
                 }
+            }
+
+            public void Update()
+            {
+                VersionColor = !IsInstalled ? "Black" : _installedVersion >= ModVersion ? "Green" : "Red";
+                VersionDecoration = !IsInstalled ? "None" : _installedVersion >= ModVersion ? "None" : "Strikethrough";
+                CanDelete = !ModInfo.required && IsInstalled;
+                CanSeeDelete = !ModInfo.required && IsInstalled ? "Visible" : "Hidden";
             }
         }
 
@@ -736,14 +745,15 @@ namespace ModAssistant.Pages
             mod.ListItem.InstalledVersion = null;
             if (App.SelectInstalledMods)
             {
-                mod.ListItem.IsSelected = false;
                 UnresolveDependencies(mod);
                 App.SavedMods.Remove(mod.name);
                 Properties.Settings.Default.SavedMods = string.Join(",", App.SavedMods.ToArray());
                 Properties.Settings.Default.Save();
-                RefreshModsList();
             }
-            view.Refresh();
+            var isNeeded = InstalledModsDependencies.Any(x => x.Mod == mod);
+            mod.ListItem.IsSelected = isNeeded;
+            mod.ListItem.IsEnabled = !isNeeded;
+            mod.ListItem.Update();
         }
 
         public void UninstallMod(Mod mod)
