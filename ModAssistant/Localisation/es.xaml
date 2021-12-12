@@ -109,7 +109,7 @@
     <!-- About Page -->
     <sys:String x:Key="About:Title">Sobre nosotros</sys:String>
     <sys:String x:Key="About:PageTitle">Sobre Mod Assistant</sys:String>
-    <sys:String x:Key="About:List:Header">Soy Assistant, y cree Mod Assistant para ayudarme a administar mis mods, con pocos principios en mi cabeza:</sys:String>
+    <sys:String x:Key="About:List:Header">Soy Assistant, y creé Mod Assistant para ayudarme a administar mis mods, con pocos principios en mi cabeza:</sys:String>
     <sys:String x:Key="About:List:Item1">Simplicidad</sys:String>
     <sys:String x:Key="About:List:Item2">Portabilidad</sys:String>
     <sys:String x:Key="About:List:Item3">Auto-Ejecutable</sys:String>
