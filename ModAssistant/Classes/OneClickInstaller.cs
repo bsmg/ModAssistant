@@ -58,14 +58,15 @@ namespace ModAssistant
 
         private static async Task ModelSaber(Uri uri)
         {
-            if (App.OCIWindow != "No") Status.Show();
+            if (App.OCIWindow != "No" && App.OCIWindow != "Notify") Status.Show();
             API.Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Installing"), System.Web.HttpUtility.UrlDecode(uri.Segments.Last()))}");
             await API.ModelSaber.GetModel(uri);
         }
 
         private static async Task Playlist(Uri uri)
         {
-            if (App.OCIWindow != "No") Status.Show();
+            if (App.OCIWindow != "No" && App.OCIWindow != "Notify") Status.Show();
+            if (App.OCIWindow == "Notify") Utils.SendNotify("Starting to download playlist"); 
             await API.Playlists.DownloadAll(uri);
         }
 
