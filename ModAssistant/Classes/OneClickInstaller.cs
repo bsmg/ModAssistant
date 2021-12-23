@@ -2,7 +2,11 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Drawing;
 using Microsoft.Win32;
+using System.Windows.Forms;
+using Application = System.Windows.Application;
+using MessageBox = System.Windows.MessageBox;
 
 namespace ModAssistant
 {
@@ -10,7 +14,7 @@ namespace ModAssistant
     {
         private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver", "bsplaylist" };
         public static OneClickStatus Status = new OneClickStatus();
-
+ 
         public static async Task InstallAsset(string link)
         {
             Uri uri = new Uri(link);
@@ -33,10 +37,17 @@ namespace ModAssistant
                 Status.StopRotation();
                 API.Utils.SetMessage((string)Application.Current.FindResource("OneClick:Done"));
             }
+            if (App.OCIWindow == "Notify")
+            {
+                Utils.SendNotify((string)Application.Current.FindResource("OneClick:DoneNotify"));
+                Application.Current.Shutdown();
+            }
             if (App.OCIWindow == "Close")
             {
                 Application.Current.Shutdown();
             }
+            
+
         }
 
         private static async Task BeatSaver(Uri uri)
