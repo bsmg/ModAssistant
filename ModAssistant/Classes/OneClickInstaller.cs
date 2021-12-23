@@ -66,7 +66,7 @@ namespace ModAssistant
         private static async Task Playlist(Uri uri)
         {
             if (App.OCIWindow != "No" && App.OCIWindow != "Notify") Status.Show();
-            if (App.OCIWindow == "Notify") Utils.SendNotify("Starting to download playlist"); 
+            if (App.OCIWindow == "Notify") Utils.SendNotify((string)Application.Current.FindResource("OneClick:StartDownloadPlaylist")); 
             await API.Playlists.DownloadAll(uri);
         }
 
