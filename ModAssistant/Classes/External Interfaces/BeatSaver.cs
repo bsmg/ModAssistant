@@ -27,7 +27,6 @@ namespace ModAssistant.API
 
         public static async Task<BeatSaverMap> GetFromHash(string Hash, bool showNotification = true)
         {
-            MessageBox.Show("hash," + App.OCIWindow + "," + showNotification);
             if (showNotification && App.OCIWindow != "No" && App.OCIWindow != "Notify") OneClickInstaller.Status.Show();
             return await GetMap(Hash, "hash", showNotification);
         }
