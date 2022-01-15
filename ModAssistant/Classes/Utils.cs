@@ -33,13 +33,13 @@ namespace ModAssistant
             public const string WeebCDNAPIURL_beatmods = "https://pat.assistant.moe/api/v1.0/";
             public const string BeatModsTranslation_beatmods = "https://beatmodstranslation.wgzeyu.vip/zh-Hans.json";
 
-            public const string BeatModsAPIUrl_wgzeyu = "https://beatmods.gtxcn.com/api/v1/";
-            public const string TeknikAPIUrl_wgzeyu = "https://beatmods.gtxcn.com/teknik/v1/";
-            public const string BeatModsURL_wgzeyu = "https://beatmods.gtxcn.com";
-            public const string BeatModsVersions_wgzeyu = "https://beatmods.gtxcn.com/bmversions/versions.json";
-            public const string BeatModsAlias_wgzeyu = "https://beatmods.gtxcn.com/alias/aliases.json";
-            public const string WeebCDNAPIURL_wgzeyu = "https://beatmods.gtxcn.com/assistant/api/v1.0/";
-            public const string BeatModsTranslation_wgzeyu = "https://beatmods.gtxcn.com/github/BeatSaberModListTranslationRepo/zh-Hans.json";
+            public const string BeatModsAPIUrl_wgzeyu = "https://beatmods.wgzeyu.com/api/v1/";
+            public const string TeknikAPIUrl_wgzeyu = "https://beatmods.wgzeyu.com/teknik/v1/";
+            public const string BeatModsURL_wgzeyu = "https://beatmods.wgzeyu.com";
+            public const string BeatModsVersions_wgzeyu = "https://beatmods.wgzeyu.com/bmversions/versions.json";
+            public const string BeatModsAlias_wgzeyu = "https://beatmods.wgzeyu.com/alias/aliases.json";
+            public const string WeebCDNAPIURL_wgzeyu = "https://beatmods.wgzeyu.com/assistant/api/v1.0/";
+            public const string BeatModsTranslation_wgzeyu = "https://beatmods.wgzeyu.com/github/BeatSaberModListTranslationRepo/zh-Hans.json";
 
             public const string BeatModsAPIUrl_bmtop = "https://api.beatmods.top/api/v1/";
             public const string TeknikAPIUrl_bmtop = "https://teknikapi.beatmods.top/v1/";

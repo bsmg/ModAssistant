@@ -67,13 +67,13 @@
     <Span x:Key="Intro:WikiGuide">
         <Bold>
             <Span Foreground="Red">请阅读</Span>
-            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/pc-guide/">
+            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.wgzeyu.com/pc-guide/">
                 新手基础教程
             </Hyperlink> 、
-            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/pc-faq/">
+            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.wgzeyu.com/pc-faq/">
                 详细问题解答
             </Hyperlink> 、
-            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/drive/">
+            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.wgzeyu.com/drive/">
                 曲包资源网盘
             </Hyperlink> 、
         </Bold>
@@ -88,7 +88,7 @@
         <LineBreak/>
         国际源为BeatMods源站，服务器使用<Bold>CloudFlare国际CDN</Bold>，<Bold>默认选项</Bold>；
         <LineBreak/>
-        国内源为BeatMods镜像，服务器使用<Bold>上海阿里云</Bold>（由WGzeyu提供），推荐国内用户使用；
+        国内源为BeatMods镜像，服务器使用<Bold>香港腾讯云</Bold>（由WGzeyu提供），推荐国内用户使用；
         <LineBreak/>
         增强源为BeatTop管理，服务器使用<Bold>美国机房</Bold>，同步国际源并支持部分第三方插件以及1.8.0版本的网易影核插件。
     </Span>
