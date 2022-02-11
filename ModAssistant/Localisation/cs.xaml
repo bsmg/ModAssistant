@@ -1,0 +1,254 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ModAssistant"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="ResourceDictionaryName">i18n:cs-CZ</sys:String>
+
+    <!-- App -->
+    <sys:String x:Key="App:InstallDirDialog:Title">Nepodrařilo se najít instalační složku Beat Saberu</sys:String>
+    <sys:String x:Key="App:InstallDirDialog:OkCancel">Klikněte OK a zkuste to znovu, nebo zavřete aplikaci</sys:String>
+    <sys:String x:Key="App:InvalidArgument">Neplatný argument! '{0}' vyžaduje vlastnost.</sys:String>
+    <sys:String x:Key="App:UnrecognizedArgument">Nerozpoznaný argument. Mod Assistant se zavířá.</sys:String>
+    <sys:String x:Key="App:UnhandledException">Vyskytla se neošěetřená výjimka</sys:String>
+    <sys:String x:Key="App:Exception">Výjimka</sys:String>
+
+    <!-- Main Window -->
+    <sys:String x:Key="MainWindow:WindowTitle">Mod Assistant</sys:String>
+    <sys:String x:Key="MainWindow:IntroButton">Úvod</sys:String>
+    <sys:String x:Key="MainWindow:ModsButton">Módy</sys:String>
+    <sys:String x:Key="MainWindow:AboutButton">O aplikaci</sys:String>
+    <sys:String x:Key="MainWindow:OptionsButton">Možnosti</sys:String>
+    <sys:String x:Key="MainWindow:GameVersionLabel">Verze hry</sys:String>
+    <sys:String x:Key="MainWindow:VersionLabel">Verze</sys:String>
+    <sys:String x:Key="MainWindow:ModInfoButton">Informace o modech</sys:String>
+    <sys:String x:Key="MainWindow:InstallButtonTop">Instalovat</sys:String>
+    <sys:String x:Key="MainWindow:InstallButtonBottom">nebo aktualizovat</sys:String>
+    <sys:String x:Key="MainWindow:GameVersionLoadFailed">Nepodrařilo se nám načíst verzi Beat Saberu, sekce módy je momentálně nepřístupná</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Title">Detekovali jsme novou verzi Beat Saberu</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Line1">Vypadá to, že došlo k aktualizaci hry.</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Line2">Zkontrolujte prosím, zda je v levém dolním rohu vybrána správná verze!</sys:String>
+    <sys:String x:Key="MainWindow:NoModSelected">Není vybrán žádný mod!</sys:String>
+    <sys:String x:Key="MainWindow:NoModInfoPage">{0} nemá informační stránku.</sys:String>
+
+    <!-- Intro Page -->
+    <sys:String x:Key="Intro:Title">Úvod</sys:String>
+     <sys:String x:Key="Intro:PageTitle">Vítejte v aplikaci Mod Assistant</sys:String>
+     <sys:String x:Key="Intro:Terms:Header">Přečtěte si tuto stránku celou a pozorně</sys:String>
+     <Span x:Key="Intro:Terms:Line1">
+         Používáním tohoto programu potvrzujete, že jste si přečetli a souhlasíte s následujícími podmínkami:
+     </Span>
+     <Span x:Key="Intro:Terms:Line2">
+         Beat Saber
+         <Bold>nepodporuje</Bold> nativně mody. To znamená:
+     </Span>
+     <Span x:Key="Intro:Terms:Term1">
+         Módy
+         <Bold>rozbijí</Bold> každou aktualizaci. To je normální a
+         <Bold>ne</Bold> chyba Beat Games.
+     </Span>
+    <Span x:Key="Intro:Terms:Term2">
+         Módy
+         <Bold>způsobí</Bold> chyby a problémy s výkonem. Tohle
+         <Bold>není</Bold> chyba Beat Games.
+     </Span>
+     <Span x:Key="Intro:Terms:Term3">
+         Mody jsou vyrobeny
+         <Bold>zdarma</Bold> lidmi v jejich
+         <Bold>volném čase.</Bold> Prosíme o trpělivost a pochopení.
+     </Span>
+     <Span x:Key="Intro:ReviewsBeatGamesFault">
+         <Bold>NEPONECHÁVEJTE</Bold> negativní recenze, protože se rozbily mody. Tohle
+         <Bold>není</Bold> chyba Beat Games.
+         <LineBreak/> Nesnaží se zabít moderskou komunitu.
+     </Span>
+     <Span x:Key="Intro:ReviewsRustySpoon">
+         Pokud stále vidím, že lidé zanechávají negativní recenze
+         <Italic>protože</Italic> se moduly rozbily,
+         <LineBreak/>
+         <Bold>Osobně zabiju mody</Bold>
+     </Span>
+    <Span x:Key="Intro:WikiGuide">
+        Prosíme přečtěte si začátečnický návod
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
+            Wiki
+        </Hyperlink>.
+    </Span>
+    <sys:String x:Key="Intro:AgreeButton">Souhlasím</sys:String>
+     <sys:String x:Key="Intro:DisagreeButton">Nesouhlasím</sys:String>
+     <sys:String x:Key="Intro:ClosingApp">Aplikace se zavírá: Neodsouhlasili jste smluvními podmínkami.</sys:String>
+     <sys:String x:Key="Intro:VersionDownloadFailed">Nelze stáhnout seznam verzí</sys:String>
+     <sys:String x:Key="Intro:ModsTabDisabled">Karta Módy je deaktivována. Prosím restartujte a zkuste to znovu.</sys:String>
+     <sys:String x:Key="Intro:ModsTabEnabled">Nyní můžete používat kartu Módy!</sys:String>
+
+    <!-- Mods Page -->
+    <sys:String x:Key="Mods:Title">Módy</sys:String>
+    <sys:String x:Key="Mods:Header:Name">Jméno</sys:String>
+    <sys:String x:Key="Mods:Header:Installed">Nainstalované</sys:String>
+    <sys:String x:Key="Mods:Header:Latest">Nejnovější</sys:String>
+    <sys:String x:Key="Mods:Header:Description">Popis</sys:String>
+    <sys:String x:Key="Mods:Header:Uninstall">Odinstalovat</sys:String>
+    <sys:String x:Key="Mods:UninstallButton">Odinstalovat</sys:String>
+    <sys:String x:Key="Mods:LoadFailed">NEbylo možné načíst seznam módů</sys:String>
+    <sys:String x:Key="Mods:CheckingInstalledMods">Kontrolujeme nainstalované módy</sys:String>
+    <sys:String x:Key="Mods:LoadingMods">Módy se načítají</sys:String>
+    <sys:String x:Key="Mods:FinishedLoadingMods">Načítání módů bylo úspěšné</sys:String>
+    <sys:String x:Key="Mods:NoMods">Tato verze Beat Saberu nepodporuje žádné módy</sys:String>
+    <sys:String x:Key="Mods:InstallingMod">Instalace {0}</sys:String>
+    <sys:String x:Key="Mods:InstalledMod">Nainstalováno {0}</sys:String>
+    <sys:String x:Key="Mods:FinishedInstallingMods">Instalace módu byla dokončena</sys:String>
+    <sys:String x:Key="Mods:ModDownloadLinkMissing">Nepodařilo se najít instalační adresu pro {0}</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Title">Odinstalovat {0}?</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Body1">Jste si jisti, že chcete odstranit {0}?</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Body2">Toto by mohlo rozbít další mody</sys:String>
+    <sys:String x:Key="Mods:FailedExtract">Nepodařilo se extrahovat {0}, zkoušíme znovu v {1} sekundách. ({2}/{3})</sys:String>
+    <sys:String x:Key="Mods:FailedExtractMaxReached">Nepodařilo se extrahovat {0} po maximálním počtu opakování ({1}), přeskakujeme. Tento mod nemusí fungovat správně</sys:String>
+    <sys:String x:Key="Mods:SearchLabel">Hledat...</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Nepodařilo se odinstalovat BSIPA</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA instalace nebyla nalezena, operace přeskočena.</sys:String>
+
+    <!-- About Page -->
+    <sys:String x:Key="About:Title">O apliakci</sys:String>
+    <sys:String x:Key="About:PageTitle">O Mod Assistant</sys:String>
+    <sys:String x:Key="About:List:Header">Jsem Assistant a vytvořil jsem aplikaci Mod Assistant pro ještě jednodušší modování hry Beat Saber</sys:String>
+    <sys:String x:Key="About:List:Item1">Jednoduchost</sys:String>
+    <sys:String x:Key="About:List:Item2">Kompaktnost</sys:String>
+    <sys:String x:Key="About:List:Item3">Jeden .exe soubor</sys:String>
+    <sys:String x:Key="About:List:Item4">Zodpovědné používání</sys:String>
+    <Span x:Key="About:SupportAssistant">
+        Pokud se vám líbí mojé práce, navštivte
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.assistant.moe/Donate/">
+            stránku pro příspěvky
+        </Hyperlink>
+        nebo můj
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/AssistantMoe">
+            Patreon
+        </Hyperlink>
+    </Span>
+    <sys:String x:Key="About:SpecialThanks">Poděkování ♥</sys:String>
+    <sys:String x:Key="About:Donate">Přispět</sys:String>
+    <sys:String x:Key="About:HeadpatsButton">Poplácání po rameni</sys:String>
+    <sys:String x:Key="About:HugsButton">Objetí</sys:String>
+    <sys:String x:Key="About:ImageError:Title">{0} Chyba</sys:String>
+    <sys:String x:Key="About:ImageError:Message">Nepodařilo se načíst {0}!</sys:String>
+
+    <!-- Options Page -->
+    <sys:String x:Key="Options:Title">Možnosti</sys:String>
+    <sys:String x:Key="Options:PageTitle">Nastavení</sys:String>
+    <sys:String x:Key="Options:InstallFolder">Instalační složka</sys:String>
+    <sys:String x:Key="Options:SelectFolderButton">Vybrat složku</sys:String>
+    <sys:String x:Key="Options:OpenFolderButton">Otevřít složku</sys:String>
+    <sys:String x:Key="Options:SaveSelectedMods">Uložit vybrané módy</sys:String>
+    <sys:String x:Key="Options:CheckInstalledMods">Zjistit nainstalované módy</sys:String>
+    <sys:String x:Key="Options:SelectInstalledMods">Vybrat nainstalované módy</sys:String>
+    <sys:String x:Key="Options:ReinstallInstalledMods">Přeinstalujte nainstalované módy</sys:String>
+    <sys:String x:Key="Options:EnableOneClickInstalls">Povolit instalace OneClick™</sys:String>
+    <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
+    <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
+    <sys:String x:Key="Options:Playlists">Seznamy skladeb</sys:String>
+    <sys:String x:Key="Options:CloseWindow">Po dokončení zavřít okno</sys:String>
+    <sys:String x:Key="Options:GameType">Typ hry</sys:String>
+    <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
+    <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
+    <sys:String x:Key="Options:Tools">Nástroje</sys:String>
+    <sys:String x:Key="Options:InstallPlaylist">Instalovat playlist</sys:String>
+    <sys:String x:Key="Options:InstallingPlaylist">Instalace playlistu: {0}</sys:String>
+    <sys:String x:Key="Options:FailedPlaylistSong">Skladba, která se nezdařila nainstalovat: {0}</sys:String>
+    <sys:String x:Key="Options:FinishedPlaylist">[{0} nelze] Dokončena instalace seznamu skladeb: {1}</sys:String>
+    <sys:String x:Key="Options:ShowOCIWindow">Zobrazit okno instalačního programu OneClick</sys:String>
+    <sys:String x:Key="Options:OCIWindowYes">Ano</sys:String>
+    <sys:String x:Key="Options:OCIWindowClose">Zavřít</sys:String>
+    <sys:String x:Key="Options:OCIWindowNo">Ne</sys:String>
+    <sys:String x:Key="Options:Diagnostics">Diagnostika</sys:String>
+    <sys:String x:Key="Options:OpenLogsButton">Otevřít protokoly</sys:String>
+    <sys:String x:Key="Options:OpenAppDataButton">Otevřít AppData</sys:String>
+    <sys:String x:Key="Options:UninstallBSIPAButton">Odinstalovat BSIPA</sys:String>
+    <sys:String x:Key="Options:RemoveAllModsButton">Odebrat všechny modifikace</sys:String>
+    <sys:String x:Key="Options:ApplicationTheme">Motiv aplikace</sys:String>
+    <sys:String x:Key="Options:ExportTemplateButton">Šablona exportu</sys:String>
+    <sys:String x:Key="Options:UploadingLog">Protokol nahrávání</sys:String>
+    <sys:String x:Key="Options:LogUrlCopied">Adresa URL protokolu zkopírována do schránky!</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed">Nahrávání protokolu se nezdařilo</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed:Title">Nahrávání protokolu se nezdařilo!</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed:Body">Nelze nahrát soubor protokolu do Teknik, zkuste to prosím znovu nebo soubor odešlete ručně.</sys:String>
+    <sys:String x:Key="Options:GettingModList">Získávání seznamu módů</sys:String>
+    <sys:String x:Key="Options:FindingBSIPAVersion">Hledání verze BSIPA</sys:String>
+    <sys:String x:Key="Options:BSIPAUninstalled">BSIPA odinstalováno</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:Title">Odinstalovat všechny modifikace?</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:RemoveAllMods">Opravdu chcete odstranit VŠECHNY módy?</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:CannotBeUndone">Toto nelze vrátit zpět.</sys:String>
+    <sys:String x:Key="Options:AllModsUninstalled">Všechny módy odinstalovány</sys:String>
+    <sys:String x:Key="Options:CurrentThemeRemoved">Aktuální motiv byl odstraněn a vrací se na výchozí...</sys:String>
+    <sys:String x:Key="Options:ThemeFolderNotFound">Složka motivů nebyla nalezena! Zkuste exportovat šablonu...</sys:String>
+    <sys:String x:Key="Options:AppDataNotFound">Složka AppData nebyla nalezena! Zkuste spustit hru.</sys:String>
+
+    <!-- Loading Page -->
+    <sys:String x:Key="Loading:Loading">Načítání módů</sys:String>
+
+    <!-- Invalid Page -->
+    <sys:String x:Key="Invalid:Title">Neplatný</sys:String>
+    <sys:String x:Key="Invalid:PageTitle">Neplatná instalace</sys:String>
+    <sys:String x:Key="Invalid:PageSubtitle">Instalace hry je neplatná</sys:String>
+    <sys:String x:Key="Invalid:List:Header">Toto může nastat v případě, že je instalace pirátská</sys:String>
+    <Span x:Key="Invalid:List:Line1">
+        Pokud máte pirátskou verzi,
+        <Bold>zakupte si oficiální verzi
+            <Hyperlink NavigateUri="https://beatgames.com/" local:HyperlinkExtensions.IsExternal="True">
+                ZDE
+            </Hyperlink>
+        </Bold>.
+    </Span>
+    <Span x:Key="Invalid:List:Line2">
+        Pokud instalace vaší hry
+        <Bold>je</Bold> oficiální, prosíme
+        <Hyperlink NavigateUri="https://bsmg.wiki/support#clean-installation" local:HyperlinkExtensions.IsExternal="True">
+            reinstalujte hru
+        </Hyperlink>.
+    </Span>
+    <Span x:Key="Invalid:List:Line3">
+        Pokud předešlé kroky nepomohly
+        <Span Foreground="Blue">#pc-help</Span> koukněte se na
+        <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
+            BSMG
+        </Hyperlink>.
+    </Span>
+    <sys:String x:Key="Invalid:BoughtGame1">Pokud jste dříve měli pirátskou verzi, ale od té doby jste si hru koupili</sys:String>
+     <sys:String x:Key="Invalid:SelectFolderButton">Vybrat složku</sys:String>
+     <sys:String x:Key="Invalid:BoughtGame2">Po změně na legální instalaci budete muset restartovat Mod Assistant</sys:String>
+
+    <!-- OneClick Class -->
+    <sys:String x:Key="OneClick:MapDownloadFailed">Nepodařilo se získat podrobnosti mapy.</sys:String>
+    <sys:String x:Key="OneClick:SongDownloadFailed">Skladbu nelze stáhnout.</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:Failed">Skladbu nelze stáhnout.</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:NetworkIssues">Nastal problém s BeatSaverem nebo vaším internetovým připojením.</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:FailedTitle">Stažení ZIP skladby se nezdařilo</sys:String>
+    <sys:String x:Key="OneClick:InstallDirNotFound">Instalační cesta Beat Saber nebyla nalezena.</sys:String>
+    <sys:String x:Key="OneClick:InstalledAsset">Instalováno: {0}</sys:String>
+    <sys:String x:Key="OneClick:AssetInstallFailed">Instalace se nezdařila.</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} Nástroje instalace OneClick™ jsou zaregistrovány!</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} Nástroje instalace OneClick™ nebyly zaregistrovány!</sys:String>
+    <sys:String x:Key="OneClick:Installing">Instalace: {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitSkip">Dosaženo maximálního počtu pokusů: přeskakování {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitHit">Požadavek na omezení rychlosti. Obnovení za {0}</sys:String>
+    <sys:String x:Key="OneClick:Failed">Stahování se nezdařilo: {0}</sys:String>
+    <sys:String x:Key="OneClick:Done">Hotovo</sys:String>
+
+    <!-- Themes Class -->
+    <sys:String x:Key="Themes:ThemeNotFound">Motiv nebyl nalezen, vrací se výchozí motiv...</sys:String>
+    <sys:String x:Key="Themes:ThemeSet">Motiv nastaven na {0}.</sys:String>
+    <sys:String x:Key="Themes:ThemeMissing">{0} neexistuje.</sys:String>
+    <sys:String x:Key="Themes:SavedTemplateTheme">Motiv šablony &quot;{0}&quot; uloženy do složky motivů.</sys:String>
+    <sys:String x:Key="Themes:TemplateThemeExists">Motiv již existuje!</sys:String>
+    <sys:String x:Key="Themes:FailedToLoadXaml">Nepodařilo se načíst soubor .xaml pro motiv {0}: {1}</sys:String>
+
+    <!-- Updater Class -->
+    <sys:String x:Key="Updater:CheckFailed">Nepodařilo se vyhledat aktualizace.</sys:String>
+     <sys:String x:Key="Updater:DownloadFailed">Nelze stáhnout aktualizaci.</sys:String>
+
+    <!-- Utils Class -->
+    <sys:String x:Key="Utils:NotificationTitle">Mod Assistant</sys:String>
+     <sys:String x:Key="Utils:NoInstallFolder">Nelze zjistit vaši instalační složku Beat Saber. Vyberte jej prosím ručně.</sys:String>
+     <sys:String x:Key="Utils:RunAsAdmin">Mod Assistant potřebuje spustit tuto úlohu jako správce. Zkuste to prosím znovu.</sys:String>
+     <sys:String x:Key="Utils:InstallDir:DialogTitle">Vyberte instalační složku Beat Saber</sys:String>
+     <sys:String x:Key="Utils:CannotOpenFolder">Nelze otevřít složku: {0}</sys:String>
+</ResourceDictionary>
