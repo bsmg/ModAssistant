@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6A224B82-40DA-40B3-94DC-EFBEC2BDDA39}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ModAssistant</RootNamespace>
+    <AssemblyName>ModAssistant</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Classes\External Interfaces\BeatSaver.cs" />
+    <Compile Include="Classes\External Interfaces\ModelSaber.cs" />
+    <Compile Include="Classes\External Interfaces\Playlists.cs" />
+    <Compile Include="Classes\External Interfaces\Utils.cs" />
+    <Compile Include="Classes\Http.cs" />
+    <Compile Include="Classes\HyperlinkExtensions.cs" />
+    <Compile Include="Classes\Languages.cs" />
+    <Compile Include="Classes\Promotions.cs" />
+    <Compile Include="Classes\Diagnostics.cs" />
+    <Compile Include="Classes\Themes.cs" />
+    <Compile Include="Classes\Updater.cs" />
+    <Compile Include="Libs\semver\SemVersion.cs" />
+    <Compile Include="Libs\semver\IntExtensions.cs" />
+    <Compile Include="OneClickStatus.xaml.cs">
+      <DependentUpon>OneClickStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Intro.xaml.cs">
+      <DependentUpon>Intro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Mod.cs" />
+    <Page Include="Localisation\de.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\pt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\en-DEBUG.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="Pages\Invalid.xaml.cs">
+      <DependentUpon>Invalid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Loading.xaml.cs">
+      <DependentUpon>Loading.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Mods.xaml.cs">
+      <DependentUpon>Mods.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Utils.cs" />
+    <Page Include="Localisation\en.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\es.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\fr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\it.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\ko.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\nb.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\nl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\pl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\sv.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\ru.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\th.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localisation\zh.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OneClickStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Intro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\OneClickInstaller.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pages\Loading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Invalid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Mods.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Options.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\CheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ComboBoxItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\GridViewColumnHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Label.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ListViewItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\MenuItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\RepeatButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ScrollBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TextBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Thumb.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ToggleButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\BSMG.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Dark.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Default Scrollbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Light.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Light Pink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <EmbeddedResource Include="Themes\Ugly Kulu-Ya-Ku.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Pages\Options.xaml.cs">
+      <DependentUpon>Options.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Themes\BSMG\Sidebar.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
