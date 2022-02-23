@@ -15,7 +15,7 @@
       <SelfContained>true</SelfContained>
       <PublishReadyToRun>false</PublishReadyToRun>
       <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
-        <PublishTrimmed>true</PublishTrimmed>
+        <PublishTrimmed>false</PublishTrimmed>
         <TrimMode>copyused</TrimMode>
         <TrimmerSingleWarn>false</TrimmerSingleWarn>
         <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
@@ -32,7 +32,7 @@
     <ItemGroup>
       <PackageReference Include="MimeMapping" Version="1.0.1.37" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-      <PackageReference Include="System.Management" Version="6.0.0-preview.4.21253.7" />
+      <PackageReference Include="System.Management" Version="6.0.0" />
     </ItemGroup>
   
     <ItemGroup>

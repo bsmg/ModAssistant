@@ -13,7 +13,7 @@ namespace ModAssistant
         public static string LoadedLanguage { get; private set; }
         public static List<CultureInfo> LoadedLanguages => availableCultures.ToList();
         public static bool FirstRun = true;
-        private static readonly string[] availableLanguageCodes = { "de", "en", "es", "fr", "it", "ko", "nb", "nl", "ru", "sv", "zh" };
+        private static readonly string[] availableLanguageCodes = { "de", "en", "es", "fr", "it", "ja", "ko", "nb", "nl", "pl", "ru", "sv", "th", "zh" };
         private static IEnumerable<CultureInfo> availableCultures;
 
         public static void LoadLanguages()
@@ -29,9 +29,10 @@ namespace ModAssistant
                 // If no language code was saved, load system language
                 if (!LoadLanguage(CultureInfo.CurrentUICulture.Name))
                 {
-                    LoadLanguage("en");
+                    _ = LoadLanguage("en");
                 }
             }
+
             UpdateUI(LoadedLanguage);
         }
 
@@ -45,6 +46,7 @@ namespace ModAssistant
         }
 
         public static ResourceDictionary LanguagesDict => Application.Current.Resources.MergedDictionaries[1];
+
 
         public static bool LoadLanguage(string languageCode)
         {
@@ -65,6 +67,7 @@ namespace ModAssistant
                 {
                     return LoadLanguage(languageCode.Split('-').First());
                 }
+
                 return false;
             }
         }

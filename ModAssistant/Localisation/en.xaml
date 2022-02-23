@@ -129,6 +129,8 @@
     <sys:String x:Key="About:Donate">Donate</sys:String>
     <sys:String x:Key="About:HeadpatsButton">Headpats</sys:String>
     <sys:String x:Key="About:HugsButton">Hugs</sys:String>
+    <sys:String x:Key="About:ImageError:Title">{0} Error</sys:String>
+    <sys:String x:Key="About:ImageError:Message">Failed to load {0} image!</sys:String>
 
     <!-- Options Page -->
     <sys:String x:Key="Options:Title">Options</sys:String>

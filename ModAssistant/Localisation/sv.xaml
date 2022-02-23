@@ -129,6 +129,8 @@
     <sys:String x:Key="About:Donate">Donera</sys:String>
     <sys:String x:Key="About:HeadpatsButton">Klapp på huvudet</sys:String>
     <sys:String x:Key="About:HugsButton">Krama</sys:String>
+    <sys:String x:Key="About:ImageError:Title">{0} Error</sys:String>
+    <sys:String x:Key="About:ImageError:Message">Det gick inte att ladda bilden {0}!</sys:String>
 
     <!-- Options Page -->
     <sys:String x:Key="Options:Title">Inställningar</sys:String>

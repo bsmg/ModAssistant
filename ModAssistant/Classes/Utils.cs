@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management;
+using System.Net;
 using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Text;
@@ -206,7 +207,7 @@ namespace ModAssistant
                 return null;
             }
 
-            Regex regex = new Regex("\\s\"\\d\"\\s+\"(.+)\"");
+            Regex regex = new Regex("\\s\"(?:\\d|path)\"\\s+\"(.+)\"");
             List<string> SteamPaths = new List<string>
             {
                 Path.Combine(SteamInstall, @"steamapps")
@@ -464,17 +465,31 @@ namespace ModAssistant
         {
             string path = Path.GetDirectoryName(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath);
             string logFile = $"{path}{Path.DirectorySeparatorChar}log.log";
-            File.AppendAllText(logFile, $"[{DateTime.UtcNow:yyyy-mm-dd HH:mm:ss.ffffff}][{severity.ToUpper()}] {message}\n");
+            File.AppendAllText(logFile, $"[{DateTime.UtcNow:yyyy-mm-dd HH:mm:ss.ffffff}][{severity.ToUpperInvariant()}] {message}\n");
         }
 
-        public static async Task Download(string link, string output)
+        public static async Task<string> Download(string link, string folder, string output, bool preferContentDisposition = false)
         {
-            System.Net.Http.HttpResponseMessage? resp = await HttpClient.GetAsync(link);
-            using (Stream? stream = await resp.Content.ReadAsStreamAsync())
-            using (FileStream? fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write))
+            var resp = await HttpClient.GetAsync(link);
+            var cdFilename = resp.Content.Headers.ContentDisposition.FileName.Trim('"');
+            // Prevent path traversal
+            if (cdFilename.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+            {
+                cdFilename = null;
+            }
+
+            var filename = WebUtility.UrlDecode(Path.Combine(
+                folder,
+                (preferContentDisposition ? cdFilename : null) ?? output
+            ));
+
+            using (var stream = await resp.Content.ReadAsStreamAsync())
+            using (var fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.Write))
             {
                 await stream.CopyToAsync(fs);
             }
+
+            return filename;
         }
 
         private delegate void ShowMessageBoxDelegate(string Message, string Caption);

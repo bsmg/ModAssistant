@@ -4,16 +4,17 @@ namespace ModAssistant
 {
     internal class Promotions
     {
-        public static Promotion[] ActivePromotions =
+        public static Promotion[] List =
         {
             new Promotion
             {
                 ModName = "YUR Fit Calorie Tracker",
                 Links = new List<PromotionLink>(){
                     new PromotionLink{Text = "Join our Discord!", Link = "https://yur.chat", TextAfterLink = " Or find us on "},
-                    new PromotionLink{Text = "iOS", Link = "https://testflight.apple.com/join/GsTrCPFE", TextAfterLink = " and " },
+                    new PromotionLink{Text = "iOS", Link = "https://bit.ly/yuriphone", TextAfterLink = " and " },
                     new PromotionLink{Text = "Android", Link = "https://play.google.com/store/apps/details?id=com.yur", TextAfterLink = "!" }
                 },
+                Active = false
             }
         };
     }
@@ -22,6 +23,7 @@ namespace ModAssistant
     {
         public string ModName;
         public List<PromotionLink> Links;
+        public bool Active;
     }
 
     internal class PromotionLink
