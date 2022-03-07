@@ -495,12 +495,22 @@ namespace ModAssistant
         {
             string directory = App.BeatSaberInstallDirectory;
             string pluginsDirectory = Path.Combine(directory, "Beat Saber_Data", "Plugins");
+            string pluginsx86Directory = Path.Combine(directory, "Beat Saber_Data", "Plugins", "x86_64");
 
+            if(File.Exists(Path.Combine(pluginsx86Directory, "steam_api64.dll")))
+            {
+                if(Utils.CalculateMD5(Path.Combine(pluginsx86Directory, "steam_api64.dll")) == "0276b122929fcd74fee949142d65f6a2")
+                {
+                    return true;
+                }
+            }
             if (File.Exists(Path.Combine(directory, "IGG-GAMES.COM.url")) ||
                 File.Exists(Path.Combine(directory, "SmartSteamEmu.ini")) ||
                 File.Exists(Path.Combine(directory, "GAMESTORRENT.CO.url")) ||
                 File.Exists(Path.Combine(pluginsDirectory, "BSteam crack.dll")) ||
                 File.Exists(Path.Combine(pluginsDirectory, "HUHUVR_steam_api64.dll")) ||
+                File.Exists(Path.Combine(pluginsx86Directory, "171VR_提供破解补丁.txt")) ||
+                File.Exists(Path.Combine(pluginsx86Directory, "171VR_最全VR游戏下载网站.html")) ||
                 Directory.GetFiles(pluginsDirectory, "*.ini", SearchOption.TopDirectoryOnly).Where(x => Path.GetFileName(x) != "desktop.ini").Any())
                 return true;
             return false;
