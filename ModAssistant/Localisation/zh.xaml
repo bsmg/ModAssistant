@@ -206,8 +206,8 @@
 
     <!-- Invalid Page -->
     <sys:String x:Key="Invalid:Title">无效</sys:String>
-    <sys:String x:Key="Invalid:PageTitle">检测到无效的安装</sys:String>
-    <sys:String x:Key="Invalid:PageSubtitle">您的游戏安装已损坏或无效</sys:String>
+    <sys:String x:Key="Invalid:PageTitle">游戏文件存在异常</sys:String>
+    <sys:String x:Key="Invalid:PageSubtitle">您安装的游戏文件可能无效，或已损坏。</sys:String>
     <sys:String x:Key="Invalid:List:Header">如果您的游戏是盗版的，或者您使用盗版游戏替换了正版，则可能会发生这种情况。</sys:String>
     <Span x:Key="Invalid:List:Line1">
         如果您的游戏是盗版的，
@@ -230,7 +230,7 @@
             Discord
         </Hyperlink><Span Foreground="Blue">#pc-help</Span>频道寻求帮助。
     </Span>
-    <sys:String x:Key="Invalid:BoughtGame1">如果您曾经使用盗版，但之后购买了正版游戏</sys:String>
+    <sys:String x:Key="Invalid:BoughtGame1">如果您曾经使用盗版，但之后购买了正版游戏，请切换为正版游戏的路径</sys:String>
     <sys:String x:Key="Invalid:SelectFolderButton">选择路径</sys:String>
     <sys:String x:Key="Invalid:BoughtGame2">更改为正版游戏之后，您需要重新启动Mod Assistant</sys:String>
 

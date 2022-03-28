@@ -499,7 +499,8 @@ namespace ModAssistant
 
             if(File.Exists(Path.Combine(pluginsx86Directory, "steam_api64.dll")))
             {
-                if(Utils.CalculateMD5(Path.Combine(pluginsx86Directory, "steam_api64.dll")) == "0276b122929fcd74fee949142d65f6a2")
+                string gamesteamapimd5 = Utils.CalculateMD5(Path.Combine(pluginsx86Directory, "steam_api64.dll"));
+                if(gamesteamapimd5 == "0276b122929fcd74fee949142d65f6a2" || gamesteamapimd5 == "2a905fbd9833970217ae3fe83118929b")
                 {
                     return true;
                 }
