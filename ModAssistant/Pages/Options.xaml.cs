@@ -391,11 +391,7 @@ namespace ModAssistant.Pages
         {
             string[] modPath = System.IO.Directory.GetFiles(InstallDirectory + @"\Plugins", "*.dll");
             string[] modNames = new string[modPath.Length];
-            foreach (var item in modPath)
-            {
-                Console.WriteLine(Path.GetFileName(item).ToString());
-                
-            }
+        
             for (int i = 0; i < modPath.Length; i++)
             {
                 modNames[i] = Path.GetFileName(modPath[i].ToString());
