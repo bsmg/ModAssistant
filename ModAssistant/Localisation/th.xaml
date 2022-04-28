@@ -155,6 +155,7 @@
     <sys:String x:Key="Options:InstallingPlaylist">กำลังติดตั้งเพลย์ลิสต์: {0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">เพลงล้มเหลว: {0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0} ล้มเหลว] การติดตั้งเพลย์ลิสต์เสร็จสิ้น: {1}</sys:String>
+    <sys:String x:Key="Options:GenerateModList">Generate Mod List</sys:String>
     <sys:String x:Key="Options:ShowOCIWindow">แสดงหน้าต้าง OneClick Installer</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">ใช่</sys:String>
     <sys:String x:Key="Options:OCIWindowClose">ปิด</sys:String>

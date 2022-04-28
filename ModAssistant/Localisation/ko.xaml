@@ -154,6 +154,7 @@
     <sys:String x:Key="Options:InstallingPlaylist">재생목록 설치 중 : {0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">실패한 노래: {0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0} 실패] 재생목록 설치 완료: {1}</sys:String>
+    <sys:String x:Key="Options:GenerateModList">Generate Mod List</sys:String>
     <sys:String x:Key="Options:ShowOCIWindow">OneClick™ 설치 윈도우 보기</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">예</sys:String>
     <sys:String x:Key="Options:OCIWindowClose">닫기</sys:String>

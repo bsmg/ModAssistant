@@ -115,6 +115,7 @@
     <sys:String x:Key="Options:InstallingPlaylist">{0} Options:InstallingPlaylist</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">{0} Options:FailedPlaylistSong</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">{0} {1} Options:FinishedPlaylist</sys:String>
+    <sys:String x:Key="Options:GenerateModList">Options:GenerateModList</sys:String>
     <sys:String x:Key="Options:ShowOCIWindow">Options:ShowOCIWindow</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">Options:OCIWindowYes</sys:String>
     <sys:String x:Key="Options:OCIWindowClose">Options:OCIWindowClose</sys:String>

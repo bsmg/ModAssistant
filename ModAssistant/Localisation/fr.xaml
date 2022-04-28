@@ -160,6 +160,7 @@
     <sys:String x:Key="Options:InstallingPlaylist">Installation de la playlist : {0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">Échec de la musique : {0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0} échecs] Installation de la playlist terminée : {1}</sys:String>
+    <sys:String x:Key="Options:GenerateModList">Generate Mod List</sys:String>
     <sys:String x:Key="Options:ShowOCIWindow">Afficher la fenêtre de l'installateur OneClick</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">Oui</sys:String>
     <sys:String x:Key="Options:OCIWindowClose">Fermer</sys:String>

@@ -155,6 +155,7 @@
     <sys:String x:Key="Options:InstallingPlaylist">Установка плейлиста: {0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">Ошибка с песней: {0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0} ошибок] Установка плейлиста окончена: {1}</sys:String>
+    <sys:String x:Key="Options:GenerateModList">Generate Mod List</sys:String>
     <sys:String x:Key="Options:ShowOCIWindow">Показать окно установок OneClick™</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">Да</sys:String>
     <sys:String x:Key="Options:OCIWindowClose">Закрывать</sys:String>

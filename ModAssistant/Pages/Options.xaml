@@ -331,12 +331,12 @@
                 Margin="5"
                 Padding="5"
                 Click="InstallPlaylistButton_Click"
-                Content="{DynamicResource GenerateModList}" />
+                Content="{DynamicResource Options:InstallPlaylist}" />
                 <Button
                     Height="30"
                     Padding="5"
                     Click="GenerateModList_Click"
-                    Content="Generate Mod List" />
+                    Content="{DynamicResource Options:GenerateModList}" />
             </StackPanel>
 
             <TextBlock

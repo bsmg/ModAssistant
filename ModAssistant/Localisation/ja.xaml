@@ -154,6 +154,7 @@
     <sys:String x:Key="Options:InstallingPlaylist">プレイリストをインストール中: {0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">曲のインストールに失敗: {0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0} 失敗] プレイリストのインストールが完了しました: {1}</sys:String>
+    <sys:String x:Key="Options:GenerateModList">Generate Mod List</sys:String>
     <sys:String x:Key="Options:ShowOCIWindow">OneClick インストーラウィンドウを表示</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">はい</sys:String>
     <sys:String x:Key="Options:OCIWindowClose">閉じる</sys:String>
