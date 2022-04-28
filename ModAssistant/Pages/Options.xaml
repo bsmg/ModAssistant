@@ -8,8 +8,11 @@
     Title="{DynamicResource Options:Title}"
     d:DesignHeight="629"
     d:DesignWidth="1182"
-    mc:Ignorable="d">
-    <Page.Resources />
+    mc:Ignorable="d"
+    xmlns:System="clr-namespace:System;assembly=mscorlib">
+    <Page.Resources>
+        <System:String x:Key="GenerateModList">Install Playlist</System:String>
+    </Page.Resources>
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.RowDefinitions>
@@ -328,7 +331,12 @@
                 Margin="5"
                 Padding="5"
                 Click="InstallPlaylistButton_Click"
-                Content="{DynamicResource Options:InstallPlaylist}" />
+                Content="{DynamicResource GenerateModList}" />
+                <Button
+                    Height="30"
+                    Padding="5"
+                    Click="GenerateModList_Click"
+                    Content="Generate Mod List" />
             </StackPanel>
 
             <TextBlock
