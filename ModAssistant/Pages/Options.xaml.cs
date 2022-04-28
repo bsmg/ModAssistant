@@ -390,13 +390,14 @@ namespace ModAssistant.Pages
         private void GenerateModList_Click(object sender, RoutedEventArgs e)
         {
             string[] modPath = System.IO.Directory.GetFiles(InstallDirectory + @"\Plugins", "*.dll");
-            string[] modNames = new string[modPath.Length];
+            string[] modNames = new string[modPath.Length]; 
         
             for (int i = 0; i < modPath.Length; i++)
             {
                 modNames[i] = Path.GetFileName(modPath[i].ToString());
             }
             System.IO.File.WriteAllLines(InstallDirectory + @"\user_mod_list.txt", modNames);
+            Process.Start("Explorer.exe", "/select," + InstallDirectory + @"\user_mod_list.txt");
         }
 
         private void ShowOCIWindowComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
