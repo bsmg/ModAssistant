@@ -59,6 +59,7 @@ namespace ModAssistant
                 Instance.IntroButton.IsEnabled = false;
                 Instance.AboutButton.IsEnabled = false;
                 Instance.GameVersionsBox.IsEnabled = false;
+                System.Diagnostics.Process.Start("https://bs.wgzeyu.com/pc-guide/#bikeng_ziyuan");
                 return;
             }
 
