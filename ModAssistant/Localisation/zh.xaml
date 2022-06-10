@@ -96,8 +96,8 @@
     <sys:String x:Key="Intro:DisagreeButton">拒绝</sys:String>
     <sys:String x:Key="Intro:ClosingApp">关闭软件：您不同意此条款。</sys:String>
     <sys:String x:Key="Intro:VersionDownloadFailed">版本列表下载失败，无法启用Mod选项卡。</sys:String>
-    <sys:String x:Key="Intro:ModsTabDisabled">每次打开后必须要多等几秒才能点同意，若没有解决，请在左侧选项界面中切换下载源，通常是因为网络不好。在你点击同意的时候，还没有加载出数据，就会出现这个报错。</sys:String>
-    <sys:String x:Key="Intro:ModsTabEnabled">你现在可以安装Mod了！若遇到问题请切回简介看教程，全都有说明！</sys:String>
+    <sys:String x:Key="Intro:ModsTabDisabled">错误，无法启用Mod选项卡！请尝试多等几秒然后再次点击同意，如果没有解决，请在左侧的选项界面中切换下载源（然后等待10秒以上）再点击同意；该报错通常是网络不好导致的，点同意的时候数据仍然没有加载出来，就会出现该报错。</sys:String>
+    <sys:String x:Key="Intro:ModsTabEnabled">你现在可以使用本软件了！若遇到问题请切回简介看教程，全都有说明！</sys:String>
 
     <!-- Mods Page -->
     <sys:String x:Key="Mods:Title">Mod</sys:String>
