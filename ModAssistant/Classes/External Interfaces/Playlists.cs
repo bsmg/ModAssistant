@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Windows;
 using static ModAssistant.Http;
 
@@ -34,14 +33,11 @@ namespace ModAssistant.API
 
         public static async Task<string> Get(Uri url)
         {
-            string filename = HttpUtility.UrlDecode(url.Segments.Last());
-            string absolutePath = Path.Combine(BeatSaberPath, PlaylistsFolder, filename);
             try
             {
                 CreatePlaylistsFolder();
-                await Utils.DownloadAsset(url.ToString(), PlaylistsFolder, filename);
-
-                return absolutePath;
+                string filename = await Utils.DownloadAsset(url.ToString(), PlaylistsFolder, preferContentDisposition: true);
+                return Path.Combine(BeatSaberPath, PlaylistsFolder, filename);
             }
             catch
             {

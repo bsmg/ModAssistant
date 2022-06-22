@@ -81,7 +81,7 @@ namespace ModAssistant
                     FileInfo info = new FileInfo(file);
                     string name = Path.GetFileNameWithoutExtension(info.Name);
 
-                    if (info.Extension.ToLower().Equals(".mat"))
+                    if (info.Extension.ToLowerInvariant().Equals(".mat"))
                     {
                         Theme theme = LoadZipTheme(ThemeDirectory, name, ".mat");
                         if (theme is null) continue;

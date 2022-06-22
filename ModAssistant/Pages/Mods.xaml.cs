@@ -28,7 +28,7 @@ namespace ModAssistant.Pages
         public Mod[] ModsList;
         public Mod[] AllModsList;
         public static List<Mod> InstalledMods = new List<Mod>();
-        public static List<Mod> LibsToMatch = new List<Mod>();
+        public static List<Mod> ManifestsToMatch = new List<Mod>();
         public List<string> CategoryNames = new List<string>();
         public CollectionView view;
         public bool PendingChanges;
@@ -178,22 +178,25 @@ namespace ModAssistant.Pages
             {
                 string fileExtension = Path.GetExtension(file);
 
-                if (File.Exists(file) && (fileExtension == ".dll" || fileExtension == ".manifest"))
+                if (File.Exists(file) && (fileExtension == ".dll" || fileExtension == ".exe" || fileExtension == ".manifest"))
                 {
                     Mod mod = GetModFromHash(Utils.CalculateMD5(file));
                     if (mod != null)
                     {
                         if (fileExtension == ".manifest")
                         {
-                            LibsToMatch.Add(mod);
+                            ManifestsToMatch.Add(mod);
                         }
                         else
                         {
                             if (directory.Contains("Libs"))
                             {
-                                if (!LibsToMatch.Contains(mod)) continue;
+                                if (!ManifestsToMatch.Contains(mod))
+                                {
+                                    continue;
+                                }
 
-                                LibsToMatch.Remove(mod);
+                                ManifestsToMatch.Remove(mod);
                             }
 
                             AddDetectedMod(mod);
@@ -298,9 +301,9 @@ namespace ModAssistant.Pages
                     Category = mod.category
                 };
 
-                foreach (Promotion promo in Promotions.ActivePromotions)
+                foreach (Promotion promo in Promotions.List)
                 {
-                    if (mod.name == promo.ModName)
+                    if (promo.Active && mod.name == promo.ModName)
                     {
                         ListItem.PromotionTexts = new string[promo.Links.Count];
                         ListItem.PromotionLinks = new string[promo.Links.Count];
@@ -558,23 +561,25 @@ namespace ModAssistant.Pages
 
         private void ModCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            Mod mod = ((sender as System.Windows.Controls.CheckBox).Tag as Mod);
+            Mod mod = (sender as System.Windows.Controls.CheckBox).Tag as Mod;
             mod.ListItem.IsSelected = true;
             ResolveDependencies(mod);
             App.SavedMods.Add(mod.name);
             Properties.Settings.Default.SavedMods = string.Join(",", App.SavedMods.ToArray());
             Properties.Settings.Default.Save();
+
             RefreshModsList();
         }
 
         private void ModCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            Mod mod = ((sender as System.Windows.Controls.CheckBox).Tag as Mod);
+            Mod mod = (sender as System.Windows.Controls.CheckBox).Tag as Mod;
             mod.ListItem.IsSelected = false;
             UnresolveDependencies(mod);
             App.SavedMods.Remove(mod.name);
             Properties.Settings.Default.SavedMods = string.Join(",", App.SavedMods.ToArray());
             Properties.Settings.Default.Save();
+
             RefreshModsList();
         }
 

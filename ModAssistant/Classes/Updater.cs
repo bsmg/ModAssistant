@@ -77,7 +77,7 @@ namespace ModAssistant
 
                 File.Move(Utils.ExePath, OldExe);
 
-                await Utils.Download(DownloadLink, NewExe);
+                await Utils.Download(DownloadLink, "", NewExe);
                 RunNew();
             }
         }

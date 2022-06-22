@@ -1,0 +1,254 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ModAssistant"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="ResourceDictionaryName">i18n:th-TH</sys:String>
+
+    <!-- App -->
+    <sys:String x:Key="App:InstallDirDialog:Title">ไม่พบโฟลเดอร์ที่ติดตั้ง Beat Saber ของคุณ!</sys:String>
+    <sys:String x:Key="App:InstallDirDialog:OkCancel">กด "OK" ที่จะลองอีกครั้ง หรือยกเลิกการปิดแอพพลิเคชั่น</sys:String>
+    <sys:String x:Key="App:InvalidArgument">เหตุผลไม่ถูกต้อง! '{0}' ต้องการตัวเลือก</sys:String>
+    <sys:String x:Key="App:UnrecognizedArgument">ไม่ทราบเหตุผล กำลังปิด Mod Assistant</sys:String>
+    <sys:String x:Key="App:UnhandledException">ข้อยกเว้นที่ไม่สามารถจัดการได้เพิ่งเกิดขึ้น</sys:String>
+    <sys:String x:Key="App:Exception">ข้อยกเว้น</sys:String>
+
+    <!-- Main Window -->
+    <sys:String x:Key="MainWindow:WindowTitle">Mod Assistant</sys:String>
+    <sys:String x:Key="MainWindow:IntroButton">บทนำ</sys:String>
+    <sys:String x:Key="MainWindow:ModsButton">Mods</sys:String>
+    <sys:String x:Key="MainWindow:AboutButton">เกี่ยวกับ</sys:String>
+    <sys:String x:Key="MainWindow:OptionsButton">การตั้งค่า</sys:String>
+    <sys:String x:Key="MainWindow:GameVersionLabel">เวอร์ชั่นของเกม</sys:String>
+    <sys:String x:Key="MainWindow:VersionLabel">เวอร์ชั่น</sys:String>
+    <sys:String x:Key="MainWindow:ModInfoButton">ข้อมูล Mods</sys:String>
+    <sys:String x:Key="MainWindow:InstallButtonTop">ติดตั้ง</sys:String>
+    <sys:String x:Key="MainWindow:InstallButtonBottom">หรืออัพเดท</sys:String>
+    <sys:String x:Key="MainWindow:GameVersionLoadFailed">ไม่สามารถโหลดเวอร์ชั่นเกมได้ เมนู Mods จะไม่สามารถใช้งานได้</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Title">ตรวจพบเวอร์ชั่นใหม่ของเกม!</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Line1">ดูเหมือนว่าจะมีการอัปเดตเกม</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Line2">โปรดตรวจสอบอีกครั้งว่าได้เลือกเวอร์ชั่นที่ถูกต้องที่มุมล่างซ้าย!</sys:String>
+    <sys:String x:Key="MainWindow:NoModSelected">ไม่ได้เลือก mod!</sys:String>
+    <sys:String x:Key="MainWindow:NoModInfoPage">{0} ไม่มีหน้าข้อมูล</sys:String>
+
+    <!-- Intro Page -->
+    <sys:String x:Key="Intro:Title">บทนำ</sys:String>
+    <sys:String x:Key="Intro:PageTitle">ยินดีต้อนรับเข้าสู่ Mod Assistant</sys:String>
+    <sys:String x:Key="Intro:Terms:Header">โปรดอ่านหน้านี้ให้ครบถ้วนและระมัดระวัง</sys:String>
+    <Span x:Key="Intro:Terms:Line1">
+        โดยที่จะใช้โปรแกรมนี้ โปรดยืนยันว่าได้อ่านและยอมรับข้อกำหนดต่อไปนี้:
+    </Span>
+    <Span x:Key="Intro:Terms:Line2">
+        Beat Saber
+        <Bold>ไม่</Bold> รองรับการดัดแปลงตั้งแต่แรก ซึ่งนั้นหมายความว่า:
+    </Span>
+    <Span x:Key="Intro:Terms:Term1">
+        Mods
+        <Bold>จะเสีย</Bold> ในทุกๆการอัพเดทของเกม ซึ่งเป็นเรื่องปกติ และ
+        <Bold>ไมใช่</Bold> ความผิดของ Beat Games
+    </Span>
+    <Span x:Key="Intro:Terms:Term2">
+        Mods
+        <Bold>จะก่อ</Bold> ให้เกิด bugs และปัญหาด้านประสิทธิภาพ สิ่งนี้
+        <Bold>ไม่ใช่</Bold> ความผิดของ Beat Games
+    </Span>
+    <Span x:Key="Intro:Terms:Term3">
+        Mods ถูกสร้างมา
+        <Bold>ให้ใช้ฟรี</Bold> โดยผู้คน ใน
+        <Bold>เวลาว่าง</Bold>ของพวกเขา โปรดอดทนและเข้าใจ
+    </Span>
+    <Span x:Key="Intro:ReviewsBeatGamesFault">
+        <Bold>อย่า</Bold> ได้แสดงความคิดเห็นเชิงลบ เพียงเพราะ mods เสีย และสิ่งนี้
+        <Bold>ไม่ใช่</Bold> ความผิดของ Beat Games
+        <LineBreak/> พวกเขาไม่ได้พยายามกำจัด mods
+    </Span>
+    <Span x:Key="Intro:ReviewsRustySpoon">
+        ถ้าฉันเห็นคนวิจารณ์ในแง่ลบอยู่เรื่อยๆ
+        <Italic>เพียงเพราะ</Italic> mods เสีย
+        <LineBreak/>
+        <Bold>ฉันจะกำจัด mods เป็นการส่วนตัว ด้วยช้อนที่เป็นสนิม</Bold>
+    </Span>
+    <Span x:Key="Intro:WikiGuide">
+        โปรดอ่านคู่มือสำหรับผู้เริ่มต้นบน
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
+            Wiki
+        </Hyperlink>
+    </Span>
+    <sys:String x:Key="Intro:AgreeButton">ฉันยอมรับ</sys:String>
+    <sys:String x:Key="Intro:DisagreeButton">ไม่ยอมรับ</sys:String>
+    <sys:String x:Key="Intro:ClosingApp">กำลังปิดแอพพลิเคชั่น: เนื่องจากคุณไม่ยอมรับข้อกำหนดและเงื่อนไข</sys:String>
+    <sys:String x:Key="Intro:VersionDownloadFailed">ไม่สามารถดาวน์โหลด List เวอร์ชั่น</sys:String>
+    <sys:String x:Key="Intro:ModsTabDisabled">เมนู Mods ถูกปิดการใช้งาน โปรดรีสตาร์ทเพื่อลองอีกครั้ง</sys:String>
+    <sys:String x:Key="Intro:ModsTabEnabled">ตอนนี้ คุณสามารถใช้ เมนู Mods ได้แล้ว!</sys:String>
+
+    <!-- Mods Page -->
+    <sys:String x:Key="Mods:Title">Mods</sys:String>
+    <sys:String x:Key="Mods:Header:Name">ชื่อ</sys:String>
+    <sys:String x:Key="Mods:Header:Installed">ติดตั้งแล้ว</sys:String>
+    <sys:String x:Key="Mods:Header:Latest">ล่าสุด</sys:String>
+    <sys:String x:Key="Mods:Header:Description">คำอธิบาย</sys:String>
+    <sys:String x:Key="Mods:Header:Uninstall">ถอนการติดตั้ง</sys:String>
+    <sys:String x:Key="Mods:UninstallButton">ถอนการติดตั้ง</sys:String>
+    <sys:String x:Key="Mods:LoadFailed">ไม่สามารถโหลดรายการของ mods ได้</sys:String>
+    <sys:String x:Key="Mods:CheckingInstalledMods">กำลังตรวจสอบ mods ที่ติดตั้งแล้ว</sys:String>
+    <sys:String x:Key="Mods:LoadingMods">กำลังโหลด mods</sys:String>
+    <sys:String x:Key="Mods:FinishedLoadingMods">โหลด mods เสร็จแล้ว</sys:String>
+    <sys:String x:Key="Mods:NoMods">ไม่มี Mods ให้สามารถใช้งานได้สำหรับ Beat Saber เวอร์ชั่นนี้</sys:String>
+    <sys:String x:Key="Mods:InstallingMod">กำลังติดตั้ง {0}</sys:String>
+    <sys:String x:Key="Mods:InstalledMod">ติดตั้งแล้ว {0}</sys:String>
+    <sys:String x:Key="Mods:FinishedInstallingMods">ติดตั้ง Mods เสร็จแล้ว</sys:String>
+    <sys:String x:Key="Mods:ModDownloadLinkMissing">ไม่พบลิงค์ดาวน์โหลดสำหรับ {0}</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Title">ถอนการติดตั้ง {0}?</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Body1">คุณแน่ใจใช่ไหมว่าต้องการเอาออก {0}?</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Body2">สิ่งนี้อาจทำให้ Mods อื่นๆ ของคุณเสียได้</sys:String>
+    <sys:String x:Key="Mods:FailedExtract">ล้มเหลวในการดึงข้อมูล {0} ลองใหม่อีกครั้งใน {1} วินาที ({2}/{3})</sys:String>
+    <sys:String x:Key="Mods:FailedExtractMaxReached">ล้มเหลวในการดึงข้อมูล {0} หลังจากพยายามเต็มที่แล้ว ({1}) กำลังข้าม  Mods นี้อาจทำงานไม่ถูกต้อง ดังนั้นคุณต้องยอมรับความเสี่ยงเอง</sys:String>
+    <sys:String x:Key="Mods:SearchLabel">ค้นหา...</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">ล้มเหลวในการถอนการติดตั้ง BSIPA ได้</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">ไม่พบการติดตั้ง BSIPA การถอนการติดตั้งถูกข้ามไป</sys:String>
+
+    <!-- About Page -->
+    <sys:String x:Key="About:Title">เกี่ยวกับ</sys:String>
+    <sys:String x:Key="About:PageTitle">เกี่ยวกับ Mod Assistant</sys:String>
+    <sys:String x:Key="About:List:Header">ฉันคือ Assistant และฉันทำ Mod Assistant สำหรับความช่วยเหลือในการติดตัง Mods โดยคำนึงถึงหลักการในใจดังนี้:</sys:String>
+    <sys:String x:Key="About:List:Item1">เรียบง่าย</sys:String>
+    <sys:String x:Key="About:List:Item2">พกพาได้สะดวก</sys:String>
+    <sys:String x:Key="About:List:Item3">ปฏิบัติการอันเดียว</sys:String>
+    <sys:String x:Key="About:List:Item4">ใช้อย่างมีความรับผิดชอบ</sys:String>
+    <Span x:Key="About:SupportAssistant">
+        หากคุณชอบโปรแกรมนี้และต้องการสนับสนุนฉัน โปรดไปที่
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.assistant.moe/Donate/">
+            หน้าบริจาคของฉัน
+        </Hyperlink>
+        หรือ
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/AssistantMoe">
+            หน้า Patreon ของฉัน
+        </Hyperlink>
+    </Span>
+    <sys:String x:Key="About:SpecialThanks">ขอขอบคุณเป็นพิเศษ ♥</sys:String>
+    <sys:String x:Key="About:Donate">บริจาค</sys:String>
+    <sys:String x:Key="About:HeadpatsButton">ลูบหัว</sys:String>
+    <sys:String x:Key="About:HugsButton">กอด</sys:String>
+    <sys:String x:Key="About:ImageError:Title">{0} ผิดพลาด</sys:String>
+    <sys:String x:Key="About:ImageError:Message">ล้มเหลวในการโหลด {0} รูปภาพ!</sys:String>
+
+    <!-- Options Page -->
+    <sys:String x:Key="Options:Title">ตัวเลือกการตั้งค่า</sys:String>
+    <sys:String x:Key="Options:PageTitle">การตั้งค่า</sys:String>
+    <sys:String x:Key="Options:InstallFolder">โฟลเดอร์ที่ติดตั้ง</sys:String>
+    <sys:String x:Key="Options:SelectFolderButton">เลือกโฟลเดอร์</sys:String>
+    <sys:String x:Key="Options:OpenFolderButton">เปิดโฟลเดอร์</sys:String>
+    <sys:String x:Key="Options:SaveSelectedMods">บันทึก Mods ที่เลือกไว้</sys:String>
+    <sys:String x:Key="Options:CheckInstalledMods">ตรวจพบ Mods ที่ติดตั้งแล้ว</sys:String>
+    <sys:String x:Key="Options:SelectInstalledMods">เลือก Mods ที่ติดตั้งแล้ว</sys:String>
+    <sys:String x:Key="Options:ReinstallInstalledMods">ติดตั้งMods ที่ติดตั้งแล้วใหม่</sys:String>
+    <sys:String x:Key="Options:EnableOneClickInstalls">ปิดการใช้งาน OneClick™ Installs</sys:String>
+    <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
+    <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
+    <sys:String x:Key="Options:Playlists">เพลย์ลิสต์</sys:String>
+    <sys:String x:Key="Options:CloseWindow">ปิดหน้าต่างเมื่อเสร็จสิ้น</sys:String>
+    <sys:String x:Key="Options:GameType">ประเภทของเกม</sys:String>
+    <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
+    <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
+    <sys:String x:Key="Options:Tools">เครื่องมือ</sys:String>
+    <sys:String x:Key="Options:InstallPlaylist">ติดตั้งเพลย์ลิสต์</sys:String>
+    <sys:String x:Key="Options:InstallingPlaylist">กำลังติดตั้งเพลย์ลิสต์: {0}</sys:String>
+    <sys:String x:Key="Options:FailedPlaylistSong">เพลงล้มเหลว: {0}</sys:String>
+    <sys:String x:Key="Options:FinishedPlaylist">[{0} ล้มเหลว] การติดตั้งเพลย์ลิสต์เสร็จสิ้น: {1}</sys:String>
+    <sys:String x:Key="Options:ShowOCIWindow">แสดงหน้าต้าง OneClick Installer</sys:String>
+    <sys:String x:Key="Options:OCIWindowYes">ใช่</sys:String>
+    <sys:String x:Key="Options:OCIWindowClose">ปิด</sys:String>
+    <sys:String x:Key="Options:OCIWindowNo">ไม่</sys:String>
+    <sys:String x:Key="Options:Diagnostics">การวินิจฉัยปัญหา</sys:String>
+    <sys:String x:Key="Options:OpenLogsButton">เปิด Logs</sys:String>
+    <sys:String x:Key="Options:OpenAppDataButton">เปิด AppData</sys:String>
+    <sys:String x:Key="Options:UninstallBSIPAButton">ถอนการติดตั้ง BSIPA</sys:String>
+    <sys:String x:Key="Options:RemoveAllModsButton">เอา Mods ออกทั้งหมด</sys:String>
+    <sys:String x:Key="Options:ApplicationTheme">ธืมของแอพพลิเคชั่น</sys:String>
+    <sys:String x:Key="Options:ExportTemplateButton">ส่งออกเทมเพลต</sys:String>
+    <sys:String x:Key="Options:UploadingLog">กำลังอัปโหลด Log</sys:String>
+    <sys:String x:Key="Options:LogUrlCopied">Log URL คัดลอกไปยังคลิปบอร์ดแล้ว!</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed">การอัปโหลด Log ล้มเหลว</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed:Title">การอัปโหลด Log ล้มเหลว</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed:Body">ไม่สามารถอัปโหลด Log ไปที่ Teknik โปรดลองอีกครั้งหรือส่งไฟล์ด้วยตนเอง</sys:String>
+    <sys:String x:Key="Options:GettingModList">กำลังรับรายการของ Mods</sys:String>
+    <sys:String x:Key="Options:FindingBSIPAVersion">กำลังหาเวอร์ชั่นของ BSIPA</sys:String>
+    <sys:String x:Key="Options:BSIPAUninstalled">BSIPA ถอนการติดตั้งแล้ว</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:Title">ถอนการติดตั้ง Mods ทั้งหมด?</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:RemoveAllMods">คุณแน่ใจใช่ไหมว่าต้องการเอาออก Mods ทั้งหมด?</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:CannotBeUndone">การดำเนินการนี้ไม่สามารถยกเลิกได้</sys:String>
+    <sys:String x:Key="Options:AllModsUninstalled">ถอนการติดตั้ง Mods ทั้งหมดแล้ว</sys:String>
+    <sys:String x:Key="Options:CurrentThemeRemoved">ธีมปัจจุบันถูกเอาออกแล้ว กำลังเปลี่ยนกลับเป็นค่าเริ่มต้น...</sys:String>
+    <sys:String x:Key="Options:ThemeFolderNotFound">ไม่พบโฟลเดอร์ธีม! กำลังลองส่งออกเทมเพลต...</sys:String>
+    <sys:String x:Key="Options:AppDataNotFound">ไม่พบโฟลเดอร์ AppData! กำลังลองเปิดเกมของคุณ</sys:String>
+
+    <!-- Loading Page -->
+    <sys:String x:Key="Loading:Loading">กำลังโหลด Mods</sys:String>
+
+    <!-- Invalid Page -->
+    <sys:String x:Key="Invalid:Title">ไม่ถูกต้อง</sys:String>
+    <sys:String x:Key="Invalid:PageTitle">ตรวจพบการติดตั้งที่ไม่ถูกต้อง</sys:String>
+    <sys:String x:Key="Invalid:PageSubtitle">การติดตั้งเกมของคุณเสียหายหรือไม่ถูกต้อง</sys:String>
+    <sys:String x:Key="Invalid:List:Header">กรณีนี้อาจเกิดขึ้นได้หากเกมของคุณละเมิดลิขสิทธิ์ (เกมเถื่อน) หรือหากคุณคัดลอกไฟล์เกมเถื่อนทับการติดตั้งที่ถูกต้อง (เกมแท้) </sys:String>
+    <Span x:Key="Invalid:List:Line1">
+        ถ้าหากเกมของคุณละเมิดลิขสิทธิ์ (เกมเถื่อน) 
+        <Bold>โปรดซื้อเกม
+            <Hyperlink NavigateUri="https://beatgames.com/" local:HyperlinkExtensions.IsExternal="True">
+                ที่นี่
+            </Hyperlink>
+        </Bold>
+    </Span>
+    <Span x:Key="Invalid:List:Line2">
+        ถ้าหากเกมของคุณ
+        <Bold>ไม่ได้เป็น</Bold>  เกมละเมิดลิขสิทธิ์ (เกมเถื่อน) โปรด
+        <Hyperlink NavigateUri="https://bsmg.wiki/support#clean-installation" local:HyperlinkExtensions.IsExternal="True">
+            ทำการติดตั้งใหม่ทั้งหมด
+        </Hyperlink>
+    </Span>
+    <Span x:Key="Invalid:List:Line3">
+        ถ้าหากข้อมูลดังกล่าวไม่สามารถช่วยเหลือคุณได้ คุณสามารถขอการสนับสนุนใน
+        <Span Foreground="Blue">#pc-help</Span> channel ใน
+        <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
+            BSMG
+        </Hyperlink>.
+    </Span>
+    <sys:String x:Key="Invalid:BoughtGame1">หากคุณเคยมีเวอร์ชันละเมิดลิขสิทธิ์ (เกมเถื่อน) แต่ได้ซื้อเกมแท้ไปแล้ว</sys:String>
+    <sys:String x:Key="Invalid:SelectFolderButton">เลือกโฟลเดอร์</sys:String>
+    <sys:String x:Key="Invalid:BoughtGame2">คุณจะต้องรีสตาร์ท Mod Assistant หลังจากเปลี่ยนเป็นการติดตั้งที่ถูกต้อง (เกมแท้)</sys:String>
+
+    <!-- OneClick Class -->
+    <sys:String x:Key="OneClick:MapDownloadFailed">ไม่สามารถรับรายละเอียดแผนที่ได้</sys:String>
+    <sys:String x:Key="OneClick:SongDownloadFailed">ไม่สามารถดาวน์โหลดเพลงได้</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:Failed">ไม่สามารถดาวน์โหลดเพลงได้</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:NetworkIssues">อาจมีปัญหากับ BeatSaver หรือการเชื่อมต่ออินเทอร์เน็ตของคุณ</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:FailedTitle">ล้มเหลวในการดาวน์โหลดเพลง ZIP</sys:String>
+    <sys:String x:Key="OneClick:InstallDirNotFound">ไม่พบโฟลเดอร์ที่ติดตั้ง Beat Saber</sys:String>
+    <sys:String x:Key="OneClick:InstalledAsset">ติดตั้งแล้ว: {0}</sys:String>
+    <sys:String x:Key="OneClick:AssetInstallFailed">ไม่สามารถติดตั้งได้</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} ตัวจัดการของ OneClick™ Install ลงทะเบียนแล้ว!</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} ตัวจัดการของ OneClick™ Install ยังไม่ได้ลงทะเบียนแล้ว!</sys:String>
+    <sys:String x:Key="OneClick:Installing">กำลังติดตั้ง: {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitSkip">พยายามเต็มที่แล้ว : กำลังข้าม  {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitHit">ถึงอัตราจำกัด กลับมาทำงานต่อใน {0}</sys:String>
+    <sys:String x:Key="OneClick:Failed">การดาวน์โหลดล้มเหลว: {0}</sys:String>
+    <sys:String x:Key="OneClick:Done">เสร็จแล้ว</sys:String>
+
+    <!-- Themes Class -->
+    <sys:String x:Key="Themes:ThemeNotFound">ไม่พบธีม กำลังเปลี่ยนกลับเป็นค่าเริ่มต้น...</sys:String>
+    <sys:String x:Key="Themes:ThemeSet">ตั้งค่าธีมเป็น {0}</sys:String>
+    <sys:String x:Key="Themes:ThemeMissing">{0} ไม่มีอยู่</sys:String>
+    <sys:String x:Key="Themes:SavedTemplateTheme">ธีมเทมเพลต &quot;{0}&quot; บันทึกลงในโฟลเดอร์ธีม</sys:String>
+    <sys:String x:Key="Themes:TemplateThemeExists">มีธีมเทมเพลตอยู่แล้ว!</sys:String>
+    <sys:String x:Key="Themes:FailedToLoadXaml">ล้มเหลวในการโหลดไฟล์ .xaml สำหรับธีม {0}: {1}</sys:String>
+
+    <!-- Updater Class -->
+    <sys:String x:Key="Updater:CheckFailed">ตรวจสอบการอัปเดตไม่ได้</sys:String>
+    <sys:String x:Key="Updater:DownloadFailed">ไม่สามารถดาวน์โหลดการอัปเดตได้</sys:String>
+
+    <!-- Utils Class -->
+    <sys:String x:Key="Utils:NotificationTitle">Mod Assistant</sys:String>
+    <sys:String x:Key="Utils:NoInstallFolder">ไม่พบโฟลเดอร์การติดตั้ง Beat Saber ของคุณ โปรดเลือกโฟลเดอร์การติดตั้งด้วยตนเอง</sys:String>
+    <sys:String x:Key="Utils:RunAsAdmin">Mod Assistant ต้องเรียกใช้งานนี้ในฐานะผู้ดูแลระบบ (Administrator) กรุณาลองอีกครั้ง</sys:String>
+    <sys:String x:Key="Utils:InstallDir:DialogTitle">เลือกโฟลเดอร์การติดตั้ง Beat Saber ของคุณ</sys:String>
+    <sys:String x:Key="Utils:CannotOpenFolder">เปิดโฟลเดอร์ไม่ได้: {0}</sys:String>
+</ResourceDictionary>

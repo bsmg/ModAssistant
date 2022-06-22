@@ -29,17 +29,7 @@ namespace ModAssistant.API
             }
         }
 
-        public static async Task DownloadAsset(string link, string folder, bool showNotifcation, string fileName = null)
-        {
-            await DownloadAsset(link, folder, fileName, null, showNotifcation);
-        }
-
-        public static async Task DownloadAsset(string link, string folder, string fileName = null, string displayName = null)
-        {
-            await DownloadAsset(link, folder, fileName, displayName, true);
-        }
-
-        public static async Task DownloadAsset(string link, string folder, string fileName, string displayName, bool showNotification, bool beatsaver = false)
+        public static async Task<string> DownloadAsset(string link, string folder, string fileName = null, string displayName = null, bool showNotification = true, bool beatsaver = false, bool preferContentDisposition = false)
         {
             if (string.IsNullOrEmpty(BeatSaberPath))
             {
@@ -47,32 +37,41 @@ namespace ModAssistant.API
             }
             try
             {
-                Directory.CreateDirectory(Path.Combine(BeatSaberPath, folder));
+                var parentDir = Path.Combine(BeatSaberPath, folder);
+                Directory.CreateDirectory(parentDir);
+
                 if (string.IsNullOrEmpty(fileName))
                 {
-                    fileName = WebUtility.UrlDecode(Path.Combine(BeatSaberPath, folder, new Uri(link).Segments.Last()));
+                    fileName = new Uri(link).Segments.Last();
+                }
+
+                if (beatsaver)
+                {
+                    fileName = WebUtility.UrlDecode(Path.Combine(parentDir, fileName));
+                    await BeatSaver.Download(link, fileName);
                 }
                 else
                 {
-                    fileName = WebUtility.UrlDecode(Path.Combine(BeatSaberPath, folder, fileName));
+                    fileName = await ModAssistant.Utils.Download(link, parentDir, fileName, preferContentDisposition);
                 }
+
                 if (string.IsNullOrEmpty(displayName))
                 {
                     displayName = Path.GetFileNameWithoutExtension(fileName);
                 }
 
-                if (beatsaver) await BeatSaver.Download(link, fileName);
-                else await ModAssistant.Utils.Download(link, fileName);
-
                 if (showNotification)
                 {
                     SetMessage(string.Format((string)Application.Current.FindResource("OneClick:InstalledAsset"), displayName));
                 }
+
+                return fileName;
             }
             catch
             {
                 SetMessage((string)Application.Current.FindResource("OneClick:AssetInstallFailed"));
                 App.CloseWindowOnFinish = false;
+                return null;
             }
         }
     }
