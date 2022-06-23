@@ -162,7 +162,7 @@ namespace ModAssistant.Pages
 
         public async Task GetAllMods()
         {
-            var resp = await HttpClient.GetAsync(Utils.Constants.BeatModsAPIUrl + "mod?status=approved");
+            var resp = await HttpClient.GetAsync(Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions);
             var body = await resp.Content.ReadAsStringAsync();
             AllModsList = JsonSerializer.Deserialize<Mod[]>(body);
         }
