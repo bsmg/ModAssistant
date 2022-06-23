@@ -164,7 +164,16 @@ namespace ModAssistant.Pages
         {
             var resp = await HttpClient.GetAsync(Utils.Constants.BeatModsAPIUrl + "mod");
             var body = await resp.Content.ReadAsStringAsync();
-            AllModsList = JsonSerializer.Deserialize<Mod[]>(body);
+
+            try
+            {
+                AllModsList = JsonSerializer.Deserialize<Mod[]>(body);
+            }
+            catch (Exception e)
+            {
+                System.Windows.MessageBox.Show($"{FindResource("Mods:LoadFailed")}.\n\n" + e);
+                AllModsList = new Mod[] { };
+            }
         }
 
         private void CheckInstallDir(string directory)
