@@ -86,6 +86,10 @@
       <DependentUpon>Intro.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Mod.cs" />
+    <Page Include="Localisation\cs.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Localisation\de.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
