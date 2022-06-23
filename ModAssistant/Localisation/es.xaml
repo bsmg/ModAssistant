@@ -54,7 +54,7 @@
     <Span x:Key="Intro:Terms:Term3">
         Los Mods se crean
         <Bold>gratuitamente</Bold> por personas en
-        <Bold>su timepo libre.</Bold> Por favor, sea paciente y comprensivo.
+        <Bold>su tiempo libre.</Bold> Por favor, sea paciente y comprensivo.
     </Span>
     <Span x:Key="Intro:ReviewsBeatGamesFault">
         <Bold>NO</Bold> deje comentarios y opiniones negativas porque los mods dejaron de funcionar o se rompieron. Esto 
@@ -101,7 +101,7 @@
     <sys:String x:Key="Mods:UninstallBox:Body1">¿Está seguro que quiere desinstalar {0}?</sys:String>
     <sys:String x:Key="Mods:UninstallBox:Body2">Esto podría hacer que otros mods dejaran de funcionar</sys:String>
     <sys:String x:Key="Mods:FailedExtract">Hubo un error con la extracción de {0}, vuelva a intentarlo en {1} segundos. ({2}/{3})</sys:String>
-    <sys:String x:Key="Mods:FailedExtractMaxReached">Hubo un error con la extracción de {0} tras realizar el número máximo de intentos ({1}), saltandolo. Este mod puede que no funcione correctamente, proceda bajo su propio riesgo </sys:String>
+    <sys:String x:Key="Mods:FailedExtractMaxReached">Hubo un error con la extracción de {0} tras realizar el número máximo de intentos ({1}), saltandolo. Este mod puede que no funcione correctamente, proceda bajo su propio riesgo</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Buscando...</sys:String>
     <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Hubo un error al desinstalar BSIPA</sys:String>
     <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">La instalación de BSIPA no se ha encontrado, la desinatalación de saltó.</sys:String>
@@ -233,8 +233,8 @@
     <sys:String x:Key="OneClick:Done">Hecho</sys:String>
 
     <!-- Themes Class -->
-    <sys:String x:Key="Themes:ThemeNotFound">El tema no se encontró, se está volviendo al tema por defecto...</sys:String>
-    <sys:String x:Key="Themes:ThemeSet">Se definió al timepo a {0}.</sys:String>
+    <sys:String x:Key="Themes:ThemeNotFound">El tema no se encontró, volviendo al tema por defecto...</sys:String>
+    <sys:String x:Key="Themes:ThemeSet">Tema establecido a {0}.</sys:String>
     <sys:String x:Key="Themes:ThemeMissing">{0} no existe.</sys:String>
     <sys:String x:Key="Themes:SavedTemplateTheme">La plantilla del tema &quot;{0}&quot; se guardó en la carpeta de temas.</sys:String>
     <sys:String x:Key="Themes:TemplateThemeExists">La plantilla del tema ya existe!</sys:String>
