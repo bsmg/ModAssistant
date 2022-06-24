@@ -280,7 +280,7 @@ namespace ModAssistant.Pages
             }
             foreach (Mod mod in Mods.InstalledMods)
             {
-                if (mod.name.ToLower() == "bsipa" || mod.name.ToLower() == "base-netvios" || mod.name.ToLower() == "bsipa-netviosspecial")
+                if (mod.name.ToLowerInvariant() == "bsipa" || mod.name.ToLower() == "base-netvios" || mod.name.ToLower() == "bsipa-netviosspecial")
                 {
                     Mods.Instance.UninstallMod(mod);
                     /*break;*/
