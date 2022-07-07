@@ -1,0 +1,253 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ModAssistant"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="ResourceDictionaryName">i18n:ja-JP</sys:String>
+
+    <!-- App -->
+    <sys:String x:Key="App:InstallDirDialog:Title">Beat Saber のインストールフォルダを検索できませんでした！</sys:String>
+    <sys:String x:Key="App:InstallDirDialog:OkCancel">OK を押してリトライするか、キャンセルを押してアプリケーションを閉じます。</sys:String>
+    <sys:String x:Key="App:InvalidArgument">無効な引数です！ '{0}' にはオプションが必須です。</sys:String>
+    <sys:String x:Key="App:UnrecognizedArgument">認識できない引数です。Mod Assistant を終了します。</sys:String>
+    <sys:String x:Key="App:UnhandledException">未処理の例外が発生しました</sys:String>
+    <sys:String x:Key="App:Exception">例外</sys:String>
+
+    <!-- Main Window -->
+    <sys:String x:Key="MainWindow:WindowTitle">Mod Assistant</sys:String>
+    <sys:String x:Key="MainWindow:IntroButton">はじめに</sys:String>
+    <sys:String x:Key="MainWindow:ModsButton">Mods</sys:String>
+    <sys:String x:Key="MainWindow:AboutButton">紹介</sys:String>
+    <sys:String x:Key="MainWindow:OptionsButton">オプション</sys:String>
+    <sys:String x:Key="MainWindow:GameVersionLabel">ゲームバージョン</sys:String>
+    <sys:String x:Key="MainWindow:VersionLabel">バージョン</sys:String>
+    <sys:String x:Key="MainWindow:ModInfoButton">Mod 情報</sys:String>
+    <sys:String x:Key="MainWindow:InstallButtonTop">インストール</sys:String>
+    <sys:String x:Key="MainWindow:InstallButtonBottom">もしくは アップデート</sys:String>
+    <sys:String x:Key="MainWindow:GameVersionLoadFailed">ゲームバージョンをロードできませんした。Mods タブは利用出来なくなります。</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Title">新しいゲームバージョンを検出しました！</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Line1">ゲームのアップデートがあったようです。</sys:String>
+    <sys:String x:Key="MainWindow:GameUpdateDialog:Line2">左下に正しいゲームバージョンが選択されているかもう一度確認してください。</sys:String>
+    <sys:String x:Key="MainWindow:NoModSelected">Mod が選択されていません！</sys:String>
+    <sys:String x:Key="MainWindow:NoModInfoPage">{0} は情報ページがありません。</sys:String>
+
+    <!-- Intro Page -->
+    <sys:String x:Key="Intro:Title">はじめに</sys:String>
+    <sys:String x:Key="Intro:PageTitle">Mod Assistant へようこそ</sys:String>
+    <sys:String x:Key="Intro:Terms:Header">このページをよくお読みください</sys:String>
+    <Span x:Key="Intro:Terms:Line1">
+        このプログラムを使用するにあたり、以下の条件を読み、同意します:
+    </Span>
+    <Span x:Key="Intro:Terms:Line2">
+        Beat Saber はネイティブに Mod を
+        <Bold>サポートしていません</Bold>。これは次のことを意味します:
+    </Span>
+    <Span x:Key="Intro:Terms:Term1">
+        Mod はゲームのアップデート毎に
+        <Bold>動作しなくなります</Bold>。これは通常のことであり、Beat Games' の<Bold>責任ではありません</Bold>。
+    </Span>
+    <Span x:Key="Intro:Terms:Term2">
+        Mod はバグやパフォーマンスの問題を
+        <Bold>引き起こすかもしれません</Bold> 。しかし、これは Beat Games' の<Bold>責任ではありません</Bold> 。
+    </Span>
+    <Span x:Key="Intro:Terms:Term3">
+        Mod は開発者の
+        <Bold>空いている時間</Bold> で作成され
+        <Bold>無償</Bold> で提供されています。ご理解ください。
+    </Span>
+    <Span x:Key="Intro:ReviewsBeatGamesFault">
+        Mod が壊れたからといってネガティブなレビューを
+        <Bold>つけないで</Bold>ください。
+        これは Beat Games' の<Bold>責任ではありません</Bold> 。
+        <LineBreak/> 彼らは Mod を破壊しようとしているわけではありません。
+    </Span>
+    <Span x:Key="Intro:ReviewsRustySpoon">
+        もし、
+        <Italic>Mod が壊れたからという理由で</Italic>、
+        ネガティブなレビューが目に入れば、
+        <LineBreak/>
+        <Bold>私は Mod の開発を止めるでしょう。</Bold>
+    </Span>
+    <Span x:Key="Intro:WikiGuide">
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bsmg.wiki/pc-modding.html">
+            Wiki
+        </Hyperlink> のビギナーズガイドを読んでください。
+    </Span>
+    <sys:String x:Key="Intro:AgreeButton">同意する</sys:String>
+    <sys:String x:Key="Intro:DisagreeButton">同意しない</sys:String>
+    <sys:String x:Key="Intro:ClosingApp">アプリケーションを終了: 利用規約に同意されませんでした。</sys:String>
+    <sys:String x:Key="Intro:VersionDownloadFailed">バージョンリストがダウンロードできませんでした。</sys:String>
+    <sys:String x:Key="Intro:ModsTabDisabled">Mods タブが利用不能になりました。再起動してやり直してください。</sys:String>
+    <sys:String x:Key="Intro:ModsTabEnabled">Mods タブが使用可能になりました！</sys:String>
+
+    <!-- Mods Page -->
+    <sys:String x:Key="Mods:Title">Mods</sys:String>
+    <sys:String x:Key="Mods:Header:Name">名前</sys:String>
+    <sys:String x:Key="Mods:Header:Installed">インストール済み</sys:String>
+    <sys:String x:Key="Mods:Header:Latest">最新</sys:String>
+    <sys:String x:Key="Mods:Header:Description">説明</sys:String>
+    <sys:String x:Key="Mods:Header:Uninstall">アンインストール</sys:String>
+    <sys:String x:Key="Mods:UninstallButton">削除</sys:String>
+    <sys:String x:Key="Mods:LoadFailed">Mod リストがロードできませんでした。</sys:String>
+    <sys:String x:Key="Mods:CheckingInstalledMods">インストール済み Mod を確認中</sys:String>
+    <sys:String x:Key="Mods:LoadingMods">Mod をロード中</sys:String>
+    <sys:String x:Key="Mods:FinishedLoadingMods">Mod のロード完了</sys:String>
+    <sys:String x:Key="Mods:NoMods">このバージョンの Beat Saber に対応する Mod はありません。</sys:String>
+    <sys:String x:Key="Mods:InstallingMod">{0} をインストール中</sys:String>
+    <sys:String x:Key="Mods:InstalledMod">{0} のインストール完了</sys:String>
+    <sys:String x:Key="Mods:FinishedInstallingMods">Mod のインストールが完了しました。</sys:String>
+    <sys:String x:Key="Mods:ModDownloadLinkMissing">{0} のダウンロードリンクが見つかりませんでした</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Title">{0} をアンインストールしますか？</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Body1">{0} を本当に削除しますか？</sys:String>
+    <sys:String x:Key="Mods:UninstallBox:Body2">これにより他の Mod が壊れるかもしれません</sys:String>
+    <sys:String x:Key="Mods:FailedExtract">{0} の展開に失敗しました。 {1}秒後に再試行します。({2}/{3})</sys:String>
+    <sys:String x:Key="Mods:FailedExtractMaxReached">最大試行回数({1})試みましたが {0} の展開に失敗したためスキップします。このModは正常に動作しない可能性があるため続行する場合は自己責任で行ってください。</sys:String>
+    <sys:String x:Key="Mods:SearchLabel">検索...</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">BSIPA のアンインストールに失敗しました。</sys:String>
+    <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA はインストールされていません。アンインストール処理はスキップされました。</sys:String>
+
+    <!-- About Page -->
+    <sys:String x:Key="About:Title">紹介</sys:String>
+    <sys:String x:Key="About:PageTitle">Mod Assistant について</sys:String>
+    <sys:String x:Key="About:List:Header">私は Assistant です。私は Mod Assistant をいくつかの方針を念頭に置き作成しました:</sys:String>
+    <sys:String x:Key="About:List:Item1">簡潔さ</sys:String>
+    <sys:String x:Key="About:List:Item2">ポータビリティ</sys:String>
+    <sys:String x:Key="About:List:Item3">単一実行ファイル</sys:String>
+    <sys:String x:Key="About:List:Item4">責任ある使用</sys:String>
+    <Span x:Key="About:SupportAssistant">
+        もしあなたがこのプログラムに満足し私をサポートしたいと思っていただけたなら、私の
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.assistant.moe/Donate/">
+            寄付ページ
+        </Hyperlink>
+        または私の
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/AssistantMoe">
+            Patreon
+        </Hyperlink> を訪れてください。
+    </Span>
+    <sys:String x:Key="About:SpecialThanks">謝辞 ♥</sys:String>
+    <sys:String x:Key="About:Donate">寄付</sys:String>
+    <sys:String x:Key="About:HeadpatsButton">なでなで</sys:String>
+    <sys:String x:Key="About:HugsButton">ハグ</sys:String>
+    <sys:String x:Key="About:ImageError:Title">{0} エラー</sys:String>
+    <sys:String x:Key="About:ImageError:Message">{0} 画像の読み込みに失敗しました</sys:String>
+
+    <!-- Options Page -->
+    <sys:String x:Key="Options:Title">オプション</sys:String>
+    <sys:String x:Key="Options:PageTitle">設定</sys:String>
+    <sys:String x:Key="Options:InstallFolder">インストールフォルダ</sys:String>
+    <sys:String x:Key="Options:SelectFolderButton">フォルダを選択</sys:String>
+    <sys:String x:Key="Options:OpenFolderButton">フォルダを開く</sys:String>
+    <sys:String x:Key="Options:SaveSelectedMods">選択済み Mod を保存</sys:String>
+    <sys:String x:Key="Options:CheckInstalledMods">インストール済み Mod を検出</sys:String>
+    <sys:String x:Key="Options:SelectInstalledMods">インストール済み Mod を選択</sys:String>
+    <sys:String x:Key="Options:ReinstallInstalledMods">インストール済み Mod を再インストール</sys:String>
+    <sys:String x:Key="Options:EnableOneClickInstalls">OneClick™ インストールを有効化</sys:String>
+    <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
+    <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
+    <sys:String x:Key="Options:Playlists">プレイリスト</sys:String>
+    <sys:String x:Key="Options:CloseWindow">完了時にウィンドウを閉じる</sys:String>
+    <sys:String x:Key="Options:GameType">ゲームタイプ</sys:String>
+    <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
+    <sys:String x:Key="Options:GameType:Oculus">Oculus</sys:String>
+    <sys:String x:Key="Options:Tools">ツール</sys:String>
+    <sys:String x:Key="Options:InstallPlaylist">プレイリストをインストール</sys:String>
+    <sys:String x:Key="Options:InstallingPlaylist">プレイリストをインストール中: {0}</sys:String>
+    <sys:String x:Key="Options:FailedPlaylistSong">曲のインストールに失敗: {0}</sys:String>
+    <sys:String x:Key="Options:FinishedPlaylist">[{0} 失敗] プレイリストのインストールが完了しました: {1}</sys:String>
+    <sys:String x:Key="Options:ShowOCIWindow">OneClick インストーラウィンドウを表示</sys:String>
+    <sys:String x:Key="Options:OCIWindowYes">はい</sys:String>
+    <sys:String x:Key="Options:OCIWindowClose">閉じる</sys:String>
+    <sys:String x:Key="Options:OCIWindowNo">いいえ</sys:String>
+    <sys:String x:Key="Options:Diagnostics">診断情報</sys:String>
+    <sys:String x:Key="Options:OpenLogsButton">ログを開く</sys:String>
+    <sys:String x:Key="Options:OpenAppDataButton">AppData を開く</sys:String>
+    <sys:String x:Key="Options:UninstallBSIPAButton">BSIPA をアンインストール</sys:String>
+    <sys:String x:Key="Options:RemoveAllModsButton">すべての Mod をアンインストール</sys:String>
+    <sys:String x:Key="Options:ApplicationTheme">アプリケーションテーマ</sys:String>
+    <sys:String x:Key="Options:ExportTemplateButton">テンプレートをエクスポート</sys:String>
+    <sys:String x:Key="Options:UploadingLog">ログをアップロード中</sys:String>
+    <sys:String x:Key="Options:LogUrlCopied">ログURLをクリップボードにコピーしました！</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed">ログのアップロードに失敗</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed:Title">ログのアップロードに失敗！</sys:String>
+    <sys:String x:Key="Options:LogUploadFailed:Body">ログを Teknik にアップロードできませんでした。もう一度試みるかファイルを手動で送ってください。</sys:String>
+    <sys:String x:Key="Options:GettingModList">Modリストを取得中</sys:String>
+    <sys:String x:Key="Options:FindingBSIPAVersion">BSIPA バージョンを取得中</sys:String>
+    <sys:String x:Key="Options:BSIPAUninstalled">BSIPA をアンインストールしました</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:Title">全ての Mod を削除しますか？</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:RemoveAllMods">本当に全ての Mod を削除しますか？</sys:String>
+    <sys:String x:Key="Options:YeetModsBox:CannotBeUndone">これは取り消せません。</sys:String>
+    <sys:String x:Key="Options:AllModsUninstalled">全ての Mod をアンインストールしました</sys:String>
+    <sys:String x:Key="Options:CurrentThemeRemoved">現在のテーマは削除されているようです。デフォルトテーマに戻しています...</sys:String>
+    <sys:String x:Key="Options:ThemeFolderNotFound">テーマフォルダが存在しません。テンプレートをエクスポートしてみてください...</sys:String>
+    <sys:String x:Key="Options:AppDataNotFound">AppData フォルダが存在しません。一度ゲームを再起動してみてください。</sys:String>
+
+    <!-- Loading Page -->
+    <sys:String x:Key="Loading:Loading">Mod をロード中</sys:String>
+
+    <!-- Invalid Page -->
+    <sys:String x:Key="Invalid:Title">無効</sys:String>
+    <sys:String x:Key="Invalid:PageTitle">無効なインストールを検出</sys:String>
+    <sys:String x:Key="Invalid:PageSubtitle">ゲームのインストールが壊れているか不正です</sys:String>
+    <sys:String x:Key="Invalid:List:Header">これはゲームが海賊版であるか、正規のインストールをコピーした場合に発生します</sys:String>
+    <Span x:Key="Invalid:List:Line1">
+        もし、あなたのゲームが海賊版であるなら、
+        <Bold>
+            <Hyperlink NavigateUri="https://beatgames.com/" local:HyperlinkExtensions.IsExternal="True">
+                こちら
+            </Hyperlink>からゲームを購入してください。
+        </Bold> .
+    </Span>
+    <Span x:Key="Invalid:List:Line2">
+        もし、あなたのゲームが海賊版
+        <Bold>ではない</Bold> 場合は、
+        <Hyperlink NavigateUri="https://bsmg.wiki/support#clean-installation" local:HyperlinkExtensions.IsExternal="True">
+            クリーンインストール
+        </Hyperlink>してみてください。
+    </Span>
+    <Span x:Key="Invalid:List:Line3">
+        もし、上記で解決しなければ
+        <Hyperlink NavigateUri="https://discord.gg/beatsabermods" local:HyperlinkExtensions.IsExternal="True">
+            BSMG
+        </Hyperlink> の
+        <Span Foreground="Blue">#pc-help</Span>チャンネルで助けを求めてみてください。
+    </Span>
+    <sys:String x:Key="Invalid:BoughtGame1">もし、あなたが以前に海賊版を使っていて、その後正規のゲームを購入した場合</sys:String>
+    <sys:String x:Key="Invalid:SelectFolderButton">フォルダーを選択</sys:String>
+    <sys:String x:Key="Invalid:BoughtGame2">正規のインストールに変更した後、Mod Assistant を再起動する必要があります。</sys:String>
+
+    <!-- OneClick Class -->
+    <sys:String x:Key="OneClick:MapDownloadFailed">譜面情報を取得できませんでした。</sys:String>
+    <sys:String x:Key="OneClick:SongDownloadFailed">曲をダウンロードできませんでした。</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:Failed">曲をダウンロードできませんでした。</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:NetworkIssues">BeatSaver かあなたのインターネット接続に問題があるかもしれません。</sys:String>
+    <sys:String x:Key="OneClick:SongDownload:FailedTitle">曲 ZIP のダウンロードに失敗しました。</sys:String>
+    <sys:String x:Key="OneClick:InstallDirNotFound">Beat Saberのインストールフォルダが存在しません。</sys:String>
+    <sys:String x:Key="OneClick:InstalledAsset">インストール済み: {0}</sys:String>
+    <sys:String x:Key="OneClick:AssetInstallFailed">インストールに失敗しました。</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ インストールハンドラーが登録されました！</sys:String>
+    <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ インストールハンドラーが登録解除されました！</sys:String>
+    <sys:String x:Key="OneClick:Installing">インストール中: {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitSkip">最大試行回数に到達: スキップします {0}</sys:String>
+    <sys:String x:Key="OneClick:RatelimitHit">レートリミットに達しました。{0}後に再開します。</sys:String>
+    <sys:String x:Key="OneClick:Failed">ダウンロード失敗: {0}</sys:String>
+    <sys:String x:Key="OneClick:Done">完了</sys:String>
+
+    <!-- Themes Class -->
+    <sys:String x:Key="Themes:ThemeNotFound">テーマが見つかりませんでした。デフォルトテーマに戻します...</sys:String>
+    <sys:String x:Key="Themes:ThemeSet">テーマを {0} に変更しました。</sys:String>
+    <sys:String x:Key="Themes:ThemeMissing">{0} は存在しません。</sys:String>
+    <sys:String x:Key="Themes:SavedTemplateTheme">テンプレートテーマ &quot;{0}&quot; テーマフォルダに保存しました。</sys:String>
+    <sys:String x:Key="Themes:TemplateThemeExists">テンプレートテーマは既に存在します！</sys:String>
+    <sys:String x:Key="Themes:FailedToLoadXaml">テーマ {0} の .xaml ファイルのロードに失敗しました: {1}</sys:String>
+
+    <!-- Updater Class -->
+    <sys:String x:Key="Updater:CheckFailed">アップデートを確認できませんでした。</sys:String>
+    <sys:String x:Key="Updater:DownloadFailed">アップデートをダウンロードできませんでした。</sys:String>
+
+    <!-- Utils Class -->
+    <sys:String x:Key="Utils:NotificationTitle">Mod Assistant</sys:String>
+    <sys:String x:Key="Utils:NoInstallFolder">Beat Saber のインストールフォルダを検出できませんでした。手動で選択してください。</sys:String>
+    <sys:String x:Key="Utils:RunAsAdmin">このタスクを実行するには Mod Assistant は管理者権限が必要です。もう一度試してください。</sys:String>
+    <sys:String x:Key="Utils:InstallDir:DialogTitle">Beat Saber のインストールフォルダを選択</sys:String>
+    <sys:String x:Key="Utils:CannotOpenFolder">フォルダを開けませんでした: {0}</sys:String>
+</ResourceDictionary>

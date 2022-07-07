@@ -60,7 +60,7 @@ namespace ModAssistant.API
                     map.response = beatsaver;
                     if (type == "hash")
                     {
-                        map.HashToDownload = id.ToLower();
+                        map.HashToDownload = id.ToLowerInvariant();
                     }
                     else
                     {

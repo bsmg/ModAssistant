@@ -28,7 +28,7 @@ namespace ModAssistant.Pages
         public Mod[] ModsList;
         public Mod[] AllModsList;
         public static List<Mod> InstalledMods = new List<Mod>();
-        public static List<Mod> LibsToMatch = new List<Mod>();
+        public static List<Mod> ManifestsToMatch = new List<Mod>();
         public List<string> CategoryNames = new List<string>();
         public CollectionView view;
         public bool PendingChanges;
@@ -164,7 +164,16 @@ namespace ModAssistant.Pages
         {
             var resp = await HttpClient.GetAsync(Utils.Constants.BeatModsAPIUrl + "mod");
             var body = await resp.Content.ReadAsStringAsync();
-            AllModsList = JsonSerializer.Deserialize<Mod[]>(body);
+
+            try
+            {
+                AllModsList = JsonSerializer.Deserialize<Mod[]>(body);
+            }
+            catch (Exception e)
+            {
+                System.Windows.MessageBox.Show($"{FindResource("Mods:LoadFailed")}.\n\n" + e);
+                AllModsList = new Mod[] { };
+            }
         }
 
         private void CheckInstallDir(string directory)
@@ -178,22 +187,25 @@ namespace ModAssistant.Pages
             {
                 string fileExtension = Path.GetExtension(file);
 
-                if (File.Exists(file) && (fileExtension == ".dll" || fileExtension == ".manifest"))
+                if (File.Exists(file) && (fileExtension == ".dll" || fileExtension == ".exe" || fileExtension == ".manifest"))
                 {
                     Mod mod = GetModFromHash(Utils.CalculateMD5(file));
                     if (mod != null)
                     {
                         if (fileExtension == ".manifest")
                         {
-                            LibsToMatch.Add(mod);
+                            ManifestsToMatch.Add(mod);
                         }
                         else
                         {
                             if (directory.Contains("Libs"))
                             {
-                                if (!LibsToMatch.Contains(mod)) continue;
+                                if (!ManifestsToMatch.Contains(mod))
+                                {
+                                    continue;
+                                }
 
-                                LibsToMatch.Remove(mod);
+                                ManifestsToMatch.Remove(mod);
                             }
 
                             AddDetectedMod(mod);
