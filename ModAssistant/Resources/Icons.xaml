@@ -25,6 +25,12 @@
         <GeometryDrawing Brush="{DynamicResource ModsIconColor}" Geometry="{StaticResource microchipGeometry}" />
     </DrawingGroup>
     <DrawingImage x:Key="microchipDrawingImage" Drawing="{StaticResource microchipDrawingGroup}" />
+    
+    <Geometry x:Key="playGeometry">M45.563,29.174l-22-15c-0.307-0.208-0.703-0.231-1.031-0.058C22.205,14.289,22,14.629,22,15v30   c0,0.371,0.205,0.711,0.533,0.884C22.679,45.962,22.84,46,23,46c0.197,0,0.394-0.059,0.563-0.174l22-15   C45.836,30.64,46,30.331,46,30S45.836,29.36,45.563,29.174z M24,43.107V16.893L43.225,30L24,43.107z</Geometry>
+    <DrawingGroup x:Key="playDrawingGroup" ClipGeometry="M0,0 V512 H512 V0 H0 Z">
+        <GeometryDrawing Brush="{DynamicResource PlayIconColor}" Geometry="{StaticResource playGeometry}" />
+    </DrawingGroup>
+    <DrawingImage x:Key="playDrawingImage" Drawing="{StaticResource playDrawingGroup}" />
 
     <Geometry x:Key="loadingInnerGeometry">F1 M4000,4000z M0,0z M1833.4,1475.6C1827.5,1490 1818.3,1503.3 1805.8,1514.3 1762.7,1551.9 1697.3,1547.4 1659.7,1504.3 1628.8,1468.8 1626.4,1418.3 1650.5,1380.6L1170.6,1131.3 1336.5,1597.2C1394,1576.7 1460.7,1591.9 1503.2,1640.7 1558.7,1704.4 1552.1,1801.1 1488.4,1856.6 1473.5,1869.6 1456.7,1879.1 1439.1,1885.3L1814.9,2940.7 2747.8,2941 2875.1,2016.8 1833.4,1475.6z</Geometry>
     <DrawingGroup x:Key="loadingInnerDrawingGroup" ClipGeometry="M0,0 V4000 H4000 V0 H0 Z">
