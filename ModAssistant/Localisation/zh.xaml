@@ -62,10 +62,10 @@
     </Span>
     <Span x:Key="Intro:WikiGuide">
         <Bold><Span Foreground="Red">请务必阅读</Span>
-        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/pc-guide/">
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.wgzeyu.com/pc-guide/">
             新手基础教程
         </Hyperlink>、
-        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/pc-faq/">
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.wgzeyu.com/pc-faq/">
             详细问题解答
         </Hyperlink>
         </Bold>，以及

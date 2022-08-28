@@ -13,7 +13,7 @@ namespace ModAssistant
         public static string LoadedLanguage { get; private set; }
         public static List<CultureInfo> LoadedLanguages => availableCultures.ToList();
         public static bool FirstRun = true;
-        private static readonly string[] availableLanguageCodes = { "de", "en", "es", "fr", "it", "ja", "ko", "nb", "nl", "pl", "ru", "sv", "th", "zh" };
+        private static readonly string[] availableLanguageCodes = { "cs", "de", "en", "es", "fr", "it", "ja", "ko", "nb", "nl", "pl", "pt", "ru", "sv", "th", "zh" };
         private static IEnumerable<CultureInfo> availableCultures;
 
         public static void LoadLanguages()
