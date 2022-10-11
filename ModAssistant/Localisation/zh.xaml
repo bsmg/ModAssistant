@@ -67,13 +67,13 @@
     <Span x:Key="Intro:WikiGuide">
         <Bold>
             <Span Foreground="Red">请阅读</Span>
-            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.wgzeyu.com/pc-guide/">
+            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="http://bs.wgzeyu.com/pc-guide/">
                 新手基础教程
             </Hyperlink> 、
-            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.wgzeyu.com/pc-faq/">
+            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="http://bs.wgzeyu.com/pc-faq/">
                 详细问题解答
             </Hyperlink> 、
-            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.wgzeyu.com/drive/">
+            <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="http://bs.wgzeyu.com/drive/">
                 曲包资源网盘
             </Hyperlink> 、
         </Bold>
@@ -211,18 +211,18 @@
     <sys:String x:Key="Invalid:List:Header">如果您的游戏是盗版的，或者您使用盗版游戏替换了正版，则可能会发生这种情况。</sys:String>
     <Span x:Key="Invalid:List:Line1">
         如果您的游戏是盗版的，
-        <Bold>请在
-            <Hyperlink NavigateUri="https://beatgames.com/" local:HyperlinkExtensions.IsExternal="True">
-                这里
+        <Bold>请
+            <Hyperlink NavigateUri="http://bs.wgzeyu.com/buy/#bs_steam" local:HyperlinkExtensions.IsExternal="True">
+                点击这里
             </Hyperlink>
-        </Bold>购买游戏。
+        </Bold>查看正版购买教程。
     </Span>
     <Span x:Key="Invalid:List:Line2">
         如果您的游戏
         <Bold>不是盗版</Bold>，请
-        <Hyperlink NavigateUri="https://bsmg.wiki/support#clean-installation" local:HyperlinkExtensions.IsExternal="True">
-            清洁安装
-        </Hyperlink>。
+        <Hyperlink NavigateUri="http://bs.wgzeyu.com/pc-faq/#modp" local:HyperlinkExtensions.IsExternal="True">
+            执行一次【彻底】的重装游戏
+        </Hyperlink>（建议按链接中的步骤来重装）。
     </Span>
     <Span x:Key="Invalid:List:Line3">
         如果这些方法没有帮助，请在BSMG的

@@ -60,6 +60,7 @@ namespace ModAssistant
                 Instance.AboutButton.IsEnabled = false;
                 Instance.GameVersionsBox.IsEnabled = false;
                 System.Diagnostics.Process.Start("https://bs.wgzeyu.com/pc-guide/#bikeng_ziyuan");
+                System.Diagnostics.Process.Start("https://bs.wgzeyu.com/buy/#bs_steam");
                 return;
             }
 
