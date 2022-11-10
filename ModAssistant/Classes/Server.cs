@@ -10,6 +10,6 @@ namespace ModAssistant
     {
         public const string BeatMods = "国际源@BeatMods";
         public const string WGZeyu = "国内源@WGzeyu";
-        public const string BeatModsTop = "增强源@BeatTop";
+        public const string BeatModsTop = "包子源@BeatTop";
     }
 }

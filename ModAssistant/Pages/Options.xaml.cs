@@ -32,7 +32,7 @@ namespace ModAssistant.Pages
         public string LogURL { get; private set; }
         public string OCIWindow { get; set; }
 
-        public static string[] serverList = { "国际源@BeatMods", "国内源@WGzeyu", "增强源@BeatTop" };
+        public static string[] serverList = { "国际源@BeatMods", "国内源@WGzeyu", "包子源@BeatTop" };
 
         public Options()
         {
