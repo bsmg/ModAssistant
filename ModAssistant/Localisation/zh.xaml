@@ -221,8 +221,9 @@
         如果您的游戏
         <Bold>不是盗版</Bold>，请
         <Hyperlink NavigateUri="http://bs.wgzeyu.com/pc-faq/#modp" local:HyperlinkExtensions.IsExternal="True">
-            执行一次【彻底】的重装游戏
-        </Hyperlink>（建议按链接中的步骤来重装）。
+            <Bold>彻底地</Bold>重装一次游戏
+        </Hyperlink> （卸载重装不够彻底，按
+        <Hyperlink NavigateUri="http://bs.wgzeyu.com/pc-faq/#modp" local:HyperlinkExtensions.IsExternal="True">链接</Hyperlink>中的步骤来操作才能确保有效解决）
     </Span>
     <Span x:Key="Invalid:List:Line3">
         如果这些方法没有帮助，请在BSMG的
