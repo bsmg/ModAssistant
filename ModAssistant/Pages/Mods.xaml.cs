@@ -131,7 +131,7 @@ namespace ModAssistant.Pages
 
                 try
                 {
-                    var manualCategories = new string[] { "Core" };
+                    var manualCategories = new string[] { "Core", "Leaderboards" };
 
                     ModList.Sort((a, b) =>
                     {
