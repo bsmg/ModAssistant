@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Management;
@@ -71,14 +72,15 @@ namespace ModAssistant
             var notification = new System.Windows.Forms.NotifyIcon()
             {
                 Visible = true,
-                Icon = System.Drawing.SystemIcons.Information,
+                // resource icon from pack
+                Icon = System.Drawing.Icon.ExtractAssociatedIcon(ExePath),
                 BalloonTipTitle = title ?? defaultTitle,
                 BalloonTipText = message
             };
 
             notification.ShowBalloonTip(5000);
 
-            notification.Dispose();
+           // notification.Dispose(); This seems to cause Microsoft.Explorer.Notification.{random guid}
         }
 
         public static void StartAsAdmin(string Arguments, bool Close = false)

@@ -41,7 +41,7 @@ namespace ModAssistant
         public OneClickStatus()
         {
             InitializeComponent();
-            Instance = App.OCIWindow != "No" ? this : null;
+            Instance = (App.OCIWindow == "No" && App.OCIWindow == "Notify") ? null : this;
         }
 
         public void StopRotation()
