@@ -157,6 +157,7 @@
     <sys:String x:Key="Options:ShowOCIWindow">OneClick™ 설치 윈도우 보기</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">예</sys:String>
     <sys:String x:Key="Options:OCIWindowClose">닫기</sys:String>
+    <sys:String x:Key="Options:OCINotify">Notification</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Options:OCIWindowNo">아니오</sys:String>
     <sys:String x:Key="Options:Diagnostics">진단</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">로그 열기</sys:String>
@@ -230,6 +231,8 @@
     <sys:String x:Key="OneClick:RatelimitSkip">최대 시도 횟수 도달: {0} 건너뜀</sys:String>
     <sys:String x:Key="OneClick:RatelimitHit">요청 제한 도달. {0} 재시도</sys:String>
     <sys:String x:Key="OneClick:Failed">다운로드 실패: {0}</sys:String>
+    <sys:String x:Key="OneClick:DoneNotify">OneClick™ installation finished</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:StartDownloadPlaylist">Starting to download playlist</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="OneClick:Done">완료</sys:String>
 
     <!-- Themes Class -->

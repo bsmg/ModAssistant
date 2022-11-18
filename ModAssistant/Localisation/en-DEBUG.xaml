@@ -118,6 +118,7 @@
     <sys:String x:Key="Options:ShowOCIWindow">Options:ShowOCIWindow</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">Options:OCIWindowYes</sys:String>
     <sys:String x:Key="Options:OCIWindowClose">Options:OCIWindowClose</sys:String>
+    <sys:String x:Key="Options:OCINotify">Options:OCINotify</sys:String>
     <sys:String x:Key="Options:OCIWindowNo">Options:OCIWindowNo</sys:String>
     <sys:String x:Key="Options:Diagnostics">Options:Diagnostics</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Options:OpenLogsButton</sys:String>
@@ -172,6 +173,8 @@
     <sys:String x:Key="OneClick:RatelimitSkip">{0} OneClick:RatelimitSkip</sys:String>
     <sys:String x:Key="OneClick:RatelimitHit">{0} OneClick:RatelimitHit</sys:String>
     <sys:String x:Key="OneClick:Failed">{0} OneClick:Failed</sys:String>
+    <sys:String x:Key="OneClick:DoneNotify">OneClick:DoneNotify</sys:String>
+    <sys:String x:Key="OneClick:StartDownloadPlaylist">OneClick:StartDownloadPlaylist</sys:String>
     <sys:String x:Key="OneClick:Done">OneClick:Done</sys:String>
 
     <!-- Themes Class -->

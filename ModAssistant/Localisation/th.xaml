@@ -158,6 +158,7 @@
     <sys:String x:Key="Options:ShowOCIWindow">แสดงหน้าต้าง OneClick Installer</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">ใช่</sys:String>
     <sys:String x:Key="Options:OCIWindowClose">ปิด</sys:String>
+    <sys:String x:Key="Options:OCINotify">Notification</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Options:OCIWindowNo">ไม่</sys:String>
     <sys:String x:Key="Options:Diagnostics">การวินิจฉัยปัญหา</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">เปิด Logs</sys:String>
@@ -231,6 +232,8 @@
     <sys:String x:Key="OneClick:RatelimitSkip">พยายามเต็มที่แล้ว : กำลังข้าม  {0}</sys:String>
     <sys:String x:Key="OneClick:RatelimitHit">ถึงอัตราจำกัด กลับมาทำงานต่อใน {0}</sys:String>
     <sys:String x:Key="OneClick:Failed">การดาวน์โหลดล้มเหลว: {0}</sys:String>
+    <sys:String x:Key="OneClick:DoneNotify">OneClick™ installation finished</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:StartDownloadPlaylist">Starting to download playlist</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="OneClick:Done">เสร็จแล้ว</sys:String>
 
     <!-- Themes Class -->
