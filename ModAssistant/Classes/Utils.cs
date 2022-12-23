@@ -394,7 +394,7 @@ namespace ModAssistant
             if(File.Exists(Path.Combine(pluginsx86Directory, "steam_api64.dll")))
             {
                 string gamesteamapimd5 = Utils.CalculateMD5(Path.Combine(pluginsx86Directory, "steam_api64.dll"));
-                if(gamesteamapimd5 == "0276b122929fcd74fee949142d65f6a2" || gamesteamapimd5 == "2a905fbd9833970217ae3fe83118929b")
+                if(gamesteamapimd5 == "0276b122929fcd74fee949142d65f6a2" || gamesteamapimd5 == "2a905fbd9833970217ae3fe83118929b" || gamesteamapimd5 == "37a7e0deae6e7bd1154f8fd059f9a241")
                 {
                     return true;
                 }
@@ -402,6 +402,7 @@ namespace ModAssistant
             if (File.Exists(Path.Combine(directory, "IGG-GAMES.COM.url")) ||
                 File.Exists(Path.Combine(directory, "SmartSteamEmu.ini")) ||
                 File.Exists(Path.Combine(directory, "GAMESTORRENT.CO.url")) ||
+                File.Exists(Path.Combine(directory, "1VR魔趣_国内最大最强的Quest游戏平台.txt")) ||
                 File.Exists(Path.Combine(pluginsDirectory, "BSteam crack.dll")) ||
                 File.Exists(Path.Combine(pluginsDirectory, "HUHUVR_steam_api64.dll")) ||
                 File.Exists(Path.Combine(pluginsx86Directory, "171VR_提供破解补丁.txt")) ||
