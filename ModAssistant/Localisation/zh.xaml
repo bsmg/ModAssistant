@@ -177,6 +177,7 @@
     <sys:String x:Key="Options:ShowOCIWindow">OneClick窗口显示方式：</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">显示</sys:String>
     <sys:String x:Key="Options:OCIWindowClose">完成后关闭</sys:String>
+    <sys:String x:Key="Options:OCINotify">通知</sys:String>
     <sys:String x:Key="Options:OCIWindowNo">隐藏</sys:String>
     <sys:String x:Key="Options:Diagnostics">诊断工具</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">打开日志</sys:String>
@@ -250,6 +251,8 @@
     <sys:String x:Key="OneClick:RatelimitSkip">超过重试次数，跳过：{0}</sys:String>
     <sys:String x:Key="OneClick:RatelimitHit">下载超时，重试：{0}</sys:String>
     <sys:String x:Key="OneClick:Failed">下载失败：{0}</sys:String>
+    <sys:String x:Key="OneClick:DoneNotify">OneClick™ 安装完毕</sys:String>
+    <sys:String x:Key="OneClick:StartDownloadPlaylist">开始下载歌曲列表</sys:String>
     <sys:String x:Key="OneClick:Done">执行完毕</sys:String>
     
     <!-- Themes Class -->

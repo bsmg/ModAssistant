@@ -2,7 +2,11 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Drawing;
 using Microsoft.Win32;
+using System.Windows.Forms;
+using Application = System.Windows.Application;
+using MessageBox = System.Windows.MessageBox;
 
 namespace ModAssistant
 {
@@ -10,7 +14,7 @@ namespace ModAssistant
     {
         private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver", "bsplaylist" };
         public static OneClickStatus Status = new OneClickStatus();
-
+ 
         public static async Task InstallAsset(string link)
         {
             Uri uri = new Uri(link);
@@ -33,10 +37,17 @@ namespace ModAssistant
                 Status.StopRotation();
                 API.Utils.SetMessage((string)Application.Current.FindResource("OneClick:Done"));
             }
+            if (App.OCIWindow == "Notify")
+            {
+                Utils.SendNotify((string)Application.Current.FindResource("OneClick:DoneNotify"));
+                Application.Current.Shutdown();
+            }
             if (App.OCIWindow == "Close")
             {
                 Application.Current.Shutdown();
             }
+            
+
         }
 
         private static async Task BeatSaver(Uri uri)
@@ -47,14 +58,15 @@ namespace ModAssistant
 
         private static async Task ModelSaber(Uri uri)
         {
-            if (App.OCIWindow != "No") Status.Show();
+            if (App.OCIWindow != "No" && App.OCIWindow != "Notify") Status.Show();
             API.Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Installing"), System.Web.HttpUtility.UrlDecode(uri.Segments.Last()))}");
             await API.ModelSaber.GetModel(uri);
         }
 
         private static async Task Playlist(Uri uri)
         {
-            if (App.OCIWindow != "No") Status.Show();
+            if (App.OCIWindow != "No" && App.OCIWindow != "Notify") Status.Show();
+            if (App.OCIWindow == "Notify") Utils.SendNotify((string)Application.Current.FindResource("OneClick:StartDownloadPlaylist")); 
             await API.Playlists.DownloadAll(uri);
         }
 
