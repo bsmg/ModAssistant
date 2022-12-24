@@ -24,7 +24,7 @@ namespace ModAssistant.Pages
     {
         public static Mods Instance = new Mods();
 
-        public List<string> DefaultMods = new List<string>() { "SongCore", "BeatLeader", "BeatSaverDownloader", "BeatSaverVoting", "PlaylistManager", "ModelDownloader" };
+        public List<string> DefaultMods = new List<string>() { "SongCore", "BeatLeader", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "PlaylistManager", "ModelDownloader" };
         public Mod[] ModsList;
         public Mod[] AllModsList;
         public static List<Mod> InstalledMods = new List<Mod>();
