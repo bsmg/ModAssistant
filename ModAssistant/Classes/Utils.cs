@@ -275,7 +275,11 @@ namespace ModAssistant
                 var strlen = reader.ReadInt32();
                 var strbytes = reader.ReadBytes(strlen);
 
-                return Encoding.UTF8.GetString(strbytes);
+                var version = Encoding.UTF8.GetString(strbytes);
+
+                //There is one version ending in "p1" on BeatMods
+                var filteredVersionMatch = Regex.Match(version, @"[\d]+.[\d]+.[\d]+(p1)?");
+                return filteredVersionMatch.Success ? filteredVersionMatch.Value : version;
             }
         }
 
