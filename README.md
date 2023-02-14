@@ -1,7 +1,7 @@
 [![Mod Assistant](https://cdn.assistant.moe/images/ModAssistant/Icons/Banner.svg?v=5)](https://github.com/Assistant/ModAssistant/releases/latest)
 [![点此下载! Download here!](https://cdn.assistant.moe/images/ModAssistant/Icons/Download.svg)](https://github.com/beatmods-top/ModAssistant/releases/)
 
-Mod Assistant 是节奏光剑(Beat Saber)PC版mod安装器。它使用来自[BeatMods](https://beatmods.com/)和[BeatMods.top](https://beatmods.top) (第三方源，镜像BeatMods.com并包含第三方上传插件和网易影核1.8.0版支持)
+Mod Assistant 是节奏光剑(Beat Saber)PC版mod安装器。它使用来自[BeatMods](https://beatmods.com/)和[BeatMods.top](https://beatmods.top) (第三方源，镜像BeatMods.com并包含第三方上传插件)
 
 * [特性](#特性)
 * [用法](#用法)
@@ -24,7 +24,6 @@ Mod Assistant拥有丰富的功能，其中包括：
 * 本地化支持
 * 摸摸头贴贴
 * 切换下载节点
-* 网易影核版插件支持(1.8.0)
 
 ## 用法
 从Release中下载最新安装器并运行。程序在启动时会自动更新，所以不需要每次都下载新版本。
@@ -147,10 +146,7 @@ Mod Assistant拥有丰富的功能，其中包括：
   *增强源在国际源的基础上包含了国际源和国内源所没有的一些第三方插件。*
   
 **我使用网易影核版节奏空间想装mod**
-  *目前网易影核版节奏空间mod只支持游戏版本为1.8.0*
-  请切换下载节点至`增强源`并将游戏目录定位到节奏空间安装文件夹。
-  安装任何非官方mod都将安装特别版BSIPA，并且限制可加载mod项为列表中所列出的mod。
-  你可以通过安装影核版BSIPA恢复至官方状态(仅可加载官方mod)。
+  目前Mod Assistant已经正式结束对网易影核版节奏空间1.8.0版的mod支持。
 
 **我点了安装但是游戏打不开，点不了任何按钮或者只能看到黑屏**
   请查看[详细教程与问题解答](https://bs-wgzeyu.gtxcn.com/pc-faq/)。如果解决不了，可以在右上角加群提问，也可以访问[Beat Saber Modding Group](https://discord.gg/beatsabermods) `#pc-help` 频道。
@@ -159,7 +155,7 @@ Mod Assistant拥有丰富的功能，其中包括：
 semver by Max Hauser
 https://github.com/maxhauser/semver
 
-Mod Assistant is a PC mod installer for Beat Saber. It uses mods from [BeatMods](https://beatmods.com/) and [BeatMods.top](https://beatmods.top) (A 3rd party site mirrors BeatMods.com with 3rd party plugins and Netvios Edition Support).
+Mod Assistant is a PC mod installer for Beat Saber. It uses mods from [BeatMods](https://beatmods.com/) and [BeatMods.top](https://beatmods.top) (A 3rd party site mirrors BeatMods.com with 3rd party plugins).
 
 * [Features](#Features)
 * [Usage](#Usage)
@@ -183,7 +179,6 @@ Mod Assistant boasts a rich feature set, some of which include:
 * Localization support
 * Headpats and Hugs
 * Downloads Server switch
-* Netvios Edition Plugin Support
 
 ## Usage
 Download the newest installer from the release section and run it. This application auto-updates when launched, there is no need to download a new release each time.
