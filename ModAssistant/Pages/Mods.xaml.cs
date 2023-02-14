@@ -26,9 +26,6 @@ namespace ModAssistant.Pages
         public static Mods Instance = new Mods();
 
         public List<string> DefaultMods = new List<string>() { "SongCore", "ScoreSaber", "BeatSaverDownloader", "BeatSaverVoting", "PlaylistManager", "ModelDownloader", "MappingExtensions", "BetterSongList", "BetterSongSearch", "BSIPA" , "Noodle Extensions" , "NoodleExtensions" , "Chroma" , "SiraUtil" , "SiraLocalizer" , "BeatLeader" , "Beat Leader" };
-        public List<string> DefaultModsNetvios = new List<string>() { "Base-Netvios" };
-        /*        public List<string> DefaultModsNetvios = new List<string>() { "Base-Netvios", "SongCore-Netvios", "BeatSaberMarkupLanguage-Netvios", "PlayerDataPlugin-Netvios", "NetviosSdkPlugin-Netvios", "NetviosHelperPlugin-Netvios", "LocalizationPlugin-Netvios", "BeatSaverSharp-Netvios", "BS_Utils-Netvios", "BeatSaverDownloader-Netvios", "CommonPlugin-Netvios" };*/
-        public List<string> NetviosNotCompatiblePluginList = new List<string>() { "BSIPA", "Chroma", "Versus" , "ScoreSaber", "Saber Factory" };
         public Mod[] ModsList;
         public Mod[] AllModsList;
         public TranslationWGzeyu[] ModsTranslationWGzeyu;
@@ -39,8 +36,6 @@ namespace ModAssistant.Pages
         public bool PendingChanges;
         public Dictionary<String, String> CategoryTranslation = new Dictionary<string, string>();
         public Dictionary<string, SemVersion> inListMods = new Dictionary<string, SemVersion>();
-        public string BSIPAVersion = "Base-Netvios";
-        public string BSIPAVersionUncheck = "BSIPA-NetviosSpecial";
         public string lastBSIPA = "";
 
         private readonly SemaphoreSlim _modsLoadSem = new SemaphoreSlim(1, 1);
@@ -273,7 +268,7 @@ namespace ModAssistant.Pages
             string InjectorHash = Utils.CalculateMD5(InjectorPath);
             foreach (Mod mod in AllModsList)
             {
-                if (mod.name.ToLowerInvariant() == "bsipa" || mod.name.ToLowerInvariant() == "base-netvios" || mod.name.ToLowerInvariant() == "bsipa-netviosspecial")
+                if (mod.name.ToLowerInvariant() == "bsipa")
                 {
                     foreach (Mod.DownloadLink download in mod.downloads)
                     {
@@ -283,8 +278,6 @@ namespace ModAssistant.Pages
                             {
                                 AddDetectedMod(mod);
                                 lastBSIPA = mod.name;
-                                DefaultModsNetvios.Clear();
-                                DefaultModsNetvios.Add(mod.name);
                             }
                         }
                     }
@@ -312,7 +305,7 @@ namespace ModAssistant.Pages
         {
             foreach (Mod mod in AllModsList)
             {
-                if ((mod.name.ToLowerInvariant() != "bsipa" && mod.name.ToLowerInvariant() != "base-netvios" && mod.name.ToLowerInvariant() != "bsipa-netviosspecial") && mod.status != "declined")
+                if (mod.name.ToLowerInvariant() != "bsipa" && mod.status != "declined")
                 {
                     foreach (Mod.DownloadLink download in mod.downloads)
                     {
@@ -334,14 +327,8 @@ namespace ModAssistant.Pages
         {
             try
             {
-                Console.WriteLine(
-                    (Properties.Settings.Default.StoreType == "Netvios" &&
-                     ModAssistant.Properties.Settings.Default.DownloadServer == Server.BeatModsTop)
-                        ? (Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions + "&gameVersion=" +
-                           MainWindow.GameVersion + "&withNetvios=true")
-                        : (Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions + "&gameVersion=" +
-                           MainWindow.GameVersion));
-                var resp = await HttpClient.GetAsync((Properties.Settings.Default.StoreType == "Netvios" && ModAssistant.Properties.Settings.Default.DownloadServer == "���װ�@BeatMods.top") ? (Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions + "&gameVersion=" + MainWindow.GameVersion + "&withNetvios=true") : (Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions + "&gameVersion=" + MainWindow.GameVersion));
+                Console.WriteLine(Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions + "&gameVersion=" + MainWindow.GameVersion);
+                var resp = await HttpClient.GetAsync(Utils.Constants.BeatModsAPIUrl + Utils.Constants.BeatModsModsOptions + "&gameVersion=" + MainWindow.GameVersion);
                 var body = await resp.Content.ReadAsStringAsync();
                 ModsList = JsonSerializer.Deserialize<Mod[]>(body);
 
@@ -448,12 +435,7 @@ namespace ModAssistant.Pages
 
                 bool preSelected = mod.required;
 
-                if (Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == Server.BeatModsTop) {
-                    /*mod.required = false;*/
-                    preSelected = false;
-                }
-
-                if (((Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == Server.BeatModsTop) ? DefaultModsNetvios.Contains(mod.name) : DefaultMods.Contains(mod.name)) || (App.SaveModSelection && App.SavedMods.Contains(mod.name)))
+                if ((DefaultMods.Contains(mod.name)) || (App.SaveModSelection && App.SavedMods.Contains(mod.name)))
                 {
                     preSelected = true;
                     if (!App.SavedMods.Contains(mod.name))
@@ -466,8 +448,8 @@ namespace ModAssistant.Pages
 
                 ModListItem ListItem = new ModListItem()
                 {
-                    IsSelected = (Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == Server.BeatModsTop && NetviosNotCompatiblePluginList.Contains(mod.name)) ? false : preSelected,
-                    IsEnabled = (Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == Server.BeatModsTop && NetviosNotCompatiblePluginList.Contains(mod.name)) ? false : !mod.required,
+                    IsSelected = preSelected,
+                    IsEnabled = !mod.required,
                     ModName = (mod.nameWithTranslation is null || mod.nameWithTranslation == "") ? mod.name : mod.nameWithTranslation,
                     ModVersion = mod.version,
                     ModDescription = ((mod.descriptionWithTranslation is null || mod.descriptionWithTranslation == "") ? mod.description : mod.descriptionWithTranslation).Replace("\r\n", " ").Replace("\n", " "),
@@ -504,10 +486,7 @@ namespace ModAssistant.Pages
                         ListItem.IsInstalled = true;
                         //ListItem.InstalledVersion = maxVersion;
                         ListItem.InstalledVersion = installedMod.version;
-                        if (Properties.Settings.Default.StoreType != "Netvios" || Properties.Settings.Default.DownloadServer != Server.BeatModsTop)
-                        {
-                            break;
-                        }
+                        break;
                     }
                 }
 
@@ -518,6 +497,7 @@ namespace ModAssistant.Pages
 
             foreach (Mod mod in ModsList)
             {
+                // Console.WriteLine(mod.name + "(" + mod._id + ")");
                 ResolveDependencies(mod);
             }
         }
@@ -535,9 +515,8 @@ namespace ModAssistant.Pages
                 // Ignore mods that are on current version if we aren't reinstalling mods
                 if (mod.ListItem.GetVersionComparison == 0 && !App.ReinstallInstalledMods) continue;
 
-                if (mod.name.ToLowerInvariant() == "bsipa" || mod.name.ToLowerInvariant() == "bsipa-netvios" || mod.name.ToLowerInvariant() == "bsipa-netviosspecial")
+                if (mod.name.ToLowerInvariant() == "bsipa")
                 {
-                    if (mod.name.ToLowerInvariant() == "bsipa" && Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == Server.BeatModsTop) continue;
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}...";
                     await Task.Run(async () => await InstallMod(mod, installDirectory));
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstalledMod"), mod.name)}{(Properties.Settings.Default.LanguageCode == "zh" ? "。" : ".")}";
@@ -596,12 +575,13 @@ namespace ModAssistant.Pages
                 return;
             }
 
+            // Console.WriteLine(Utils.Constants.BeatModsURL + downloadLink);
 			MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:DownloadingMod"), mod.name, Properties.Settings.Default.DownloadServer)}";
 
             while (true)
             {
                 List<ZipArchiveEntry> files = new List<ZipArchiveEntry>(filesCount);
-
+                
                 using (Stream stream = await DownloadMod(Utils.Constants.BeatModsURL + downloadLink))
                 using (ZipArchive archive = new ZipArchive(stream))
                 {
@@ -644,11 +624,13 @@ namespace ModAssistant.Pages
 
                             break;
                         }
-                     }
-                     catch (InvalidDataException e){
+                    }
+                    catch (InvalidDataException e)
+                    {
                         string msg = "";
                         string caption = "";
-                        switch (Properties.Settings.Default.LanguageCode) {
+                        switch (Properties.Settings.Default.LanguageCode)
+                        {
                             case "zh":
                                 msg = "ZIP文件已损坏或下载失败";
                                 caption = "安装失败";
@@ -694,8 +676,16 @@ namespace ModAssistant.Pages
 
         private async Task<Stream> DownloadMod(string link)
         {
-            var resp = await HttpClient.GetAsync(link);
-            return await resp.Content.ReadAsStreamAsync();
+            try
+            {
+                var resp = await HttpClient.GetAsync(link);
+                return await resp.Content.ReadAsStreamAsync();
+            }
+            catch (Exception e) {
+                Console.WriteLine(e);
+                var resp = await HttpClient.GetAsync(link);
+                return await resp.Content.ReadAsStreamAsync();
+            }
         }
 
         private void RegisterDependencies(Mod dependent)
@@ -720,30 +710,10 @@ namespace ModAssistant.Pages
 
         private void ResolveDependencies(Mod dependent)
         {
-            if (dependent.ListItem.IsSelected && Properties.Settings.Default.StoreType == "Netvios" && Properties.Settings.Default.DownloadServer == Server.BeatModsTop) {
-                if (!dependent.name.Contains("Netvios") || dependent.name == "BSIPA-NetviosSpecial")
-                {
-                    BSIPAVersion = "BSIPA-NetviosSpecial";
-                    BSIPAVersionUncheck = "Base-Netvios";
-                }
-                else if (dependent.name == "Base-Netvios")
-                {
-                    BSIPAVersion = "Base-Netvios";
-                    BSIPAVersionUncheck = "BSIPA-NetviosSpecial";
-                }
-
+            if (dependent.ListItem.IsSelected) {
                 foreach (ModListItem modItem in ModList)
                 {
-                    if (modItem.ModInfo.name == BSIPAVersion)
-                    {
-                        modItem.IsEnabled = false;
-                        modItem.IsSelected = true;
-                    }
-                    else if (modItem.ModInfo.name == BSIPAVersionUncheck)
-                    {
-                        modItem.IsEnabled = true;
-                        modItem.IsSelected = false;
-                    } else if (modItem.ModInfo.name.ToLowerInvariant() == "BSIPA".ToLowerInvariant()) {
+                    if (modItem.ModInfo.name.ToLowerInvariant() == "BSIPA".ToLowerInvariant()) {
                         modItem.IsEnabled = false;
                         modItem.IsSelected = false;
                     }
@@ -754,6 +724,7 @@ namespace ModAssistant.Pages
             {
                 foreach (Mod.Dependency dependency in dependent.dependencies)
                 {
+                    // Console.WriteLine("\t" + dependency.name + "(" + dependency._id + ")");
                     if (dependency.Mod.ListItem.IsEnabled)
                     {
                         dependency.Mod.ListItem.PreviousState = dependency.Mod.ListItem.IsSelected;
@@ -795,25 +766,25 @@ namespace ModAssistant.Pages
 
         private void ModCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-
             Mod mod = (sender as System.Windows.Controls.CheckBox).Tag as Mod;
-            if (Properties.Settings.Default.StoreType == "Netvios" && mod.name.ToLowerInvariant() == "songcore") {
+            /*if (mod.name.ToLowerInvariant() == "songcore") {
                 string notice = "";
                 string caption = "";
                 switch (Properties.Settings.Default.LanguageCode) {
                     case "zh":
                         caption = "提示";
-                        notice = "您给网易版选择了原版的歌曲核心，如遇歌曲包消失等问题，请手动选择安装 歌曲核心-网易";
+                        notice = "";
                         break;
                     default:
                         caption = "Notice";
-                        notice = "You want to install SongCore non-Netvios edition, If there is no default song in your library, please install SongCore-Netvios!";
+                        notice = "";
                         break;
                 }
 
                 System.Windows.Forms.MessageBox.Show(notice, caption);
-            }
+            }*/
             mod.ListItem.IsSelected = true;
+            // Console.WriteLine(mod.name + "(" + mod._id + ")");
             ResolveDependencies(mod);
             App.SavedMods.Add(mod.name);
             Properties.Settings.Default.SavedMods = string.Join(",", App.SavedMods.ToArray());
@@ -1009,7 +980,7 @@ namespace ModAssistant.Pages
                     break;
                 }
             }
-            if (mod.name.ToLowerInvariant() == "bsipa" || mod.name.ToLowerInvariant() == "base-netvios" || mod.name.ToLowerInvariant() == "bsipa-netviosspecial")
+            if (mod.name.ToLowerInvariant() == "bsipa")
             {
                 var hasIPAExe = File.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA.exe"));
                 var hasIPADir = Directory.Exists(Path.Combine(App.BeatSaberInstallDirectory, "IPA"));
@@ -1125,7 +1096,6 @@ namespace ModAssistant.Pages
                     CategoryTranslation.Add("libraries", "支持库");
                     CategoryTranslation.Add("lighting", "灯光");
                     CategoryTranslation.Add("multiplayer", "多人联机");
-                    CategoryTranslation.Add("netvios", "影核版专用");
                     CategoryTranslation.Add("other", "其它");
                     CategoryTranslation.Add("practice / training", "练习 / 训练");
                     CategoryTranslation.Add("stream tools", "直播工具");
@@ -1148,6 +1118,22 @@ namespace ModAssistant.Pages
             {
                 return name;
             }
+        }
+
+        private string compareString(string str1, string str2) {
+            Console.WriteLine("str1: " + str1 + " str2: " + str2);
+            if (str1.Length != str2.Length)
+            {
+                return "Length not match: " + str1 + (str1.Length > str2.Length ? " > " : " < ") + str2;
+            }
+            else {
+                for (int i = 0; i < str1.Length; i++) {
+                    if (str1[i] != str2[i]) {
+                        return "Index" + i + " not match, " + str1[i] + " vs " + str2[i];
+                    }
+                }
+            }
+            return "Match!";
         }
     }
 }

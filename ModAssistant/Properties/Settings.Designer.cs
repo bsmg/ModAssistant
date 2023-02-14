@@ -217,7 +217,7 @@ namespace ModAssistant.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(Server.BeatMods)]
+        [global::System.Configuration.DefaultSettingValueAttribute("国际源@BeatMods")]
         public string DownloadServer {
             get {
                 return ((string)(this["DownloadServer"]));

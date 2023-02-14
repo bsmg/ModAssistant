@@ -70,11 +70,6 @@ namespace ModAssistant
             };
 
             public static void UpdateDownloadNode() {
-                if (ModAssistant.Properties.Settings.Default.StoreType == "Netvios")
-                {
-                    ModAssistant.Properties.Settings.Default.DownloadServer = Server.BeatModsTop;
-                }
-
                 if (ModAssistant.Properties.Settings.Default.DownloadServer == Server.WGZeyu)
                 {
                     Utils.Constants.BeatModsAPIUrl = Utils.Constants.BeatModsAPIUrl_wgzeyu;
@@ -219,16 +214,6 @@ namespace ModAssistant
             try
             {
                 InstallDir = GetOculusDir();
-            }
-            catch { }
-            if (!string.IsNullOrEmpty(InstallDir))
-            {
-                return InstallDir;
-            }
-
-            try
-            {
-                InstallDir = GetNetviosDir();
             }
             catch { }
             if (!string.IsNullOrEmpty(InstallDir))
@@ -421,23 +406,6 @@ namespace ModAssistant
             return null;
         }
 
-        public static string GetNetviosDir()
-        {
-            string NetviosInstall = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64)?.OpenSubKey("Software")?.OpenSubKey("NetVios")?.OpenSubKey("NetViosVR")?.OpenSubKey("Games")?.OpenSubKey("VR000004")?.GetValue("INSTALL").ToString();
-            string NetviosStart = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64)?.OpenSubKey("Software")?.OpenSubKey("NetVios")?.OpenSubKey("NetViosVR")?.OpenSubKey("Games")?.OpenSubKey("VR000004")?.GetValue("STARTUP_PATH").ToString();
-            if (string.IsNullOrEmpty(NetviosInstall) || string.IsNullOrEmpty(NetviosStart)) return null;
-
-            if (!(string.IsNullOrEmpty(NetviosInstall) && string.IsNullOrEmpty(NetviosStart)))
-            {
-                if (File.Exists(Path.Combine(NetviosInstall, NetviosStart))) 
-                {
-                    return SetDir(Path.GetDirectoryName(Path.Combine(NetviosInstall, NetviosStart)), "Netvios");
-                }
-            }
-
-            return null;
-        }
-
         public static string GetManualDir()
         {
             var dialog = new SaveFileDialog()
@@ -457,10 +425,7 @@ namespace ModAssistant
                 if (File.Exists(Path.Combine(path, "Beat Saber.exe")))
                 {
                     string store;
-                    if (File.Exists(Path.Combine(path, "NetviosSDK.dll"))) {
-                        store = "Netvios";
-                    }
-                    else if (File.Exists(Path.Combine(path, "Beat Saber_Data", "Plugins", "steam_api64.dll"))
+                    if (File.Exists(Path.Combine(path, "Beat Saber_Data", "Plugins", "steam_api64.dll"))
                        || File.Exists(Path.Combine(path, "Beat Saber_Data", "Plugins", "x86_64", "steam_api64.dll")))
                     {
                         store = "Steam";
@@ -473,9 +438,6 @@ namespace ModAssistant
                 }
             }
             if (!old_store.Equals(Properties.Settings.Default.StoreType)) {
-                if (Properties.Settings.Default.StoreType == "Netvios") {
-                    Properties.Settings.Default.DownloadServer = Server.BeatModsTop;
-                }
                 Process.Start(Utils.ExePath, App.Arguments);
                 Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
             }

@@ -280,7 +280,7 @@ namespace ModAssistant.Pages
             }
             foreach (Mod mod in Mods.InstalledMods)
             {
-                if (mod.name.ToLowerInvariant() == "bsipa" || mod.name.ToLower() == "base-netvios" || mod.name.ToLower() == "bsipa-netviosspecial")
+                if (mod.name.ToLowerInvariant() == "bsipa")
                 {
                     Mods.Instance.UninstallMod(mod);
                     /*break;*/
@@ -368,17 +368,9 @@ namespace ModAssistant.Pages
             {
                 // Apply default server config
                 Console.WriteLine("Applying default server config");
-                if (Properties.Settings.Default.StoreType == "Netvios")
-                {
-                    DownloadServerSelectComboBox.SelectedItem = Server.BeatModsTop;
-                    Properties.Settings.Default.DownloadServer = Server.BeatModsTop;
-                    Properties.Settings.Default.Save();
-                }
-                else {
-                    DownloadServerSelectComboBox.SelectedItem = Server.BeatMods;
-                    Properties.Settings.Default.DownloadServer = Server.BeatMods;
-                    Properties.Settings.Default.Save();
-                }
+                DownloadServerSelectComboBox.SelectedItem = Server.BeatMods;
+                Properties.Settings.Default.DownloadServer = Server.BeatMods;
+                Properties.Settings.Default.Save();
                 Process.Start(Utils.ExePath, App.Arguments);
                 Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
             }
@@ -389,15 +381,8 @@ namespace ModAssistant.Pages
                     // Get the matching servers from the server array, then try and use it
                     var serverName = (sender as ComboBox).SelectedItem.ToString();
                     var selectedServer = (Array.IndexOf(serverList, serverName) == -1) ? Server.BeatMods : serverName;
-                    if (Properties.Settings.Default.StoreType == "Netvios")
-                    {
-                        Properties.Settings.Default.DownloadServer = Server.BeatModsTop;
-                        Properties.Settings.Default.Save();
-                    }
-                    else {
-                        Properties.Settings.Default.DownloadServer = serverName;
-                        Properties.Settings.Default.Save();
-                    }
+                    Properties.Settings.Default.DownloadServer = serverName;
+                    Properties.Settings.Default.Save();
                     Process.Start(Utils.ExePath, App.Arguments);
                     Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
                 }

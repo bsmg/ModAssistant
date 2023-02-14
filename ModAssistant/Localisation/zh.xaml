@@ -90,7 +90,7 @@
         <LineBreak/>
         国内源为BeatMods镜像，服务器使用<Bold>香港腾讯云</Bold>（由WGzeyu提供），推荐国内用户使用；
         <LineBreak/>
-        包子源为BeatTop管理，服务器使用<Bold>美国机房</Bold>，同步国际源并支持部分第三方插件以及1.8.0版本的网易影核插件。
+        包子源为BeatTop管理，服务器使用<Bold>美国机房</Bold>，同步国际源并支持部分第三方插件。
     </Span>
     <sys:String x:Key="Intro:AgreeButton">同意</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">拒绝</sys:String>

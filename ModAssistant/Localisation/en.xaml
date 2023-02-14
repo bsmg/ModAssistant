@@ -77,7 +77,7 @@
         <Bold>
             The first server node is Beatmods.com. The second server node is hosted by WGzeyu in China Mainland.
             <LineBreak/>
-            The third server node is hosted by Beatmods.top in U.S., it mirror the beatmods.com with extra 3rd party plugins and support Netvios version 1.8.0.
+            The third server node is hosted by Beatmods.top in U.S., it mirror the beatmods.com with extra 3rd party plugins.
         </Bold>
     </Span>
     <sys:String x:Key="Intro:AgreeButton">I Agree</sys:String>
