@@ -23,7 +23,7 @@ namespace ModAssistant
         /// Local dictionary of Resource Dictionaries mapped by their names.
         /// </summary>
         private static readonly Dictionary<string, Theme> loadedThemes = new Dictionary<string, Theme>();
-        private static readonly List<string> preInstalledThemes = new List<string> { "Light", "Dark", "BSMG", "Light Pink" };
+        private static readonly List<string> preInstalledThemes = new List<string> { "Light", "Dark", "BSMG", "Light Pink", "Anniversary" };
 
         /// <summary>
         /// Index of "LoadedTheme" in App.xaml
@@ -115,6 +115,11 @@ namespace ModAssistant
         /// <param name="savedTheme">Theme name retrieved from the settings file.</param>
         public static void FirstLoad(string savedTheme)
         {
+            if (DateTime.Now.Date.ToString("MM/yyyy") == "05/2023")
+            {
+                ApplyTheme("Anniversary", false);
+                return;
+            }
             if (string.IsNullOrEmpty(savedTheme))
             {
                 try

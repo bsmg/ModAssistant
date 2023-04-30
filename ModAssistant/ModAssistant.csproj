@@ -277,6 +277,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Themes\Anniversary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Dark.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -332,6 +336,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Themes\BSMG\Sidebar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Themes\Anniversary\Background.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
