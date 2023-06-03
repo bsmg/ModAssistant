@@ -14,7 +14,19 @@ namespace ModAssistant.API
 {
     public class BeatSaver
     {
-        private const string BeatSaverURLPrefix = "https://api.beatsaver.com";
+        private static string BeatSaverURLPrefix { get =>
+            Properties.Settings.Default.AssetsDownloadServer == AssetsServer.Default ? ModAssistant.Utils.Constants.BeatSaverURLPrefix_default :
+                (Properties.Settings.Default.AssetsDownloadServer == AssetsServer.WGZeyu ? ModAssistant.Utils.Constants.BeatSaverURLPrefix_wgzeyu :
+                ModAssistant.Utils.Constants.BeatSaverURLPrefix_beatsaberchina);
+        }
+
+        private static string BeatSaverCDNURLPrefix
+        {
+            get =>
+            Properties.Settings.Default.AssetsDownloadServer == AssetsServer.Default ? ModAssistant.Utils.Constants.BeatSaverCDNURLPrefix_default :
+                (Properties.Settings.Default.AssetsDownloadServer == AssetsServer.WGZeyu ? ModAssistant.Utils.Constants.BeatSaverCDNURLPrefix_wgzeyu :
+                ModAssistant.Utils.Constants.BeatSaverCDNURLPrefix_beatsaberchina);
+        }
         private static readonly string CustomSongsFolder = Path.Combine("Beat Saber_Data", "CustomLevels");
         private static readonly string CustomWIPSongsFolder = Path.Combine("Beat Saber_Data", "CustomWIPLevels");
         private const bool BypassDownloadCounter = false;
@@ -253,6 +265,7 @@ namespace ModAssistant.API
 
         public static async Task Download(string url, string output, int retries = 3)
         {
+            url = proxyURL(url);
             if (retries == 0)
             {
                 Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitSkip"), url)}");
@@ -388,6 +401,13 @@ namespace ModAssistant.API
                 public int warns { get; set; }
                 public int resets { get; set; }
             }
+        }
+
+        public static string proxyURL(string url) {
+            return url.Replace("https://as.cdn.beatsaver.com", "https://cdn.beatsaver.com")
+                .Replace("https://na.cdn.beatsaver.com", "https://cdn.beatsaver.com")
+                .Replace("https://r2cdn.beatsaver.com", "https://cdn.beatsaver.com")
+                .Replace("https://cdn.beatsaver.com", BeatSaverCDNURLPrefix);
         }
     }
 }

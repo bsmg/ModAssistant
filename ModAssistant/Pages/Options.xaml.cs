@@ -33,6 +33,7 @@ namespace ModAssistant.Pages
         public string OCIWindow { get; set; }
 
         public static string[] serverList = { "国际源@BeatMods", "国内源@WGzeyu", "包子源@BeatTop" };
+        public static string[] assetsServerList = { "默认@default", "国内源@WGzeyu", "光剑中文社区源@BeatSaberChina" };
 
         public Options()
         {
@@ -367,8 +368,8 @@ namespace ModAssistant.Pages
             if ((sender as ComboBox).SelectedItem == null)
             {
                 // Apply default server config
-                Console.WriteLine("Applying default server config");
-                DownloadServerSelectComboBox.SelectedItem = Server.BeatMods;
+                Console.WriteLine("Applying default assets server config");
+                AssetsDownloadServerSelectComboBox.SelectedItem = Server.BeatMods;
                 Properties.Settings.Default.DownloadServer = Server.BeatMods;
                 Properties.Settings.Default.Save();
                 Process.Start(Utils.ExePath, App.Arguments);
@@ -386,7 +387,6 @@ namespace ModAssistant.Pages
                     Process.Start(Utils.ExePath, App.Arguments);
                     Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
                 }
-                
             }
         }
 
@@ -442,6 +442,33 @@ namespace ModAssistant.Pages
             {
                 OCIWindow = App.OCIWindow = Properties.Settings.Default.OCIWindow = state;
                 Properties.Settings.Default.Save();
+            }
+        }
+
+        private void AssetsDownloadServerSelectComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if ((sender as ComboBox).SelectedItem == null)
+            {
+                // Apply default server config
+                Console.WriteLine("Applying default server config");
+                DownloadServerSelectComboBox.SelectedItem = AssetsServer.Default;
+                Properties.Settings.Default.AssetsDownloadServer = AssetsServer.Default;
+                Properties.Settings.Default.Save();
+                Process.Start(Utils.ExePath, App.Arguments);
+                Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(Properties.Settings.Default.AssetsDownloadServer) || Properties.Settings.Default.AssetsDownloadServer != (sender as ComboBox).SelectedItem.ToString())
+                {
+                    // Get the matching servers from the server array, then try and use it
+                    var serverName = (sender as ComboBox).SelectedItem.ToString();
+                    var selectedServer = (Array.IndexOf(serverList, serverName) == -1) ? AssetsServer.Default : serverName;
+                    Properties.Settings.Default.AssetsDownloadServer = serverName;
+                    Properties.Settings.Default.Save();
+                    Process.Start(Utils.ExePath, App.Arguments);
+                    Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
+                }
             }
         }
     }

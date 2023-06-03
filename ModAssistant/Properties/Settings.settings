@@ -56,5 +56,11 @@
     <Setting Name="Setting" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="AppliedAnniversaryTheme" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="AssetsDownloadServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">默认@default</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

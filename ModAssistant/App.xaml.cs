@@ -54,7 +54,12 @@ namespace ModAssistant
             Languages.LoadLanguages();
 
             Options.Instance.DownloadServerSelectComboBox.ItemsSource = Options.serverList.ToList();
-            Options.Instance.DownloadServerSelectComboBox.SelectedIndex = Options.serverList.ToList().FindIndex((string server) => server == ModAssistant.Properties.Settings.Default.DownloadServer);
+            int DownloadServerIndex = Options.serverList.ToList().FindIndex((string server) => server == ModAssistant.Properties.Settings.Default.DownloadServer);
+            Options.Instance.DownloadServerSelectComboBox.SelectedIndex = DownloadServerIndex == -1 ? 0 : DownloadServerIndex;
+
+            Options.Instance.AssetsDownloadServerSelectComboBox.ItemsSource = Options.assetsServerList.ToList();
+            int AssetsDownloadServerIndex = Options.assetsServerList.ToList().FindIndex((string server) => server == ModAssistant.Properties.Settings.Default.AssetsDownloadServer);
+            Options.Instance.AssetsDownloadServerSelectComboBox.SelectedIndex = AssetsDownloadServerIndex == -1 ? 0 : AssetsDownloadServerIndex;
 
             while (string.IsNullOrEmpty(BeatSaberInstallDirectory))
             {

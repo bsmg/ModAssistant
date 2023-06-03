@@ -12,4 +12,11 @@ namespace ModAssistant
         public const string WGZeyu = "国内源@WGzeyu";
         public const string BeatModsTop = "包子源@BeatTop";
     }
+
+    public static class AssetsServer
+    {
+        public const string Default = "默认@default";
+        public const string WGZeyu = "国内源@WGzeyu";
+        public const string BeatSaberChina = "光剑中文社区源@BeatSaberChina";
+    }
 }

@@ -5,7 +5,13 @@ namespace ModAssistant.API
 {
     class ModelSaber
     {
-        private const string ModelSaberURLPrefix = "https://modelsaber.com/files/";
+        private static string ModelSaberURLPrefix
+        {
+            get =>
+            Properties.Settings.Default.AssetsDownloadServer == AssetsServer.Default ? ModAssistant.Utils.Constants.ModelSaberURLPrefix_default :
+                (Properties.Settings.Default.AssetsDownloadServer == AssetsServer.WGZeyu ? ModAssistant.Utils.Constants.ModelSaberURLPrefix_wgzeyu :
+                ModAssistant.Utils.Constants.ModelSaberURLPrefix_beatsaberchina);
+        }
         private const string CustomAvatarsFolder = "CustomAvatars";
         private const string CustomSabersFolder = "CustomSabers";
         private const string CustomPlatformsFolder = "CustomPlatforms";

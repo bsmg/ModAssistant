@@ -50,6 +50,18 @@ namespace ModAssistant
             public const string BeatModsAlias_bmtop = "https://alias-beatmods.beatmods.top/aliases.json";
             public const string WeebCDNAPIURL_bmtop = "https://pat-assistant-moe.beatmods.top/api/v1.0/";
 
+            public const string BeatSaverURLPrefix_default = "https://api.beatsaver.com";
+            public const string BeatSaverURLPrefix_wgzeyu = "https://beatsaver.wgzeyu.vip/api";
+            public const string BeatSaverURLPrefix_beatsaberchina = "https://beatsaver.beatsaberchina.com/api";
+
+            public const string BeatSaverCDNURLPrefix_default = "https://cdn.beatsaver.com";
+            public const string BeatSaverCDNURLPrefix_wgzeyu = "https://beatsaver.wgzeyu.vip/cdn";
+            public const string BeatSaverCDNURLPrefix_beatsaberchina = "https://beatsaver-cdn.beatsaberchina.com";
+
+            public const string ModelSaberURLPrefix_default = "https://modelsaber.com/files/";
+            public const string ModelSaberURLPrefix_wgzeyu = "https://modelsaber.wgzeyu.vip/files/";
+            public const string ModelSaberURLPrefix_beatsaberchina = "https://modelsaber.beatsaberchina.com/files/";
+            
             public static string BeatModsAPIUrl;
             public static string TeknikAPIUrl;
             public static string BeatModsURL;
