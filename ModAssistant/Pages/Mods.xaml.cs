@@ -767,22 +767,22 @@ namespace ModAssistant.Pages
         private void ModCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             Mod mod = (sender as System.Windows.Controls.CheckBox).Tag as Mod;
-            /*if (mod.name.ToLowerInvariant() == "songcore") {
+            if (mod.name.ToLowerInvariant() == "catcore") {
                 string notice = "";
                 string caption = "";
                 switch (Properties.Settings.Default.LanguageCode) {
                     case "zh":
                         caption = "提示";
-                        notice = "";
+                        notice = "您勾选安装CatCore(猫猫核心)\n该mod与由baoziii维护的ChatCore(聊天核心)、EnhancedStreamChat-v3(增强直播聊天V3)以及SongRequestManager-v2(点歌管理器V2)互不兼容。\n如果您想使用ChatCore(聊天核心)所支持的Bilibili直播弹幕功能，请取消勾选该mod。";
                         break;
                     default:
                         caption = "Notice";
-                        notice = "";
+                        notice = "You selected CatCore, which is conflicted with the following mods maintained by baoziii: ChatCore, EnhancedStreamChat-v3, and SongRequestManager-v2.\nIf you need to check Bilibili Live Danmuku, please uncheck this box.";
                         break;
                 }
 
                 System.Windows.Forms.MessageBox.Show(notice, caption);
-            }*/
+            }
             mod.ListItem.IsSelected = true;
             // Console.WriteLine(mod.name + "(" + mod._id + ")");
             ResolveDependencies(mod);
