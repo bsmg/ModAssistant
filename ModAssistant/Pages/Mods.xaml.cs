@@ -773,11 +773,11 @@ namespace ModAssistant.Pages
                 switch (Properties.Settings.Default.LanguageCode) {
                     case "zh":
                         caption = "提示";
-                        notice = "您勾选安装CatCore(猫猫核心)\n该mod与由baoziii维护的ChatCore(聊天核心)、EnhancedStreamChat-v3(增强直播聊天V3)以及SongRequestManager-v2(点歌管理器V2)互不兼容。\n如果您想使用ChatCore(聊天核心)所支持的Bilibili直播弹幕功能，请取消勾选该mod。";
+                        notice = "您勾选安装CatCore(猫猫核心)!\n\n该mod与由baoziii维护的ChatCore(聊天核心)、EnhancedStreamChat-v3(增强直播聊天V3)以及SongRequestManager-v2(点歌管理器V2)互不兼容。\n\n如果您想使用ChatCore(聊天核心)所支持的Bilibili直播弹幕功能，请取消勾选该mod。";
                         break;
                     default:
                         caption = "Notice";
-                        notice = "You selected CatCore, which is conflicted with the following mods maintained by baoziii: ChatCore, EnhancedStreamChat-v3, and SongRequestManager-v2.\nIf you need to check Bilibili Live Danmuku, please uncheck this box.";
+                        notice = "You selected CatCore! \n\nCatCore is conflicted with the following mods maintained by baoziii: ChatCore, EnhancedStreamChat-v3, and SongRequestManager-v2.\n\nIf you need to check Bilibili Live Danmuku, please uncheck this box.";
                         break;
                 }
 
