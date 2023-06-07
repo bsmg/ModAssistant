@@ -5,9 +5,11 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows;
+using System.Windows.Input;
 using static ModAssistant.Http;
 
 namespace ModAssistant.API
@@ -31,19 +33,19 @@ namespace ModAssistant.API
         private static readonly string CustomWIPSongsFolder = Path.Combine("Beat Saber_Data", "CustomWIPLevels");
         private const bool BypassDownloadCounter = false;
 
-        public static async Task<BeatSaverMap> GetFromKey(string Key, bool showNotification = true)
+        public static async Task<BeatSaverMap> GetFromKey(string Key, bool showNotification = true, bool fromPlaylist = false)
         {
             if (showNotification && App.OCIWindow != "No" && App.OCIWindow != "Notify") OneClickInstaller.Status.Show();
-            return await GetMap(Key, "key", showNotification);
+            return await GetMap(Key, "key", showNotification, fromPlaylist);
         }
 
-        public static async Task<BeatSaverMap> GetFromHash(string Hash, bool showNotification = true)
+        public static async Task<BeatSaverMap> GetFromHash(string Hash, bool showNotification = true, bool fromPlaylist = false)
         {
             if (showNotification && App.OCIWindow != "No" && App.OCIWindow != "Notify") OneClickInstaller.Status.Show();
-            return await GetMap(Hash, "hash", showNotification);
+            return await GetMap(Hash, "hash", showNotification, fromPlaylist);
         }
 
-        private static async Task<BeatSaverMap> GetMap(string id, string type, bool showNotification)
+        private static async Task<BeatSaverMap> GetMap(string id, string type, bool showNotification, bool fromPlaylist = false)
         {
             string urlSegment;
             switch (type)
@@ -66,7 +68,12 @@ namespace ModAssistant.API
             if (showNotification) Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Installing"), id)}");
             try
             {
-                BeatSaverApiResponse beatsaver = await GetResponse(BeatSaverURLPrefix + urlSegment + id);
+                var result = proxyURL("", true, fromPlaylist, showNotification);
+                if (result[1])
+                {
+                    Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Fallback"), "默认@default")}");
+                }
+                BeatSaverApiResponse beatsaver = await GetResponse(result[0] + urlSegment + id);
                 if (beatsaver != null && beatsaver.map != null)
                 {
                     map.response = beatsaver;
@@ -83,14 +90,19 @@ namespace ModAssistant.API
                         }
                         map.HashToDownload = mapVersion.hash;
                     }
-                    map.Name = await InstallMap(map, showNotification);
+                    map.Name = await InstallMap(map, showNotification, fromPlaylist, result[1]);
+                    if (ModAssistant.Properties.Settings.Default.AssetsDownloadServer == "国内源@WGzeyu" && !result[1])
+                    {
+                        Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("MainWindow:AssetsServerLimitLabel"), ZeyuCount.getCount().ToString())}");
+                    }
                     map.Success = true;
                 }
             }
             catch (Exception e)
             {
-                ModAssistant.Utils.Log($"Failed downloading BeatSaver map: {id} | Error: {e.Message}", "ERROR");
+                ModAssistant.Utils.Log($"Failed downloading BeatSaver map: {id} | Error: {e.Message}\n{e.StackTrace}", "ERROR");
                 Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Failed"), (map.Name ?? id))}");
+                Utils.SetMessage(e.Message);
                 App.CloseWindowOnFinish = false;
             }
             return map;
@@ -143,12 +155,19 @@ namespace ModAssistant.API
             }
         }
 
-        public static async Task<string> InstallMap(BeatSaverMap Map, bool showNotification = true)
+        public static async Task<string> InstallMap(BeatSaverMap Map, bool showNotification = true, bool fromPlaylist = false, bool fallback = false)
         {
             BeatSaverApiResponseMap responseMap = Map.response.map;
-            BeatSaverApiResponseMap.BeatsaverMapVersion mapVersion = responseMap.versions.Where(r => r.hash == Map.HashToDownload).First();
-            if (mapVersion == null)
+            BeatSaverApiResponseMap.BeatsaverMapVersion mapVersion = null;
+            try
             {
+                mapVersion = responseMap.versions.Where(r => r.hash == Map.HashToDownload).First();
+                if (mapVersion == null)
+                {
+                    throw new Exception("Could not find map version.");
+                }
+            }
+            catch (Exception) {
                 throw new Exception("Could not find map version.");
             }
 
@@ -164,11 +183,11 @@ namespace ModAssistant.API
 #pragma warning disable CS0162 // Unreachable code detected
             if (BypassDownloadCounter)
             {
-                await Utils.DownloadAsset(mapVersion.downloadURL, targetSongDirectory, Map.HashToDownload + ".zip", mapName, showNotification, true);
+                await Utils.DownloadAsset(mapVersion.downloadURL, targetSongDirectory, Map.HashToDownload + ".zip", mapName, showNotification, true, false, fromPlaylist, fallback);
             }
             else
             {
-                await Utils.DownloadAsset(mapVersion.downloadURL, targetSongDirectory, Map.HashToDownload + ".zip", mapName, showNotification, true);
+                await Utils.DownloadAsset(mapVersion.downloadURL, targetSongDirectory, Map.HashToDownload + ".zip", mapName, showNotification, true, false, fromPlaylist, fallback);
             }
 #pragma warning restore CS0162 // Unreachable code detected
 
@@ -263,9 +282,11 @@ namespace ModAssistant.API
             return new DateTime(unixStart.Ticks + unixTimeStampInTicks, DateTimeKind.Utc);
         }
 
-        public static async Task Download(string url, string output, int retries = 3)
+        public static async Task Download(string url, string output, bool fromPlaylist, bool fallback = false, int retries = 3)
         {
-            url = proxyURL(url);
+            var result = proxyURL(url, false, fromPlaylist);
+            url = result[0];
+            fallback = result[1];
             if (retries == 0)
             {
                 Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitSkip"), url)}");
@@ -282,13 +303,18 @@ namespace ModAssistant.API
                 Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:RatelimitHit"), ratelimit.ResetTime.ToLocalTime())}");
 
                 await ratelimit.Wait();
-                await Download(url, output, retries - 1);
+                await Download(url, output, fromPlaylist, fallback, retries - 1);
             }
 
             using (var stream = await resp.Content.ReadAsStreamAsync())
             using (var fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write))
             {
                 await stream.CopyToAsync(fs);
+                if (fromPlaylist) {
+                    ModAssistant.ZeyuCount.downloadBeatsaverMultiple();
+                } else {
+                    ModAssistant.ZeyuCount.downloadBeatsaverSingle();
+                }
             }
         }
 
@@ -403,11 +429,23 @@ namespace ModAssistant.API
             }
         }
 
-        public static string proxyURL(string url) {
-            return url.Replace("https://as.cdn.beatsaver.com", "https://cdn.beatsaver.com")
+        public static dynamic[] proxyURL(string url, bool api = false, bool fromPlaylist = false, bool showNotification = false) {
+            string ProxyURL = api ? BeatSaverURLPrefix : BeatSaverCDNURLPrefix;
+            bool fallback = false;
+
+            if (Properties.Settings.Default.AssetsDownloadServer == "国内源@WGzeyu" && ((fromPlaylist && !ModAssistant.ZeyuCount.checkBeatsaverMultiple()) || (!fromPlaylist && !ModAssistant.ZeyuCount.checkBeatsaverSingle())))
+            {
+                if (showNotification) Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("OneClick:Fallback"), "默认@default")}");
+                ProxyURL = api ? ModAssistant.Utils.Constants.BeatSaverURLPrefix_default : ModAssistant.Utils.Constants.BeatSaverCDNURLPrefix_default;
+                fallback = true;
+            }
+
+            dynamic[] result = new dynamic[] { api ? ProxyURL : url.Replace("https://as.cdn.beatsaver.com", "https://cdn.beatsaver.com")
                 .Replace("https://na.cdn.beatsaver.com", "https://cdn.beatsaver.com")
                 .Replace("https://r2cdn.beatsaver.com", "https://cdn.beatsaver.com")
-                .Replace("https://cdn.beatsaver.com", BeatSaverCDNURLPrefix);
+                .Replace("https://cdn.beatsaver.com", ProxyURL), fallback};
+
+            return result;
         }
     }
 }

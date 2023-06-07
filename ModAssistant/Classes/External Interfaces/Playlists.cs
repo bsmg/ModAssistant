@@ -58,20 +58,31 @@ namespace ModAssistant.API
             int Errors = 0;
             int Minimum = 0;
             int Value = 0;
+            string fallback = string.Empty;
 
             Playlist playlist = JsonSerializer.Deserialize<Playlist>(File.ReadAllText(file));
             int Maximum = playlist.songs.Length;
+            if (ModAssistant.Properties.Settings.Default.AssetsDownloadServer == "国内源@WGzeyu")
+            {
+                if (playlist.songs.Length > 20)
+                {
+                    fallback = ModAssistant.Properties.Settings.Default.AssetsDownloadServer;
+                    ModAssistant.Properties.Settings.Default.AssetsDownloadServer = "默认@default";
+                    ModAssistant.Properties.Settings.Default.Save();
+                    Utils.SetMessage((string)Application.Current.FindResource("Options:PlaylistsFallback"));
+                }
+            }
 
             foreach (Playlist.Song song in playlist.songs)
             {
                 API.BeatSaver.BeatSaverMap response = new BeatSaver.BeatSaverMap();
                 if (!string.IsNullOrEmpty(song.hash))
                 {
-                    response = await BeatSaver.GetFromHash(song.hash, false);
+                    response = await BeatSaver.GetFromHash(song.hash, false, true);
                 }
                 else if (!string.IsNullOrEmpty(song.key))
                 {
-                    response = await BeatSaver.GetFromKey(song.key, false);
+                    response = await BeatSaver.GetFromKey(song.key, false, true);
                 }
                 Value++;
 
@@ -89,6 +100,12 @@ namespace ModAssistant.API
                 }
             }
             Utils.SetMessage($"{string.Format((string)Application.Current.FindResource("Options:FinishedPlaylist"), Errors, playlist.playlistTitle)}");
+
+            if (!string.IsNullOrEmpty(fallback))
+            {
+                ModAssistant.Properties.Settings.Default.AssetsDownloadServer = fallback;
+                ModAssistant.Properties.Settings.Default.Save();
+            }
         }
 
         private static string TextProgress(int min, int max, int value)

@@ -102,7 +102,7 @@
     <sys:String x:Key="Mods:FailedExtract">Kon {0} niet uitpakken, probeer opniew over {1} seconden. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Kon {0} niet uitpakken na maximaal aantal pogingen ({1}), deze wordt nu overgeslagen. Deze mod werkt misschien niet goed, dus ga verder op eigen risico</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Zoek...</sys:String>
-    <sys:String x:Key="Mods:DownloadingMod">Downloaden {0} van {1}</sys:String>
+    <sys:String x:Key="Mods:DownloadingMod">Downloaden {0}...</sys:String>
     <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">BSIPA deïnstallatie mislukt</sys:String>
     <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">BSIPA installatie niet gevonden, deïnstallatie overgeslagen.</sys:String>
 

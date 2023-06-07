@@ -262,5 +262,17 @@ namespace ModAssistant.Properties {
                 this["AssetsDownloadServer"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ZeyuCount {
+            get {
+                return ((string)(this["ZeyuCount"]));
+            }
+            set {
+                this["ZeyuCount"] = value;
+            }
+        }
     }
 }

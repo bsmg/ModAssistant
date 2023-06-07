@@ -62,5 +62,8 @@
     <Setting Name="AssetsDownloadServer" Type="System.String" Scope="User">
       <Value Profile="(Default)">默认@default</Value>
     </Setting>
+    <Setting Name="ZeyuCount" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

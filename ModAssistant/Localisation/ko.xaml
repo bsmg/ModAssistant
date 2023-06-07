@@ -103,7 +103,7 @@
     <sys:String x:Key="Mods:FailedExtract">{0}를 추출하는데 실패했습니다. {1}초 안에 재시도합니다. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">({1})회동안 {0}를 추출하는데 실패했습니다. 이 모드가 제대로 작동하지 않을지도 모릅니다</sys:String>
     <sys:String x:Key="Mods:SearchLabel">검색 중...</sys:String>
-    <sys:String x:Key="Mods:DownloadingMod">{1}에서 {0} 다운로드</sys:String>
+    <sys:String x:Key="Mods:DownloadingMod">{0} 다운로드...</sys:String>
     <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">BSIPA 제거에 실패하였습니다</sys:String>
     <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">설치된 BSIPA 를 찾을 수 없습니다. 제거하지 못했습니다.</sys:String>
 

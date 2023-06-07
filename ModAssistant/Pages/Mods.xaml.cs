@@ -130,7 +130,7 @@ namespace ModAssistant.Pages
                     DescriptionColumn.Width = 800;
                 }
 
-                MainWindow.Instance.MainText = $"{FindResource("Mods:LoadingMods")}{(Properties.Settings.Default.LanguageCode == "zh" ? "（从" + Properties.Settings.Default.DownloadServer + "）" : " from " + Properties.Settings.Default.DownloadServer + "...")}";
+                MainWindow.Instance.MainText = $"{FindResource("Mods:LoadingMods")}";
                 await Task.Run(async () => await PopulateModsList());
 
                 ModsListView.ItemsSource = ModList;
@@ -537,7 +537,7 @@ namespace ModAssistant.Pages
                 }
                 else if (mod.ListItem.IsSelected)
                 {
-                    MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)} {(Properties.Settings.Default.LanguageCode == "zh" ? "（从" : " from ")} {Properties.Settings.Default.DownloadServer} {(Properties.Settings.Default.LanguageCode == "zh" ? "��" : "...")}";
+                    MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstallingMod"), mod.name)}";
                     await Task.Run(async () => await InstallMod(mod, Path.Combine(installDirectory, @"IPA\Pending")));
                     MainWindow.Instance.MainText = $"{string.Format((string)FindResource("Mods:InstalledMod"), mod.name)}{(Properties.Settings.Default.LanguageCode == "zh" ? "。" : ".")}";
                 }

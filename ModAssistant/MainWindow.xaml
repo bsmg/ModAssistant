@@ -10,7 +10,7 @@
     SizeChanged="Window_SizeChanged"
     UIElement.PreviewMouseDown="Window_PreviewMouseDown"
     mc:Ignorable="d"
-    MinWidth="800" MinHeight="430">
+    MinWidth="800" MinHeight="480">
     <Grid>
         <Rectangle Fill="{DynamicResource ModAssistantBackground}" />
         <Rectangle>
@@ -49,6 +49,8 @@
                     <RowDefinition Height="70" />
                     <RowDefinition Height="70" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
@@ -138,8 +140,47 @@
                 </Button>
 
                 <StackPanel
-                    Name="GameVersions"
+                    Name="ModServerPanel"
                     Grid.Row="5"
+                    VerticalAlignment="Bottom">
+                    <TextBlock FontSize="10">
+                        <TextBlock Text="{DynamicResource MainWindow:ModServerLabel}" />
+                        :
+                    </TextBlock>
+                    <ComboBox
+                        Name="ModServersBox"
+                        Margin="0,5,5,0"
+                        SelectionChanged="ModServerBox_SelectionChanged" />
+                    <ComboBox
+                        Name="ModServersBoxOverride"
+                        Margin="0,5,5,0"
+                        Visibility="Collapsed" />
+                </StackPanel>
+
+                <StackPanel
+                    Name="AssetsServerPanel"
+                    Grid.Row="6"
+                    VerticalAlignment="Bottom">
+                    <TextBlock FontSize="10">
+                        <TextBlock Text="{DynamicResource MainWindow:AssetsServerLabel}" />
+                        :
+                    </TextBlock>
+                    <ComboBox
+                        Name="AssetsServerBox"
+                        Margin="0,5,5,0"
+                        SelectionChanged="AssetsServerBox_SelectionChanged" />
+                    <ComboBox
+                        Name="AssetsServerBoxOverride"
+                        Margin="0,5,5,0"
+                        Visibility="Collapsed" />
+                    <TextBlock FontSize="10">
+                        <TextBlock Name="AssetsServerLimitLabel" Text="{DynamicResource MainWindow:AssetsServerLimitLabel}" />
+                    </TextBlock>
+                </StackPanel>
+
+                <StackPanel
+                    Name="GameVersions"
+                    Grid.Row="7"
                     VerticalAlignment="Bottom">
                     <TextBlock FontSize="10">
                         <TextBlock Text="{DynamicResource MainWindow:GameVersionLabel}" />

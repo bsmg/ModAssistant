@@ -73,22 +73,7 @@
             FontSize="16"
             FontWeight="Bold"
             Text="{DynamicResource Options:InstallFolder}" />
-            <TextBlock
-			Grid.Row="1"
-			Grid.Column="2"
-			Margin="5"
-			HorizontalAlignment="Right"
-			FontSize="22"
-			FontWeight="Bold"
-			Text="⏬" />
-            <ComboBox
-            Name="DownloadServerSelectComboBox"
-            Grid.Row="1"
-            Grid.Column="3"
-            Height="30"
-            HorizontalAlignment="Stretch"
-            VerticalContentAlignment="Center"
-            SelectionChanged="DownloadServerSelectComboBox_SelectionChanged" />
+            
             <Border
             Grid.Row="2"
             Grid.ColumnSpan="2"
@@ -390,22 +375,6 @@
                     <TextBlock Foreground="White" Text="{DynamicResource Options:RemoveAllModsButton}" />
                 </Button>
             </StackPanel>
-            <TextBlock
-                Grid.Row="8"
-                Grid.Column="2"
-                Margin="72,37,0,4"
-                HorizontalAlignment="Left"
-                FontSize="22"
-                FontWeight="Bold"
-                Text="⏬" Grid.RowSpan="2" />
-            <ComboBox
-                x:Name="AssetsDownloadServerSelectComboBox"
-                Grid.Row="8"
-                Grid.Column="2"
-                Height="30"
-                VerticalContentAlignment="Center"
-                SelectionChanged="AssetsDownloadServerSelectComboBox_SelectionChanged" Margin="107,38,1,3" Grid.RowSpan="2" Grid.ColumnSpan="2" />
-
         </Grid>
     </ScrollViewer>
 </Page>

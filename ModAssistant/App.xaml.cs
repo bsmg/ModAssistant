@@ -52,14 +52,7 @@ namespace ModAssistant
                 BeatSaberInstallDirectory = Utils.GetInstallDir();
 
             Languages.LoadLanguages();
-
-            Options.Instance.DownloadServerSelectComboBox.ItemsSource = Options.serverList.ToList();
-            int DownloadServerIndex = Options.serverList.ToList().FindIndex((string server) => server == ModAssistant.Properties.Settings.Default.DownloadServer);
-            Options.Instance.DownloadServerSelectComboBox.SelectedIndex = DownloadServerIndex == -1 ? 0 : DownloadServerIndex;
-
-            Options.Instance.AssetsDownloadServerSelectComboBox.ItemsSource = Options.assetsServerList.ToList();
-            int AssetsDownloadServerIndex = Options.assetsServerList.ToList().FindIndex((string server) => server == ModAssistant.Properties.Settings.Default.AssetsDownloadServer);
-            Options.Instance.AssetsDownloadServerSelectComboBox.SelectedIndex = AssetsDownloadServerIndex == -1 ? 0 : AssetsDownloadServerIndex;
+            ModAssistant.ZeyuCount.loadData();
 
             while (string.IsNullOrEmpty(BeatSaberInstallDirectory))
             {
@@ -111,6 +104,18 @@ namespace ModAssistant
             if (GUI)
             {
                 window = new MainWindow();
+
+                ModAssistant.MainWindow.Instance.ModServersBox.ItemsSource = ModAssistant.MainWindow.serverList.ToList();
+                int DownloadServerIndex = ModAssistant.MainWindow.serverList.ToList().FindIndex((string server) => server == ModAssistant.Properties.Settings.Default.DownloadServer);
+                ModAssistant.MainWindow.Instance.ModServersBox.SelectedIndex = DownloadServerIndex == -1 ? 0 : DownloadServerIndex;
+
+                ModAssistant.MainWindow.Instance.AssetsServerBox.ItemsSource = ModAssistant.MainWindow.assetsServerList.ToList();
+                int AssetsDownloadServerIndex = ModAssistant.MainWindow.assetsServerList.ToList().FindIndex((string server) => server == ModAssistant.Properties.Settings.Default.AssetsDownloadServer);
+                ModAssistant.MainWindow.Instance.AssetsServerBox.SelectedIndex = AssetsDownloadServerIndex == -1 ? 0 : AssetsDownloadServerIndex;
+
+
+                Utils.UpdateCountIndicator();
+
                 window.Show();
             }
             else

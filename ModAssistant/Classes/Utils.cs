@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Management;
@@ -55,7 +54,7 @@ namespace ModAssistant
             public const string BeatSaverURLPrefix_beatsaberchina = "https://beatsaver.beatsaberchina.com/api";
 
             public const string BeatSaverCDNURLPrefix_default = "https://cdn.beatsaver.com";
-            public const string BeatSaverCDNURLPrefix_wgzeyu = "https://beatsaver.wgzeyu.vip/cdn";
+            public const string BeatSaverCDNURLPrefix_wgzeyu = "https://beatsaver.wgzeyu.vip/sea";
             public const string BeatSaverCDNURLPrefix_beatsaberchina = "https://beatsaver-cdn.beatsaberchina.com";
 
             public const string ModelSaberURLPrefix_default = "https://modelsaber.com/files/";
@@ -537,10 +536,10 @@ namespace ModAssistant
         {
             string path = Path.GetDirectoryName(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath);
             string logFile = $"{path}{Path.DirectorySeparatorChar}log.log";
-            File.AppendAllText(logFile, $"[{DateTime.UtcNow.ToString("yyyy-mm-dd HH:mm:ss.ffffff")}][{severity.ToUpperInvariant()}] {message}\n");
+            File.AppendAllText(logFile, $"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffffff")}][{severity.ToUpperInvariant()}] {message}\n");
         }
 
-        public static async Task<string> Download(string link, string folder, string output, bool preferContentDisposition = false)
+        public static async Task<string> Download(string link, string folder, string output, bool preferContentDisposition = false, bool modelsaber = false, bool throughProxy = false)
         {
             var resp = await HttpClient.GetAsync(link);
             var cdFilename = resp.Content.Headers.ContentDisposition?.FileName?.Trim('"');
@@ -559,6 +558,9 @@ namespace ModAssistant
             using (var fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.Write))
             {
                 await stream.CopyToAsync(fs);
+                if (modelsaber && throughProxy) {
+                    ModAssistant.ZeyuCount.downloadModelSaberSingle();
+                }
             }
 
             return filename;
@@ -605,6 +607,19 @@ namespace ModAssistant
             if (success)
             {
                 Utils.SendNotify($"Copied text to clipboard");
+            }
+        }
+
+        public static void UpdateCountIndicator()
+        {
+            string count = (string)Application.Current.FindResource("MainWindow:AssetsServerLimitLabelUnlimited");
+            if (ModAssistant.Properties.Settings.Default.AssetsDownloadServer == "国内源@WGzeyu")
+            {
+                count = ZeyuCount.getCount().ToString();
+            }
+
+            if (ModAssistant.MainWindow.Instance != null) {
+                ModAssistant.MainWindow.Instance.AssetsServerLimitLabel.Text = $"{string.Format((string)Application.Current.FindResource("MainWindow:AssetsServerLimitLabel"), count)}";
             }
         }
     }

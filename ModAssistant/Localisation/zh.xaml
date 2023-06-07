@@ -20,6 +20,10 @@
     <sys:String x:Key="MainWindow:AboutButton">关于</sys:String>
     <sys:String x:Key="MainWindow:OptionsButton">选项</sys:String>
     <sys:String x:Key="MainWindow:GameVersionLabel">游戏版本</sys:String>
+    <sys:String x:Key="MainWindow:ModServerLabel">Mod服务器</sys:String>
+    <sys:String x:Key="MainWindow:AssetsServerLabel">资源服务器</sys:String>
+    <sys:String x:Key="MainWindow:AssetsServerLimitLabel">额度: {0}</sys:String>
+    <sys:String x:Key="MainWindow:AssetsServerLimitLabelUnlimited">无限制</sys:String>
     <sys:String x:Key="MainWindow:VersionLabel">软件版本</sys:String>
     <sys:String x:Key="MainWindow:ModInfoButton">Mod信息</sys:String>
     <sys:String x:Key="MainWindow:InstallButtonTop">安装</sys:String>
@@ -86,11 +90,13 @@
             <Span Foreground="#FF0000">选</Span><Span Foreground="#F60009">项</Span><Span Foreground="#ED0012">界</Span><Span Foreground="#E4001B">面</Span><Span Foreground="#DB0024">中</Span><Span Foreground="#D2002D">切</Span><Span Foreground="#C90036">换</Span><Span Foreground="#C0003F">下</Span><Span Foreground="#B70048">载</Span><Span Foreground="#AE0051">源</Span><Span Foreground="#A5005A">可</Span><Span Foreground="#9C0063">解</Span><Span Foreground="#93006C">决</Span><Span Foreground="#8A0075">加</Span><Span Foreground="#81007E">载</Span><Span Foreground="#780087">下</Span><Span Foreground="#6F0090">载</Span><Span Foreground="#660099">缓</Span><Span Foreground="#5D00A2">慢</Span><Span Foreground="#5400AB">或</Span><Span Foreground="#4B00B4">报</Span><Span Foreground="#4200BD">错</Span><Span Foreground="#3900C6">的</Span><Span Foreground="#3000CF">问</Span><Span Foreground="#2700D8">题</Span><Span Foreground="#1E00E1">！</Span>
         </Bold>
         <LineBreak/>
-        国际源为BeatMods源站，服务器使用<Bold>CloudFlare国际CDN</Bold>，<Bold>默认选项</Bold>；
+        国际源为BeatMods源站，资源服务器为BeatSaver或ModelSaber(无下载限制)，服务器使用<Bold>CloudFlare国际CDN</Bold>，<Bold>默认选项</Bold>；
         <LineBreak/>
-        国内源为BeatMods镜像，服务器使用<Bold>香港腾讯云</Bold>（由WGzeyu提供），推荐国内用户使用；
+        国内源为BeatMods镜像，资源服务器为BeatSaver或ModelSaber镜像(每日限制下载数量)，服务器使用<Bold>香港腾讯云</Bold>（由WGzeyu提供），推荐国内用户使用；
         <LineBreak/>
-        包子源为BeatTop管理，服务器使用<Bold>美国机房</Bold>，同步国际源并支持部分第三方插件。
+        包子源为BeatTop管理，服务器使用<Bold>美国机房(多节点)</Bold>，同步国际源并支持部分第三方插件。
+        <LineBreak/>
+        光剑中文社区源为节奏光剑中文社区管理，资源服务器为BeatSaver或ModelSaber镜像(无下载限制)，服务器使用<Bold>美国机房(多节点)</Bold> 。
     </Span>
     <sys:String x:Key="Intro:AgreeButton">同意</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">拒绝</sys:String>
@@ -122,7 +128,7 @@
     <sys:String x:Key="Mods:FailedExtract">{0}解压失败，将在{1}秒后重试。（{2}/{3}）</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">{0}在重试{1}次后仍然无法解压，将被跳过。注意，这个Mod可能无法使用。</sys:String>
     <sys:String x:Key="Mods:SearchLabel">搜索...</sys:String>
-    <sys:String x:Key="Mods:DownloadingMod">正在下载{0}...（从{1}）</sys:String>
+    <sys:String x:Key="Mods:DownloadingMod">正在下载{0}...</sys:String>
     <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">BSIPA卸载失败</sys:String>
     <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">找不到BSIPA，已跳过卸载操作。</sys:String>
 
@@ -165,6 +171,7 @@
     <sys:String x:Key="Options:BeatSaver">[歌曲] BeatSaver</sys:String>
     <sys:String x:Key="Options:ModelSaber">[模型] ModelSaber</sys:String>
     <sys:String x:Key="Options:Playlists">[歌单] Playlists</sys:String>
+    <sys:String x:Key="Options:PlaylistsFallback">[歌单] 超过资源服务器限制，已回源至 国际源@Beatsaver</sys:String>
     <sys:String x:Key="Options:CloseWindow">添加完成后关闭窗口</sys:String>
     <sys:String x:Key="Options:GameType">游戏平台</sys:String>
     <sys:String x:Key="Options:GameType:Steam">Steam</sys:String>
@@ -248,6 +255,7 @@
     <sys:String x:Key="OneClick:ProtocolHandler:Registered">{0} OneClick™ 一键添加处理程序已注册！</sys:String>
     <sys:String x:Key="OneClick:ProtocolHandler:Unregistered">{0} OneClick™ 一键添加处理程序已移除！</sys:String>
     <sys:String x:Key="OneClick:Installing">正在下载：{0}</sys:String>
+    <sys:String x:Key="OneClick:Fallback">超过资源服务器限制，已回源至 {0}</sys:String>
     <sys:String x:Key="OneClick:RatelimitSkip">超过重试次数，跳过：{0}</sys:String>
     <sys:String x:Key="OneClick:RatelimitHit">下载超时，重试：{0}</sys:String>
     <sys:String x:Key="OneClick:Failed">下载失败：{0}</sys:String>
