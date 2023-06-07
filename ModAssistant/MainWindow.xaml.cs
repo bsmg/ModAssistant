@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,6 +22,8 @@ namespace ModAssistant
         public static string GameVersion;
         public static string GameVersionOverride;
         public TaskCompletionSource<bool> VersionLoadStatus = new TaskCompletionSource<bool>();
+        public static string[] serverList = { "国际源@BeatMods", "国内源@WGzeyu", "包子源@BeatTop" };
+        public static string[] assetsServerList = { "默认@default", "国内源@WGzeyu", "光剑中文社区源@BeatSaberChina" };
 
         public string MainText
         {
@@ -319,6 +322,60 @@ namespace ModAssistant
                 await ShowModsPage();
 
                 Main.Content = prevPage;
+            }
+        }
+
+        private void ModServerBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if ((sender as ComboBox).SelectedItem == null)
+            {
+                // Apply default server config
+                Console.WriteLine("Applying default assets server config");
+                (sender as ComboBox).SelectedItem = Server.BeatMods;
+                Properties.Settings.Default.DownloadServer = Server.BeatMods;
+                Properties.Settings.Default.Save();
+                Process.Start(Utils.ExePath, App.Arguments);
+                Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
+            }
+            else
+            {
+                if (Properties.Settings.Default.DownloadServer != (sender as ComboBox).SelectedItem.ToString())
+                {
+                    // Get the matching servers from the server array, then try and use it
+                    var serverName = (sender as ComboBox).SelectedItem.ToString();
+                    var selectedServer = (Array.IndexOf(serverList, serverName) == -1) ? Server.BeatMods : serverName;
+                    Properties.Settings.Default.DownloadServer = serverName;
+                    Properties.Settings.Default.Save();
+                    Process.Start(Utils.ExePath, App.Arguments);
+                    Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
+                }
+            }
+        }
+
+        private void AssetsServerBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if ((sender as ComboBox).SelectedItem == null)
+            {
+                // Apply default server config
+                Console.WriteLine("Applying default server config");
+                (sender as ComboBox).SelectedItem = AssetsServer.Default;
+                Properties.Settings.Default.AssetsDownloadServer = AssetsServer.Default;
+                Properties.Settings.Default.Save();
+                Process.Start(Utils.ExePath, App.Arguments);
+                Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(Properties.Settings.Default.AssetsDownloadServer) || Properties.Settings.Default.AssetsDownloadServer != (sender as ComboBox).SelectedItem.ToString())
+                {
+                    // Get the matching servers from the server array, then try and use it
+                    var serverName = (sender as ComboBox).SelectedItem.ToString();
+                    var selectedServer = (Array.IndexOf(serverList, serverName) == -1) ? AssetsServer.Default : serverName;
+                    Properties.Settings.Default.AssetsDownloadServer = serverName;
+                    Properties.Settings.Default.Save();
+                    Process.Start(Utils.ExePath, App.Arguments);
+                    Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
+                }
             }
         }
 

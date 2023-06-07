@@ -29,7 +29,7 @@ namespace ModAssistant.API
             }
         }
 
-        public static async Task<string> DownloadAsset(string link, string folder, string fileName = null, string displayName = null, bool showNotification = true, bool beatsaver = false, bool preferContentDisposition = false)
+        public static async Task<string> DownloadAsset(string link, string folder, string fileName = null, string displayName = null, bool showNotification = true, bool beatsaver = false, bool preferContentDisposition = false, bool fromPlaylist = false, bool fallback = false)
         {
             if (string.IsNullOrEmpty(BeatSaberPath))
             {
@@ -48,11 +48,11 @@ namespace ModAssistant.API
                 if (beatsaver)
                 {
                     fileName = WebUtility.UrlDecode(Path.Combine(parentDir, fileName));
-                    await BeatSaver.Download(link, fileName);
+                    await BeatSaver.Download(link, fileName, fromPlaylist, fallback);
                 }
                 else
                 {
-                    fileName = await ModAssistant.Utils.Download(link, parentDir, fileName, preferContentDisposition);
+                    fileName = await ModAssistant.Utils.Download(link, parentDir, fileName, preferContentDisposition, true, fallback);
                 }
 
                 if (string.IsNullOrEmpty(displayName))

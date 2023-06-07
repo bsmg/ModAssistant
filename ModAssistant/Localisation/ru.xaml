@@ -104,7 +104,7 @@
     <sys:String x:Key="Mods:FailedExtract">Не удалось извлечь {0}, попробуйте снова через {1} секунд. ({2}/{3})</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">Не удалось извлечь {0} после попыток ({1}), пропускается. Эта модификация может работать некорректно, используйте на свой страх и риск</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Поиск...</sys:String>
-	<sys:String x:Key="Mods:DownloadingMod">Скачивание {0} из {1}</sys:String>
+	<sys:String x:Key="Mods:DownloadingMod">Скачивание {0}...</sys:String>
     <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Не удалось удалить BSIPA!</sys:String>
     <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">Не найден установленный BSIPA, процесс удаления пропущен.</sys:String> 
 

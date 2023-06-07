@@ -79,6 +79,7 @@
     <Compile Include="Classes\Server.cs" />
     <Compile Include="Classes\Themes.cs" />
     <Compile Include="Classes\Updater.cs" />
+    <Compile Include="Classes\ZeyuCount.cs" />
     <Compile Include="Libs\semver\SemVersion.cs" />
     <Compile Include="Libs\semver\IntExtensions.cs" />
     <Compile Include="OneClickStatus.xaml.cs">

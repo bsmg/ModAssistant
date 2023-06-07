@@ -73,7 +73,7 @@
     <sys:String x:Key="Mods:FailedExtract">{0} {1} {2} {3} Mods:FailedExtract</sys:String>
     <sys:String x:Key="Mods:FailedExtractMaxReached">{0} {1} Mods:FailedExtractMaxReached</sys:String>
     <sys:String x:Key="Mods:SearchLabel">Mods:SearchLabel</sys:String>
-    <sys:String x:Key="Mods:DownloadingMod">Downloading {0} from {1}</sys:String>
+    <sys:String x:Key="Mods:DownloadingMod">Downloading {0}...</sys:String>
     <sys:String x:Key="Mods:UninstallBSIPANotFound:Title">Mods:UninstallBSIPANotFound:Title</sys:String>
     <sys:String x:Key="Mods:UninstallBSIPANotFound:Body">Mods:UninstallBSIPANotFound:Body</sys:String>
 

@@ -32,8 +32,6 @@ namespace ModAssistant.Pages
         public string LogURL { get; private set; }
         public string OCIWindow { get; set; }
 
-        public static string[] serverList = { "国际源@BeatMods", "国内源@WGzeyu", "包子源@BeatTop" };
-
         public Options()
         {
             InitializeComponent();
@@ -359,34 +357,6 @@ namespace ModAssistant.Pages
                         Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
                     }
                 }
-            }
-        }
-
-        public void DownloadServerSelectComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if ((sender as ComboBox).SelectedItem == null)
-            {
-                // Apply default server config
-                Console.WriteLine("Applying default server config");
-                DownloadServerSelectComboBox.SelectedItem = Server.BeatMods;
-                Properties.Settings.Default.DownloadServer = Server.BeatMods;
-                Properties.Settings.Default.Save();
-                Process.Start(Utils.ExePath, App.Arguments);
-                Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
-            }
-            else
-            {
-                if (Properties.Settings.Default.DownloadServer != (sender as ComboBox).SelectedItem.ToString())
-                {
-                    // Get the matching servers from the server array, then try and use it
-                    var serverName = (sender as ComboBox).SelectedItem.ToString();
-                    var selectedServer = (Array.IndexOf(serverList, serverName) == -1) ? Server.BeatMods : serverName;
-                    Properties.Settings.Default.DownloadServer = serverName;
-                    Properties.Settings.Default.Save();
-                    Process.Start(Utils.ExePath, App.Arguments);
-                    Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); });
-                }
-                
             }
         }
 
