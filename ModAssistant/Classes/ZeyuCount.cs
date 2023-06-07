@@ -104,7 +104,7 @@ namespace ModAssistant
         {
             if (updateCount(beatsaver_single_multiplier))
             {
-                //Success
+                // Success
             }
             else
             {
@@ -116,7 +116,7 @@ namespace ModAssistant
         {
             if (updateCount(beatsaver_playlist_multiplier))
             {
-                //Success
+                // Success
             }
             else
             {
@@ -128,7 +128,7 @@ namespace ModAssistant
         {
             if (updateCount(modelsaber_multiplier))
             {
-                //Success
+                // Success
             }
             else
             {
