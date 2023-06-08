@@ -455,6 +455,17 @@ namespace ModAssistant
             return null;
         }
 
+        public static void CheckDirValid(string BeatSaberInstallDirectory) {
+            for (int i = 0; i < BeatSaberInstallDirectory.Length; ++i)
+            {
+                if (((int)BeatSaberInstallDirectory[i]) > 127)
+                {
+                    MessageBox.Show((string)Application.Current.FindResource("App:InstallDirInvalid"));
+                    break;
+                }
+            }
+        }
+
         public static string GetManualFile(string filter = "", string title = "Open File")
         {
             var dialog = new OpenFileDialog()

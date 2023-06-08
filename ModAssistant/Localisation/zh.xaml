@@ -8,6 +8,7 @@
     <!-- App -->
     <sys:String x:Key="App:InstallDirDialog:Title">找不到您的Beat Saber安装路径！</sys:String>
     <sys:String x:Key="App:InstallDirDialog:OkCancel">点确定重试，或点取消关闭软件。</sys:String>
+    <sys:String x:Key="App:InstallDirInvalid">游戏目录包含特殊字符(如汉字，日文等)！可能会造成例如mod无法正常运行等问题。</sys:String>
     <sys:String x:Key="App:InvalidArgument">无效参数！'{0}'需要一个选项。</sys:String>
     <sys:String x:Key="App:UnrecognizedArgument">无法识别的参数。关闭Mod Assistant。</sys:String>
     <sys:String x:Key="App:UnhandledException">刚刚发生了一个未处理的异常</sys:String>

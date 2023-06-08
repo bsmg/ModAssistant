@@ -8,6 +8,7 @@
     <!-- App -->
     <sys:String x:Key="App:InstallDirDialog:Title">Couldn't find your Beat Saber install folder!</sys:String>
     <sys:String x:Key="App:InstallDirDialog:OkCancel">Press OK to try again, or Cancel to close application.</sys:String>
+    <sys:String x:Key="App:InstallDirInvalid">The game directory path contains special character(s) (such as Chinese or Japanese characters) that may cause problems. e.g., mods cannot work properly.</sys:String>
     <sys:String x:Key="App:InvalidArgument">Invalid argument! '{0}' requires an option.</sys:String>
     <sys:String x:Key="App:UnrecognizedArgument">Unrecognized argument. Closing Mod Assistant.</sys:String>
     <sys:String x:Key="App:UnhandledException">An unhandled exception just occurred</sys:String>
