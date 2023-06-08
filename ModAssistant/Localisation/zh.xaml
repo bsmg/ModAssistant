@@ -8,6 +8,7 @@
     <!-- App -->
     <sys:String x:Key="App:InstallDirDialog:Title">找不到您的Beat Saber安装路径！</sys:String>
     <sys:String x:Key="App:InstallDirDialog:OkCancel">点确定重试，或点取消关闭软件。</sys:String>
+    <sys:String x:Key="App:InstallDirInvalid">你的游戏安装路径中包含中文等特殊字符，这有可能会导致Mod出现问题。</sys:String>
     <sys:String x:Key="App:InvalidArgument">无效参数！'{0}'需要一个选项。</sys:String>
     <sys:String x:Key="App:UnrecognizedArgument">无法识别的参数。关闭Mod Assistant。</sys:String>
     <sys:String x:Key="App:UnhandledException">刚刚发生了一个未处理的异常</sys:String>
@@ -87,7 +88,7 @@
         <LineBreak/>
         <LineBreak/>
         <Bold>
-            <Span Foreground="#FF0000">选</Span><Span Foreground="#F60009">项</Span><Span Foreground="#ED0012">界</Span><Span Foreground="#E4001B">面</Span><Span Foreground="#DB0024">中</Span><Span Foreground="#D2002D">切</Span><Span Foreground="#C90036">换</Span><Span Foreground="#C0003F">下</Span><Span Foreground="#B70048">载</Span><Span Foreground="#AE0051">源</Span><Span Foreground="#A5005A">可</Span><Span Foreground="#9C0063">解</Span><Span Foreground="#93006C">决</Span><Span Foreground="#8A0075">加</Span><Span Foreground="#81007E">载</Span><Span Foreground="#780087">下</Span><Span Foreground="#6F0090">载</Span><Span Foreground="#660099">缓</Span><Span Foreground="#5D00A2">慢</Span><Span Foreground="#5400AB">或</Span><Span Foreground="#4B00B4">报</Span><Span Foreground="#4200BD">错</Span><Span Foreground="#3900C6">的</Span><Span Foreground="#3000CF">问</Span><Span Foreground="#2700D8">题</Span><Span Foreground="#1E00E1">！</Span>
+            <Span Foreground="#ED0012">左</Span><Span Foreground="#E4001B">下</Span><Span Foreground="#DB0024">方</Span><Span Foreground="#D2002D">切</Span><Span Foreground="#C90036">换</Span><Span Foreground="#C0003F">下</Span><Span Foreground="#B70048">载</Span><Span Foreground="#AE0051">源</Span><Span Foreground="#A5005A">可</Span><Span Foreground="#9C0063">解</Span><Span Foreground="#93006C">决</Span><Span Foreground="#8A0075">加</Span><Span Foreground="#81007E">载</Span><Span Foreground="#780087">下</Span><Span Foreground="#6F0090">载</Span><Span Foreground="#660099">缓</Span><Span Foreground="#5D00A2">慢</Span><Span Foreground="#5400AB">或</Span><Span Foreground="#4B00B4">报</Span><Span Foreground="#4200BD">错</Span><Span Foreground="#3900C6">的</Span><Span Foreground="#3000CF">问</Span><Span Foreground="#2700D8">题</Span><Span Foreground="#1E00E1">！</Span>
         </Bold>
         <LineBreak/>
         国际源/默认源是BeatMods源站，资源从BeatSaver/ModelSaber下载，无限额；

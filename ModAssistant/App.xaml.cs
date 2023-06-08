@@ -69,6 +69,8 @@ namespace ModAssistant
                 }
             }
 
+            Utils.CheckDirValid(BeatSaberInstallDirectory);
+
             options.InstallType =
                 BeatSaberInstallType = ModAssistant.Properties.Settings.Default.StoreType;
             options.SaveSelection =
