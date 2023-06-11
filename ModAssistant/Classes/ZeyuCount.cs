@@ -65,6 +65,7 @@ namespace ModAssistant
 
             if (date != $"{DateTime.Now.Date.Year}-{DateTime.Now.Date.Month}-{DateTime.Now.Date.Day}")
             {
+                date = $"{DateTime.Now.Date.Year}-{DateTime.Now.Date.Month}-{DateTime.Now.Date.Day}";
                 count = 0;
             }
 
