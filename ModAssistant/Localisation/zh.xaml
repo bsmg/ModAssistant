@@ -38,7 +38,7 @@ OneClick源</sys:String>
     <sys:String x:Key="MainWindow:GameUpdateDialog:Line2">请确保左下角选择的版本与实际版本（地板脚印上有）相同才能安装Mod，否则会破坏你的游戏！</sys:String>
     <sys:String x:Key="MainWindow:NoModSelected">没有选择Mod！</sys:String>
     <sys:String x:Key="MainWindow:NoModInfoPage">{0}没有信息页。</sys:String>
-    <sys:String x:Key="MainWindow:GameVersionMismatch" xml:space="preserve">您选择的游戏版本 {0} 与当前检测到的游戏版本 {1} 不匹配，是否要继续安装Mod？
+    <sys:String x:Key="MainWindow:GameVersionMismatch" xml:space="preserve">您选择的游戏版本 {0} 与当前检测到的游戏版本 {1} 不匹配，是否要继续安装？
 警告：继续安装Mod可能会破坏你的游戏，Mod需要匹配游戏版本，否则会出错。</sys:String>
     <sys:String x:Key="MainWindow:GameVersionMismatchTitle">警告：游戏版本不匹配</sys:String>
 
