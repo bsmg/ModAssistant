@@ -94,13 +94,13 @@ OneClick源</sys:String>
             <Span Foreground="#ED0012">左</Span><Span Foreground="#E4001B">下</Span><Span Foreground="#DB0024">方</Span><Span Foreground="#D2002D">切</Span><Span Foreground="#C90036">换</Span><Span Foreground="#C0003F">下</Span><Span Foreground="#B70048">载</Span><Span Foreground="#AE0051">源</Span><Span Foreground="#A5005A">可</Span><Span Foreground="#9C0063">解</Span><Span Foreground="#93006C">决</Span><Span Foreground="#8A0075">加</Span><Span Foreground="#81007E">载</Span><Span Foreground="#780087">下</Span><Span Foreground="#6F0090">载</Span><Span Foreground="#660099">缓</Span><Span Foreground="#5D00A2">慢</Span><Span Foreground="#5400AB">或</Span><Span Foreground="#4B00B4">报</Span><Span Foreground="#4200BD">错</Span><Span Foreground="#3900C6">的</Span><Span Foreground="#3000CF">问</Span><Span Foreground="#2700D8">题</Span><Span Foreground="#1E00E1">！</Span>
         </Bold>
         <LineBreak/>
-        国际源/默认源是BeatMods源站，资源从BeatSaver/ModelSaber下载，无限额；
+        国际源是BeatMods源站，默认源是BeatSaver/ModelSaber源站，无限额；
         <LineBreak/>
         国内源是以上国际源/默认源的国内中转，是由WGzeyu提供的<Bold>香港服务器</Bold>，推荐国内用户使用；
         <LineBreak/>
         包子源为BeatTop管理，服务器使用<Bold>美国机房(多节点)</Bold>，同步国际源并添加了部分第三方插件。
         <LineBreak/>
-        光剑中文社区源为社区管理，是默认资源站的中转，服务器使用<Bold>美国机房(多节点)</Bold>，无限额。
+        光剑中文社区源为社区管理，是默认源的中转，服务器使用<Bold>美国机房(多节点)</Bold>，无限额。
     </Span>
     <sys:String x:Key="Intro:AgreeButton">同意</sys:String>
     <sys:String x:Key="Intro:DisagreeButton">拒绝</sys:String>
