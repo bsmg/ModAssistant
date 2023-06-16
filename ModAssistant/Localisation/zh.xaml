@@ -22,8 +22,11 @@
     <sys:String x:Key="MainWindow:OptionsButton">选项</sys:String>
     <sys:String x:Key="MainWindow:GameVersionLabel">游戏版本</sys:String>
     <sys:String x:Key="MainWindow:ModServerLabel">Mod下载源</sys:String>
-    <sys:String x:Key="MainWindow:AssetsServerLabel">资源下载源</sys:String>
-    <sys:String x:Key="MainWindow:AssetsServerLimitLabel">额度: {0}</sys:String>
+    <sys:String x:Key="MainWindow:AssetsServerLabel" xml:space="preserve">
+歌曲与模型
+OneClick源</sys:String>
+    <sys:String x:Key="MainWindow:AssetsServerLimitLabel" xml:space="preserve">额度: {0}
+ </sys:String>
     <sys:String x:Key="MainWindow:AssetsServerLimitLabelUnlimited">无限制</sys:String>
     <sys:String x:Key="MainWindow:VersionLabel">软件版本</sys:String>
     <sys:String x:Key="MainWindow:ModInfoButton">Mod信息</sys:String>
@@ -184,7 +187,9 @@
     <sys:String x:Key="Options:InstallingPlaylist">正在添加歌单：{0}</sys:String>
     <sys:String x:Key="Options:FailedPlaylistSong">失败歌曲：{0}</sys:String>
     <sys:String x:Key="Options:FinishedPlaylist">[{0}失败]添加{1}完成</sys:String>
-    <sys:String x:Key="Options:ShowOCIWindow">OneClick窗口显示方式：</sys:String>
+    <sys:String x:Key="Options:ShowOCIWindow" xml:space="preserve">OneClick下载源切换在左下角
+        
+OneClick窗口显示方式切换：</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">显示</sys:String>
     <sys:String x:Key="Options:OCIWindowClose">完成后关闭</sys:String>
     <sys:String x:Key="Options:OCINotify">通知</sys:String>
