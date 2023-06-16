@@ -118,7 +118,9 @@
     <sys:String x:Key="Mods:CheckingInstalledMods">正在检查已安装的Mod</sys:String>
     <sys:String x:Key="Mods:LoadingMods">正在加载Mod列表</sys:String>
     <sys:String x:Key="Mods:FinishedLoadingMods">已加载Mod列表</sys:String>
-    <sys:String x:Key="Mods:NoMods">当前版本的游戏暂时没有Mod，请等待Mod更新</sys:String>
+    <sys:String x:Key="Mods:NoMods" xml:space="preserve">当前版本的游戏暂时没有Mod，请等待Mod更新。
+        
+如果现在就想装，可以按简介中的教程链接来降级</sys:String>
     <sys:String x:Key="Mods:InstallingMod">正在安装{0}</sys:String>
     <sys:String x:Key="Mods:InstalledMod">已安装{0}</sys:String>
     <sys:String x:Key="Mods:FinishedInstallingMods">Mod安装完成</sys:String>
