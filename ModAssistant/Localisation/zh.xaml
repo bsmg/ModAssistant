@@ -32,7 +32,7 @@ OneClick源</sys:String>
     <sys:String x:Key="MainWindow:ModInfoButton">Mod信息</sys:String>
     <sys:String x:Key="MainWindow:InstallButtonTop">安装</sys:String>
     <sys:String x:Key="MainWindow:InstallButtonBottom">或更新</sys:String>
-    <sys:String x:Key="MainWindow:GameVersionLoadFailed">无法获取游戏版本，Mod选项卡将不可用，该问题可能与网络有关，请查看简介中的问题解答。</sys:String>
+    <sys:String x:Key="MainWindow:GameVersionLoadFailed">无法获取游戏版本，Mod选项卡将不可用，该问题可能与网络有关，你可以试试在左下方切换Mod下载源。</sys:String>
     <sys:String x:Key="MainWindow:GameUpdateDialog:Title">检测到新的游戏版本！</sys:String>
     <sys:String x:Key="MainWindow:GameUpdateDialog:Line1">游戏似乎更新了，请仔细检查左下角是否选择了正确的游戏版本！</sys:String>
     <sys:String x:Key="MainWindow:GameUpdateDialog:Line2">请确保左下角选择的版本与实际版本（地板脚印上有）相同才能安装Mod，否则会破坏你的游戏！</sys:String>
