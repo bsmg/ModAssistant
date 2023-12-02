@@ -15,28 +15,28 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Setup msbuild
-      uses: microsoft/setup-msbuild@latest
+    - uses: microsoft/setup-msbuild@latest
       
     - name: Restore dependencies
-      run: msbuild -t:restore
+    - run: msbuild -t:restore
       
     - name: Setup NuGet.exe
-      uses: nuget/setup-nuget@v1
+    - uses: nuget/setup-nuget@v1
       with:
         nuget-version: latest 
-      run: nuget restore ModAssistant.sln
+    - run: nuget restore ModAssistant.sln
     
     - name: Build project
-      run: msbuild ModAssistant/ModAssistant.csproj /t:Build /p:Configuration=Release
+    - run: msbuild ModAssistant/ModAssistant.csproj /t:Build /p:Configuration=Release
       
     - name: Cleanup release
       shell: bash
-      run: |
+    - run: |
         find "ModAssistant/bin/Release" -type f ! -name "ModAssistant.exe" -delete
         cp "LICENSE" "ModAssistant/bin/Release/LICENSE.ModAssistant.txt"
     - name: Upload Build
       if: startsWith(github.ref, 'refs/tags/') == false
-      uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v3
       with:
         name: ModAssistant-${{ github.sha }}
         path: ./ModAssistant/bin/Release/
@@ -45,11 +45,11 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       id: get_version
       shell: bash
-      run: echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+    - run: echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
       
     - name: Release
       if: startsWith(github.ref, 'refs/tags/')
-      uses: softprops/action-gh-release@v1
+    - uses: softprops/action-gh-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
