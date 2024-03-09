@@ -62,10 +62,10 @@
     </Span>
     <Span x:Key="Intro:WikiGuide">
         <Bold><Span Foreground="Red">请务必阅读</Span>
-        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/pc-guide/">
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.wgzeyu.com/pc-guide/">
             新手基础教程
         </Hyperlink>、
-        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs-wgzeyu.gtxcn.com/pc-faq/">
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.wgzeyu.com/pc-faq/">
             详细问题解答
         </Hyperlink>
         </Bold>，以及
@@ -157,6 +157,7 @@
     <sys:String x:Key="Options:ShowOCIWindow">OneClick窗口显示方式：</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">显示</sys:String>
     <sys:String x:Key="Options:OCIWindowClose">完成后关闭</sys:String>
+    <sys:String x:Key="Options:OCINotify">通知</sys:String>
     <sys:String x:Key="Options:OCIWindowNo">隐藏</sys:String>
     <sys:String x:Key="Options:Diagnostics">诊断工具</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">打开日志</sys:String>
@@ -191,18 +192,21 @@
     <sys:String x:Key="Invalid:List:Header">如果您的游戏是盗版的，或者您使用盗版游戏替换了正版，则可能会发生这种情况。</sys:String>
     <Span x:Key="Invalid:List:Line1">
         如果您的游戏是盗版的，
-        <Bold>请在
+        <Bold>请
             <Hyperlink NavigateUri="https://beatgames.com/" local:HyperlinkExtensions.IsExternal="True">
-                这里
+                点击这里
             </Hyperlink>
-        </Bold>购买游戏。
+        </Bold>购买游戏；如果你不知道如何购买、安装，请
+        <Hyperlink NavigateUri="http://bs.wgzeyu.com/buy/#bs_steam" local:HyperlinkExtensions.IsExternal="True">
+            点击这里
+        </Hyperlink>查看游戏购买教程 。
     </Span>
     <Span x:Key="Invalid:List:Line2">
         如果您的游戏
         <Bold>不是盗版</Bold>，请
-        <Hyperlink NavigateUri="https://bsmg.wiki/support#clean-installation" local:HyperlinkExtensions.IsExternal="True">
-            清洁安装
-        </Hyperlink>。
+        <Hyperlink NavigateUri="https://bs.wgzeyu.com/pc-faq/#modp" local:HyperlinkExtensions.IsExternal="True">
+            足够彻底地重装游戏
+        </Hyperlink>（只是卸载安装的话，卸不干净）。
     </Span>
     <Span x:Key="Invalid:List:Line3">
         如果这些方法没有帮助，请在BSMG的
@@ -229,6 +233,8 @@
     <sys:String x:Key="OneClick:RatelimitSkip">超过重试次数，跳过：{0}</sys:String>
     <sys:String x:Key="OneClick:RatelimitHit">下载超时，重试：{0}</sys:String>
     <sys:String x:Key="OneClick:Failed">下载失败：{0}</sys:String>
+    <sys:String x:Key="OneClick:DoneNotify">OneClick™ 安装完毕</sys:String>
+    <sys:String x:Key="OneClick:StartDownloadPlaylist">开始下载歌曲列表</sys:String>
     <sys:String x:Key="OneClick:Done">执行完毕</sys:String>
     
     <!-- Themes Class -->

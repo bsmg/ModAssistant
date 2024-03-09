@@ -23,7 +23,7 @@ namespace ModAssistant
         /// Local dictionary of Resource Dictionaries mapped by their names.
         /// </summary>
         private static readonly Dictionary<string, Theme> loadedThemes = new Dictionary<string, Theme>();
-        private static readonly List<string> preInstalledThemes = new List<string> { "Light", "Dark", "BSMG", "Light Pink" };
+        private static readonly List<string> preInstalledThemes = new List<string> { "Light", "Dark", "BSMG", "Light Pink", "Anniversary" };
 
         /// <summary>
         /// Index of "LoadedTheme" in App.xaml
@@ -81,7 +81,7 @@ namespace ModAssistant
                     FileInfo info = new FileInfo(file);
                     string name = Path.GetFileNameWithoutExtension(info.Name);
 
-                    if (info.Extension.ToLower().Equals(".mat"))
+                    if (info.Extension.ToLowerInvariant().Equals(".mat"))
                     {
                         Theme theme = LoadZipTheme(ThemeDirectory, name, ".mat");
                         if (theme is null) continue;
@@ -115,6 +115,12 @@ namespace ModAssistant
         /// <param name="savedTheme">Theme name retrieved from the settings file.</param>
         public static void FirstLoad(string savedTheme)
         {
+            if (!Properties.Settings.Default.AppliedAnniversaryTheme && DateTime.Now.Date.ToString("MM/yyyy") == "05/2023")
+            {
+                Properties.Settings.Default.AppliedAnniversaryTheme = true;
+                ApplyTheme("Anniversary", false);
+                return;
+            }
             if (string.IsNullOrEmpty(savedTheme))
             {
                 try

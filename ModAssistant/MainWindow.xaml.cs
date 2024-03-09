@@ -122,9 +122,16 @@ namespace ModAssistant
                 body = await resp.Content.ReadAsStringAsync();
                 Dictionary<string, string[]> aliases = JsonSerializer.Deserialize<Dictionary<string, string[]>>(body);
 
+                string version = Utils.GetVersion();
+                if (!versions.Contains(version) && CheckAliases(versions, aliases, version) == string.Empty)
+                {
+                    versions.Insert(0, version);
+                }
+
+
                 Dispatcher.Invoke(() =>
                 {
-                    GameVersion = GetGameVersion(versions, aliases);
+                    GameVersion = GetGameVersion(version, versions, aliases);
 
                     GameVersionsBox.ItemsSource = versions;
                     GameVersionsBox.SelectedValue = GameVersion;
@@ -157,9 +164,8 @@ namespace ModAssistant
             }
         }
 
-        private string GetGameVersion(List<string> versions, Dictionary<string, string[]> aliases)
+        private string GetGameVersion(string version, List<string> versions, Dictionary<string, string[]> aliases)
         {
-            string version = Utils.GetVersion();
             if (!string.IsNullOrEmpty(version) && versions.Contains(version))
             {
                 return version;

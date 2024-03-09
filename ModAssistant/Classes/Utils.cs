@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Management;
+using System.Net;
 using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Text;
@@ -70,14 +72,15 @@ namespace ModAssistant
             var notification = new System.Windows.Forms.NotifyIcon()
             {
                 Visible = true,
-                Icon = System.Drawing.SystemIcons.Information,
+                // resource icon from pack
+                Icon = System.Drawing.Icon.ExtractAssociatedIcon(ExePath),
                 BalloonTipTitle = title ?? defaultTitle,
                 BalloonTipText = message
             };
 
             notification.ShowBalloonTip(5000);
 
-            notification.Dispose();
+           // notification.Dispose(); This seems to cause Microsoft.Explorer.Notification.{random guid}
         }
 
         public static void StartAsAdmin(string Arguments, bool Close = false)
@@ -272,7 +275,11 @@ namespace ModAssistant
                 var strlen = reader.ReadInt32();
                 var strbytes = reader.ReadBytes(strlen);
 
-                return Encoding.UTF8.GetString(strbytes);
+                var version = Encoding.UTF8.GetString(strbytes);
+
+                //There is one version ending in "p1" on BeatMods
+                var filteredVersionMatch = Regex.Match(version, @"[\d]+.[\d]+.[\d]+(p1)?");
+                return filteredVersionMatch.Success ? filteredVersionMatch.Value : version;
             }
         }
 
@@ -386,12 +393,24 @@ namespace ModAssistant
         {
             string directory = App.BeatSaberInstallDirectory;
             string pluginsDirectory = Path.Combine(directory, "Beat Saber_Data", "Plugins");
+            string pluginsx86Directory = Path.Combine(directory, "Beat Saber_Data", "Plugins", "x86_64");
 
+            if(File.Exists(Path.Combine(pluginsx86Directory, "steam_api64.dll")))
+            {
+                string gamesteamapimd5 = Utils.CalculateMD5(Path.Combine(pluginsx86Directory, "steam_api64.dll"));
+                if(gamesteamapimd5 == "0276b122929fcd74fee949142d65f6a2" || gamesteamapimd5 == "2a905fbd9833970217ae3fe83118929b" || gamesteamapimd5 == "37a7e0deae6e7bd1154f8fd059f9a241")
+                {
+                    return true;
+                }
+            }
             if (File.Exists(Path.Combine(directory, "IGG-GAMES.COM.url")) ||
                 File.Exists(Path.Combine(directory, "SmartSteamEmu.ini")) ||
                 File.Exists(Path.Combine(directory, "GAMESTORRENT.CO.url")) ||
+                File.Exists(Path.Combine(directory, "1VR魔趣_国内最大最强的Quest游戏平台.txt")) ||
                 File.Exists(Path.Combine(pluginsDirectory, "BSteam crack.dll")) ||
                 File.Exists(Path.Combine(pluginsDirectory, "HUHUVR_steam_api64.dll")) ||
+                File.Exists(Path.Combine(pluginsx86Directory, "171VR_提供破解补丁.txt")) ||
+                File.Exists(Path.Combine(pluginsx86Directory, "171VR_最全VR游戏下载网站.html")) ||
                 Directory.GetFiles(pluginsDirectory, "*.ini", SearchOption.TopDirectoryOnly).Where(x => Path.GetFileName(x) != "desktop.ini").Any())
                 return true;
             return false;
@@ -435,17 +454,31 @@ namespace ModAssistant
         {
             string path = Path.GetDirectoryName(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath);
             string logFile = $"{path}{Path.DirectorySeparatorChar}log.log";
-            File.AppendAllText(logFile, $"[{DateTime.UtcNow:yyyy-mm-dd HH:mm:ss.ffffff}][{severity.ToUpper()}] {message}\n");
+            File.AppendAllText(logFile, $"[{DateTime.UtcNow:yyyy-mm-dd HH:mm:ss.ffffff}][{severity.ToUpperInvariant()}] {message}\n");
         }
 
-        public static async Task Download(string link, string output)
+        public static async Task<string> Download(string link, string folder, string output, bool preferContentDisposition = false)
         {
             var resp = await HttpClient.GetAsync(link);
+            var cdFilename = resp.Content.Headers.ContentDisposition?.FileName?.Trim('"');
+            // Prevent path traversal
+            if (cdFilename?.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+            {
+                cdFilename = null;
+            }
+
+            var filename = WebUtility.UrlDecode(Path.Combine(
+                folder,
+                (preferContentDisposition ? cdFilename : null) ?? output
+            ));
+
             using (var stream = await resp.Content.ReadAsStreamAsync())
-            using (var fs = new FileStream(output, FileMode.OpenOrCreate, FileAccess.Write))
+            using (var fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.Write))
             {
                 await stream.CopyToAsync(fs);
             }
+
+            return filename;
         }
 
         private delegate void ShowMessageBoxDelegate(string Message, string Caption);

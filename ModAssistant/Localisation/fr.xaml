@@ -163,6 +163,7 @@
     <sys:String x:Key="Options:ShowOCIWindow">Afficher la fenêtre de l'installateur OneClick</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">Oui</sys:String>
     <sys:String x:Key="Options:OCIWindowClose">Fermer</sys:String>
+    <sys:String x:Key="Options:OCINotify">Notification</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Options:OCIWindowNo">Non</sys:String>
     <sys:String x:Key="Options:Diagnostics">Diagnostic</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Ouvrir les logs</sys:String>
@@ -237,6 +238,8 @@
     <sys:String x:Key="OneClick:RatelimitSkip">Maximum de tentatives atteint : {0} passé</sys:String>
     <sys:String x:Key="OneClick:RatelimitHit">Limite atteinte. Reprise dans {0}</sys:String>
     <sys:String x:Key="OneClick:Failed">Téléchargement échoué : {0}</sys:String>
+    <sys:String x:Key="OneClick:DoneNotify">OneClick™ installation finished</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:StartDownloadPlaylist">Starting to download playlist</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="OneClick:Done">Fait</sys:String>
 
     <!-- Themes Class -->

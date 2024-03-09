@@ -161,6 +161,7 @@
     <sys:String x:Key="Options:ShowOCIWindow">Vis OneClick installasjonsvindu</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">Ja</sys:String>
     <sys:String x:Key="Options:OCIWindowClose">Lukk</sys:String>
+    <sys:String x:Key="Options:OCINotify">Notification</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Options:OCIWindowNo">Nei</sys:String>
     <sys:String x:Key="Options:Diagnostics">Diagnostikkverktøy</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Åpne logg</sys:String>
@@ -234,6 +235,8 @@
     <sys:String x:Key="OneClick:RatelimitSkip">Maks antall forsøk oppbrukt: hopper over {0}</sys:String>
     <sys:String x:Key="OneClick:RatelimitHit">For mange forsøk på kort tid. Fortsetter om {0}</sys:String>
     <sys:String x:Key="OneClick:Failed">Nedlasting mislykkes: {0}</sys:String>
+    <sys:String x:Key="OneClick:DoneNotify">OneClick™ installation finished</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:StartDownloadPlaylist">Starting to download playlist</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="OneClick:Done">Ferdig</sys:String>
 
     <!-- Themes Class -->

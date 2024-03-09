@@ -16,17 +16,18 @@ namespace ModAssistant.API
     {
         private const string BeatSaverURLPrefix = "https://api.beatsaver.com";
         private static readonly string CustomSongsFolder = Path.Combine("Beat Saber_Data", "CustomLevels");
+        private static readonly string CustomWIPSongsFolder = Path.Combine("Beat Saber_Data", "CustomWIPLevels");
         private const bool BypassDownloadCounter = false;
 
         public static async Task<BeatSaverMap> GetFromKey(string Key, bool showNotification = true)
         {
-            if (showNotification && App.OCIWindow != "No") OneClickInstaller.Status.Show();
+            if (showNotification && App.OCIWindow != "No" && App.OCIWindow != "Notify") OneClickInstaller.Status.Show();
             return await GetMap(Key, "key", showNotification);
         }
 
         public static async Task<BeatSaverMap> GetFromHash(string Hash, bool showNotification = true)
         {
-            if (showNotification && App.OCIWindow != "No") OneClickInstaller.Status.Show();
+            if (showNotification && App.OCIWindow != "No" && App.OCIWindow != "Notify") OneClickInstaller.Status.Show();
             return await GetMap(Hash, "hash", showNotification);
         }
 
@@ -59,7 +60,7 @@ namespace ModAssistant.API
                     map.response = beatsaver;
                     if (type == "hash")
                     {
-                        map.HashToDownload = id.ToLower();
+                        map.HashToDownload = id.ToLowerInvariant();
                     }
                     else
                     {
@@ -139,19 +140,23 @@ namespace ModAssistant.API
                 throw new Exception("Could not find map version.");
             }
 
-            string zip = Path.Combine(Utils.BeatSaberPath, CustomSongsFolder, Map.HashToDownload) + ".zip";
+            string state = responseMap.versions[0].state;
+            string targetSongDirectory = state.Equals("Published") ? CustomSongsFolder : CustomWIPSongsFolder;
+
+            string zip = Path.Combine(Utils.BeatSaberPath, targetSongDirectory, Map.HashToDownload) + ".zip";
             string mapName = string.Concat(($"{responseMap.id} ({responseMap.metadata.songName} - {responseMap.metadata.levelAuthorName})")
                              .Split(ModAssistant.Utils.Constants.IllegalCharacters));
-            string directory = Path.Combine(Utils.BeatSaberPath, CustomSongsFolder, mapName);
+
+            string directory = Path.Combine(Utils.BeatSaberPath, targetSongDirectory, mapName);
 
 #pragma warning disable CS0162 // Unreachable code detected
             if (BypassDownloadCounter)
             {
-                await Utils.DownloadAsset(mapVersion.downloadURL, CustomSongsFolder, Map.HashToDownload + ".zip", mapName, showNotification, true);
+                await Utils.DownloadAsset(mapVersion.downloadURL, targetSongDirectory, Map.HashToDownload + ".zip", mapName, showNotification, true);
             }
             else
             {
-                await Utils.DownloadAsset(mapVersion.downloadURL, CustomSongsFolder, Map.HashToDownload + ".zip", mapName, showNotification, true);
+                await Utils.DownloadAsset(mapVersion.downloadURL, targetSongDirectory, Map.HashToDownload + ".zip", mapName, showNotification, true);
             }
 #pragma warning restore CS0162 // Unreachable code detected
 

@@ -156,6 +156,7 @@
     <sys:String x:Key="Options:ShowOCIWindow">Toon OneClick Installatie Scherm</sys:String>
     <sys:String x:Key="Options:OCIWindowYes">Ja</sys:String>
     <sys:String x:Key="Options:OCIWindowClose">Sluit</sys:String>
+    <sys:String x:Key="Options:OCINotify">Notification</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="Options:OCIWindowNo">Nee</sys:String>
     <sys:String x:Key="Options:Diagnostics">Diagnostiek</sys:String>
     <sys:String x:Key="Options:OpenLogsButton">Open Logs</sys:String>
@@ -229,6 +230,8 @@
     <sys:String x:Key="OneClick:RatelimitSkip">Maximaal aantal pogingen bereikt: {0} wordt overgeslagen</sys:String>
     <sys:String x:Key="OneClick:RatelimitHit">Snelheidslimiet bereikt. Hervat over {0}</sys:String>
     <sys:String x:Key="OneClick:Failed">Download mislukt: {0}</sys:String>
+    <sys:String x:Key="OneClick:DoneNotify">OneClick™ installation finished</sys:String> <!-- NEEDS TRANSLATING -->
+    <sys:String x:Key="OneClick:StartDownloadPlaylist">Starting to download playlist</sys:String> <!-- NEEDS TRANSLATING -->
     <sys:String x:Key="OneClick:Done">Voltooid</sys:String>
 
     <!-- Themes Class -->
