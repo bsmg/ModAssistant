@@ -121,7 +121,7 @@
            página de doação
         </Hyperlink>
         ou meu
-        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/AssistantMoe">
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/beatsabermods">
             Patreon
         </Hyperlink>
     </Span>

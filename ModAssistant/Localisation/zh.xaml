@@ -120,7 +120,7 @@
             捐助页面
         </Hyperlink>
         或我的
-        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/AssistantMoe">
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/beatsabermods">
             Patreon
         </Hyperlink>
     </Span>

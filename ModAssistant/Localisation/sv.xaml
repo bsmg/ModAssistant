@@ -121,7 +121,7 @@
             donationssida
         </Hyperlink>
         eller min
-        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/AssistantMoe">
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/beatsabermods">
             Patreon
         </Hyperlink>
     </Span>

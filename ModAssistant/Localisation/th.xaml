@@ -121,7 +121,7 @@
             หน้าบริจาคของฉัน
         </Hyperlink>
         หรือ
-        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/AssistantMoe">
+        <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/beatsabermods">
             หน้า Patreon ของฉัน
         </Hyperlink>
     </Span>
