@@ -120,9 +120,9 @@
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://bs.assistant.moe/Donate/">
             donation page
         </Hyperlink>
-        or my
+        or the 
         <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.patreon.com/AssistantMoe">
-            Patreon
+            BSMG Patreon
         </Hyperlink>
     </Span>
     <sys:String x:Key="About:SpecialThanks">Special Thanks ♥</sys:String>
