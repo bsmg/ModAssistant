@@ -90,7 +90,7 @@ Custom themes are located in a folder called `Themes` in the same folder as `Mod
 ### Built In
 These come with the program and you can't change them, however you can overwrite them by creating one of the other two theme types with the same name.
 
-If you have a particularly popular theme, you can submit a [Pull Request](https://github.com/Assistant/ModAssistant/pulls) to add your theme as a built-in theme.
+If you have a particularly popular theme, you can submit a [Pull Request](https://github.com/bsmg/ModAssistant/pulls) to add your theme as a built-in theme.
 
 ### Packaged `.mat` Files
 These are pre-packaged theme files. Under the hood they are renamed`.zip` files, and the file structure is the same as that of `Folders` themes. These will be overwritten by `Folders` themes with the same name. 

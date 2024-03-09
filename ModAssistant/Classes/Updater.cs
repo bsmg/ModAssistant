@@ -9,7 +9,7 @@ namespace ModAssistant
 {
     class Updater
     {
-        private static readonly string APILatestURL = "https://api.github.com/repos/Assistant/ModAssistant/releases/latest";
+        private static readonly string APILatestURL = "https://api.github.com/repos/bsmg/ModAssistant/releases/latest";
 
         private static Update LatestUpdate;
         private static Version CurrentVersion;
