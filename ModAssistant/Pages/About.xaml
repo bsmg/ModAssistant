@@ -128,8 +128,8 @@
                     VerticalAlignment="Center"
                     FontSize="20"
                     FontWeight="Bold">
-                    <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://www.jackbaron.com/">
-                        lolPants
+                    <Hyperlink local:HyperlinkExtensions.IsExternal="True" NavigateUri="https://lulu.dev/">
+                        Lulu
                     </Hyperlink>
                     </TextBlock>
                     <TextBlock

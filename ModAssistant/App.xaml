@@ -18,7 +18,7 @@
                 <!-- Load theme to be modified via the Theme engine. -->
                 <ResourceDictionary x:Name="LoadedTheme" Source="Themes/Dark.xaml" />
 
-                <!-- Load SVG icons, courtesy of lolPants. -->
+                <!-- Load SVG icons, courtesy of Lulu. -->
                 <ResourceDictionary x:Name="Icons" Source="Resources/Icons.xaml" />
 
                 <!-- Load Styles needed for the Theme engine to work. -->

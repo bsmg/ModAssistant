@@ -1,6 +1,6 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- Mod Assistant Dark Theme by Caeden117 and lolPants -->
+    <!-- Mod Assistant Dark Theme by Caeden117 and Lulu -->
 
     <!-- Standard Styles -->
     <Color x:Key="StandardContent">#E0E0E0</Color>
