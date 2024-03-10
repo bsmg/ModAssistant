@@ -1,5 +1,5 @@
-![Mod Assistant](https://github.com/bsmg/ModAssistant/assets/27714637/e4c206b2-a890-4c52-aacf-5c96aebadbc2)
-![Download here!](https://github.com/bsmg/ModAssistant/assets/27714637/aa836eb6-abaf-4d29-8add-eb021fa30bf3)
+[![Mod Assistant](https://github.com/bsmg/ModAssistant/assets/27714637/e4c206b2-a890-4c52-aacf-5c96aebadbc2)](https://github.com/Assistant/ModAssistant/releases/latest)
+[![Download here!](https://github.com/bsmg/ModAssistant/assets/27714637/aa836eb6-abaf-4d29-8add-eb021fa30bf3)](https://github.com/Assistant/ModAssistant/releases/latest)
 
 Mod Assistant is a PC mod installer for Beat Saber. It uses mods from [BeatMods](https://beatmods.com/).
 
