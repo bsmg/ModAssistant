@@ -1,5 +1,8 @@
-[![Mod Assistant](https://github.com/bsmg/ModAssistant/assets/27714637/e4c206b2-a890-4c52-aacf-5c96aebadbc2)](https://github.com/Assistant/ModAssistant/releases/latest)
-[![Download here!](https://github.com/bsmg/ModAssistant/assets/27714637/aa836eb6-abaf-4d29-8add-eb021fa30bf3)](https://github.com/Assistant/ModAssistant/releases/latest)
+[![Mod Assistant](https://cdn.assistant.moe/images/ModAssistant/Icons/Banner.svg?v=5)](https://github.com/mitch030504/ModAssistant-DRMFREE/releases/latest)
+[![Download here!](https://cdn.assistant.moe/images/ModAssistant/Icons/Download.svg)](https://github.com/mitch030504/ModAssistant-DRMFREE/releases/latest)
+
+
+This is a modified version that removes any checks for "dumps"(dunno how strict github is)
 
 Mod Assistant is a PC mod installer for Beat Saber. It uses mods from [BeatMods](https://beatmods.com/).
 
@@ -37,50 +40,50 @@ Download the newest installer from the release section and run it. This applicat
 <details>
     <summary><b>Light</b></summary>
     <div>
-        <p><img alt="Intro" src="https://github.com/bsmg/ModAssistant/assets/27714637/ee96f5ab-e078-4c31-95f4-9ee604dc62cb" /></p>
-        <p><img alt="Mods" src="https://github.com/bsmg/ModAssistant/assets/27714637/fc17bce8-c0e2-44df-a9da-428977ef1c24" /></p>
-        <p><img alt="About" src="https://github.com/bsmg/ModAssistant/assets/27714637/a258b6a1-bece-452f-b62b-bc848a1ca739" /></p>
-        <p><img alt="Options" src="https://github.com/bsmg/ModAssistant/assets/27714637/8f54759b-9237-44e8-9c30-9b57338cacaf" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Light/Intro.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Light/Mods.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Light/About.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Light/Options.png" /></p>
     </div>
 </details>
 
 <details>
     <summary><b>Dark</b></summary>
     <div>
-        <p><img alt="Intro" src="https://github.com/bsmg/ModAssistant/assets/27714637/8d72c87c-b93c-4b3c-9841-996b932d3bcb" /></p>
-        <p><img alt="Mods" src="https://github.com/bsmg/ModAssistant/assets/27714637/b1546d78-de59-4a5b-be70-283dbdd4189a" /></p>
-        <p><img alt="About" src="https://github.com/bsmg/ModAssistant/assets/27714637/64a9c77b-9a7a-41c1-aed2-cbfc2b395970" /></p>
-        <p><img alt="Options" src="https://github.com/bsmg/ModAssistant/assets/27714637/54752449-41a8-4143-a382-026b33ea88ad" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Dark/Intro.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Dark/Mods.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Dark/About.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Dark/Options.png" /></p>
     </div>
 </details>
 
 <details>
     <summary><b>BSMG</b></summary>
     <div>
-        <p><img alt="Intro" src="https://github.com/bsmg/ModAssistant/assets/27714637/da56d90b-ea8e-4b1c-b50e-c248d4b202e0" /></p>
-        <p><img alt="Mods" src="https://github.com/bsmg/ModAssistant/assets/27714637/b2816929-7a9c-4541-afb1-d913657d60eb" /></p>
-        <p><img alt="About" src="https://github.com/bsmg/ModAssistant/assets/27714637/0ee07cdb-1d78-4cc4-a269-a9a4903c1e71" /></p>
-        <p><img alt="Options" src="https://github.com/bsmg/ModAssistant/assets/27714637/dd8a352e-e4c3-4da9-b738-83b32675a362" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/BSMG/Intro.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/BSMG/Mods.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/BSMG/About.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/BSMG/Options.png" /></p>
     </div>
 </details>
 
 <details>
     <summary><b>Light Pink</b></summary>
     <div>
-        <p><img alt="Intro" src="https://github.com/bsmg/ModAssistant/assets/27714637/277d1e8c-c918-4824-b172-9190b029ce46" /></p>
-        <p><img alt="Mods" src="https://github.com/bsmg/ModAssistant/assets/27714637/90e28ac5-1d09-4b95-a892-7e58bf60f7ca" /></p>
-        <p><img alt="About" src="https://github.com/bsmg/ModAssistant/assets/27714637/6af72a5c-95c9-4589-9318-1f351d33c22e" /></p>
-        <p><img alt="Options" src="https://github.com/bsmg/ModAssistant/assets/27714637/a3708f8d-87b5-4df0-b318-2e38be16b6f0" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Light Pink/Intro.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Light Pink/Mods.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Light Pink/About.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Light Pink/Options.png" /></p>
     </div>
 </details>
 
 <details>
     <summary><b>Your own!</b></summary>
     <div>
-        <p><img alt="Intro" src="https://github.com/bsmg/ModAssistant/assets/27714637/0be91ae8-4bfc-430e-b15a-d4900f9796b4" /></p>
-        <p><img alt="Mods" src="https://github.com/bsmg/ModAssistant/assets/27714637/9e6d1802-a0d9-4ab4-b417-3e6bb9bef0db" /></p>
-        <p><img alt="About" src="https://github.com/bsmg/ModAssistant/assets/27714637/9a8a0bc6-7ad9-4097-8b2c-156d0e49d372" /></p>
-        <p><img alt="Options" src="https://github.com/bsmg/ModAssistant/assets/27714637/244f7d1b-6f25-49a8-979f-4d0f9761f55b" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Custom/Intro.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Custom/Mods.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Custom/About.png" /></p>
+        <p><img src="https://cdn.assistant.moe/images/ModAssistant/Themes/Custom/Options.png" /></p>
     </div>
 </details>
 
@@ -90,7 +93,7 @@ Custom themes are located in a folder called `Themes` in the same folder as `Mod
 ### Built In
 These come with the program and you can't change them, however you can overwrite them by creating one of the other two theme types with the same name.
 
-If you have a particularly popular theme, you can submit a [Pull Request](https://github.com/bsmg/ModAssistant/pulls) to add your theme as a built-in theme.
+If you have a particularly popular theme, you can submit a [Pull Request](https://github.com/Assistant/ModAssistant/pulls) to add your theme as a built-in theme.
 
 ### Packaged `.mat` Files
 These are pre-packaged theme files. Under the hood they are renamed`.zip` files, and the file structure is the same as that of `Folders` themes. These will be overwritten by `Folders` themes with the same name. 
