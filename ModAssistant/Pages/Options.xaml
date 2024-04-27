@@ -196,6 +196,15 @@
                     Unchecked="BeatSaverProtocolHandler_Unchecked"/>
                     <MenuItem
                     Padding="5,0"
+                    Header="{DynamicResource Options:ScoreSaber}"
+                    Name="ScoreSaberProtocolHandler"
+                    IsCheckable="True"
+                    StaysOpenOnClick="True"
+                    Checked="ScoreSaberProtocolHandler_Checked"
+                    IsChecked="{Binding ScoreSaberProtocolHandlerEnabled}"
+                    Unchecked="ScoreSaberProtocolHandler_Unchecked"/>
+                    <MenuItem
+                    Padding="5,0"
                     Header="{DynamicResource Options:ModelSaber}"
                     Name="ModelSaberProtocolHandler"
                     IsCheckable="True"
