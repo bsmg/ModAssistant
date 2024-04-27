@@ -144,6 +144,7 @@
     <sys:String x:Key="Options:ReinstallInstalledMods">Reinstall Installed Mods</sys:String>
     <sys:String x:Key="Options:EnableOneClickInstalls">Enable OneClick™ Installs</sys:String>
     <sys:String x:Key="Options:BeatSaver">BeatSaver</sys:String>
+    <sys:String x:Key="Options:ScoreSaber">ScoreSaber</sys:String>
     <sys:String x:Key="Options:ModelSaber">ModelSaber</sys:String>
     <sys:String x:Key="Options:Playlists">Playlists</sys:String>
     <sys:String x:Key="Options:CloseWindow">Close window when finished</sys:String>
