@@ -12,7 +12,7 @@ namespace ModAssistant
 {
     class OneClickInstaller
     {
-        private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver", "bsplaylist" };
+        private static readonly string[] Protocols = new[] { "modelsaber", "beatsaver", "bsplaylist", "web+bsmap" };
         public static OneClickStatus Status = new OneClickStatus();
  
         public static async Task InstallAsset(string link)
@@ -27,6 +27,9 @@ namespace ModAssistant
                     break;
                 case "beatsaver":
                     await BeatSaver(uri);
+                    break;
+                case "web+bsmap":
+                    await ScoreSaber(uri);
                     break;
                 case "bsplaylist":
                     await Playlist(uri);
@@ -54,6 +57,12 @@ namespace ModAssistant
         {
             string Key = uri.Host;
             await API.BeatSaver.GetFromKey(Key);
+        }
+
+        private static async Task ScoreSaber(Uri uri)
+        {
+            string Hash = uri.Host;
+            await API.BeatSaver.GetFromHash(Hash);
         }
 
         private static async Task ModelSaber(Uri uri)

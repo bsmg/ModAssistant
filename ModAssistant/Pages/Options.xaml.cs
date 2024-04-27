@@ -27,6 +27,7 @@ namespace ModAssistant.Pages
         public bool ReinstallInstalledMods { get; set; }
         public bool ModelSaberProtocolHandlerEnabled { get; set; }
         public bool BeatSaverProtocolHandlerEnabled { get; set; }
+        public bool ScoreSaberProtocolHandlerEnabled { get; set; }
         public bool PlaylistsProtocolHandlerEnabled { get; set; }
         public bool CloseWindowOnFinish { get; set; }
         public string LogURL { get; private set; }
@@ -55,6 +56,7 @@ namespace ModAssistant.Pages
         {
             ModelSaberProtocolHandlerEnabled = OneClickInstaller.IsRegistered("modelsaber");
             BeatSaverProtocolHandlerEnabled = OneClickInstaller.IsRegistered("beatsaver");
+            ScoreSaberProtocolHandlerEnabled = OneClickInstaller.IsRegistered("web+bsmap");
             PlaylistsProtocolHandlerEnabled = OneClickInstaller.IsRegistered("bsplaylist");
         }
 
@@ -154,6 +156,17 @@ namespace ModAssistant.Pages
         {
             OneClickInstaller.Unregister("beatsaver");
         }
+        
+        public void ScoreSaberProtocolHandler_Checked(object sender, RoutedEventArgs e)
+        {
+            OneClickInstaller.Register("web+bsmap", Description: "URL:web+bsmap OneClick Install");
+        }
+
+        public void ScoreSaberProtocolHandler_Unchecked(object sender, RoutedEventArgs e)
+        {
+            OneClickInstaller.Unregister("web+bsmap");
+        }
+        
         public void PlaylistsProtocolHandler_Checked(object sender, RoutedEventArgs e)
         {
             OneClickInstaller.Register("bsplaylist", Description: "URL:BeatSaver Playlist OneClick Install");
