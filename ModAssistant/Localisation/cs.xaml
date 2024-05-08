@@ -43,9 +43,9 @@
          <Bold>nepodporuje</Bold> nativně mody. To znamená:
      </Span>
      <Span x:Key="Intro:Terms:Term1">
-         Módy
-         <Bold>rozbijí</Bold> každou aktualizaci. To je normální a
-         <Bold>ne</Bold> chyba Beat Games.
+         Módy se
+         <Bold>rozbijí</Bold> s každou aktualizací. To je normální a
+         <Bold>není</Bold> to chyba Beat Games.
      </Span>
     <Span x:Key="Intro:Terms:Term2">
          Módy
