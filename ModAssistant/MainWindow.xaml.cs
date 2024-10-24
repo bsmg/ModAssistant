@@ -118,13 +118,9 @@ namespace ModAssistant
 
                 var resp = await HttpClient.GetAsync(Utils.Constants.BeatModsAlias);
                 var body = await resp.Content.ReadAsStringAsync();
-                List<string> versions = JsonSerializer.Deserialize<string[]>(body).ToList();
-
-                resp = await HttpClient.GetAsync(Utils.Constants.BeatModsAlias);
-                body = await resp.Content.ReadAsStringAsync();
                 Dictionary<string, string[]> aliases = JsonSerializer.Deserialize<Dictionary<string, string[]>>(body);
 
-                string version = Utils.GetVersion();
+                string version = await Utils.GetVersion();
                 if (!versions.Contains(version) && CheckAliases(versions, aliases, version) == string.Empty)
                 {
                     versions.Insert(0, version);

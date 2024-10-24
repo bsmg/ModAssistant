@@ -244,36 +244,37 @@ namespace ModAssistant
             return null;
         }
 
-        public static string GetVersion()
+        public static async Task<string> GetVersion()
         {
+            string result = string.Empty;
+
+            var versions = await GetVersionsList();
+
             string filename = Path.Combine(App.BeatSaberInstallDirectory, "Beat Saber_Data", "globalgamemanagers");
             using (var stream = File.OpenRead(filename))
-            using (var reader = new BinaryReader(stream, Encoding.UTF8))
+            using (var reader = new StreamReader(stream, Encoding.UTF8))
             {
-                const string key = "public.app-category.games";
-                int pos = 0;
+                var line = reader.ReadLine();
 
-                while (stream.Position < stream.Length && pos < key.Length)
+                while (line != null)
                 {
-                    if (reader.ReadByte() == key[pos]) pos++;
-                    else pos = 0;
+                    foreach (var version in versions)
+                    {
+                        if (line.Contains(version))
+                        {
+                            result = version;
+                            break;
+                        }
+                    }
+                    if (!string.IsNullOrEmpty(result)) break;
+                    line = reader.ReadLine();
                 }
 
-                if (stream.Position == stream.Length) // we went through the entire stream without finding the key
-                    return null;
-
-                while (stream.Position < stream.Length)
-                {
-                    var current = (char)reader.ReadByte();
-                    if (char.IsDigit(current))
-                        break;
-                }
-
-                var rewind = -sizeof(int) - sizeof(byte);
-                stream.Seek(rewind, SeekOrigin.Current); // rewind to the string length
-
-                var strlen = reader.ReadInt32();
-                var strbytes = reader.ReadBytes(strlen);
+                ////There is one version ending in "p1" on BeatMods
+                var filteredVersionMatch = Regex.Match(result, @"[\d]+.[\d]+.[\d]+(p1)?");
+                return filteredVersionMatch.Success ? filteredVersionMatch.Value : result;
+            }
+        }
 
         // TODO: should cache this
         public static async Task<List<string>> GetVersionsList()
