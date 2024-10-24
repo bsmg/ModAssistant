@@ -275,12 +275,14 @@ namespace ModAssistant
                 var strlen = reader.ReadInt32();
                 var strbytes = reader.ReadBytes(strlen);
 
-                var version = Encoding.UTF8.GetString(strbytes);
+        // TODO: should cache this
+        public static async Task<List<string>> GetVersionsList()
+        {
+            var resp = await HttpClient.GetAsync(Utils.Constants.BeatModsVersions);
+            var body = await resp.Content.ReadAsStringAsync();
+            List<string> versions = JsonSerializer.Deserialize<string[]>(body).ToList();
 
-                //There is one version ending in "p1" on BeatMods
-                var filteredVersionMatch = Regex.Match(version, @"[\d]+.[\d]+.[\d]+(p1)?");
-                return filteredVersionMatch.Success ? filteredVersionMatch.Value : version;
-            }
+            return versions;
         }
 
         public static string GetOculusDir()

@@ -114,7 +114,9 @@ namespace ModAssistant
         {
             try
             {
-                var resp = await HttpClient.GetAsync(Utils.Constants.BeatModsVersions);
+                var versions = await Utils.GetVersionsList();
+
+                var resp = await HttpClient.GetAsync(Utils.Constants.BeatModsAlias);
                 var body = await resp.Content.ReadAsStringAsync();
                 List<string> versions = JsonSerializer.Deserialize<string[]>(body).ToList();
 
