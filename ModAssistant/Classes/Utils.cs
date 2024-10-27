@@ -286,6 +286,15 @@ namespace ModAssistant
             return versions;
         }
 
+        // TODO: should cache this
+        public static async Task<Dictionary<string, string[]>> GetAliasDictionary()
+        {
+            var resp = await HttpClient.GetAsync(Constants.BeatModsAlias);
+            var body = await resp.Content.ReadAsStringAsync();
+            var aliases = JsonSerializer.Deserialize<Dictionary<string, string[]>>(body);
+
+            return aliases;
+        }
         public static string GetOculusDir()
         {
             string OculusInstall = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)?.OpenSubKey("SOFTWARE")?.OpenSubKey("Wow6432Node")?.OpenSubKey("Oculus VR, LLC")?.OpenSubKey("Oculus")?.OpenSubKey("Config")?.GetValue("InitialAppLibrary").ToString();
