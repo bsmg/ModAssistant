@@ -279,7 +279,7 @@ namespace ModAssistant
         // TODO: should cache this
         public static async Task<List<string>> GetVersionsList()
         {
-            var resp = await HttpClient.GetAsync(Utils.Constants.BeatModsVersions);
+            var resp = await HttpClient.GetAsync(Constants.BeatModsVersions);
             var body = await resp.Content.ReadAsStringAsync();
             List<string> versions = JsonSerializer.Deserialize<string[]>(body).ToList();
 
