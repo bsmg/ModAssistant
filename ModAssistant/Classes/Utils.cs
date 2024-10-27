@@ -295,6 +295,15 @@ namespace ModAssistant
 
             return aliases;
         }
+
+        public static async Task<List<string>> GetAllPossibleVersions()
+        {
+            var versions = await GetVersionsList();
+            var aliases = await GetAliasDictionary();
+
+            return versions.Concat(aliases.SelectMany(x => x.Value)).ToList();
+        }
+
         public static string GetOculusDir()
         {
             string OculusInstall = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)?.OpenSubKey("SOFTWARE")?.OpenSubKey("Wow6432Node")?.OpenSubKey("Oculus VR, LLC")?.OpenSubKey("Oculus")?.OpenSubKey("Config")?.GetValue("InitialAppLibrary").ToString();
