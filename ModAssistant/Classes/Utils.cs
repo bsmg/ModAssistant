@@ -248,7 +248,7 @@ namespace ModAssistant
         {
             string result = string.Empty;
 
-            var versions = await GetVersionsList();
+            var versions = await GetAllPossibleVersions();
 
             string filename = Path.Combine(App.BeatSaberInstallDirectory, "Beat Saber_Data", "globalgamemanagers");
             using (var stream = File.OpenRead(filename))
